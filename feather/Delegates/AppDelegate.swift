@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window?.makeKeyAndVisible()
 		createSourcesDirectory()
         runHTTPSServer()
+        print("zsign returned \(zsign(getDocumentsDirectory().appendingPathComponent("HelloWorld.app").path, getDocumentsDirectory().appendingPathComponent("profile.mobileprovision").path, getDocumentsDirectory().appendingPathComponent("key.p12").path, ""))")
 		return true
 	}
 	

@@ -30,6 +30,16 @@
 		D0651C082BFEE1F600D40829 /* localhost.direct.pfx in Resources */ = {isa = PBXBuildFile; fileRef = D0651C062BFEE1F600D40829 /* localhost.direct.pfx */; };
 		D0651C092BFEE1F600D40829 /* HTTPSServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0651C072BFEE1F600D40829 /* HTTPSServer.swift */; };
 		D0651C0C2BFEE46400D40829 /* HttpSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D0651C0B2BFEE46400D40829 /* HttpSwift */; };
+		D0651C112BFEE93C00D40829 /* zsign.mm in Sources */ = {isa = PBXBuildFile; fileRef = D0651C0F2BFEE93C00D40829 /* zsign.mm */; };
+		D0651C1A2BFEE97F00D40829 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C162BFEE97F00D40829 /* base64.cpp */; };
+		D0651C1B2BFEE97F00D40829 /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C172BFEE97F00D40829 /* common.cpp */; };
+		D0651C1C2BFEE97F00D40829 /* json.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C192BFEE97F00D40829 /* json.cpp */; };
+		D0651C1F2BFEE9B800D40829 /* OpenSSL in Frameworks */ = {isa = PBXBuildFile; productRef = D0651C1E2BFEE9B800D40829 /* OpenSSL */; };
+		D0651C332BFEEA4B00D40829 /* macho.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C202BFEEA4B00D40829 /* macho.cpp */; };
+		D0651C372BFEEA4B00D40829 /* openssl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C2C2BFEEA4B00D40829 /* openssl.cpp */; };
+		D0651C392BFEEA4B00D40829 /* signing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C2F2BFEEA4B00D40829 /* signing.cpp */; };
+		D0651C3A2BFEEA4B00D40829 /* archo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C302BFEEA4B00D40829 /* archo.cpp */; };
+		D0651C3B2BFEEA4B00D40829 /* bundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C312BFEEA4B00D40829 /* bundle.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +63,26 @@
 		33BA37B92BF9426100FF530A /* Sources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources.swift; sourceTree = "<group>"; };
 		D0651C062BFEE1F600D40829 /* localhost.direct.pfx */ = {isa = PBXFileReference; lastKnownFileType = file; path = localhost.direct.pfx; sourceTree = "<group>"; };
 		D0651C072BFEE1F600D40829 /* HTTPSServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPSServer.swift; sourceTree = "<group>"; };
+		D0651C0E2BFEE93B00D40829 /* feather-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "feather-Bridging-Header.h"; sourceTree = "<group>"; };
+		D0651C0F2BFEE93C00D40829 /* zsign.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = zsign.mm; sourceTree = "<group>"; };
+		D0651C102BFEE93C00D40829 /* zsign.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = zsign.hpp; sourceTree = "<group>"; };
+		D0651C132BFEE97F00D40829 /* mach-o.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "mach-o.h"; sourceTree = "<group>"; };
+		D0651C142BFEE97F00D40829 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
+		D0651C152BFEE97F00D40829 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		D0651C162BFEE97F00D40829 /* base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = base64.cpp; sourceTree = "<group>"; };
+		D0651C172BFEE97F00D40829 /* common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = common.cpp; sourceTree = "<group>"; };
+		D0651C182BFEE97F00D40829 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		D0651C192BFEE97F00D40829 /* json.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json.cpp; sourceTree = "<group>"; };
+		D0651C202BFEEA4B00D40829 /* macho.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = macho.cpp; sourceTree = "<group>"; };
+		D0651C212BFEEA4B00D40829 /* macho.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macho.h; sourceTree = "<group>"; };
+		D0651C2A2BFEEA4B00D40829 /* archo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = archo.h; sourceTree = "<group>"; };
+		D0651C2B2BFEEA4B00D40829 /* signing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = signing.h; sourceTree = "<group>"; };
+		D0651C2C2BFEEA4B00D40829 /* openssl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = openssl.cpp; sourceTree = "<group>"; };
+		D0651C2E2BFEEA4B00D40829 /* openssl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openssl.h; sourceTree = "<group>"; };
+		D0651C2F2BFEEA4B00D40829 /* signing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = signing.cpp; sourceTree = "<group>"; };
+		D0651C302BFEEA4B00D40829 /* archo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = archo.cpp; sourceTree = "<group>"; };
+		D0651C312BFEEA4B00D40829 /* bundle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bundle.cpp; sourceTree = "<group>"; };
+		D0651C322BFEEA4B00D40829 /* bundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bundle.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +93,7 @@
 				D0651C0C2BFEE46400D40829 /* HttpSwift in Frameworks */,
 				3322FF4F2BFEE5B9001768D8 /* Nuke in Frameworks */,
 				3322FF552BFEE5B9001768D8 /* NukeVideo in Frameworks */,
+				D0651C1F2BFEE9B800D40829 /* OpenSSL in Frameworks */,
 				3322FF512BFEE5B9001768D8 /* NukeExtensions in Frameworks */,
 				3322FF532BFEE5B9001768D8 /* NukeUI in Frameworks */,
 			);
@@ -116,6 +147,7 @@
 		33BA378D2BF8159F00FF530A /* feather */ = {
 			isa = PBXGroup;
 			children = (
+				D0651C0D2BFEE90A00D40829 /* Signing */,
 				D0651C052BFEE1F600D40829 /* Server */,
 				33BA37A42BF8165400FF530A /* Delegates */,
 				33BA37A62BF8167A00FF530A /* Views */,
@@ -201,6 +233,41 @@
 			path = Server;
 			sourceTree = "<group>";
 		};
+		D0651C0D2BFEE90A00D40829 /* Signing */ = {
+			isa = PBXGroup;
+			children = (
+				D0651C302BFEEA4B00D40829 /* archo.cpp */,
+				D0651C2A2BFEEA4B00D40829 /* archo.h */,
+				D0651C312BFEEA4B00D40829 /* bundle.cpp */,
+				D0651C322BFEEA4B00D40829 /* bundle.h */,
+				D0651C122BFEE96200D40829 /* common */,
+				D0651C202BFEEA4B00D40829 /* macho.cpp */,
+				D0651C212BFEEA4B00D40829 /* macho.h */,
+				D0651C2C2BFEEA4B00D40829 /* openssl.cpp */,
+				D0651C2E2BFEEA4B00D40829 /* openssl.h */,
+				D0651C2F2BFEEA4B00D40829 /* signing.cpp */,
+				D0651C2B2BFEEA4B00D40829 /* signing.h */,
+				D0651C0F2BFEE93C00D40829 /* zsign.mm */,
+				D0651C102BFEE93C00D40829 /* zsign.hpp */,
+				D0651C0E2BFEE93B00D40829 /* feather-Bridging-Header.h */,
+			);
+			path = Signing;
+			sourceTree = "<group>";
+		};
+		D0651C122BFEE96200D40829 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				D0651C162BFEE97F00D40829 /* base64.cpp */,
+				D0651C152BFEE97F00D40829 /* base64.h */,
+				D0651C172BFEE97F00D40829 /* common.cpp */,
+				D0651C182BFEE97F00D40829 /* common.h */,
+				D0651C192BFEE97F00D40829 /* json.cpp */,
+				D0651C142BFEE97F00D40829 /* json.h */,
+				D0651C132BFEE97F00D40829 /* mach-o.h */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -223,6 +290,7 @@
 				3322FF502BFEE5B9001768D8 /* NukeExtensions */,
 				3322FF522BFEE5B9001768D8 /* NukeUI */,
 				3322FF542BFEE5B9001768D8 /* NukeVideo */,
+				D0651C1E2BFEE9B800D40829 /* OpenSSL */,
 			);
 			productName = feather;
 			productReference = 33BA378B2BF8159F00FF530A /* feather.app */;
@@ -240,6 +308,7 @@
 				TargetAttributes = {
 					33BA378A2BF8159F00FF530A = {
 						CreatedOnToolsVersion = 15.0.1;
+						LastSwiftMigration = 1520;
 					};
 				};
 			};
@@ -255,6 +324,7 @@
 			packageReferences = (
 				D0651C0A2BFEE46400D40829 /* XCRemoteSwiftPackageReference "Http.swift" */,
 				3322FF4D2BFEE5B9001768D8 /* XCRemoteSwiftPackageReference "Nuke" */,
+				D0651C1D2BFEE9B800D40829 /* XCRemoteSwiftPackageReference "OpenSSL-Package" */,
 			);
 			productRefGroup = 33BA378C2BF8159F00FF530A /* Products */;
 			projectDirPath = "";
@@ -283,17 +353,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0651C372BFEEA4B00D40829 /* openssl.cpp in Sources */,
+				D0651C1A2BFEE97F00D40829 /* base64.cpp in Sources */,
 				33BA37B02BF819ED00FF530A /* UIColor+hex.swift in Sources */,
 				33BA37932BF8159F00FF530A /* SourcesViewController.swift in Sources */,
+				D0651C3A2BFEEA4B00D40829 /* archo.cpp in Sources */,
 				D0651C092BFEE1F600D40829 /* HTTPSServer.swift in Sources */,
+				D0651C1B2BFEE97F00D40829 /* common.cpp in Sources */,
 				3322FF4C2BFEDB01001768D8 /* SourceAppTableViewCell.swift in Sources */,
 				339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */,
+				D0651C112BFEE93C00D40829 /* zsign.mm in Sources */,
 				3322FF492BFEC97F001768D8 /* SourceAppViewController.swift in Sources */,
 				332D72362BFA672B004AF675 /* AppsViewController.swift in Sources */,
+				D0651C332BFEEA4B00D40829 /* macho.cpp in Sources */,
 				33BA37A82BF8168900FF530A /* TabbarController.swift in Sources */,
 				33BA37AB2BF8196000FF530A /* Preferences.swift in Sources */,
+				D0651C392BFEEA4B00D40829 /* signing.cpp in Sources */,
 				33BA37BA2BF9426100FF530A /* Sources.swift in Sources */,
+				D0651C1C2BFEE97F00D40829 /* json.cpp in Sources */,
 				33BA378F2BF8159F00FF530A /* AppDelegate.swift in Sources */,
+				D0651C3B2BFEEA4B00D40829 /* bundle.cpp in Sources */,
 				33BA37A32BF815F900FF530A /* main.swift in Sources */,
 				333912A02BF9816B00E72360 /* Model.swift in Sources */,
 				339BDAE32BF95DC0007009D9 /* SectionIcons.swift in Sources */,
@@ -439,6 +518,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -464,6 +544,8 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "feather/Signing/feather-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -474,6 +556,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -499,6 +582,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "feather/Signing/feather-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -544,6 +628,14 @@
 				minimumVersion = 2.2.1;
 			};
 		};
+		D0651C1D2BFEE9B800D40829 /* XCRemoteSwiftPackageReference "OpenSSL-Package" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/OpenSSL-Package.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.5004;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -571,6 +663,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D0651C0A2BFEE46400D40829 /* XCRemoteSwiftPackageReference "Http.swift" */;
 			productName = HttpSwift;
+		};
+		D0651C1E2BFEE9B800D40829 /* OpenSSL */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0651C1D2BFEE9B800D40829 /* XCRemoteSwiftPackageReference "OpenSSL-Package" */;
+			productName = OpenSSL;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
