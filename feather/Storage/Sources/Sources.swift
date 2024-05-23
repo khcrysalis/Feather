@@ -86,32 +86,6 @@ class RepoManager {
 			throw error
 		}
 	}
-	// Download Image
-	func downloadImage(from url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
-		let task = URLSession.shared.dataTask(with: url) { data, response, error in
-			if let error = error {
-				completion(.failure(error))
-				return
-			}
-			guard let data = data else {
-				completion(.failure(NSError(domain: "DataError", code: -1, userInfo: nil)))
-				return
-			}
-			completion(.success(data))
-		}
-		task.resume()
-	}
-	// Save Image
-	func saveImage(data: Data, identifier: String) throws {
-		let fileManager = FileManager.default
-		let documentsURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-		let sourceDirectoryURL = documentsURL.appendingPathComponent("Sources").appendingPathComponent(identifier)
-
-		try fileManager.createDirectory(at: sourceDirectoryURL, withIntermediateDirectories: true, attributes: nil)
-
-		let fileURL = sourceDirectoryURL.appendingPathComponent("icon.png")
-		try data.write(to: fileURL)
-	}
 }
 // MARK: - List local sources
 extension RepoManager {
@@ -138,18 +112,6 @@ extension RepoManager {
 		}
 		sources.sort {$0.name! < $1.name!}
 		return sources
-	}
-	
-	func fetchIconImage(for source: Source) -> UIImage {
-		let fileManager = FileManager.default
-		let documentsURL = try? fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-		let iconPath = documentsURL?.appendingPathComponent("Sources").appendingPathComponent(source.identifier).appendingPathComponent("icon.png").path
-		
-		if let iconPath = iconPath, let image = UIImage(contentsOfFile: iconPath) {
-			return image
-		} else {
-			return UIImage(named: "unknown")!
-		}
 	}
 	
 	func fetchLocalURL(for source: Source) -> URL? {
@@ -204,17 +166,6 @@ extension RepoManager {
 					do {
 						try! self.saveJSON(data: data, identifier: source.identifier)
 						try! self.saveURL(url: url, identifier: source.identifier)
-
-						if let iconURL = source.iconURL {
-							self.downloadImage(from: iconURL) { imageResult in
-								switch imageResult {
-								case .success(let imageData):
-									do { try! self.saveImage(data: imageData, identifier: source.identifier) }
-								case .failure(let error):
-									print("Failed to download image: \(error)\n")
-								}
-							}
-						}
 					}
 				case .failure(let error): print("Failed to parse JSON: \(error)\n")
 				}
@@ -236,16 +187,6 @@ extension RepoManager {
 					case .success(let newSource):
 						do {
 							try! RepoManager().saveJSON(data: data, identifier: newSource.identifier)
-							if let iconURL = newSource.iconURL {
-								RepoManager().downloadImage(from: iconURL) { imageResult in
-									switch imageResult {
-									case .success(let imageData):
-										do { try! RepoManager().saveImage(data: imageData, identifier: newSource.identifier) }
-									case .failure(let error):
-										print("Failed to download image: \(error)\n")
-									}
-								}
-							}
 						}
 					case .failure(let error): print("Failed to parse JSON: \(error)\n")
 					}
