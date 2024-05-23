@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Nuke
 
 class SourcesViewController: UITableViewController {
 	var sources: [Source] = []
@@ -59,7 +60,7 @@ class SourcesViewController: UITableViewController {
 	}
 	
 	@objc func sourcesAddButtonTapped() {
-		RepoManager().addSource(from: "https://cdn.altstore.io/file/altstore/apps.json")
+		RepoManager().addSource(from: "https://ipa.cypwn.xyz/cypwn.json")
 		self.refreshRepos()
 	}
 	
@@ -80,9 +81,31 @@ class SourcesViewController: UITableViewController {
         cell.detailTextLabel?.textColor = .secondaryLabel
         cell.accessoryType = .disclosureIndicator
         cell.backgroundColor = UIColor(named: "Background")
-        
-        let iconImage = RepoManager().fetchIconImage(for: source)
-        SectionIcons.sectionImage(to: cell, with: iconImage)
+		
+		SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
+		if let thumbnailURL = source.iconURL {
+			let request = ImageRequest(url: thumbnailURL)
+			
+			if let cachedImage = ImagePipeline.shared.cache.cachedImage(for: request)?.image {
+				SectionIcons.sectionImage(to: cell, with: cachedImage)
+			} else {
+				ImagePipeline.shared.loadImage(
+					with: request,
+					progress: nil,
+					completion: { result in
+						switch result {
+						case .success(let imageResponse):
+							DispatchQueue.main.async {
+								SectionIcons.sectionImage(to: cell, with: imageResponse.image)
+								tableView.reloadRows(at: [indexPath], with: .fade)
+							}
+						case .failure(let error):
+							print("Image loading failed with error: \(error)")
+						}
+					}
+				)
+			}
+		}
         
         return cell
     }
