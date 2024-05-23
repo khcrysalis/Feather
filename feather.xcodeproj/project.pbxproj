@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		3322FF492BFEC97F001768D8 /* SourceAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3322FF482BFEC97F001768D8 /* SourceAppViewController.swift */; };
 		3322FF4C2BFEDB01001768D8 /* SourceAppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3322FF4B2BFEDB01001768D8 /* SourceAppTableViewCell.swift */; };
+		3322FF4F2BFEE5B9001768D8 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 3322FF4E2BFEE5B9001768D8 /* Nuke */; };
+		3322FF512BFEE5B9001768D8 /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 3322FF502BFEE5B9001768D8 /* NukeExtensions */; };
+		3322FF532BFEE5B9001768D8 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3322FF522BFEE5B9001768D8 /* NukeUI */; };
+		3322FF552BFEE5B9001768D8 /* NukeVideo in Frameworks */ = {isa = PBXBuildFile; productRef = 3322FF542BFEE5B9001768D8 /* NukeVideo */; };
 		332D72362BFA672B004AF675 /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D72352BFA672B004AF675 /* AppsViewController.swift */; };
 		333912A02BF9816B00E72360 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3339129F2BF9816B00E72360 /* Model.swift */; };
 		339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */; };
@@ -57,6 +61,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0651C0C2BFEE46400D40829 /* HttpSwift in Frameworks */,
+				3322FF4F2BFEE5B9001768D8 /* Nuke in Frameworks */,
+				3322FF552BFEE5B9001768D8 /* NukeVideo in Frameworks */,
+				3322FF512BFEE5B9001768D8 /* NukeExtensions in Frameworks */,
+				3322FF532BFEE5B9001768D8 /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +219,10 @@
 			name = feather;
 			packageProductDependencies = (
 				D0651C0B2BFEE46400D40829 /* HttpSwift */,
+				3322FF4E2BFEE5B9001768D8 /* Nuke */,
+				3322FF502BFEE5B9001768D8 /* NukeExtensions */,
+				3322FF522BFEE5B9001768D8 /* NukeUI */,
+				3322FF542BFEE5B9001768D8 /* NukeVideo */,
 			);
 			productName = feather;
 			productReference = 33BA378B2BF8159F00FF530A /* feather.app */;
@@ -242,6 +254,7 @@
 			mainGroup = 33BA37822BF8159F00FF530A;
 			packageReferences = (
 				D0651C0A2BFEE46400D40829 /* XCRemoteSwiftPackageReference "Http.swift" */,
+				3322FF4D2BFEE5B9001768D8 /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = 33BA378C2BF8159F00FF530A /* Products */;
 			projectDirPath = "";
@@ -515,6 +528,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3322FF4D2BFEE5B9001768D8 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.7.0;
+			};
+		};
 		D0651C0A2BFEE46400D40829 /* XCRemoteSwiftPackageReference "Http.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/BiAtoms/Http.swift.git";
@@ -526,6 +547,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3322FF4E2BFEE5B9001768D8 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3322FF4D2BFEE5B9001768D8 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		3322FF502BFEE5B9001768D8 /* NukeExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3322FF4D2BFEE5B9001768D8 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeExtensions;
+		};
+		3322FF522BFEE5B9001768D8 /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3322FF4D2BFEE5B9001768D8 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
+		};
+		3322FF542BFEE5B9001768D8 /* NukeVideo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3322FF4D2BFEE5B9001768D8 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeVideo;
+		};
 		D0651C0B2BFEE46400D40829 /* HttpSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D0651C0A2BFEE46400D40829 /* XCRemoteSwiftPackageReference "Http.swift" */;

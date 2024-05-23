@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "nuke",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kean/Nuke",
+      "state" : {
+        "revision" : "7395c7a9dcd390bbcfad17a731d8d529602702c6",
+        "version" : "12.7.0"
+      }
+    },
+    {
       "identity" : "request.swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/BiAtoms/Request.swift.git",
