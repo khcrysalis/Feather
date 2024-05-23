@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		window?.makeKeyAndVisible()
 		createSourcesDirectory()
+        runHTTPSServer()
 		return true
 	}
 	

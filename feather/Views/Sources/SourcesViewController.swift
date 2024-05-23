@@ -7,9 +7,7 @@
 
 import UIKit
 
-class SourcesViewController: UIViewController {
-
-	var tableView: UITableView!
+class SourcesViewController: UITableViewController {
 	var sources: [Source] = []
 	
 	var isSelectMode: Bool = false {
@@ -18,8 +16,6 @@ class SourcesViewController: UIViewController {
 			setupNavigation()
 		}
 	}
-	
-	private var refreshControl: UIRefreshControl!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -33,17 +29,13 @@ class SourcesViewController: UIViewController {
 	}
 	
 	fileprivate func setupViews() {
-		self.tableView = UITableView(frame: .zero, style: .plain)
-		self.tableView.translatesAutoresizingMaskIntoConstraints = false
 		self.tableView.backgroundColor = UIColor(named: "Background")
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
 		self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 		
-		self.view.addSubview(tableView)
-		
 		self.refreshControl = UIRefreshControl()
-		self.refreshControl.addTarget(self, action: #selector(beginRefresh(_:)), for: .valueChanged)
+		self.refreshControl?.addTarget(self, action: #selector(beginRefresh(_:)), for: .valueChanged)
 		self.tableView.refreshControl = refreshControl
 	}
 	
@@ -75,6 +67,72 @@ class SourcesViewController: UIViewController {
 		sources = RepoManager().listLocalSources()
 		tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
 	}
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return sources.count }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
+        
+        let source = sources[indexPath.row]
+        let sourceURL = RepoManager().fetchLocalURL(for: source)?.absoluteString
+        
+        cell.textLabel?.text = source.name ?? sourceURL
+        cell.detailTextLabel?.text = sourceURL
+        cell.detailTextLabel?.textColor = .secondaryLabel
+        cell.accessoryType = .disclosureIndicator
+        cell.backgroundColor = UIColor(named: "Background")
+        
+        let iconImage = RepoManager().fetchIconImage(for: source)
+        SectionIcons.sectionImage(to: cell, with: iconImage)
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let source = sources[indexPath.row]
+        let sourceURL = RepoManager().fetchLocalURL(for: source)?.absoluteString
+
+        let configuration = UIContextMenuConfiguration(identifier: nil, actionProvider: { _ in
+            return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [
+                UIAction(title: "Copy", image: UIImage(systemName: "doc.on.clipboard"), handler: {_ in
+                    UIPasteboard.general.string = sourceURL!
+                })
+            ])
+        })
+        return configuration
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+            self.removeRepo(at: indexPath)
+            completionHandler(true)
+        }
+        deleteAction.backgroundColor = UIColor.red
+
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        configuration.performsFirstActionWithFullSwipe = true
+
+        return configuration
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let source = sources[indexPath.row]
+        print(source.identifier)
+        
+        let savc = SourceAppViewController()
+        savc.name = source.name
+        savc.apps = source.apps
+        navigationController?.pushViewController(savc, animated: true)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    init() {
+        super.init(style: .plain)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 // MARK: - Edit
 extension SourcesViewController {
@@ -88,66 +146,6 @@ extension SourcesViewController {
 	}
 }
 
-// MARK: - Table View Delegates
-extension SourcesViewController: UITableViewDelegate, UITableViewDataSource {
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return sources.count }
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
-		
-		let source = sources[indexPath.row]
-		let sourceURL = RepoManager().fetchLocalURL(for: source)?.absoluteString
-		
-		cell.textLabel?.text = source.name ?? sourceURL
-		cell.detailTextLabel?.text = sourceURL
-		cell.detailTextLabel?.textColor = .secondaryLabel
-		cell.accessoryType = .disclosureIndicator
-		cell.backgroundColor = UIColor(named: "Background")
-		
-		let iconImage = RepoManager().fetchIconImage(for: source)
-		SectionIcons.sectionImage(to: cell, with: iconImage)
-		
-		return cell
-	}
-	
-	func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-		let source = sources[indexPath.row]
-		let sourceURL = RepoManager().fetchLocalURL(for: source)?.absoluteString
-
-		let configuration = UIContextMenuConfiguration(identifier: nil, actionProvider: { _ in
-			return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [
-				UIAction(title: "Copy", image: UIImage(systemName: "doc.on.clipboard"), handler: {_ in
-					UIPasteboard.general.string = sourceURL!
-				})
-			])
-		})
-		return configuration
-	}
-	
-	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-		let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
-			self.removeRepo(at: indexPath)
-			completionHandler(true)
-		}
-		deleteAction.backgroundColor = UIColor.red
-
-		let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-		configuration.performsFirstActionWithFullSwipe = true
-
-		return configuration
-	}
-
-	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let source = sources[indexPath.row]
-		print(source.identifier)
-		
-		let savc = SourceAppViewController()
-		savc.name = source.name
-		savc.apps = source.apps
-		navigationController?.pushViewController(savc, animated: true)
-		
-		tableView.deselectRow(at: indexPath, animated: true)
-	}
-}
 // MARK: - Refresh
 extension SourcesViewController {
 	@objc func beginRefresh(_ sender: AnyObject) { self.refreshRepos() }

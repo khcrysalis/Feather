@@ -23,6 +23,9 @@
 		33BA37AD2BF8197200FF530A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA37AC2BF8197200FF530A /* Storage.swift */; };
 		33BA37B02BF819ED00FF530A /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA37AF2BF819ED00FF530A /* UIColor+hex.swift */; };
 		33BA37BA2BF9426100FF530A /* Sources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA37B92BF9426100FF530A /* Sources.swift */; };
+		D0651C082BFEE1F600D40829 /* localhost.direct.pfx in Resources */ = {isa = PBXBuildFile; fileRef = D0651C062BFEE1F600D40829 /* localhost.direct.pfx */; };
+		D0651C092BFEE1F600D40829 /* HTTPSServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0651C072BFEE1F600D40829 /* HTTPSServer.swift */; };
+		D0651C0C2BFEE46400D40829 /* HttpSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D0651C0B2BFEE46400D40829 /* HttpSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,8 @@
 		33BA37AC2BF8197200FF530A /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		33BA37AF2BF819ED00FF530A /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		33BA37B92BF9426100FF530A /* Sources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources.swift; sourceTree = "<group>"; };
+		D0651C062BFEE1F600D40829 /* localhost.direct.pfx */ = {isa = PBXFileReference; lastKnownFileType = file; path = localhost.direct.pfx; sourceTree = "<group>"; };
+		D0651C072BFEE1F600D40829 /* HTTPSServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPSServer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0651C0C2BFEE46400D40829 /* HttpSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +108,7 @@
 		33BA378D2BF8159F00FF530A /* feather */ = {
 			isa = PBXGroup;
 			children = (
+				D0651C052BFEE1F600D40829 /* Server */,
 				33BA37A42BF8165400FF530A /* Delegates */,
 				33BA37A62BF8167A00FF530A /* Views */,
 				339BDAE12BF95DB4007009D9 /* Design */,
@@ -177,6 +184,15 @@
 			path = Userdefaults;
 			sourceTree = "<group>";
 		};
+		D0651C052BFEE1F600D40829 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				D0651C062BFEE1F600D40829 /* localhost.direct.pfx */,
+				D0651C072BFEE1F600D40829 /* HTTPSServer.swift */,
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -193,6 +209,9 @@
 			dependencies = (
 			);
 			name = feather;
+			packageProductDependencies = (
+				D0651C0B2BFEE46400D40829 /* HttpSwift */,
+			);
 			productName = feather;
 			productReference = 33BA378B2BF8159F00FF530A /* feather.app */;
 			productType = "com.apple.product-type.application";
@@ -221,6 +240,9 @@
 				Base,
 			);
 			mainGroup = 33BA37822BF8159F00FF530A;
+			packageReferences = (
+				D0651C0A2BFEE46400D40829 /* XCRemoteSwiftPackageReference "Http.swift" */,
+			);
 			productRefGroup = 33BA378C2BF8159F00FF530A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -235,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0651C082BFEE1F600D40829 /* localhost.direct.pfx in Resources */,
 				33BA379B2BF815A100FF530A /* LaunchScreen.storyboard in Resources */,
 				33BA37982BF815A100FF530A /* Assets.xcassets in Resources */,
 			);
@@ -249,6 +272,7 @@
 			files = (
 				33BA37B02BF819ED00FF530A /* UIColor+hex.swift in Sources */,
 				33BA37932BF8159F00FF530A /* SourcesViewController.swift in Sources */,
+				D0651C092BFEE1F600D40829 /* HTTPSServer.swift in Sources */,
 				3322FF4C2BFEDB01001768D8 /* SourceAppTableViewCell.swift in Sources */,
 				339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */,
 				3322FF492BFEC97F001768D8 /* SourceAppViewController.swift in Sources */,
@@ -402,9 +426,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DLSL362JHJ;
+				DEVELOPMENT_TEAM = 577Q6MMX9D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = feather/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Feather;
@@ -413,13 +438,15 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
+				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -434,9 +461,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DLSL362JHJ;
+				DEVELOPMENT_TEAM = 577Q6MMX9D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = feather/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Feather;
@@ -445,13 +473,15 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
+				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -483,6 +513,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D0651C0A2BFEE46400D40829 /* XCRemoteSwiftPackageReference "Http.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BiAtoms/Http.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D0651C0B2BFEE46400D40829 /* HttpSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0651C0A2BFEE46400D40829 /* XCRemoteSwiftPackageReference "Http.swift" */;
+			productName = HttpSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 33BA37832BF8159F00FF530A /* Project object */;
 }
