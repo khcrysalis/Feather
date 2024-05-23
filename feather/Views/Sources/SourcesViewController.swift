@@ -33,16 +33,14 @@ class SourcesViewController: UIViewController {
 	}
 	
 	fileprivate func setupViews() {
-		self.tableView = UITableView(frame: .zero, style: .insetGrouped)
+		self.tableView = UITableView(frame: .zero, style: .plain)
 		self.tableView.translatesAutoresizingMaskIntoConstraints = false
 		self.tableView.backgroundColor = UIColor(named: "Background")
-		self.tableView.separatorStyle = .none
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
-		self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "RoundedBackgroundCell")
+		self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 		
 		self.view.addSubview(tableView)
-		self.tableView.constraintCompletely(to: view)
 		
 		self.refreshControl = UIRefreshControl()
 		self.refreshControl.addTarget(self, action: #selector(beginRefresh(_:)), for: .valueChanged)
@@ -94,21 +92,16 @@ extension SourcesViewController {
 extension SourcesViewController: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return sources.count }
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		// I may just revert to a standard cell .
-		let cell = SourcesTableViewCell(style: .subtitle, reuseIdentifier: "RoundedBackgroundCell")
-		
-		cell.selectionStyle = .none
-		if indexPath.row % 2 == 0 {
-			cell.contentView.backgroundColor = .clear
-		} else {
-			cell.contentView.backgroundColor = UIColor(named: "Cells")
-		}
+		let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
 		
 		let source = sources[indexPath.row]
 		let sourceURL = RepoManager().fetchLocalURL(for: source)?.absoluteString
+		
 		cell.textLabel?.text = source.name ?? sourceURL
 		cell.detailTextLabel?.text = sourceURL
 		cell.detailTextLabel?.textColor = .secondaryLabel
+		cell.accessoryType = .disclosureIndicator
+		cell.backgroundColor = UIColor(named: "Background")
 		
 		let iconImage = RepoManager().fetchIconImage(for: source)
 		SectionIcons.sectionImage(to: cell, with: iconImage)
@@ -131,15 +124,12 @@ extension SourcesViewController: UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-		// Create a delete action
 		let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
-			// Handle the delete action
 			self.removeRepo(at: indexPath)
 			completionHandler(true)
 		}
 		deleteAction.backgroundColor = UIColor.red
 
-		// Create a swipe actions configuration
 		let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
 		configuration.performsFirstActionWithFullSwipe = true
 
@@ -149,6 +139,12 @@ extension SourcesViewController: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let source = sources[indexPath.row]
 		print(source.identifier)
+		
+		let savc = SourceAppViewController()
+		savc.name = source.name
+		savc.apps = source.apps
+		navigationController?.pushViewController(savc, animated: true)
+		
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 }

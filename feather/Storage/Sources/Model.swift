@@ -27,7 +27,7 @@ public struct Source: Codable {
 public struct StoreApps: Codable {
 	public var name: String
 	public var developerName: String?
-	public var shortDescription: String?
+	public var subtitle: String?
 	public var bundleIdentifier: String
 	
 	public var iconURL: URL?
@@ -37,11 +37,12 @@ public struct StoreApps: Codable {
 	public var version: String
 	public var versionDate: String?
 	public var versionDescription: String?
+	public var localizedDescription: String?
 	
 	enum CodingKeys: String, CodingKey {
 		case name,
 			 developerName,
-			 shortDescription,
+			 subtitle,
 			 bundleIdentifier,
 			 iconURL,
 			 downloadURL,

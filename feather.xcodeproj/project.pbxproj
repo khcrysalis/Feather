@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3322FF492BFEC97F001768D8 /* SourceAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3322FF482BFEC97F001768D8 /* SourceAppViewController.swift */; };
+		3322FF4C2BFEDB01001768D8 /* SourceAppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3322FF4B2BFEDB01001768D8 /* SourceAppTableViewCell.swift */; };
 		332D72362BFA672B004AF675 /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D72352BFA672B004AF675 /* AppsViewController.swift */; };
 		333912A02BF9816B00E72360 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3339129F2BF9816B00E72360 /* Model.swift */; };
-		333912A22BF9864100E72360 /* SourcesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333912A12BF9864100E72360 /* SourcesTableViewCell.swift */; };
 		339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */; };
 		339BDAE32BF95DC0007009D9 /* SectionIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDAE22BF95DC0007009D9 /* SectionIcons.swift */; };
 		33BA378F2BF8159F00FF530A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA378E2BF8159F00FF530A /* AppDelegate.swift */; };
@@ -25,9 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3322FF482BFEC97F001768D8 /* SourceAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceAppViewController.swift; sourceTree = "<group>"; };
+		3322FF4B2BFEDB01001768D8 /* SourceAppTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceAppTableViewCell.swift; sourceTree = "<group>"; };
 		332D72352BFA672B004AF675 /* AppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
 		3339129F2BF9816B00E72360 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		333912A12BF9864100E72360 /* SourcesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesTableViewCell.swift; sourceTree = "<group>"; };
 		339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLayoutAnchorsHolding.swift; sourceTree = "<group>"; };
 		339BDAE22BF95DC0007009D9 /* SectionIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionIcons.swift; sourceTree = "<group>"; };
 		33BA378B2BF8159F00FF530A /* feather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = feather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +57,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3322FF4A2BFEDAE8001768D8 /* SourceAppViews */ = {
+			isa = PBXGroup;
+			children = (
+				3322FF482BFEC97F001768D8 /* SourceAppViewController.swift */,
+				3322FF4B2BFEDB01001768D8 /* SourceAppTableViewCell.swift */,
+			);
+			path = SourceAppViews;
+			sourceTree = "<group>";
+		};
 		3339129E2BF9815300E72360 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,7 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				33BA37922BF8159F00FF530A /* SourcesViewController.swift */,
-				333912A12BF9864100E72360 /* SourcesTableViewCell.swift */,
+				3322FF4A2BFEDAE8001768D8 /* SourceAppViews */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -237,9 +248,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				33BA37B02BF819ED00FF530A /* UIColor+hex.swift in Sources */,
-				333912A22BF9864100E72360 /* SourcesTableViewCell.swift in Sources */,
 				33BA37932BF8159F00FF530A /* SourcesViewController.swift in Sources */,
+				3322FF4C2BFEDB01001768D8 /* SourceAppTableViewCell.swift in Sources */,
 				339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */,
+				3322FF492BFEC97F001768D8 /* SourceAppViewController.swift in Sources */,
 				332D72362BFA672B004AF675 /* AppsViewController.swift in Sources */,
 				33BA37A82BF8168900FF530A /* TabbarController.swift in Sources */,
 				33BA37AB2BF8196000FF530A /* Preferences.swift in Sources */,
