@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Nuke
 
 class SourceAppViewController: UIViewController {
 	
@@ -58,7 +59,36 @@ extension SourceAppViewController: UITableViewDelegate, UITableViewDataSource {
 		let cell = AppTableViewCell(style: .subtitle, reuseIdentifier: "RoundedBackgroundCell")
 		let app = apps[indexPath.row]
 		cell.configure(with: app)
+		
 		SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
+		
+		if let thumbnailURL = app.iconURL {
+			let request = ImageRequest(url: thumbnailURL)
+			
+			if let cachedImage = ImagePipeline.shared.cache.cachedImage(for: request)?.image {
+				SectionIcons.sectionImage(to: cell, with: cachedImage)
+			} else {
+				ImagePipeline.shared.loadImage(
+					with: request,
+					progress: nil,
+					completion: { result in
+						switch result {
+						case .success(let imageResponse):
+							DispatchQueue.main.async {
+								SectionIcons.sectionImage(to: cell, with: imageResponse.image)
+								tableView.reloadRows(at: [indexPath], with: .fade)
+							}
+						case .failure(let error):
+							print("Image loading failed with error: \(error)")
+						}
+					}
+				)
+			}
+		}
+		
+		
+		
+		
 		return cell
 	}
 	
