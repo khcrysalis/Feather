@@ -19,12 +19,12 @@
       }
     },
     {
-      "identity" : "openssl-package",
+      "identity" : "openssl-swift-package",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/krzyzanowskim/OpenSSL-Package.git",
+      "location" : "https://github.com/HAHALOSAH/OpenSSL-Swift-Package",
       "state" : {
-        "revision" : "fdc133911d1e26f59838763906a6486d65febfa6",
-        "version" : "3.1.5004"
+        "branch" : "main",
+        "revision" : "309092bce7787397a183df4ad90b8291744535ae"
       }
     },
     {
