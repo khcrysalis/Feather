@@ -65,13 +65,13 @@ class AppTableViewCell: UITableViewCell {
 	
 	func configure(with app: StoreApps) {
 		var name = app.name
-		if app.bundleIdentifier.hasSuffix("Beta") {
-			name += " (Beta)"
+		if app.bundleIdentifier!.hasSuffix("Beta") {
+			name! += " (Beta)"
 		}
 		nameLabel.text = name
 		var desc = app.developerName ?? "Unknown"
 		desc += " • "
-		desc += app.version
+		desc += app.version!
 		versionLabel.text = desc
 		detailLabel.text = app.subtitle ?? "An awesome application!"
 	}
