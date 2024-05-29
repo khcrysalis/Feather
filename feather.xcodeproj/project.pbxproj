@@ -27,6 +27,8 @@
 		33BA37AD2BF8197200FF530A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA37AC2BF8197200FF530A /* Storage.swift */; };
 		33BA37B02BF819ED00FF530A /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA37AF2BF819ED00FF530A /* UIColor+hex.swift */; };
 		33BA37BA2BF9426100FF530A /* Sources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA37B92BF9426100FF530A /* Sources.swift */; };
+		33DF8D672C06DB9300D6C05F /* Feather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33DF8D652C06DB9300D6C05F /* Feather.xcdatamodeld */; };
+		33DF8D692C06DBE900D6C05F /* SourcesViewController+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DF8D682C06DBE900D6C05F /* SourcesViewController+Fetch.swift */; };
 		D0651C082BFEE1F600D40829 /* localhost.direct.pfx in Resources */ = {isa = PBXBuildFile; fileRef = D0651C062BFEE1F600D40829 /* localhost.direct.pfx */; };
 		D0651C092BFEE1F600D40829 /* HTTPSServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0651C072BFEE1F600D40829 /* HTTPSServer.swift */; };
 		D0651C0C2BFEE46400D40829 /* HttpSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D0651C0B2BFEE46400D40829 /* HttpSwift */; };
@@ -61,6 +63,8 @@
 		33BA37AC2BF8197200FF530A /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		33BA37AF2BF819ED00FF530A /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		33BA37B92BF9426100FF530A /* Sources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources.swift; sourceTree = "<group>"; };
+		33DF8D662C06DB9300D6C05F /* Feather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Feather.xcdatamodel; sourceTree = "<group>"; };
+		33DF8D682C06DBE900D6C05F /* SourcesViewController+Fetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SourcesViewController+Fetch.swift"; sourceTree = "<group>"; };
 		D0651C062BFEE1F600D40829 /* localhost.direct.pfx */ = {isa = PBXFileReference; lastKnownFileType = file; path = localhost.direct.pfx; sourceTree = "<group>"; };
 		D0651C072BFEE1F600D40829 /* HTTPSServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPSServer.swift; sourceTree = "<group>"; };
 		D0651C0E2BFEE93B00D40829 /* feather-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "feather-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 			children = (
 				33BA37B92BF9426100FF530A /* Sources.swift */,
 				3339129F2BF9816B00E72360 /* Model.swift */,
+				33DF8D652C06DB9300D6C05F /* Feather.xcdatamodeld */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				33BA37922BF8159F00FF530A /* SourcesViewController.swift */,
+				33DF8D682C06DBE900D6C05F /* SourcesViewController+Fetch.swift */,
 				3322FF4A2BFEDAE8001768D8 /* SourceAppViews */,
 			);
 			path = Sources;
@@ -360,6 +366,8 @@
 				D0651C3A2BFEEA4B00D40829 /* archo.cpp in Sources */,
 				D0651C092BFEE1F600D40829 /* HTTPSServer.swift in Sources */,
 				D0651C1B2BFEE97F00D40829 /* common.cpp in Sources */,
+				33DF8D672C06DB9300D6C05F /* Feather.xcdatamodeld in Sources */,
+				33DF8D692C06DBE900D6C05F /* SourcesViewController+Fetch.swift in Sources */,
 				3322FF4C2BFEDB01001768D8 /* SourceAppTableViewCell.swift in Sources */,
 				339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */,
 				D0651C112BFEE93C00D40829 /* zsign.mm in Sources */,
@@ -670,6 +678,20 @@
 			productName = OpenSSL;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		33DF8D652C06DB9300D6C05F /* Feather.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				33DF8D662C06DB9300D6C05F /* Feather.xcdatamodel */,
+			);
+			currentVersion = 33DF8D662C06DB9300D6C05F /* Feather.xcdatamodel */;
+			name = Feather.xcdatamodeld;
+			path = "../../../../feather copy/feather/Storage/Sources/Feather.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 33BA37832BF8159F00FF530A /* Project object */;
 }

@@ -9,7 +9,9 @@ import UIKit
 import Nuke
 
 class SourcesViewController: UITableViewController {
-	var sources: [Source] = []
+	
+	let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+	var sources: [Source]?
 	
 	var isSelectMode: Bool = false {
 		didSet {
@@ -17,6 +19,9 @@ class SourcesViewController: UITableViewController {
 			setupNavigation()
 		}
 	}
+	
+	init() { super.init(style: .plain) }
+	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -35,9 +40,9 @@ class SourcesViewController: UITableViewController {
 		self.tableView.delegate = self
 		self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 		
-		self.refreshControl = UIRefreshControl()
-		self.refreshControl?.addTarget(self, action: #selector(beginRefresh(_:)), for: .valueChanged)
-		self.tableView.refreshControl = refreshControl
+//		self.refreshControl = UIRefreshControl()
+//		self.refreshControl?.addTarget(self, action: #selector(beginRefresh(_:)), for: .valueChanged)
+//		self.tableView.refreshControl = refreshControl
 	}
 	
 	fileprivate func setupNavigation() {
@@ -58,34 +63,28 @@ class SourcesViewController: UITableViewController {
 		navigationItem.leftBarButtonItems = leftBarButtonItems
 		navigationItem.rightBarButtonItems = rightBarButtonItems
 	}
-	
-	@objc func sourcesAddButtonTapped() {
-		RepoManager().addSource(from: "https://ipa.cypwn.xyz/cypwn.json")
-		self.refreshRepos()
-	}
-	
-	func fetchAndReloadSources() {
-		sources = RepoManager().listLocalSources()
-		tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-	}
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return sources.count }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
-        
-        let source = sources[indexPath.row]
-        let sourceURL = RepoManager().fetchLocalURL(for: source)?.absoluteString
-        
-        cell.textLabel?.text = source.name ?? sourceURL
-        cell.detailTextLabel?.text = sourceURL
-        cell.detailTextLabel?.textColor = .secondaryLabel
-        cell.accessoryType = .disclosureIndicator
-        cell.backgroundColor = UIColor(named: "Background")
+}
+
+// MARK: - Tabelview
+extension SourcesViewController {
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return sources?.count ?? 0 }
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
+		
+		let source = sources![indexPath.row]
+
+		cell.textLabel?.text = source.name ?? "Unknown"
+		cell.detailTextLabel?.text = source.sourceURL?.absoluteString
+		cell.detailTextLabel?.textColor = .secondaryLabel
+		cell.accessoryType = .disclosureIndicator
+		cell.backgroundColor = UIColor(named: "Background")
+		
+		print(source.apps?.count ?? 0)
 		
 		SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
 		if let thumbnailURL = source.iconURL {
 			let request = ImageRequest(url: thumbnailURL)
-			
+
 			if let cachedImage = ImagePipeline.shared.cache.cachedImage(for: request)?.image {
 				SectionIcons.sectionImage(to: cell, with: cachedImage)
 			} else {
@@ -106,57 +105,75 @@ class SourcesViewController: UITableViewController {
 				)
 			}
 		}
-        
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        let source = sources[indexPath.row]
-        let sourceURL = RepoManager().fetchLocalURL(for: source)?.absoluteString
+		
+		return cell
+	}
+	
+	override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+		let source = sources![indexPath.row]
 
-        let configuration = UIContextMenuConfiguration(identifier: nil, actionProvider: { _ in
-            return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [
-                UIAction(title: "Copy", image: UIImage(systemName: "doc.on.clipboard"), handler: {_ in
-                    UIPasteboard.general.string = sourceURL!
-                })
-            ])
-        })
-        return configuration
-    }
-    
-    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
-            self.removeRepo(at: indexPath)
-            completionHandler(true)
-        }
-        deleteAction.backgroundColor = UIColor.red
+		let configuration = UIContextMenuConfiguration(identifier: nil, actionProvider: { _ in
+			return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [
+				UIAction(title: "Copy", image: UIImage(systemName: "doc.on.clipboard"), handler: {_ in
+					UIPasteboard.general.string = source.sourceURL?.absoluteString
+				})
+			])
+		})
+		return configuration
+	}
+	
+	override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+		let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+			
+			let personToRemove = self.sources![indexPath.row]
+			
+			self.context.delete(personToRemove)
+			
+			do {
+				try self.context.save()
+			} catch {
+				print("error-Deleting data")
+			}
+			self.fetchAndReloadSources()
+			
+			completionHandler(true)
+		}
+		deleteAction.backgroundColor = UIColor.red
 
-        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-        configuration.performsFirstActionWithFullSwipe = true
+		let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+		configuration.performsFirstActionWithFullSwipe = true
 
-        return configuration
-    }
+		return configuration
+	}
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let source = sources[indexPath.row]
-        print(source.identifier)
-        
-        let savc = SourceAppViewController()
-        savc.name = source.name
-        savc.apps = source.apps
-        navigationController?.pushViewController(savc, animated: true)
-        
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    init() {
-        super.init(style: .plain)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		guard let source = sources?[indexPath.row] as? Source else {
+			print("Failed to retrieve source data.")
+			return
+		}
+
+		if let sourceAppsSet = source.apps {
+			let sourceAppsArray = sourceAppsSet.compactMap { $0 as? StoreApps }
+			let sortedAppsArray = sourceAppsArray.sorted { $0.name! < $1.name! }
+
+			print(source.identifier ?? "")
+
+			let savc = SourceAppViewController()
+			savc.name = source.name
+			savc.apps = sortedAppsArray
+			navigationController?.pushViewController(savc, animated: true)
+		} else {
+			print("No apps found for the selected source.")
+		}
+		tableView.deselectRow(at: indexPath, animated: true)
+	}
+
+
+
+
+	
 }
+
 // MARK: - Edit
 extension SourcesViewController {
 	@objc func doneEditingButton() { setEditing(false, animated: true) }
@@ -169,32 +186,3 @@ extension SourcesViewController {
 	}
 }
 
-// MARK: - Refresh
-extension SourcesViewController {
-	@objc func beginRefresh(_ sender: AnyObject) { self.refreshRepos() }
-	func refreshRepos() {
-		self.refreshControl?.beginRefreshing()
-		let sources = RepoManager().listLocalSources()
-		let group = DispatchGroup()
-		let repoManager = RepoManager()
-		repoManager.refreshSources(sources: sources, group: group)
-		
-		group.notify(queue: .main) {
-			self.fetchAndReloadSources()
-			self.refreshControl?.endRefreshing()
-		}
-	}
-	
-	func removeRepo(at indexPath: IndexPath) {
-		let source = sources[indexPath.row]
-
-		let repoManager = RepoManager()
-		repoManager.deleteSource(with: source.identifier)
-		
-		DispatchQueue.main.async {
-			self.sources.remove(at: indexPath.row)
-			self.tableView.deleteRows(at: [indexPath], with: .automatic)
-			self.tableView.reloadData()
-		}
-	}
-}
