@@ -62,7 +62,7 @@ extension SourcesViewController {
 
 		do {
 			let existingSources = try context.fetch(fetchRequest)
-			if let existingSource = existingSources.first {
+			if let existingSources = existingSources.first {
 				print("Source with identifier '\(source.identifier)' already exists.")
 				return
 			}

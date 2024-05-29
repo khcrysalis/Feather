@@ -125,17 +125,17 @@ extension SourcesViewController {
 	override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 		let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
 			
-			let personToRemove = self.sources![indexPath.row]
+			let sourceToRm = self.sources![indexPath.row]
 			
-			self.context.delete(personToRemove)
+			self.context.delete(sourceToRm)
 			
 			do {
 				try self.context.save()
+				self.sources?.remove(at: indexPath.row)
+				self.tableView.deleteRows(at: [indexPath], with: .automatic)
 			} catch {
 				print("error-Deleting data")
 			}
-			self.fetchAndReloadSources()
-			
 			completionHandler(true)
 		}
 		deleteAction.backgroundColor = UIColor.red
