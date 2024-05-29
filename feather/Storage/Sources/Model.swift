@@ -7,13 +7,13 @@
 
 import Foundation
 
-public struct Source: Codable {
+public struct SourcesData: Codable {
 	public var name: String?
 	public var identifier: String
 	
 	public var sourceURL: URL?
 	public var iconURL: URL?
-	public var apps: [StoreApps]
+	public var apps: [StoreAppsData]
 
 	enum CodingKeys: String, CodingKey {
 		case name,
@@ -24,7 +24,7 @@ public struct Source: Codable {
 	}
 }
 
-public struct StoreApps: Codable {
+public struct StoreAppsData: Codable {
 	public var name: String
 	public var developerName: String?
 	public var subtitle: String?
@@ -51,8 +51,4 @@ public struct StoreApps: Codable {
 			 versionDate,
 			 versionDescription
 	}
-}
-
-public struct SourceURL: Codable {
-	public var sourceURL: URL
 }
