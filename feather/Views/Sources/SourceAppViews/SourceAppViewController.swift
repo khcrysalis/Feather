@@ -95,6 +95,8 @@ extension SourceAppViewController: UITableViewDelegate, UITableViewDataSource {
 	
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let d = DownloadViewController()
+		navigationController?.pushViewController(d, animated: true)
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 	
