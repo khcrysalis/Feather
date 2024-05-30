@@ -27,7 +27,7 @@ class SourcesViewController: UITableViewController {
 		super.viewDidLoad()
 		setupNavigation()
 		setupViews()
-		fetchAndReloadSources()
+		fetchSources()
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
