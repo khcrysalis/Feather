@@ -85,7 +85,7 @@ extension SourcesViewController {
 			newApp.bundleIdentifier = app.bundleIdentifier
 			newApp.iconURL = app.iconURL
 			newApp.downloadURL = app.downloadURL
-			newApp.size = app.size as NSNumber? as! Int64
+			newApp.size = 0
 			newApp.version = app.version
 			newApp.versionDate = app.versionDate
 			newApp.versionDescription = app.versionDescription
@@ -96,14 +96,14 @@ extension SourcesViewController {
 
 		do {
 			try context.save()
-			fetchAndReloadSources()
+			fetchSources()
 		} catch {
 			print("Error saving data: \(error)")
 		}
 	}
 
 	
-	func fetchAndReloadSources() {
+	func fetchSources() {
 		let fetchRequest: NSFetchRequest<Source> = Source.fetchRequest()
 		let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
 		fetchRequest.sortDescriptors = [sortDescriptor]
