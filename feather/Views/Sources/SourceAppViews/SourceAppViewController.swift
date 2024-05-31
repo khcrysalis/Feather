@@ -49,6 +49,7 @@ class SourceAppViewController: UIViewController {
 	}
 	
 	fileprivate func setupNavigation() {
+		self.navigationItem.largeTitleDisplayMode = .never
 	}
 	
 }
