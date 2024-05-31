@@ -62,6 +62,7 @@ extension SourceAppViewController: UITableViewDelegate, UITableViewDataSource{
 		
 		let app = apps[indexPath.row]
 		cell.configure(with: app)
+		cell.selectionStyle = .none
 		cell.getButton.tag = indexPath.row
 		cell.getButton.addTarget(self, action: #selector(getButtonTapped(_:)), for: .touchUpInside)
 		
