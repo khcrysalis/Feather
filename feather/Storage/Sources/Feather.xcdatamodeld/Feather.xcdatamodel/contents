@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="23C5041e" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="DownloadedApps" representedClassName="DownloadedApps" syncable="YES" codeGenerationType="class">
+        <attribute name="appPath" attributeType="URI"/>
+        <attribute name="bundleidentifier" attributeType="String"/>
+        <attribute name="iconURL" optional="YES" attributeType="URI"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="originalSourceURL" optional="YES" attributeType="URI"/>
+    </entity>
+    <entity name="SignedApps" representedClassName="SignedApps" syncable="YES" codeGenerationType="class">
+        <attribute name="appPath" attributeType="URI"/>
+        <attribute name="bundleidentifier" attributeType="String"/>
+        <attribute name="iconURL" optional="YES" attributeType="URI"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="originalSourceURL" optional="YES" attributeType="URI"/>
+    </entity>
     <entity name="Source" representedClassName="Source" syncable="YES" codeGenerationType="class">
         <attribute name="iconURL" optional="YES" attributeType="URI"/>
         <attribute name="identifier" attributeType="String"/>
@@ -14,7 +28,7 @@
         <attribute name="iconURL" optional="YES" attributeType="URI"/>
         <attribute name="localizedDescription" optional="YES" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
-        <attribute name="size" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="size" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="subtitle" optional="YES" attributeType="String"/>
         <attribute name="version" attributeType="String"/>
         <attribute name="versionDate" optional="YES" attributeType="String"/>
