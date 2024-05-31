@@ -13,6 +13,7 @@
 		3322FF512BFEE5B9001768D8 /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 3322FF502BFEE5B9001768D8 /* NukeExtensions */; };
 		3322FF532BFEE5B9001768D8 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3322FF522BFEE5B9001768D8 /* NukeUI */; };
 		3322FF552BFEE5B9001768D8 /* NukeVideo in Frameworks */ = {isa = PBXBuildFile; productRef = 3322FF542BFEE5B9001768D8 /* NukeVideo */; };
+		332AE3C02C097F180052F24A /* Feather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 332AE3BE2C097F180052F24A /* Feather.xcdatamodeld */; };
 		332D72362BFA672B004AF675 /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D72352BFA672B004AF675 /* AppsViewController.swift */; };
 		333912A02BF9816B00E72360 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3339129F2BF9816B00E72360 /* Model.swift */; };
 		339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */; };
@@ -27,7 +28,6 @@
 		33BA37AD2BF8197200FF530A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA37AC2BF8197200FF530A /* Storage.swift */; };
 		33BA37B02BF819ED00FF530A /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA37AF2BF819ED00FF530A /* UIColor+hex.swift */; };
 		33BA37BA2BF9426100FF530A /* Sources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA37B92BF9426100FF530A /* Sources.swift */; };
-		33DF8D672C06DB9300D6C05F /* Feather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33DF8D652C06DB9300D6C05F /* Feather.xcdatamodeld */; };
 		33DF8D692C06DBE900D6C05F /* SourcesViewController+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DF8D682C06DBE900D6C05F /* SourcesViewController+Fetch.swift */; };
 		33DF8D772C0827E400D6C05F /* Markdown in Frameworks */ = {isa = PBXBuildFile; productRef = 33DF8D762C0827E400D6C05F /* Markdown */; };
 		33DF8D792C0828A400D6C05F /* Markdownosaur.md in Resources */ = {isa = PBXBuildFile; fileRef = 33DF8D782C0828A400D6C05F /* Markdownosaur.md */; };
@@ -57,6 +57,7 @@
 /* Begin PBXFileReference section */
 		3322FF482BFEC97F001768D8 /* SourceAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceAppViewController.swift; sourceTree = "<group>"; };
 		3322FF4B2BFEDB01001768D8 /* SourceAppTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceAppTableViewCell.swift; sourceTree = "<group>"; };
+		332AE3BF2C097F180052F24A /* Feather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Feather.xcdatamodel; sourceTree = "<group>"; };
 		332D72352BFA672B004AF675 /* AppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
 		3339129F2BF9816B00E72360 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLayoutAnchorsHolding.swift; sourceTree = "<group>"; };
@@ -73,7 +74,6 @@
 		33BA37AC2BF8197200FF530A /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		33BA37AF2BF819ED00FF530A /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		33BA37B92BF9426100FF530A /* Sources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources.swift; sourceTree = "<group>"; };
-		33DF8D662C06DB9300D6C05F /* Feather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Feather.xcdatamodel; sourceTree = "<group>"; };
 		33DF8D682C06DBE900D6C05F /* SourcesViewController+Fetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SourcesViewController+Fetch.swift"; sourceTree = "<group>"; };
 		33DF8D782C0828A400D6C05F /* Markdownosaur.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Markdownosaur.md; sourceTree = "<group>"; };
 		33DF8D7A2C0828AC00D6C05F /* swift-markdown.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "swift-markdown.md"; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 			children = (
 				33BA37B92BF9426100FF530A /* Sources.swift */,
 				3339129F2BF9816B00E72360 /* Model.swift */,
-				33DF8D652C06DB9300D6C05F /* Feather.xcdatamodeld */,
+				332AE3BE2C097F180052F24A /* Feather.xcdatamodeld */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -403,7 +403,6 @@
 				D0651C3A2BFEEA4B00D40829 /* archo.cpp in Sources */,
 				D0651C092BFEE1F600D40829 /* HTTPSServer.swift in Sources */,
 				D0651C1B2BFEE97F00D40829 /* common.cpp in Sources */,
-				33DF8D672C06DB9300D6C05F /* Feather.xcdatamodeld in Sources */,
 				33DF8D692C06DBE900D6C05F /* SourcesViewController+Fetch.swift in Sources */,
 				3322FF4C2BFEDB01001768D8 /* SourceAppTableViewCell.swift in Sources */,
 				339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */,
@@ -418,6 +417,7 @@
 				D0651C1C2BFEE97F00D40829 /* json.cpp in Sources */,
 				33BA378F2BF8159F00FF530A /* AppDelegate.swift in Sources */,
 				D0651C3B2BFEEA4B00D40829 /* bundle.cpp in Sources */,
+				332AE3C02C097F180052F24A /* Feather.xcdatamodeld in Sources */,
 				33BA37A32BF815F900FF530A /* main.swift in Sources */,
 				333912A02BF9816B00E72360 /* Model.swift in Sources */,
 				33DF8D832C08298900D6C05F /* Markdown.swift in Sources */,
@@ -754,14 +754,13 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		33DF8D652C06DB9300D6C05F /* Feather.xcdatamodeld */ = {
+		332AE3BE2C097F180052F24A /* Feather.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				33DF8D662C06DB9300D6C05F /* Feather.xcdatamodel */,
+				332AE3BF2C097F180052F24A /* Feather.xcdatamodel */,
 			);
-			currentVersion = 33DF8D662C06DB9300D6C05F /* Feather.xcdatamodel */;
-			name = Feather.xcdatamodeld;
-			path = "../../../../feather copy/feather/Storage/Sources/Feather.xcdatamodeld";
+			currentVersion = 332AE3BF2C097F180052F24A /* Feather.xcdatamodel */;
+			path = Feather.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
