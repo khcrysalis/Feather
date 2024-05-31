@@ -54,12 +54,16 @@ class SourceAppViewController: UIViewController {
 	
 }
 
-extension SourceAppViewController: UITableViewDelegate, UITableViewDataSource {
+extension SourceAppViewController: UITableViewDelegate, UITableViewDataSource{
+
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return apps.count }
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = AppTableViewCell(style: .subtitle, reuseIdentifier: "RoundedBackgroundCell")
+		
 		let app = apps[indexPath.row]
 		cell.configure(with: app)
+		cell.getButton.tag = indexPath.row
+		cell.getButton.addTarget(self, action: #selector(getButtonTapped(_:)), for: .touchUpInside)
 		
 		SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
 		
@@ -92,4 +96,13 @@ extension SourceAppViewController: UITableViewDelegate, UITableViewDataSource {
 		
 		return cell
 	}
+	
+	@objc func getButtonTapped(_ sender: UIButton) {
+		let indexPath = IndexPath(row: sender.tag, section: 0)
+		let app = apps[indexPath.row]
+		if let downloadURL = app.downloadURL {
+			print("Download URL for app at \(indexPath): \(downloadURL)")
+		}
+	}
+	
 }
