@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "alertkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sparrowcode/AlertKit",
+      "state" : {
+        "revision" : "3b73be8db5a7e7efaf474c6ed919f5a437d843c9",
+        "version" : "5.1.9"
+      }
+    },
+    {
       "identity" : "http.swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/BiAtoms/Http.swift.git",

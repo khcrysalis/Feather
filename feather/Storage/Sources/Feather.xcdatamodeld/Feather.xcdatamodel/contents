@@ -34,5 +34,7 @@
         <attribute name="versionDate" optional="YES" attributeType="String"/>
         <attribute name="versionDescription" optional="YES" attributeType="String"/>
         <relationship name="source" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Source" inverseName="apps" inverseEntity="Source"/>
+        <relationship name="versions" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StoreVersions"/>
     </entity>
+    <entity name="StoreVersions" representedClassName="StoreVersions" syncable="YES" codeGenerationType="class"/>
 </model>
