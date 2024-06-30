@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Nuke
+import AlertKit
 
 class SourceAppViewController: UIViewController {
 	
@@ -24,6 +25,9 @@ class SourceAppViewController: UIViewController {
 			self.title = name
 		}
 	}
+	
+	private var progress: CGFloat = 0.0
+	private var progressCell: AppTableViewCell?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -51,11 +55,9 @@ class SourceAppViewController: UIViewController {
 	fileprivate func setupNavigation() {
 		self.navigationItem.largeTitleDisplayMode = .never
 	}
-	
 }
 
 extension SourceAppViewController: UITableViewDelegate, UITableViewDataSource{
-
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return apps.count }
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = AppTableViewCell(style: .subtitle, reuseIdentifier: "RoundedBackgroundCell")
@@ -91,19 +93,65 @@ extension SourceAppViewController: UITableViewDelegate, UITableViewDataSource{
 				)
 			}
 		}
-		
-		
-		
-		
 		return cell
+	}
+	
+}
+
+extension SourceAppViewController: DownloadDelegate {
+
+	func stopDownload() {
+		DispatchQueue.main.async {
+			self.progressCell!.stopDownload()
+			self.progress = 0.0
+			self.progressCell = nil
+		}
+	}
+	
+	func updateDownloadProgress(progress: Double) {
+		print(progress)
+		self.progress = CGFloat(Float(progress)) + 0.15
+		DispatchQueue.main.async {
+			self.progressCell?.updateProgress(to: self.progress)
+		}
+	
 	}
 	
 	@objc func getButtonTapped(_ sender: UIButton) {
 		let indexPath = IndexPath(row: sender.tag, section: 0)
 		let app = apps[indexPath.row]
+		
+		// Uses old altstore app method still, does not support multiple versioning at this point!
+		// sorry pyoncord users, will add this later :3
+		
 		if let downloadURL = app.downloadURL {
-			print("Download URL for app at \(indexPath): \(downloadURL)")
+			//print("Download URL for app at \(indexPath): \(downloadURL)")
+			
+			if let cell = tableView.cellForRow(at: indexPath) as? AppTableViewCell {
+				self.progressCell = cell
+				progressCell!.startDownload()
+				
+				let appDownload = AppDownload()
+				appDownload.dldelegate = self
+				appDownload.downloadFile(url: downloadURL) { (filePath, error) in
+					self.meow()
+				}
+			}
+			
 		}
 	}
 	
+	func meow() {
+		DispatchQueue.main.async {
+			let alertView = AlertAppleMusic17View(title: "Added to Apps (didnt really)", subtitle: nil, icon: .done)
+			if let viewController = UIApplication.shared.keyWindow?.rootViewController {
+				alertView.present(on: viewController.view)
+			}
+		}
+	}
+}
+
+protocol DownloadDelegate: AnyObject {
+	func updateDownloadProgress(progress: Double)
+	func stopDownload()
 }
