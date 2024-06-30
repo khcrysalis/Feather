@@ -19,7 +19,7 @@ class AppTableViewCell: UITableViewCell {
 	
 	let versionLabel: UILabel = {
 		let label = UILabel()
-		label.font = UIFont.boldSystemFont(ofSize: 13)
+		label.font = UIFont.systemFont(ofSize: 13)
 		label.textColor = .secondaryLabel
 		label.numberOfLines = 0
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -37,19 +37,21 @@ class AppTableViewCell: UITableViewCell {
 	
 	let getButton: UIButton = {
 		let button = UIButton(type: .system)
-		let symbolConfig = UIImage.SymbolConfiguration(pointSize: 13, weight: .bold)
-		let symbolImage = UIImage(systemName: "arrow.down", withConfiguration: symbolConfig)
-		button.setImage(symbolImage, for: .normal)
-		button.tintColor = Preferences.appTintColor.uiColor
 		button.layer.cornerRadius = 15
 		button.layer.backgroundColor = UIColor(named: "Cells")?.cgColor
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
 	}()
 	
+	private let progressLayer = CAShapeLayer()
+	private var getButtonWidthConstraint: NSLayoutConstraint?
+	private var buttonImage: UIImage?
+
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		setupViews()
+		configureGetButtonArrow()
+		configureProgressLayer()
 	}
 	
 	required init?(coder: NSCoder) {
@@ -63,6 +65,7 @@ class AppTableViewCell: UITableViewCell {
 		contentView.addSubview(detailLabel)
 		contentView.addSubview(getButton)
 		
+		getButtonWidthConstraint = getButton.widthAnchor.constraint(equalToConstant: 60)
 		NSLayoutConstraint.activate([
 			nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 72),
 			nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
@@ -78,9 +81,46 @@ class AppTableViewCell: UITableViewCell {
 			
 			getButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
 			getButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-			getButton.widthAnchor.constraint(equalToConstant: 60),
+			getButtonWidthConstraint!,
 			getButton.heightAnchor.constraint(equalToConstant: 30)
 		])
+	}
+	
+	private func configureGetButtonArrow() {
+		let symbolConfig = UIImage.SymbolConfiguration(pointSize: 13, weight: .bold)
+		buttonImage = UIImage(systemName: "arrow.down", withConfiguration: symbolConfig)
+		getButton.setImage(buttonImage, for: .normal)
+		getButton.tintColor = Preferences.appTintColor.uiColor
+	}
+	
+	private func configureGetButtonSquare() {
+		let symbolConfig = UIImage.SymbolConfiguration(pointSize: 9, weight: .bold)
+		buttonImage = UIImage(systemName: "square.fill", withConfiguration: symbolConfig)
+		getButton.setImage(buttonImage, for: .normal)
+		getButton.tintColor = Preferences.appTintColor.uiColor
+	}
+	
+	private func configureProgressLayer() {
+		progressLayer.strokeColor = Preferences.appTintColor.uiColor.cgColor
+		progressLayer.lineWidth = 3.0
+		progressLayer.fillColor = nil
+		progressLayer.lineCap = .round
+		progressLayer.strokeEnd = 0.0
+		
+		let circularPath = UIBezierPath(roundedRect: getButton.bounds, cornerRadius: 15)
+		progressLayer.path = circularPath.cgPath
+		getButton.layer.addSublayer(progressLayer)
+	}
+
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		updateProgressLayerPath()
+	}
+	
+	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+		super.traitCollectionDidChange(previousTraitCollection)
+		getButton.layer.backgroundColor = UIColor(named: "Cells")?.cgColor
+		updateProgressLayerPath()
 	}
 	
 	func configure(with app: StoreApps) {
@@ -94,5 +134,35 @@ class AppTableViewCell: UITableViewCell {
 		desc += app.version!
 		versionLabel.text = desc
 		detailLabel.text = app.subtitle ?? "An awesome application!"
+		
+		// Reset progress and button state
+		updateProgress(to: 0)
+		stopDownload()
+	}
+
+	func updateProgress(to value: CGFloat) {
+		progressLayer.strokeEnd = value
+	}
+	
+	func startDownload() {
+		UIView.animate(withDuration: 0.3, animations: {
+			self.getButtonWidthConstraint?.constant = 30
+			self.layoutIfNeeded()
+			self.configureGetButtonSquare()
+			self.updateProgressLayerPath()
+		})
+	}
+	
+	func stopDownload() {
+		UIView.animate(withDuration: 0.3, animations: {
+			self.getButtonWidthConstraint?.constant = 60
+			self.progressLayer.strokeEnd = 0.0
+			self.configureGetButtonArrow()
+			self.layoutIfNeeded()
+		})
+	}
+	private func updateProgressLayerPath() {
+		let circularPath = UIBezierPath(roundedRect: getButton.bounds, cornerRadius: 15)
+		progressLayer.path = circularPath.cgPath
 	}
 }
