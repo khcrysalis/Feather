@@ -11,25 +11,28 @@ import ZIPFoundation
 class AppDownload: NSObject {
 	var dldelegate: DownloadDelegate?
 	var destinationUrl: URL?
-	var downloadCompletion: ((String?, Error?) -> Void)?
+	var uuid: String?
+	var downloadCompletion: ((String?, String?, Error?) -> Void)?
 	
-	func downloadFile(url: URL, completion: @escaping (String?, Error?) -> Void) {
+	func downloadFile(url: URL, completion: @escaping (String?, String?, Error?) -> Void) {
 		let baseFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+		let uuid = url.deletingPathExtension().lastPathComponent+UUID().uuidString
 		let folderUrl = baseFolder
 			.appendingPathComponent("Apps")
 			.appendingPathComponent("Unsigned")
-			.appendingPathComponent(url.deletingPathExtension().lastPathComponent+UUID().uuidString)
+			.appendingPathComponent(uuid)
 				
 		do {
 			try FileManager.default.createDirectory(at: folderUrl, withIntermediateDirectories: true, attributes: nil)
 		} catch {
 			print("Error creating directory: \(error)")
-			completion(nil, error)
+			completion(nil, nil, error)
 			return
 		}
 
 		let destinationUrl = folderUrl.appendingPathComponent(url.lastPathComponent)
 
+		self.uuid = uuid
 		self.destinationUrl = destinationUrl
 		self.downloadCompletion = completion
 
@@ -39,7 +42,7 @@ class AppDownload: NSObject {
 		downloadTask.resume()
 	}
 	
-	func extractFileAndAddToAppsTab(packageURL: String, completion: @escaping (String?, Error?) -> Void) {
+	func extractCompressedBundle(packageURL: String, completion: @escaping (String?, Error?) -> Void) {
 		let fileURL = URL(fileURLWithPath: packageURL)
 		
 		let destinationURL = fileURL.deletingLastPathComponent()
@@ -91,10 +94,10 @@ extension AppDownload: URLSessionDownloadDelegate {
 			try fileManager.moveItem(at: location, to: destinationUrl)
 //			print("Saved to: \(destinationUrl.path)")
 			
-			downloadCompletion?(destinationUrl.path, nil)
+			downloadCompletion?(uuid, destinationUrl.path, nil)
 		} catch {
 			print("Failed to save file at: \(destinationUrl.path), \(String(describing: error))")
-			downloadCompletion?(destinationUrl.path, error)
+			downloadCompletion?(uuid, destinationUrl.path, error)
 		}
 	}
 	
@@ -103,7 +106,7 @@ extension AppDownload: URLSessionDownloadDelegate {
 			return
 		}
 		if let error = error {
-			downloadCompletion?(destinationUrl.path, error)
+			downloadCompletion?(uuid, destinationUrl.path, error)
 			print("Failed to download: \(task.originalRequest?.url?.absoluteString ?? "Unknown URL"), \(error.localizedDescription)")
 		}
 	}

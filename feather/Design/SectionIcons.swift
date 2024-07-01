@@ -44,18 +44,17 @@ class SectionIcons {
 		cell.imageView?.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
 	}
 	
-	static public func sectionImage(to cell: UITableViewCell, with originalImage: UIImage) {
-		let imageSize = CGSize(width: 42, height: 42)
-
-		let resizedImage = UIGraphicsImageRenderer(size: imageSize).image { context in
-			originalImage.draw(in: CGRect(origin: .zero, size: imageSize))
+	static public func sectionImage(to cell: UITableViewCell, with originalImage: UIImage, size: CGSize = CGSize(width: 42, height: 42), radius: Int = 10) {
+		let resizedImage = UIGraphicsImageRenderer(size: size).image { context in
+			originalImage.draw(in: CGRect(origin: .zero, size: size))
 		}
-
+		
 		cell.imageView?.image = resizedImage
 		cell.imageView?.layer.cornerCurve = .continuous
-		cell.imageView?.layer.cornerRadius = 10
+		cell.imageView?.layer.cornerRadius = CGFloat(radius)
 		cell.imageView?.clipsToBounds = true
 	}
+
 
 }
 

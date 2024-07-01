@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class AppTableViewCell: UITableViewCell {
+class SourceAppTableViewCell: UITableViewCell {
 
 	let nameLabel: UILabel = {
 		let label = UILabel()
