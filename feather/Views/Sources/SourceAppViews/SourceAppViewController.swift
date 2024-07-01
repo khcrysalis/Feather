@@ -85,7 +85,7 @@ extension SourceAppViewController: UITableViewDelegate, UITableViewDataSource{
 						case .success(let imageResponse):
 							DispatchQueue.main.async {
 								SectionIcons.sectionImage(to: cell, with: imageResponse.image)
-								tableView.reloadRows(at: [indexPath], with: .fade)
+								tableView.reloadRows(at: [indexPath], with: .none)
 							}
 						case .failure(let error):
 							print("Image loading failed with error: \(error)")
