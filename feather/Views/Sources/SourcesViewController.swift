@@ -157,8 +157,6 @@ extension SourcesViewController {
 			let sourceAppsArray = sourceAppsSet.compactMap { $0 as? StoreApps }
 			let sortedAppsArray = sourceAppsArray.sorted { $0.name! < $1.name! }
 
-			print(source.identifier ?? "")
-
 			let savc = SourceAppViewController()
 			savc.name = source.name
 			savc.apps = sortedAppsArray

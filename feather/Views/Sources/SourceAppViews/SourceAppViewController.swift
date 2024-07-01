@@ -12,6 +12,7 @@ import AlertKit
 
 class SourceAppViewController: UIViewController {
 	
+	let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 	var tableView: UITableView!
 	
 	var apps: [StoreApps] = [] {
@@ -27,7 +28,7 @@ class SourceAppViewController: UIViewController {
 	}
 	
 	private var progress: CGFloat = 0.0
-	private var progressCell: AppTableViewCell?
+	private var progressCell: SourceAppTableViewCell?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -45,7 +46,7 @@ class SourceAppViewController: UIViewController {
 		self.tableView.backgroundColor = UIColor(named: "Background")
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
-		self.tableView.register(AppTableViewCell.self, forCellReuseIdentifier: "CustomCell")
+		self.tableView.register(SourceAppTableViewCell.self, forCellReuseIdentifier: "CustomCell")
 
 		
 		self.view.addSubview(tableView)
@@ -60,7 +61,7 @@ class SourceAppViewController: UIViewController {
 extension SourceAppViewController: UITableViewDelegate, UITableViewDataSource{
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return apps.count }
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = AppTableViewCell(style: .subtitle, reuseIdentifier: "RoundedBackgroundCell")
+		let cell = SourceAppTableViewCell(style: .subtitle, reuseIdentifier: "RoundedBackgroundCell")
 		
 		let app = apps[indexPath.row]
 		cell.configure(with: app)
@@ -125,30 +126,32 @@ extension SourceAppViewController: DownloadDelegate {
 		// sorry pyoncord users, will add this later :3
 		
 		if let downloadURL = app.downloadURL {
-			if let cell = tableView.cellForRow(at: indexPath) as? AppTableViewCell {
+			if let cell = tableView.cellForRow(at: indexPath) as? SourceAppTableViewCell {
 				self.progressCell = cell
 				progressCell!.startDownload()
 				
 				let appDownload = AppDownload()
 				appDownload.dldelegate = self
-				appDownload.downloadFile(url: downloadURL) { (filePath, error) in
-					appDownload.extractFileAndAddToAppsTab(packageURL: filePath!) {(_, error) in
-						
+				appDownload.downloadFile(url: downloadURL) { (uuid, filePath, error) in
+					appDownload.extractCompressedBundle(packageURL: filePath!) {(targetBundle, error) in
 						if (error != nil) {
 							self.errorPopup()
 						} else {
-							self.sucessPopup()
+							self.addToApps(bundlePath: targetBundle ?? "", uuid: uuid!) {_ in
+								self.successPopup()
+							}
 						}
 					}
 				}
+				
 			}
 		}
 		
 	}
 	
-	func sucessPopup() {
+	func successPopup() {
 		DispatchQueue.main.async {
-			let alertView = AlertAppleMusic17View(title: "Added to Apps (didnt really)", subtitle: nil, icon: .done)
+			let alertView = AlertAppleMusic17View(title: "Added to Apps", subtitle: nil, icon: .done)
 			if let viewController = UIApplication.shared.keyWindow?.rootViewController {
 				alertView.present(on: viewController.view)
 			}
@@ -157,12 +160,66 @@ extension SourceAppViewController: DownloadDelegate {
 	
 	func errorPopup() {
 		DispatchQueue.main.async {
-			let alertView = AlertAppleMusic17View(title: "Error: check logs", subtitle: nil, icon: .error)
+			let alertView = AlertAppleMusic17View(title: "Error: mew!", subtitle: nil, icon: .error)
 			if let viewController = UIApplication.shared.keyWindow?.rootViewController {
 				alertView.present(on: viewController.view)
 			}
 		}
 	}
+	
+	func addToApps(bundlePath: String, uuid: String, completion: @escaping (Error?) -> Void) {
+		guard let bundle = Bundle(path: bundlePath) else {
+			let error = NSError(domain: "Feather", code: 1, userInfo: [NSLocalizedDescriptionKey: "Failed to load bundle at \(bundlePath)"])
+			completion(error)
+			return
+		}
+		let context = self.context
+		let newApp = DownloadedApps(context: context)
+		
+		if let infoDict = bundle.infoDictionary {
+			if let version = infoDict["CFBundleShortVersionString"] as? String {
+				newApp.version = version
+			}
+			
+			if let appName = infoDict["CFBundleDisplayName"] as? String {
+				newApp.name = appName
+			} else if let appName = infoDict["CFBundleName"] as? String {
+				newApp.name = appName
+			}
+			
+			if let bundleIdentifier = infoDict["CFBundleIdentifier"] as? String {
+				newApp.bundleidentifier = bundleIdentifier
+			}
+			
+			if let iconsDict = infoDict["CFBundleIcons"] as? [String: Any],
+			   let primaryIconsDict = iconsDict["CFBundlePrimaryIcon"] as? [String: Any],
+			   let iconFiles = primaryIconsDict["CFBundleIconFiles"] as? [String],
+			   let iconFileName = iconFiles.first,
+			   let iconPath = bundle.path(forResource: iconFileName+"@2x", ofType: "png") {
+				newApp.iconURL = "\(URL(string: iconPath)?.lastPathComponent ?? "")"
+			} else {
+				print("Failed to retrieve app icon path")
+			}
+			
+			newApp.uuid = uuid
+			
+			newApp.appPath = "\(URL(string: bundlePath)?.lastPathComponent ?? "")"
+			
+			do {
+				try context.save()
+			} catch {
+				print("Error saving data: \(error)")
+			}
+			
+			completion(nil)
+		} else {
+			let error = NSError(domain: "Feather", code: 3, userInfo: [NSLocalizedDescriptionKey: "Info.plist not found in bundle at \(bundlePath)"])
+			completion(error)
+		}
+	}
+
+
+	
 }
 
 protocol DownloadDelegate: AnyObject {

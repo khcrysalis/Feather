@@ -6,83 +6,181 @@
 //
 
 import UIKit
+import CoreData
 
 class AppsViewController: UIViewController {
-	
+	let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 	var tableView: UITableView!
 	
-	var tableData: [[String]] {
-		return [
-			["test"]
-		]
+	var downlaodedApps: [DownloadedApps]?
+	var signedApps: [SignedApps]?
+
+	let segmentedControl: UISegmentedControl = {
+		let sc = UISegmentedControl(items: ["Unsigned", "Signed"])
+		sc.selectedSegmentIndex = 0
+		return sc
+	}()
+
+
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(false)
+		fetchSources()
 	}
 	
-	var sectionTitles: [String] {
-		return [
-			"",
-		]
-	}
-	
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		setupViews()
 		setupNavigation()
-    }
+		fetchSources()
+	}
 	
 	fileprivate func setupViews() {
-		self.tableView = UITableView(frame: .zero, style: .insetGrouped)
+		self.segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+		self.segmentedControl.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
+		
+		self.tableView = UITableView(frame: .zero, style: .plain)
 		self.tableView.translatesAutoresizingMaskIntoConstraints = false
+		self.view.backgroundColor = UIColor(named: "Background")
 		self.tableView.backgroundColor = UIColor(named: "Background")
-		self.tableView.separatorStyle = .none
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
-		self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "RoundedBackgroundCell")
+		self.tableView.register(SourceAppTableViewCell.self, forCellReuseIdentifier: "RoundedBackgroundCell")
+		
+		let headerView = UIView()
+		headerView.translatesAutoresizingMaskIntoConstraints = false
+		headerView.addSubview(segmentedControl)
+		
+		NSLayoutConstraint.activate([
+			segmentedControl.topAnchor.constraint(equalTo: headerView.topAnchor),
+			segmentedControl.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 15),
+			segmentedControl.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -15),
+			segmentedControl.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
+			segmentedControl.heightAnchor.constraint(equalToConstant: 34)
+		])
+		
+		let containerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 34))
+		containerView.addSubview(headerView)
+		
+		NSLayoutConstraint.activate([
+			headerView.topAnchor.constraint(equalTo: containerView.topAnchor),
+			headerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+			headerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+			headerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+			headerView.heightAnchor.constraint(equalToConstant: 34)
+		])
+		
+		self.tableView.tableHeaderView = containerView
 		
 		self.view.addSubview(tableView)
-		self.tableView.constraintCompletely(to: view)
+
+		NSLayoutConstraint.activate([
+			tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+			tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+		])
 	}
+
 	
 	fileprivate func setupNavigation() {
 		self.navigationController?.navigationBar.prefersLargeTitles = true
 		self.navigationItem.largeTitleDisplayMode = .always
 		
-		var leftBarButtonItems: [UIBarButtonItem] = []
-		var rightBarButtonItems: [UIBarButtonItem] = []
-		
-		navigationItem.leftBarButtonItems = leftBarButtonItems
-		navigationItem.rightBarButtonItems = rightBarButtonItems
+//		var leftBarButtonItems: [UIBarButtonItem] = []
+//		var rightBarButtonItems: [UIBarButtonItem] = []
+//		
+//		navigationItem.leftBarButtonItems = leftBarButtonItems
+//		navigationItem.rightBarButtonItems = rightBarButtonItems
+	}
+	
+	@objc func segmentChanged(_ sender: UISegmentedControl) {
+		tableView.reloadData()
 	}
 }
 
 extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 	
-	func numberOfSections(in tableView: UITableView) -> Int { return sectionTitles.count }
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return tableData[section].count }
-	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { return sectionTitles[section] }
-	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { return sectionTitles[section].isEmpty ? 5 : 40 }
+	func numberOfSections(in tableView: UITableView) -> Int { return 1 }
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		
+		switch segmentedControl.selectedSegmentIndex {
+		case 0:
+			return downlaodedApps?.count ?? 0
+		case 1:
+			return signedApps?.count ?? 0
+		default:
+			return 0
+		}
+		
+	}
+	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { return nil }
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
+		let cell = AppsTableViewCell(style: .subtitle, reuseIdentifier: "RoundedBackgroundCell")
 		cell.selectionStyle = .default
 		cell.accessoryType = .none
+		cell.backgroundColor = UIColor(named: "Background")
 		
-		let cellText = tableData[indexPath.section][indexPath.row]
-		cell.textLabel?.text = cellText
-		
-		switch cellText {
-		case "test":
-			cell.textLabel?.textColor = UIColor.systemBlue
+		var source: NSManagedObject?
+		var path = ""
+		let size = CGSize(width: 52, height: 52)
+		let radius = 12
+		var filePath = URL(string: "")
+		switch segmentedControl.selectedSegmentIndex {
+		case 0:
+			source = downlaodedApps?[indexPath.row]
+			path = "Unsigned"
+		case 1:
+			source = signedApps?[indexPath.row]
+			path = "Signed"
 		default:
 			break
 		}
+					
+		if let uuid = source!.value(forKey: "uuid") as? String,
+		   let appPath = source!.value(forKey: "appPath") as? String {
+			
+			let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+			var imagePath = documentsDirectory
+				.appendingPathComponent("Apps")
+				.appendingPathComponent(path)
+				.appendingPathComponent(uuid)
+				.appendingPathComponent(appPath)
+				
+			filePath = imagePath
+			
+			if let iconURL = source!.value(forKey: "iconURL") as? String {
+				imagePath = imagePath.appendingPathComponent(iconURL)
+				
+				if let image = self.loadImage(from: imagePath) {
+					SectionIcons.sectionImage(to: cell, with: image, size: size, radius: radius)
+				} else {
+					SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!, size: size, radius: radius)
+				}
+			} else {
+				SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!, size: size, radius: radius)
+			}
+			
+		}
+		
+		cell.configure(with: source!, filePath: filePath!)
+			
 		
 		return cell
 	}
+
+	
+	func loadImage(from iconUrl: URL?) -> UIImage? {
+		guard let iconUrl = iconUrl else { return nil }
+		return UIImage(contentsOfFile: iconUrl.path)
+	}
+
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let cellText = tableData[indexPath.section][indexPath.row]
-		switch cellText {
-		case "test":
+		switch segmentedControl.selectedSegmentIndex {
+		case 0:
+			break
+		case 1:
 			break
 		default:
 			break
@@ -90,7 +188,89 @@ extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 		
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
+	
+	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+		
+		var source: NSManagedObject?
+		var path = ""
+		switch self.segmentedControl.selectedSegmentIndex {
+		case 0:
+			source = self.downlaodedApps?[indexPath.row]
+			path = "Unsigned"
+		case 1:
+			source = self.signedApps?[indexPath.row]
+			path = "Signed"
+		default:
+			break
+		}
+		
+		let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+			do {
+				if let uuid = source!.value(forKey: "uuid") as? String {
+					let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+					let a = documentsDirectory
+						.appendingPathComponent("Apps")
+						.appendingPathComponent(path)
+						.appendingPathComponent(uuid)
+					try FileManager.default.removeItem(at: a)
+				}
+			} catch {
+				print("Error deleting dir: \(error.localizedDescription)")
+			}
+			
+			self.context.delete(source!)
+			
+			do {
+				try self.context.save()
+				
+				switch self.segmentedControl.selectedSegmentIndex {
+				case 0:
+					self.downlaodedApps?.remove(at: indexPath.row)
+				case 1:
+					self.signedApps?.remove(at: indexPath.row)
+				default:
+					break
+				}
+				
+				tableView.deleteRows(at: [indexPath], with: .automatic)
+			} catch {
+				print("Error deleting data: \(error.localizedDescription)")
+			}
+			
+			completionHandler(true)
+		}
+		deleteAction.backgroundColor = UIColor.red
+
+		let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+		configuration.performsFirstActionWithFullSwipe = true
+
+		return configuration
+	}
 
 	
-	
+}
+
+extension AppsViewController {
+	func fetchSources() {
+
+		do {
+			
+			switch segmentedControl.selectedSegmentIndex {
+			case 0:
+				let fetchRequest: NSFetchRequest<DownloadedApps> = DownloadedApps.fetchRequest()
+				self.downlaodedApps = try context.fetch(fetchRequest)
+			case 1:
+				let fetchRequest: NSFetchRequest<SignedApps> = SignedApps.fetchRequest()
+				self.signedApps = try context.fetch(fetchRequest)
+			default:
+				break
+			}
+						
+			DispatchQueue.main.async {
+				self.tableView.reloadData()
+			}
+		} catch {
+			print("Error fetching sources: \(error)")
+		}
+	}
 }
