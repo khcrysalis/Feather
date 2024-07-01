@@ -17,20 +17,9 @@ class AppDownload: NSObject {
 	func downloadFile(url: URL, completion: @escaping (String?, String?, Error?) -> Void) {
 		let baseFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 		let uuid = UUID().uuidString
-		let folderUrl = baseFolder
-			.appendingPathComponent("Apps")
-			.appendingPathComponent("Unsigned")
-			.appendingPathComponent(uuid)
-				
-		do {
-			try FileManager.default.createDirectory(at: folderUrl, withIntermediateDirectories: true, attributes: nil)
-		} catch {
-			print("Error creating directory: \(error)")
-			completion(nil, nil, error)
-			return
-		}
+		let folderUrl = createUuidDirectory(uuid: uuid)
 
-		let destinationUrl = folderUrl.appendingPathComponent(url.lastPathComponent)
+		let destinationUrl = folderUrl!.appendingPathComponent(url.lastPathComponent)
 
 		self.uuid = uuid
 		self.destinationUrl = destinationUrl
@@ -42,6 +31,20 @@ class AppDownload: NSObject {
 		downloadTask.resume()
 	}
 	
+	func createUuidDirectory(uuid: String) -> URL? {
+		let baseFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+		let uuid = uuid
+		let folderUrl = baseFolder
+			.appendingPathComponent("Apps")
+			.appendingPathComponent("Unsigned")
+			.appendingPathComponent(uuid)
+				
+		do {
+			try! FileManager.default.createDirectory(at: folderUrl, withIntermediateDirectories: true, attributes: nil)
+			return folderUrl
+		}
+	}
+	
 	func extractCompressedBundle(packageURL: String, completion: @escaping (String?, Error?) -> Void) {
 		let fileURL = URL(fileURLWithPath: packageURL)
 		
@@ -49,6 +52,7 @@ class AppDownload: NSObject {
 		let fileManager = FileManager.default
 		
 		if !fileManager.fileExists(atPath: fileURL.path) {
+			dldelegate?.stopDownload()
 			completion(nil, NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "File does not exist"]))
 			return
 		}
@@ -75,7 +79,12 @@ class AppDownload: NSObject {
 			dldelegate?.stopDownload()
 			completion(nil, nil)
 		} catch {
-			print("Something went wrong: \(error.localizedDescription)")
+			
+			if fileManager.fileExists(atPath: destinationURL.path) {
+				try! fileManager.removeItem(at: destinationURL)
+			}
+			
+			dldelegate?.stopDownload()
 			completion(nil, error)
 		}
 
@@ -92,11 +101,9 @@ extension AppDownload: URLSessionDownloadDelegate {
 		let fileManager = FileManager.default
 		do {
 			try fileManager.moveItem(at: location, to: destinationUrl)
-//			print("Saved to: \(destinationUrl.path)")
 			
 			downloadCompletion?(uuid, destinationUrl.path, nil)
 		} catch {
-			print("Failed to save file at: \(destinationUrl.path), \(String(describing: error))")
 			downloadCompletion?(uuid, destinationUrl.path, error)
 		}
 	}
@@ -106,8 +113,8 @@ extension AppDownload: URLSessionDownloadDelegate {
 			return
 		}
 		if let error = error {
+			dldelegate?.stopDownload()
 			downloadCompletion?(uuid, destinationUrl.path, error)
-			print("Failed to download: \(task.originalRequest?.url?.absoluteString ?? "Unknown URL"), \(error.localizedDescription)")
 		}
 	}
 	

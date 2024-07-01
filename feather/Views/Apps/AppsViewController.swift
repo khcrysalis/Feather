@@ -258,9 +258,13 @@ extension AppsViewController {
 			switch segmentedControl.selectedSegmentIndex {
 			case 0:
 				let fetchRequest: NSFetchRequest<DownloadedApps> = DownloadedApps.fetchRequest()
+				let sortDescriptor = NSSortDescriptor(key: "dateAdded", ascending: false)
+				fetchRequest.sortDescriptors = [sortDescriptor]
 				self.downlaodedApps = try context.fetch(fetchRequest)
 			case 1:
 				let fetchRequest: NSFetchRequest<SignedApps> = SignedApps.fetchRequest()
+				let sortDescriptor = NSSortDescriptor(key: "dateAdded", ascending: false)
+				fetchRequest.sortDescriptors = [sortDescriptor]
 				self.signedApps = try context.fetch(fetchRequest)
 			default:
 				break

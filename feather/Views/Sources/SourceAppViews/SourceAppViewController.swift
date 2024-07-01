@@ -110,7 +110,6 @@ extension SourceAppViewController: DownloadDelegate {
 	}
 	
 	func updateDownloadProgress(progress: Double) {
-		print(progress)
 		self.progress = CGFloat(Float(progress))
 		DispatchQueue.main.async {
 			self.progressCell?.updateProgress(to: self.progress)
@@ -133,20 +132,25 @@ extension SourceAppViewController: DownloadDelegate {
 				let appDownload = AppDownload()
 				appDownload.dldelegate = self
 				appDownload.downloadFile(url: downloadURL) { (uuid, filePath, error) in
-					appDownload.extractCompressedBundle(packageURL: filePath!) {(targetBundle, error) in
-						if (error != nil) {
-							self.errorPopup()
-						} else {
-							self.addToApps(bundlePath: targetBundle ?? "", uuid: uuid!) {_ in
-								self.successPopup()
+					if (error != nil) {
+						self.errorPopup(error: error?.localizedDescription ?? "")
+					} else {
+						appDownload.extractCompressedBundle(packageURL: filePath!) {(targetBundle, error) in
+							if (error != nil) {
+								self.errorPopup(error: error?.localizedDescription ?? "")
+							} else {
+								self.addToApps(bundlePath: targetBundle ?? "", uuid: uuid!) {_ in
+									self.successPopup()
+								}
 							}
 						}
 					}
 				}
 				
+				
+				
 			}
 		}
-		
 	}
 	
 	func successPopup() {
@@ -158,9 +162,9 @@ extension SourceAppViewController: DownloadDelegate {
 		}
 	}
 	
-	func errorPopup() {
+	func errorPopup(error: String) {
 		DispatchQueue.main.async {
-			let alertView = AlertAppleMusic17View(title: "Error: mew!", subtitle: nil, icon: .error)
+			let alertView = AlertAppleMusic17View(title: "Error", subtitle: error, icon: .error)
 			if let viewController = UIApplication.shared.keyWindow?.rootViewController {
 				alertView.present(on: viewController.view)
 			}
@@ -201,8 +205,8 @@ extension SourceAppViewController: DownloadDelegate {
 				print("Failed to retrieve app icon path")
 			}
 			
+			newApp.dateAdded = Date()
 			newApp.uuid = uuid
-			
 			newApp.appPath = "\(URL(string: bundlePath)?.lastPathComponent ?? "")"
 			
 			do {
