@@ -71,39 +71,12 @@ extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 		let cellText = tableData[indexPath.section][indexPath.row]
 		switch cellText {
 		case "test":
-			openCustomURLScheme()
+			break
 		default:
 			break
 		}
 		
 		tableView.deselectRow(at: indexPath, animated: true)
-	}
-	
-	func printFilePath() {
-		let fileManager = FileManager.default
-		if let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {
-			let filePath = documentsDirectory.appendingPathComponent("Rosiecord.ipa").path
-			print("The file path is: \(filePath)")
-		} else {
-			print("Could not find the Documents directory.")
-		}
-	}
-	func openCustomURLScheme() {
-		if let url = URL(string: "itms-services://?action=download-manifest&url=file:///var/mobile/Containers/Data/Application/C6C39492-2173-40EA-AF85-3E8535348A4E/Documents/Discord.plist") {
-			if UIApplication.shared.canOpenURL(url) {
-				UIApplication.shared.open(url, options: [:], completionHandler: { success in
-					if success {
-						print("The URL was successfully opened.")
-					} else {
-						print("The URL could not be opened.")
-					}
-				})
-			} else {
-				print("The URL scheme is not supported.")
-			}
-		} else {
-			print("Invalid URL.")
-		}
 	}
 
 	
