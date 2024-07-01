@@ -16,7 +16,7 @@ class AppDownload: NSObject {
 	
 	func downloadFile(url: URL, completion: @escaping (String?, String?, Error?) -> Void) {
 		let baseFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-		let uuid = url.deletingPathExtension().lastPathComponent+UUID().uuidString
+		let uuid = UUID().uuidString
 		let folderUrl = baseFolder
 			.appendingPathComponent("Apps")
 			.appendingPathComponent("Unsigned")
