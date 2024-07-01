@@ -16,6 +16,7 @@
 		332AE3C02C097F180052F24A /* Feather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 332AE3BE2C097F180052F24A /* Feather.xcdatamodeld */; };
 		332D72362BFA672B004AF675 /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D72352BFA672B004AF675 /* AppsViewController.swift */; };
 		333912A02BF9816B00E72360 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3339129F2BF9816B00E72360 /* Model.swift */; };
+		336EEE812C32367C0011188D /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 336EEE802C32367C0011188D /* ZIPFoundation */; };
 		339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */; };
 		339BDAE32BF95DC0007009D9 /* SectionIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDAE22BF95DC0007009D9 /* SectionIcons.swift */; };
 		33BA378F2BF8159F00FF530A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA378E2BF8159F00FF530A /* AppDelegate.swift */; };
@@ -124,6 +125,7 @@
 				33DF8D862C082FBF00D6C05F /* cmark-gfm in Frameworks */,
 				3322FF532BFEE5B9001768D8 /* NukeUI in Frameworks */,
 				33C0409E2C30DD3E00243D90 /* AlertKit in Frameworks */,
+				336EEE812C32367C0011188D /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +343,7 @@
 				33DF8D872C082FBF00D6C05F /* cmark-gfm-extensions */,
 				33DF8D892C082FBF00D6C05F /* cmark-gfm-bin */,
 				33C0409D2C30DD3E00243D90 /* AlertKit */,
+				336EEE802C32367C0011188D /* ZIPFoundation */,
 			);
 			productName = feather;
 			productReference = 33BA378B2BF8159F00FF530A /* feather.app */;
@@ -378,6 +381,7 @@
 				33DF8D752C0827E400D6C05F /* XCRemoteSwiftPackageReference "swift-markdown" */,
 				33DF8D842C082FBF00D6C05F /* XCRemoteSwiftPackageReference "swift-cmark" */,
 				33C0409C2C30DD3E00243D90 /* XCRemoteSwiftPackageReference "AlertKit" */,
+				336EEE7F2C32367C0011188D /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 			);
 			productRefGroup = 33BA378C2BF8159F00FF530A /* Products */;
 			projectDirPath = "";
@@ -682,6 +686,14 @@
 				minimumVersion = 12.7.0;
 			};
 		};
+		336EEE7F2C32367C0011188D /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.19;
+			};
+		};
 		33C0409C2C30DD3E00243D90 /* XCRemoteSwiftPackageReference "AlertKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sparrowcode/AlertKit";
@@ -744,6 +756,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3322FF4D2BFEE5B9001768D8 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = NukeVideo;
+		};
+		336EEE802C32367C0011188D /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 336EEE7F2C32367C0011188D /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
 		};
 		33C0409D2C30DD3E00243D90 /* AlertKit */ = {
 			isa = XCSwiftPackageProductDependency;
