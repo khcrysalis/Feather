@@ -151,6 +151,14 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
+		336EEE822C324C9B0011188D /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				332D72352BFA672B004AF675 /* AppsViewController.swift */,
+			);
+			path = Apps;
+			sourceTree = "<group>";
+		};
 		339BDAE12BF95DB4007009D9 /* Design */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,7 +229,7 @@
 			children = (
 				33BA37A72BF8168900FF530A /* TabbarController.swift */,
 				33BA37B12BF8FA0600FF530A /* Sources */,
-				332D72352BFA672B004AF675 /* AppsViewController.swift */,
+				336EEE822C324C9B0011188D /* Apps */,
 			);
 			path = Views;
 			sourceTree = "<group>";
