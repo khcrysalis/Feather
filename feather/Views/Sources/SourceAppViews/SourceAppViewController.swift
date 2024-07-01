@@ -125,8 +125,6 @@ extension SourceAppViewController: DownloadDelegate {
 		// sorry pyoncord users, will add this later :3
 		
 		if let downloadURL = app.downloadURL {
-			//print("Download URL for app at \(indexPath): \(downloadURL)")
-			
 			if let cell = tableView.cellForRow(at: indexPath) as? AppTableViewCell {
 				self.progressCell = cell
 				progressCell!.startDownload()
@@ -134,23 +132,32 @@ extension SourceAppViewController: DownloadDelegate {
 				let appDownload = AppDownload()
 				appDownload.dldelegate = self
 				appDownload.downloadFile(url: downloadURL) { (filePath, error) in
-					
 					appDownload.extractFileAndAddToAppsTab(packageURL: filePath!) {(_, error) in
 						
 						if (error != nil) {
-							print("dumb bitch")
+							self.errorPopup()
 						} else {
-							self.meow()
+							self.sucessPopup()
 						}
 					}
 				}
 			}
 		}
+		
 	}
 	
-	func meow() {
+	func sucessPopup() {
 		DispatchQueue.main.async {
 			let alertView = AlertAppleMusic17View(title: "Added to Apps (didnt really)", subtitle: nil, icon: .done)
+			if let viewController = UIApplication.shared.keyWindow?.rootViewController {
+				alertView.present(on: viewController.view)
+			}
+		}
+	}
+	
+	func errorPopup() {
+		DispatchQueue.main.async {
+			let alertView = AlertAppleMusic17View(title: "Error: check logs", subtitle: nil, icon: .error)
 			if let viewController = UIApplication.shared.keyWindow?.rootViewController {
 				alertView.present(on: viewController.view)
 			}
