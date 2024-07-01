@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ZIPFoundation
 
 class AppDownload: NSObject {
 	var dldelegate: DownloadDelegate?
@@ -43,10 +44,24 @@ class AppDownload: NSObject {
 		let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 		return String((0..<16).map{ _ in letters.randomElement()! })
 	}
-
 	
-	func addFileToAppsTab() {
+	
+	func extractFileAndAddToAppsTab(packageURL: String, completion: @escaping (String?, Error?) -> Void) {
+		guard let fileURL = URL(string: packageURL) else {
+			completion(nil, NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"]))
+			return
+		}
 		
+		let destinationURL = fileURL.deletingLastPathComponent()
+		do {
+			
+			
+			
+			completion(nil, nil)
+		} catch {
+			print("Something went wrong: \(error.localizedDescription)")
+			completion(nil, error)
+		}
 	}
 	
 }
@@ -81,6 +96,6 @@ extension AppDownload: URLSessionDownloadDelegate {
 	
 	func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
 		let progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
-		dldelegate?.updateDownloadProgress(progress: Double(progress))
+		dldelegate?.updateDownloadProgress(progress: Double(progress) * 0.75)
 	}
 }

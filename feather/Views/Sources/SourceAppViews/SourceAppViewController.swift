@@ -110,7 +110,7 @@ extension SourceAppViewController: DownloadDelegate {
 	
 	func updateDownloadProgress(progress: Double) {
 		print(progress)
-		self.progress = CGFloat(Float(progress)) + 0.15
+		self.progress = CGFloat(Float(progress))
 		DispatchQueue.main.async {
 			self.progressCell?.updateProgress(to: self.progress)
 		}
@@ -134,10 +134,17 @@ extension SourceAppViewController: DownloadDelegate {
 				let appDownload = AppDownload()
 				appDownload.dldelegate = self
 				appDownload.downloadFile(url: downloadURL) { (filePath, error) in
-					self.meow()
+					
+					appDownload.extractFileAndAddToAppsTab(packageURL: filePath!) {(_, error) in
+						
+						if (error != nil) {
+							print("dumb bitch")
+						} else {
+							self.meow()
+						}
+					}
 				}
 			}
-			
 		}
 	}
 	
