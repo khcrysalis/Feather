@@ -26,6 +26,7 @@ class AppsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		setupViews()
+		setupNavigation()
     }
 	
 	fileprivate func setupViews() {
@@ -40,8 +41,19 @@ class AppsViewController: UIViewController {
 		self.view.addSubview(tableView)
 		self.tableView.constraintCompletely(to: view)
 	}
-
+	
+	fileprivate func setupNavigation() {
+		self.navigationController?.navigationBar.prefersLargeTitles = true
+		self.navigationItem.largeTitleDisplayMode = .always
+		
+		var leftBarButtonItems: [UIBarButtonItem] = []
+		var rightBarButtonItems: [UIBarButtonItem] = []
+		
+		navigationItem.leftBarButtonItems = leftBarButtonItems
+		navigationItem.rightBarButtonItems = rightBarButtonItems
+	}
 }
+
 extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 	
 	func numberOfSections(in tableView: UITableView) -> Int { return sectionTitles.count }

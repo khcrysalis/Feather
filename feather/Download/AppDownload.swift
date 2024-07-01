@@ -15,11 +15,10 @@ class AppDownload: NSObject {
 	
 	func downloadFile(url: URL, completion: @escaping (String?, Error?) -> Void) {
 		let baseFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-		let randomString = genRandomString()
 		let folderUrl = baseFolder
 			.appendingPathComponent("Apps")
 			.appendingPathComponent("Unsigned")
-			.appendingPathComponent(randomString)
+			.appendingPathComponent(url.deletingPathExtension().lastPathComponent+UUID().uuidString)
 				
 		do {
 			try FileManager.default.createDirectory(at: folderUrl, withIntermediateDirectories: true, attributes: nil)
@@ -40,29 +39,45 @@ class AppDownload: NSObject {
 		downloadTask.resume()
 	}
 	
-	func genRandomString() -> String {
-		let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-		return String((0..<16).map{ _ in letters.randomElement()! })
-	}
-	
-	
 	func extractFileAndAddToAppsTab(packageURL: String, completion: @escaping (String?, Error?) -> Void) {
-		guard let fileURL = URL(string: packageURL) else {
-			completion(nil, NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"]))
+		let fileURL = URL(fileURLWithPath: packageURL)
+		
+		let destinationURL = fileURL.deletingLastPathComponent()
+		let fileManager = FileManager.default
+		
+		if !fileManager.fileExists(atPath: fileURL.path) {
+			completion(nil, NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "File does not exist"]))
 			return
 		}
 		
-		let destinationURL = fileURL.deletingLastPathComponent()
 		do {
+			try fileManager.unzipItem(at: fileURL, to: destinationURL)
+			dldelegate?.updateDownloadProgress(progress: 1)
+			try fileManager.removeItem(at: fileURL)
 			
+			let payloadURL = destinationURL.appendingPathComponent("Payload")
 			
+			let contents = try fileManager.contentsOfDirectory(at: payloadURL, includingPropertiesForKeys: nil, options: [])
 			
+			if let appDirectory = contents.first(where: { $0.pathExtension == "app" }) {
+				let sourceURL = appDirectory
+				let targetURL = destinationURL.appendingPathComponent(sourceURL.lastPathComponent)
+				try fileManager.moveItem(at: sourceURL, to: targetURL)
+				try fileManager.removeItem(at: destinationURL.appendingPathComponent("Payload"))
+				completion(targetURL.path, nil)
+			} else {
+				completion(nil, NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "No .app directory found in Payload"]))
+			}
+			
+			dldelegate?.stopDownload()
 			completion(nil, nil)
 		} catch {
 			print("Something went wrong: \(error.localizedDescription)")
 			completion(nil, error)
 		}
+
 	}
+
 	
 }
 
@@ -74,10 +89,9 @@ extension AppDownload: URLSessionDownloadDelegate {
 		let fileManager = FileManager.default
 		do {
 			try fileManager.moveItem(at: location, to: destinationUrl)
-			print("Saved to: \(destinationUrl.path)")
+//			print("Saved to: \(destinationUrl.path)")
 			
 			downloadCompletion?(destinationUrl.path, nil)
-			dldelegate?.stopDownload()
 		} catch {
 			print("Failed to save file at: \(destinationUrl.path), \(String(describing: error))")
 			downloadCompletion?(destinationUrl.path, error)
