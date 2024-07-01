@@ -10,6 +10,8 @@ import UIKit
 
 class SourceAppTableViewCell: UITableViewCell {
 
+//	let isDownloading: Bool!
+	
 	let nameLabel: UILabel = {
 		let label = UILabel()
 		label.font = UIFont.boldSystemFont(ofSize: 17)
@@ -134,10 +136,6 @@ class SourceAppTableViewCell: UITableViewCell {
 		desc += app.version!
 		versionLabel.text = desc
 		detailLabel.text = app.subtitle ?? "An awesome application!"
-		
-		// Reset progress and button state
-		updateProgress(to: 0)
-		stopDownload()
 	}
 
 	func updateProgress(to value: CGFloat) {

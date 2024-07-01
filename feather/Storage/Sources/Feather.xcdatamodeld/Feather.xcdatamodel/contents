@@ -3,6 +3,7 @@
     <entity name="DownloadedApps" representedClassName="DownloadedApps" syncable="YES" codeGenerationType="class">
         <attribute name="appPath" attributeType="String"/>
         <attribute name="bundleidentifier" attributeType="String"/>
+        <attribute name="dateAdded" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="iconURL" optional="YES" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="originalSourceURL" optional="YES" attributeType="URI"/>
@@ -12,6 +13,7 @@
     <entity name="SignedApps" representedClassName="SignedApps" syncable="YES" codeGenerationType="class">
         <attribute name="appPath" attributeType="String"/>
         <attribute name="bundleidentifier" attributeType="String"/>
+        <attribute name="dateAdded" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="iconURL" optional="YES" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="originalSourceURL" optional="YES" attributeType="URI"/>
