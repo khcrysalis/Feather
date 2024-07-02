@@ -46,27 +46,14 @@ class AppsViewController: UIViewController {
 		self.tableView.delegate = self
 		self.tableView.register(SourceAppTableViewCell.self, forCellReuseIdentifier: "RoundedBackgroundCell")
 		
-		let headerView = UIView()
-		headerView.translatesAutoresizingMaskIntoConstraints = false
-		headerView.addSubview(segmentedControl)
-		
-		NSLayoutConstraint.activate([
-			segmentedControl.topAnchor.constraint(equalTo: headerView.topAnchor),
-			segmentedControl.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 15),
-			segmentedControl.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -15),
-			segmentedControl.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
-			segmentedControl.heightAnchor.constraint(equalToConstant: 34)
-		])
-		
 		let containerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 34))
-		containerView.addSubview(headerView)
+		containerView.addSubview(segmentedControl)
 		
 		NSLayoutConstraint.activate([
-			headerView.topAnchor.constraint(equalTo: containerView.topAnchor),
-			headerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-			headerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-			headerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-			headerView.heightAnchor.constraint(equalToConstant: 34)
+			segmentedControl.topAnchor.constraint(equalTo: containerView.topAnchor),
+			segmentedControl.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),
+			segmentedControl.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15),
+			segmentedControl.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
 		])
 		
 		self.tableView.tableHeaderView = containerView
