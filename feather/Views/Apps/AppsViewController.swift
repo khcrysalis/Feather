@@ -149,7 +149,7 @@ extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 		
 		let source = getApplication(row: indexPath.row)
-		let filePath = getApplicationFilePath(with: source!, row: indexPath.row)
+		let filePath = getApplicationFilePath(with: source!, row: indexPath.row, getuuidonly: true)
 		
 		
 		let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in

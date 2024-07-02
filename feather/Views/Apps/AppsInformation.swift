@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 extension AppsViewController {
-	func getApplicationFilePath(with app: NSManagedObject, row: Int) -> URL {
+	func getApplicationFilePath(with app: NSManagedObject, row: Int, getuuidonly: Bool = false) -> URL {
 		let source = getApplication(row: row)
 		var path = ""
 		switch segmentedControl.selectedSegmentIndex {
@@ -26,11 +26,14 @@ extension AppsViewController {
 		   let appPath = source!.value(forKey: "appPath") as? String {
 			
 			let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-			let p = documentsDirectory
+			var p = documentsDirectory
 				.appendingPathComponent("Apps")
 				.appendingPathComponent(path)
 				.appendingPathComponent(uuid)
-				.appendingPathComponent(appPath)
+			
+			if !getuuidonly {
+				p = p.appendingPathComponent(appPath)
+			}
 				
 			return p
 		}
