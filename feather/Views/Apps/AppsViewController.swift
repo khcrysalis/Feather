@@ -21,7 +21,6 @@ class AppsViewController: UIViewController {
 		return sc
 	}()
 
-
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(false)
 		fetchSources()
@@ -87,9 +86,9 @@ class AppsViewController: UIViewController {
 
 extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 	
+	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { return nil }
 	func numberOfSections(in tableView: UITableView) -> Int { return 1 }
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		
 		switch segmentedControl.selectedSegmentIndex {
 		case 0:
 			return downlaodedApps?.count ?? 0
@@ -98,9 +97,7 @@ extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 		default:
 			return 0
 		}
-		
 	}
-	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { return nil }
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = AppsTableViewCell(style: .subtitle, reuseIdentifier: "RoundedBackgroundCell")
@@ -108,99 +105,56 @@ extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 		cell.accessoryType = .none
 		cell.backgroundColor = UIColor(named: "Background")
 		
-		var source: NSManagedObject?
-		var path = ""
+		let source = getApplication(row: indexPath.row)
 		let size = CGSize(width: 52, height: 52)
 		let radius = 12
-		var filePath = URL(string: "")
-		switch segmentedControl.selectedSegmentIndex {
-		case 0:
-			source = downlaodedApps?[indexPath.row]
-			path = "Unsigned"
-		case 1:
-			source = signedApps?[indexPath.row]
-			path = "Signed"
-		default:
-			break
-		}
-					
-		if let uuid = source!.value(forKey: "uuid") as? String,
-		   let appPath = source!.value(forKey: "appPath") as? String {
+		let filePath = getApplicationFilePath(with: source!, row: indexPath.row)
+		if let iconURL = source!.value(forKey: "iconURL") as? String {
+			let imagePath = filePath.appendingPathComponent(iconURL)
 			
-			let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-			var imagePath = documentsDirectory
-				.appendingPathComponent("Apps")
-				.appendingPathComponent(path)
-				.appendingPathComponent(uuid)
-				.appendingPathComponent(appPath)
-				
-			filePath = imagePath
-			
-			if let iconURL = source!.value(forKey: "iconURL") as? String {
-				imagePath = imagePath.appendingPathComponent(iconURL)
-				
-				if let image = self.loadImage(from: imagePath) {
-					SectionIcons.sectionImage(to: cell, with: image, size: size, radius: radius)
-				} else {
-					SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!, size: size, radius: radius)
-				}
+			if let image = self.loadImage(from: imagePath) {
+				SectionIcons.sectionImage(to: cell, with: image, size: size, radius: radius)
 			} else {
 				SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!, size: size, radius: radius)
 			}
-			
+		} else {
+			SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!, size: size, radius: radius)
 		}
+
 		
-		cell.configure(with: source!, filePath: filePath!)
-			
-		
+		cell.configure(with: source!, filePath: filePath)
+
 		return cell
 	}
-
-	
-	func loadImage(from iconUrl: URL?) -> UIImage? {
-		guard let iconUrl = iconUrl else { return nil }
-		return UIImage(contentsOfFile: iconUrl.path)
-	}
-
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		switch segmentedControl.selectedSegmentIndex {
-		case 0:
-			break
-		case 1:
-			break
-		default:
-			break
-		}
+		var meow = getApplication(row: indexPath.row)
+//		var source: NSManagedObject?
+		var filePath = getApplicationFilePath(with: meow!, row: indexPath.row)
+		showAlertWithImageAndBoldText(with: meow!, filePath: filePath)
+//		switch segmentedControl.selectedSegmentIndex {
+//		case 0:
+//			source = self.downlaodedApps?[indexPath.row]
+//			showAlertWithImageAndBoldText(with: meow!, filePath: filePath)
+//		case 1:
+//			source = signedApps?[indexPath.row]
+//			break
+//		default:
+//			break
+//		}
 		
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 	
 	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 		
-		var source: NSManagedObject?
-		var path = ""
-		switch self.segmentedControl.selectedSegmentIndex {
-		case 0:
-			source = self.downlaodedApps?[indexPath.row]
-			path = "Unsigned"
-		case 1:
-			source = self.signedApps?[indexPath.row]
-			path = "Signed"
-		default:
-			break
-		}
+		let source = getApplication(row: indexPath.row)
+		let filePath = getApplicationFilePath(with: source!, row: indexPath.row)
+		
 		
 		let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
 			do {
-				if let uuid = source!.value(forKey: "uuid") as? String {
-					let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-					let a = documentsDirectory
-						.appendingPathComponent("Apps")
-						.appendingPathComponent(path)
-						.appendingPathComponent(uuid)
-					try FileManager.default.removeItem(at: a)
-				}
+				try FileManager.default.removeItem(at: filePath)
 			} catch {
 				print("Error deleting dir: \(error.localizedDescription)")
 			}
@@ -226,14 +180,13 @@ extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 			
 			completionHandler(true)
 		}
+		
 		deleteAction.backgroundColor = UIColor.red
-
 		let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
 		configuration.performsFirstActionWithFullSwipe = true
 
 		return configuration
 	}
-
 	
 }
 
