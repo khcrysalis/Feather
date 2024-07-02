@@ -83,8 +83,8 @@ class AppsViewController: UIViewController {
 
 	
 	fileprivate func setupNavigation() {
-		self.navigationController?.navigationBar.prefersLargeTitles = true
-		self.navigationItem.largeTitleDisplayMode = .always
+//		self.navigationController?.navigationBar.prefersLargeTitles = true
+//		self.navigationItem.largeTitleDisplayMode = .always
 		
 //		var leftBarButtonItems: [UIBarButtonItem] = []
 //		var rightBarButtonItems: [UIBarButtonItem] = []
