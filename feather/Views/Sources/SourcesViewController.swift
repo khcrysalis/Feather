@@ -80,7 +80,7 @@ extension SourcesViewController {
 		cell.accessoryType = .disclosureIndicator
 		cell.backgroundColor = UIColor(named: "Background")
 		
-		print(source.apps?.count ?? 0)
+//		print(source.apps?.count ?? 0)
 		
 		SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
 		if let thumbnailURL = source.iconURL {
