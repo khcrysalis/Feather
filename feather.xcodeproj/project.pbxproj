@@ -17,6 +17,8 @@
 		332D72362BFA672B004AF675 /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D72352BFA672B004AF675 /* AppsViewController.swift */; };
 		333912A02BF9816B00E72360 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3339129F2BF9816B00E72360 /* Model.swift */; };
 		33570F612C32B80E008CB560 /* AppsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F602C32B80E008CB560 /* AppsTableViewCell.swift */; };
+		33570F632C33D7FD008CB560 /* AppsInfoAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F622C33D7FD008CB560 /* AppsInfoAlert.swift */; };
+		33570F652C33D829008CB560 /* AppsInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F642C33D829008CB560 /* AppsInformation.swift */; };
 		336EEE812C32367C0011188D /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 336EEE802C32367C0011188D /* ZIPFoundation */; };
 		339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */; };
 		339BDAE32BF95DC0007009D9 /* SectionIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDAE22BF95DC0007009D9 /* SectionIcons.swift */; };
@@ -65,6 +67,8 @@
 		332D72352BFA672B004AF675 /* AppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
 		3339129F2BF9816B00E72360 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		33570F602C32B80E008CB560 /* AppsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsTableViewCell.swift; sourceTree = "<group>"; };
+		33570F622C33D7FD008CB560 /* AppsInfoAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsInfoAlert.swift; sourceTree = "<group>"; };
+		33570F642C33D829008CB560 /* AppsInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsInformation.swift; sourceTree = "<group>"; };
 		339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLayoutAnchorsHolding.swift; sourceTree = "<group>"; };
 		339BDAE22BF95DC0007009D9 /* SectionIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionIcons.swift; sourceTree = "<group>"; };
 		33BA378B2BF8159F00FF530A /* feather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = feather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +162,8 @@
 			children = (
 				332D72352BFA672B004AF675 /* AppsViewController.swift */,
 				33570F602C32B80E008CB560 /* AppsTableViewCell.swift */,
+				33570F622C33D7FD008CB560 /* AppsInfoAlert.swift */,
+				33570F642C33D829008CB560 /* AppsInformation.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -194,7 +200,7 @@
 				D0651C052BFEE1F600D40829 /* Server */,
 				33BA37A42BF8165400FF530A /* Delegates */,
 				33BA37A62BF8167A00FF530A /* Views */,
-				33C040992C30B47700243D90 /* Download */,
+				33C040992C30B47700243D90 /* App Management */,
 				339BDAE12BF95DB4007009D9 /* Design */,
 				33BA37A92BF8194400FF530A /* Storage */,
 				33BA37AE2BF819D400FF530A /* Extensions */,
@@ -274,12 +280,12 @@
 			path = Userdefaults;
 			sourceTree = "<group>";
 		};
-		33C040992C30B47700243D90 /* Download */ = {
+		33C040992C30B47700243D90 /* App Management */ = {
 			isa = PBXGroup;
 			children = (
 				33C0409A2C30B4A100243D90 /* AppDownload.swift */,
 			);
-			path = Download;
+			path = "App Management";
 			sourceTree = "<group>";
 		};
 		D0651C052BFEE1F600D40829 /* Server */ = {
@@ -440,8 +446,10 @@
 				3322FF492BFEC97F001768D8 /* SourceAppViewController.swift in Sources */,
 				332D72362BFA672B004AF675 /* AppsViewController.swift in Sources */,
 				D0651C332BFEEA4B00D40829 /* macho.cpp in Sources */,
+				33570F632C33D7FD008CB560 /* AppsInfoAlert.swift in Sources */,
 				33BA37A82BF8168900FF530A /* TabbarController.swift in Sources */,
 				33BA37AB2BF8196000FF530A /* Preferences.swift in Sources */,
+				33570F652C33D829008CB560 /* AppsInformation.swift in Sources */,
 				D0651C392BFEEA4B00D40829 /* signing.cpp in Sources */,
 				33C0409B2C30B4A100243D90 /* AppDownload.swift in Sources */,
 				33BA37BA2BF9426100FF530A /* Sources.swift in Sources */,
