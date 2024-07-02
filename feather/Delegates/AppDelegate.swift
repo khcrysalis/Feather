@@ -38,10 +38,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func createSourcesDirectory() {
 		let fileManager = FileManager.default
 		if let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {
-			let sourcesURL = documentsURL.appendingPathComponent("Sources")
+			let sourcesURL = documentsURL.appendingPathComponent("Apps")
+			let certsURL = documentsURL.appendingPathComponent("Certificates")
 			
 			if !fileManager.fileExists(atPath: sourcesURL.path) {
 				do { try! fileManager.createDirectory(at: sourcesURL, withIntermediateDirectories: true, attributes: nil) }
+			}
+			if !fileManager.fileExists(atPath: certsURL.path) {
+				do { try! fileManager.createDirectory(at: certsURL, withIntermediateDirectories: true, attributes: nil) }
 			}
 		}
 	}
