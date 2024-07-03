@@ -128,10 +128,11 @@ extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		var meow = getApplication(row: indexPath.row)
+		let meow = getApplication(row: indexPath.row)
 //		var source: NSManagedObject?
-		var filePath = getApplicationFilePath(with: meow!, row: indexPath.row)
-		showAlertWithImageAndBoldText(with: meow!, filePath: filePath)
+		let filePath = getApplicationFilePath(with: meow!, row: indexPath.row)
+//		showAlertWithImageAndBoldText(with: meow!, filePath: filePath)
+		print(meow!)
 //		switch segmentedControl.selectedSegmentIndex {
 //		case 0:
 //			source = self.downlaodedApps?[indexPath.row]
@@ -185,6 +186,52 @@ extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 		let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
 		configuration.performsFirstActionWithFullSwipe = true
 
+		return configuration
+	}
+	
+	func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+		let source = getApplication(row: indexPath.row)
+		let filePath = getApplicationFilePath(with: source!, row: indexPath.row)
+		
+		let configuration = UIContextMenuConfiguration(identifier: nil, actionProvider: { _ in
+			return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [
+				UIAction(title: "View Details", image: UIImage(systemName: "doc.on.clipboard"), handler: {_ in
+					
+
+//					self.showAlertWithImageAndBoldText(with: source!, filePath: filePath)
+					
+					let viewController = AppsInformationViewController()
+					viewController.source = source
+					viewController.filePath = filePath
+					let navigationController = UINavigationController(rootViewController: viewController)
+					
+					if #available(iOS 15.0, *) {
+						if let presentationController = navigationController.presentationController as? UISheetPresentationController {
+							presentationController.detents = [.medium(), .large()]
+						}
+					}
+					
+					self.present(navigationController, animated: true)
+					
+
+				}),
+				
+				UIAction(title: "Open in Files", image: UIImage(systemName: "folder"), handler: {_ in
+					
+					let path = filePath.deletingLastPathComponent()
+					let path2 = path.absoluteString.replacingOccurrences(of: "file://", with: "shareddocuments://")
+					
+					UIApplication.shared.open(URL(string: path2)!, options: [:]) { success in
+						if success {
+							print("File opened successfully.")
+						} else {
+							print("Failed to open file.")
+						}
+					}
+				})
+				
+			])
+		})
 		return configuration
 	}
 	
