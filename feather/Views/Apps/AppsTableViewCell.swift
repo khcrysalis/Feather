@@ -99,8 +99,6 @@ class AppsTableViewCell: UITableViewCell {
 			}
 		} else {
 			detailLabel.text = "File has been deleted."
-			nameLabel.textColor = .systemRed
-			versionLabel.textColor = .systemRed
 			detailLabel.textColor = .systemRed
 		}
 		

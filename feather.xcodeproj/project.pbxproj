@@ -17,8 +17,9 @@
 		332D72362BFA672B004AF675 /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D72352BFA672B004AF675 /* AppsViewController.swift */; };
 		333912A02BF9816B00E72360 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3339129F2BF9816B00E72360 /* Model.swift */; };
 		33570F612C32B80E008CB560 /* AppsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F602C32B80E008CB560 /* AppsTableViewCell.swift */; };
-		33570F632C33D7FD008CB560 /* AppsInfoAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F622C33D7FD008CB560 /* AppsInfoAlert.swift */; };
 		33570F652C33D829008CB560 /* AppsInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F642C33D829008CB560 /* AppsInformation.swift */; };
+		33570F672C34CCD5008CB560 /* AppsInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F662C34CCD5008CB560 /* AppsInformationViewController.swift */; };
+		33570F692C34E5B2008CB560 /* CustomSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F682C34E5B2008CB560 /* CustomSectionHeader.swift */; };
 		336EEE812C32367C0011188D /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 336EEE802C32367C0011188D /* ZIPFoundation */; };
 		339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */; };
 		339BDAE32BF95DC0007009D9 /* SectionIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDAE22BF95DC0007009D9 /* SectionIcons.swift */; };
@@ -67,8 +68,9 @@
 		332D72352BFA672B004AF675 /* AppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
 		3339129F2BF9816B00E72360 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		33570F602C32B80E008CB560 /* AppsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsTableViewCell.swift; sourceTree = "<group>"; };
-		33570F622C33D7FD008CB560 /* AppsInfoAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsInfoAlert.swift; sourceTree = "<group>"; };
 		33570F642C33D829008CB560 /* AppsInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsInformation.swift; sourceTree = "<group>"; };
+		33570F662C34CCD5008CB560 /* AppsInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsInformationViewController.swift; sourceTree = "<group>"; };
+		33570F682C34E5B2008CB560 /* CustomSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSectionHeader.swift; sourceTree = "<group>"; };
 		339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLayoutAnchorsHolding.swift; sourceTree = "<group>"; };
 		339BDAE22BF95DC0007009D9 /* SectionIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionIcons.swift; sourceTree = "<group>"; };
 		33BA378B2BF8159F00FF530A /* feather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = feather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,8 +164,8 @@
 			children = (
 				332D72352BFA672B004AF675 /* AppsViewController.swift */,
 				33570F602C32B80E008CB560 /* AppsTableViewCell.swift */,
-				33570F622C33D7FD008CB560 /* AppsInfoAlert.swift */,
 				33570F642C33D829008CB560 /* AppsInformation.swift */,
+				33570F662C34CCD5008CB560 /* AppsInformationViewController.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -173,6 +175,7 @@
 			children = (
 				339BDAE22BF95DC0007009D9 /* SectionIcons.swift */,
 				33DF8D822C08298900D6C05F /* Markdown.swift */,
+				33570F682C34E5B2008CB560 /* CustomSectionHeader.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -444,9 +447,10 @@
 				339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */,
 				D0651C112BFEE93C00D40829 /* zsign.mm in Sources */,
 				3322FF492BFEC97F001768D8 /* SourceAppViewController.swift in Sources */,
+				33570F692C34E5B2008CB560 /* CustomSectionHeader.swift in Sources */,
 				332D72362BFA672B004AF675 /* AppsViewController.swift in Sources */,
 				D0651C332BFEEA4B00D40829 /* macho.cpp in Sources */,
-				33570F632C33D7FD008CB560 /* AppsInfoAlert.swift in Sources */,
+				33570F672C34CCD5008CB560 /* AppsInformationViewController.swift in Sources */,
 				33BA37A82BF8168900FF530A /* TabbarController.swift in Sources */,
 				33BA37AB2BF8196000FF530A /* Preferences.swift in Sources */,
 				33570F652C33D829008CB560 /* AppsInformation.swift in Sources */,
