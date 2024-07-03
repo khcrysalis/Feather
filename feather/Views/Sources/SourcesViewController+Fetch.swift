@@ -107,10 +107,10 @@ extension SourcesViewController {
 		let fetchRequest: NSFetchRequest<Source> = Source.fetchRequest()
 		let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
 		fetchRequest.sortDescriptors = [sortDescriptor]
-
+		
 		do {
 			self.sources = try context.fetch(fetchRequest)
-			print(sources ?? [])
+			checkIfIshouldShow(source: sources!)
 			DispatchQueue.main.async {
 				self.tableView.reloadData()
 			}
@@ -118,5 +118,20 @@ extension SourcesViewController {
 			print("Error fetching sources: \(error)")
 		}
 	}
-
+	
+	func checkIfIshouldShow(source: [Source]) {
+		DispatchQueue.main.async {
+			if source.isEmpty {
+				self.emptyStackView.isHidden = false
+				self.tableView.isScrollEnabled = self.emptyStackView.isHidden
+				self.tableView.refreshControl = self.tableView.isScrollEnabled ? self.refreshControl : nil
+				print("I show")
+			} else {
+				self.emptyStackView.isHidden = true
+				self.tableView.isScrollEnabled = self.emptyStackView.isHidden
+				self.tableView.refreshControl = self.tableView.isScrollEnabled ? self.refreshControl : nil
+				print("I disappear")
+			}
+		}
+	}
 }

@@ -10,6 +10,8 @@ import Nuke
 
 class SourcesViewController: UITableViewController {
 	
+	public lazy var emptyStackView = EmptyPageStackView()
+	
 	let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 	var sources: [Source]?
 	
@@ -40,9 +42,23 @@ class SourcesViewController: UITableViewController {
 		self.tableView.delegate = self
 		self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 		
-//		self.refreshControl = UIRefreshControl()
-//		self.refreshControl?.addTarget(self, action: #selector(beginRefresh(_:)), for: .valueChanged)
-//		self.tableView.refreshControl = refreshControl
+		emptyStackView.title = "No Sources"
+		emptyStackView.text = "Configure your source list by pressing \n\"+\" and adding an Altstore repository."
+		emptyStackView.translatesAutoresizingMaskIntoConstraints = false
+		view.addSubview(emptyStackView)
+		
+		NSLayoutConstraint.activate([
+			emptyStackView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
+			emptyStackView.centerYAnchor.constraint(equalTo: tableView.centerYAnchor, constant: -140),
+		])
+				
+		self.refreshControl = UIRefreshControl()
+		self.refreshControl?.addTarget(self, action: #selector(beginRefresh(_:)), for: .valueChanged)
+		self.tableView.refreshControl = refreshControl
+	}
+	
+	@objc func beginRefresh(_ sender: Any) {
+		refreshControl?.endRefreshing()
 	}
 	
 	fileprivate func setupNavigation() {
@@ -137,6 +153,7 @@ extension SourcesViewController {
 			} catch {
 				print("error-Deleting data")
 			}
+			self.checkIfIshouldShow(source: self.sources!)
 			completionHandler(true)
 		}
 		deleteAction.backgroundColor = UIColor.red

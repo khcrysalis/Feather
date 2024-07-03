@@ -20,6 +20,7 @@
 		33570F652C33D829008CB560 /* AppsInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F642C33D829008CB560 /* AppsInformation.swift */; };
 		33570F672C34CCD5008CB560 /* AppsInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F662C34CCD5008CB560 /* AppsInformationViewController.swift */; };
 		33570F692C34E5B2008CB560 /* CustomSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F682C34E5B2008CB560 /* CustomSectionHeader.swift */; };
+		33570F6C2C34FDE2008CB560 /* EmptyPageStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F6B2C34FDE2008CB560 /* EmptyPageStackView.swift */; };
 		336EEE812C32367C0011188D /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 336EEE802C32367C0011188D /* ZIPFoundation */; };
 		339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */; };
 		339BDAE32BF95DC0007009D9 /* SectionIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDAE22BF95DC0007009D9 /* SectionIcons.swift */; };
@@ -71,6 +72,7 @@
 		33570F642C33D829008CB560 /* AppsInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsInformation.swift; sourceTree = "<group>"; };
 		33570F662C34CCD5008CB560 /* AppsInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsInformationViewController.swift; sourceTree = "<group>"; };
 		33570F682C34E5B2008CB560 /* CustomSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSectionHeader.swift; sourceTree = "<group>"; };
+		33570F6B2C34FDE2008CB560 /* EmptyPageStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyPageStackView.swift; sourceTree = "<group>"; };
 		339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLayoutAnchorsHolding.swift; sourceTree = "<group>"; };
 		339BDAE22BF95DC0007009D9 /* SectionIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionIcons.swift; sourceTree = "<group>"; };
 		33BA378B2BF8159F00FF530A /* feather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = feather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +161,14 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
+		33570F6A2C34FDCD008CB560 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				33570F6B2C34FDE2008CB560 /* EmptyPageStackView.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		336EEE822C324C9B0011188D /* Apps */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +252,7 @@
 				33BA37A72BF8168900FF530A /* TabbarController.swift */,
 				33BA37B12BF8FA0600FF530A /* Sources */,
 				336EEE822C324C9B0011188D /* Apps */,
+				33570F6A2C34FDCD008CB560 /* Other */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -452,6 +463,7 @@
 				D0651C332BFEEA4B00D40829 /* macho.cpp in Sources */,
 				33570F672C34CCD5008CB560 /* AppsInformationViewController.swift in Sources */,
 				33BA37A82BF8168900FF530A /* TabbarController.swift in Sources */,
+				33570F6C2C34FDE2008CB560 /* EmptyPageStackView.swift in Sources */,
 				33BA37AB2BF8196000FF530A /* Preferences.swift in Sources */,
 				33570F652C33D829008CB560 /* AppsInformation.swift in Sources */,
 				D0651C392BFEEA4B00D40829 /* signing.cpp in Sources */,
