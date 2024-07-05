@@ -15,7 +15,7 @@ class AppsViewController: UIViewController {
 	var downlaodedApps: [DownloadedApps]?
 	var signedApps: [SignedApps]?
 
-	lazy var importButton = addAddButtonToView(title: nil, image: UIImage(systemName: "folder.fill"))
+	lazy var importButton = addAddButtonToView()
 	let segmentedControl: UISegmentedControl = {
 		let sc = UISegmentedControl(items: ["Unsigned", "Signed"])
 		sc.selectedSegmentIndex = 0
@@ -46,18 +46,6 @@ class AppsViewController: UIViewController {
 		self.tableView.delegate = self
 		self.tableView.register(SourceAppTableViewCell.self, forCellReuseIdentifier: "RoundedBackgroundCell")
 		
-		let containerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 34))
-		containerView.addSubview(segmentedControl)
-		
-		NSLayoutConstraint.activate([
-			segmentedControl.topAnchor.constraint(equalTo: containerView.topAnchor),
-			segmentedControl.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),
-			segmentedControl.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15),
-			segmentedControl.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
-		])
-		
-		self.tableView.tableHeaderView = containerView
-		
 		self.view.addSubview(tableView)
 
 		NSLayoutConstraint.activate([
@@ -66,7 +54,7 @@ class AppsViewController: UIViewController {
 			tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 		])
-		
+		importButton.addTarget(self, action: #selector(importIpa), for: .touchUpInside)
 		//		self.makImportButtonMenu()
 		view.addSubview(importButton)
 		NSLayoutConstraint.activate([
@@ -77,17 +65,15 @@ class AppsViewController: UIViewController {
 		])
 		
 	}
-
+	@objc func importIpa() {
+		print("cool code here :o")
+	}
 	
 	fileprivate func setupNavigation() {
-//		self.navigationController?.navigationBar.prefersLargeTitles = true
-//		self.navigationItem.largeTitleDisplayMode = .always
 		
-//		var leftBarButtonItems: [UIBarButtonItem] = []
-//		var rightBarButtonItems: [UIBarButtonItem] = []
-//		
-//		navigationItem.leftBarButtonItems = leftBarButtonItems
-//		navigationItem.rightBarButtonItems = rightBarButtonItems
+		self.navigationController?.navigationBar.prefersLargeTitles = true
+		self.title = nil
+		self.navigationItem.titleView = segmentedControl
 	}
 	
 	@objc func segmentChanged(_ sender: UISegmentedControl) {
