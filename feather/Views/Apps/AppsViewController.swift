@@ -15,6 +15,7 @@ class AppsViewController: UIViewController {
 	var downlaodedApps: [DownloadedApps]?
 	var signedApps: [SignedApps]?
 
+	lazy var importButton = addAddButtonToView(title: nil, image: UIImage(systemName: "folder.fill"))
 	let segmentedControl: UISegmentedControl = {
 		let sc = UISegmentedControl(items: ["Unsigned", "Signed"])
 		sc.selectedSegmentIndex = 0
@@ -65,6 +66,16 @@ class AppsViewController: UIViewController {
 			tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 		])
+		
+		//		self.makImportButtonMenu()
+		view.addSubview(importButton)
+		NSLayoutConstraint.activate([
+			importButton.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20),
+			importButton.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -10),
+			importButton.widthAnchor.constraint(equalToConstant: 45),
+			importButton.heightAnchor.constraint(equalToConstant: 45)
+		])
+		
 	}
 
 	
@@ -195,7 +206,7 @@ extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 		
 		let configuration = UIContextMenuConfiguration(identifier: nil, actionProvider: { _ in
 			return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [
-				UIAction(title: "View Details", image: UIImage(systemName: "doc.on.clipboard"), handler: {_ in
+				UIAction(title: "View Details", image: UIImage(systemName: "info.circle"), handler: {_ in
 					
 
 //					self.showAlertWithImageAndBoldText(with: source!, filePath: filePath)

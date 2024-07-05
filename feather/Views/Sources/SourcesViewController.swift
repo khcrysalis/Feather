@@ -22,6 +22,8 @@ class SourcesViewController: UITableViewController {
 		}
 	}
 	
+	lazy var addButton = addAddButtonToView()
+	
 	init() { super.init(style: .plain) }
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 	
@@ -48,8 +50,17 @@ class SourcesViewController: UITableViewController {
 		view.addSubview(emptyStackView)
 		
 		NSLayoutConstraint.activate([
-			emptyStackView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
-			emptyStackView.centerYAnchor.constraint(equalTo: tableView.centerYAnchor, constant: -140),
+			emptyStackView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
+			emptyStackView.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor, constant: -50),
+		])
+		
+		self.makeAddButtonMenu()
+		view.addSubview(addButton)
+		NSLayoutConstraint.activate([
+			addButton.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20),
+			addButton.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -10),
+			addButton.widthAnchor.constraint(equalToConstant: 45),
+			addButton.heightAnchor.constraint(equalToConstant: 45)
 		])
 				
 		self.refreshControl = UIRefreshControl()
@@ -65,11 +76,11 @@ class SourcesViewController: UITableViewController {
 		self.navigationController?.navigationBar.prefersLargeTitles = true
 		self.navigationItem.largeTitleDisplayMode = .always
 		var leftBarButtonItems: [UIBarButtonItem] = []
-		var rightBarButtonItems: [UIBarButtonItem] = []
+//		var rightBarButtonItems: [UIBarButtonItem] = []
 		
 		if !isSelectMode {
-			let a = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(sourcesAddButtonTapped))
-			rightBarButtonItems.append(a)
+//			let a = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(sourcesAddButtonTapped))
+//			rightBarButtonItems.append(a)
 //			let e = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(setEditingButton))
 //			leftBarButtonItems.append(e)
 		} else {
@@ -78,7 +89,32 @@ class SourcesViewController: UITableViewController {
 		}
 		
 		navigationItem.leftBarButtonItems = leftBarButtonItems
-		navigationItem.rightBarButtonItems = rightBarButtonItems
+//		navigationItem.rightBarButtonItems = rightBarButtonItems
+	}
+	
+	func makeAddButtonMenu() {
+		let pasteMenu = UIMenu(title: "", options: .displayInline, children: [
+			UIAction(title: "Import from iCloud Drive", handler: { _ in
+				print("Import from iCloud Drive")
+			}),
+			UIAction(title: "Import from Clipboard", handler: { _ in
+				print("Import from Clipboard")
+			})
+		])
+
+		let configuration = UIMenu(title: "", children: [
+			UIAction(title: "Add Batch Sources", handler: { _ in
+				print("Add Batch Sources")
+			}),
+			UIAction(title: "Add Source", handler: { _ in
+				self.sourcesAddButtonTapped()
+			}),
+			pasteMenu
+		])
+		
+		
+		addButton.menu = configuration
+		addButton.showsMenuAsPrimaryAction = true
 	}
 }
 
@@ -183,6 +219,20 @@ extension SourcesViewController {
 		}
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
+	
+	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+		if let count = sources?.count {
+			
+			if count == 0 {
+				return nil
+			} else {
+				return "\(count) Sources"
+			}
+		}
+		return nil
+	}
+
+
 
 
 
@@ -201,4 +251,3 @@ extension SourcesViewController {
 		tableView.allowsMultipleSelection = false
 	}
 }
-
