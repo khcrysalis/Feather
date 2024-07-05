@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 extension SourcesViewController {
-	@objc func sourcesAddButtonTapped() {
+	func sourcesAddButtonTapped() {
 		let alertController = UIAlertController(title: "Add Source", message: "Add Altstore Repo URL", preferredStyle: .alert)
 		
 		alertController.addTextField { textField in
