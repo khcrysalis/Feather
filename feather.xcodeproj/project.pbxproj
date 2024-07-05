@@ -22,6 +22,7 @@
 		33570F692C34E5B2008CB560 /* CustomSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F682C34E5B2008CB560 /* CustomSectionHeader.swift */; };
 		33570F6C2C34FDE2008CB560 /* EmptyPageStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F6B2C34FDE2008CB560 /* EmptyPageStackView.swift */; };
 		336EEE812C32367C0011188D /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 336EEE802C32367C0011188D /* ZIPFoundation */; };
+		33951CFE2C37AFCF00802F78 /* FloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33951CFD2C37AFCF00802F78 /* FloatingActionButton.swift */; };
 		339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */; };
 		339BDAE32BF95DC0007009D9 /* SectionIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDAE22BF95DC0007009D9 /* SectionIcons.swift */; };
 		33BA378F2BF8159F00FF530A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA378E2BF8159F00FF530A /* AppDelegate.swift */; };
@@ -73,6 +74,7 @@
 		33570F662C34CCD5008CB560 /* AppsInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsInformationViewController.swift; sourceTree = "<group>"; };
 		33570F682C34E5B2008CB560 /* CustomSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSectionHeader.swift; sourceTree = "<group>"; };
 		33570F6B2C34FDE2008CB560 /* EmptyPageStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyPageStackView.swift; sourceTree = "<group>"; };
+		33951CFD2C37AFCF00802F78 /* FloatingActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingActionButton.swift; sourceTree = "<group>"; };
 		339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLayoutAnchorsHolding.swift; sourceTree = "<group>"; };
 		339BDAE22BF95DC0007009D9 /* SectionIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionIcons.swift; sourceTree = "<group>"; };
 		33BA378B2BF8159F00FF530A /* feather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = feather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +188,7 @@
 				339BDAE22BF95DC0007009D9 /* SectionIcons.swift */,
 				33DF8D822C08298900D6C05F /* Markdown.swift */,
 				33570F682C34E5B2008CB560 /* CustomSectionHeader.swift */,
+				33951CFD2C37AFCF00802F78 /* FloatingActionButton.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				33BA37BA2BF9426100FF530A /* Sources.swift in Sources */,
 				D0651C1C2BFEE97F00D40829 /* json.cpp in Sources */,
 				33BA378F2BF8159F00FF530A /* AppDelegate.swift in Sources */,
+				33951CFE2C37AFCF00802F78 /* FloatingActionButton.swift in Sources */,
 				D0651C3B2BFEEA4B00D40829 /* bundle.cpp in Sources */,
 				332AE3C02C097F180052F24A /* Feather.xcdatamodeld in Sources */,
 				33BA37A32BF815F900FF530A /* main.swift in Sources */,
@@ -624,7 +628,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 577Q6MMX9D;
+				DEVELOPMENT_TEAM = DLSL362JHJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = feather/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Feather;
@@ -662,7 +666,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 577Q6MMX9D;
+				DEVELOPMENT_TEAM = DLSL362JHJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = feather/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Feather;
