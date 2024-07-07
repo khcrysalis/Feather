@@ -241,3 +241,4 @@ extension AppsInformationViewController: UITableViewDelegate, UITableViewDataSou
 
 
 }
+

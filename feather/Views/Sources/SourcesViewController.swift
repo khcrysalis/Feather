@@ -7,6 +7,7 @@
 
 import UIKit
 import Nuke
+import CoreData
 
 class SourcesViewController: UITableViewController {
 	
@@ -91,31 +92,6 @@ class SourcesViewController: UITableViewController {
 		navigationItem.leftBarButtonItems = leftBarButtonItems
 //		navigationItem.rightBarButtonItems = rightBarButtonItems
 	}
-	
-	func makeAddButtonMenu() {
-		let pasteMenu = UIMenu(title: "", options: .displayInline, children: [
-			UIAction(title: "Import from iCloud Drive", handler: { _ in
-				print("Import from iCloud Drive")
-			}),
-			UIAction(title: "Import from Clipboard", handler: { _ in
-				print("Import from Clipboard")
-			})
-		])
-
-		let configuration = UIMenu(title: "", children: [
-			UIAction(title: "Add Batch Sources", handler: { _ in
-				print("Add Batch Sources")
-			}),
-			UIAction(title: "Add Source", handler: { _ in
-				self.sourcesAddButtonTapped()
-			}),
-			pasteMenu
-		])
-		
-		
-		addButton.menu = configuration
-		addButton.showsMenuAsPrimaryAction = true
-	}
 }
 
 // MARK: - Tabelview
@@ -131,32 +107,16 @@ extension SourcesViewController {
 		cell.detailTextLabel?.textColor = .secondaryLabel
 		cell.accessoryType = .disclosureIndicator
 		cell.backgroundColor = UIColor(named: "Background")
+				
 		
-//		print(source.apps?.count ?? 0)
-		
-		SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
 		if let thumbnailURL = source.iconURL {
-			let request = ImageRequest(url: thumbnailURL)
-
-			if let cachedImage = ImagePipeline.shared.cache.cachedImage(for: request)?.image {
-				SectionIcons.sectionImage(to: cell, with: cachedImage)
-			} else {
-				ImagePipeline.shared.loadImage(
-					with: request,
-					progress: nil,
-					completion: { result in
-						switch result {
-						case .success(let imageResponse):
-							DispatchQueue.main.async {
-								SectionIcons.sectionImage(to: cell, with: imageResponse.image)
-								tableView.reloadRows(at: [indexPath], with: .none)
-							}
-						case .failure(let error):
-							print("Image loading failed with error: \(error)")
-						}
-					}
-				)
-			}
+			SectionIcons.loadImageFromURL(from: thumbnailURL, for: cell, at: indexPath, in: tableView)
+		} else if let apps = source.apps,
+				  let firstApp = apps.firstObject as? StoreApps,
+				  let firstAppIconURL = firstApp.iconURL {
+			SectionIcons.loadImageFromURL(from: firstAppIconURL, for: cell, at: indexPath, in: tableView)
+		} else {
+			SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
 		}
 		
 		return cell
@@ -189,7 +149,7 @@ extension SourcesViewController {
 			} catch {
 				print("error-Deleting data")
 			}
-			self.checkIfIshouldShow(source: self.sources!)
+			self.showEmptyView(source: self.sources!)
 			completionHandler(true)
 		}
 		deleteAction.backgroundColor = UIColor.red
@@ -231,13 +191,6 @@ extension SourcesViewController {
 		}
 		return nil
 	}
-
-
-
-
-
-
-	
 }
 
 // MARK: - Edit
@@ -249,5 +202,80 @@ extension SourcesViewController {
 		isSelectMode = editing
 		tableView.setEditing(editing, animated: true)
 		tableView.allowsMultipleSelection = false
+	}
+}
+
+extension SourcesViewController {
+	func fetchSources() {
+		let fetchRequest: NSFetchRequest<Source> = Source.fetchRequest()
+		let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+		fetchRequest.sortDescriptors = [sortDescriptor]
+		
+		do {
+			self.sources = try context.fetch(fetchRequest)
+			showEmptyView(source: sources!)
+			DispatchQueue.main.async {
+				self.tableView.reloadData()
+			}
+		} catch {
+			print("Error fetching sources: \(error)")
+		}
+	}
+	func showEmptyView(source: [Source]) {
+		DispatchQueue.main.async {
+			if source.isEmpty {
+				self.emptyStackView.isHidden = false
+				self.tableView.isScrollEnabled = self.emptyStackView.isHidden
+				self.tableView.refreshControl = self.tableView.isScrollEnabled ? self.refreshControl : nil
+			} else {
+				self.emptyStackView.isHidden = true
+				self.tableView.isScrollEnabled = self.emptyStackView.isHidden
+				self.tableView.refreshControl = self.tableView.isScrollEnabled ? self.refreshControl : nil
+			}
+		}
+	}
+}
+extension SourcesViewController {
+	func makeAddButtonMenu() {
+		let pasteMenu = UIMenu(title: "", options: .displayInline, children: [
+			UIAction(title: "Import from iCloud Drive", handler: { _ in
+				print("Import from iCloud Drive")
+			}),
+			UIAction(title: "Import from Clipboard", handler: { _ in
+				print("Import from Clipboard")
+			})
+		])
+
+		let configuration = UIMenu(title: "", children: [
+			UIAction(title: "Add Batch Sources", handler: { _ in
+				print("Add Batch Sources")
+			}),
+			UIAction(title: "Add Source", handler: { _ in
+				self.sourcesAddButtonTapped()
+			}),
+			pasteMenu
+		])
+		
+		
+		addButton.menu = configuration
+		addButton.showsMenuAsPrimaryAction = true
+	}
+	func sourcesAddButtonTapped() {
+		let alertController = UIAlertController(title: "Add Source", message: "Add Altstore Repo URL", preferredStyle: .alert)
+		
+		alertController.addTextField { textField in
+			textField.placeholder = "URL"
+		}
+		
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		alertController.addAction(cancelAction)
+		
+		let addSourceAction = UIAlertAction(title: "Add Source", style: .default) { _ in
+			if let sourceURL = alertController.textFields?.first?.text {
+				self.getData(urlString: sourceURL)
+			}
+		}
+		alertController.addAction(addSourceAction)
+		self.present(alertController, animated: true, completion: nil)
 	}
 }

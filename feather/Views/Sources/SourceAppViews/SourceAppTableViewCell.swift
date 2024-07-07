@@ -10,8 +10,7 @@ import UIKit
 
 class SourceAppTableViewCell: UITableViewCell {
 
-//	let isDownloading: Bool!
-	
+	var appDownload: AppDownload?
 	let nameLabel: UILabel = {
 		let label = UILabel()
 		label.font = UIFont.boldSystemFont(ofSize: 17)
@@ -72,13 +71,13 @@ class SourceAppTableViewCell: UITableViewCell {
 			nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 72),
 			nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
 			
-			versionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 72),
-			versionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor),
-			versionLabel.trailingAnchor.constraint(equalTo: getButton.leadingAnchor, constant: -10),
+			versionLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+			versionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
+			versionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
 			
-			detailLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 72),
-			detailLabel.topAnchor.constraint(equalTo: versionLabel.bottomAnchor),
-			detailLabel.trailingAnchor.constraint(equalTo: getButton.leadingAnchor, constant: -10),
+			detailLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+			detailLabel.topAnchor.constraint(equalTo: versionLabel.bottomAnchor, constant: 4),
+			detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
 			detailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
 			
 			getButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
@@ -126,6 +125,7 @@ class SourceAppTableViewCell: UITableViewCell {
 	}
 	
 	func configure(with app: StoreApps) {
+		
 		var name = app.name
 		if app.bundleIdentifier!.hasSuffix("Beta") {
 			name! += " (Beta)"
@@ -133,7 +133,14 @@ class SourceAppTableViewCell: UITableViewCell {
 		nameLabel.text = name
 		var desc = app.developerName ?? "Unknown"
 		desc += " • "
-		desc += app.version!
+		
+		if let firstApp = app.versions?.firstObject as? StoreVersions,
+		   let firstAppIconURL = firstApp.version {
+			desc += firstAppIconURL
+		} else {
+			desc += app.version ?? ""
+		}
+		
 		versionLabel.text = desc
 		detailLabel.text = app.subtitle ?? "An awesome application!"
 	}

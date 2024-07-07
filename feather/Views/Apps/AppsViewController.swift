@@ -8,6 +8,32 @@
 import UIKit
 import CoreData
 
+
+
+
+func readMobileProvisionFile(atPath path: String) -> String? {
+	do {
+		let fileContent = try String(contentsOfFile: path, encoding: .ascii)
+		return fileContent
+	} catch {
+		print("Error reading file: \(error)")
+		return nil
+	}
+}
+
+func extractPlist(fromMobileProvision fileContent: String) -> String? {
+	guard let startRange = fileContent.range(of: "<?xml"),
+		  let endRange = fileContent.range(of: "</plist>") else {
+		return nil
+	}
+
+	let plistContent = fileContent[startRange.lowerBound..<endRange.upperBound]
+	return String(plistContent)
+}
+
+
+
+
 class AppsViewController: UIViewController {
 	let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 	var tableView: UITableView!
@@ -66,7 +92,29 @@ class AppsViewController: UIViewController {
 		
 	}
 	@objc func importIpa() {
-		print("cool code here :o")
+		let downloadsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+		let mobileProvisionPath = downloadsFolder!.appendingPathComponent("Samara_Test.mobileprovision").path
+
+		if let fileContent = readMobileProvisionFile(atPath: mobileProvisionPath) {
+			if let plistContent = extractPlist(fromMobileProvision: fileContent) {
+				if let plistData = plistContent.data(using: .utf8) {
+					do {
+						let decoder = PropertyListDecoder()
+						let cert = try decoder.decode(Cert.self, from: plistData)
+						print(cert)
+					} catch {
+						print("Error decoding plist data: \(error)")
+					}
+				} else {
+					print("Failed to convert plist content to data")
+				}
+			} else {
+				print("Failed to extract plist content")
+			}
+		} else {
+			print("Failed to read mobileprovision file")
+		}
+		
 	}
 	
 	fileprivate func setupNavigation() {
@@ -103,24 +151,22 @@ extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 		cell.backgroundColor = UIColor(named: "Background")
 		
 		let source = getApplication(row: indexPath.row)
-		let size = CGSize(width: 52, height: 52)
-		let radius = 12
 		let filePath = getApplicationFilePath(with: source!, row: indexPath.row)
+		
+		
 		if let iconURL = source!.value(forKey: "iconURL") as? String {
 			let imagePath = filePath.appendingPathComponent(iconURL)
 			
 			if let image = self.loadImage(from: imagePath) {
-				SectionIcons.sectionImage(to: cell, with: image, size: size, radius: radius)
+				SectionIcons.sectionImage(to: cell, with: image)
 			} else {
-				SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!, size: size, radius: radius)
+				SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
 			}
 		} else {
-			SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!, size: size, radius: radius)
+			SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
 		}
-
 		
 		cell.configure(with: source!, filePath: filePath)
-
 		return cell
 	}
 	
