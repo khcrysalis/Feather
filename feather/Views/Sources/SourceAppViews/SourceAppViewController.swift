@@ -11,24 +11,15 @@ import Nuke
 import AlertKit
 
 class SourceAppViewController: UIViewController {
-	
+
 	let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 	var tableView: UITableView!
 	
-	var apps: [StoreApps] = [] {
-		didSet {
-			
-		}
-	}
+	var apps: [StoreApps] = []
+	var name: String? { didSet { self.title = name } }
 	
-	var name: String? {
-		didSet {
-			self.title = name
-		}
-	}
-	
-	private var progress: CGFloat = 0.0
-	private var progressCell: SourceAppTableViewCell?
+	private var downloadTasks: [String: (cell: SourceAppTableViewCell, progress: CGFloat)] = [:]
+	private var appUUIDs: [Int: String] = [:]
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -37,7 +28,7 @@ class SourceAppViewController: UIViewController {
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(true)
+		super.viewDidAppear(animated)
 	}
 	
 	fileprivate func setupViews() {
@@ -48,7 +39,6 @@ class SourceAppViewController: UIViewController {
 		self.tableView.delegate = self
 		self.tableView.register(SourceAppTableViewCell.self, forCellReuseIdentifier: "CustomCell")
 
-		
 		self.view.addSubview(tableView)
 		self.tableView.constraintCompletely(to: view)
 	}
@@ -58,105 +48,190 @@ class SourceAppViewController: UIViewController {
 	}
 }
 
-extension SourceAppViewController: UITableViewDelegate, UITableViewDataSource{
+extension SourceAppViewController: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return apps.count }
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = SourceAppTableViewCell(style: .subtitle, reuseIdentifier: "RoundedBackgroundCell")
 		
 		let app = apps[indexPath.row]
+
 		cell.configure(with: app)
 		cell.selectionStyle = .none
 		cell.getButton.tag = indexPath.row
 		cell.getButton.addTarget(self, action: #selector(getButtonTapped(_:)), for: .touchUpInside)
 		
-		SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
+		let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(getButtonHold(_:)))
+		cell.getButton.addGestureRecognizer(longPressGesture)
+		cell.getButton.longPressGestureRecognizer = longPressGesture
 		
-		if let thumbnailURL = app.iconURL {
-			let request = ImageRequest(url: thumbnailURL)
-			
-			if let cachedImage = ImagePipeline.shared.cache.cachedImage(for: request)?.image {
-				SectionIcons.sectionImage(to: cell, with: cachedImage)
-			} else {
-				ImagePipeline.shared.loadImage(
-					with: request,
-					progress: nil,
-					completion: { result in
-						switch result {
-						case .success(let imageResponse):
-							DispatchQueue.main.async {
-								SectionIcons.sectionImage(to: cell, with: imageResponse.image)
-								tableView.reloadRows(at: [indexPath], with: .none)
-							}
-						case .failure(let error):
-							print("Image loading failed with error: \(error)")
-						}
-					}
-				)
-			}
+		if let iconURL = app.value(forKey: "iconURL") as? URL  {
+			SectionIcons.loadImageFromURL(from: iconURL, for: cell, at: indexPath, in: tableView)
+		} else {
+			SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
 		}
 		return cell
 	}
 	
+	func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+		if apps.isEmpty {
+			return nil
+		} else {
+			return "\(apps.count) Apps"
+		}
+	}
 }
+
 
 extension SourceAppViewController: DownloadDelegate {
 
-	func stopDownload() {
+	func stopDownload(uuid: String) {
 		DispatchQueue.main.async {
-			self.progressCell!.stopDownload()
-			self.progress = 0.0
-			self.progressCell = nil
+			if let task = self.downloadTasks[uuid] {
+				task.cell.stopDownload()
+				self.downloadTasks.removeValue(forKey: uuid)
+			}
 		}
 	}
 	
-	func updateDownloadProgress(progress: Double) {
-		self.progress = CGFloat(Float(progress))
+	func startDownload(uuid: String, indexPath: IndexPath) {
 		DispatchQueue.main.async {
-			self.progressCell?.updateProgress(to: self.progress)
+			if let cell = self.tableView.cellForRow(at: indexPath) as? SourceAppTableViewCell {
+				cell.startDownload()
+				if let downloadTask = self.downloadTasks[uuid] {
+					cell.updateProgress(to: downloadTask.progress)
+				}
+			}
 		}
+	}
+
 	
+	
+	func updateDownloadProgress(progress: Double, uuid: String) {
+		DispatchQueue.main.async {
+			if var downloadTask = self.downloadTasks[uuid] {
+				downloadTask.progress = CGFloat(progress)
+				downloadTask.cell.updateProgress(to: downloadTask.progress)
+				self.downloadTasks[uuid] = downloadTask
+			}
+		}
 	}
 	
 	@objc func getButtonTapped(_ sender: UIButton) {
 		let indexPath = IndexPath(row: sender.tag, section: 0)
 		let app = apps[indexPath.row]
+		var downloadURL: URL!
 		
-		// Uses old altstore app method still, does not support multiple versioning at this point!
-		// sorry pyoncord users, will add this later :3
+		if let firstApp = app.versions?.firstObject as? StoreVersions,
+				  let firstAppIconURL = firstApp.downloadURL {
+			downloadURL = firstAppIconURL
+		} else if (app.downloadURL != nil) {
+			downloadURL = app.downloadURL
+		} else {
+			return
+		}
 		
-		if let downloadURL = app.downloadURL {
-			if let cell = tableView.cellForRow(at: indexPath) as? SourceAppTableViewCell {
-				self.progressCell = cell
-				progressCell!.startDownload()
-				
-				let appDownload = AppDownload()
-				appDownload.dldelegate = self
-				appDownload.downloadFile(url: downloadURL) { (uuid, filePath, error) in
-					if (error != nil) {
-						self.errorPopup(error: error?.localizedDescription ?? "")
-					} else {
-						appDownload.extractCompressedBundle(packageURL: filePath!) {(targetBundle, error) in
-							if (error != nil) {
-								self.errorPopup(error: error?.localizedDescription ?? "")
-							} else {
-								self.addToApps(bundlePath: targetBundle ?? "", uuid: uuid!) {_ in
+		
+		if let downloadURL = downloadURL {
+			startDownloadIfNeeded(for: indexPath, in: tableView, downloadURL: downloadURL)
+		}
+	}
+	
+	@objc func getButtonHold(_ gesture: UILongPressGestureRecognizer) {
+		if gesture.state == .began {
+			guard let button = gesture.view as? UIButton else { return }
+			let indexPath = IndexPath(row: button.tag, section: 0)
+			let app = apps[indexPath.row]
+			let alertController = UIAlertController(title: app.name, message: "Available Versions", preferredStyle: .actionSheet)
+			
+			if let versions = app.versions {
+				for version in versions {
+					guard let versionString = (version as AnyObject).value(forKey: "version") as? String else {
+						return
+					}
+					
+					guard let downloadURL = (version as AnyObject).value(forKey: "downloadURL") as? URL else {
+						return
+					}
+					
+					let action = UIAlertAction(title: versionString, style: .default) { action in
+						self.startDownloadIfNeeded(for: indexPath, in: self.tableView, downloadURL: downloadURL)
+						alertController.dismiss(animated: true, completion: nil)
+					}
+					
+					alertController.addAction(action)
+				}
+			}
+			
+			alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+			DispatchQueue.main.async {
+				if let viewController = UIApplication.shared.windows.first?.rootViewController {
+					viewController.present(alertController, animated: true, completion: nil)
+				}
+			}
+		}
+	}
+
+}
+
+extension SourceAppViewController {
+	func startDownloadIfNeeded(for indexPath: IndexPath, in tableView: UITableView, downloadURL: URL?) {
+		guard let downloadURL = downloadURL, let cell = tableView.cellForRow(at: indexPath) as? SourceAppTableViewCell else {
+			return
+		}
+
+		if let uuid = appUUIDs[indexPath.row], let existingTask = downloadTasks[uuid] {
+			print("Canceling existing download for indexPath: \(indexPath)")
+			existingTask.cell.stopDownload()
+			downloadTasks.removeValue(forKey: uuid)
+			existingTask.cell.appDownload?.cancelDownload()
+			appUUIDs[indexPath.row] = nil
+		}
+
+		if cell.appDownload == nil {
+			cell.appDownload = AppDownload()
+			cell.appDownload?.dldelegate = self
+		}
+
+		// Start new download
+		cell.appDownload?.downloadFile(url: downloadURL) { [weak self] (uuid, filePath, error) in
+			guard let self = self else { return }
+			DispatchQueue.main.async {
+				if let error = error {
+					self.errorPopup(error: error.localizedDescription)
+				} else if let uuid = uuid, let filePath = filePath {
+					self.downloadTasks[uuid]?.cell.stopDownload()
+					self.downloadTasks.removeValue(forKey: uuid)
+					self.appUUIDs[indexPath.row] = nil
+					cell.appDownload?.extractCompressedBundle(packageURL: filePath) { (targetBundle, error) in
+						if let error = error {
+							self.errorPopup(error: error.localizedDescription)
+						} else if let targetBundle = targetBundle {
+							cell.appDownload?.addToApps(bundlePath: targetBundle, uuid: uuid) { error in
+								if let error = error {
+									self.errorPopup(error: error.localizedDescription)
+								} else {
 									self.successPopup()
 								}
 							}
 						}
 					}
 				}
-				
-				
-				
 			}
 		}
+
+		if let uuid = cell.appDownload?.currentUUID {
+			self.downloadTasks[uuid] = (cell: cell, progress: 0.0)
+			self.startDownload(uuid: uuid, indexPath: indexPath)
+		}
 	}
-	
+
+}
+
+extension SourceAppViewController {
 	func successPopup() {
 		DispatchQueue.main.async {
 			let alertView = AlertAppleMusic17View(title: "Added to Apps", subtitle: nil, icon: .done)
-			if let viewController = UIApplication.shared.keyWindow?.rootViewController {
+			if let viewController = UIApplication.shared.windows.first?.rootViewController {
 				alertView.present(on: viewController.view)
 			}
 		}
@@ -165,68 +240,14 @@ extension SourceAppViewController: DownloadDelegate {
 	func errorPopup(error: String) {
 		DispatchQueue.main.async {
 			let alertView = AlertAppleMusic17View(title: "Error", subtitle: error, icon: .error)
-			if let viewController = UIApplication.shared.keyWindow?.rootViewController {
+			if let viewController = UIApplication.shared.windows.first?.rootViewController {
 				alertView.present(on: viewController.view)
 			}
 		}
 	}
-	
-	func addToApps(bundlePath: String, uuid: String, completion: @escaping (Error?) -> Void) {
-		guard let bundle = Bundle(path: bundlePath) else {
-			let error = NSError(domain: "Feather", code: 1, userInfo: [NSLocalizedDescriptionKey: "Failed to load bundle at \(bundlePath)"])
-			completion(error)
-			return
-		}
-		let context = self.context
-		let newApp = DownloadedApps(context: context)
-		
-		if let infoDict = bundle.infoDictionary {
-			if let version = infoDict["CFBundleShortVersionString"] as? String {
-				newApp.version = version
-			}
-			
-			if let appName = infoDict["CFBundleDisplayName"] as? String {
-				newApp.name = appName
-			} else if let appName = infoDict["CFBundleName"] as? String {
-				newApp.name = appName
-			}
-			
-			if let bundleIdentifier = infoDict["CFBundleIdentifier"] as? String {
-				newApp.bundleidentifier = bundleIdentifier
-			}
-			
-			if let iconsDict = infoDict["CFBundleIcons"] as? [String: Any],
-			   let primaryIconsDict = iconsDict["CFBundlePrimaryIcon"] as? [String: Any],
-			   let iconFiles = primaryIconsDict["CFBundleIconFiles"] as? [String],
-			   let iconFileName = iconFiles.first,
-			   let iconPath = bundle.path(forResource: iconFileName+"@2x", ofType: "png") {
-				newApp.iconURL = "\(URL(string: iconPath)?.lastPathComponent ?? "")"
-			} else {
-				print("Failed to retrieve app icon path")
-			}
-			
-			newApp.dateAdded = Date()
-			newApp.uuid = uuid
-			newApp.appPath = "\(URL(string: bundlePath)?.lastPathComponent ?? "")"
-			
-			do {
-				try context.save()
-			} catch {
-				print("Error saving data: \(error)")
-			}
-			
-			completion(nil)
-		} else {
-			let error = NSError(domain: "Feather", code: 3, userInfo: [NSLocalizedDescriptionKey: "Info.plist not found in bundle at \(bundlePath)"])
-			completion(error)
-		}
-	}
-
-
-	
 }
 
 protocol DownloadDelegate: AnyObject {
-	func updateDownloadProgress(progress: Double)
-	func stopDownload()
+	func updateDownloadProgress(progress: Double, uuid: String)
+	func stopDownload(uuid: String)
 }

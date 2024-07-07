@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Nuke
 
 class SectionIcons {
 	@available(iOS 13.0, *)
@@ -56,7 +57,30 @@ class SectionIcons {
 		cell.imageView?.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
 		cell.imageView?.clipsToBounds = true
 	}
-
+	
+	static public func loadImageFromURL(from url: URL, for cell: UITableViewCell, at indexPath: IndexPath, in tableView: UITableView) {
+		let request = ImageRequest(url: url)
+		
+		if let cachedImage = ImagePipeline.shared.cache.cachedImage(for: request)?.image {
+			SectionIcons.sectionImage(to: cell, with: cachedImage)
+		} else {
+			ImagePipeline.shared.loadImage(
+				with: request,
+				progress: nil,
+				completion: { result in
+					switch result {
+					case .success(let imageResponse):
+						DispatchQueue.main.async {
+							SectionIcons.sectionImage(to: cell, with: imageResponse.image)
+							tableView.reloadRows(at: [indexPath], with: .none)
+						}
+					case .failure(let error):
+						print("Image loading failed with error: \(error)")
+					}
+				}
+			)
+		}
+	}
 
 }
 

@@ -52,7 +52,7 @@ class AppsTableViewCell: UITableViewCell {
 		contentView.addSubview(detailLabel)
 		
 		NSLayoutConstraint.activate([
-			nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 85),
+			nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 72),
 			nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
 			
 			versionLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
