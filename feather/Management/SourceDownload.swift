@@ -1,34 +1,14 @@
 //
-//  SourcesViewController+Fetch.swift
+//  SourceDownload.swift
 //  feather
 //
-//  Created by samara on 5/28/24.
+//  Created by samara on 7/7/24.
 //
 
 import Foundation
-import UIKit
 import CoreData
 
 extension SourcesViewController {
-	func sourcesAddButtonTapped() {
-		let alertController = UIAlertController(title: "Add Source", message: "Add Altstore Repo URL", preferredStyle: .alert)
-		
-		alertController.addTextField { textField in
-			textField.placeholder = "URL"
-		}
-		
-		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-		alertController.addAction(cancelAction)
-		
-		let addSourceAction = UIAlertAction(title: "Add Source", style: .default) { _ in
-			if let sourceURL = alertController.textFields?.first?.text {
-				self.getData(urlString: sourceURL)
-			}
-		}
-		alertController.addAction(addSourceAction)
-		self.present(alertController, animated: true, completion: nil)
-	}
-	
 	func getData(urlString: String) {
 		guard let url = URL(string: urlString) else {
 			print("Invalid URL")
@@ -42,7 +22,6 @@ extension SourcesViewController {
 				let parseResult = repoManager.parse(data: data)
 				switch parseResult {
 				case .success(let source):
-					print(source)
 					self.saveSource(source, url: urlString)
 				case .failure(let error):
 					print("Error parsing data: \(error)")
@@ -62,7 +41,7 @@ extension SourcesViewController {
 
 		do {
 			let existingSources = try context.fetch(fetchRequest)
-			if let existingSources = existingSources.first {
+			if existingSources.first != nil {
 				print("Source with identifier '\(source.identifier)' already exists.")
 				return
 			}
@@ -91,6 +70,21 @@ extension SourcesViewController {
 			newApp.versionDescription = app.versionDescription
 			newApp.localizedDescription = app.localizedDescription
 			newApp.source = newSource
+			newApp.uuid = UUID().uuidString
+			
+			if let versions = app.versions {
+				for version in versions {
+					let cool = StoreVersions(context: context)
+					cool.downloadURL = version.downloadURL
+					cool.localizedDescription = version.localizedDescription
+					cool.version = version.version
+					cool.size = 0
+					cool.date = nil
+					newApp.addToVersions(cool)
+				}
+			}
+
+			
 			newSource.addToApps(newApp)
 		}
 
@@ -99,39 +93,6 @@ extension SourcesViewController {
 			fetchSources()
 		} catch {
 			print("Error saving data: \(error)")
-		}
-	}
-
-	
-	func fetchSources() {
-		let fetchRequest: NSFetchRequest<Source> = Source.fetchRequest()
-		let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-		fetchRequest.sortDescriptors = [sortDescriptor]
-		
-		do {
-			self.sources = try context.fetch(fetchRequest)
-			checkIfIshouldShow(source: sources!)
-			DispatchQueue.main.async {
-				self.tableView.reloadData()
-			}
-		} catch {
-			print("Error fetching sources: \(error)")
-		}
-	}
-	
-	func checkIfIshouldShow(source: [Source]) {
-		DispatchQueue.main.async {
-			if source.isEmpty {
-				self.emptyStackView.isHidden = false
-				self.tableView.isScrollEnabled = self.emptyStackView.isHidden
-				self.tableView.refreshControl = self.tableView.isScrollEnabled ? self.refreshControl : nil
-				print("I show")
-			} else {
-				self.emptyStackView.isHidden = true
-				self.tableView.isScrollEnabled = self.emptyStackView.isHidden
-				self.tableView.refreshControl = self.tableView.isScrollEnabled ? self.refreshControl : nil
-				print("I disappear")
-			}
 		}
 	}
 }
