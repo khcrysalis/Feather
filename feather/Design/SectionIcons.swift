@@ -11,22 +11,29 @@ import Nuke
 
 class SectionIcons {
 	@available(iOS 13.0, *)
-	static public func sectionIcon(to cell: UITableViewCell, with symbolName: String, backgroundColor: UIColor) {
-		let symbolConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .medium)
+	static public func sectionIcon(to cell: UITableViewCell, with symbolName: String, gradientColors: [UIColor]) {
+		let symbolConfig = UIImage.SymbolConfiguration(pointSize: 14, weight: .medium)
 		guard let symbolImage = UIImage(systemName: symbolName, withConfiguration: symbolConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal) else {
 			return
 		}
-		#if os(tvOS)
-		let imageSize = CGSize(width: 75, height: 75)
-		#else
-		let imageSize = CGSize(width: 30, height: 30)
-		#endif
-		let insetAmount: CGFloat = 3
+		let imageSize = CGSize(width: 42, height: 42)
+		
+		let insetAmount: CGFloat = 5
 		let scaledSymbolSize = symbolImage.size.aspectFit(in: imageSize, insetBy: insetAmount)
 
 		let coloredBackgroundImage = UIGraphicsImageRenderer(size: imageSize).image { context in
-			backgroundColor.setFill()
-			UIBezierPath(roundedRect: CGRect(origin: .zero, size: imageSize), cornerRadius: 7).fill()
+			let gradientLayer = CAGradientLayer()
+			gradientLayer.frame = CGRect(origin: .zero, size: imageSize)
+			gradientLayer.colors = gradientColors.map { $0.cgColor }
+			gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+			gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+
+			gradientLayer.render(in: context.cgContext)
+			
+			// Optionally add rounded corners to the gradient background
+			let path = UIBezierPath(roundedRect: CGRect(origin: .zero, size: imageSize), cornerRadius: 10)
+			context.cgContext.addPath(path.cgPath)
+			context.cgContext.clip()
 		}
 
 		let mergedImage = UIGraphicsImageRenderer(size: imageSize).image { context in
@@ -40,10 +47,12 @@ class SectionIcons {
 		}
 
 		cell.imageView?.image = mergedImage
-		cell.imageView?.layer.cornerRadius = 7
+		cell.imageView?.layer.cornerRadius = 10
+		cell.imageView?.layer.cornerCurve = .continuous
 		cell.imageView?.clipsToBounds = true
 		cell.imageView?.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
 	}
+
 	
 	static public func sectionImage(to cell: UITableViewCell, with originalImage: UIImage, size: CGSize = CGSize(width: 42, height: 42), radius: Int = 10) {
 		let resizedImage = UIGraphicsImageRenderer(size: size).image { context in

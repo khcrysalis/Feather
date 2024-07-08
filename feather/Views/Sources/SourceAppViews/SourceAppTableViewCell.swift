@@ -14,6 +14,7 @@ class SourceAppTableViewCell: UITableViewCell {
 	let nameLabel: UILabel = {
 		let label = UILabel()
 		label.font = UIFont.boldSystemFont(ofSize: 17)
+		label.numberOfLines = 0
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
@@ -31,7 +32,7 @@ class SourceAppTableViewCell: UITableViewCell {
 		let label = UILabel()
 		label.font = UIFont.systemFont(ofSize: 11)
 		label.textColor = .secondaryLabel
-		label.numberOfLines = 1
+		label.numberOfLines = 0
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
@@ -66,26 +67,31 @@ class SourceAppTableViewCell: UITableViewCell {
 		contentView.addSubview(detailLabel)
 		contentView.addSubview(getButton)
 		
+		imageView?.translatesAutoresizingMaskIntoConstraints = true
 		getButtonWidthConstraint = getButton.widthAnchor.constraint(equalToConstant: 60)
+
 		NSLayoutConstraint.activate([
-			nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 72),
+			nameLabel.leadingAnchor.constraint(equalTo: imageView!.trailingAnchor, constant: 15),
 			nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-			
+			nameLabel.trailingAnchor.constraint(equalTo: getButton.leadingAnchor, constant: -10),
+
 			versionLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
 			versionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
-			versionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-			
+			versionLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
+
 			detailLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
 			detailLabel.topAnchor.constraint(equalTo: versionLabel.bottomAnchor, constant: 4),
-			detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+			detailLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
 			detailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-			
+
 			getButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
 			getButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 			getButtonWidthConstraint!,
 			getButton.heightAnchor.constraint(equalToConstant: 30)
 		])
 	}
+
+
 	
 	private func configureGetButtonArrow() {
 		let symbolConfig = UIImage.SymbolConfiguration(pointSize: 13, weight: .bold)
@@ -166,6 +172,7 @@ class SourceAppTableViewCell: UITableViewCell {
 			self.layoutIfNeeded()
 		})
 	}
+	
 	private func updateProgressLayerPath() {
 		let circularPath = UIBezierPath(roundedRect: getButton.bounds, cornerRadius: 15)
 		progressLayer.path = circularPath.cgPath

@@ -22,9 +22,9 @@ class TabbarController: UITabBarController {
 	private func setupTabs() {
 		let sources = self.createNavigation(with: "Sources", and: UIImage(named: "globe2"), vc: SourcesViewController())
 		let apps = self.createNavigation(with: "Apps", and: UIImage(systemName: "square.grid.2x2.fill"), vc: AppsViewController())
-		let certs = self.createNavigation(with: "Certificates", and: UIImage(named: "cert"), vc: UIViewController())
+		let certs = self.createNavigation(with: "Certificates", and: UIImage(named: "cert"), vc: CertificatesViewController())
 
-		let settings = self.createNavigation(with: "Settings", and: UIImage(systemName: "gearshape.2.fill"), vc: UIViewController())
+		let settings = self.createNavigation(with: "Settings", and: UIImage(systemName: "gearshape.2.fill"), vc: SettingsViewController())
 
 		self.setViewControllers([
 			sources,
