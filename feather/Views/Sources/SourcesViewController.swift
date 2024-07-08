@@ -22,7 +22,7 @@ class SourcesViewController: UITableViewController {
 			setupNavigation()
 		}
 	}
-	
+		
 	lazy var addButton = addAddButtonToView()
 	
 	init() { super.init(style: .plain) }
@@ -44,7 +44,7 @@ class SourcesViewController: UITableViewController {
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
 		self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-		
+
 		emptyStackView.title = "No Sources"
 		emptyStackView.text = "Configure your source list by pressing \n\"+\" and adding an Altstore repository."
 		emptyStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -52,7 +52,7 @@ class SourcesViewController: UITableViewController {
 		
 		NSLayoutConstraint.activate([
 			emptyStackView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-			emptyStackView.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor, constant: -50),
+			emptyStackView.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor, constant: -45),
 		])
 		
 		self.makeAddButtonMenu()
@@ -96,28 +96,80 @@ class SourcesViewController: UITableViewController {
 
 // MARK: - Tabelview
 extension SourcesViewController {
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return sources?.count ?? 0 }
+	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { return 2 }
+	override func numberOfSections(in tableView: UITableView) -> Int { return 2 }
+	
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		switch section {
+		case 0:
+			if let count = sources?.count {
+				if count == 0 {
+					return 0
+				} else {
+					return 1
+				}
+			}
+			return 0
+		case 1:
+			return sources?.count ?? 0
+		default:
+			return 0
+		}
+	}
+	
+	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		let headerView = UIView()
+		return headerView
+	}
+	
+	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+		switch section {
+		case 1:
+			if let count = sources?.count {
+				
+				if count == 0 {
+					return nil
+				} else {
+					return "\(count) Sources"
+				}
+			}
+		default:
+			break
+		}
+		return nil
+	}
+	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
-		
-		let source = sources![indexPath.row]
-
-		cell.textLabel?.text = source.name ?? "Unknown"
-		cell.detailTextLabel?.text = source.sourceURL?.absoluteString
+		cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
 		cell.detailTextLabel?.textColor = .secondaryLabel
 		cell.accessoryType = .disclosureIndicator
 		cell.backgroundColor = UIColor(named: "Background")
-				
 		
-		if let thumbnailURL = source.iconURL {
-			SectionIcons.loadImageFromURL(from: thumbnailURL, for: cell, at: indexPath, in: tableView)
-		} else if let apps = source.apps,
-				  let firstApp = apps.firstObject as? StoreApps,
-				  let firstAppIconURL = firstApp.iconURL {
-			SectionIcons.loadImageFromURL(from: firstAppIconURL, for: cell, at: indexPath, in: tableView)
-		} else {
-			SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
+		let source = sources![indexPath.row]
+		
+		switch indexPath.section {
+		case 0:
+			cell.textLabel?.text = "All Apps"
+			cell.detailTextLabel?.text = "See all apps from your sources"
+			SectionIcons.sectionIcon(to: cell, with: "tray.fill", gradientColors: [Preferences.appTintColor.uiColor, Preferences.appTintColor.uiColor.withAlphaComponent(0.6)])
+		case 1:
+			cell.textLabel?.text = source.name ?? "Unknown"
+			cell.detailTextLabel?.text = source.sourceURL?.absoluteString
+
+			if let thumbnailURL = source.iconURL {
+				SectionIcons.loadImageFromURL(from: thumbnailURL, for: cell, at: indexPath, in: tableView)
+			} else if let apps = source.apps,
+					  let firstApp = apps.firstObject as? StoreApps,
+					  let firstAppIconURL = firstApp.iconURL {
+				SectionIcons.loadImageFromURL(from: firstAppIconURL, for: cell, at: indexPath, in: tableView)
+			} else {
+				SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
+			}
+		default:
+			break
 		}
+
 		
 		return cell
 	}
@@ -161,35 +213,36 @@ extension SourcesViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		guard let source = sources?[indexPath.row] as? Source else {
+		guard let sourcerow = sources?[indexPath.row] as? Source else {
 			print("Failed to retrieve source data.")
 			return
 		}
-
-		if let sourceAppsSet = source.apps {
-			let sourceAppsArray = sourceAppsSet.compactMap { $0 as? StoreApps }
-			let sortedAppsArray = sourceAppsArray.sorted { $0.name! < $1.name! }
-
-			let savc = SourceAppViewController()
-			savc.name = source.name
-			savc.apps = sortedAppsArray
-			navigationController?.pushViewController(savc, animated: true)
-		} else {
-			print("No apps found for the selected source.")
-		}
-		tableView.deselectRow(at: indexPath, animated: true)
-	}
-	
-	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-		if let count = sources?.count {
-			
-			if count == 0 {
-				return nil
-			} else {
-				return "\(count) Sources"
+		
+		switch indexPath.section {
+		case 0:
+			if let sources = sources {
+				let allApps = sources.compactMap { $0.apps }.flatMap { $0.compactMap { $0 as? StoreApps } }
+				let sortedAllApps = allApps.sorted { $0.name! < $1.name! }
+				let savc = SourceAppViewController()
+				savc.name = "All Apps"
+				savc.apps = sortedAllApps
+				navigationController?.pushViewController(savc, animated: true)
 			}
+		case 1:
+			if let sourceAppsSet = sourcerow.apps {
+				let sourceAppsArray = sourceAppsSet.compactMap { $0 as? StoreApps }
+				let sortedAppsArray = sourceAppsArray.sorted { $0.name! < $1.name! }
+
+				let savc = SourceAppViewController()
+				savc.name = sourcerow.name
+				savc.apps = sortedAppsArray
+				navigationController?.pushViewController(savc, animated: true)
+			}
+		default:
+			break
 		}
-		return nil
+
+		tableView.deselectRow(at: indexPath, animated: true)
 	}
 }
 
@@ -221,19 +274,16 @@ extension SourcesViewController {
 			print("Error fetching sources: \(error)")
 		}
 	}
+	
 	func showEmptyView(source: [Source]) {
 		DispatchQueue.main.async {
-			if source.isEmpty {
-				self.emptyStackView.isHidden = false
-				self.tableView.isScrollEnabled = self.emptyStackView.isHidden
-				self.tableView.refreshControl = self.tableView.isScrollEnabled ? self.refreshControl : nil
-			} else {
-				self.emptyStackView.isHidden = true
-				self.tableView.isScrollEnabled = self.emptyStackView.isHidden
-				self.tableView.refreshControl = self.tableView.isScrollEnabled ? self.refreshControl : nil
-			}
+			let isEmpty = source.isEmpty
+			self.emptyStackView.isHidden = !isEmpty
+			self.tableView.isScrollEnabled = !isEmpty
+			self.tableView.refreshControl = isEmpty ? nil : self.refreshControl
 		}
 	}
+
 }
 extension SourcesViewController {
 	func makeAddButtonMenu() {
