@@ -10,16 +10,18 @@ import UIKit
 import Nuke
 import AlertKit
 
-class SourceAppViewController: UIViewController {
+class SourceAppViewController: UITableViewController {
 
 	let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-	var tableView: UITableView!
 	
 	var apps: [StoreApps] = []
 	var name: String? { didSet { self.title = name } }
 	
 	private var downloadTasks: [String: (cell: SourceAppTableViewCell, progress: CGFloat)] = [:]
 	private var appUUIDs: [Int: String] = [:]
+	
+	init() { super.init(style: .plain) }
+	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -32,15 +34,11 @@ class SourceAppViewController: UIViewController {
 	}
 	
 	fileprivate func setupViews() {
-		self.tableView = UITableView(frame: .zero, style: .plain)
-		self.tableView.translatesAutoresizingMaskIntoConstraints = false
 		self.tableView.backgroundColor = UIColor(named: "Background")
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
 		self.tableView.register(SourceAppTableViewCell.self, forCellReuseIdentifier: "CustomCell")
-
-		self.view.addSubview(tableView)
-		self.tableView.constraintCompletely(to: view)
+		self.tableView.tableHeaderView = UIView()
 	}
 	
 	fileprivate func setupNavigation() {
@@ -48,9 +46,9 @@ class SourceAppViewController: UIViewController {
 	}
 }
 
-extension SourceAppViewController: UITableViewDelegate, UITableViewDataSource {
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return apps.count }
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+extension SourceAppViewController {
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return apps.count }
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = SourceAppTableViewCell(style: .subtitle, reuseIdentifier: "RoundedBackgroundCell")
 		
 		let app = apps[indexPath.row]
@@ -72,7 +70,7 @@ extension SourceAppViewController: UITableViewDelegate, UITableViewDataSource {
 		return cell
 	}
 	
-	func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
 		if apps.isEmpty {
 			return nil
 		} else {

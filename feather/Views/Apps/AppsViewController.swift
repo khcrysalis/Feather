@@ -34,19 +34,23 @@ func extractPlist(fromMobileProvision fileContent: String) -> String? {
 
 
 
-class AppsViewController: UIViewController {
+class AppsViewController: UITableViewController {
 	let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-	var tableView: UITableView!
 	
 	var downlaodedApps: [DownloadedApps]?
 	var signedApps: [SignedApps]?
 
 	lazy var importButton = addAddButtonToView()
+	public lazy var emptyStackView = EmptyPageStackView()
+
 	let segmentedControl: UISegmentedControl = {
 		let sc = UISegmentedControl(items: ["Unsigned", "Signed"])
 		sc.selectedSegmentIndex = 0
 		return sc
 	}()
+	
+	init() { super.init(style: .plain) }
+	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(false)
@@ -64,22 +68,24 @@ class AppsViewController: UIViewController {
 		self.segmentedControl.translatesAutoresizingMaskIntoConstraints = false
 		self.segmentedControl.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
 		
-		self.tableView = UITableView(frame: .zero, style: .plain)
-		self.tableView.translatesAutoresizingMaskIntoConstraints = false
-		self.view.backgroundColor = UIColor(named: "Background")
 		self.tableView.backgroundColor = UIColor(named: "Background")
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
 		self.tableView.register(SourceAppTableViewCell.self, forCellReuseIdentifier: "RoundedBackgroundCell")
+		self.tableView.tableHeaderView = UIView()
 		
-		self.view.addSubview(tableView)
-
+		emptyStackView.title = "No Apps"
+		emptyStackView.text = "Add applications by either importing \nthem or using the Sources tab"
+		emptyStackView.buttonText = "Adding Apps Guide"
+//		emptyStackView.addButtonTarget(self, action: nil)
+		emptyStackView.showsButton = true
+		emptyStackView.translatesAutoresizingMaskIntoConstraints = false
+		view.addSubview(emptyStackView)
 		NSLayoutConstraint.activate([
-			tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-			tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+			emptyStackView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
+			emptyStackView.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor, constant: -45),
 		])
+		
 		importButton.addTarget(self, action: #selector(importIpa), for: .touchUpInside)
 		//		self.makImportButtonMenu()
 		view.addSubview(importButton)
@@ -91,6 +97,7 @@ class AppsViewController: UIViewController {
 		])
 		
 	}
+	
 	@objc func importIpa() {
 		let downloadsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
 		let mobileProvisionPath = downloadsFolder!.appendingPathComponent("Samara_Test.mobileprovision").path
@@ -118,7 +125,6 @@ class AppsViewController: UIViewController {
 	}
 	
 	fileprivate func setupNavigation() {
-		
 		self.navigationController?.navigationBar.prefersLargeTitles = true
 		self.title = nil
 		self.navigationItem.titleView = segmentedControl
@@ -126,14 +132,21 @@ class AppsViewController: UIViewController {
 	
 	@objc func segmentChanged(_ sender: UISegmentedControl) {
 		tableView.reloadData()
+		switch segmentedControl.selectedSegmentIndex {
+		case 0:
+			showEmptyView(source: self.downlaodedApps ?? [])
+		case 1:
+			showEmptyView(source: self.signedApps ?? [])
+		default:
+			break
+		}
 	}
 }
 
-extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
-	
-	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { return nil }
-	func numberOfSections(in tableView: UITableView) -> Int { return 1 }
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension AppsViewController {
+	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { return nil }
+	override func numberOfSections(in tableView: UITableView) -> Int { return 1 }
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		switch segmentedControl.selectedSegmentIndex {
 		case 0:
 			return downlaodedApps?.count ?? 0
@@ -144,10 +157,10 @@ extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 		}
 	}
 	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = AppsTableViewCell(style: .subtitle, reuseIdentifier: "RoundedBackgroundCell")
 		cell.selectionStyle = .default
-		cell.accessoryType = .none
+		cell.accessoryType = .disclosureIndicator
 		cell.backgroundColor = UIColor(named: "Background")
 		
 		let source = getApplication(row: indexPath.row)
@@ -158,22 +171,22 @@ extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 			let imagePath = filePath.appendingPathComponent(iconURL)
 			
 			if let image = self.loadImage(from: imagePath) {
-				SectionIcons.sectionImage(to: cell, with: image)
+				SectionIcons.sectionImage(to: cell, with: image, size: CGSize(width: 52, height: 52), radius: 13)
 			} else {
-				SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
+				SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!, size: CGSize(width: 52, height: 52), radius: 12)
 			}
 		} else {
-			SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
+			SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!, size: CGSize(width: 52, height: 52), radius: 12)
 		}
 		
 		cell.configure(with: source!, filePath: filePath)
 		return cell
 	}
 	
-	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let meow = getApplication(row: indexPath.row)
 //		var source: NSManagedObject?
-		let filePath = getApplicationFilePath(with: meow!, row: indexPath.row)
+//		let filePath = getApplicationFilePath(with: meow!, row: indexPath.row)
 //		showAlertWithImageAndBoldText(with: meow!, filePath: filePath)
 		print(meow!)
 //		switch segmentedControl.selectedSegmentIndex {
@@ -190,7 +203,7 @@ extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 	
-	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+	override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 		
 		let source = getApplication(row: indexPath.row)
 		let filePath = getApplicationFilePath(with: source!, row: indexPath.row, getuuidonly: true)
@@ -211,8 +224,10 @@ extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 				switch self.segmentedControl.selectedSegmentIndex {
 				case 0:
 					self.downlaodedApps?.remove(at: indexPath.row)
+					self.showEmptyView(source: self.downlaodedApps!)
 				case 1:
 					self.signedApps?.remove(at: indexPath.row)
+					self.showEmptyView(source: self.signedApps!)
 				default:
 					break
 				}
@@ -232,7 +247,7 @@ extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 		return configuration
 	}
 	
-	func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+	override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
 		let source = getApplication(row: indexPath.row)
 		let filePath = getApplicationFilePath(with: source!, row: indexPath.row)
 		
@@ -276,8 +291,7 @@ extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 			])
 		})
 		return configuration
-	}
-	
+	}	
 }
 
 extension AppsViewController {
@@ -291,11 +305,13 @@ extension AppsViewController {
 				let sortDescriptor = NSSortDescriptor(key: "dateAdded", ascending: false)
 				fetchRequest.sortDescriptors = [sortDescriptor]
 				self.downlaodedApps = try context.fetch(fetchRequest)
+				showEmptyView(source: self.downlaodedApps ?? [])
 			case 1:
 				let fetchRequest: NSFetchRequest<SignedApps> = SignedApps.fetchRequest()
 				let sortDescriptor = NSSortDescriptor(key: "dateAdded", ascending: false)
 				fetchRequest.sortDescriptors = [sortDescriptor]
 				self.signedApps = try context.fetch(fetchRequest)
+				showEmptyView(source: self.signedApps ?? [])
 			default:
 				break
 			}
@@ -305,6 +321,15 @@ extension AppsViewController {
 			}
 		} catch {
 			print("Error fetching sources: \(error)")
+		}
+	}
+	
+	func showEmptyView<T>(source: [T]) {
+		DispatchQueue.main.async {
+			let isEmpty = source.isEmpty
+			self.emptyStackView.isHidden = !isEmpty
+			self.tableView.isScrollEnabled = !isEmpty
+			self.tableView.refreshControl = isEmpty ? nil : self.refreshControl
 		}
 	}
 }

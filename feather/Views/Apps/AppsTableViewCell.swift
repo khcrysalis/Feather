@@ -50,9 +50,10 @@ class AppsTableViewCell: UITableViewCell {
 		contentView.addSubview(nameLabel)
 		contentView.addSubview(versionLabel)
 		contentView.addSubview(detailLabel)
-		
+		imageView?.translatesAutoresizingMaskIntoConstraints = true
+
 		NSLayoutConstraint.activate([
-			nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 72),
+			nameLabel.leadingAnchor.constraint(equalTo: imageView!.trailingAnchor, constant: 15),
 			nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
 			
 			versionLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
