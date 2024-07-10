@@ -13,14 +13,16 @@ import CoreData
 class AppDownload: NSObject {
 	var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 	var dldelegate: DownloadDelegate?
-	var downloads = [URLSessionDownloadTask: (uuid: String, destinationUrl: URL, completion: (String?, String?, Error?) -> Void)]()
-	var currentUUID: String?
+	var downloads = [URLSessionDownloadTask: (uuid: String, appuuid: String, destinationUrl: URL, completion: (String?, String?, Error?) -> Void)]()
+	var DirectoryUUID: String?
+	var AppUUID: String?
 	private var downloadTask: URLSessionDownloadTask?
 	private var session: URLSession?
 
-	func downloadFile(url: URL, completion: @escaping (String?, String?, Error?) -> Void) {
+	func downloadFile(url: URL, appuuid: String, completion: @escaping (String?, String?, Error?) -> Void) {
 		let uuid = UUID().uuidString
-		self.currentUUID = uuid
+		self.DirectoryUUID = uuid
+		self.AppUUID = appuuid
 		guard let folderUrl = createUuidDirectory(uuid: uuid) else {
 			completion(nil, nil, NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Failed to create directory"]))
 			return
@@ -31,7 +33,7 @@ class AppDownload: NSObject {
 		session = URLSession(configuration: sessionConfig, delegate: self, delegateQueue: nil)
 		downloadTask = session?.downloadTask(with: url)
 
-		downloads[downloadTask!] = (uuid: uuid, destinationUrl: destinationUrl, completion: completion)
+		downloads[downloadTask!] = (uuid: uuid, appuuid: appuuid, destinationUrl: destinationUrl, completion: completion)
 		downloadTask!.resume()
 	}
 
@@ -60,14 +62,12 @@ class AppDownload: NSObject {
 		let fileManager = FileManager.default
 
 		if !fileManager.fileExists(atPath: fileURL.path) {
-			dldelegate?.stopDownload(uuid: currentUUID!)
 			completion(nil, NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "File does not exist"]))
 			return
 		}
 
 		do {
 			try fileManager.unzipItem(at: fileURL, to: destinationURL)
-			dldelegate?.updateDownloadProgress(progress: 1, uuid: currentUUID!)
 			try fileManager.removeItem(at: fileURL)
 
 			let payloadURL = destinationURL.appendingPathComponent("Payload")
@@ -83,16 +83,15 @@ class AppDownload: NSObject {
 				completion(nil, NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "No .app directory found in Payload"]))
 			}
 			
-			dldelegate?.stopDownload(uuid: currentUUID!)
 			completion(nil, nil)
 		} catch {
 			if fileManager.fileExists(atPath: destinationURL.path) {
 				try! fileManager.removeItem(at: destinationURL)
 			}
 
-			dldelegate?.stopDownload(uuid: currentUUID!)
 			completion(nil, error)
 		}
+		
 	}
 
 	func addToApps(bundlePath: String, uuid: String, completion: @escaping (Error?) -> Void) {
@@ -167,14 +166,15 @@ extension AppDownload: URLSessionDownloadDelegate {
 			return
 		}
 		if let error = error {
-			dldelegate?.stopDownload(uuid: currentUUID!)
 			download.completion(download.uuid, download.destinationUrl.path, error)
 		}
 		downloads.removeValue(forKey: task as! URLSessionDownloadTask)
 	}
 
 	func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-		let progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
-		dldelegate?.updateDownloadProgress(progress: Double(progress) * 0.75, uuid: currentUUID!)
+		let progress = CGFloat(totalBytesWritten) / CGFloat(totalBytesExpectedToWrite)
+		if let uuid = downloads[downloadTask]?.appuuid {
+			dldelegate?.updateDownloadProgress(progress: progress, uuid: uuid)
+		}
 	}
 }

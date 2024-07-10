@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33163FF02C3D224C0038E1EC /* DownloadTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33163FEF2C3D224C0038E1EC /* DownloadTaskManager.swift */; };
 		3322FF492BFEC97F001768D8 /* SourceAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3322FF482BFEC97F001768D8 /* SourceAppViewController.swift */; };
 		3322FF4C2BFEDB01001768D8 /* SourceAppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3322FF4B2BFEDB01001768D8 /* SourceAppTableViewCell.swift */; };
 		3322FF4F2BFEE5B9001768D8 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 3322FF4E2BFEE5B9001768D8 /* Nuke */; };
 		3322FF512BFEE5B9001768D8 /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 3322FF502BFEE5B9001768D8 /* NukeExtensions */; };
 		3322FF532BFEE5B9001768D8 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3322FF522BFEE5B9001768D8 /* NukeUI */; };
 		3322FF552BFEE5B9001768D8 /* NukeVideo in Frameworks */ = {isa = PBXBuildFile; productRef = 3322FF542BFEE5B9001768D8 /* NukeVideo */; };
+		332476D82C3E4CF7008C8EF0 /* SourceAppActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476D72C3E4CF7008C8EF0 /* SourceAppActions.swift */; };
+		332476DA2C3E4D35008C8EF0 /* SourceAppDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476D92C3E4D35008C8EF0 /* SourceAppDownload.swift */; };
+		332476DC2C3E4D87008C8EF0 /* SourceViewActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476DB2C3E4D87008C8EF0 /* SourceViewActions.swift */; };
 		332AE3C02C097F180052F24A /* Feather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 332AE3BE2C097F180052F24A /* Feather.xcdatamodeld */; };
 		332D72362BFA672B004AF675 /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D72352BFA672B004AF675 /* AppsViewController.swift */; };
 		333912A02BF9816B00E72360 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3339129F2BF9816B00E72360 /* Model.swift */; };
@@ -67,8 +71,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		33163FE62C3D098B0038E1EC /* .github */ = {isa = PBXFileReference; lastKnownFileType = folder; path = .github; sourceTree = "<group>"; };
+		33163FE82C3D09980038E1EC /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		33163FE92C3D09980038E1EC /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		33163FEA2C3D09980038E1EC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		33163FEE2C3D09A50038E1EC /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		33163FEF2C3D224C0038E1EC /* DownloadTaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTaskManager.swift; sourceTree = "<group>"; };
 		3322FF482BFEC97F001768D8 /* SourceAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceAppViewController.swift; sourceTree = "<group>"; };
 		3322FF4B2BFEDB01001768D8 /* SourceAppTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceAppTableViewCell.swift; sourceTree = "<group>"; };
+		332476D72C3E4CF7008C8EF0 /* SourceAppActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceAppActions.swift; sourceTree = "<group>"; };
+		332476D92C3E4D35008C8EF0 /* SourceAppDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceAppDownload.swift; sourceTree = "<group>"; };
+		332476DB2C3E4D87008C8EF0 /* SourceViewActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceViewActions.swift; sourceTree = "<group>"; };
 		332AE3BF2C097F180052F24A /* Feather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Feather.xcdatamodel; sourceTree = "<group>"; };
 		332D72352BFA672B004AF675 /* AppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
 		3339129F2BF9816B00E72360 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -155,6 +168,8 @@
 			children = (
 				3322FF482BFEC97F001768D8 /* SourceAppViewController.swift */,
 				3322FF4B2BFEDB01001768D8 /* SourceAppTableViewCell.swift */,
+				332476D72C3E4CF7008C8EF0 /* SourceAppActions.swift */,
+				332476D92C3E4D35008C8EF0 /* SourceAppDownload.swift */,
 			);
 			path = SourceAppViews;
 			sourceTree = "<group>";
@@ -218,6 +233,11 @@
 		33BA37822BF8159F00FF530A = {
 			isa = PBXGroup;
 			children = (
+				33163FE62C3D098B0038E1EC /* .github */,
+				33163FEE2C3D09A50038E1EC /* .gitignore */,
+				33163FE92C3D09980038E1EC /* Makefile */,
+				33163FE82C3D09980038E1EC /* LICENSE */,
+				33163FEA2C3D09980038E1EC /* README.md */,
 				33BA378D2BF8159F00FF530A /* feather */,
 				33BA378C2BF8159F00FF530A /* Products */,
 			);
@@ -307,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				33BA37922BF8159F00FF530A /* SourcesViewController.swift */,
+				332476DB2C3E4D87008C8EF0 /* SourceViewActions.swift */,
 				3322FF4A2BFEDAE8001768D8 /* SourceAppViews */,
 			);
 			path = Sources;
@@ -324,6 +345,7 @@
 		33C040992C30B47700243D90 /* Management */ = {
 			isa = PBXGroup;
 			children = (
+				33163FEF2C3D224C0038E1EC /* DownloadTaskManager.swift */,
 				33C0409A2C30B4A100243D90 /* AppDownload.swift */,
 				33A305D62C3A85F300D650BA /* SourceDownload.swift */,
 			);
@@ -481,16 +503,20 @@
 				33A305D52C3A858100D650BA /* UIButton+longpress.swift in Sources */,
 				D0651C3A2BFEEA4B00D40829 /* archo.cpp in Sources */,
 				D0651C092BFEE1F600D40829 /* HTTPSServer.swift in Sources */,
+				33163FF02C3D224C0038E1EC /* DownloadTaskManager.swift in Sources */,
 				D0651C1B2BFEE97F00D40829 /* common.cpp in Sources */,
 				3322FF4C2BFEDB01001768D8 /* SourceAppTableViewCell.swift in Sources */,
 				339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */,
 				D0651C112BFEE93C00D40829 /* zsign.mm in Sources */,
+				332476DA2C3E4D35008C8EF0 /* SourceAppDownload.swift in Sources */,
 				3322FF492BFEC97F001768D8 /* SourceAppViewController.swift in Sources */,
 				33570F692C34E5B2008CB560 /* CustomSectionHeader.swift in Sources */,
 				332D72362BFA672B004AF675 /* AppsViewController.swift in Sources */,
 				D0651C332BFEEA4B00D40829 /* macho.cpp in Sources */,
+				332476DC2C3E4D87008C8EF0 /* SourceViewActions.swift in Sources */,
 				33A305D72C3A85F300D650BA /* SourceDownload.swift in Sources */,
 				33570F672C34CCD5008CB560 /* AppsInformationViewController.swift in Sources */,
+				332476D82C3E4CF7008C8EF0 /* SourceAppActions.swift in Sources */,
 				33BA37A82BF8168900FF530A /* TabbarController.swift in Sources */,
 				33570F6C2C34FDE2008CB560 /* EmptyPageStackView.swift in Sources */,
 				33BA37AB2BF8196000FF530A /* Preferences.swift in Sources */,

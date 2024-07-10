@@ -54,7 +54,7 @@ class SectionIcons {
 	}
 
 	
-	static public func sectionImage(to cell: UITableViewCell, with originalImage: UIImage, size: CGSize = CGSize(width: 42, height: 42), radius: Int = 10) {
+	static public func sectionImage(to cell: UITableViewCell, with originalImage: UIImage, size: CGSize = CGSize(width: 45, height: 45), radius: Int = 11) {
 		let resizedImage = UIGraphicsImageRenderer(size: size).image { context in
 			originalImage.draw(in: CGRect(origin: .zero, size: size))
 		}

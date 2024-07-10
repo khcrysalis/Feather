@@ -1,4 +1,6 @@
-xcuserdata
+*xcuserdata*
 *.DS_Store
 .theos
 Packages
+packages*
+*xcuserstate*
