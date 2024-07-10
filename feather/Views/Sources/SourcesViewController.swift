@@ -78,25 +78,29 @@ class SourcesViewController: UITableViewController {
 		self.navigationController?.navigationBar.prefersLargeTitles = true
 		self.navigationItem.largeTitleDisplayMode = .always
 		var leftBarButtonItems: [UIBarButtonItem] = []
-//		var rightBarButtonItems: [UIBarButtonItem] = []
 		
 		if !isSelectMode {
-//			let a = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(sourcesAddButtonTapped))
-//			rightBarButtonItems.append(a)
-//			let e = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(setEditingButton))
-//			leftBarButtonItems.append(e)
 		} else {
 			let d = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneEditingButton))
 			leftBarButtonItems.append(d)
 		}
 		
 		navigationItem.leftBarButtonItems = leftBarButtonItems
-//		navigationItem.rightBarButtonItems = rightBarButtonItems
 	}
 }
 
 // MARK: - Tabelview
 extension SourcesViewController {
+	
+	func showEmptyView(source: [Source]) {
+		DispatchQueue.main.async {
+			let isEmpty = source.isEmpty
+			self.emptyStackView.isHidden = !isEmpty
+			self.tableView.isScrollEnabled = !isEmpty
+			self.tableView.refreshControl = isEmpty ? nil : self.refreshControl
+		}
+	}
+	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return sources?.count ?? 0 }
 	override func numberOfSections(in tableView: UITableView) -> Int { return 1 }
 	
@@ -118,7 +122,8 @@ extension SourcesViewController {
 		let source = sources![indexPath.row]
 
 		cell.textLabel?.text = source.name ?? "Unknown"
-		cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+		cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+		cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 13)
 		cell.detailTextLabel?.text = source.sourceURL?.absoluteString
 		cell.detailTextLabel?.textColor = .secondaryLabel
 		cell.accessoryType = .disclosureIndicator
@@ -223,58 +228,5 @@ extension SourcesViewController {
 			print("Error fetching sources: \(error)")
 		}
 	}
-	
-	func showEmptyView(source: [Source]) {
-		DispatchQueue.main.async {
-			let isEmpty = source.isEmpty
-			self.emptyStackView.isHidden = !isEmpty
-			self.tableView.isScrollEnabled = !isEmpty
-			self.tableView.refreshControl = isEmpty ? nil : self.refreshControl
-		}
-	}
-
 }
-extension SourcesViewController {
-	func makeAddButtonMenu() {
-		let pasteMenu = UIMenu(title: "", options: .displayInline, children: [
-			UIAction(title: "Import from iCloud Drive", handler: { _ in
-				print("Import from iCloud Drive")
-			}),
-			UIAction(title: "Import from Clipboard", handler: { _ in
-				print("Import from Clipboard")
-			})
-		])
 
-		let configuration = UIMenu(title: "", children: [
-			UIAction(title: "Add Batch Sources", handler: { _ in
-				print("Add Batch Sources")
-			}),
-			UIAction(title: "Add Source", handler: { _ in
-				self.sourcesAddButtonTapped()
-			}),
-			pasteMenu
-		])
-		
-		
-		addButton.menu = configuration
-		addButton.showsMenuAsPrimaryAction = true
-	}
-	func sourcesAddButtonTapped() {
-		let alertController = UIAlertController(title: "Add Source", message: "Add Altstore Repo URL", preferredStyle: .alert)
-		
-		alertController.addTextField { textField in
-			textField.placeholder = "URL"
-		}
-		
-		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-		alertController.addAction(cancelAction)
-		
-		let addSourceAction = UIAlertAction(title: "Add Source", style: .default) { _ in
-			if let sourceURL = alertController.textFields?.first?.text {
-				self.getData(urlString: sourceURL)
-			}
-		}
-		alertController.addAction(addSourceAction)
-		self.present(alertController, animated: true, completion: nil)
-	}
-}
