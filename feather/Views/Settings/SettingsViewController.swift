@@ -103,11 +103,20 @@ extension SettingsViewController {
 		cell.textLabel?.text = cellText
 		
 		switch cellText {
-		case "About", "Display", "Language", "Acknowledgements", "Debug Logs":
+		case "Acknowledgements", "Debug Logs":
 			cell.accessoryType = .disclosureIndicator
 			cell.selectionStyle = .default
+		case "About":
+			cell.setAccessoryIcon(with: "info.circle")
+			cell.selectionStyle = .default
+		case "Display":
+			cell.setAccessoryIcon(with: "paintbrush")
+			cell.selectionStyle = .default
+		case "Language":
+			cell.setAccessoryIcon(with: "character.bubble")
+			cell.selectionStyle = .default
 		case "App Icon":
-			break
+			cell.accessoryType = .disclosureIndicator
 		case "Submit Feedback", "GitHub Repository":
 			cell.textLabel?.textColor = tintColor
 			cell.setAccessoryIcon(with: "safari")
