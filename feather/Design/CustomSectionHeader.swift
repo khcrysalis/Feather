@@ -10,7 +10,7 @@ import UIKit
 class CustomSectionHeader: UIView {
 	private let titleLabel: UILabel = {
 		let label = UILabel()
-		label.font = .systemFont(ofSize: 21, weight: .bold)
+		label.font = .systemFont(ofSize: 19, weight: .bold)
 		label.textColor = UIColor.label
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
