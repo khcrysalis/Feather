@@ -221,8 +221,10 @@ class SourceAppTableViewCell: UITableViewCell {
 	}
 	
 	func cancelDownload() {
-		self.appDownload?.cancelDownload()
-		self.stopDownload()
+		DispatchQueue.main.async {
+			self.appDownload?.cancelDownload()
+			self.stopDownload()
+		}
 	}
 
 	private func updateProgressLayerPath() {
