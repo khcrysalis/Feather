@@ -171,12 +171,12 @@ extension AppsViewController {
 			let imagePath = filePath.appendingPathComponent(iconURL)
 			
 			if let image = self.loadImage(from: imagePath) {
-				SectionIcons.sectionImage(to: cell, with: image, size: CGSize(width: 52, height: 52), radius: 13)
+				SectionIcons.sectionImage(to: cell, with: image)
 			} else {
-				SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!, size: CGSize(width: 52, height: 52), radius: 12)
+				SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
 			}
 		} else {
-			SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!, size: CGSize(width: 52, height: 52), radius: 12)
+			SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
 		}
 		
 		cell.configure(with: source!, filePath: filePath)

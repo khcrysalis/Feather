@@ -9,6 +9,7 @@ import UIKit
 import Nuke
 import CoreData
 
+var downloadTaskManager = DownloadTaskManager.shared
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	static let isSideloaded = Bundle.main.bundleIdentifier != "kh.crysalis.feather"
