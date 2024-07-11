@@ -49,7 +49,7 @@ class EmptyPageStackView: UIStackView {
         spacing = 5
 
         titleLabel.font = .systemFont(ofSize: 25, weight: .semibold)
-        titleLabel.textColor = .secondaryLabel
+		titleLabel.textColor = .label
         addArrangedSubview(titleLabel)
 
         textLabel.font = .systemFont(ofSize: 15)

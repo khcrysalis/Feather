@@ -17,7 +17,7 @@ class SourceAppViewController: UITableViewController {
 	var apps: [StoreApps] = []
 	var name: String? { didSet { self.title = name } }
 		
-	init() { super.init(style: .plain) }
+	init() { super.init(style: .grouped) }
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 	
 	override func viewDidLoad() {

@@ -8,10 +8,10 @@
 import UIKit
 func addAddButtonToView(title: String? = "+",
 						image: UIImage? = nil,
-						titleColor: UIColor = .white,
-						backgroundColor: UIColor = Preferences.appTintColor.uiColor,
+						titleColor: UIColor = Preferences.appTintColor.uiColor,
+						backgroundColor: UIColor = UIColor(named: "Cells")!,
 						font: UIFont = UIFont.systemFont(ofSize: 20),
-						shadowOpacity: Float = 0.3,
+						shadowOpacity: Float = 0.1,
 						shadowRadius: CGFloat = 11.0,
 						shadowOffset: CGSize = CGSize(width: 0, height: 0),
 						cornerRadius: CGFloat = 22.5,
@@ -23,7 +23,7 @@ func addAddButtonToView(title: String? = "+",
 		addButton.titleLabel?.font = font
 	} else if let image = image {
 		addButton.setImage( UIImage(systemName: "folder.fill"), for: .normal)
-		addButton.tintColor = .white
+		addButton.tintColor =  Preferences.appTintColor.uiColor
 		
 	}
 	addButton.backgroundColor = backgroundColor
