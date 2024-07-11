@@ -75,7 +75,7 @@ extension SettingsViewController {
 	
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let title = sectionTitles[section]
-		let headerView = CustomSectionHeader(title: title)
+		let headerView = InsetGroupedSectionHeader(title: title)
 		return headerView
 	}
 	

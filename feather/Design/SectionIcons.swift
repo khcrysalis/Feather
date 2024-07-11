@@ -55,10 +55,10 @@ class SectionIcons {
 
 	
 	static public func sectionImage(to cell: UITableViewCell, with originalImage: UIImage, size: CGSize = CGSize(width: 45, height: 45), radius: Int = 11) {
-		let resizedImage = UIGraphicsImageRenderer(size: size).image { context in
-			originalImage.draw(in: CGRect(origin: .zero, size: size))
-		}
-		
+		UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+		originalImage.draw(in: CGRect(origin: CGPoint.zero, size: size))
+		let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+		UIGraphicsEndImageContext()
 		cell.imageView?.image = resizedImage
 		cell.imageView?.layer.cornerCurve = .continuous
 		cell.imageView?.layer.cornerRadius = CGFloat(radius)
@@ -66,25 +66,27 @@ class SectionIcons {
 		cell.imageView?.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
 		cell.imageView?.clipsToBounds = true
 	}
+
 	
 	static public func loadImageFromURL(from url: URL, for cell: UITableViewCell, at indexPath: IndexPath, in tableView: UITableView) {
 		let request = ImageRequest(url: url)
-		
+		SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
+
 		if let cachedImage = ImagePipeline.shared.cache.cachedImage(for: request)?.image {
 			SectionIcons.sectionImage(to: cell, with: cachedImage)
 		} else {
 			ImagePipeline.shared.loadImage(
 				with: request,
+				queue: .global(), 
 				progress: nil,
 				completion: { result in
 					switch result {
 					case .success(let imageResponse):
 						DispatchQueue.main.async {
 							SectionIcons.sectionImage(to: cell, with: imageResponse.image)
-							tableView.reloadRows(at: [indexPath], with: .none)
 						}
 					case .failure(let error):
-						print("Image loading failed with error: \(error)")
+						print(error)
 					}
 				}
 			)

@@ -10,12 +10,10 @@ import Nuke
 import CoreData
 
 class SourcesViewController: UITableViewController {
-	
-	public lazy var emptyStackView = EmptyPageStackView()
-	
+		
 	let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 	var sources: [Source]?
-	
+	public var searchController = UISearchController(searchResultsController: nil)
 	var isSelectMode: Bool = false {
 		didSet {
 			tableView.allowsMultipleSelection = isSelectMode
@@ -23,15 +21,19 @@ class SourcesViewController: UITableViewController {
 		}
 	}
 	
-	lazy var addButton = addAddButtonToView()
-	
-	init() { super.init(style: .plain) }
+	var sectionTitles =
+	[
+		"Added"
+	]
+		
+	init() { super.init(style: .grouped) }
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupNavigation()
 		setupViews()
+		setupSearchController()
 		fetchSources()
 	}
 	
@@ -44,26 +46,6 @@ class SourcesViewController: UITableViewController {
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
 		self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-		self.tableView.tableHeaderView = UIView()
-
-		emptyStackView.title = "No Sources"
-		emptyStackView.text = "Configure your source list by pressing \n\"+\" and adding an Altstore repository."
-		emptyStackView.translatesAutoresizingMaskIntoConstraints = false
-		view.addSubview(emptyStackView)
-		
-		NSLayoutConstraint.activate([
-			emptyStackView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-			emptyStackView.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor, constant: -45),
-		])
-		
-		self.makeAddButtonMenu()
-		view.addSubview(addButton)
-		NSLayoutConstraint.activate([
-			addButton.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20),
-			addButton.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -10),
-			addButton.widthAnchor.constraint(equalToConstant: 45),
-			addButton.heightAnchor.constraint(equalToConstant: 45)
-		])
 				
 		self.refreshControl = UIRefreshControl()
 		self.refreshControl?.addTarget(self, action: #selector(beginRefresh(_:)), for: .valueChanged)
@@ -78,31 +60,63 @@ class SourcesViewController: UITableViewController {
 		self.navigationController?.navigationBar.prefersLargeTitles = true
 		self.navigationItem.largeTitleDisplayMode = .always
 		var leftBarButtonItems: [UIBarButtonItem] = []
+		var rightBarButtonItems: [UIBarButtonItem] = []
 		
 		if !isSelectMode {
+			let pasteMenu = UIMenu(title: "", options: .displayInline, children: [
+				UIAction(title: "Import from iCloud Drive", handler: { _ in
+					print("Import from iCloud Drive")
+				}),
+				UIAction(title: "Import from Clipboard", handler: { _ in
+					print("Import from Clipboard")
+				})
+			])
+
+			let configuration = UIMenu(title: "", children: [
+				UIAction(title: "Add Batch Sources", handler: { _ in
+					print("Add Batch Sources")
+				}),
+				UIAction(title: "Add Source", handler: { _ in
+					self.sourcesAddButtonTapped()
+				}),
+				pasteMenu
+			])
+
+			if let addButton = UIBarButtonItem.createBarButtonItem(symbolName: "plus.circle.fill", paletteColors: [Preferences.appTintColor.uiColor, .systemGray5], menu: configuration) {
+				rightBarButtonItems.append(addButton)
+			}
+
+			if let sortButton = UIBarButtonItem.createBarButtonItem(symbolName: "line.3.horizontal.decrease.circle.fill", paletteColors: [Preferences.appTintColor.uiColor, .systemGray5], target: self, action: #selector(doneEditiaaangButton)) {
+				rightBarButtonItems.append(sortButton)
+			}
 		} else {
 			let d = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneEditingButton))
 			leftBarButtonItems.append(d)
 		}
 		
 		navigationItem.leftBarButtonItems = leftBarButtonItems
+		navigationItem.rightBarButtonItems = rightBarButtonItems
+	}
+	
+	@objc func doneEditiaaangButton() {
+		print("balls")
+	}
+	
+	fileprivate func setupSearchController() {
+		self.searchController.obscuresBackgroundDuringPresentation = true
+		self.searchController.hidesNavigationBarDuringPresentation = true
+		self.searchController.searchBar.placeholder = "Find in Sources"
+		
+		self.navigationItem.searchController = searchController
+		self.definesPresentationContext = false
+		self.navigationItem.hidesSearchBarWhenScrolling = false
 	}
 }
 
 // MARK: - Tabelview
 extension SourcesViewController {
-	
-	func showEmptyView(source: [Source]) {
-		DispatchQueue.main.async {
-			let isEmpty = source.isEmpty
-			self.emptyStackView.isHidden = !isEmpty
-			self.tableView.isScrollEnabled = !isEmpty
-			self.tableView.refreshControl = isEmpty ? nil : self.refreshControl
-		}
-	}
-	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return sources?.count ?? 0 }
-	override func numberOfSections(in tableView: UITableView) -> Int { return 1 }
+	override func numberOfSections(in tableView: UITableView) -> Int { return sectionTitles.count }
 	
 	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
 		if let count = sources?.count {
@@ -114,6 +128,16 @@ extension SourcesViewController {
 			}
 		}
 		return nil
+	}
+	
+	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		let title = sectionTitles[section]
+		let headerView = GroupedSectionHeader(title: title)
+		return headerView
+	}
+	
+	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		return "Added"
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -169,7 +193,6 @@ extension SourcesViewController {
 			} catch {
 				print("error-Deleting data")
 			}
-			self.showEmptyView(source: self.sources!)
 			completionHandler(true)
 		}
 		deleteAction.backgroundColor = UIColor.red
@@ -220,7 +243,6 @@ extension SourcesViewController {
 		
 		do {
 			self.sources = try context.fetch(fetchRequest)
-			showEmptyView(source: sources!)
 			DispatchQueue.main.async {
 				self.tableView.reloadData()
 			}
