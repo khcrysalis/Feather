@@ -9,17 +9,17 @@
     </entity>
     <entity name="CertificateData" representedClassName="CertificateData" syncable="YES" codeGenerationType="class">
         <attribute name="appIDName" attributeType="String"/>
-        <attribute name="applicationIdentifierPrefix" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="applicationIdentifierPrefix" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
         <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="derEncodedProfile" optional="YES" attributeType="Transformable" customClassName="[Data]"/>
+        <attribute name="derEncodedProfile" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[Data]"/>
         <attribute name="developerCertificates" optional="YES" attributeType="Binary"/>
         <attribute name="expirationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="isXcodeManaged" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="platform" attributeType="String"/>
         <attribute name="pPQCheck" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="provisionedDevices" attributeType="Transformable" customClassName="[String]"/>
-        <attribute name="teamIdentifier" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="provisionedDevices" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
+        <attribute name="teamIdentifier" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
         <attribute name="teamName" attributeType="String"/>
         <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="version" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -30,7 +30,7 @@
         <attribute name="applicationIdentifier" attributeType="String"/>
         <attribute name="comAppleDeveloperTeamIdentifier" attributeType="String"/>
         <attribute name="getTaskAllow" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="keychainAccessGroups" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="keychainAccessGroups" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
         <relationship name="certificate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CertificateData" inverseName="entitlements" inverseEntity="CertificateData"/>
     </entity>
     <entity name="DownloadedApps" representedClassName="DownloadedApps" syncable="YES" codeGenerationType="class">
