@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import CoreData
 
 class CertificatesViewController: UITableViewController {
 	let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
+	var downlaodedApps: [Certificate]?
+	
 	public lazy var emptyStackView = EmptyPageStackView()
 	
 	init() { super.init(style: .plain) }

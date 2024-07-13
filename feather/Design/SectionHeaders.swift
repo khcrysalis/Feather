@@ -100,7 +100,7 @@ class GroupedSectionHeader: UIView {
 }
 
 extension UIBarButtonItem {
-	static func createBarButtonItem(symbolName: String, paletteColors: [UIColor]? = nil, menu: UIMenu? = nil, target: Any? = nil, action: Selector? = nil) -> UIBarButtonItem? {
+	static func createBarButtonItem(symbolName: String, paletteColors: [UIColor]? = nil, menu: UIMenu? = nil, target: Any? = nil, action: Selector? = nil, indents: CGFloat? = 0) -> UIBarButtonItem? {
 		
 		let configuration = UIImage.SymbolConfiguration(pointSize: 22)
 		guard let symbolImage = UIImage(systemName: symbolName, withConfiguration: configuration) else { return nil }
@@ -117,8 +117,8 @@ extension UIBarButtonItem {
 			barButtonItem = UIBarButtonItem(image: finalImage, menu: menu)
 		} else {
 			barButtonItem = UIBarButtonItem(image: finalImage, style: .plain, target: target, action: action)
-			barButtonItem?.imageInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: -20)
 		}
+		barButtonItem?.imageInsets = UIEdgeInsets(top: 0, left: indents!, bottom: 0, right: -indents!)
 		
 		return barButtonItem
 	}

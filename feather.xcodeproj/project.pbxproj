@@ -51,6 +51,7 @@
 		33BA37BA2BF9426100FF530A /* Sources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA37B92BF9426100FF530A /* Sources.swift */; };
 		33C0409B2C30B4A100243D90 /* AppDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C0409A2C30B4A100243D90 /* AppDownload.swift */; };
 		33C0409E2C30DD3E00243D90 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = 33C0409D2C30DD3E00243D90 /* AlertKit */; };
+		33CE81A72C42620A00C05327 /* RoundedSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CE81A62C42620A00C05327 /* RoundedSegmentedControl.swift */; };
 		33DF8D772C0827E400D6C05F /* Markdown in Frameworks */ = {isa = PBXBuildFile; productRef = 33DF8D762C0827E400D6C05F /* Markdown */; };
 		33DF8D792C0828A400D6C05F /* Markdownosaur.md in Resources */ = {isa = PBXBuildFile; fileRef = 33DF8D782C0828A400D6C05F /* Markdownosaur.md */; };
 		33DF8D7B2C0828AC00D6C05F /* swift-markdown.md in Resources */ = {isa = PBXBuildFile; fileRef = 33DF8D7A2C0828AC00D6C05F /* swift-markdown.md */; };
@@ -122,6 +123,7 @@
 		33BA37AF2BF819ED00FF530A /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		33BA37B92BF9426100FF530A /* Sources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources.swift; sourceTree = "<group>"; };
 		33C0409A2C30B4A100243D90 /* AppDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDownload.swift; sourceTree = "<group>"; };
+		33CE81A62C42620A00C05327 /* RoundedSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedSegmentedControl.swift; sourceTree = "<group>"; };
 		33DF8D782C0828A400D6C05F /* Markdownosaur.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Markdownosaur.md; sourceTree = "<group>"; };
 		33DF8D7A2C0828AC00D6C05F /* swift-markdown.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "swift-markdown.md"; sourceTree = "<group>"; };
 		33DF8D7C2C0828CF00D6C05F /* Zsign.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Zsign.md; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				33DF8D822C08298900D6C05F /* Markdown.swift */,
 				33570F682C34E5B2008CB560 /* SectionHeaders.swift */,
 				33951CFD2C37AFCF00802F78 /* FloatingActionButton.swift */,
+				33CE81A62C42620A00C05327 /* RoundedSegmentedControl.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 				33951CFE2C37AFCF00802F78 /* FloatingActionButton.swift in Sources */,
 				D0651C3B2BFEEA4B00D40829 /* bundle.cpp in Sources */,
 				332AE3C02C097F180052F24A /* Feather.xcdatamodeld in Sources */,
+				33CE81A72C42620A00C05327 /* RoundedSegmentedControl.swift in Sources */,
 				33BA37A32BF815F900FF530A /* main.swift in Sources */,
 				333912A02BF9816B00E72360 /* Model.swift in Sources */,
 				33DF8D832C08298900D6C05F /* Markdown.swift in Sources */,

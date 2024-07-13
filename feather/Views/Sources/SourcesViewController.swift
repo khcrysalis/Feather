@@ -86,7 +86,7 @@ class SourcesViewController: UITableViewController {
 				rightBarButtonItems.append(addButton)
 			}
 
-			if let sortButton = UIBarButtonItem.createBarButtonItem(symbolName: "line.3.horizontal.decrease.circle.fill", paletteColors: [Preferences.appTintColor.uiColor, .systemGray5], target: self, action: #selector(doneEditiaaangButton)) {
+			if let sortButton = UIBarButtonItem.createBarButtonItem(symbolName: "line.3.horizontal.decrease.circle.fill", paletteColors: [Preferences.appTintColor.uiColor, .systemGray5], target: self, action: #selector(doneEditiaaangButton), indents: 20) {
 				rightBarButtonItems.append(sortButton)
 			}
 		} else {
