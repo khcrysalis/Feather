@@ -40,14 +40,25 @@ class AppsViewController: UITableViewController {
 	var downlaodedApps: [DownloadedApps]?
 	var signedApps: [SignedApps]?
 
-	lazy var importButton = addAddButtonToView()
 	public lazy var emptyStackView = EmptyPageStackView()
 
-	let segmentedControl: UISegmentedControl = {
-		let sc = UISegmentedControl(items: ["Unsigned", "Signed"])
+	lazy var segmentedControl: UISegmentedControl = {
+		let sc = RoundedSegmentedControl(items: ["Unsigned", "Signed"])
 		sc.selectedSegmentIndex = 0
 		return sc
 	}()
+	
+	@objc func segmentChanged(_ sender: UISegmentedControl) {
+		tableView.reloadData()
+		switch segmentedControl.selectedSegmentIndex {
+		case 0:
+			showEmptyView(source: self.downlaodedApps ?? [])
+		case 1:
+			showEmptyView(source: self.signedApps ?? [])
+		default:
+			break
+		}
+	}
 	
 	init() { super.init(style: .plain) }
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -59,20 +70,30 @@ class AppsViewController: UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		setupViews()
 		setupNavigation()
+		setupViews()
 		fetchSources()
 	}
 	
 	fileprivate func setupViews() {
 		self.segmentedControl.translatesAutoresizingMaskIntoConstraints = false
 		self.segmentedControl.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
+		self.segmentedControl.layer.cornerRadius = 15.0
+		self.segmentedControl.layer.borderWidth = 1.0
+		self.segmentedControl.layer.masksToBounds = true
 		
 		self.tableView.backgroundColor = UIColor(named: "Background")
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
 		self.tableView.register(SourceAppTableViewCell.self, forCellReuseIdentifier: "RoundedBackgroundCell")
-		self.tableView.tableHeaderView = UIView()
+		self.tableView.tableHeaderView = segmentedControl
+		
+		NSLayoutConstraint.activate([
+			segmentedControl.widthAnchor.constraint(equalTo: tableView.widthAnchor, constant: -29),
+			segmentedControl.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
+			segmentedControl.topAnchor.constraint(equalTo: tableView.topAnchor),
+			segmentedControl.heightAnchor.constraint(equalToConstant: 36)
+		])
 		
 		emptyStackView.title = "No Apps"
 		emptyStackView.text = "Add applications by either importing \nthem or using the Sources tab"
@@ -80,22 +101,12 @@ class AppsViewController: UITableViewController {
 //		emptyStackView.addButtonTarget(self, action: nil)
 		emptyStackView.showsButton = true
 		emptyStackView.translatesAutoresizingMaskIntoConstraints = false
+		emptyStackView.isHidden = true
 		view.addSubview(emptyStackView)
 		NSLayoutConstraint.activate([
 			emptyStackView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-			emptyStackView.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor, constant: -45),
+			emptyStackView.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor),
 		])
-		
-		importButton.addTarget(self, action: #selector(importIpa), for: .touchUpInside)
-		//		self.makImportButtonMenu()
-		view.addSubview(importButton)
-		NSLayoutConstraint.activate([
-			importButton.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20),
-			importButton.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -10),
-			importButton.widthAnchor.constraint(equalToConstant: 45),
-			importButton.heightAnchor.constraint(equalToConstant: 45)
-		])
-		
 	}
 	
 	@objc func importIpa() {
@@ -126,20 +137,27 @@ class AppsViewController: UITableViewController {
 	
 	fileprivate func setupNavigation() {
 		self.navigationController?.navigationBar.prefersLargeTitles = true
-		self.title = nil
-		self.navigationItem.titleView = segmentedControl
-	}
-	
-	@objc func segmentChanged(_ sender: UISegmentedControl) {
-		tableView.reloadData()
-		switch segmentedControl.selectedSegmentIndex {
-		case 0:
-			showEmptyView(source: self.downlaodedApps ?? [])
-		case 1:
-			showEmptyView(source: self.signedApps ?? [])
-		default:
-			break
+		
+		var leftBarButtonItems: [UIBarButtonItem] = []
+		var rightBarButtonItems: [UIBarButtonItem] = []
+		
+		let configuration = UIMenu(title: "", children: [
+			UIAction(title: "Import from Files", handler: { _ in
+				//
+			}),
+			UIAction(title: "Import from URL", handler: { _ in
+				//
+			})
+			
+		])
+		
+		if let addButton = UIBarButtonItem.createBarButtonItem(symbolName: "plus.circle.fill", paletteColors: [Preferences.appTintColor.uiColor, .systemGray5], menu: configuration) {
+			rightBarButtonItems.append(addButton)
 		}
+		
+		navigationItem.leftBarButtonItems = leftBarButtonItems
+		navigationItem.rightBarButtonItems = rightBarButtonItems
+		
 	}
 }
 
@@ -161,7 +179,6 @@ extension AppsViewController {
 		let cell = AppsTableViewCell(style: .subtitle, reuseIdentifier: "RoundedBackgroundCell")
 		cell.selectionStyle = .default
 		cell.accessoryType = .disclosureIndicator
-		cell.backgroundColor = UIColor(named: "Background")
 		
 		let source = getApplication(row: indexPath.row)
 		let filePath = getApplicationFilePath(with: source!, row: indexPath.row)

@@ -101,7 +101,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
 			return
 		}
 
-		let selectedColorName = collectionData[indexPath.item]
+		_ = collectionData[indexPath.item]
 		
 		UIApplication.shared.windows.first?.tintColor = selectedUIColor
 	}
