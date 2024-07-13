@@ -55,7 +55,7 @@ class CertificatesViewController: UITableViewController {
 					//
 				}),
 				UIAction(title: "Add Certificate", handler: { _ in
-					//
+					self.importIpa()
 				})
 				
 			])
@@ -72,6 +72,53 @@ class CertificatesViewController: UITableViewController {
 		navigationItem.rightBarButtonItems = rightBarButtonItems
 		
 	}
+	
+	func importIpa() {
+		let downloadsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+		let mobileProvisionPath = downloadsFolder!.appendingPathComponent("Samara_Test.mobileprovision").path
+
+		if let fileContent = readMobileProvisionFile(atPath: mobileProvisionPath) {
+			if let plistContent = extractPlist(fromMobileProvision: fileContent) {
+				if let plistData = plistContent.data(using: .utf8) {
+					do {
+						let decoder = PropertyListDecoder()
+						let cert = try decoder.decode(Cert.self, from: plistData)
+						print(cert)
+					} catch {
+						print("Error decoding plist data: \(error)")
+					}
+				} else {
+					print("Failed to convert plist content to data")
+				}
+			} else {
+				print("Failed to extract plist content")
+			}
+		} else {
+			print("Failed to read mobileprovision file")
+		}
+		
+	}
+	
+	func readMobileProvisionFile(atPath path: String) -> String? {
+		do {
+			let fileContent = try String(contentsOfFile: path, encoding: .ascii)
+			return fileContent
+		} catch {
+			print("Error reading file: \(error)")
+			return nil
+		}
+	}
+
+	func extractPlist(fromMobileProvision fileContent: String) -> String? {
+		guard let startRange = fileContent.range(of: "<?xml"),
+			  let endRange = fileContent.range(of: "</plist>") else {
+			return nil
+		}
+
+		let plistContent = fileContent[startRange.lowerBound..<endRange.upperBound]
+		return String(plistContent)
+	}
+	
 }
 extension CertificatesViewController {
 	@objc func doneEditingButton() { setEditing(false, animated: true) }
