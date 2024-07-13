@@ -85,8 +85,8 @@ class SectionIcons {
 						DispatchQueue.main.async {
 							SectionIcons.sectionImage(to: cell, with: imageResponse.image)
 						}
-					case .failure(let error):
-						print(error)
+					case .failure(_): break
+//						print(error)
 					}
 				}
 			)
