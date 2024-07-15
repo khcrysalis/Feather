@@ -76,18 +76,12 @@ public struct StoreAppsDataVersion: Codable {
 // MARK: - Certificate (Mobileprovision file)
 public struct Cert: Codable {
 	public var AppIDName: String
-	public var ApplicationIdentifierPrefix: [String]
 	public var CreationDate: Date
-	public var Platform: [String]
 	public var IsXcodeManaged: Bool
-	public var DeveloperCertificates: [Data]
 	public var derEncodedProfile: Data
 	public var PPQCheck: Bool?
-	public var Entitlements: Entitlements
 	public var ExpirationDate: Date
 	public var Name: String
-	public var ProvisionedDevices: [String]
-	public var TeamIdentifier: [String]
 	public var TeamName: String
 	public var TimeToLive: Int
 	public var UUID: String
@@ -95,18 +89,12 @@ public struct Cert: Codable {
 
 	enum CodingKeys: String, CodingKey {
 		case AppIDName,
-			 ApplicationIdentifierPrefix,
 			 CreationDate,
-			 Platform,
 			 IsXcodeManaged,
-			 DeveloperCertificates,
 			 //derEncodedProfile
 			 PPQCheck,
-			 Entitlements,
 			 ExpirationDate,
 			 Name,
-			 ProvisionedDevices,
-			 TeamIdentifier,
 			 TeamName,
 			 TimeToLive,
 			 UUID,
@@ -115,16 +103,3 @@ public struct Cert: Codable {
 	}
 }
 
-public struct Entitlements: Codable {
-	public var applicationIdentifier: String
-	public var keychainAccessGroups: [String]
-	public var getTaskAllow: Bool
-	public var comAppleDeveloperTeamIdentifier: String
-	
-	enum CodingKeys: String, CodingKey {
-		case applicationIdentifier = "application-identifier"
-		case keychainAccessGroups = "keychain-access-groups"
-		case getTaskAllow = "get-task-allow"
-		case comAppleDeveloperTeamIdentifier = "com.apple.developer.team-identifier"
-	}
-}
