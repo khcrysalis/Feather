@@ -11,7 +11,7 @@ import CoreData
 class CertificatesViewController: UITableViewController {
 	let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-	var downlaodedApps: [Certificate]?
+	var certs: [Certificate]?
 	
 	public lazy var emptyStackView = EmptyPageStackView()
 	
@@ -33,6 +33,12 @@ class CertificatesViewController: UITableViewController {
 		super.viewDidLoad()
 		setupViews()
 		setupNavigation()
+		fetchSources()
+		NotificationCenter.default.addObserver(self, selector: #selector(afetch), name: Notification.Name("t"), object: nil)
+	}
+	
+	deinit {
+		NotificationCenter.default.removeObserver(self, name: Notification.Name("t"), object: nil)
 	}
 	
 	fileprivate func setupViews() {
@@ -40,6 +46,7 @@ class CertificatesViewController: UITableViewController {
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
 		self.tableView.tableHeaderView = UIView()
+		self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 	}
 	
 	fileprivate func setupNavigation() {
@@ -50,17 +57,7 @@ class CertificatesViewController: UITableViewController {
 		
 		if !isSelectMode {
 
-			let configuration = UIMenu(title: "", children: [
-				UIAction(title: "Add Batch Certificates", handler: { _ in
-					//
-				}),
-				UIAction(title: "Add Certificate", handler: { _ in
-					self.importIpa()
-				})
-				
-			])
-
-			if let addButton = UIBarButtonItem.createBarButtonItem(symbolName: "plus.circle.fill", paletteColors: [Preferences.appTintColor.uiColor, .systemGray5], menu: configuration) {
+			if let addButton = UIBarButtonItem.createBarButtonItem(symbolName: "plus.circle.fill", paletteColors: [Preferences.appTintColor.uiColor, .systemGray5], target: self,action: #selector(addCert)) {
 				rightBarButtonItems.append(addButton)
 			}
 		} else {
@@ -73,52 +70,83 @@ class CertificatesViewController: UITableViewController {
 		
 	}
 	
-	func importIpa() {
-		let downloadsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-		let mobileProvisionPath = downloadsFolder!.appendingPathComponent("Samara_Test.mobileprovision").path
-
-		if let fileContent = readMobileProvisionFile(atPath: mobileProvisionPath) {
-			if let plistContent = extractPlist(fromMobileProvision: fileContent) {
-				if let plistData = plistContent.data(using: .utf8) {
-					do {
-						let decoder = PropertyListDecoder()
-						let cert = try decoder.decode(Cert.self, from: plistData)
-						print(cert)
-					} catch {
-						print("Error decoding plist data: \(error)")
-					}
-				} else {
-					print("Failed to convert plist content to data")
-				}
-			} else {
-				print("Failed to extract plist content")
+	@objc func addCert() {
+		let viewController = CertImportingVC()
+		let navigationController = UINavigationController(rootViewController: viewController)
+		
+		if #available(iOS 15.0, *) {
+			if let presentationController = navigationController.presentationController as? UISheetPresentationController {
+				presentationController.detents = [.medium(), .large()]
 			}
-		} else {
-			print("Failed to read mobileprovision file")
 		}
 		
+		self.present(navigationController, animated: true)
 	}
-	
-	func readMobileProvisionFile(atPath path: String) -> String? {
-		do {
-			let fileContent = try String(contentsOfFile: path, encoding: .ascii)
-			return fileContent
-		} catch {
-			print("Error reading file: \(error)")
-			return nil
+}
+extension CertificatesViewController {
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return certs?.count ?? 0 }
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
+		
+		let source = certs![indexPath.row]
+		cell.textLabel?.text = source.certData?.teamName
+		cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+		cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 13)
+		cell.backgroundColor = UIColor(named: "Background")
+		
+		if let expirationDate = source.certData?.expirationDate {
+			let currentDate = Date()
+			
+			if expirationDate < currentDate {
+				cell.detailTextLabel?.text = "Expiration: \(expirationDate.description) (Expired)"
+				cell.detailTextLabel?.textColor = .red
+			} else {
+				cell.detailTextLabel?.text = "Expiration: \(expirationDate.description)"
+				cell.detailTextLabel?.textColor = .secondaryLabel
+			}
+		} else {
+			cell.detailTextLabel?.text = "Expiration: Unknown"
+			cell.detailTextLabel?.textColor = .secondaryLabel
 		}
+		
+		return cell
 	}
-
-	func extractPlist(fromMobileProvision fileContent: String) -> String? {
-		guard let startRange = fileContent.range(of: "<?xml"),
-			  let endRange = fileContent.range(of: "</plist>") else {
-			return nil
+	override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+		
+		let source = certs![indexPath.row]
+		let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+		var p = documentsDirectory
+			.appendingPathComponent("Certificates")
+			.appendingPathComponent((source.uuid)!)
+		
+		let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+			do {
+				try FileManager.default.removeItem(at: p)
+			} catch {
+				print("Error deleting dir: \(error.localizedDescription)")
+			}
+			
+			self.context.delete(source)
+			
+			do {
+				try self.context.save()
+				
+				self.certs?.remove(at: indexPath.row)
+				
+				tableView.deleteRows(at: [indexPath], with: .automatic)
+			} catch {
+				print("Error deleting data: \(error.localizedDescription)")
+			}
+			
+			completionHandler(true)
 		}
+		
+		deleteAction.backgroundColor = UIColor.red
+		let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+		configuration.performsFirstActionWithFullSwipe = true
 
-		let plistContent = fileContent[startRange.lowerBound..<endRange.upperBound]
-		return String(plistContent)
+		return configuration
 	}
-	
 }
 extension CertificatesViewController {
 	@objc func doneEditingButton() { setEditing(false, animated: true) }
@@ -128,5 +156,25 @@ extension CertificatesViewController {
 		isSelectMode = editing
 		tableView.setEditing(editing, animated: true)
 		tableView.allowsMultipleSelection = false
+	}
+}
+extension CertificatesViewController {
+	@objc func afetch() {
+		self.fetchSources()
+	}
+	func fetchSources() {
+		let fetchRequest: NSFetchRequest<Certificate> = Certificate.fetchRequest()
+		let sortDescriptor = NSSortDescriptor(key: "dateAdded", ascending: false)
+		fetchRequest.sortDescriptors = [sortDescriptor]
+		
+		do {
+			self.certs = try context.fetch(fetchRequest)
+			
+			DispatchQueue.main.async {
+				self.tableView.reloadData()
+			}
+		} catch {
+			print("Error fetching sources: \(error)")
+		}
 	}
 }
