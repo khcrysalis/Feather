@@ -165,7 +165,8 @@ extension AppsViewController {
 //			break
 //		}
 		
-		tableView.deselectRow(at: indexPath, animated: true)
+		//tableView.deselectRow(at: indexPath, animated: true)
+        navigationController?.pushViewController(AppSigningViewController(app: meow!, appsViewController: self), animated: true)
 	}
 	
 	override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -263,23 +264,17 @@ extension AppsViewController {
 	func fetchSources() {
 
 		do {
-			
-			switch segmentedControl.selectedSegmentIndex {
-			case 0:
-				let fetchRequest: NSFetchRequest<DownloadedApps> = DownloadedApps.fetchRequest()
-				let sortDescriptor = NSSortDescriptor(key: "dateAdded", ascending: false)
-				fetchRequest.sortDescriptors = [sortDescriptor]
-				self.downlaodedApps = try context.fetch(fetchRequest)
-				showEmptyView(source: self.downlaodedApps ?? [])
-			case 1:
-				let fetchRequest: NSFetchRequest<SignedApps> = SignedApps.fetchRequest()
-				let sortDescriptor = NSSortDescriptor(key: "dateAdded", ascending: false)
-				fetchRequest.sortDescriptors = [sortDescriptor]
-				self.signedApps = try context.fetch(fetchRequest)
-				showEmptyView(source: self.signedApps ?? [])
-			default:
-				break
-			}
+            let fetchRequest: NSFetchRequest<DownloadedApps> = DownloadedApps.fetchRequest()
+            let sortDescriptor = NSSortDescriptor(key: "dateAdded", ascending: false)
+            fetchRequest.sortDescriptors = [sortDescriptor]
+            self.downlaodedApps = try context.fetch(fetchRequest)
+            showEmptyView(source: self.downlaodedApps ?? [])
+            
+            let fetchRequest2: NSFetchRequest<SignedApps> = SignedApps.fetchRequest()
+            let sortDescriptor2 = NSSortDescriptor(key: "dateAdded", ascending: false)
+            fetchRequest2.sortDescriptors = [sortDescriptor2]
+            self.signedApps = try context.fetch(fetchRequest2)
+            showEmptyView(source: self.signedApps ?? [])
 						
 			DispatchQueue.main.async {
 				self.tableView.reloadData()

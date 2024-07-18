@@ -63,6 +63,11 @@
 		33DF8D862C082FBF00D6C05F /* cmark-gfm in Frameworks */ = {isa = PBXBuildFile; productRef = 33DF8D852C082FBF00D6C05F /* cmark-gfm */; };
 		33DF8D882C082FBF00D6C05F /* cmark-gfm-extensions in Frameworks */ = {isa = PBXBuildFile; productRef = 33DF8D872C082FBF00D6C05F /* cmark-gfm-extensions */; };
 		33DF8D8A2C082FBF00D6C05F /* cmark-gfm-bin in Frameworks */ = {isa = PBXBuildFile; productRef = 33DF8D892C082FBF00D6C05F /* cmark-gfm-bin */; };
+		AF4D46EF2C432CCA003FA335 /* TweakLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */; };
+		AF4D46F12C4332D7003FA335 /* SwitchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D46F02C4332D7003FA335 /* SwitchViewCell.swift */; };
+		AF84EEFD2C4080610050CBE4 /* AppSigningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF84EEFC2C4080610050CBE4 /* AppSigningViewController.swift */; };
+		AFAC50922C48DB1300EDEAB6 /* ActivityIndicatorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAC50912C48DB1200EDEAB6 /* ActivityIndicatorViewCell.swift */; };
+		AFAC50952C48DF9300EDEAB6 /* AppSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAC50942C48DF9300EDEAB6 /* AppSigner.swift */; };
 		D0651C082BFEE1F600D40829 /* localhost.direct.pfx in Resources */ = {isa = PBXBuildFile; fileRef = D0651C062BFEE1F600D40829 /* localhost.direct.pfx */; };
 		D0651C092BFEE1F600D40829 /* HTTPSServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0651C072BFEE1F600D40829 /* HTTPSServer.swift */; };
 		D0651C0C2BFEE46400D40829 /* HttpSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D0651C0B2BFEE46400D40829 /* HttpSwift */; };
@@ -132,6 +137,11 @@
 		33DF8D7E2C0828FB00D6C05F /* Nuke.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Nuke.md; sourceTree = "<group>"; };
 		33DF8D802C08290F00D6C05F /* HttpSwift_RequestSwift_SocketSwift.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = HttpSwift_RequestSwift_SocketSwift.md; sourceTree = "<group>"; };
 		33DF8D822C08298900D6C05F /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
+		AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakLibraryViewCell.swift; sourceTree = "<group>"; };
+		AF4D46F02C4332D7003FA335 /* SwitchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewCell.swift; sourceTree = "<group>"; };
+		AF84EEFC2C4080610050CBE4 /* AppSigningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSigningViewController.swift; sourceTree = "<group>"; };
+		AFAC50912C48DB1200EDEAB6 /* ActivityIndicatorViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorViewCell.swift; sourceTree = "<group>"; };
+		AFAC50942C48DF9300EDEAB6 /* AppSigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSigner.swift; sourceTree = "<group>"; };
 		D0651C062BFEE1F600D40829 /* localhost.direct.pfx */ = {isa = PBXFileReference; lastKnownFileType = file; path = localhost.direct.pfx; sourceTree = "<group>"; };
 		D0651C072BFEE1F600D40829 /* HTTPSServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPSServer.swift; sourceTree = "<group>"; };
 		D0651C0E2BFEE93B00D40829 /* feather-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "feather-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -269,6 +279,10 @@
 				33570F602C32B80E008CB560 /* AppsTableViewCell.swift */,
 				33570F642C33D829008CB560 /* AppsInformation.swift */,
 				33570F662C34CCD5008CB560 /* AppsInformationViewController.swift */,
+				AF84EEFC2C4080610050CBE4 /* AppSigningViewController.swift */,
+				AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */,
+				AF4D46F02C4332D7003FA335 /* SwitchViewCell.swift */,
+				AFAC50912C48DB1200EDEAB6 /* ActivityIndicatorViewCell.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -432,16 +446,7 @@
 			path = Management;
 			sourceTree = "<group>";
 		};
-		D0651C052BFEE1F600D40829 /* Server */ = {
-			isa = PBXGroup;
-			children = (
-				D0651C062BFEE1F600D40829 /* localhost.direct.pfx */,
-				D0651C072BFEE1F600D40829 /* HTTPSServer.swift */,
-			);
-			path = Server;
-			sourceTree = "<group>";
-		};
-		D0651C0D2BFEE90A00D40829 /* Signing */ = {
+		AFAC50932C48DC8E00EDEAB6 /* zsign */ = {
 			isa = PBXGroup;
 			children = (
 				D0651C302BFEEA4B00D40829 /* archo.cpp */,
@@ -457,7 +462,25 @@
 				D0651C2B2BFEEA4B00D40829 /* signing.h */,
 				D0651C0F2BFEE93C00D40829 /* zsign.mm */,
 				D0651C102BFEE93C00D40829 /* zsign.hpp */,
+			);
+			path = zsign;
+			sourceTree = "<group>";
+		};
+		D0651C052BFEE1F600D40829 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				D0651C062BFEE1F600D40829 /* localhost.direct.pfx */,
+				D0651C072BFEE1F600D40829 /* HTTPSServer.swift */,
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
+		D0651C0D2BFEE90A00D40829 /* Signing */ = {
+			isa = PBXGroup;
+			children = (
+				AFAC50932C48DC8E00EDEAB6 /* zsign */,
 				D0651C0E2BFEE93B00D40829 /* feather-Bridging-Header.h */,
+				AFAC50942C48DF9300EDEAB6 /* AppSigner.swift */,
 			);
 			path = Signing;
 			sourceTree = "<group>";
@@ -579,6 +602,7 @@
 				332476F02C3E95F3008C8EF0 /* ResetViewController.swift in Sources */,
 				D0651C372BFEEA4B00D40829 /* openssl.cpp in Sources */,
 				D0651C1A2BFEE97F00D40829 /* base64.cpp in Sources */,
+				AF4D46EF2C432CCA003FA335 /* TweakLibraryViewCell.swift in Sources */,
 				332476EA2C3E905D008C8EF0 /* AboutViewController.swift in Sources */,
 				33BA37B02BF819ED00FF530A /* UIColor+hex.swift in Sources */,
 				33BA37932BF8159F00FF530A /* SourcesViewController.swift in Sources */,
@@ -589,6 +613,7 @@
 				33163FF02C3D224C0038E1EC /* DownloadTaskManager.swift in Sources */,
 				D0651C1B2BFEE97F00D40829 /* common.cpp in Sources */,
 				332476EE2C3E92BC008C8EF0 /* DisplayViewController.swift in Sources */,
+				AFAC50922C48DB1300EDEAB6 /* ActivityIndicatorViewCell.swift in Sources */,
 				3322FF4C2BFEDB01001768D8 /* SourceAppTableViewCell.swift in Sources */,
 				332476ED2C3E92BC008C8EF0 /* DisplayCollectionTableViewCell.swift in Sources */,
 				339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */,
@@ -597,6 +622,7 @@
 				3322FF492BFEC97F001768D8 /* SourceAppViewController.swift in Sources */,
 				33570F692C34E5B2008CB560 /* SectionHeaders.swift in Sources */,
 				332D72362BFA672B004AF675 /* AppsViewController.swift in Sources */,
+				AF4D46F12C4332D7003FA335 /* SwitchViewCell.swift in Sources */,
 				D0651C332BFEEA4B00D40829 /* macho.cpp in Sources */,
 				332476DC2C3E4D87008C8EF0 /* SourceViewActions.swift in Sources */,
 				33A305D72C3A85F300D650BA /* SourceDownload.swift in Sources */,
@@ -604,6 +630,7 @@
 				332476D82C3E4CF7008C8EF0 /* SourceAppActions.swift in Sources */,
 				33BA37A82BF8168900FF530A /* TabbarController.swift in Sources */,
 				33570F6C2C34FDE2008CB560 /* EmptyPageStackView.swift in Sources */,
+				AFAC50952C48DF9300EDEAB6 /* AppSigner.swift in Sources */,
 				33BA37AB2BF8196000FF530A /* Preferences.swift in Sources */,
 				33570F652C33D829008CB560 /* AppsInformation.swift in Sources */,
 				D0651C392BFEEA4B00D40829 /* signing.cpp in Sources */,
@@ -617,6 +644,7 @@
 				33CE81A72C42620A00C05327 /* RoundedSegmentedControl.swift in Sources */,
 				33BA37A32BF815F900FF530A /* main.swift in Sources */,
 				333912A02BF9816B00E72360 /* Model.swift in Sources */,
+				AF84EEFD2C4080610050CBE4 /* AppSigningViewController.swift in Sources */,
 				33DF8D832C08298900D6C05F /* Markdown.swift in Sources */,
 				339BDAE32BF95DC0007009D9 /* SectionIcons.swift in Sources */,
 				33AC87F32C3B7D24003D1175 /* CertificatesViewController.swift in Sources */,
@@ -770,7 +798,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DLSL362JHJ;
+				DEVELOPMENT_TEAM = 577Q6MMX9D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = feather/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Feather;
@@ -785,7 +813,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather2;
+				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -808,7 +836,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DLSL362JHJ;
+				DEVELOPMENT_TEAM = 577Q6MMX9D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = feather/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Feather;
@@ -823,7 +851,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather2;
+				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
