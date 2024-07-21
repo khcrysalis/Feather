@@ -360,7 +360,7 @@ extension CertImportingVC {
 		
 		do {
 			try context.save()
-			NotificationCenter.default.post(name: Notification.Name("t"), object: nil)
+			NotificationCenter.default.post(name: Notification.Name("cfetch"), object: nil)
 			dismiss(animated: true, completion: nil)
 		} catch {
 			print("error saving context: \(error)")

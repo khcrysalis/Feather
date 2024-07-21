@@ -223,20 +223,6 @@
 			path = Reset;
 			sourceTree = "<group>";
 		};
-		332476E22C3E8757008C8EF0 /* Logging */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Logging;
-			sourceTree = "<group>";
-		};
-		332476E32C3E876F008C8EF0 /* Language */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Language;
-			sourceTree = "<group>";
-		};
 		332476E42C3E8778008C8EF0 /* Display */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,9 +302,7 @@
 				332476E72C3E9044008C8EF0 /* About */,
 				332476DD2C3E858F008C8EF0 /* Acknowledgements */,
 				332476E42C3E8778008C8EF0 /* Display */,
-				332476E32C3E876F008C8EF0 /* Language */,
 				332476E02C3E8660008C8EF0 /* Donations */,
-				332476E22C3E8757008C8EF0 /* Logging */,
 				332476E12C3E874F008C8EF0 /* Reset */,
 			);
 			path = Settings;

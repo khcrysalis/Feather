@@ -14,7 +14,7 @@ class SettingsViewController: UITableViewController {
 	[
 		["Acknowledgements", "Submit Feedback", "GitHub Repository"],
 		["Support via Donations"],
-		["About", "Display", "Language", "App Icon"],
+		["About", "Display"],
 		["Debug Logs", "Reset"]
 	]
 	
@@ -112,11 +112,6 @@ extension SettingsViewController {
 		case "Display":
 			cell.setAccessoryIcon(with: "paintbrush")
 			cell.selectionStyle = .default
-		case "Language":
-			cell.setAccessoryIcon(with: "character.bubble")
-			cell.selectionStyle = .default
-		case "App Icon":
-			cell.accessoryType = .disclosureIndicator
 		case "Submit Feedback", "GitHub Repository":
 			cell.textLabel?.textColor = tintColor
 			cell.setAccessoryIcon(with: "safari")

@@ -11,7 +11,9 @@ import CoreData
 
 class AppSigningViewController: UITableViewController {
     var appsViewController: AppsViewController
-    
+	let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+	var certs: Certificate?
     var toInject: [String] = []
     var app: NSManagedObject!
     var name = "Unknown"
@@ -57,7 +59,45 @@ class AppSigningViewController: UITableViewController {
         tableView.register(TweakLibraryViewCell.self, forCellReuseIdentifier: "TweakLibraryViewCell")
         tableView.register(SwitchViewCell.self, forCellReuseIdentifier: "SwitchViewCell")
         tableView.register(ActivityIndicatorViewCell.self, forCellReuseIdentifier: "ActivityIndicatorViewCell")
+		fetchAndSortCertificates()
     }
+	
+	func fetchAndSortCertificates() {
+		let selectedCertIndex = Preferences.selectedCert
+		
+		guard selectedCertIndex != -1 else {
+			showBADDDDDAlert(message: "You do not have a certificate selected, please select one in the certificates tab.")
+			return
+		}
+
+		let fetchRequest: NSFetchRequest<Certificate> = Certificate.fetchRequest()
+		let sortDescriptor = NSSortDescriptor(key: "dateAdded", ascending: false)
+		fetchRequest.sortDescriptors = [sortDescriptor]
+
+		do {
+			let fetchedCerts = try context.fetch(fetchRequest)
+			
+			if fetchedCerts.indices.contains(selectedCertIndex) {
+				self.certs = fetchedCerts[selectedCertIndex]
+			} else {
+				self.certs = nil
+				showBADDDDDAlert(message: "You do not have a certificate selected, please select one in the certificates tab.")
+			}
+		} catch {
+			print("Error fetching certificates: \(error)")
+		}
+	}
+
+	func showBADDDDDAlert(message: String) {
+		let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+		alert.addAction(
+			UIAlertAction(title: "OK", style: .default) {_ in
+				self.dismiss(animated: true)
+			}
+		)
+		
+		self.present(alert, animated: true, completion: nil)
+	}
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 5;
@@ -68,7 +108,7 @@ class AppSigningViewController: UITableViewController {
         case 0:
             return 3;
         case 1:
-            return 2;
+            return 1;
         case 2:
             return 2 + toInject.count;
         case 3:
@@ -130,11 +170,6 @@ class AppSigningViewController: UITableViewController {
             cell.detailTextLabel?.text = version
             cell.accessoryType = .disclosureIndicator
         case (1, 0):
-            cell.textLabel?.text = "Certificate"
-            cell.detailTextLabel?.text = "key.p12"
-            cell.accessoryType = .disclosureIndicator
-            break
-        case (1, 1):
             cell.textLabel?.text = "Entitlements"
             cell.detailTextLabel?.text = ""
             cell.accessoryType = .disclosureIndicator
@@ -162,7 +197,7 @@ class AppSigningViewController: UITableViewController {
             self.navigationItem.setHidesBackButton(true, animated: true)
             signing = true
             tableView.reloadRows(at: [indexPath], with: .none)
-            signApp(options: AppSigningOptions(name: name, version: version, bundleId: bundleId, uuid: uuid, removePlugins: removePlugins, forceFileSharing: forceFileSharing, removeSupportedDevices: removeSupportedDevices, removeURLScheme: removeURLScheme, certificate: nil)) { success in
+            signApp(options: AppSigningOptions(name: name, version: version, bundleId: bundleId, uuid: uuid, removePlugins: removePlugins, forceFileSharing: forceFileSharing, removeSupportedDevices: removeSupportedDevices, removeURLScheme: removeURLScheme, certificate: certs)) { success in
                 self.navigationController?.popViewController(animated: true)
                 self.appsViewController.segmentedControl.selectedSegmentIndex = 1
             }

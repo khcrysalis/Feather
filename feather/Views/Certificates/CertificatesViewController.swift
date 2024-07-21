@@ -34,7 +34,7 @@ class CertificatesViewController: UITableViewController {
 		setupViews()
 		setupNavigation()
 		fetchSources()
-		NotificationCenter.default.addObserver(self, selector: #selector(afetch), name: Notification.Name("t"), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(afetch), name: Notification.Name("cfetch"), object: nil)
 	}
 	
 	deinit {
@@ -93,6 +93,7 @@ extension CertificatesViewController {
 		cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
 		cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 13)
 		cell.backgroundColor = UIColor(named: "Background")
+		cell.selectionStyle = .none
 		
 		if let expirationDate = source.certData?.expirationDate {
 			let currentDate = Date()
@@ -107,6 +108,10 @@ extension CertificatesViewController {
 		} else {
 			cell.detailTextLabel?.text = "Expiration: Unknown"
 			cell.detailTextLabel?.textColor = .secondaryLabel
+		}
+		
+		if Preferences.selectedCert == indexPath.row {
+			cell.accessoryType = .checkmark
 		}
 		
 		return cell
@@ -147,6 +152,23 @@ extension CertificatesViewController {
 
 		return configuration
 	}
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let previousSelectedCert = Preferences.selectedCert
+		
+		Preferences.selectedCert = indexPath.row
+		
+		var indexPathsToReload = [indexPath]
+		if previousSelectedCert != indexPath.row {
+			indexPathsToReload.append(IndexPath(row: previousSelectedCert, section: 0))
+		}
+		
+		tableView.reloadRows(at: indexPathsToReload, with: .fade)
+		tableView.deselectRow(at: indexPath, animated: true)
+	}
+
+
+	
 }
 extension CertificatesViewController {
 	@objc func doneEditingButton() { setEditing(false, animated: true) }

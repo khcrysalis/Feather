@@ -24,6 +24,7 @@ struct AppSigningOptions {
 }
 
 func signApp(options: AppSigningOptions, completion: @escaping (Bool) -> Void) {
+	
     DispatchQueue(label: "Signing").async {
         let fileManager = FileManager.default
         let tmpDir = fileManager.temporaryDirectory.appendingPathComponent(UUID().uuidString)
@@ -51,7 +52,20 @@ func signApp(options: AppSigningOptions, completion: @escaping (Bool) -> Void) {
             info.setObject(options.bundleId, forKey: "CFBundleIdentifier" as NSCopying)
             // TODO: add name and version
             try info.write(to: bundle.appendingPathComponent("Info.plist"))
-            if zsign(bundle.path, getDocumentsDirectory().path + "/Certificates/FFEF1A2D-FC8B-4BD3-AB37-F5A2DFBE1BB0/profile.mobileprovision", getDocumentsDirectory().path + "/Certificates/FFEF1A2D-FC8B-4BD3-AB37-F5A2DFBE1BB0/key.p12", "") != 0 {
+			
+			
+			var pw = ""
+			if let pww = options.certificate?.password {
+				pw = pww
+			}
+			print(pw)
+			print(getDocumentsDirectory().path + "/Certificates/" + (options.certificate?.uuid ?? "") + "/" + (options.certificate?.provisionPath)!)
+			print(getDocumentsDirectory().path + "/Certificates/" + (options.certificate?.uuid ?? "") + "/" + (options.certificate?.p12Path)!)
+            if zsign(bundle.path,
+					 getDocumentsDirectory().path + "/Certificates/" + (options.certificate?.uuid ?? "") + "/" + (options.certificate?.provisionPath)!,
+					 getDocumentsDirectory().path + "/Certificates/" + (options.certificate?.uuid ?? "") + "/" + (options.certificate?.p12Path)!,
+					 pw) != 0
+			{
                 DispatchQueue.main.async {
                     completion(false)
                 }
@@ -63,7 +77,8 @@ func signApp(options: AppSigningOptions, completion: @escaping (Bool) -> Void) {
             try fileManager.moveItem(at: tmpDir, to: appPath)
             
             DispatchQueue.main.async {
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+				let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
                 let newSignedApp = SignedApps(context: context)
                 newSignedApp.appPath = contents.first!.lastPathComponent
                 newSignedApp.bundleidentifier = options.bundleId

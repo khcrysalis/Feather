@@ -134,6 +134,7 @@ class AppDownload: NSObject {
 
 			do {
 				try context.save()
+				NotificationCenter.default.post(name: Notification.Name("afetch"), object: nil)
 			} catch {
 				print("Error saving data: \(error)")
 			}

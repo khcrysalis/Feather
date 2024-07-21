@@ -24,23 +24,11 @@ class AppsViewController: UITableViewController {
 	
 	@objc func segmentChanged(_ sender: UISegmentedControl) {
 		self.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
-		switch segmentedControl.selectedSegmentIndex {
-		case 0:
-			showEmptyView(source: self.downlaodedApps ?? [])
-		case 1:
-			showEmptyView(source: self.signedApps ?? [])
-		default:
-			break
-		}
+		showEmptyView()
 	}
 	
 	init() { super.init(style: .plain) }
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(false)
-		fetchSources()
-	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -81,12 +69,17 @@ class AppsViewController: UITableViewController {
 			emptyStackView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
 			emptyStackView.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor),
 		])
+		NotificationCenter.default.addObserver(self, selector: #selector(afetch), name: Notification.Name("afetch"), object: nil)
+
+	}
+	
+	deinit {
+		NotificationCenter.default.removeObserver(self, name: Notification.Name("afetch"), object: nil)
 	}
 	
 	fileprivate func setupNavigation() {
 		self.navigationController?.navigationBar.prefersLargeTitles = true
 		
-		var leftBarButtonItems: [UIBarButtonItem] = []
 		var rightBarButtonItems: [UIBarButtonItem] = []
 		
 		let configuration = UIMenu(title: "", children: [
@@ -103,7 +96,6 @@ class AppsViewController: UITableViewController {
 			rightBarButtonItems.append(addButton)
 		}
 		
-		navigationItem.leftBarButtonItems = leftBarButtonItems
 		navigationItem.rightBarButtonItems = rightBarButtonItems
 		
 	}
@@ -190,14 +182,12 @@ extension AppsViewController {
 				switch self.segmentedControl.selectedSegmentIndex {
 				case 0:
 					self.downlaodedApps?.remove(at: indexPath.row)
-					self.showEmptyView(source: self.downlaodedApps!)
 				case 1:
 					self.signedApps?.remove(at: indexPath.row)
-					self.showEmptyView(source: self.signedApps!)
 				default:
 					break
 				}
-				
+				self.showEmptyView()
 				tableView.deleteRows(at: [indexPath], with: .automatic)
 			} catch {
 				print("Error deleting data: \(error.localizedDescription)")
@@ -261,32 +251,37 @@ extension AppsViewController {
 }
 
 extension AppsViewController {
+	@objc func afetch() {
+		self.fetchSources()
+	}
 	func fetchSources() {
-
+		
 		do {
-            let fetchRequest: NSFetchRequest<DownloadedApps> = DownloadedApps.fetchRequest()
-            let sortDescriptor = NSSortDescriptor(key: "dateAdded", ascending: false)
-            fetchRequest.sortDescriptors = [sortDescriptor]
-            self.downlaodedApps = try context.fetch(fetchRequest)
-            showEmptyView(source: self.downlaodedApps ?? [])
-            
-            let fetchRequest2: NSFetchRequest<SignedApps> = SignedApps.fetchRequest()
-            let sortDescriptor2 = NSSortDescriptor(key: "dateAdded", ascending: false)
-            fetchRequest2.sortDescriptors = [sortDescriptor2]
-            self.signedApps = try context.fetch(fetchRequest2)
-            showEmptyView(source: self.signedApps ?? [])
-						
+			let fetchRequest: NSFetchRequest<DownloadedApps> = DownloadedApps.fetchRequest()
+			let sortDescriptor = NSSortDescriptor(key: "dateAdded", ascending: false)
+			fetchRequest.sortDescriptors = [sortDescriptor]
+			self.downlaodedApps = try context.fetch(fetchRequest)
+			
+			let fetchRequest2: NSFetchRequest<SignedApps> = SignedApps.fetchRequest()
+			let sortDescriptor2 = NSSortDescriptor(key: "dateAdded", ascending: false)
+			fetchRequest2.sortDescriptors = [sortDescriptor2]
+			self.signedApps = try context.fetch(fetchRequest2)
+			
 			DispatchQueue.main.async {
 				self.tableView.reloadData()
+				self.showEmptyView()
 			}
 		} catch {
 			print("Error fetching sources: \(error)")
 		}
 	}
 	
-	func showEmptyView<T>(source: [T]) {
+	func showEmptyView() {
+		let isDownloadedAppsEmpty = self.downlaodedApps?.isEmpty ?? true
+		let isSignedAppsEmpty = self.signedApps?.isEmpty ?? true
+		let isEmpty = isDownloadedAppsEmpty && isSignedAppsEmpty
+		
 		DispatchQueue.main.async {
-			let isEmpty = source.isEmpty
 			self.emptyStackView.isHidden = !isEmpty
 			self.tableView.isScrollEnabled = !isEmpty
 			self.tableView.refreshControl = isEmpty ? nil : self.refreshControl

@@ -13,7 +13,6 @@ class SourcesViewController: UITableViewController {
 		
 	let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 	var sources: [Source]?
-	public var searchController = UISearchController(searchResultsController: nil)
 	var isSelectMode: Bool = false {
 		didSet {
 			tableView.allowsMultipleSelection = isSelectMode
@@ -33,7 +32,6 @@ class SourcesViewController: UITableViewController {
 		super.viewDidLoad()
 		setupNavigation()
 		setupViews()
-		setupSearchController()
 		fetchSources()
 	}
 	
@@ -85,10 +83,6 @@ class SourcesViewController: UITableViewController {
 			if let addButton = UIBarButtonItem.createBarButtonItem(symbolName: "plus.circle.fill", paletteColors: [Preferences.appTintColor.uiColor, .systemGray5], menu: configuration) {
 				rightBarButtonItems.append(addButton)
 			}
-
-			if let sortButton = UIBarButtonItem.createBarButtonItem(symbolName: "line.3.horizontal.decrease.circle.fill", paletteColors: [Preferences.appTintColor.uiColor, .systemGray5], target: self, action: #selector(doneEditiaaangButton), indents: 20) {
-				rightBarButtonItems.append(sortButton)
-			}
 		} else {
 			let d = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneEditingButton))
 			leftBarButtonItems.append(d)
@@ -96,20 +90,6 @@ class SourcesViewController: UITableViewController {
 		
 		navigationItem.leftBarButtonItems = leftBarButtonItems
 		navigationItem.rightBarButtonItems = rightBarButtonItems
-	}
-	
-	@objc func doneEditiaaangButton() {
-		print("balls")
-	}
-	
-	fileprivate func setupSearchController() {
-		self.searchController.obscuresBackgroundDuringPresentation = true
-		self.searchController.hidesNavigationBarDuringPresentation = true
-		self.searchController.searchBar.placeholder = "Find in Sources"
-		
-		self.navigationItem.searchController = searchController
-		self.definesPresentationContext = false
-		self.navigationItem.hidesSearchBarWhenScrolling = false
 	}
 }
 

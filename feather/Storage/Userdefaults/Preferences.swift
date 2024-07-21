@@ -17,6 +17,9 @@ enum Preferences {
 	
 	@Storage(key: "Feather.OnboardingActive", defaultValue: true)
 	static var isOnboardingActive: Bool
+	
+	@Storage(key: "Feather.selectedCert", defaultValue: 0)
+	static var selectedCert: Int
 }
 // MARK: - Callbacks
 fileprivate extension Preferences {
