@@ -51,7 +51,7 @@
         <attribute name="identifier" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="sourceURL" attributeType="URI"/>
-        <relationship name="apps" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="StoreApps" inverseName="source" inverseEntity="StoreApps"/>
+        <relationship name="apps" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="StoreApps" inverseName="source" inverseEntity="StoreApps"/>
     </entity>
     <entity name="StoreApps" representedClassName="StoreApps" syncable="YES" codeGenerationType="class">
         <attribute name="bundleIdentifier" attributeType="String"/>
@@ -67,7 +67,7 @@
         <attribute name="versionDate" optional="YES" attributeType="String"/>
         <attribute name="versionDescription" optional="YES" attributeType="String"/>
         <relationship name="source" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Source" inverseName="apps" inverseEntity="Source"/>
-        <relationship name="versions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="StoreVersions" inverseName="storeApp" inverseEntity="StoreVersions"/>
+        <relationship name="versions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="StoreVersions" inverseName="storeApp" inverseEntity="StoreVersions"/>
     </entity>
     <entity name="StoreVersions" representedClassName="StoreVersions" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>

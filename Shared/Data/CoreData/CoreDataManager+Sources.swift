@@ -133,8 +133,9 @@ extension CoreDataManager {
 				existingSource.sourceURL = URL(string: url)
 				existingSource.iconURL = source.iconURL
 				
-				if let existingApps = existingSource.apps?.array as? [StoreApps] {
-					existingApps.forEach { context.delete($0) }
+				if let existingAppsSet = existingSource.apps as? Set<StoreApps> {
+					let existingAppsArray = Array(existingAppsSet)
+					existingAppsArray.forEach { context.delete($0) }
 				}
 				
 				source.apps.forEach {
@@ -192,4 +193,30 @@ extension CoreDataManager {
 		completion: @escaping (Error?) -> Void) {
 			getSourceData(urlString: url, completion: completion)
 	}
+}
+
+extension CoreDataManager {
+	func getAZStoreAppVersions(for app: StoreApps) -> [StoreVersions] {
+		guard let versionsSet = app.versions as? Set<StoreVersions> else { return [] }
+		let sortedVersionsArray = Array(versionsSet).sorted { (lhs, rhs) -> Bool in
+			let lhsVersion = lhs.version ?? ""
+			let rhsVersion = rhs.version ?? ""
+			return lhsVersion > rhsVersion
+		}
+		
+		return sortedVersionsArray
+	}
+	
+	func getAZStoreApps(from appsSet: Set<StoreApps>) -> [StoreApps] {
+		let appsArray = Array(appsSet)
+		
+		let sortedAppsArray = appsArray.sorted { (lhs: StoreApps, rhs: StoreApps) -> Bool in
+			let lhsName = lhs.name ?? ""
+			let rhsName = rhs.name ?? ""
+			return lhsName < rhsName
+		}
+		
+		return sortedAppsArray
+	}
+
 }

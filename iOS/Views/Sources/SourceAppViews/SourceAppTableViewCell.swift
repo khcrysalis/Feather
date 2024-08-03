@@ -157,12 +157,14 @@ class SourceAppTableViewCell: UITableViewCell {
 		var desc = app.developerName ?? "Unknown"
 		desc += " • "
 
-		if let firstApp = app.versions?.firstObject as? StoreVersions,
-		   let firstAppIconURL = firstApp.version {
-			desc += firstAppIconURL
+		let sortedVersions = CoreDataManager.shared.getAZStoreAppVersions(for: app)
+		if let firstVersion = sortedVersions.first,
+		   let firstAppVersion = firstVersion.version {
+			desc += firstAppVersion
 		} else {
 			desc += app.version ?? ""
 		}
+
 
 		versionLabel.text = desc
 		detailLabel.text = app.subtitle ?? "An awesome application!"

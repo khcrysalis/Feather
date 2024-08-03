@@ -86,13 +86,20 @@ extension SourcesViewController {
 
 		if let thumbnailURL = source.iconURL {
 			SectionIcons.loadImageFromURL(from: thumbnailURL, for: cell, at: indexPath, in: tableView)
-		} else if let apps = source.apps,
-				  let firstApp = apps.firstObject as? StoreApps,
-				  let firstAppIconURL = firstApp.iconURL {
-			SectionIcons.loadImageFromURL(from: firstAppIconURL, for: cell, at: indexPath, in: tableView)
+		} else if let appsSet = source.apps as? Set<StoreApps> {
+			let sortedApps = CoreDataManager.shared.getAZStoreApps(from: appsSet)
+			if let firstApp = sortedApps.first,
+			   let firstAppIconURL = firstApp.iconURL {
+				SectionIcons.loadImageFromURL(from: firstAppIconURL, for: cell, at: indexPath, in: tableView)
+			} else {
+				SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
+			}
 		} else {
 			SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
 		}
+
+
+
 
 		return cell
 	}
