@@ -10,9 +10,7 @@ import UIKit
 import UniformTypeIdentifiers
 
 class CertImportingVC: UITableViewController {
-	
-	let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-	
+		
 	lazy var saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveAction))
 	private var passwordTextField: UITextField?
 	

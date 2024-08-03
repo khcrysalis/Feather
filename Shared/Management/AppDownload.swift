@@ -11,7 +11,6 @@ import UIKit
 import CoreData
 
 class AppDownload: NSObject {
-	var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 	var dldelegate: DownloadDelegate?
 	var downloads = [URLSessionDownloadTask: (uuid: String, appuuid: String, destinationUrl: URL, completion: (String?, String?, Error?) -> Void)]()
 	var DirectoryUUID: String?
