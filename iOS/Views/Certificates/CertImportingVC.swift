@@ -71,6 +71,7 @@ class CertImportingVC: UITableViewController {
 						let decoder = PropertyListDecoder()
 						let cert = try decoder.decode(Cert.self, from: plistData)
 						CoreDataManager.shared.addToCertificates(cert: cert, files: selectedFiles)
+						self.dismiss(animated: true)
 					} catch {
 						print("Error decoding plist data: \(error)")
 					}
