@@ -12,14 +12,16 @@ import CoreData
 class SourcesViewController: UITableViewController {
 
 	var sources: [Source]?
+	public var searchController = UISearchController(searchResultsController: nil)
 
-	init() { super.init(style: .plain) }
+	init() { super.init(style: .grouped) }
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupNavigation()
 		setupViews()
+		setupSearchController()
 		fetchSources()
 	}
 
@@ -29,10 +31,9 @@ class SourcesViewController: UITableViewController {
 
 	fileprivate func setupViews() {
 		self.tableView.dataSource = self
+		self.tableView.backgroundColor = .systemBackground
 		self.tableView.delegate = self
 		self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-		self.refreshControl = UIRefreshControl()
-		self.refreshControl?.addTarget(self, action: #selector(beginRefresh(_:)), for: .valueChanged)
 		self.tableView.refreshControl = refreshControl
 		NotificationCenter.default.addObserver(self, selector: #selector(fetch), name: Notification.Name("sfetch"), object: nil)
 	}
@@ -41,36 +42,37 @@ class SourcesViewController: UITableViewController {
 		NotificationCenter.default.removeObserver(self, name: Notification.Name("sfetch"), object: nil)
 	}
 
-	@objc func beginRefresh(_ sender: Any) {
-		self.refreshControl?.beginRefreshing()
-		self.refreshControl?.endRefreshing()
-	}
-
 	fileprivate func setupNavigation() {
 		self.navigationController?.navigationBar.prefersLargeTitles = true
 		self.navigationItem.largeTitleDisplayMode = .always
-		var leftBarButtonItems: [UIBarButtonItem] = []
-		var rightBarButtonItems: [UIBarButtonItem] = []
 		
-		let configuration = UIMenu(title: "", children: [
-			UIAction(title: "Add Source", handler: { _ in
-				self.sourcesAddButtonTapped()
-			}),
-		])
-
-		
-		let addButton = UIBarButtonItem(image: UIImage(systemName: "plus"), menu: configuration)
-		rightBarButtonItems.append(addButton)
-
-		navigationItem.leftBarButtonItems = leftBarButtonItems
-		navigationItem.rightBarButtonItems = rightBarButtonItems
+		let accessoryView = InlineButton(type: .system)
+		accessoryView.addTarget(self, action: #selector(openSettings), for: .touchUpInside)
+		navigationItem.perform(Selector(("_setLargeTitleAccessoryView:")), with: accessoryView)
 	}
+	
+	@objc func openSettings() {
+		let settings = SettingsViewController()
+		let navigationController = UINavigationController(rootViewController: settings)
+		if let presentationController = navigationController.presentationController as? UISheetPresentationController {
+			presentationController.detents = [.medium(), .large()]
+		}
+		self.present(navigationController, animated: true)
+	}
+	
 }
 
 // MARK: - Tabelview
 extension SourcesViewController {
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return sources?.count ?? 0 }
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 70 }
+	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		let headerWithButton = GroupedSectionHeader(title: "List", buttonTitle: "Add Source", buttonAction: {
+			self.sourcesAddButtonTapped()
+		})
+		return headerWithButton
+	}
+	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
 
@@ -82,16 +84,13 @@ extension SourcesViewController {
 		cell.detailTextLabel?.text = source.sourceURL?.absoluteString
 		cell.detailTextLabel?.textColor = .secondaryLabel
 		cell.accessoryType = .disclosureIndicator
+		cell.backgroundColor = .clear
 
 		if let thumbnailURL = source.iconURL {
 			SectionIcons.loadImageFromURL(from: thumbnailURL, for: cell, at: indexPath, in: tableView)
 		} else {
 			SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
 		}
-
-
-
-
 		return cell
 	}
 
@@ -130,15 +129,11 @@ extension SourcesViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		guard let sourcerow = sources?[indexPath.row] else {
-			return
-		}
-
+		guard let sourcerow = sources?[indexPath.row] else { return }
 		let savc = SourceAppViewController()
 		savc.name = sourcerow.name
 		savc.uri = sourcerow.sourceURL
 		navigationController?.pushViewController(savc, animated: true)
-
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 }
@@ -153,4 +148,24 @@ extension SourcesViewController {
 	}
 }
 
-
+extension SourcesViewController: UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate {
+	func setupSearchController() {
+		self.searchController.searchResultsUpdater = self
+		self.searchController.obscuresBackgroundDuringPresentation = false
+		self.searchController.hidesNavigationBarDuringPresentation = true
+		self.searchController.searchBar.placeholder = "Search Sources"
+		
+		self.navigationItem.searchController = searchController
+		self.definesPresentationContext = false
+		self.navigationItem.hidesSearchBarWhenScrolling = false
+	}
+	
+	func updateSearchResults(for searchController: UISearchController) {
+		func inSearchMode(_ searchController: UISearchController) -> Bool {
+			let isActive = searchController.isActive
+			let searchText = searchController.searchBar.text ?? ""
+			
+			return isActive && !searchText.isEmpty
+		}
+	}
+}

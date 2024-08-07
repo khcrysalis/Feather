@@ -9,7 +9,6 @@ import UIKit
 import Nuke
 
 class SettingsViewController: UITableViewController {
-	let tintColor = Preferences.appTintColor.uiColor
 	var tableData =
 	[
 		["Acknowledgements", "Submit Feedback", "GitHub Repository"],
@@ -46,7 +45,7 @@ class SettingsViewController: UITableViewController {
 	}
 	
 	fileprivate func setupNavigation() {
-		self.navigationController?.navigationBar.prefersLargeTitles = true
+		self.navigationController?.navigationBar.prefersLargeTitles = false
 	}
 	
 	fileprivate func setupCreditsSection() {
@@ -111,11 +110,11 @@ extension SettingsViewController {
 			cell.setAccessoryIcon(with: "paintbrush")
 			cell.selectionStyle = .default
 		case "Submit Feedback", "GitHub Repository":
-			cell.textLabel?.textColor = tintColor
+			cell.textLabel?.textColor = .tintColor
 			cell.setAccessoryIcon(with: "safari")
 			cell.selectionStyle = .default
 		case "Support via Donations", "Reset":
-			cell.textLabel?.textColor = tintColor
+			cell.textLabel?.textColor = .tintColor
 			cell.accessoryType = .disclosureIndicator
 			cell.selectionStyle = .default
 		default:

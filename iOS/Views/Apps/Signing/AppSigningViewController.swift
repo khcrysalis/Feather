@@ -30,6 +30,12 @@ class AppSigningViewController: UITableViewController {
         self.appsViewController = appsViewController
         
         self.app = app
+		self.certs = CoreDataManager.shared.getCurrentCertificate()
+		
+		if (self.certs == nil) {
+			print("No Certasdsadsadasdasasddasdsdasdasdasd")
+		}
+		
         super.init(style: .insetGrouped)
         
         if let name = app.value(forKey: "name") as? String {
@@ -37,7 +43,11 @@ class AppSigningViewController: UITableViewController {
         }
         
         if let bundleId = app.value(forKey: "bundleidentifier") as? String {
-            self.bundleId = bundleId
+			if ((self.certs?.certData?.pPQCheck) != nil) {
+				self.bundleId = bundleId+"."+Preferences.pPQCheckString
+			} else {
+				self.bundleId = bundleId
+			}
         }
         
         if let version = app.value(forKey: "version") as? String {
@@ -58,7 +68,6 @@ class AppSigningViewController: UITableViewController {
         tableView.register(TweakLibraryViewCell.self, forCellReuseIdentifier: "TweakLibraryViewCell")
         tableView.register(SwitchViewCell.self, forCellReuseIdentifier: "SwitchViewCell")
         tableView.register(ActivityIndicatorViewCell.self, forCellReuseIdentifier: "ActivityIndicatorViewCell")
-		self.certs = CoreDataManager.shared.getCurrentCertificate()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

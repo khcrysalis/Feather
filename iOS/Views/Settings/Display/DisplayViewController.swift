@@ -19,9 +19,9 @@ class DisplayViewController: UIViewController {
 		"",
 		"Tint Color"
 	]
-	
-	let collectionData = ["Default", "Berry", "Sky", "Orange", "Peach", "Dragon", "Cactus"]
-	let collectionDataColors = ["8c96ff", "ff7a83", "6acef6", "ffbd7a", "ebcb8d", "eb8db4", "75d651"]
+
+	let collectionData = ["Default", "Berry", "Dr Pepper", "Cool Blue", "Fuchsia", "Purplish"]
+	let collectionDataColors = ["848ef9", "ff7a83", "711f25", "4161F1", "FF00FF", "D7B4F3"]
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
