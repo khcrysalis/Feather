@@ -1,4 +1,5 @@
 {
+  "originHash" : "a6b60f4a346faa30f3939f99ae0aea6a33ee75b9f96e3056d01c2305171dff19",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -16,6 +17,15 @@
       "state" : {
         "revision" : "2e0cd4c94ffc1aec04dc355feca92b32b827dd74",
         "version" : "2.2.1"
+      }
+    },
+    {
+      "identity" : "mbprogresshud",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jdg/MBProgressHUD",
+      "state" : {
+        "revision" : "bca42b801100b2b3a4eda0ba8dd33d858c780b0d",
+        "version" : "1.2.0"
       }
     },
     {
@@ -82,5 +92,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

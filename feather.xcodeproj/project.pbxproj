@@ -72,6 +72,7 @@
 		AF4D46EF2C432CCA003FA335 /* TweakLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */; };
 		AF4D46F12C4332D7003FA335 /* SwitchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D46F02C4332D7003FA335 /* SwitchViewCell.swift */; };
 		AF84EEFD2C4080610050CBE4 /* AppSigningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF84EEFC2C4080610050CBE4 /* AppSigningViewController.swift */; };
+		AF9B6B412C633AB400735748 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = AF9B6B402C633AB400735748 /* MBProgressHUD */; };
 		AFAC50922C48DB1300EDEAB6 /* ActivityIndicatorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAC50912C48DB1200EDEAB6 /* ActivityIndicatorViewCell.swift */; };
 		AFAC50952C48DF9300EDEAB6 /* AppSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAC50942C48DF9300EDEAB6 /* AppSigner.swift */; };
 		D0651C082BFEE1F600D40829 /* localhost.direct.pfx in Resources */ = {isa = PBXBuildFile; fileRef = D0651C062BFEE1F600D40829 /* localhost.direct.pfx */; };
@@ -192,6 +193,7 @@
 				3322FF512BFEE5B9001768D8 /* NukeExtensions in Frameworks */,
 				33DF8D772C0827E400D6C05F /* Markdown in Frameworks */,
 				33DF8D862C082FBF00D6C05F /* cmark-gfm in Frameworks */,
+				AF9B6B412C633AB400735748 /* MBProgressHUD in Frameworks */,
 				3322FF532BFEE5B9001768D8 /* NukeUI in Frameworks */,
 				33C0409E2C30DD3E00243D90 /* AlertKit in Frameworks */,
 				336EEE812C32367C0011188D /* ZIPFoundation in Frameworks */,
@@ -562,6 +564,7 @@
 				33DF8D892C082FBF00D6C05F /* cmark-gfm-bin */,
 				33C0409D2C30DD3E00243D90 /* AlertKit */,
 				336EEE802C32367C0011188D /* ZIPFoundation */,
+				AF9B6B402C633AB400735748 /* MBProgressHUD */,
 			);
 			productName = feather;
 			productReference = 33BA378B2BF8159F00FF530A /* feather.app */;
@@ -600,6 +603,7 @@
 				33DF8D842C082FBF00D6C05F /* XCRemoteSwiftPackageReference "swift-cmark" */,
 				33C0409C2C30DD3E00243D90 /* XCRemoteSwiftPackageReference "AlertKit" */,
 				336EEE7F2C32367C0011188D /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+				AF9B6B3F2C633AB400735748 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
 			);
 			productRefGroup = 33BA378C2BF8159F00FF530A /* Products */;
 			projectDirPath = "";
@@ -970,6 +974,14 @@
 				minimumVersion = 0.3.0;
 			};
 		};
+		AF9B6B3F2C633AB400735748 /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jdg/MBProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 		D0651C0A2BFEE46400D40829 /* XCRemoteSwiftPackageReference "Http.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/BiAtoms/Http.swift.git";
@@ -1038,6 +1050,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 33DF8D842C082FBF00D6C05F /* XCRemoteSwiftPackageReference "swift-cmark" */;
 			productName = "cmark-gfm-bin";
+		};
+		AF9B6B402C633AB400735748 /* MBProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF9B6B3F2C633AB400735748 /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
+			productName = MBProgressHUD;
 		};
 		D0651C0B2BFEE46400D40829 /* HttpSwift */ = {
 			isa = XCSwiftPackageProductDependency;

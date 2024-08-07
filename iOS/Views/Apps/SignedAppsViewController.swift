@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import MBProgressHUD
 
 class SignedAppsViewController: UITableViewController {
     var apps: [SignedApps]?
@@ -86,18 +87,20 @@ extension SignedAppsViewController {
         		let meow = getApplication(row: indexPath.row)
         //		navigationController?.pushViewController(AppSigningViewController(app: meow!, appsViewController: self), animated: true)
         guard let meow = meow else { return }
-        do {
-            let uuid = UUID()
-            let payloadPath = NSHomeDirectory() + "/tmp/" + uuid.uuidString + "/Payload"
-            try FileManager.default.createDirectory(atPath: NSHomeDirectory() + "/tmp/" + uuid.uuidString, withIntermediateDirectories: true)
-            guard let signedUUID = meow.value(forKey: "uuid") else { return }
-            try FileManager.default.copyItem(atPath: getDocumentsDirectory().appendingPathComponent("Apps/Signed/\(signedUUID)").path, toPath: payloadPath)
-            try FileManager.default.zipItem(at: URL(fileURLWithPath: payloadPath), to: URL(fileURLWithPath: NSHomeDirectory() + "/tmp/" + uuid.uuidString + ".ipa"))
-            tableView.deselectRow(at: indexPath, animated: true)
-            runHTTPSServer()
-            UIApplication.shared.open(URL(string: "itms-services://?action=download-manifest&url=\("https://localhost.direct:8443/manifest.plist?bundleid=\(meow.value(forKey: "bundleidentifier") as? String ?? "")&uuid=\(uuid.uuidString)&name=\((meow.value(forKey: "name") as? String ?? "").addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)".addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)")!, options: [:], completionHandler: nil)
-        } catch {
-            print(error)
+        let uuid = UUID()
+        let payloadPath = NSHomeDirectory() + "/tmp/" + uuid.uuidString + "/Payload"
+        try? FileManager.default.createDirectory(atPath: NSHomeDirectory() + "/tmp/" + uuid.uuidString, withIntermediateDirectories: true)
+        guard let signedUUID = meow.value(forKey: "uuid") else { return }
+        try? FileManager.default.copyItem(atPath: getDocumentsDirectory().appendingPathComponent("Apps/Signed/\(signedUUID)").path, toPath: payloadPath)
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        DispatchQueue(label: "compress").async {
+            try? FileManager.default.zipItem(at: URL(fileURLWithPath: payloadPath), to: URL(fileURLWithPath: NSHomeDirectory() + "/tmp/" + uuid.uuidString + ".ipa"))
+            DispatchQueue.main.async {
+                tableView.deselectRow(at: indexPath, animated: true)
+                runHTTPSServer()
+                MBProgressHUD.hide(for: self.view, animated: true)
+                UIApplication.shared.open(URL(string: "itms-services://?action=download-manifest&url=\("https://localhost.direct:8443/manifest.plist?bundleid=\(meow.value(forKey: "bundleidentifier") as? String ?? "")&uuid=\(uuid.uuidString)&name=\((meow.value(forKey: "name") as? String ?? "").addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)".addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)")!, options: [:], completionHandler: nil)
+            }
         }
     }
     
