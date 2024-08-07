@@ -161,7 +161,8 @@ class AppSigningViewController: UITableViewController {
             tableView.reloadRows(at: [indexPath], with: .none)
             signApp(options: AppSigningOptions(name: name, version: version, bundleId: bundleId, uuid: uuid, removePlugins: removePlugins, forceFileSharing: forceFileSharing, removeSupportedDevices: removeSupportedDevices, removeURLScheme: removeURLScheme, certificate: certs)) { success in
                 self.navigationController?.popViewController(animated: true)
-                
+                self.appsViewController.fetchSources()
+                self.appsViewController.tableView.reloadData()
             }
         default:
             break

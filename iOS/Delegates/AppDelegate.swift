@@ -31,7 +31,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		window?.makeKeyAndVisible()
 		createSourcesDirectory()
-        runHTTPSServer()
+        // Delete all files in tmp directory
+        let fileManager = FileManager.default
+        let tmpDirectory = NSHomeDirectory() + "/tmp"
+        
+        if let files = try? fileManager.contentsOfDirectory(atPath: tmpDirectory) {
+            for file in files {
+                try? fileManager.removeItem(atPath: tmpDirectory + "/" + file)
+            }
+        }
 		return true
 	}
 	

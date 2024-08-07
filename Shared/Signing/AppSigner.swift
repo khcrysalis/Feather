@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import AlertKit
 
 struct AppSigningOptions {
     var name: String
@@ -75,7 +76,6 @@ func signApp(options: AppSigningOptions, completion: @escaping (Bool) -> Void) {
                     iconURL = iconFileName
                 }
 				
-                // TODO: team name, ttl
 				CoreDataManager.shared.addToSignedApps(
 					version: options.version,
 					name: options.name,
@@ -88,6 +88,12 @@ func signApp(options: AppSigningOptions, completion: @escaping (Bool) -> Void) {
 					print("Fail: \(String(describing: error))")
 					completion(false)
 				}
+                DispatchQueue.main.async {
+                    let alertView = AlertAppleMusic17View(title: "Successfully signed \(options.name)", subtitle: nil, icon: .done)
+                    if let viewController = UIApplication.shared.windows.first?.rootViewController {
+                        alertView.present(on: viewController.view)
+                    }
+                }
                 completion(true)
             }
         } catch {

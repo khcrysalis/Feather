@@ -37,7 +37,7 @@ extension CoreDataManager {
 		appPath: String?,
 		completion: @escaping (Error?) -> Void) {
 			let context = context ?? self.context
-			let newApp = DownloadedApps(context: context)
+			let newApp = SignedApps(context: context)
 			
 			newApp.version = version
 			newApp.name = name

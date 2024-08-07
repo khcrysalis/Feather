@@ -28,7 +28,7 @@ func runHTTPSServer() {
                     "assets": [
                         [
                             "kind": "software-package",
-                            "url": "https://localhost.direct:8443/app.ipa?bundleid=\((request.queryParams["bundleid"] ?? "null").addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)"
+                            "url": "https://localhost.direct:8443/app.ipa?uuid=\(UUID(uuidString: request.queryParams["uuid"] ?? "null")?.uuidString ?? "null")" // bad code ikik
                         ]
                     ],
                     "metadata": [
@@ -44,8 +44,10 @@ func runHTTPSServer() {
         ])
     }
     server.get("/app.ipa") { request in
-        let path = getDocumentsDirectory().appendingPathComponent("Applications").appendingPathComponent((request.queryParams["bundleid"] ?? "null") + ".ipa").path;
-        guard FileManager.default.fileExists(atPath: path) else { return .init(.notFound) }
+        let path = NSHomeDirectory() + "/tmp/" + ((UUID(uuidString: request.queryParams["uuid"] ?? "null")?.uuidString ?? "null") + ".ipa") // more bad code please forgive me
+        if !FileManager.default.fileExists(atPath: path) {
+            return .init(.notFound)
+        }
         return .init(.ok, body: [Byte](FileManager.default.contents(atPath: path)!), headers: [
             "Content-Type": "application/octet-stream"
         ])
