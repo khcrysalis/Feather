@@ -63,7 +63,14 @@ int usage()
 
 extern "C" {
 
-int zsign(NSString *app, NSString *prov, NSString *key, NSString *pass)
+int zsign(NSString *app, 
+		  NSString *prov,
+		  NSString *key,
+		  NSString *pass,
+		  NSString *bundleid,
+		  NSString *displayname,
+		  NSString *bundleversion
+		  )
 {
     ZTimer gtimer;
     
@@ -156,6 +163,10 @@ int zsign(NSString *app, NSString *prov, NSString *key, NSString *pass)
     strPKeyFile = [key cStringUsingEncoding:NSUTF8StringEncoding];
     strProvFile = [prov cStringUsingEncoding:NSUTF8StringEncoding];
     strPassword = [pass cStringUsingEncoding:NSUTF8StringEncoding];
+	
+	strBundleId = [bundleid cStringUsingEncoding:NSUTF8StringEncoding];
+	strDisplayName = [displayname cStringUsingEncoding:NSUTF8StringEncoding];
+	strBundleVersion = [bundleversion cStringUsingEncoding:NSUTF8StringEncoding];
     
     /*if (optind >= argc)
      {

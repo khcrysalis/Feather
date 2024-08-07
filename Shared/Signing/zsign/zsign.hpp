@@ -15,7 +15,14 @@
 extern "C" {
 #endif
 
-int zsign(NSString *app, NSString *prov, NSString *key, NSString *pass);
+int zsign(NSString *app,
+		  NSString *prov,
+		  NSString *key,
+		  NSString *pass,
+		  NSString *bundleid,
+		  NSString *displayname,
+		  NSString *bundleversion
+		  );
 
 #ifdef __cplusplus
 }

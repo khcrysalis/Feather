@@ -15,11 +15,18 @@ struct AppSigningOptions {
     var bundleId: String
     
     var uuid: String
+	var injectionTool: String
     
     var removePlugins: Bool
     var forceFileSharing: Bool
     var removeSupportedDevices: Bool
     var removeURLScheme: Bool
+	var forceProMotion: Bool
+	
+	var forceForceFullScreen: Bool
+	var forceiTunesFileSharing: Bool
+	var forceMinimumVersion: String
+	var forceLightDarkAppearence: String
     
     var certificate: Certificate?
 }
@@ -38,25 +45,24 @@ func signApp(options: AppSigningOptions, completion: @escaping (Bool) -> Void) {
             }
             let bundle = contents.first!
             let info = NSDictionary(contentsOf: bundle.appendingPathComponent("Info.plist"))!.mutableCopy() as! NSMutableDictionary
-            if options.forceFileSharing { info.setObject(true, forKey: "UIFileSharingEnabled" as NSCopying) }
+            if options.forceFileSharing { info.setObject(true, forKey: "UISupportsDocumentBrowser" as NSCopying) }
+			if options.forceiTunesFileSharing { info.setObject(true, forKey: "UIFileSharingEnabled" as NSCopying) }
             if options.removeSupportedDevices { info.removeObject(forKey: "UISupportedDevices") }
             if options.removeURLScheme { info.removeObject(forKey: "CFBundleURLTypes") }
-            info.setObject(options.bundleId, forKey: "CFBundleIdentifier" as NSCopying)
-            // TODO: add name and version
+			if options.forceProMotion { info.setObject(true, forKey: "CADisableMinimumFrameDurationOnPhone" as NSCopying)}
+			if options.forceForceFullScreen { info.setObject(true, forKey: "UIRequiresFullScreen" as NSCopying) }
+			if options.forceMinimumVersion != "Automatic" { info.setObject(options.forceMinimumVersion, forKey: "MinimumOSVersion" as NSCopying) }
+			if options.forceLightDarkAppearence != "Automatic" { info.setObject(options.forceLightDarkAppearence, forKey: "UIUserInterfaceStyle" as NSCopying)}
             try info.write(to: bundle.appendingPathComponent("Info.plist"))
-			
-			var pw = ""
-			if let pww = options.certificate?.password {
-				pw = pww
-			}
 
-			print(getDocumentsDirectory().path + "/Certificates/" + (options.certificate?.uuid ?? "") + "/" + (options.certificate?.provisionPath)!)
-			print(getDocumentsDirectory().path + "/Certificates/" + (options.certificate?.uuid ?? "") + "/" + (options.certificate?.p12Path)!)
             if zsign(bundle.path,
 					 getDocumentsDirectory().path + "/Certificates/" + (options.certificate?.uuid ?? "") + "/" + (options.certificate?.provisionPath)!,
 					 getDocumentsDirectory().path + "/Certificates/" + (options.certificate?.uuid ?? "") + "/" + (options.certificate?.p12Path)!,
-					 pw) != 0
-			{
+					 options.certificate?.password,
+					 options.bundleId,
+					 options.name,
+					 options.version
+			) != 0 {
                 DispatchQueue.main.async {
                     completion(false)
                 }
