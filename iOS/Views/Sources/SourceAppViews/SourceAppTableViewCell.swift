@@ -7,9 +7,10 @@
 
 import Foundation
 import UIKit
+import Nuke
 
-class SourceAppTableViewCell: UITableViewCell {
-
+class AppTableViewCell: UITableViewCell {
+	
 	public var appDownload: AppDownload?
 	private var progressObserver: NSObjectProtocol?
 
@@ -17,67 +18,107 @@ class SourceAppTableViewCell: UITableViewCell {
 	private var getButtonWidthConstraint: NSLayoutConstraint?
 	private var buttonImage: UIImage?
 	
-	let nameLabel: UILabel = {
+	private let iconImageView: UIImageView = {
+		let imageView = UIImageView()
+		imageView.contentMode = .scaleAspectFill
+		imageView.clipsToBounds = true
+		imageView.layer.cornerRadius = 12
+		imageView.layer.cornerCurve = .continuous
+		imageView.layer.borderWidth = 1
+		imageView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
+		return imageView
+	}()
+
+	private let nameLabel: UILabel = {
 		let label = UILabel()
-		label.font = UIFont.boldSystemFont(ofSize: 17)
-		label.numberOfLines = 0
-		label.translatesAutoresizingMaskIntoConstraints = false
+		label.font = .boldSystemFont(ofSize: 16)
+		label.numberOfLines = 2
 		return label
 	}()
 
-	let versionLabel: UILabel = {
+	private let versionLabel: UILabel = {
 		let label = UILabel()
-		label.font = UIFont.systemFont(ofSize: 13)
-		label.textColor = .secondaryLabel
-		label.numberOfLines = 0
-		label.translatesAutoresizingMaskIntoConstraints = false
+		label.font = .systemFont(ofSize: 13, weight: .regular)
+		label.textColor = .gray
+		label.numberOfLines = 1
 		return label
 	}()
 
-	let detailLabel: UILabel = {
-		let label = UILabel()
-		label.font = UIFont.systemFont(ofSize: 11)
-		label.textColor = .secondaryLabel
-		label.numberOfLines = 0
-		label.translatesAutoresizingMaskIntoConstraints = false
-		return label
+	private let screenshotsScrollView: UIScrollView = {
+		let scrollView = UIScrollView()
+		scrollView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+		scrollView.showsHorizontalScrollIndicator = false
+		return scrollView
 	}()
 
+	private let screenshotsStackView: UIStackView = {
+		let stackView = UIStackView()
+		stackView.axis = .horizontal
+		stackView.spacing = 10
+		stackView.alignment = .center
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		return stackView
+	}()
+	
 	let getButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.layer.cornerRadius = 15
-		button.layer.backgroundColor = UIColor(named: "Cells")?.cgColor
+		button.layer.backgroundColor = UIColor.secondarySystemBackground.cgColor
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
 	}()
 
+	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		setupViews()
+		configureGetButtonArrow()
+		configureProgressLayer()
+		addObservers()
+	}
+
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+
 	private func setupViews() {
-		contentView.addSubview(nameLabel)
-		contentView.addSubview(versionLabel)
-		contentView.addSubview(detailLabel)
+		let labelsStackView = UIStackView(arrangedSubviews: [nameLabel, versionLabel])
+		labelsStackView.axis = .vertical
+		labelsStackView.spacing = 1
+		contentView.addSubview(iconImageView)
+		contentView.addSubview(labelsStackView)
+		contentView.addSubview(screenshotsScrollView)
+		screenshotsScrollView.addSubview(screenshotsStackView)
 		contentView.addSubview(getButton)
 
-		imageView?.translatesAutoresizingMaskIntoConstraints = true
-		getButtonWidthConstraint = getButton.widthAnchor.constraint(equalToConstant: 60)
-
+		iconImageView.translatesAutoresizingMaskIntoConstraints = false
+		labelsStackView.translatesAutoresizingMaskIntoConstraints = false
+		screenshotsScrollView.translatesAutoresizingMaskIntoConstraints = false
+		screenshotsStackView.translatesAutoresizingMaskIntoConstraints = false
+		getButton.translatesAutoresizingMaskIntoConstraints = false
+		getButtonWidthConstraint = getButton.widthAnchor.constraint(equalToConstant: 70)
 		NSLayoutConstraint.activate([
-			nameLabel.leadingAnchor.constraint(equalTo: imageView!.trailingAnchor, constant: 15),
-			nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-			nameLabel.trailingAnchor.constraint(equalTo: getButton.leadingAnchor, constant: -10),
+			iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+			iconImageView.widthAnchor.constraint(equalToConstant: 52),
+			iconImageView.heightAnchor.constraint(equalToConstant: 52),
 
-			versionLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-			versionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
-			versionLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
-
-			detailLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-			detailLabel.topAnchor.constraint(equalTo: versionLabel.bottomAnchor, constant: 4),
-			detailLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
-			detailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-
+			labelsStackView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 15),
+			labelsStackView.trailingAnchor.constraint(equalTo: getButton.leadingAnchor, constant: -15),
+			labelsStackView.centerYAnchor.constraint(equalTo: iconImageView.centerYAnchor),
+			labelsStackView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 15),
+			
 			getButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-			getButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+			getButton.centerYAnchor.constraint(equalTo: iconImageView.centerYAnchor),
 			getButtonWidthConstraint!,
-			getButton.heightAnchor.constraint(equalToConstant: 30)
+			getButton.heightAnchor.constraint(equalToConstant: 30),
+
+			screenshotsScrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+			screenshotsScrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+
+			screenshotsStackView.leadingAnchor.constraint(equalTo: screenshotsScrollView.leadingAnchor),
+			screenshotsStackView.topAnchor.constraint(equalTo: screenshotsScrollView.topAnchor),
+			screenshotsStackView.bottomAnchor.constraint(equalTo: screenshotsScrollView.bottomAnchor),
+			screenshotsStackView.trailingAnchor.constraint(equalTo: screenshotsScrollView.trailingAnchor),
+			screenshotsStackView.heightAnchor.constraint(equalTo: screenshotsScrollView.heightAnchor)
 		])
 	}
 
@@ -85,18 +126,18 @@ class SourceAppTableViewCell: UITableViewCell {
 		let symbolConfig = UIImage.SymbolConfiguration(pointSize: 13, weight: .bold)
 		buttonImage = UIImage(systemName: "arrow.down", withConfiguration: symbolConfig)
 		getButton.setImage(buttonImage, for: .normal)
-		getButton.tintColor = Preferences.appTintColor.uiColor
+		getButton.tintColor = .tintColor
 	}
 
 	private func configureGetButtonSquare() {
 		let symbolConfig = UIImage.SymbolConfiguration(pointSize: 9, weight: .bold)
 		buttonImage = UIImage(systemName: "square.fill", withConfiguration: symbolConfig)
 		getButton.setImage(buttonImage, for: .normal)
-		getButton.tintColor = Preferences.appTintColor.uiColor
+		getButton.tintColor = .tintColor
 	}
 
 	private func configureProgressLayer() {
-		progressLayer.strokeColor = Preferences.appTintColor.uiColor.cgColor
+		progressLayer.strokeColor = UIColor.tintColor.cgColor
 		progressLayer.lineWidth = 3.0
 		progressLayer.fillColor = nil
 		progressLayer.lineCap = .round
@@ -116,20 +157,6 @@ class SourceAppTableViewCell: UITableViewCell {
 		}
 	}
 	
-	//MARK: - Configure
-	
-	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		setupViews()
-		configureGetButtonArrow()
-		configureProgressLayer()
-		addObservers()
-	}
-
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		updateProgressLayerPath()
@@ -137,7 +164,7 @@ class SourceAppTableViewCell: UITableViewCell {
 
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
 		super.traitCollectionDidChange(previousTraitCollection)
-		getButton.layer.backgroundColor = UIColor(named: "Cells")?.cgColor
+		getButton.layer.backgroundColor =  UIColor.secondarySystemBackground.cgColor
 		updateProgressLayerPath()
 	}
 
@@ -146,34 +173,104 @@ class SourceAppTableViewCell: UITableViewCell {
 			NotificationCenter.default.removeObserver(observer)
 		}
 	}
+	
+	func configure(with app: StoreAppsData) {
+		nameLabel.text = app.name
+		versionLabel.text = app.subtitle ?? "An awesome application."
+		iconImageView.image = UIImage(named: "unknown")
 
-	func configure(with app: StoreApps) {
-
-		var name = app.name
-		if app.bundleIdentifier!.hasSuffix("Beta") {
-			name! += " (Beta)"
+		if let iconURL = app.iconURL {
+			loadImage(from: iconURL) { image in
+				DispatchQueue.main.async {
+					self.iconImageView.image = image
+				}
+			}
 		}
-		nameLabel.text = name
-		var desc = app.developerName ?? "Unknown"
-		desc += " • "
 
-		let sortedVersions = CoreDataManager.shared.getAZStoreAppVersions(for: app)
-		if let firstVersion = sortedVersions.first,
-		   let firstAppVersion = firstVersion.version {
-			desc += firstAppVersion
+		screenshotsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+
+		if let screenshotUrls = app.screenshotURLs, !screenshotUrls.isEmpty {
+			setupScreenshots(for: screenshotUrls)
 		} else {
-			desc += app.version ?? ""
+			iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+		}
+		updateDownloadState(uuid: app.bundleIdentifier)
+	}
+
+	private func setupScreenshots(for urls: [URL]) {
+		let imageViews = urls.map { url -> UIImageView in
+			let imageView = UIImageView()
+			imageView.contentMode = .scaleAspectFill
+			imageView.clipsToBounds = true
+			imageView.layer.cornerRadius = 15
+			imageView.layer.cornerCurve = .continuous
+			imageView.translatesAutoresizingMaskIntoConstraints = false
+			imageView.layer.borderWidth = 1
+			imageView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
+			return imageView
 		}
 
+		screenshotsScrollView.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 10).isActive = true
+		screenshotsScrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15).isActive = true
+		iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15).isActive = true
 
-		versionLabel.text = desc
-		detailLabel.text = app.subtitle ?? "An awesome application!"
+		imageViews.forEach { imageView in
+			screenshotsStackView.addArrangedSubview(imageView)
+			imageView.heightAnchor.constraint(equalTo: screenshotsScrollView.heightAnchor).isActive = true
+		}
 
-		updateDownloadState(uuid: app.uuid!)
+		loadImages(from: urls, into: imageViews)
+	}
+
+	private func loadImages(from urls: [URL], into imageViews: [UIImageView]) {
+		let dispatchGroup = DispatchGroup()
+
+		for (index, url) in urls.enumerated() {
+			dispatchGroup.enter()
+			loadImage(from: url) { [weak self] image in
+				guard let self = self else {
+					dispatchGroup.leave()
+					return
+				}
+				guard let image = image, index < imageViews.count else {
+					dispatchGroup.leave()
+					return
+				}
+
+				let imageView = imageViews[index]
+				DispatchQueue.main.async {
+					let aspectRatio = image.size.width / image.size.height
+					let width = self.screenshotsScrollView.bounds.height * aspectRatio
+					imageView.widthAnchor.constraint(equalToConstant: width).isActive = true
+					Task { imageView.image = await image.byPreparingForDisplay() }
+				}
+
+				dispatchGroup.leave()
+			}
+		}
+	}
+
+	private func loadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+		let request = ImageRequest(url: url)
+
+		if let cachedImage = ImagePipeline.shared.cache.cachedImage(for: request)?.image {
+			completion(cachedImage)
+		} else {
+			ImagePipeline.shared.loadImage(
+				with: request,
+				queue: .global(),
+				progress: nil
+			) { result in
+				switch result {
+				case .success(let imageResponse):
+					completion(imageResponse.image)
+				case .failure:
+					completion(nil)
+				}
+			}
+		}
 	}
 	
-//MARK: - Changing states
-
 	private func updateDownloadState(uuid: String?) {
 		guard let appUUID = uuid else {
 			return
@@ -213,7 +310,7 @@ class SourceAppTableViewCell: UITableViewCell {
 	func stopDownload() {
 		DispatchQueue.main.async {
 			UIView.animate(withDuration: 0.3, animations: {
-				self.getButtonWidthConstraint?.constant = 60
+				self.getButtonWidthConstraint?.constant = 70
 				self.progressLayer.strokeEnd = 0.0
 				self.configureGetButtonArrow()
 				self.layoutIfNeeded()
@@ -223,7 +320,6 @@ class SourceAppTableViewCell: UITableViewCell {
 	
 	func cancelDownload() {
 		DispatchQueue.main.async {
-			self.appDownload?.cancelDownload()
 			self.stopDownload()
 		}
 	}
@@ -233,3 +329,5 @@ class SourceAppTableViewCell: UITableViewCell {
 		progressLayer.path = circularPath.cgPath
 	}
 }
+
+

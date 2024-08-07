@@ -38,7 +38,7 @@ extension SourceAppViewController: DownloadDelegate {
 
 extension SourceAppViewController {
 	func startDownloadIfNeeded(for indexPath: IndexPath, in tableView: UITableView, downloadURL: URL?, appUUID: String?) {
-		guard let downloadURL = downloadURL, let appUUID = appUUID, let cell = tableView.cellForRow(at: indexPath) as? SourceAppTableViewCell else {
+		guard let downloadURL = downloadURL, let appUUID = appUUID, let cell = tableView.cellForRow(at: indexPath) as? AppTableViewCell else {
 			return
 		}
 
@@ -46,8 +46,8 @@ extension SourceAppViewController {
 			cell.appDownload = AppDownload()
 			cell.appDownload?.dldelegate = self
 		}
-		DispatchQueue.global(qos: .background).async {
-			downloadTaskManager.addTask(uuid: appUUID, cell: cell)
+		DispatchQueue(label: "DL").async {
+			downloadTaskManager.addTask(uuid: appUUID, cell: cell, dl: cell.appDownload!)
 			
 			cell.appDownload?.downloadFile(url: downloadURL, appuuid: appUUID) { [weak self] (uuid, filePath, error) in
 				guard let self = self else { return }

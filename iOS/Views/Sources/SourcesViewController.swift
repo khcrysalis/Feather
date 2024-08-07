@@ -42,9 +42,8 @@ class SourcesViewController: UITableViewController {
 	}
 
 	@objc func beginRefresh(_ sender: Any) {
-		CoreDataManager.shared.refreshSources() {_ in 
-			self.refreshControl?.endRefreshing()
-		}
+		self.refreshControl?.beginRefreshing()
+		self.refreshControl?.endRefreshing()
 	}
 
 	fileprivate func setupNavigation() {
@@ -86,14 +85,6 @@ extension SourcesViewController {
 
 		if let thumbnailURL = source.iconURL {
 			SectionIcons.loadImageFromURL(from: thumbnailURL, for: cell, at: indexPath, in: tableView)
-		} else if let appsSet = source.apps as? Set<StoreApps> {
-			let sortedApps = CoreDataManager.shared.getAZStoreApps(from: appsSet)
-			if let firstApp = sortedApps.first,
-			   let firstAppIconURL = firstApp.iconURL {
-				SectionIcons.loadImageFromURL(from: firstAppIconURL, for: cell, at: indexPath, in: tableView)
-			} else {
-				SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
-			}
 		} else {
 			SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
 		}
@@ -143,15 +134,10 @@ extension SourcesViewController {
 			return
 		}
 
-		if let sourceAppsSet = sourcerow.apps {
-			let sourceAppsArray = sourceAppsSet.compactMap { $0 as? StoreApps }
-			let sortedAppsArray = sourceAppsArray.sorted { $0.name! < $1.name! }
-
-			let savc = SourceAppViewController()
-			savc.name = sourcerow.name
-			savc.apps = sortedAppsArray
-			navigationController?.pushViewController(savc, animated: true)
-		}
+		let savc = SourceAppViewController()
+		savc.name = sourcerow.name
+		savc.uri = sourcerow.sourceURL
+		navigationController?.pushViewController(savc, animated: true)
 
 		tableView.deselectRow(at: indexPath, animated: true)
 	}

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum DownloadState {
 	case notStarted
@@ -25,14 +26,16 @@ enum DownloadState {
 
 class DownloadTask {
 	var uuid: String
-	var cell: SourceAppTableViewCell
+	var cell: AppTableViewCell
 	var state: DownloadState
+	var dl: AppDownload
 	var progressHandler: ((CGFloat) -> Void)?
 	
-	init(uuid: String, cell: SourceAppTableViewCell, state: DownloadState = .notStarted) {
+	init(uuid: String, cell: AppTableViewCell, state: DownloadState = .notStarted, dl: AppDownload) {
 		self.uuid = uuid
 		self.cell = cell
 		self.state = state
+		self.dl = dl
 	}
 	
 	func updateProgress(to progress: CGFloat) {
@@ -49,10 +52,12 @@ extension Notification.Name {
 class DownloadTaskManager {
 	static let shared = DownloadTaskManager()
 	public var downloadTasks: [String: DownloadTask] = [:]
-	private init() { }
+	private init() {
+		NotificationCenter.default.addObserver(self, selector: #selector(appWillTerminate), name: UIApplication.willTerminateNotification, object: nil)
+	}
 	
-	func addTask(uuid: String, cell: SourceAppTableViewCell) {
-		let task = DownloadTask(uuid: uuid, cell: cell)
+	func addTask(uuid: String, cell: AppTableViewCell, dl: AppDownload) {
+		let task = DownloadTask(uuid: uuid, cell: cell, dl: dl)
 		downloadTasks[uuid] = task
 		print(downloadTasks)
 	}
@@ -79,6 +84,8 @@ class DownloadTaskManager {
 	
 	func cancelDownload(for uuid: String) {
 		guard let task = downloadTasks[uuid] else { return }
+
+		task.dl.cancelDownload()
 		task.cell.cancelDownload()
 		removeTask(uuid: uuid)
 	}
@@ -107,11 +114,25 @@ class DownloadTaskManager {
 		defaults.removeObject(forKey: "\(uuid)_progress")
 	}
 	
-	func restoreTaskState(for uuid: String, cell: SourceAppTableViewCell) {
+	func restoreTaskState(for uuid: String, cell: AppTableViewCell) {
 		let defaults = UserDefaults.standard
+		guard let task = downloadTasks[uuid] else { return }
 		if let progress = defaults.value(forKey: "\(uuid)_progress") as? CGFloat {
-			let task = DownloadTask(uuid: uuid, cell: cell, state: .inProgress(progress: progress))
+			let task = DownloadTask(uuid: uuid, cell: cell, state: .inProgress(progress: progress), dl: task.dl)
 			downloadTasks[uuid] = task
 		}
+	}
+	
+	@objc private func appWillTerminate() {
+		clearAllTasks()
+	}
+	
+	private func clearAllTasks() {
+		let defaults = UserDefaults.standard
+		for uuid in downloadTasks.keys {
+			defaults.removeObject(forKey: "\(uuid)_progress")
+		}
+		defaults.synchronize()
+		downloadTasks.removeAll()
 	}
 }

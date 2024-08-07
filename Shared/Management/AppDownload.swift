@@ -11,6 +11,7 @@ import UIKit
 import CoreData
 
 class AppDownload: NSObject {
+	let progress = Progress(totalUnitCount: 100)
 	var dldelegate: DownloadDelegate?
 	var downloads = [URLSessionDownloadTask: (uuid: String, appuuid: String, destinationUrl: URL, completion: (String?, String?, Error?) -> Void)]()
 	var DirectoryUUID: String?
@@ -37,10 +38,12 @@ class AppDownload: NSObject {
 	}
 
 	func cancelDownload() {
+		print("Cancelled?")
 		downloadTask?.cancel()
 		session?.invalidateAndCancel()
 		downloadTask = nil
 		session = nil
+		progress.cancel()
 	}
 
 	func createUuidDirectory(uuid: String) -> URL? {
@@ -65,10 +68,25 @@ class AppDownload: NSObject {
 			return
 		}
 
-		do {
-			try fileManager.unzipItem(at: fileURL, to: destinationURL)
-			try fileManager.removeItem(at: fileURL)
+		// Define a progress object observer
+		let progressObserver = progress.observe(\.fractionCompleted) { progress, _ in
+			print("Unzipping progress: \(progress.fractionCompleted)")
+		}
 
+		do {
+			try fileManager.unzipItem(at: fileURL, to: destinationURL, progress: progress)
+			
+			if progress.isCancelled {
+				if fileManager.fileExists(atPath: destinationURL.path) {
+					try? fileManager.removeItem(at: destinationURL)
+				}
+				cancelDownload()
+				completion(nil, NSError(domain: "", code: 1, userInfo: [NSLocalizedDescriptionKey: "Unzip operation was cancelled"]))
+				return
+			}
+
+			try fileManager.removeItem(at: fileURL)
+			
 			let payloadURL = destinationURL.appendingPathComponent("Payload")
 			let contents = try fileManager.contentsOfDirectory(at: payloadURL, includingPropertiesForKeys: nil, options: [])
 			
@@ -82,16 +100,16 @@ class AppDownload: NSObject {
 				completion(nil, NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "No .app directory found in Payload"]))
 			}
 			
-			completion(nil, nil)
 		} catch {
 			if fileManager.fileExists(atPath: destinationURL.path) {
-				try! fileManager.removeItem(at: destinationURL)
+				try? fileManager.removeItem(at: destinationURL)
 			}
-
+			cancelDownload()
 			completion(nil, error)
 		}
-		
 	}
+
+
 
 	func addToApps(bundlePath: String, uuid: String, completion: @escaping (Error?) -> Void) {
 		guard let bundle = Bundle(path: bundlePath) else {

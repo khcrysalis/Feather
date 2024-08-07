@@ -6,10 +6,9 @@
 //
 
 import Foundation
-import UIKit
 
 class SourceGET {
-	func downloadURL(from url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
+	func downloadURL(from url: URL, completion: @escaping (Result<(Data, HTTPURLResponse?), Error>) -> Void) {
 		let task = URLSession.shared.dataTask(with: url) { data, response, error in
 			if let error = error {
 				completion(.failure(error))
@@ -35,7 +34,7 @@ class SourceGET {
 				return
 			}
 			
-			completion(.success(data))
+			completion(.success((data, httpResponse)))
 		}
 		task.resume()
 	}
@@ -47,9 +46,8 @@ class SourceGET {
 			let source = try decoder.decode(SourcesData.self, from: data)
 			return .success(source)
 		} catch {
-			print("Failed to parse JSON for identifier: Error: \(error)\n")
+			print("Failed to parse JSON: \(error)")
 			return .failure(error)
 		}
 	}
-	
 }

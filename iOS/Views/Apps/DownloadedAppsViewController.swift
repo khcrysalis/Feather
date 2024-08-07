@@ -26,7 +26,6 @@ class DownloadedAppsViewController: UITableViewController {
 	fileprivate func setupViews() {
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
-		self.tableView.register(SourceAppTableViewCell.self, forCellReuseIdentifier: "RoundedBackgroundCell")
 		NotificationCenter.default.addObserver(self, selector: #selector(afetch), name: Notification.Name("afetch"), object: nil)
 	}
 	

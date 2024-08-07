@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 // MARK: - Sources
 public struct SourcesData: Codable {
 	public var name: String?
@@ -25,18 +26,65 @@ public struct StoreAppsData: Codable {
 	public var iconURL: URL?
 	public var downloadURL: URL?
 	public var size: Int?
+	public var screenshotURLs: [URL]?
+	public var screenshots: [Screenshot]?
 	
 	public var version: String?
 	public var versions: [StoreAppsDataVersion]?
 	public var versionDate: String?
 	public var versionDescription: String?
 	public var localizedDescription: String?
+	
+	enum CodingKeys: String, CodingKey {
+		case name, developerName, subtitle, bundleIdentifier
+		case iconURL, downloadURL, size
+		case screenshotURLs, screenshots
+		case version, versions, versionDate, versionDescription, localizedDescription
+	}
+	
+	public init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		
+		name = try container.decode(String.self, forKey: .name)
+		developerName = try? container.decode(String.self, forKey: .developerName)
+		subtitle = try? container.decode(String.self, forKey: .subtitle)
+		bundleIdentifier = try container.decode(String.self, forKey: .bundleIdentifier)
+		
+		iconURL = try? container.decode(URL.self, forKey: .iconURL)
+		downloadURL = try? container.decode(URL.self, forKey: .downloadURL)
+		size = try? container.decode(Int.self, forKey: .size)
+		
+		screenshotURLs = try? container.decode([URL].self, forKey: .screenshotURLs)
+		
+		// Handle mixed types for `screenshots`
+		if let urls = try? container.decode([String].self, forKey: .screenshots) {
+			self.screenshots = urls.compactMap { URL(string: $0) }.map { Screenshot(imageURL: $0) }
+		} else {
+			self.screenshots = try? container.decode([Screenshot].self, forKey: .screenshots)
+		}
+		
+		version = try? container.decode(String.self, forKey: .version)
+		versions = try? container.decode([StoreAppsDataVersion].self, forKey: .versions)
+		versionDate = try? container.decode(String.self, forKey: .versionDate)
+		versionDescription = try? container.decode(String.self, forKey: .versionDescription)
+		localizedDescription = try? container.decode(String.self, forKey: .localizedDescription)
+	}
+}
+
+public struct Screenshot: Codable {
+	public var imageURL: URL
+	public var width: Int?
+	public var height: Int?
+	
+	public init(imageURL: URL, width: Int? = nil, height: Int? = nil) {
+		self.imageURL = imageURL
+		self.width = width
+		self.height = height
+	}
 }
 
 public struct StoreAppsDataVersion: Codable {
 	public var version: String
-	// Legit 0 people know how to put a date inside of their fucking repo apart from the altstore creator themselves
-//	public var date: Date?
 	public var localizedDescription: String?
 	public var downloadURL: URL
 	public var size: Int?
