@@ -31,12 +31,8 @@ class InsetGroupedSectionHeader: UIView {
 	}
 	
 	var title: String {
-		get {
-			return titleLabel.text ?? ""
-		}
-		set {
-			titleLabel.text = newValue
-		}
+		get { return titleLabel.text ?? "" }
+		set { titleLabel.text = newValue }
 	}
 	
 	private func setupUI() {
@@ -50,6 +46,69 @@ class InsetGroupedSectionHeader: UIView {
 	}
 }
 
+class SearchAppSectionHeader: UIView {
+	private let titleLabel: UILabel = {
+		let label = UILabel()
+		label.font = .systemFont(ofSize: 19, weight: .bold)
+		label.textColor = UIColor.label
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+	}()
+
+	private let iconImageView: UIImageView = {
+		let imageView = UIImageView()
+		imageView.contentMode = .scaleAspectFit
+		imageView.translatesAutoresizingMaskIntoConstraints = false
+		imageView.layer.cornerRadius = 5
+		imageView.layer.borderWidth = 1
+		imageView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
+		imageView.clipsToBounds = true
+		return imageView
+	}()
+
+	private let topAnchorConstant: CGFloat
+
+	init(title: String, icon: UIImage?, topAnchorConstant: CGFloat = 7) {
+		self.topAnchorConstant = topAnchorConstant
+		super.init(frame: .zero)
+		setupUI()
+		self.title = title
+		self.iconImageView.image = icon
+	}
+
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+
+	var title: String {
+		get { return titleLabel.text ?? "" }
+		set { titleLabel.text = newValue }
+	}
+
+	func setIcon(with image: UIImage?) {
+		iconImageView.image = image
+	}
+
+	private func setupUI() {
+		addSubview(iconImageView)
+		addSubview(titleLabel)
+
+		NSLayoutConstraint.activate([
+			iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+			iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+			iconImageView.widthAnchor.constraint(equalToConstant: 24),
+			iconImageView.heightAnchor.constraint(equalToConstant: 24),
+			
+			titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 8),
+			titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
+			titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: topAnchorConstant),
+			titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -7)
+		])
+	}
+}
+
+
+
 class GroupedSectionHeader: UIView {
 	private let titleLabel: UILabel = {
 		let label = UILabel()
@@ -59,11 +118,18 @@ class GroupedSectionHeader: UIView {
 		return label
 	}()
 	
+	private let subtitleLabel: UILabel = {
+		let label = UILabel()
+		label.font = .systemFont(ofSize: 15, weight: .regular)
+		label.textColor = UIColor.secondaryLabel
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+	}()
+	
 	private let actionButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.titleLabel?.font = .boldSystemFont(ofSize: 14)
 		button.setTitleColor(.tintColor, for: .normal)
-//		button.backgroundColor = .tintColor.withAlphaComponent(0.2)
 		button.backgroundColor = .secondarySystemBackground
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.layer.cornerCurve = .continuous
@@ -75,13 +141,11 @@ class GroupedSectionHeader: UIView {
 		return button
 	}()
 
-
-	
 	private let topAnchorConstant: CGFloat
 	private let buttonTitle: String?
 	private let buttonAction: (() -> Void)?
 	
-	init(title: String, topAnchorConstant: CGFloat = 10, buttonTitle: String? = nil, buttonAction: (() -> Void)? = nil) {
+	init(title: String, subtitle: String? = nil, topAnchorConstant: CGFloat = 10, buttonTitle: String? = nil, buttonAction: (() -> Void)? = nil) {
 		self.topAnchorConstant = topAnchorConstant
 		self.buttonTitle = buttonTitle
 		self.buttonAction = buttonAction
@@ -92,6 +156,11 @@ class GroupedSectionHeader: UIView {
 		if let title = buttonTitle {
 			setupButton(title: title)
 		}
+		
+		if let subtitle = subtitle {
+			self.subtitle = subtitle
+		}
+		
 	}
 	
 	required init?(coder: NSCoder) {
@@ -103,16 +172,35 @@ class GroupedSectionHeader: UIView {
 		set { titleLabel.text = newValue }
 	}
 	
+	var subtitle: String {
+		get { return subtitleLabel.text ?? "" }
+		set { subtitleLabel.text = newValue }
+	}
+	
 	private func setupUI() {
 		addSubview(titleLabel)
 		if buttonTitle != nil { addSubview(actionButton) }
+		if subtitleLabel.text != "" { addSubview(subtitleLabel) }
 		
+		// Setup constraints
 		NSLayoutConstraint.activate([
 			titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 17),
 			titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: topAnchorConstant),
 			titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -17),
-			titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -topAnchorConstant)
 		])
+		
+		if subtitleLabel.text != "" {
+			NSLayoutConstraint.activate([
+				subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 17),
+				subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
+				subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -17),
+				subtitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -topAnchorConstant)
+			])
+		} else {
+			NSLayoutConstraint.activate([
+				titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -topAnchorConstant)
+			])
+		}
 		
 		if buttonTitle != nil {
 			NSLayoutConstraint.activate([
@@ -132,10 +220,16 @@ class GroupedSectionHeader: UIView {
 	}
 	
 	override var intrinsicContentSize: CGSize {
-		let height = titleLabel.intrinsicContentSize.height + topAnchorConstant * 2
+		let height: CGFloat
+		if subtitleLabel.text != "" {
+			height = titleLabel.intrinsicContentSize.height + subtitleLabel.intrinsicContentSize.height + topAnchorConstant * 2 + 4
+		} else {
+			height = titleLabel.intrinsicContentSize.height + topAnchorConstant * 2
+		}
 		return CGSize(width: UIView.noIntrinsicMetric, height: height)
 	}
 }
+
 
 
 class InlineButton: UIButton {

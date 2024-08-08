@@ -46,7 +46,6 @@ class AppsTableViewCell: UITableViewCell {
 	}
 	
 	private func setupViews() {
-		backgroundColor = .clear
 		contentView.addSubview(nameLabel)
 		contentView.addSubview(versionLabel)
 		contentView.addSubview(detailLabel)

@@ -89,6 +89,7 @@ class AppTableViewCell: UITableViewCell {
 		contentView.addSubview(screenshotsScrollView)
 		screenshotsScrollView.addSubview(screenshotsStackView)
 		contentView.addSubview(getButton)
+		
 
 		iconImageView.translatesAutoresizingMaskIntoConstraints = false
 		labelsStackView.translatesAutoresizingMaskIntoConstraints = false

@@ -7,8 +7,7 @@
 
 import UIKit
 
-class DisplayViewController: UIViewController {
-	var tableView: UITableView!
+class DisplayViewController: UITableViewController {
 
 	let tableData = [
 		["Appearence"],
@@ -23,18 +22,19 @@ class DisplayViewController: UIViewController {
 	let collectionData = ["Default", "Berry", "Dr Pepper", "Cool Blue", "Fuchsia", "Purplish"]
 	let collectionDataColors = ["848ef9", "ff7a83", "711f25", "4161F1", "FF00FF", "D7B4F3"]
 	
+	init() { super.init(style: .insetGrouped) }
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		title = "Display"
 
-		self.tableView = UITableView(frame: .zero, style: .insetGrouped)
 		self.tableView.delegate = self
 		self.tableView.dataSource = self
 		self.tableView.register(CollectionTableViewCell.self, forCellReuseIdentifier: "CollectionCell")
-		self.tableView.translatesAutoresizingMaskIntoConstraints = false
-		
-		self.view.addSubview(tableView)
-		self.tableView.constraintCompletely(to: view)
 	}
 	
 	func updateAppearance(with style: UIUserInterfaceStyle) {
@@ -43,19 +43,19 @@ class DisplayViewController: UIViewController {
 	}
 }
 
-extension DisplayViewController: UITableViewDelegate, UITableViewDataSource {
-	func numberOfSections(in tableView: UITableView) -> Int { return sectionTitles.count }
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return tableData[section].count }
-	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { return sectionTitles[section] }
-	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { return sectionTitles[section].isEmpty ? 5 : 40 }
+extension DisplayViewController {
+	override func numberOfSections(in tableView: UITableView) -> Int { return sectionTitles.count }
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return tableData[section].count }
+	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { return sectionTitles[section] }
+	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { return sectionTitles[section].isEmpty ? 5 : 40 }
 	
-	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let title = sectionTitles[section]
 		let headerView = InsetGroupedSectionHeader(title: title)
 		return headerView
 	}
 	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let reuseIdentifier = "Cell"
 		let cell = UITableViewCell(style: .default, reuseIdentifier: reuseIdentifier)
 		cell.selectionStyle = .none

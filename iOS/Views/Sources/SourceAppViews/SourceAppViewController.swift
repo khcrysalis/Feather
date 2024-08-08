@@ -15,6 +15,10 @@ class SourceAppViewController: UITableViewController {
 	var name: String? { didSet { self.title = name } }
 	var uri: URL!
 	
+	var highlightAppName: String?
+	var highlightBundleID: String?
+	var highlightDeveloperName: String?
+	
 	private let sourceGET = SourceGET()
 	
 	private let activityIndicator: UIActivityIndicatorView = {
@@ -58,6 +62,11 @@ class SourceAppViewController: UITableViewController {
 				case .success(let sourceData):
 					DispatchQueue.main.async {
 						self?.apps = sourceData.apps
+						
+						if let fil = self?.shouldFilter() {
+							self?.apps = [fil].compactMap { $0 }
+						}
+						
 						UIView.transition(with: self!.tableView, duration: 0.3, options: .transitionCrossDissolve, animations: {
 							self!.activityIndicator.stopAnimating()
 							self?.tableView.reloadData()
@@ -74,6 +83,26 @@ class SourceAppViewController: UITableViewController {
 			}
 		}
 	}
+	
+	private func shouldFilter() -> StoreAppsData? {
+		guard
+			let name = highlightAppName,
+			let id = highlightBundleID
+		else {
+			print("did we filter? no")
+			return nil
+		}
+		
+		return filterApps(from: apps, name: name, id: id, devname: highlightDeveloperName).first
+	}
+
+	private func filterApps(from apps: [StoreAppsData], name: String, id: String, devname: String?) -> [StoreAppsData] {
+		print("did we filter? yes")
+		return apps.filter { app in
+			return app.name == name && app.bundleIdentifier == id && (devname == nil || app.developerName == devname)
+		}
+	}
+
 }
 
 extension SourceAppViewController {
@@ -84,7 +113,7 @@ extension SourceAppViewController {
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		
 		let app = apps[indexPath.row]
-		if (app.screenshotURLs != nil) {
+		if (app.screenshotURLs != nil), !app.screenshotURLs!.isEmpty {
 			return 322
 		} else {
 			return 72
@@ -97,6 +126,7 @@ extension SourceAppViewController {
 		let app = apps[indexPath.row]
 		cell.configure(with: app)
 		cell.selectionStyle = .none
+		cell.backgroundColor = .clear
 		cell.getButton.tag = indexPath.row
 		cell.getButton.addTarget(self, action: #selector(getButtonTapped(_:)), for: .touchUpInside)
 		let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(getButtonHold(_:)))
@@ -105,8 +135,8 @@ extension SourceAppViewController {
 		return cell
 	}
 	
-	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-		if apps.isEmpty {
+	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		if apps.isEmpty || (highlightAppName != nil) {
 			return nil
 		} else {
 			return "\(apps.count) Apps"

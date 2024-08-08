@@ -8,14 +8,23 @@
 import Foundation
 
 // MARK: - Sources
-public struct SourcesData: Codable {
+public struct SourcesData: Codable, Hashable {
 	public var name: String?
 	public var identifier: String
 	
 	public var sourceURL: URL?
 	public var iconURL: URL?
 	public var apps: [StoreAppsData]
+	
+	public static func == (lhs: SourcesData, rhs: SourcesData) -> Bool {
+		return lhs.identifier == rhs.identifier
+	}
+	
+	public func hash(into hasher: inout Hasher) {
+		hasher.combine(identifier)
+	}
 }
+
 
 public struct StoreAppsData: Codable {
 	public var name: String

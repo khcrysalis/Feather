@@ -72,13 +72,14 @@ class AppSigningViewController: UITableViewController {
             self.uuid = uuid
         }
     }
-    
+	
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
 		self.title = "Sign App"
+		
         tableView.register(TweakLibraryViewCell.self, forCellReuseIdentifier: "TweakLibraryViewCell")
         tableView.register(SwitchViewCell.self, forCellReuseIdentifier: "SwitchViewCell")
         tableView.register(ActivityIndicatorViewCell.self, forCellReuseIdentifier: "ActivityIndicatorViewCell")

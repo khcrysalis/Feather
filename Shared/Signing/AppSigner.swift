@@ -68,6 +68,7 @@ func signApp(options: AppSigningOptions, completion: @escaping (Bool) -> Void) {
                 }
                 return
             }
+			
             let signedUUID = UUID().uuidString
             try fileManager.createDirectory(at: getDocumentsDirectory().appendingPathComponent("Apps/Signed"), withIntermediateDirectories: true)
             let appPath = getDocumentsDirectory().appendingPathComponent("Apps/Signed").appendingPathComponent(signedUUID)

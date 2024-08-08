@@ -60,6 +60,7 @@ class SectionIcons {
 		let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext()
 		cell.imageView?.image = resizedImage
+		
 		cell.imageView?.layer.cornerCurve = .continuous
 		cell.imageView?.layer.cornerRadius = CGFloat(radius)
 		cell.imageView?.layer.borderWidth = 1
@@ -68,7 +69,7 @@ class SectionIcons {
 	}
 
 	
-	static public func loadImageFromURL(from url: URL, for cell: UITableViewCell, at indexPath: IndexPath, in tableView: UITableView) {
+	static public func loadSectionImageFromURL(from url: URL, for cell: UITableViewCell, at indexPath: IndexPath, in tableView: UITableView) {
 		let request = ImageRequest(url: url)
 		SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
 
@@ -92,6 +93,34 @@ class SectionIcons {
 			)
 		}
 	}
+	
+	static public func loadImageFromURL(from url: URL, completion: @escaping (UIImage?) -> Void) {
+		let request = ImageRequest(url: url)
+
+		if let cachedImage = ImagePipeline.shared.cache.cachedImage(for: request)?.image {
+			completion(cachedImage)
+			return
+		} else {
+			ImagePipeline.shared.loadImage(
+				with: request,
+				queue: .global(),
+				progress: nil,
+				completion: { result in
+					switch result {
+					case .success(let imageResponse):
+						DispatchQueue.main.async {
+							completion(imageResponse.image)
+						}
+					case .failure(_):
+						DispatchQueue.main.async {
+							completion(nil)
+						}
+					}
+				}
+			)
+		}
+	}
+
 
 }
 

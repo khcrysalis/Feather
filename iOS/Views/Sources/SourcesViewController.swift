@@ -12,7 +12,8 @@ import CoreData
 class SourcesViewController: UITableViewController {
 
 	var sources: [Source]?
-	public var searchController = UISearchController(searchResultsController: nil)
+	public var searchController: UISearchController!
+	let searchResultsTableViewController = SearchResultsTableViewController()
 
 	init() { super.init(style: .grouped) }
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -67,7 +68,7 @@ extension SourcesViewController {
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return sources?.count ?? 0 }
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 70 }
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-		let headerWithButton = GroupedSectionHeader(title: "List", buttonTitle: "Add Source", buttonAction: {
+		let headerWithButton = GroupedSectionHeader(title: "Repositories", subtitle: "\(sources?.count ?? 0) Sources", buttonTitle: "Add Repo", buttonAction: {
 			self.sourcesAddButtonTapped()
 		})
 		return headerWithButton
@@ -87,7 +88,7 @@ extension SourcesViewController {
 		cell.backgroundColor = .clear
 
 		if let thumbnailURL = source.iconURL {
-			SectionIcons.loadImageFromURL(from: thumbnailURL, for: cell, at: indexPath, in: tableView)
+			SectionIcons.loadSectionImageFromURL(from: thumbnailURL, for: cell, at: indexPath, in: tableView)
 		} else {
 			SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
 		}
@@ -114,7 +115,8 @@ extension SourcesViewController {
 			do {
 				try CoreDataManager.shared.context.save()
 				self.sources?.remove(at: indexPath.row)
-				self.tableView.deleteRows(at: [indexPath], with: .automatic)
+				self.searchResultsTableViewController.sources = self.sources ?? []
+				self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
 			} catch {
 				Debug.shared.log(message: "trailingSwipeActionsConfigurationForRowAt.deleteAction", type: .error)
 			}
@@ -142,30 +144,25 @@ extension SourcesViewController {
 	@objc func fetch() {self.fetchSources()}
 	func fetchSources() {
 		sources = CoreDataManager.shared.getAZSources()
+		searchResultsTableViewController.sources = sources ?? []
 		DispatchQueue.main.async {
-			self.tableView.reloadData()
+			self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
 		}
 	}
 }
 
-extension SourcesViewController: UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate {
+extension SourcesViewController: UISearchControllerDelegate, UISearchBarDelegate {
 	func setupSearchController() {
-		self.searchController.searchResultsUpdater = self
-		self.searchController.obscuresBackgroundDuringPresentation = false
+		self.searchController = UISearchController(searchResultsController: searchResultsTableViewController)
+		self.searchController.obscuresBackgroundDuringPresentation = true
 		self.searchController.hidesNavigationBarDuringPresentation = true
+		self.searchController.delegate = self
 		self.searchController.searchBar.placeholder = "Search Sources"
-		
+		self.searchController.searchResultsUpdater = searchResultsTableViewController
+		searchResultsTableViewController.sources = sources ?? []
 		self.navigationItem.searchController = searchController
-		self.definesPresentationContext = false
+		self.definesPresentationContext = true
 		self.navigationItem.hidesSearchBarWhenScrolling = false
 	}
-	
-	func updateSearchResults(for searchController: UISearchController) {
-		func inSearchMode(_ searchController: UISearchController) -> Bool {
-			let isActive = searchController.isActive
-			let searchText = searchController.searchBar.text ?? ""
-			
-			return isActive && !searchText.isEmpty
-		}
-	}
 }
+

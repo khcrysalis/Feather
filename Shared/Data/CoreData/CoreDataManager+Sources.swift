@@ -79,16 +79,24 @@ extension CoreDataManager {
 	}
 	
 	/// Create a new source entity from source data
-	private func createNewSourceEntity(
-		from sourceData: SourcesData,
+	private func createNewSourceEntity(from
+		sourceData: SourcesData,
 		url: String,
-		context: NSManagedObjectContext) -> Source {
-			let newSource = Source(context: context)
-			newSource.name = sourceData.name
-			newSource.identifier = sourceData.identifier
-			newSource.sourceURL = URL(string: url)
+		iconURL: URL?,
+		context: NSManagedObjectContext) -> Source 
+	{
+		let newSource = Source(context: context)
+		newSource.name = sourceData.name
+		newSource.identifier = sourceData.identifier
+		newSource.sourceURL = URL(string: url)
+		
+		if (sourceData.iconURL != nil) {
 			newSource.iconURL = sourceData.iconURL
-			return newSource
+		} else if (iconURL != nil) {
+			newSource.iconURL = iconURL
+		}
+		
+		return newSource
 	}
 	
 	/// Save or update source data in Core Data
@@ -99,7 +107,7 @@ extension CoreDataManager {
 			do {
 				
 				if !self.sourceExists(withIdentifier: source.identifier, context: context) {
-					let newSource = self.createNewSourceEntity(from: source, url: url, context: context)
+					_ = self.createNewSourceEntity(from: source, url: url, iconURL: source.apps[0].iconURL, context: context)
 				}
 				
 				try context.save()

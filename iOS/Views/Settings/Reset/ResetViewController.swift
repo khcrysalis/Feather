@@ -34,7 +34,6 @@ class ResetViewController: UITableViewController {
 	}
 	
 	fileprivate func setupViews() {
-		self.tableView.backgroundColor = UIColor(named: "SettingsBackground")
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
 	}
@@ -55,7 +54,6 @@ extension ResetViewController {
 		let cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
 		cell.accessoryType = .none
 		cell.selectionStyle = .default
-		cell.backgroundColor = UIColor(named: "SettingsCell")
 		
 		let cellText = tableData[indexPath.section][indexPath.row]
 		cell.textLabel?.text = cellText
