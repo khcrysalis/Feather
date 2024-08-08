@@ -216,6 +216,7 @@ int zsign(NSString *app,
     
     ZTimer timer;
     ZSignAsset zSignAsset;
+    
     if (!zSignAsset.Init(strCertFile, strPKeyFile, strProvFile, strEntitlementsFile, strPassword))
     {
         return -1;

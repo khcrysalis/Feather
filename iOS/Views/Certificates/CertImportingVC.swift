@@ -59,10 +59,20 @@ class CertImportingVC: UITableViewController {
 	}
 	
 	@objc func saveAction() {
+        
 		//krilling myself, also improving code later just not today lmaoo
 		
 		let mobileProvisionPath: URL!
 		mobileProvisionPath = (selectedFiles[.provision] as! URL)
+        if let p12path = selectedFiles[.p12] as? URL {
+            password_check_fix_WHAT_THE_FUCK(mobileProvisionPath.path)
+            if (!p12_password_check(p12path.path, selectedFiles[.password] as? String)) {
+                let alert = UIAlertController(title: "Bad Password", message: "Please check the password and try again.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+        }
 		
 		if let fileContent = CertData.readMobileProvisionFile(atPath: mobileProvisionPath.path) {
 			if let plistContent = CertData.extractPlist(fromMobileProvision: fileContent) {
