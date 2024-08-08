@@ -32,6 +32,7 @@ class SourcesViewController: UITableViewController {
 
 	fileprivate func setupViews() {
 		self.tableView.dataSource = self
+		
 		self.tableView.backgroundColor = .systemBackground
 		self.tableView.delegate = self
 		self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")

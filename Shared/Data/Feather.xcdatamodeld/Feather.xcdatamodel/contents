@@ -16,7 +16,7 @@
         <attribute name="expirationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="isXcodeManaged" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="pPQCheck" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="pPQCheck" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="teamName" attributeType="String"/>
         <attribute name="uuid" attributeType="String"/>
         <attribute name="version" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>

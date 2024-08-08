@@ -176,7 +176,12 @@ class AppTableViewCell: UITableViewCell {
 	}
 	
 	func configure(with app: StoreAppsData) {
-		nameLabel.text = app.name
+		var appname = app.name
+		if app.bundleIdentifier.hasSuffix("Beta") {
+			appname += " (Beta)"
+		}
+		
+		nameLabel.text = appname
 		versionLabel.text = app.subtitle ?? "An awesome application."
 		iconImageView.image = UIImage(named: "unknown")
 
