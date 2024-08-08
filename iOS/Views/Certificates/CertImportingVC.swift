@@ -66,7 +66,7 @@ class CertImportingVC: UITableViewController {
 		mobileProvisionPath = (selectedFiles[.provision] as! URL)
         if let p12path = selectedFiles[.p12] as? URL {
             password_check_fix_WHAT_THE_FUCK(mobileProvisionPath.path)
-            if (!p12_password_check(p12path.path, selectedFiles[.password] as? String)) {
+            if (!p12_password_check(p12path.path, selectedFiles[.password] as? String ?? "")) {
                 let alert = UIAlertController(title: "Bad Password", message: "Please check the password and try again.", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
