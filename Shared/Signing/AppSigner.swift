@@ -32,7 +32,7 @@ struct AppSigningOptions {
 }
 
 func signApp(options: AppSigningOptions, completion: @escaping (Bool) -> Void) {
-	
+	UIApplication.shared.isIdleTimerDisabled = true
     DispatchQueue(label: "Signing").async {
         let fileManager = FileManager.default
         let tmpDir = fileManager.temporaryDirectory.appendingPathComponent(UUID().uuidString)
@@ -55,9 +55,13 @@ func signApp(options: AppSigningOptions, completion: @escaping (Bool) -> Void) {
 			if options.forceLightDarkAppearence != "Automatic" { info.setObject(options.forceLightDarkAppearence, forKey: "UIUserInterfaceStyle" as NSCopying)}
             try info.write(to: bundle.appendingPathComponent("Info.plist"))
 
+			let certPath = CoreDataManager.shared.getCertifcatePath(source: options.certificate!)
+			let provisionPath = certPath.appendingPathComponent("\(options.certificate?.provisionPath ?? "")").path
+			let p12Path = certPath.appendingPathComponent("\(options.certificate?.p12Path ?? "")").path
+			
             if zsign(bundle.path,
-					 getDocumentsDirectory().path + "/Certificates/" + (options.certificate?.uuid ?? "") + "/" + (options.certificate?.provisionPath)!,
-					 getDocumentsDirectory().path + "/Certificates/" + (options.certificate?.uuid ?? "") + "/" + (options.certificate?.p12Path)!,
+					 provisionPath,
+					 p12Path,
 					 options.certificate?.password,
 					 options.bundleId,
 					 options.name,
@@ -101,10 +105,12 @@ func signApp(options: AppSigningOptions, completion: @escaping (Bool) -> Void) {
                         alertView.present(on: viewController.view)
                     }
                 }
+				UIApplication.shared.isIdleTimerDisabled = false
                 completion(true)
             }
         } catch {
-            print("Fail: \(error)")
+			UIApplication.shared.isIdleTimerDisabled = false
+			Debug.shared.log(message: "signApp: \(error)", type: .error)
             DispatchQueue.main.async {
                 completion(false)
             }

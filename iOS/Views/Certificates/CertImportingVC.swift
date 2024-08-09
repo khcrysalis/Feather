@@ -74,23 +74,9 @@ class CertImportingVC: UITableViewController {
             }
         }
 		
-		if let fileContent = CertData.readMobileProvisionFile(atPath: mobileProvisionPath.path) {
-			if let plistContent = CertData.extractPlist(fromMobileProvision: fileContent) {
-				if let plistData = plistContent.data(using: .utf8) {
-					do {
-						let decoder = PropertyListDecoder()
-						let cert = try decoder.decode(Cert.self, from: plistData)
-						CoreDataManager.shared.addToCertificates(cert: cert, files: selectedFiles)
-						self.dismiss(animated: true)
-					} catch {
-						print("Error decoding plist data: \(error)")
-					}
-				} else {
-					print("Failed to convert plist content to data")
-				}
-			} else {
-				print("Failed to extract plist content")
-			}
+		if let fileContent = CertData.parseMobileProvisioningFile(atPath: mobileProvisionPath) {
+			CoreDataManager.shared.addToCertificates(cert: fileContent, files: selectedFiles)
+			self.dismiss(animated: true)
 		} else {
 			print("Failed to read mobileprovision file")
 		}

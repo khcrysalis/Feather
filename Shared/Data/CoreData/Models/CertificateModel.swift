@@ -25,7 +25,6 @@ public struct Cert: Codable {
 		case AppIDName,
 			 CreationDate,
 			 IsXcodeManaged,
-			 //derEncodedProfile
 			 PPQCheck,
 			 ExpirationDate,
 			 Name,
@@ -34,6 +33,20 @@ public struct Cert: Codable {
 			 UUID,
 			 Version
 		case derEncodedProfile = "DER-Encoded-Profile"
+	}
+	
+	public init(AppIDName: String, CreationDate: Date, IsXcodeManaged: Bool, derEncodedProfile: Data, PPQCheck: Bool?, ExpirationDate: Date, Name: String, TeamName: String, TimeToLive: Int, UUID: String, Version: Int) {
+		self.AppIDName = AppIDName
+		self.CreationDate = CreationDate
+		self.IsXcodeManaged = IsXcodeManaged
+		self.derEncodedProfile = derEncodedProfile
+		self.PPQCheck = PPQCheck
+		self.ExpirationDate = ExpirationDate
+		self.Name = Name
+		self.TeamName = TeamName
+		self.TimeToLive = TimeToLive
+		self.UUID = UUID
+		self.Version = Version
 	}
 }
 

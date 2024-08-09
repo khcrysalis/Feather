@@ -83,26 +83,45 @@ extension SignedAppsViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        		let meow = getApplication(row: indexPath.row)
-        //		navigationController?.pushViewController(AppSigningViewController(app: meow!, appsViewController: self), animated: true)
-        guard let meow = meow else { return }
-        let uuid = UUID()
-        let payloadPath = NSHomeDirectory() + "/tmp/" + uuid.uuidString + "/Payload"
-        try? FileManager.default.createDirectory(atPath: NSHomeDirectory() + "/tmp/" + uuid.uuidString, withIntermediateDirectories: true)
-        guard let signedUUID = meow.value(forKey: "uuid") else { return }
-        try? FileManager.default.copyItem(atPath: getDocumentsDirectory().appendingPathComponent("Apps/Signed/\(signedUUID)").path, toPath: payloadPath)
-        MBProgressHUD.showAdded(to: self.view, animated: true)
-        DispatchQueue(label: "compress").async {
-            try? FileManager.default.zipItem(at: URL(fileURLWithPath: payloadPath), to: URL(fileURLWithPath: NSHomeDirectory() + "/tmp/" + uuid.uuidString + ".ipa"))
-            DispatchQueue.main.async {
-                tableView.deselectRow(at: indexPath, animated: true)
-                runHTTPSServer()
-                MBProgressHUD.hide(for: self.view, animated: true)
-                UIApplication.shared.open(URL(string: "itms-services://?action=download-manifest&url=\("https://localhost.direct:8443/manifest.plist?bundleid=\(meow.value(forKey: "bundleidentifier") as? String ?? "")&uuid=\(uuid.uuidString)&name=\((meow.value(forKey: "name") as? String ?? "").addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)".addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)")!, options: [:], completionHandler: nil)
-            }
-        }
-    }
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		guard let meow = getApplication(row: indexPath.row) else { return }
+		
+		let filePath = getApplicationFilePath(with: meow, row: indexPath.row, getuuidonly: true).path
+		let uuid = UUID().uuidString
+		let tempDirectory = NSHomeDirectory() + "/tmp/\(uuid)"
+		let payloadPath = "\(tempDirectory)/Payload"
+		let ipaPath = "\(tempDirectory).ipa"
+		
+		do {
+			UIApplication.shared.isIdleTimerDisabled = true
+			try FileManager.default.createDirectory(atPath: tempDirectory, withIntermediateDirectories: true)
+			try FileManager.default.copyItem(atPath: filePath, toPath: payloadPath)
+			MBProgressHUD.showAdded(to: self.view, animated: true)
+			DispatchQueue(label: "compress").async {
+				do {
+					let payloadURL = URL(fileURLWithPath: payloadPath)
+					let ipaURL = URL(fileURLWithPath: ipaPath)
+					try FileManager.default.zipItem(at: payloadURL, to: ipaURL)
+					UIApplication.shared.isIdleTimerDisabled = false
+					DispatchQueue.main.async {
+						tableView.deselectRow(at: indexPath, animated: true)
+						MBProgressHUD.hide(for: self.view, animated: true)
+						runHTTPSServer()
+						UIApplication.shared.open(URL(string: "itms-services://?action=download-manifest&url=\("https://localhost.direct:8443/manifest.plist?bundleid=\(meow.value(forKey: "bundleidentifier") as? String ?? "")&uuid=\(uuid)&name=\((meow.value(forKey: "name") as? String ?? "").addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)".addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)")!, options: [:], completionHandler: nil)
+
+					}
+				} catch {
+					DispatchQueue.main.async {
+						MBProgressHUD.hide(for: self.view, animated: true)
+					}
+					Debug.shared.log(message: "\(error)", type: .error)
+				}
+			}
+		} catch {
+			Debug.shared.log(message: "\(error)", type: .error)
+		}
+	}
+
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let source = getApplication(row: indexPath.row)
