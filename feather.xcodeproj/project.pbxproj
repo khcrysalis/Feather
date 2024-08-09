@@ -68,6 +68,9 @@
 		33DF8D882C082FBF00D6C05F /* cmark-gfm-extensions in Frameworks */ = {isa = PBXBuildFile; productRef = 33DF8D872C082FBF00D6C05F /* cmark-gfm-extensions */; };
 		33DF8D8A2C082FBF00D6C05F /* cmark-gfm-bin in Frameworks */ = {isa = PBXBuildFile; productRef = 33DF8D892C082FBF00D6C05F /* cmark-gfm-bin */; };
 		33E4D8322C64CB39006A1C26 /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8312C64CB39006A1C26 /* SearchResultsTableViewController.swift */; };
+		33E4D8342C6593D2006A1C26 /* UIView+parentcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8332C6593D2006A1C26 /* UIView+parentcontroller.swift */; };
+		33E4D8362C6593F4006A1C26 /* CGSize+aspectFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8352C6593F4006A1C26 /* CGSize+aspectFit.swift */; };
+		33E4D8382C659FE9006A1C26 /* CertificateViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8372C659FE9006A1C26 /* CertificateViewTableViewCell.swift */; };
 		33EEDAA42C5D9358009089DC /* CoreDataManager+DownloadedApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */; };
 		33EEDAA72C5DA1C1009089DC /* DownloadedAppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EEDAA62C5DA1C1009089DC /* DownloadedAppsViewController.swift */; };
 		AF4D46EF2C432CCA003FA335 /* TweakLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */; };
@@ -151,6 +154,9 @@
 		33DF8D802C08290F00D6C05F /* HttpSwift_RequestSwift_SocketSwift.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = HttpSwift_RequestSwift_SocketSwift.md; sourceTree = "<group>"; };
 		33DF8D822C08298900D6C05F /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
 		33E4D8312C64CB39006A1C26 /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
+		33E4D8332C6593D2006A1C26 /* UIView+parentcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+parentcontroller.swift"; sourceTree = "<group>"; };
+		33E4D8352C6593F4006A1C26 /* CGSize+aspectFit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+aspectFit.swift"; sourceTree = "<group>"; };
+		33E4D8372C659FE9006A1C26 /* CertificateViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateViewTableViewCell.swift; sourceTree = "<group>"; };
 		33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+DownloadedApps.swift"; sourceTree = "<group>"; };
 		33EEDAA62C5DA1C1009089DC /* DownloadedAppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedAppsViewController.swift; sourceTree = "<group>"; };
 		AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakLibraryViewCell.swift; sourceTree = "<group>"; };
@@ -376,6 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				33AC87F22C3B7D24003D1175 /* CertificatesViewController.swift */,
+				33E4D8372C659FE9006A1C26 /* CertificateViewTableViewCell.swift */,
 				33CE81A82C4295F300C05327 /* CertImportingVC.swift */,
 			);
 			path = Certificates;
@@ -455,6 +462,8 @@
 				33BA37AF2BF819ED00FF530A /* UIColor+hex.swift */,
 				339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */,
 				33A305D42C3A858100D650BA /* UIButton+longpress.swift */,
+				33E4D8332C6593D2006A1C26 /* UIView+parentcontroller.swift */,
+				33E4D8352C6593F4006A1C26 /* CGSize+aspectFit.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -671,6 +680,7 @@
 				D0651C112BFEE93C00D40829 /* zsign.mm in Sources */,
 				332476DA2C3E4D35008C8EF0 /* SourceAppDownload.swift in Sources */,
 				3322FF492BFEC97F001768D8 /* SourceAppViewController.swift in Sources */,
+				33E4D8342C6593D2006A1C26 /* UIView+parentcontroller.swift in Sources */,
 				33570F692C34E5B2008CB560 /* SectionHeaders.swift in Sources */,
 				332D72362BFA672B004AF675 /* SignedAppsViewController.swift in Sources */,
 				335F0C2E2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift in Sources */,
@@ -680,6 +690,7 @@
 				33A305D72C3A85F300D650BA /* SourceDownload.swift in Sources */,
 				33570F672C34CCD5008CB560 /* AppsInformationViewController.swift in Sources */,
 				332476D82C3E4CF7008C8EF0 /* SourceAppActions.swift in Sources */,
+				33E4D8362C6593F4006A1C26 /* CGSize+aspectFit.swift in Sources */,
 				AF9B6B442C6346FF00735748 /* p12_password_check.mm in Sources */,
 				33BA37A82BF8168900FF530A /* TabbarController.swift in Sources */,
 				AFAC50952C48DF9300EDEAB6 /* AppSigner.swift in Sources */,
@@ -690,6 +701,7 @@
 				D0651C1C2BFEE97F00D40829 /* json.cpp in Sources */,
 				339CE28A2C58539300B58502 /* Logger.swift in Sources */,
 				33BA378F2BF8159F00FF530A /* AppDelegate.swift in Sources */,
+				33E4D8382C659FE9006A1C26 /* CertificateViewTableViewCell.swift in Sources */,
 				33951CFE2C37AFCF00802F78 /* FloatingActionButton.swift in Sources */,
 				33EEDAA42C5D9358009089DC /* CoreDataManager+DownloadedApps.swift in Sources */,
 				D0651C3B2BFEEA4B00D40829 /* bundle.cpp in Sources */,

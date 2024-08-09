@@ -14,19 +14,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	static let isSideloaded = Bundle.main.bundleIdentifier != "kh.crysalis.feather"
 	var window: UIWindow?
-	
+	#if !targetEnvironment(simulator)
 	var savedStdout: Int32 = -1
 	var savedStderr: Int32 = -1
 	var outPipe: Pipe?
 	var fileHandle: FileHandle?
 	var semaphore: DispatchSemaphore?
+	#endif
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		UserDefaults.standard.set(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, forKey: "currentVersion")
 		
 		imagePipline()
+		#if !targetEnvironment(simulator)
 		startPiping()
-		
+		#endif
 		let tabBarController = TabbarController()
 		window = UIWindow(frame: UIScreen.main.bounds)
 		window?.rootViewController = tabBarController
@@ -85,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		ImagePipeline.shared = pipeline
 	}
 }
-
+#if !targetEnvironment(simulator)
 extension AppDelegate {
 	func startPiping() {
 		outPipe = Pipe()
@@ -132,4 +134,4 @@ extension AppDelegate {
 		semaphore?.wait()
 	}
 }
-
+#endif

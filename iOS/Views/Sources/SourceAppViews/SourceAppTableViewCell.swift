@@ -213,6 +213,9 @@ class AppTableViewCell: UITableViewCell {
 			imageView.translatesAutoresizingMaskIntoConstraints = false
 			imageView.layer.borderWidth = 1
 			imageView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
+			let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleScreenshotTap(_:)))
+			imageView.addGestureRecognizer(tapGesture)
+			imageView.isUserInteractionEnabled = true
 			return imageView
 		}
 
@@ -227,6 +230,24 @@ class AppTableViewCell: UITableViewCell {
 
 		loadImages(from: urls, into: imageViews)
 	}
+	
+	@objc private func handleScreenshotTap(_ sender: UITapGestureRecognizer) {
+		guard let tappedImageView = sender.view as? UIImageView,
+			  let tappedImage = tappedImageView.image else {
+			return
+		}
+		
+		let fullscreenImageVC = SourceAppScreenshotViewController()
+		fullscreenImageVC.image = tappedImage
+
+		let navigationController = UINavigationController(rootViewController: fullscreenImageVC)
+		navigationController.modalPresentationStyle = .fullScreen
+
+		if let viewController = self.parentViewController {
+			viewController.present(navigationController, animated: true, completion: nil)
+		}
+	}
+
 
 	private func loadImages(from urls: [URL], into imageViews: [UIImageView]) {
 		let dispatchGroup = DispatchGroup()
@@ -337,3 +358,67 @@ class AppTableViewCell: UITableViewCell {
 }
 
 
+class SourceAppScreenshotViewController: UIViewController {
+	var image: UIImage?
+
+	private let imageView: UIImageView = {
+		let imageView = UIImageView()
+		imageView.contentMode = .scaleAspectFit
+		imageView.translatesAutoresizingMaskIntoConstraints = false
+		imageView.layer.cornerRadius = 16
+		imageView.layer.cornerCurve = .continuous
+		imageView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
+		imageView.layer.borderWidth = 1
+		imageView.clipsToBounds = true
+		return imageView
+	}()
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		view.backgroundColor = .systemBackground
+		
+		view.addSubview(imageView)
+		setupConstraints()
+		
+		imageView.image = image
+		
+		self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(closeSheet))
+	}
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		updateImageViewSize()
+	}
+	
+	private func setupConstraints() {
+		NSLayoutConstraint.activate([
+			imageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+			imageView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+			imageView.widthAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.9),
+			imageView.heightAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.9)
+		])
+	}
+	
+	private func updateImageViewSize() {
+		guard let image = image else { return }
+		let imageSize = image.size
+		
+		let maxWidth = view.safeAreaLayoutGuide.layoutFrame.width * 0.9
+		let maxHeight = view.safeAreaLayoutGuide.layoutFrame.height * 0.9
+		
+		let aspectRatio = imageSize.width / imageSize.height
+		let constrainedWidth = min(imageSize.width, maxWidth)
+		let constrainedHeight = min(imageSize.height, maxHeight)
+		
+		let imageViewWidth = min(constrainedWidth, constrainedHeight * aspectRatio)
+		let imageViewHeight = min(constrainedHeight, constrainedWidth / aspectRatio)
+		
+		imageView.frame.size = CGSize(width: imageViewWidth, height: imageViewHeight)
+		imageView.center = view.center
+	}
+	
+	@objc func closeSheet() {
+		dismiss(animated: true)
+	}
+}

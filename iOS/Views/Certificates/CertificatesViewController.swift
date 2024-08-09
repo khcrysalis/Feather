@@ -35,6 +35,8 @@ class CertificatesViewController: UITableViewController {
 		self.tableView.delegate = self
 		self.tableView.tableHeaderView = UIView()
 		self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+		self.tableView.register(CertificateViewTableViewCell.self, forCellReuseIdentifier: "CertificateCell")
+		self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
 	}
 	
 	fileprivate func setupNavigation() {
@@ -67,54 +69,35 @@ class CertificatesViewController: UITableViewController {
 extension CertificatesViewController {
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return certs?.count ?? 0 }
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
-		
-		let source = certs![indexPath.row]
-		cell.textLabel?.text = source.certData?.teamName
-		cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
-		cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 13)
+		let cell = tableView.dequeueReusableCell(withIdentifier: "CertificateCell", for: indexPath) as! CertificateViewTableViewCell
+		let certificate = certs![indexPath.row]
+		cell.configure(with: certificate, isSelected: Preferences.selectedCert == indexPath.row)
 		cell.selectionStyle = .none
-		
-		if let expirationDate = source.certData?.expirationDate {
-			let currentDate = Date()
-			
-			if expirationDate < currentDate {
-				cell.detailTextLabel?.text = "Expiration: \(expirationDate.description) (Expired)"
-				cell.detailTextLabel?.textColor = .red
-			} else {
-				cell.detailTextLabel?.text = "Expiration: \(expirationDate.description)"
-				cell.detailTextLabel?.textColor = .secondaryLabel
-			}
-		} else {
-			cell.detailTextLabel?.text = "Expiration: Unknown"
-			cell.detailTextLabel?.textColor = .secondaryLabel
-		}
-		
-		if Preferences.selectedCert == indexPath.row {
-			cell.accessoryType = .checkmark
-		}
-		
 		return cell
 	}
-	override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-		
+	
+	override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
 		let source = certs![indexPath.row]
 		
-		let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
-			CoreDataManager.shared.deleteAllCertificateContent(for: source)
-			
-			do {
-				self.certs?.remove(at: indexPath.row)
-				tableView.deleteRows(at: [indexPath], with: .automatic)
-			}
-			
-			completionHandler(true)
-		}
-		
-		deleteAction.backgroundColor = UIColor.red
-		let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-		configuration.performsFirstActionWithFullSwipe = true
-
+		let configuration = UIContextMenuConfiguration(identifier: nil, actionProvider: { _ in
+			return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [
+				UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive, handler: {_ in
+					if Preferences.selectedCert != indexPath.row {
+						do {
+							CoreDataManager.shared.deleteAllCertificateContent(for: source)
+							self.certs?.remove(at: indexPath.row)
+							tableView.deleteRows(at: [indexPath], with: .automatic)
+						}
+					} else {
+						DispatchQueue.main.async {
+							let alert = UIAlertController(title: "You don't want to do this!", message: "You're trying to delete a selected certificate, try again later when you have another certificate on hand.", preferredStyle: UIAlertController.Style.alert)
+							alert.addAction(UIAlertAction(title: "Lame", style: UIAlertAction.Style.default, handler: nil))
+							self.present(alert, animated: true, completion: nil)
+						}
+					}
+				})
+			])
+		})
 		return configuration
 	}
 	
