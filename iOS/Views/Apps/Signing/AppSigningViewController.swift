@@ -42,15 +42,22 @@ class AppSigningViewController: UITableViewController {
     
     init(app: NSManagedObject, appsViewController: DownloadedAppsViewController) {
         self.appsViewController = appsViewController
-        
         self.app = app
-		self.certs = CoreDataManager.shared.getCurrentCertificate()
-		
-		if (self.certs == nil) {
-			Debug.shared.log(message: "AppSigningViewController.init", type: .error)
-		}
-		
         super.init(style: .insetGrouped)
+		
+		if let hasGotCert = CoreDataManager.shared.getCurrentCertificate() {
+			self.certs = hasGotCert
+		} else {
+			DispatchQueue.main.async {
+				let alert = UIAlertController(title: "Error", message: "You do not have a certificate selected, please select one in the certificates tab.", preferredStyle: .alert)
+				alert.addAction(
+					UIAlertAction(title: "OK", style: .default) { _ in
+						self.navigationController?.popViewController(animated: true)
+					}
+				)
+				self.present(alert, animated: true, completion: nil)
+			}
+		}
         
         if let name = app.value(forKey: "name") as? String {
             self.name = name
@@ -71,6 +78,21 @@ class AppSigningViewController: UITableViewController {
         if let uuid = app.value(forKey: "uuid") as? String {
             self.uuid = uuid
         }
+		
+		
+		let selectedCertIndex = Preferences.selectedCert
+		
+		guard selectedCertIndex != -1 else {
+			let alert = UIAlertController(title: "Alert", message: "You do not have a certificate selected, please select one in the certificates tab.", preferredStyle: .alert)
+			alert.addAction(
+				UIAlertAction(title: "OK", style: .default) {_ in
+					self.dismiss(animated: true)
+				}
+			)
+			
+			self.present(alert, animated: true, completion: nil)
+			return
+		}
     }
 	
     required init?(coder: NSCoder) {
