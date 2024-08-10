@@ -20,10 +20,14 @@ class SourcesViewController: UITableViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		setupNavigation()
 		setupViews()
 		setupSearchController()
 		fetchSources()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		setupNavigation()
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -47,20 +51,29 @@ class SourcesViewController: UITableViewController {
 	fileprivate func setupNavigation() {
 		self.navigationController?.navigationBar.prefersLargeTitles = true
 		self.navigationItem.largeTitleDisplayMode = .always
-		
-		let accessoryView = InlineButton(type: .system)
-		accessoryView.addTarget(self, action: #selector(openSettings), for: .touchUpInside)
-		navigationItem.perform(Selector(("_setLargeTitleAccessoryView:")), with: accessoryView)
 	}
 	
 	@objc func openSettings() {
 		let settings = SettingsViewController()
+		
 		let navigationController = UINavigationController(rootViewController: settings)
+		let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 200.0)
+		
 		if let presentationController = navigationController.presentationController as? UISheetPresentationController {
-			presentationController.detents = [.medium(), .large()]
+			presentationController.detents = [
+				detent2,
+				.large(),
+				
+			]
 		}
+
 		self.present(navigationController, animated: true)
 	}
+
+
+
+	
+	
 	
 }
 

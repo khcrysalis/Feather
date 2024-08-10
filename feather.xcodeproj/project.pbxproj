@@ -157,6 +157,7 @@
 		33E4D8332C6593D2006A1C26 /* UIView+parentcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+parentcontroller.swift"; sourceTree = "<group>"; };
 		33E4D8352C6593F4006A1C26 /* CGSize+aspectFit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+aspectFit.swift"; sourceTree = "<group>"; };
 		33E4D8372C659FE9006A1C26 /* CertificateViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateViewTableViewCell.swift; sourceTree = "<group>"; };
+		33E4D83E2C66C692006A1C26 /* UISheetPresentationControllerDetent+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UISheetPresentationControllerDetent+Private.h"; sourceTree = "<group>"; };
 		33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+DownloadedApps.swift"; sourceTree = "<group>"; };
 		33EEDAA62C5DA1C1009089DC /* DownloadedAppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedAppsViewController.swift; sourceTree = "<group>"; };
 		AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakLibraryViewCell.swift; sourceTree = "<group>"; };
@@ -459,6 +460,7 @@
 		33BA37AE2BF819D400FF530A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				33E4D8392C66C5CF006A1C26 /* Private */,
 				33BA37AF2BF819ED00FF530A /* UIColor+hex.swift */,
 				339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */,
 				33A305D42C3A858100D650BA /* UIButton+longpress.swift */,
@@ -488,6 +490,14 @@
 				335F0C2F2C5E175B00A4F0AE /* CertData.swift */,
 			);
 			path = Management;
+			sourceTree = "<group>";
+		};
+		33E4D8392C66C5CF006A1C26 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				33E4D83E2C66C692006A1C26 /* UISheetPresentationControllerDetent+Private.h */,
+			);
+			path = Private;
 			sourceTree = "<group>";
 		};
 		33EEDAA52C5DA19A009089DC /* Signing */ = {

@@ -184,14 +184,14 @@ class GroupedSectionHeader: UIView {
 		
 		// Setup constraints
 		NSLayoutConstraint.activate([
-			titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 17),
+			titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 19),
 			titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: topAnchorConstant),
 			titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -17),
 		])
 		
 		if subtitleLabel.text != "" {
 			NSLayoutConstraint.activate([
-				subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 17),
+				subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 19),
 				subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
 				subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -17),
 				subtitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -topAnchorConstant)
@@ -204,7 +204,7 @@ class GroupedSectionHeader: UIView {
 		
 		if buttonTitle != nil {
 			NSLayoutConstraint.activate([
-				actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -17),
+				actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -19),
 				actionButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor)
 			])
 		}

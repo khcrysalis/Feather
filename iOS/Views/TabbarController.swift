@@ -27,10 +27,10 @@ class TabbarController: UITabBarController {
 		let settings = self.createNavigation(with: "Settings", and: UIImage(systemName: "gearshape.2.fill"), vc: SettingsViewController())
 
 		self.setViewControllers([
-			sources,
-			apps,
-			certs
-//			,settings
+			sources
+			,apps
+			,certs
+			,settings
 		], animated: false)
 	}
 	
