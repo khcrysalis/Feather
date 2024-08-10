@@ -392,6 +392,7 @@
 				33E4D8402C67E5C3006A1C26 /* DonationTableViewCell.swift */,
 				332476E72C3E9044008C8EF0 /* About */,
 				332476E42C3E8778008C8EF0 /* Display */,
+				33AC87EE2C3B7C3D003D1175 /* Certificates */,
 				332476E12C3E874F008C8EF0 /* Reset */,
 			);
 			path = Settings;
@@ -446,7 +447,6 @@
 				33BA37A72BF8168900FF530A /* TabbarController.swift */,
 				33BA37B12BF8FA0600FF530A /* Sources */,
 				336EEE822C324C9B0011188D /* Apps */,
-				33AC87EE2C3B7C3D003D1175 /* Certificates */,
 				33AC87EF2C3B7C46003D1175 /* Settings */,
 			);
 			path = Views;

@@ -36,9 +36,6 @@ class CertificateViewTableViewCell: UITableViewCell {
 	
 	private let roundedBackgroundView: UIView = {
 		let view = UIView()
-		view.layer.cornerRadius = 12
-		view.layer.cornerCurve = .continuous
-		view.layer.masksToBounds = true
 		view.backgroundColor = UIColor.secondarySystemGroupedBackground
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
@@ -71,7 +68,7 @@ class CertificateViewTableViewCell: UITableViewCell {
 			roundedBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
 			roundedBackgroundView.topAnchor.constraint(equalTo: contentView.topAnchor),
 			roundedBackgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-			roundedBackgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
+			roundedBackgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 			
 			teamNameLabel.leadingAnchor.constraint(equalTo: roundedBackgroundView.leadingAnchor, constant: 15),
 			teamNameLabel.topAnchor.constraint(equalTo: roundedBackgroundView.topAnchor, constant: 10),
@@ -128,7 +125,7 @@ class CertificateViewTableViewCell: UITableViewCell {
 class CertificateViewAddTableViewCell: UITableViewCell {
 	private let titleLabel: UILabel = {
 		let label = UILabel()
-		label.font = UIFont.boldSystemFont(ofSize: 17)
+		label.font = UIFont.boldSystemFont(ofSize: 19)
 		label.textColor = .label
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
@@ -184,7 +181,7 @@ class CertificateViewAddTableViewCell: UITableViewCell {
 			roundedBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
 			roundedBackgroundView.topAnchor.constraint(equalTo: contentView.topAnchor),
 			roundedBackgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-			roundedBackgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
+			roundedBackgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 			
 			iconImageView.centerXAnchor.constraint(equalTo: roundedBackgroundView.centerXAnchor),
 			iconImageView.centerYAnchor.constraint(equalTo: roundedBackgroundView.centerYAnchor),

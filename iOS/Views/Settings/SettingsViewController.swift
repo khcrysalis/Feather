@@ -13,8 +13,9 @@ class SettingsViewController: UITableViewController {
 	[
 		["Donate"],
 		["About Feather", "Submit Feedback", "GitHub Repository"],
+		["Current Certificate", "Add Certificate"],
+		["Signing Configuration"],
 		["Display", "App Icon"],
-		["Certificates"],
 		["Debug Logs", "Reset"]
 	]
 	
@@ -22,8 +23,9 @@ class SettingsViewController: UITableViewController {
 	[
 		"",
 		"",
-		"General",
 		"Signing",
+		"",
+		"General",
 		"Advanced"
 	]
 	
@@ -91,7 +93,7 @@ extension SettingsViewController {
 		case "Donate":
 			cell = DonationTableViewCell(style: .default, reuseIdentifier: "D")
 			cell.selectionStyle = .none
-		case "Debug Logs":
+		case "Debug Logs", "Signing Configuration":
 			cell.accessoryType = .disclosureIndicator
 			cell.selectionStyle = .default
 		case "About Feather":
@@ -108,6 +110,20 @@ extension SettingsViewController {
 			cell.textLabel?.textColor = .tintColor
 			cell.accessoryType = .disclosureIndicator
 			cell.selectionStyle = .default
+		case "Add Certificate":
+			cell.setAccessoryIcon(with: "plus")
+			cell.selectionStyle = .default
+		case "Current Certificate":
+			if let hasGotCert = CoreDataManager.shared.getCurrentCertificate() {
+				let cell = CertificateViewTableViewCell()
+				cell.configure(with: hasGotCert, isSelected: false)
+				cell.selectionStyle = .none
+				return cell
+			} else {
+				cell.textLabel?.text = "No certificates selected"
+				cell.textLabel?.textColor = .secondaryLabel
+				cell.selectionStyle = .none
+			}
 		default:
 			break
 		}
@@ -127,6 +143,9 @@ extension SettingsViewController {
 			navigationController?.pushViewController(l, animated: true)
 		case "Reset":
 			let l = ResetViewController()
+			navigationController?.pushViewController(l, animated: true)
+		case "Add Certificate":
+			let l = CertificatesViewController()
 			navigationController?.pushViewController(l, animated: true)
 		default:
 			break

@@ -102,8 +102,8 @@ extension SignedAppsViewController {
 					let payloadURL = URL(fileURLWithPath: payloadPath)
 					let ipaURL = URL(fileURLWithPath: ipaPath)
 					try FileManager.default.zipItem(at: payloadURL, to: ipaURL)
-					UIApplication.shared.isIdleTimerDisabled = false
 					DispatchQueue.main.async {
+						UIApplication.shared.isIdleTimerDisabled = false
 						tableView.deselectRow(at: indexPath, animated: true)
 						MBProgressHUD.hide(for: self.view, animated: true)
 						runHTTPSServer()
