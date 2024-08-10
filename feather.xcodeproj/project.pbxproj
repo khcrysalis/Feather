@@ -17,7 +17,6 @@
 		332476D82C3E4CF7008C8EF0 /* SourceAppActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476D72C3E4CF7008C8EF0 /* SourceAppActions.swift */; };
 		332476DA2C3E4D35008C8EF0 /* SourceAppDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476D92C3E4D35008C8EF0 /* SourceAppDownload.swift */; };
 		332476DC2C3E4D87008C8EF0 /* SourceViewActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476DB2C3E4D87008C8EF0 /* SourceViewActions.swift */; };
-		332476DF2C3E85B4008C8EF0 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476DE2C3E85B4008C8EF0 /* LicenseViewController.swift */; };
 		332476E62C3E8E25008C8EF0 /* SettingsCreditsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476E52C3E8E25008C8EF0 /* SettingsCreditsTableCell.swift */; };
 		332476EA2C3E905D008C8EF0 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476E92C3E905D008C8EF0 /* AboutViewController.swift */; };
 		332476ED2C3E92BC008C8EF0 /* DisplayCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476EB2C3E92BC008C8EF0 /* DisplayCollectionTableViewCell.swift */; };
@@ -71,6 +70,8 @@
 		33E4D8342C6593D2006A1C26 /* UIView+parentcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8332C6593D2006A1C26 /* UIView+parentcontroller.swift */; };
 		33E4D8362C6593F4006A1C26 /* CGSize+aspectFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8352C6593F4006A1C26 /* CGSize+aspectFit.swift */; };
 		33E4D8382C659FE9006A1C26 /* CertificateViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8372C659FE9006A1C26 /* CertificateViewTableViewCell.swift */; };
+		33E4D8412C67E5C3006A1C26 /* DonationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8402C67E5C3006A1C26 /* DonationTableViewCell.swift */; };
+		33E4D8432C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8422C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift */; };
 		33EEDAA42C5D9358009089DC /* CoreDataManager+DownloadedApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */; };
 		33EEDAA72C5DA1C1009089DC /* DownloadedAppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EEDAA62C5DA1C1009089DC /* DownloadedAppsViewController.swift */; };
 		AF4D46EF2C432CCA003FA335 /* TweakLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */; };
@@ -107,7 +108,6 @@
 		332476D72C3E4CF7008C8EF0 /* SourceAppActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceAppActions.swift; sourceTree = "<group>"; };
 		332476D92C3E4D35008C8EF0 /* SourceAppDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceAppDownload.swift; sourceTree = "<group>"; };
 		332476DB2C3E4D87008C8EF0 /* SourceViewActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceViewActions.swift; sourceTree = "<group>"; };
-		332476DE2C3E85B4008C8EF0 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		332476E52C3E8E25008C8EF0 /* SettingsCreditsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCreditsTableCell.swift; sourceTree = "<group>"; };
 		332476E92C3E905D008C8EF0 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		332476EB2C3E92BC008C8EF0 /* DisplayCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayCollectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -158,6 +158,8 @@
 		33E4D8352C6593F4006A1C26 /* CGSize+aspectFit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+aspectFit.swift"; sourceTree = "<group>"; };
 		33E4D8372C659FE9006A1C26 /* CertificateViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateViewTableViewCell.swift; sourceTree = "<group>"; };
 		33E4D83E2C66C692006A1C26 /* UISheetPresentationControllerDetent+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UISheetPresentationControllerDetent+Private.h"; sourceTree = "<group>"; };
+		33E4D8402C67E5C3006A1C26 /* DonationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationTableViewCell.swift; sourceTree = "<group>"; };
+		33E4D8422C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+DownloadedApps.swift"; sourceTree = "<group>"; };
 		33EEDAA62C5DA1C1009089DC /* DownloadedAppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedAppsViewController.swift; sourceTree = "<group>"; };
 		AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakLibraryViewCell.swift; sourceTree = "<group>"; };
@@ -226,14 +228,6 @@
 			path = SourceAppViews;
 			sourceTree = "<group>";
 		};
-		332476DD2C3E858F008C8EF0 /* Acknowledgements */ = {
-			isa = PBXGroup;
-			children = (
-				332476DE2C3E85B4008C8EF0 /* LicenseViewController.swift */,
-			);
-			path = Acknowledgements;
-			sourceTree = "<group>";
-		};
 		332476E12C3E874F008C8EF0 /* Reset */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				332476E92C3E905D008C8EF0 /* AboutViewController.swift */,
+				33E4D8422C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -394,8 +389,8 @@
 			children = (
 				33AC87F02C3B7CBE003D1175 /* SettingsViewController.swift */,
 				332476E52C3E8E25008C8EF0 /* SettingsCreditsTableCell.swift */,
+				33E4D8402C67E5C3006A1C26 /* DonationTableViewCell.swift */,
 				332476E72C3E9044008C8EF0 /* About */,
-				332476DD2C3E858F008C8EF0 /* Acknowledgements */,
 				332476E42C3E8778008C8EF0 /* Display */,
 				332476E12C3E874F008C8EF0 /* Reset */,
 			);
@@ -713,6 +708,7 @@
 				33BA378F2BF8159F00FF530A /* AppDelegate.swift in Sources */,
 				33E4D8382C659FE9006A1C26 /* CertificateViewTableViewCell.swift in Sources */,
 				33951CFE2C37AFCF00802F78 /* FloatingActionButton.swift in Sources */,
+				33E4D8412C67E5C3006A1C26 /* DonationTableViewCell.swift in Sources */,
 				33EEDAA42C5D9358009089DC /* CoreDataManager+DownloadedApps.swift in Sources */,
 				D0651C3B2BFEEA4B00D40829 /* bundle.cpp in Sources */,
 				332AE3C02C097F180052F24A /* Feather.xcdatamodeld in Sources */,
@@ -726,8 +722,8 @@
 				33BA37AD2BF8197200FF530A /* Storage.swift in Sources */,
 				33CE81A92C4295F300C05327 /* CertImportingVC.swift in Sources */,
 				33570F612C32B80E008CB560 /* AppsTableViewCell.swift in Sources */,
+				33E4D8432C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift in Sources */,
 				33EEDAA72C5DA1C1009089DC /* DownloadedAppsViewController.swift in Sources */,
-				332476DF2C3E85B4008C8EF0 /* LicenseViewController.swift in Sources */,
 				33AC87F12C3B7CBE003D1175 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

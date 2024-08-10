@@ -31,7 +31,7 @@ class DisplayViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		title = "Display"
-
+		self.navigationItem.largeTitleDisplayMode = .never
 		self.tableView.delegate = self
 		self.tableView.dataSource = self
 		self.tableView.register(CollectionTableViewCell.self, forCellReuseIdentifier: "CollectionCell")

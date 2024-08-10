@@ -14,6 +14,8 @@ class SearchResultsTableViewController: UIViewController, UISearchResultsUpdatin
 	var fetchedSources: [URL: SourcesData] = [:]
 	var filteredSources: [SourcesData: [StoreAppsData]] = [:]
 	var sourceURLMapping: [SourcesData: URL] = [:]
+	private var dataFetched = false
+	private var activityIndicator: UIActivityIndicatorView!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -27,9 +29,15 @@ class SearchResultsTableViewController: UIViewController, UISearchResultsUpdatin
 			tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
 		])
-		
+		self.tableView.isHidden = true
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
+		
+		self.activityIndicator = UIActivityIndicatorView(style: .medium)
+		self.activityIndicator.center = CGPoint(x: view.center.x, y: view.center.y)
+		self.activityIndicator.hidesWhenStopped = true
+		self.activityIndicator.startAnimating()
+		self.view.addSubview(activityIndicator)
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -140,6 +148,8 @@ class SearchResultsTableViewController: UIViewController, UISearchResultsUpdatin
 	func updateSearchResults(for searchController: UISearchController) {
 		let searchText = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
 		
+		if !dataFetched { fetchAppsForSources() }
+		
 		filteredSources.removeAll()
 		
 		if !searchText.isEmpty {
@@ -190,7 +200,11 @@ class SearchResultsTableViewController: UIViewController, UISearchResultsUpdatin
 
 		dispatchGroup.notify(queue: .main) {
 			self.fetchedSources = allSources
-			self.tableView.reloadData()
+			UIView.transition(with: self.tableView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+				self.tableView.isHidden = false
+				self.tableView.reloadData()
+				self.activityIndicator.stopAnimating()
+			}, completion: nil)
 		}
 	}
 }
