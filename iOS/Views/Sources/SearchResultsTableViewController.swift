@@ -188,10 +188,10 @@ class SearchResultsTableViewController: UIViewController, UISearchResultsUpdatin
 							allSources[url] = sourceData
 							self.sourceURLMapping[sourceData] = url
 						case .failure(let error):
-							print("Error parsing data: \(error)")
+							Debug.shared.log(message: "Error parsing data: \(error)")
 						}
 					case .failure(let error):
-						print("Error downloading data: \(error)")
+						Debug.shared.log(message: "Error downloading data: \(error)")
 					}
 					dispatchGroup.leave()
 				}

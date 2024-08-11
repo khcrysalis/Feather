@@ -73,13 +73,13 @@ class SourceAppViewController: UITableViewController {
 						}, completion: nil)
 					}
 				case .failure(let error):
-					print("Error parsing data: \(error.localizedDescription)")
+					Debug.shared.log(message: "Error parsing data: \(error.localizedDescription)")
 				case .none:
 					break
 				}
 				
 			case .failure(let error):
-				print("Error fetching data: \(error.localizedDescription)")
+				Debug.shared.log(message: "Error fetching data: \(error.localizedDescription)")
 			}
 		}
 	}
@@ -89,7 +89,6 @@ class SourceAppViewController: UITableViewController {
 			let name = highlightAppName,
 			let id = highlightBundleID
 		else {
-			print("did we filter? no")
 			return nil
 		}
 		
@@ -97,7 +96,6 @@ class SourceAppViewController: UITableViewController {
 	}
 
 	private func filterApps(from apps: [StoreAppsData], name: String, id: String, devname: String?) -> [StoreAppsData] {
-		print("did we filter? yes")
 		return apps.filter { app in
 			return app.name == name && app.bundleIdentifier == id && (devname == nil || app.developerName == devname)
 		}

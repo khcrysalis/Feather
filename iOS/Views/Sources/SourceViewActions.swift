@@ -24,7 +24,7 @@ extension SourcesViewController {
 			if let sourceURL = alertController.textFields?.first?.text {
 				CoreDataManager.shared.getSourceData(urlString: sourceURL) { error in
 					if let error = error {
-						Debug.shared.log(message: "SourcesViewController.sourcesAddButtonTapped: \(error)", type: .fault)
+						Debug.shared.log(message: "SourcesViewController.sourcesAddButtonTapped: \(error)", type: .critical)
 					} else {
 						NotificationCenter.default.post(name: Notification.Name("sfetch"), object: nil)
 					}

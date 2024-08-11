@@ -92,7 +92,7 @@ class DonationTableViewCell: UITableViewCell {
 	
 	@objc func openDonations() {
 		guard let url = URL(string: "https://github.com/sponsors/khcrysalis") else {
-			print("Invalid URL")
+			Debug.shared.log(message: "Invalid URL")
 			return
 		}
 		UIApplication.shared.open(url, options: [:], completionHandler: nil)

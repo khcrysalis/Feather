@@ -26,18 +26,22 @@ public enum LogType {
 	case fault
 	/// Functional equivalent of the fault method.
 	case critical
+	
+	case success
 }
 
 final class Debug {
 	static let shared = Debug()
 	private let subsystem = Bundle.main.bundleIdentifier!
 	
-	func log(message: String, type: LogType, function: String = #function, file: String = #file, line: Int = #line) {
+	func log(message: String, type: LogType? = nil, function: String = #function, file: String = #file, line: Int = #line) {
 		lazy var logger = Logger(subsystem: subsystem, category: file+"->"+function)
 		switch type {
-		case .info:
+		case .success:
 			logger.info("\(message)")
 			showSuccessAlert(with: "Success", subtitle: message)
+		case .info:
+			logger.info("\(message)")
 		case .debug:
 			logger.debug("\(message)")
 		case .trace:
@@ -49,9 +53,6 @@ final class Debug {
 		case .error:
 			logger.error("\(message)")
 			showErrorAlert(with: "Error", subtitle: message)
-		case .fault:
-			logger.fault("\(message)")
-			showErrorUIAlert(with: "Fault", subtitle: message)
 		case .critical:
 			logger.critical("\(message)")
 			showErrorUIAlert(with: "Critical", subtitle: message)

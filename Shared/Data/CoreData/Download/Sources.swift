@@ -24,7 +24,7 @@ class SourceGET {
 				let errorDescription = HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode)
 				completion(.failure(NSError(domain: "HTTPError", code: httpResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: errorDescription])))
 				if let data = data, let responseBody = String(data: data, encoding: .utf8) {
-					print("HTTP Error Response: \(responseBody)")
+					Debug.shared.log(message: "HTTP Error Response: \(responseBody)")
 				}
 				return
 			}
@@ -46,7 +46,7 @@ class SourceGET {
 			let source = try decoder.decode(SourcesData.self, from: data)
 			return .success(source)
 		} catch {
-			print("Failed to parse JSON: \(error)")
+			Debug.shared.log(message: "Failed to parse JSON: \(error)", type: .error)
 			return .failure(error)
 		}
 	}

@@ -25,7 +25,6 @@ func runHTTPSServer() {
 	}
 	
 	server.get("/manifest.plist") { request in
-		print("I'm running!")
 		let data = try! PropertyListSerialization.data(fromPropertyList: [
 			"items": [
 				[
@@ -85,7 +84,6 @@ func stopHTTPSServer() {
 	server.stop()
 	serverIsRunning = false
 	serverShouldStop = false
-	print("I'm stopping!")
 }
 
 func requestCompletedAndStopServer() {

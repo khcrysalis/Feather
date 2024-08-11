@@ -42,7 +42,7 @@ extension CoreDataManager {
 		completion: @escaping (Error?) -> Void) {
 			guard let url = URL(string: urlString) else {
 				let error = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])
-				print(error.localizedDescription)
+				Debug.shared.log(message: error.localizedDescription)
 				completion(error)
 				return
 		}
@@ -54,11 +54,11 @@ extension CoreDataManager {
 					case .success(let source):
 						self.saveSource(source, url: urlString, completion: completion)
 					case .failure(let error):
-						print("Error parsing data: \(error)")
+						Debug.shared.log(message: "Error parsing data: \(error)")
 						completion(error)
 					}
 				case .failure(let error):
-					print("Error downloading data: \(error)")
+					Debug.shared.log(message: "Error downloading data: \(error)")
 					completion(error)
 				}
 			}
@@ -73,7 +73,7 @@ extension CoreDataManager {
 			do {
 				return try context.count(for: request) > 0
 			} catch {
-				print("Error checking for existing source: \(error)")
+				Debug.shared.log(message: "Error checking for existing source: \(error)")
 				return false
 			}
 	}
@@ -113,7 +113,7 @@ extension CoreDataManager {
 				try context.save()
 				completion(nil)
 			} catch {
-				print("Error saving data: \(error)")
+				Debug.shared.log(message: "Error saving data: \(error)")
 				completion(error)
 			}
 		}

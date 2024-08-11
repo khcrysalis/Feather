@@ -215,7 +215,7 @@ extension AppsInformationViewController: UITableViewDelegate, UITableViewDataSou
 		switch itemTapped {
 		case "Open in Files":
 			guard let fileURL = self.filePath else {
-				print("File path is nil or invalid.")
+				Debug.shared.log(message: "File path is nil or invalid.")
 				return
 			}
 			
@@ -224,9 +224,9 @@ extension AppsInformationViewController: UITableViewDelegate, UITableViewDataSou
 			
 			UIApplication.shared.open(URL(string: path2)!, options: [:]) { success in
 				if success {
-					print("File opened successfully.")
+					Debug.shared.log(message: "File opened successfully.")
 				} else {
-					print("Failed to open file.")
+					Debug.shared.log(message: "Failed to open file.")
 				}
 			}
 		default:

@@ -38,7 +38,7 @@ class AppDownload: NSObject {
 	}
 
 	func cancelDownload() {
-		print("Cancelled?")
+		Debug.shared.log(message: "AppDownload.cancelDownload: User cancelled the download", type: .info)
 		downloadTask?.cancel()
 		session?.invalidateAndCancel()
 		downloadTask = nil
@@ -70,7 +70,7 @@ class AppDownload: NSObject {
 
 		// Define a progress object observer
 		let progressObserver = progress.observe(\.fractionCompleted) { progress, _ in
-			print("Unzipping progress: \(progress.fractionCompleted)")
+			Debug.shared.log(message: "Unzipping progress: \(progress.fractionCompleted)")
 		}
 
 		do {

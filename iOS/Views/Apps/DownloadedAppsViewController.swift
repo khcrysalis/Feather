@@ -150,9 +150,9 @@ extension DownloadedAppsViewController {
 					
 					UIApplication.shared.open(URL(string: path2)!, options: [:]) { success in
 						if success {
-							print("File opened successfully.")
+							Debug.shared.log(message: "File opened successfully.")
 						} else {
-							print("Failed to open file.")
+							Debug.shared.log(message: "Failed to open file.")
 						}
 					}
 				})

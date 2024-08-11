@@ -141,9 +141,11 @@ class AppSigningViewController: UITableViewController {
 			forceLightDarkAppearence: forceLightDarkAppearenceString[forceLightDarkAppearence],
 			certificate: certs)
 		) { success in
-			self.dismiss(animated: true)
-			self.appsViewController.fetchSources()
-			self.appsViewController.tableView.reloadData()
+			if success {
+				self.dismiss(animated: true)
+				self.appsViewController.fetchSources()
+				self.appsViewController.tableView.reloadData()
+			}
 		}
 	}
 	
@@ -303,7 +305,7 @@ class AppSigningViewController: UITableViewController {
 		case "version":
 			version = value ?? "unknown"
 		default:
-			print("Invalid property name: \(propertyName)")
+			Debug.shared.log(message: "Invalid property name: \(propertyName)")
 		}
 		self.tableView.reloadRows(at: [indexPath], with: .automatic)
 	}

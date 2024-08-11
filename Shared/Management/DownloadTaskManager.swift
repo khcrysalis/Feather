@@ -59,7 +59,6 @@ class DownloadTaskManager {
 	func addTask(uuid: String, cell: AppTableViewCell, dl: AppDownload) {
 		let task = DownloadTask(uuid: uuid, cell: cell, dl: dl)
 		downloadTasks[uuid] = task
-		print(downloadTasks)
 	}
 	
 	func updateTask(uuid: String, state: DownloadState) {

@@ -40,7 +40,7 @@ extension CoreDataManager {
 		let context = context ?? self.context
 		
 		guard let provisionPath = files[.provision] as? URL else {
-			print("Provisioning file URL is missing")
+			Debug.shared.log(message: "Provisioning file URL is missing")
 			return
 		}
 		
@@ -56,7 +56,7 @@ extension CoreDataManager {
 			try context.save()
 			NotificationCenter.default.post(name: Notification.Name("cfetch"), object: nil)
 		} catch {
-			print("Error: \(error)")
+			Debug.shared.log(message: "Error: \(error)", type: .error)
 		}
 	}
 

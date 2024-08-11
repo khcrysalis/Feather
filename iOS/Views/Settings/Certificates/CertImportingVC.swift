@@ -79,7 +79,7 @@ class CertImportingVC: UITableViewController {
 			CoreDataManager.shared.addToCertificates(cert: fileContent, files: selectedFiles)
 			self.dismiss(animated: true)
 		} else {
-			print("Failed to read mobileprovision file")
+			Debug.shared.log(message: "Failed to read mobileprovision file", type: .error)
 		}
 	}
 	
@@ -258,7 +258,7 @@ extension CertImportingVC: UIDocumentPickerDelegate {
 				return true
 			}
 		} catch {
-			print("Error reading file: \(error)")
+			Debug.shared.log(message: "Error reading file: \(error)")
 		}
 		
 		return false

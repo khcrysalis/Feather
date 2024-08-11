@@ -67,6 +67,7 @@ func signApp(options: AppSigningOptions, completion: @escaping (Bool) -> Void) {
 					 options.name,
 					 options.version
 			) != 0 {
+				Debug.shared.log(message: "You failed dumb fuck")
                 DispatchQueue.main.async {
                     completion(false)
                 }
@@ -96,7 +97,7 @@ func signApp(options: AppSigningOptions, completion: @escaping (Bool) -> Void) {
 					appPath: contents.first!.lastPathComponent
 				) { 
 					error in
-					Debug.shared.log(message: "signApp: \(String(describing: error))", type: .fault)
+					Debug.shared.log(message: "signApp: \(String(describing: error))", type: .critical)
 					completion(false)
 				}
                 DispatchQueue.main.async {

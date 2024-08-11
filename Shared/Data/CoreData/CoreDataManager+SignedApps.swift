@@ -51,7 +51,7 @@ extension CoreDataManager {
 				try context.save()
 				NotificationCenter.default.post(name: Notification.Name("afetch"), object: nil)
 			} catch {
-				print("Error saving data: \(error)")
+				Debug.shared.log(message: "Error saving data: \(error)", type: .error)
 			}
 	}
 	
