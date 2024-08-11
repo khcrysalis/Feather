@@ -34,6 +34,7 @@
 		336EEE812C32367C0011188D /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 336EEE802C32367C0011188D /* ZIPFoundation */; };
 		338FFCD92C682469006C3BE0 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338FFCD82C682469006C3BE0 /* PopupViewController.swift */; };
 		338FFCDB2C6870E2006C3BE0 /* DownloadedAppsViewController+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338FFCDA2C6870E2006C3BE0 /* DownloadedAppsViewController+Import.swift */; };
+		338FFCE12C694DFA006C3BE0 /* IconSelector in Frameworks */ = {isa = PBXBuildFile; productRef = 338FFCE02C694DFA006C3BE0 /* IconSelector */; };
 		33951CFE2C37AFCF00802F78 /* FloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33951CFD2C37AFCF00802F78 /* FloatingActionButton.swift */; };
 		339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */; };
 		339BDAE32BF95DC0007009D9 /* SectionIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDAE22BF95DC0007009D9 /* SectionIcons.swift */; };
@@ -202,6 +203,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				338FFCE12C694DFA006C3BE0 /* IconSelector in Frameworks */,
 				D0651C0C2BFEE46400D40829 /* HttpSwift in Frameworks */,
 				3322FF4F2BFEE5B9001768D8 /* Nuke in Frameworks */,
 				33DF8D8A2C082FBF00D6C05F /* cmark-gfm-bin in Frameworks */,
@@ -601,6 +603,7 @@
 				33C0409D2C30DD3E00243D90 /* AlertKit */,
 				336EEE802C32367C0011188D /* ZIPFoundation */,
 				AF9B6B402C633AB400735748 /* MBProgressHUD */,
+				338FFCE02C694DFA006C3BE0 /* IconSelector */,
 			);
 			productName = feather;
 			productReference = 33BA378B2BF8159F00FF530A /* feather.app */;
@@ -640,6 +643,7 @@
 				33C0409C2C30DD3E00243D90 /* XCRemoteSwiftPackageReference "AlertKit" */,
 				336EEE7F2C32367C0011188D /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 				AF9B6B3F2C633AB400735748 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
+				338FFCDF2C694DFA006C3BE0 /* XCRemoteSwiftPackageReference "ios-icon-selector" */,
 			);
 			productRefGroup = 33BA378C2BF8159F00FF530A /* Products */;
 			projectDirPath = "";
@@ -994,6 +998,14 @@
 				minimumVersion = 0.9.19;
 			};
 		};
+		338FFCDF2C694DFA006C3BE0 /* XCRemoteSwiftPackageReference "ios-icon-selector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jellybeansoup/ios-icon-selector";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		33C0409C2C30DD3E00243D90 /* XCRemoteSwiftPackageReference "AlertKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sparrowcode/AlertKit";
@@ -1069,6 +1081,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 336EEE7F2C32367C0011188D /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
 			productName = ZIPFoundation;
+		};
+		338FFCE02C694DFA006C3BE0 /* IconSelector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 338FFCDF2C694DFA006C3BE0 /* XCRemoteSwiftPackageReference "ios-icon-selector" */;
+			productName = IconSelector;
 		};
 		33C0409D2C30DD3E00243D90 /* AlertKit */ = {
 			isa = XCSwiftPackageProductDependency;
