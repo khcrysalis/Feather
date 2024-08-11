@@ -48,7 +48,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 try? fileManager.removeItem(atPath: tmpDirectory + "/" + file)
             }
         }
+		
+		let generatedString = AppDelegate.generateRandomString()
+		if Preferences.pPQCheckString.isEmpty {
+			Preferences.pPQCheckString = generatedString
+		}
+		
 		return true
+	}
+	
+	fileprivate static func generateRandomString(length: Int = 8) -> String {
+		let characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+		return String((0..<length).map { _ in characters.randomElement()! })
 	}
 	
 	func createSourcesDirectory() {

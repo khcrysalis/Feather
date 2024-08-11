@@ -91,7 +91,10 @@ extension DownloadedAppsViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let meow = getApplication(row: indexPath.row)
 		if FileManager.default.fileExists(atPath: CoreDataManager.shared.getFilesForDownloadedApps(for:(meow as! DownloadedApps)).path) {
-			navigationController?.pushViewController(AppSigningViewController(app: meow!, appsViewController: self), animated: true)
+			let ap = AppSigningViewController(app: meow!, appsViewController: self)
+			let navigationController = UINavigationController(rootViewController: ap)
+			navigationController.modalPresentationStyle = .fullScreen
+			self.present(navigationController, animated: true, completion: nil)
 		}
 		tableView.deselectRow(at: indexPath, animated: true)
 	}

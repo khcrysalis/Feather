@@ -21,13 +21,8 @@ enum Preferences {
 	@Storage(key: "Feather.selectedCert", defaultValue: 0)
 	static var selectedCert: Int
 	
-	@Storage(key: "Feather.ppqcheckBypass", defaultValue: generateRandomString())
+	@Storage(key: "Feather.ppqcheckBypass", defaultValue: "")
 	static var pPQCheckString: String
-	
-	fileprivate static func generateRandomString(length: Int = 8) -> String {
-		let characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-		return String((0..<length).map { _ in characters.randomElement()! })
-	}
 }
 // MARK: - Callbacks
 fileprivate extension Preferences {

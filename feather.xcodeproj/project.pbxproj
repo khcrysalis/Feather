@@ -32,6 +32,7 @@
 		335F0C2E2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335F0C2D2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift */; };
 		335F0C302C5E175B00A4F0AE /* CertData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335F0C2F2C5E175B00A4F0AE /* CertData.swift */; };
 		336EEE812C32367C0011188D /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 336EEE802C32367C0011188D /* ZIPFoundation */; };
+		338FFCD92C682469006C3BE0 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338FFCD82C682469006C3BE0 /* PopupViewController.swift */; };
 		33951CFE2C37AFCF00802F78 /* FloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33951CFD2C37AFCF00802F78 /* FloatingActionButton.swift */; };
 		339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */; };
 		339BDAE32BF95DC0007009D9 /* SectionIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDAE22BF95DC0007009D9 /* SectionIcons.swift */; };
@@ -122,6 +123,7 @@
 		335F0C2B2C5DC3AE00A4F0AE /* CoreDataManager+SignedApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+SignedApps.swift"; sourceTree = "<group>"; };
 		335F0C2D2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Certificates.swift"; sourceTree = "<group>"; };
 		335F0C2F2C5E175B00A4F0AE /* CertData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertData.swift; sourceTree = "<group>"; };
+		338FFCD82C682469006C3BE0 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		33951CFD2C37AFCF00802F78 /* FloatingActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingActionButton.swift; sourceTree = "<group>"; };
 		339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLayoutAnchorsHolding.swift; sourceTree = "<group>"; };
 		339BDAE22BF95DC0007009D9 /* SectionIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionIcons.swift; sourceTree = "<group>"; };
@@ -264,6 +266,14 @@
 				33EEDAA52C5DA19A009089DC /* Signing */,
 			);
 			path = Apps;
+			sourceTree = "<group>";
+		};
+		338FFCD72C682457006C3BE0 /* Extra */ = {
+			isa = PBXGroup;
+			children = (
+				338FFCD82C682469006C3BE0 /* PopupViewController.swift */,
+			);
+			path = Extra;
 			sourceTree = "<group>";
 		};
 		339BDAE12BF95DB4007009D9 /* Design */ = {
@@ -444,6 +454,7 @@
 		33BA37A62BF8167A00FF530A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				338FFCD72C682457006C3BE0 /* Extra */,
 				33BA37A72BF8168900FF530A /* TabbarController.swift */,
 				33BA37B12BF8FA0600FF530A /* Sources */,
 				336EEE822C324C9B0011188D /* Apps */,
@@ -725,6 +736,7 @@
 				33E4D8432C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift in Sources */,
 				33EEDAA72C5DA1C1009089DC /* DownloadedAppsViewController.swift in Sources */,
 				33AC87F12C3B7CBE003D1175 /* SettingsViewController.swift in Sources */,
+				338FFCD92C682469006C3BE0 /* PopupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -52,7 +52,7 @@ class AppSigningViewController: UITableViewController {
 				let alert = UIAlertController(title: "Error", message: "You do not have a certificate selected, please select one in the certificates tab.", preferredStyle: .alert)
 				alert.addAction(
 					UIAlertAction(title: "Lame", style: .default) { _ in
-						self.navigationController?.popViewController(animated: true)
+						self.dismiss(animated: true)
 					}
 				)
 				self.present(alert, animated: true, completion: nil)
@@ -101,12 +101,17 @@ class AppSigningViewController: UITableViewController {
     
     override func viewDidLoad() {
 		self.title = "Sign App"
-		
+		self.navigationController?.navigationBar.prefersLargeTitles = false
         tableView.register(TweakLibraryViewCell.self, forCellReuseIdentifier: "TweakLibraryViewCell")
         tableView.register(SwitchViewCell.self, forCellReuseIdentifier: "SwitchViewCell")
         tableView.register(ActivityIndicatorViewCell.self, forCellReuseIdentifier: "ActivityIndicatorViewCell")
 		self.isModalInPresentation = true
-    }
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .done, target: self, action: #selector(closeSheet))
+	}
+	
+	@objc func closeSheet() {
+		dismiss(animated: true, completion: nil)
+	}
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 5;
