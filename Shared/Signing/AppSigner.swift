@@ -62,7 +62,7 @@ func signApp(options: AppSigningOptions, completion: @escaping (Bool) -> Void) {
             if zsign(bundle.path,
 					 provisionPath,
 					 p12Path,
-					 options.certificate?.password,
+					 options.certificate?.password ?? "",
 					 options.bundleId,
 					 options.name,
 					 options.version
