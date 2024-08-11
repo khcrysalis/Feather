@@ -34,7 +34,13 @@
 		336EEE812C32367C0011188D /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 336EEE802C32367C0011188D /* ZIPFoundation */; };
 		338FFCD92C682469006C3BE0 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338FFCD82C682469006C3BE0 /* PopupViewController.swift */; };
 		338FFCDB2C6870E2006C3BE0 /* DownloadedAppsViewController+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338FFCDA2C6870E2006C3BE0 /* DownloadedAppsViewController+Import.swift */; };
-		338FFCE12C694DFA006C3BE0 /* IconSelector in Frameworks */ = {isa = PBXBuildFile; productRef = 338FFCE02C694DFA006C3BE0 /* IconSelector */; };
+		338FFCE42C695118006C3BE0 /* IconsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338FFCE32C695118006C3BE0 /* IconsListViewController.swift */; };
+		338FFCED2C695CA3006C3BE0 /* IconSelector in Frameworks */ = {isa = PBXBuildFile; productRef = 338FFCEC2C695CA3006C3BE0 /* IconSelector */; };
+		338FFCF12C695CEA006C3BE0 /* Mac@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 338FFCEF2C695CEA006C3BE0 /* Mac@2x.png */; };
+		338FFCF22C695CEA006C3BE0 /* Mac@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 338FFCF02C695CEA006C3BE0 /* Mac@3x.png */; };
+		338FFCF42C6971B2006C3BE0 /* IconsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338FFCF32C6971B2006C3BE0 /* IconsListTableViewCell.swift */; };
+		338FFCF82C6973F0006C3BE0 /* Wing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 338FFCF62C6973F0006C3BE0 /* Wing@2x.png */; };
+		338FFCF92C6973F0006C3BE0 /* Wing@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 338FFCF72C6973F0006C3BE0 /* Wing@3x.png */; };
 		33951CFE2C37AFCF00802F78 /* FloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33951CFD2C37AFCF00802F78 /* FloatingActionButton.swift */; };
 		339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */; };
 		339BDAE32BF95DC0007009D9 /* SectionIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDAE22BF95DC0007009D9 /* SectionIcons.swift */; };
@@ -127,6 +133,12 @@
 		335F0C2F2C5E175B00A4F0AE /* CertData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertData.swift; sourceTree = "<group>"; };
 		338FFCD82C682469006C3BE0 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		338FFCDA2C6870E2006C3BE0 /* DownloadedAppsViewController+Import.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DownloadedAppsViewController+Import.swift"; sourceTree = "<group>"; };
+		338FFCE32C695118006C3BE0 /* IconsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsListViewController.swift; sourceTree = "<group>"; };
+		338FFCEF2C695CEA006C3BE0 /* Mac@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mac@2x.png"; sourceTree = "<group>"; };
+		338FFCF02C695CEA006C3BE0 /* Mac@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mac@3x.png"; sourceTree = "<group>"; };
+		338FFCF32C6971B2006C3BE0 /* IconsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsListTableViewCell.swift; sourceTree = "<group>"; };
+		338FFCF62C6973F0006C3BE0 /* Wing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wing@2x.png"; sourceTree = "<group>"; };
+		338FFCF72C6973F0006C3BE0 /* Wing@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wing@3x.png"; sourceTree = "<group>"; };
 		33951CFD2C37AFCF00802F78 /* FloatingActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingActionButton.swift; sourceTree = "<group>"; };
 		339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLayoutAnchorsHolding.swift; sourceTree = "<group>"; };
 		339BDAE22BF95DC0007009D9 /* SectionIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionIcons.swift; sourceTree = "<group>"; };
@@ -203,7 +215,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				338FFCE12C694DFA006C3BE0 /* IconSelector in Frameworks */,
+				338FFCED2C695CA3006C3BE0 /* IconSelector in Frameworks */,
 				D0651C0C2BFEE46400D40829 /* HttpSwift in Frameworks */,
 				3322FF4F2BFEE5B9001768D8 /* Nuke in Frameworks */,
 				33DF8D8A2C082FBF00D6C05F /* cmark-gfm-bin in Frameworks */,
@@ -281,6 +293,42 @@
 			path = Extra;
 			sourceTree = "<group>";
 		};
+		338FFCE22C6950FC006C3BE0 /* AppIcon */ = {
+			isa = PBXGroup;
+			children = (
+				338FFCE32C695118006C3BE0 /* IconsListViewController.swift */,
+				338FFCF32C6971B2006C3BE0 /* IconsListTableViewCell.swift */,
+			);
+			path = AppIcon;
+			sourceTree = "<group>";
+		};
+		338FFCE52C6954C3006C3BE0 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				338FFCF52C6973CD006C3BE0 /* Wing */,
+				338FFCEE2C695CDF006C3BE0 /* Mac */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
+		338FFCEE2C695CDF006C3BE0 /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				338FFCEF2C695CEA006C3BE0 /* Mac@2x.png */,
+				338FFCF02C695CEA006C3BE0 /* Mac@3x.png */,
+			);
+			path = Mac;
+			sourceTree = "<group>";
+		};
+		338FFCF52C6973CD006C3BE0 /* Wing */ = {
+			isa = PBXGroup;
+			children = (
+				338FFCF62C6973F0006C3BE0 /* Wing@2x.png */,
+				338FFCF72C6973F0006C3BE0 /* Wing@3x.png */,
+			);
+			path = Wing;
+			sourceTree = "<group>";
+		};
 		339BDAE12BF95DB4007009D9 /* Design */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,6 +350,7 @@
 				339CE2812C584CE700B58502 /* Signing */,
 				33C040992C30B47700243D90 /* Management */,
 				33BA37972BF815A100FF530A /* Assets.xcassets */,
+				338FFCE52C6954C3006C3BE0 /* Icons */,
 				33DF8D782C0828A400D6C05F /* Markdownosaur.md */,
 				33DF8D7A2C0828AC00D6C05F /* swift-markdown.md */,
 				33DF8D7C2C0828CF00D6C05F /* Zsign.md */,
@@ -407,6 +456,7 @@
 				33E4D8402C67E5C3006A1C26 /* DonationTableViewCell.swift */,
 				332476E72C3E9044008C8EF0 /* About */,
 				332476E42C3E8778008C8EF0 /* Display */,
+				338FFCE22C6950FC006C3BE0 /* AppIcon */,
 				33AC87EE2C3B7C3D003D1175 /* Certificates */,
 				332476E12C3E874F008C8EF0 /* Reset */,
 			);
@@ -603,7 +653,7 @@
 				33C0409D2C30DD3E00243D90 /* AlertKit */,
 				336EEE802C32367C0011188D /* ZIPFoundation */,
 				AF9B6B402C633AB400735748 /* MBProgressHUD */,
-				338FFCE02C694DFA006C3BE0 /* IconSelector */,
+				338FFCEC2C695CA3006C3BE0 /* IconSelector */,
 			);
 			productName = feather;
 			productReference = 33BA378B2BF8159F00FF530A /* feather.app */;
@@ -643,7 +693,7 @@
 				33C0409C2C30DD3E00243D90 /* XCRemoteSwiftPackageReference "AlertKit" */,
 				336EEE7F2C32367C0011188D /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 				AF9B6B3F2C633AB400735748 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
-				338FFCDF2C694DFA006C3BE0 /* XCRemoteSwiftPackageReference "ios-icon-selector" */,
+				338FFCEB2C695CA3006C3BE0 /* XCRemoteSwiftPackageReference "ios-icon-selector" */,
 			);
 			productRefGroup = 33BA378C2BF8159F00FF530A /* Products */;
 			projectDirPath = "";
@@ -660,12 +710,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				33DF8D7D2C0828CF00D6C05F /* Zsign.md in Resources */,
+				338FFCF12C695CEA006C3BE0 /* Mac@2x.png in Resources */,
+				338FFCF22C695CEA006C3BE0 /* Mac@3x.png in Resources */,
 				33DF8D792C0828A400D6C05F /* Markdownosaur.md in Resources */,
 				33DF8D812C08290F00D6C05F /* HttpSwift_RequestSwift_SocketSwift.md in Resources */,
+				338FFCF82C6973F0006C3BE0 /* Wing@2x.png in Resources */,
 				D0651C082BFEE1F600D40829 /* localhost.direct.pfx in Resources */,
 				33DF8D7F2C0828FB00D6C05F /* Nuke.md in Resources */,
 				33BA379B2BF815A100FF530A /* LaunchScreen.storyboard in Resources */,
 				33BA37982BF815A100FF530A /* Assets.xcassets in Resources */,
+				338FFCF92C6973F0006C3BE0 /* Wing@3x.png in Resources */,
 				33DF8D7B2C0828AC00D6C05F /* swift-markdown.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -701,6 +755,7 @@
 				339CE2872C5850BA00B58502 /* CoreDataManager.swift in Sources */,
 				332476ED2C3E92BC008C8EF0 /* DisplayCollectionTableViewCell.swift in Sources */,
 				339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */,
+				338FFCE42C695118006C3BE0 /* IconsListViewController.swift in Sources */,
 				D0651C112BFEE93C00D40829 /* zsign.mm in Sources */,
 				332476DA2C3E4D35008C8EF0 /* SourceAppDownload.swift in Sources */,
 				3322FF492BFEC97F001768D8 /* SourceAppViewController.swift in Sources */,
@@ -738,6 +793,7 @@
 				33DF8D832C08298900D6C05F /* Markdown.swift in Sources */,
 				339BDAE32BF95DC0007009D9 /* SectionIcons.swift in Sources */,
 				33AC87F32C3B7D24003D1175 /* CertificatesViewController.swift in Sources */,
+				338FFCF42C6971B2006C3BE0 /* IconsListTableViewCell.swift in Sources */,
 				33BA37AD2BF8197200FF530A /* Storage.swift in Sources */,
 				33CE81A92C4295F300C05327 /* CertImportingVC.swift in Sources */,
 				33570F612C32B80E008CB560 /* AppsTableViewCell.swift in Sources */,
@@ -890,7 +946,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 577Q6MMX9D;
+				DEVELOPMENT_TEAM = DLSL362JHJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Feather;
@@ -906,7 +962,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
+				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -929,7 +985,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 577Q6MMX9D;
+				DEVELOPMENT_TEAM = DLSL362JHJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Feather;
@@ -945,7 +1001,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
+				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -998,7 +1054,7 @@
 				minimumVersion = 0.9.19;
 			};
 		};
-		338FFCDF2C694DFA006C3BE0 /* XCRemoteSwiftPackageReference "ios-icon-selector" */ = {
+		338FFCEB2C695CA3006C3BE0 /* XCRemoteSwiftPackageReference "ios-icon-selector" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jellybeansoup/ios-icon-selector";
 			requirement = {
@@ -1082,9 +1138,9 @@
 			package = 336EEE7F2C32367C0011188D /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
 			productName = ZIPFoundation;
 		};
-		338FFCE02C694DFA006C3BE0 /* IconSelector */ = {
+		338FFCEC2C695CA3006C3BE0 /* IconSelector */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 338FFCDF2C694DFA006C3BE0 /* XCRemoteSwiftPackageReference "ios-icon-selector" */;
+			package = 338FFCEB2C695CA3006C3BE0 /* XCRemoteSwiftPackageReference "ios-icon-selector" */;
 			productName = IconSelector;
 		};
 		33C0409D2C30DD3E00243D90 /* AlertKit */ = {

@@ -7,6 +7,7 @@
 
 import UIKit
 import Nuke
+import SwiftUI
 
 class SettingsViewController: UITableViewController {
 	var tableData =
@@ -147,6 +148,9 @@ extension SettingsViewController {
 		case "Add Certificate":
 			let l = CertificatesViewController()
 			navigationController?.pushViewController(l, animated: true)
+		case "App Icon":
+			let iconsListViewController = IconsListViewController()
+			navigationController?.pushViewController(iconsListViewController, animated: true)
 		default:
 			break
 		}
