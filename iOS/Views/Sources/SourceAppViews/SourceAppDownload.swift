@@ -53,21 +53,21 @@ extension SourceAppViewController {
 				guard let self = self else { return }
 				if let error = error {
 					downloadTaskManager.updateTask(uuid: appUUID, state: .failed(error: error))
-					self.errorPopup(error: error.localizedDescription)
+					Debug.shared.log(message: error.localizedDescription, type: .error)
 				} else if let uuid = uuid, let filePath = filePath {
 					cell.appDownload?.extractCompressedBundle(packageURL: filePath) { (targetBundle, error) in
 						
 						if let error = error {
 							downloadTaskManager.updateTask(uuid: appUUID, state: .failed(error: error))
-							self.errorPopup(error: error.localizedDescription)
+							Debug.shared.log(message: error.localizedDescription, type: .error)
 						} else if let targetBundle = targetBundle {
 							cell.appDownload?.addToApps(bundlePath: targetBundle, uuid: uuid) { error in
 								if let error = error {
 									downloadTaskManager.updateTask(uuid: appUUID, state: .failed(error: error))
-									self.errorPopup(error: error.localizedDescription)
+									Debug.shared.log(message: error.localizedDescription, type: .error)
 								} else {
 									downloadTaskManager.updateTask(uuid: appUUID, state: .completed)
-									self.successPopup()
+									Debug.shared.log(message: "Done!", type: .info)
 								}
 							}
 						}
@@ -80,26 +80,6 @@ extension SourceAppViewController {
 		}
 	}
 
-}
-// TODO: Make a proper error handler
-extension SourceAppViewController {
-	func successPopup() {
-		DispatchQueue.main.async {
-			let alertView = AlertAppleMusic17View(title: "Added to Apps", subtitle: nil, icon: .done)
-			if let viewController = UIApplication.shared.windows.first?.rootViewController {
-				alertView.present(on: viewController.view)
-			}
-		}
-	}
-	
-	func errorPopup(error: String) {
-		DispatchQueue.main.async {
-			let alertView = AlertAppleMusic17View(title: "Error", subtitle: error, icon: .error)
-			if let viewController = UIApplication.shared.windows.first?.rootViewController {
-				alertView.present(on: viewController.view)
-			}
-		}
-	}
 }
 
 protocol DownloadDelegate: AnyObject {

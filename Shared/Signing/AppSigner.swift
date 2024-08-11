@@ -96,7 +96,7 @@ func signApp(options: AppSigningOptions, completion: @escaping (Bool) -> Void) {
 					appPath: contents.first!.lastPathComponent
 				) { 
 					error in
-					print("Fail: \(String(describing: error))")
+					Debug.shared.log(message: "signApp: \(String(describing: error))", type: .fault)
 					completion(false)
 				}
                 DispatchQueue.main.async {

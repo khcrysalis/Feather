@@ -11,6 +11,7 @@ import CoreData
 
 class AppSigningViewController: UITableViewController {
     var appsViewController: DownloadedAppsViewController
+	var largeButton = ActivityIndicatorButton()
 
     var toInject: [String] = []
     var app: NSManagedObject!
@@ -100,13 +101,50 @@ class AppSigningViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
-		self.title = "Sign App"
+		let logoImageView = UIImageView(image: UIImage(named: "feather_glyph"))
+		logoImageView.contentMode = .scaleAspectFit
+		navigationItem.titleView = logoImageView
 		self.navigationController?.navigationBar.prefersLargeTitles = false
         tableView.register(TweakLibraryViewCell.self, forCellReuseIdentifier: "TweakLibraryViewCell")
         tableView.register(SwitchViewCell.self, forCellReuseIdentifier: "SwitchViewCell")
         tableView.register(ActivityIndicatorViewCell.self, forCellReuseIdentifier: "ActivityIndicatorViewCell")
 		self.isModalInPresentation = true
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .done, target: self, action: #selector(closeSheet))
+		setupToolbar()
+	}
+	
+	private func setupToolbar() {
+		largeButton.addTarget(self, action: #selector(startSign), for: .touchUpInside)
+		let largeButtonItem = UIBarButtonItem(customView: largeButton)
+		toolbarItems = [ largeButtonItem, ]
+		navigationController?.setToolbarHidden(false, animated: false)
+	}
+	
+	@objc func startSign() {
+		self.navigationItem.leftBarButtonItem = nil
+		signing = true
+		largeButton.showLoadingIndicator()
+		signApp(options: AppSigningOptions(
+			name: name,
+			version: version,
+			bundleId: bundleId,
+			uuid: uuid,
+			injectionTool: injectionToolString[injectionTool],
+			removePlugins: removePlugins,
+			forceFileSharing: forceFileSharing,
+			removeSupportedDevices: removeSupportedDevices,
+			removeURLScheme: removeURLScheme,
+			forceProMotion: forceProMotion,
+			forceForceFullScreen: forceForceFullScreen,
+			forceiTunesFileSharing: forceiTunesFileSharing,
+			forceMinimumVersion: forceMinimumVersionString[forceMinimumVersion],
+			forceLightDarkAppearence: forceLightDarkAppearenceString[forceLightDarkAppearence],
+			certificate: certs)
+		) { success in
+			self.dismiss(animated: true)
+			self.appsViewController.fetchSources()
+			self.appsViewController.tableView.reloadData()
+		}
 	}
 	
 	@objc func closeSheet() {
@@ -122,12 +160,10 @@ class AppSigningViewController: UITableViewController {
         case 0:
             return 3;
         case 1:
-            return 1;
+            return 2;
         case 2:
             return 2 + toInject.count;
         case 3:
-            return 1;
-        case 4:
             return 1;
         default:
             return 0;
@@ -146,19 +182,6 @@ class AppSigningViewController: UITableViewController {
 				cell.selectionStyle = .none
 				return cell
             }
-        }
-        if (indexPath.section == 4) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityIndicatorViewCell", for: indexPath) as! ActivityIndicatorViewCell
-            cell.textLabel?.text = "Sign"
-            cell.textLabel?.textColor = signing ? .systemGray : .systemBlue
-            if signing {
-                cell.activityIndicator.startAnimating()
-                cell.activityIndicator.isHidden = false
-            } else {
-                cell.activityIndicator.isHidden = true
-                cell.activityIndicator.stopAnimating()
-            }
-            return cell
         }
         /*if (indexPath.section == 3) {
             if (indexPath.row == 0) {
@@ -188,14 +211,25 @@ class AppSigningViewController: UITableViewController {
             cell.textLabel?.text = "Version"
             cell.detailTextLabel?.text = version
             cell.accessoryType = .disclosureIndicator
-        case (1, 0):
+		case (1, 0):
+			if let hasGotCert = certs {
+				let cell = CertificateViewTableViewCell()
+				cell.configure(with: hasGotCert, isSelected: false)
+				cell.selectionStyle = .none
+				return cell
+			} else {
+				cell.textLabel?.text = "No certificates selected"
+				cell.textLabel?.textColor = .secondaryLabel
+				cell.selectionStyle = .none
+			}
+        case (1, 1):
             cell.textLabel?.text = "Entitlements"
             cell.detailTextLabel?.text = ""
             cell.accessoryType = .disclosureIndicator
             break
         case (2, toInject.count + 1):
             cell.textLabel?.text = "Add a deb/dylib..."
-            cell.textLabel?.textColor = .systemBlue
+			cell.textLabel?.textColor = .tintColor
             break
         case (3, 0):
             cell.textLabel?.text = "Advanced"
@@ -208,7 +242,6 @@ class AppSigningViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // tableView.deselectRow(at: indexPath, animated: true)
         switch (indexPath.section, indexPath.item) {
 		case (0, 0):
 			navigationController?.pushViewController(AppSigningInputViewController(appSigningViewController: self, initialValue: self.name, valueToSaveTo: "name", indexPath: indexPath), animated: true)
@@ -218,31 +251,6 @@ class AppSigningViewController: UITableViewController {
 			navigationController?.pushViewController(AppSigningInputViewController(appSigningViewController: self, initialValue: self.version, valueToSaveTo: "version", indexPath: indexPath), animated: true)
         case (3, 0):
             navigationController?.pushViewController(AppSigningAdvancedViewController(appSigningViewController: self), animated: true)
-        case (4, 0):
-            self.navigationItem.setHidesBackButton(true, animated: true)
-            signing = true
-            tableView.reloadRows(at: [indexPath], with: .none)
-            signApp(options: AppSigningOptions(
-				name: name,
-				version: version,
-				bundleId: bundleId,
-				uuid: uuid, 
-				injectionTool: injectionToolString[injectionTool],
-				removePlugins: removePlugins,
-				forceFileSharing: forceFileSharing,
-				removeSupportedDevices: removeSupportedDevices,
-				removeURLScheme: removeURLScheme,
-				forceProMotion: forceProMotion,
-				forceForceFullScreen: forceForceFullScreen,
-				forceiTunesFileSharing: forceiTunesFileSharing,
-				forceMinimumVersion: forceMinimumVersionString[forceMinimumVersion],
-				forceLightDarkAppearence: forceLightDarkAppearenceString[forceLightDarkAppearence],
-				certificate: certs)
-			) { success in
-				self.dismiss(animated: true)
-                self.appsViewController.fetchSources()
-                self.appsViewController.tableView.reloadData()
-            }
         default:
             break
         }
@@ -257,6 +265,30 @@ class AppSigningViewController: UITableViewController {
             nil
         ][section]
     }
+	
+	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return [
+			40,
+			40,
+			40,
+			0,
+			0
+		][section]
+	}
+	
+	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		
+		let titles = [
+			"Customization",
+			"Signing",
+			"Tweak Injection",
+			"",
+			""
+		][section]
+		
+		let headerView = InsetGroupedSectionHeader(title: titles)
+		return headerView
+	}
 	
 	@objc private func injectionToolDidChange(_ sender: UISegmentedControl) {
 		injectionTool = sender.selectedSegmentIndex

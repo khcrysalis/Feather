@@ -22,7 +22,7 @@ class AppsTableViewCell: UITableViewCell {
 		let label = UILabel()
 		label.font = UIFont.systemFont(ofSize: 13)
 		label.textColor = .secondaryLabel
-		label.numberOfLines = 0
+		label.numberOfLines = 1
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()

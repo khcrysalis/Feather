@@ -61,9 +61,9 @@ class CertImportingVC: UITableViewController {
 	@objc func saveAction() {
         
 		//krilling myself, also improving code later just not today lmaoo
-		
 		let mobileProvisionPath: URL!
 		mobileProvisionPath = (selectedFiles[.provision] as! URL)
+		#if !targetEnvironment(simulator)
         if let p12path = selectedFiles[.p12] as? URL {
             password_check_fix_WHAT_THE_FUCK(mobileProvisionPath.path)
             if (!p12_password_check(p12path.path, selectedFiles[.password] as? String ?? "")) {
@@ -73,6 +73,7 @@ class CertImportingVC: UITableViewController {
                 return
             }
         }
+		#endif
 		
 		if let fileContent = CertData.parseMobileProvisioningFile(atPath: mobileProvisionPath) {
 			CoreDataManager.shared.addToCertificates(cert: fileContent, files: selectedFiles)

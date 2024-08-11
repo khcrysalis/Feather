@@ -93,7 +93,7 @@ extension DownloadedAppsViewController {
 		if FileManager.default.fileExists(atPath: CoreDataManager.shared.getFilesForDownloadedApps(for:(meow as! DownloadedApps)).path) {
 			let ap = AppSigningViewController(app: meow!, appsViewController: self)
 			let navigationController = UINavigationController(rootViewController: ap)
-			navigationController.modalPresentationStyle = .fullScreen
+			navigationController.modalPresentationStyle = .formSheet
 			self.present(navigationController, animated: true, completion: nil)
 		}
 		tableView.deselectRow(at: indexPath, animated: true)

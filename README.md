@@ -39,3 +39,7 @@ This is why we prepend the random string before each identifier, its done as a s
 - [Zsign](https://github.com/zhlynn/zsign) - Allowing to sign on-device, reimplimented to work on other platforms such as iOS.
 - [Nuke](https://github.com/kean/Nuke) - Load images from different sources and display them in your app using simple and flexible APIs. Take advantage of the powerful image processing capabilities and a robust caching system.
 - [Markdownosaur](https://github.com/christianselig/Markdownosaur) - Allows markdown parsing for changelogs
+
+## Contributions
+
+They are welcome! :)
