@@ -36,6 +36,25 @@ class AppDownload: NSObject {
 		downloads[downloadTask!] = (uuid: uuid, appuuid: appuuid, destinationUrl: destinationUrl, completion: completion)
 		downloadTask!.resume()
 	}
+	
+	func importFile(url: URL, uuid: String, completion: @escaping (URL?, Error?) -> Void) {
+		guard let folderUrl = createUuidDirectory(uuid: uuid) else {
+			completion(nil, NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Failed to create directory"]))
+			return
+		}
+		
+		let fileName = url.lastPathComponent
+		let destinationUrl = folderUrl.appendingPathComponent(fileName)
+		
+		do {
+			let fileManager = FileManager.default
+			try fileManager.moveItem(at: url, to: destinationUrl)
+			completion(destinationUrl, nil)
+		} catch {
+			completion(nil, error)
+		}
+	}
+
 
 	func cancelDownload() {
 		Debug.shared.log(message: "AppDownload.cancelDownload: User cancelled the download", type: .info)

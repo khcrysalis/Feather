@@ -41,9 +41,8 @@ extension CoreDataManager {
 		urlString: String,
 		completion: @escaping (Error?) -> Void) {
 			guard let url = URL(string: urlString) else {
-				let error = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])
-				Debug.shared.log(message: error.localizedDescription)
-				completion(error)
+				Debug.shared.log(message: "Invalid URL")
+				completion(nil)
 				return
 		}
 			let repoManager = SourceGET()

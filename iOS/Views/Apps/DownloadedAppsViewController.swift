@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import CoreData
+import UniformTypeIdentifiers
 
 class DownloadedAppsViewController: UITableViewController {
 	
@@ -40,7 +41,10 @@ class DownloadedAppsViewController: UITableViewController {
 		
 		let configuration = UIMenu(title: "", children: [
 			UIAction(title: "Import from Files", handler: { _ in
-				//
+				self.presentDocumentPicker(fileExtension: [
+					UTType(filenameExtension: "ipa")!,
+					UTType(filenameExtension: "tipa")!
+				])
 			}),
 			UIAction(title: "Import from URL", handler: { _ in
 				//
