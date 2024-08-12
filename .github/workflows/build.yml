@@ -29,6 +29,6 @@ jobs:
       - name: Get Version Number
         id: get_version
         run: |
-          VERSION=$(defaults read Payload/feather.app/Contents/Info CFBundleShortVersionString)
+          VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" Payload/feather.app/Info.plist)
           echo "VERSION=${VERSION}" >> $GITHUB_ENV
 
