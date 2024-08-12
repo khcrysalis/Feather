@@ -42,6 +42,6 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           draft: true
-          artifacts: "upload/*"
+          artifacts: "upload/feather.ipa,upload/feather-ts.tipa"
           name: Release ${{ env.VERSION }}
           tag: v${{ env.VERSION }}
