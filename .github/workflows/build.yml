@@ -23,13 +23,14 @@ jobs:
           brew install 7zip gnu-sed
 
       - name: Select Xcode 15.1
-        run: sudo xcode-select -s /Applications/Xcode_15.1.app/Contents/Developer
+        run: | 
+          sudo xcode-select -s /Applications/Xcode_15.1.app/Contents/Developer
+          mkdir upload
 
       - name: Compile f
-        run: make package SCHEME="'feather (Release)'"
-
-      - name: Compile fts
-        run: make package TIPA=1 SCHEME="'feather (Release)'"
+        run: | 
+          make package SCHEME="'feather (Release)'"
+          mv packages/* upload/
 
       - name: Get Version Number
         id: get_version
