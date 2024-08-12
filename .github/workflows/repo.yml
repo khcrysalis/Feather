@@ -1,0 +1,61 @@
+name: Update repo
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  update_repo:
+    runs-on: macos-13
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Fetch and update release info
+        run: |
+          release_info=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest)
+
+          clean_release_info=$(echo "$release_info" | tr -d '\000-\037')
+
+          updated_at=$(echo "$clean_release_info" | jq -r '.created_at // empty')
+          size=$(echo "$clean_release_info" | jq -r '.assets[]? | select(.name | endswith(".ipa")) | .size // empty')
+          tag_name=$(echo "$clean_release_info" | jq -r '.tag_name // empty')
+          download_url=$(echo "$clean_release_info" | jq -r '.assets[]? | select(.name | endswith(".ipa")) | .browser_download_url // empty')
+
+          if [ -n "$download_url" ]; then
+            echo "Download URL for .ipa file: $download_url"
+            echo "Updated at: $updated_at"
+            echo "Size: $size bytes"
+            echo "Tag name: $tag_name"
+
+            jq --arg version "$tag_name" \
+               --arg date "$updated_at" \
+               --argjson size "$size" \
+               --arg url "$download_url" \
+               '.apps[0].size = ($size | tonumber) |
+                .apps[0].version = $version |
+                .apps[0].versionDate = $date |
+                .apps[0].downloadURL = $url |
+                .apps[0].versions = (
+                  [{
+                    version: $version,
+                    date: $date,
+                    size: $size,
+                    downloadURL: $url
+                  }] + .apps[0].versions
+                ) | .apps[0].versions |= unique_by(.version)' app-repo.json > updated_app_data.json
+
+            mv updated_app_data.json app-repo.json
+          else
+            echo "No .ipa file found in the latest release or missing information."
+            echo "Updated at: $updated_at"
+            echo "Tag name: $tag_name"
+          fi
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
+          message: "chore: update repo"
+          add: app-repo.json
