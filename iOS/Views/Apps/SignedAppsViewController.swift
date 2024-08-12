@@ -112,10 +112,10 @@ extension SignedAppsViewController {
 							let bundleid = (meow.value(forKey: "bundleidentifier") as? String ?? "").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
 							let name = (meow.value(forKey: "name") as? String ?? "").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
 							let version = (meow.value(forKey: "version") as? String ?? "").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-							let fetchurl = "https%3A%2F%2Flocalhost.direct%3A8443".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+							let fetchurl = "https://localhost.direct:8443/tempsigned.ipa?uuid=\(uuid)".addingPercentEncoding(withAllowedCharacters: .alphanumerics)!
 
-							let urlString = "itms-services://?action=download-manifest&url=\(Preferences.onlinePath ?? Preferences.defaultInstallPath)/genPlist%3Fbundleid%3D\(bundleid)%26name%3D\(name)%26version%3D\(version)%26fetchurl%3D\(fetchurl!)"
-							Debug.shared.log(message: ("\(Preferences.onlinePath ?? Preferences.defaultInstallPath)/genPlist%3Fbundleid%3D\(bundleid)%26name%3D\(name)%26version%3D\(version)%26fetchurl%3D\(fetchurl!)"))
+                            let urlString = "itms-services://?action=download-manifest&url=" + ("\(Preferences.onlinePath ?? Preferences.defaultInstallPath)/genPlist?bundleid=\(bundleid)&name=\(name)&version=\(version)&fetchurl=\(fetchurl)").addingPercentEncoding(withAllowedCharacters: .alphanumerics)!
+							Debug.shared.log(message: ("\(Preferences.onlinePath ?? Preferences.defaultInstallPath)/genPlist%3Fbundleid%3D\(bundleid)%26name%3D\(name)%26version%3D\(version)%26fetchurl%3D\(fetchurl)"))
 
 							if let url = URL(string: urlString) {
 								UIApplication.shared.open(url, options: [:], completionHandler: nil)
