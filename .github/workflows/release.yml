@@ -38,10 +38,16 @@ jobs:
           VERSION=$( /usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" Payload/feather.app/Info.plist )
           echo "VERSION=${VERSION}" >> $GITHUB_ENV
 
-      - uses: actions/checkout@v4
-      - uses: ncipollo/release-action@v1
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
         with:
+          name: Feather v${{ env.VERSION }}
+          tag_name: v${{ env.VERSION }}
+          files: |
+            upload/feather-ts.tipa
+            upload/feather.ipa
+          generate_release_notes: true
+          fail_on_unmatched_files: true
           draft: true
-          artifacts: "upload/feather.ipa,upload/feather-ts.tipa"
-          name: Release ${{ env.VERSION }}
-          tag: v${{ env.VERSION }}
+        env:
+          GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
