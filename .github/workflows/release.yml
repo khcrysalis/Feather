@@ -1,6 +1,7 @@
 name: Create New Release
 
 on:
+
   workflow_dispatch:
 
 jobs:
