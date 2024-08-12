@@ -32,28 +32,9 @@ jobs:
           VERSION=$( /usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" Payload/feather.app/Info.plist )
           echo "VERSION=${VERSION}" >> $GITHUB_ENV
 
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v4
+      - uses: ncipollo/release-action@v1
         with:
-          tag_name: ${{ env.VERSION }}
-          release_name: Release ${{ env.VERSION }}
           draft: true
-
-      - name: Upload Release Asset - f
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: packages/feather-ts.tipa
-          asset_name: feather_ts_${{ env.VERSION }}.tipa
-          asset_content_type: application/zip
-
-      - name: Upload Release Asset - fts
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: packages/feather.ipa
-          asset_name: feather_${{ env.VERSION }}.ipa
-          asset_content_type: application/zip
+          artifacts: "packages/*.ipa"
+          release_name: Release ${{ env.VERSION }}
