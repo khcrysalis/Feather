@@ -27,16 +27,16 @@ jobs:
           make package SCHEME="'feather (Release)'"
           mv packages/* upload/
 
-      - name: Compile fts
-        run: | 
-          make package TIPA=1 SCHEME="'feather (Release)'"
-          mv packages/* upload/
-
       - name: Get Version Number
         id: get_version
         run: |
           VERSION=$( /usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" Payload/feather.app/Info.plist )
           echo "VERSION=${VERSION}" >> $GITHUB_ENV
+
+      - name: Setup
+        run: |
+          mv upload/feather.ipa upload/feather_v${VERSION}.ipa
+          cp upload/feather_v${VERSION}.ipa upload/feather_v${VERSION}.tipa
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -44,8 +44,7 @@ jobs:
           name: Feather v${{ env.VERSION }}
           tag_name: v${{ env.VERSION }}
           files: |
-            upload/feather-ts.tipa
-            upload/feather.ipa
+            upload/*ipa
           generate_release_notes: true
           fail_on_unmatched_files: true
           draft: true

@@ -6,15 +6,6 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>Mac</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Mac</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
 			<key>Early</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -29,6 +20,15 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>Evil</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Mac</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Mac</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
