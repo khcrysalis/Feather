@@ -21,10 +21,10 @@ jobs:
         run: sudo xcode-select -s /Applications/Xcode_15.1.app/Contents/Developer
 
       - name: Compile f
-        run: make package 
+        run: make package SCHEME="feather (Release)"
 
       - name: Compile fts
-        run: make package TIPA=1 SCHEME='feather (Release)'
+        run: make package TIPA=1 SCHEME="feather (Release)"
 
       - name: Get Version Number
         id: get_version
