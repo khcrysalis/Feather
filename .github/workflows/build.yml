@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main
+    paths:
+      - iOS/**
+      - Shared/**
+      - Makefile
+      - feather.xcodeproj/**
 jobs:
   build:
     runs-on: macos-13
