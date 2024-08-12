@@ -1,9 +1,9 @@
 name: Create Beta Build
 
 on:
-
   push:
-  
+    branches:
+      - main
 jobs:
   build:
     runs-on: macos-13
