@@ -65,7 +65,7 @@ class AppSigningViewController: UITableViewController {
         }
         
         if let bundleId = app.value(forKey: "bundleidentifier") as? String {
-			if self.certs?.certData?.pPQCheck == true && Preferences.isFuckingPPqcheckDetectionOff == true {
+			if self.certs?.certData?.pPQCheck == true && Preferences.isFuckingPPqcheckDetectionOff == false {
 				self.bundleId = bundleId+"."+Preferences.pPQCheckString
 			} else {
 				self.bundleId = bundleId
