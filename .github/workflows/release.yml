@@ -37,4 +37,5 @@ jobs:
         with:
           draft: true
           artifacts: "packages/*.ipa"
-          release_name: Release ${{ env.VERSION }}
+          name: Release ${{ env.VERSION }}
+          tag: v${{ env.VERSION }}

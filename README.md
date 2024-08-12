@@ -1,10 +1,12 @@
-
-<p align="center">
-    <h1 align="center">Feather</h1>
-    <p align="center">
-       Feather is a free on-device iOS application manager/installer built with UIKit for quality.
-    </p>
+<div align="center">
+    <img width="100" height="100" src="Images/512@2x.png" style="margin-right: -15px;">
+</div>
+<h1>Feather</h1>
+<p>
+    Feather is a free on-device iOS application manager/installer built with UIKit for quality.
 </p>
+
+
 
 
 
@@ -16,6 +18,12 @@
 - Allows multiple certificate imports for easy switching
 - Configurable signing options (name, bundleid, version, other plist options)
  - Meant to be used with Apple Accounts that are apart of `ADP` (Apple Developer Program), however other certificates can also work!
+
+## GET IT NOW
+
+<p align="center">
+<a href="https://github.com/khcrysalis/feather/releases">>>>> Get Feather From Releases <<<<</a>
+</p>
 
 ## How it Works
 
@@ -33,7 +41,17 @@ PPQCheck checks for a similar bundle identifier on the App Store, if said identi
 
 This is why we prepend the random string before each identifier, its done as a safety meassure - however you can disable it if you *really* want to in Feathers settings page.
 
+## Building
+
+```sh
+git clone https://github.com/khcrysalis/feather # Clone
+cd feather
+make package SCHEME="'feather (Release)'" # Build
+```
+> Use `SCHEME="'feather (Debug)'"` for debug build
+
 ## Acknowledgements
+
 - [localhost.direct](https://github.com/Upinel/localhost.direct) - localhost with public CA signed SSL certificate
 - [Http.swift](https://github.com/BiAtoms/Http.swift) - A tiny HTTP server engine written in swift.
 - [Zsign](https://github.com/zhlynn/zsign) - Allowing to sign on-device, reimplimented to work on other platforms such as iOS.
