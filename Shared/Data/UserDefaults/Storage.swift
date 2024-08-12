@@ -8,28 +8,33 @@
 import Foundation
 
 @propertyWrapper
-public struct Storage<Value> {
-	public typealias Callback = (Value) -> Void
+struct Storage<Value> {
+	typealias Callback = (Value) -> Void
 	let key: String
 	let defaultValue: Value
 	let callback: Callback?
 	
-	public init(key: String, defaultValue: Value, callback: Callback? = nil) {
+	init(key: String, defaultValue: Value, callback: Callback? = nil) {
 		self.key = key
 		self.defaultValue = defaultValue
 		self.callback = callback
 	}
 	
-	public var wrappedValue: Value {
+	var wrappedValue: Value {
 		get {
-			return UserDefaults.standard.object(forKey: key) as? Value ?? defaultValue
+			if let storedValue = UserDefaults.standard.object(forKey: key) {
+				if let castedValue = storedValue as? Value {
+					return castedValue
+				}
+			}
+			return defaultValue
 		}
-		
 		set {
 			UserDefaults.standard.set(newValue, forKey: key)
 			callback?(newValue)
 		}
 	}
+
 }
 
 

@@ -31,7 +31,7 @@ func runHTTPSServer() {
 					"assets": [
 						[
 							"kind": "software-package",
-							"url": "https://localhost.direct:8443/app.ipa?uuid=\(UUID(uuidString: request.queryParams["uuid"] ?? "null")?.uuidString ?? "null")"
+							"url": "https://localhost.direct:8443/tempsigned.ipa?uuid=\(UUID(uuidString: request.queryParams["uuid"] ?? "null")?.uuidString ?? "null")"
 						]
 					],
 					"metadata": [
@@ -53,7 +53,7 @@ func runHTTPSServer() {
 		])
 	}
 	
-	server.get("/app.ipa") { request in
+	server.get("/tempsigned.ipa") { request in
 		let path = NSHomeDirectory() + "/tmp/" + ((UUID(uuidString: request.queryParams["uuid"] ?? "null")?.uuidString ?? "null") + ".ipa")
 		if !FileManager.default.fileExists(atPath: path) {
 			return .init(.notFound)
@@ -62,7 +62,7 @@ func runHTTPSServer() {
 		if serverShouldStop {
 			stopHTTPSServer()
 		}
-		
+		Debug.shared.log(message: path)
 		return .init(.ok, body: [Byte](FileManager.default.contents(atPath: path)!), headers: [
 			"Content-Type": "application/octet-stream"
 		])

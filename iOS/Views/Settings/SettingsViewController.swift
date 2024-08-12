@@ -14,10 +14,11 @@ class SettingsViewController: UITableViewController {
 	[
 		["Donate"],
 		["About Feather", "Submit Feedback", "GitHub Repository"],
+		["Display", "App Icon"],
 		["Current Certificate", "Add Certificate"],
 		["Signing Configuration"],
-		["Fuck PPQCheck"],
-		["Display", "App Icon"],
+		["Fuck PPQCheck", "Use Server"],
+		["Use Custom Server"],
 		["Debug Logs", "Reset"]
 	]
 	
@@ -25,10 +26,11 @@ class SettingsViewController: UITableViewController {
 	[
 		"",
 		"",
+		"General",
 		"Signing",
 		"",
 		"",
-		"General",
+		"",
 		"Advanced"
 	]
 	
@@ -42,6 +44,7 @@ class SettingsViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupViews()
+		updateCells()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -78,6 +81,10 @@ extension SettingsViewController {
 		switch section {
 		case 1:
 			return "If any issues occur within Feather please report it via the GitHub repository. When submitting an issue, be sure to submit any logs."
+		case 5:
+			return "Using a signing server will disable the built-in server Feather uses to retrieve the manifest for itms services, use this in case of the local server failing."
+		case 6:
+			return "Default server goes to \"\(Preferences.defaultInstallPath)\""
 		default:
 			return nil
 		}
@@ -134,6 +141,24 @@ extension SettingsViewController {
 			fuckPPq.switchControl.isOn = Preferences.isFuckingPPqcheckDetectionOff
 			fuckPPq.selectionStyle = .none
 			return fuckPPq
+		case "Use Server":
+			let useS = SwitchViewCell()
+			useS.textLabel?.text = "Online Install Method"
+			useS.switchControl.addTarget(self, action: #selector(onlinePathToggled(_:)), for: .valueChanged)
+			useS.switchControl.isOn = Preferences.userSelectedServer
+			useS.selectionStyle = .none
+			return useS
+		case "Use Custom Server":
+			if Preferences.onlinePath != Preferences.defaultInstallPath {
+				cell.textLabel?.textColor = UIColor.systemGray
+				cell.isUserInteractionEnabled = false
+				cell.textLabel?.text = Preferences.onlinePath!
+			} else {
+				cell.textLabel?.textColor = .tintColor
+			}
+		case "Reset Configuration":
+			cell.textLabel?.textColor = .systemRed
+			cell.textLabel?.textAlignment = .center
 		case "App Icon":
 			cell.setAccessoryIcon(with: "app.dashed")
 			cell.selectionStyle = .default
@@ -142,6 +167,10 @@ extension SettingsViewController {
 		}
 		
 		return cell
+	}
+	
+	@objc func onlinePathToggled(_ sender: UISwitch) {
+		Preferences.userSelectedServer = sender.isOn
 	}
 	
 	@objc func fuckPpqcheckToggled(_ sender: UISwitch) {
@@ -166,11 +195,36 @@ extension SettingsViewController {
 		case "App Icon":
 			let iconsListViewController = IconsListViewController()
 			navigationController?.pushViewController(iconsListViewController, animated: true)
+		case "Use Custom Server":
+			showChangeDownloadURLAlert()
+		case "Reset Configuration":
+			resetConfigDefault()
 		default:
 			break
 		}
 		
 		tableView.deselectRow(at: indexPath, animated: true)
+	}
+	
+	func updateCells() {
+		if Preferences.onlinePath != Preferences.defaultInstallPath {
+			tableData[6].insert("Reset Configuration", at: 1)
+		}
+		Preferences.installPathChangedCallback = { [weak self] newInstallPath in
+			self?.handleInstallPathChange(newInstallPath)
+		}
+	}
+	
+	private func handleInstallPathChange(_ newInstallPath: String?) {
+		if newInstallPath != Preferences.defaultInstallPath {
+			tableData[6].insert("Reset Configuration", at: 1)
+		} else {
+			if let index = tableData[6].firstIndex(of: "Reset Configuration") {
+				tableData[6].remove(at: index)
+			}
+		}
+
+		tableView.reloadSections(IndexSet(integer: 6), with: .automatic)
 	}
 	
 }
@@ -183,5 +237,46 @@ extension UITableViewCell {
 		} else {
 			self.accessoryView = nil
 		}
+	}
+}
+extension SettingsViewController {
+	func resetConfigDefault() {
+		Preferences.onlinePath = Preferences.defaultInstallPath
+	}
+	
+	func showChangeDownloadURLAlert() {
+		let alert = UIAlertController(title: "Change Download URL", message: nil, preferredStyle: .alert)
+
+		alert.addTextField { textField in
+			textField.placeholder = Preferences.defaultInstallPath
+			textField.autocapitalizationType = .none
+			textField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+		}
+
+		let setAction = UIAlertAction(title: "Set", style: .default) { _ in
+			guard let textField = alert.textFields?.first, let enteredURL = textField.text else { return }
+
+			Preferences.onlinePath = enteredURL
+		}
+
+		setAction.isEnabled = false
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+		alert.addAction(setAction)
+		alert.addAction(cancelAction)
+		present(alert, animated: true, completion: nil)
+	}
+
+
+	@objc func textFieldDidChange(_ textField: UITextField) {
+		guard let alertController = presentedViewController as? UIAlertController, let setAction = alertController.actions.first(where: { $0.title == "Set" }) else { return }
+
+		let enteredURL = textField.text ?? ""
+		setAction.isEnabled = isValidURL(enteredURL)
+	}
+
+	func isValidURL(_ url: String) -> Bool {
+		let urlPredicate = NSPredicate(format: "SELF MATCHES %@", "https?://$")
+		return urlPredicate.evaluate(with: url)
 	}
 }

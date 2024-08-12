@@ -9,6 +9,15 @@ import Foundation
 import UIKit
 
 enum Preferences {
+	static var installPathChangedCallback: ((String?) -> Void)?
+	static let defaultInstallPath: String = "https://api.palera.in"
+	
+	@Storage(key: "Feather.UserSpecifiedOnlinePath", defaultValue: defaultInstallPath)
+	static var onlinePath: String? { didSet { installPathChangedCallback?(onlinePath) } }
+	
+	@Storage(key: "Feather.UserSelectedServer", defaultValue: false)
+	static var userSelectedServer: Bool
+	
 	@Storage(key: "Feather.userIntefacerStyle", defaultValue: UIUserInterfaceStyle.unspecified.rawValue)
 	static var preferredInterfaceStyle: Int
 	

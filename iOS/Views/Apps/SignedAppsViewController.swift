@@ -107,7 +107,26 @@ extension SignedAppsViewController {
 						tableView.deselectRow(at: indexPath, animated: true)
 						MBProgressHUD.hide(for: self.view, animated: true)
 						runHTTPSServer()
-						UIApplication.shared.open(URL(string: "itms-services://?action=download-manifest&url=\("https://localhost.direct:8443/manifest.plist?bundleid=\(meow.value(forKey: "bundleidentifier") as? String ?? "")&uuid=\(uuid)&name=\((meow.value(forKey: "name") as? String ?? "").addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)".addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)")!, options: [:], completionHandler: nil)
+						if Preferences.userSelectedServer {
+							
+							let bundleid = (meow.value(forKey: "bundleidentifier") as? String ?? "").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+							let name = (meow.value(forKey: "name") as? String ?? "").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+							let version = (meow.value(forKey: "version") as? String ?? "").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+							let fetchurl = "https%3A%2F%2Flocalhost.direct%3A8443".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+
+							let urlString = "itms-services://?action=download-manifest&url=\(Preferences.onlinePath ?? Preferences.defaultInstallPath)/genPlist%3Fbundleid%3D\(bundleid)%26name%3D\(name)%26version%3D\(version)%26fetchurl%3D\(fetchurl!)"
+							Debug.shared.log(message: ("\(Preferences.onlinePath ?? Preferences.defaultInstallPath)/genPlist%3Fbundleid%3D\(bundleid)%26name%3D\(name)%26version%3D\(version)%26fetchurl%3D\(fetchurl!)"))
+
+							if let url = URL(string: urlString) {
+								UIApplication.shared.open(url, options: [:], completionHandler: nil)
+							}
+
+							
+						} else {
+
+							UIApplication.shared.open(URL(string: "itms-services://?action=download-manifest&url=\("https://localhost.direct:8443/manifest.plist?bundleid=\(meow.value(forKey: "bundleidentifier") as? String ?? "")&uuid=\(uuid)&name=\((meow.value(forKey: "name") as? String ?? "").addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)".addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)")!, options: [:], completionHandler: nil)
+						}
+
 
 					}
 				} catch {
