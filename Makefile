@@ -2,6 +2,7 @@ TARGET_CODESIGN = $(shell which ldid)
 
 PLATFORM = iphoneos
 NAME = feather
+SCHEME ?= 'feather (Debug)'
 RELEASE = Release-iphoneos
 CONFIGURATION = Release
 
@@ -17,7 +18,7 @@ all: package
 package:
 	@rm -rf $(APP_TMP)
 	@set -o pipefail; \
-		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project '$(NAME).xcodeproj' -scheme $(NAME) -configuration $(CONFIGURATION) -arch arm64 -sdk $(PLATFORM) -derivedDataPath $(APP_TMP) \
+		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project '$(NAME).xcodeproj' -scheme $(SCHEME) -configuration $(CONFIGURATION) -arch arm64 -sdk $(PLATFORM) -derivedDataPath $(APP_TMP) \
 		CODE_SIGNING_ALLOWED=NO DSTROOT=$(APP_TMP)/install ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
 	@rm -rf Payload
 	@rm -rf $(STAGE_DIR)/
@@ -32,7 +33,7 @@ package:
 	@mkdir -p packages
 
 ifeq ($(TIPA),1)
-	@zip -r9 packages/$(NAME).tipa Payload
+	@zip -r9 packages/$(NAME)-ts.tipa Payload
 else
 	@zip -r9 packages/$(NAME).ipa Payload
 endif

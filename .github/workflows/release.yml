@@ -1,0 +1,57 @@
+name: Create New Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-13
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install dependencies (packages)
+        run: |
+          curl -LO https://github.com/ProcursusTeam/ldid/releases/download/v2.1.5-procursus7/ldid_macosx_x86_64
+          sudo install -m755 ldid_macosx_x86_64 /usr/local/bin/ldid
+          brew install 7zip gnu-sed
+
+      - name: Select Xcode 15.1
+        run: sudo xcode-select -s /Applications/Xcode_15.1.app/Contents/Developer
+
+      - name: Compile f
+        run: make package 
+
+      - name: Compile fts
+        run: make package TIPA=1 SCHEME='feather (Release)'
+
+      - name: Get Version Number
+        id: get_version
+        run: |
+          VERSION=$(defaults read Payload/feather.app/Contents/Info CFBundleShortVersionString)
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ env.VERSION }}
+          release_name: Release ${{ env.VERSION }}
+          draft: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Release Asset - f
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: packages/feather-ts.tipa
+          asset_name: feather_ts_${{ env.VERSION }}.tipa
+          asset_content_type: application/zip
+
+      - name: Upload Release Asset - fts
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: packages/feather.ipa
+          asset_name: feather_${{ env.VERSION }}.ipa
+          asset_content_type: application/zip

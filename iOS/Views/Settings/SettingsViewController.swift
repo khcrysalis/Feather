@@ -16,6 +16,7 @@ class SettingsViewController: UITableViewController {
 		["About Feather", "Submit Feedback", "GitHub Repository"],
 		["Current Certificate", "Add Certificate"],
 		["Signing Configuration"],
+		["Fuck PPQCheck"],
 		["Display", "App Icon"],
 		["Debug Logs", "Reset"]
 	]
@@ -25,6 +26,7 @@ class SettingsViewController: UITableViewController {
 		"",
 		"",
 		"Signing",
+		"",
 		"",
 		"General",
 		"Advanced"
@@ -125,13 +127,26 @@ extension SettingsViewController {
 				cell.textLabel?.textColor = .secondaryLabel
 				cell.selectionStyle = .none
 			}
+		case "Fuck PPQCheck":
+			let fuckPPq = SwitchViewCell()
+			fuckPPq.textLabel?.text = "Disable PPQCheck Protections"
+			fuckPPq.switchControl.addTarget(self, action: #selector(fuckPpqcheckToggled(_:)), for: .valueChanged)
+			fuckPPq.switchControl.isOn = Preferences.isFuckingPPqcheckDetectionOff
+			fuckPPq.selectionStyle = .none
+			return fuckPPq
+		case "App Icon":
+			cell.setAccessoryIcon(with: "app.dashed")
+			cell.selectionStyle = .default
 		default:
 			break
 		}
 		
 		return cell
 	}
-
+	
+	@objc func fuckPpqcheckToggled(_ sender: UISwitch) {
+		Preferences.isFuckingPPqcheckDetectionOff = sender.isOn
+	}
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let itemTapped = tableData[indexPath.section][indexPath.row]

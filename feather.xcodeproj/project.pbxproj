@@ -41,6 +41,10 @@
 		338FFCF42C6971B2006C3BE0 /* IconsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338FFCF32C6971B2006C3BE0 /* IconsListTableViewCell.swift */; };
 		338FFCF82C6973F0006C3BE0 /* Wing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 338FFCF62C6973F0006C3BE0 /* Wing@2x.png */; };
 		338FFCF92C6973F0006C3BE0 /* Wing@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 338FFCF72C6973F0006C3BE0 /* Wing@3x.png */; };
+		338FFCFC2C697C61006C3BE0 /* Evil@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 338FFCFA2C697C61006C3BE0 /* Evil@2x.png */; };
+		338FFCFD2C697C61006C3BE0 /* Evil@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 338FFCFB2C697C61006C3BE0 /* Evil@3x.png */; };
+		338FFD002C697D66006C3BE0 /* Early@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 338FFCFE2C697D66006C3BE0 /* Early@2x.png */; };
+		338FFD012C697D66006C3BE0 /* Early@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 338FFCFF2C697D66006C3BE0 /* Early@3x.png */; };
 		33951CFE2C37AFCF00802F78 /* FloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33951CFD2C37AFCF00802F78 /* FloatingActionButton.swift */; };
 		339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */; };
 		339BDAE32BF95DC0007009D9 /* SectionIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339BDAE22BF95DC0007009D9 /* SectionIcons.swift */; };
@@ -106,7 +110,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		33163FE62C3D098B0038E1EC /* .github */ = {isa = PBXFileReference; lastKnownFileType = folder; path = .github; sourceTree = "<group>"; };
 		33163FE82C3D09980038E1EC /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		33163FE92C3D09980038E1EC /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		33163FEA2C3D09980038E1EC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -139,6 +142,12 @@
 		338FFCF32C6971B2006C3BE0 /* IconsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsListTableViewCell.swift; sourceTree = "<group>"; };
 		338FFCF62C6973F0006C3BE0 /* Wing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wing@2x.png"; sourceTree = "<group>"; };
 		338FFCF72C6973F0006C3BE0 /* Wing@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wing@3x.png"; sourceTree = "<group>"; };
+		338FFCFA2C697C61006C3BE0 /* Evil@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Evil@2x.png"; sourceTree = "<group>"; };
+		338FFCFB2C697C61006C3BE0 /* Evil@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Evil@3x.png"; sourceTree = "<group>"; };
+		338FFCFE2C697D66006C3BE0 /* Early@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Early@2x.png"; sourceTree = "<group>"; };
+		338FFCFF2C697D66006C3BE0 /* Early@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Early@3x.png"; sourceTree = "<group>"; };
+		338FFD022C6995A9006C3BE0 /* app-repo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "app-repo.json"; sourceTree = "<group>"; };
+		338FFD032C6997BF006C3BE0 /* .github */ = {isa = PBXFileReference; lastKnownFileType = folder; path = .github; sourceTree = "<group>"; };
 		33951CFD2C37AFCF00802F78 /* FloatingActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingActionButton.swift; sourceTree = "<group>"; };
 		339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLayoutAnchorsHolding.swift; sourceTree = "<group>"; };
 		339BDAE22BF95DC0007009D9 /* SectionIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionIcons.swift; sourceTree = "<group>"; };
@@ -306,18 +315,22 @@
 			isa = PBXGroup;
 			children = (
 				338FFCF52C6973CD006C3BE0 /* Wing */,
-				338FFCEE2C695CDF006C3BE0 /* Mac */,
+				338FFCEE2C695CDF006C3BE0 /* Main */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
 		};
-		338FFCEE2C695CDF006C3BE0 /* Mac */ = {
+		338FFCEE2C695CDF006C3BE0 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				338FFCEF2C695CEA006C3BE0 /* Mac@2x.png */,
 				338FFCF02C695CEA006C3BE0 /* Mac@3x.png */,
+				338FFCFA2C697C61006C3BE0 /* Evil@2x.png */,
+				338FFCFB2C697C61006C3BE0 /* Evil@3x.png */,
+				338FFCFE2C697D66006C3BE0 /* Early@2x.png */,
+				338FFCFF2C697D66006C3BE0 /* Early@3x.png */,
 			);
-			path = Mac;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		338FFCF52C6973CD006C3BE0 /* Wing */ = {
@@ -466,11 +479,12 @@
 		33BA37822BF8159F00FF530A = {
 			isa = PBXGroup;
 			children = (
-				33163FE62C3D098B0038E1EC /* .github */,
+				338FFD032C6997BF006C3BE0 /* .github */,
 				33163FEE2C3D09A50038E1EC /* .gitignore */,
 				33163FE92C3D09980038E1EC /* Makefile */,
 				33163FE82C3D09980038E1EC /* LICENSE */,
 				33163FEA2C3D09980038E1EC /* README.md */,
+				338FFD022C6995A9006C3BE0 /* app-repo.json */,
 				339CE2802C584C7C00B58502 /* Shared */,
 				33BA378D2BF8159F00FF530A /* iOS */,
 				33BA378C2BF8159F00FF530A /* Products */,
@@ -710,14 +724,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				33DF8D7D2C0828CF00D6C05F /* Zsign.md in Resources */,
+				338FFCFC2C697C61006C3BE0 /* Evil@2x.png in Resources */,
+				338FFD012C697D66006C3BE0 /* Early@3x.png in Resources */,
 				338FFCF12C695CEA006C3BE0 /* Mac@2x.png in Resources */,
 				338FFCF22C695CEA006C3BE0 /* Mac@3x.png in Resources */,
+				338FFD002C697D66006C3BE0 /* Early@2x.png in Resources */,
 				33DF8D792C0828A400D6C05F /* Markdownosaur.md in Resources */,
 				33DF8D812C08290F00D6C05F /* HttpSwift_RequestSwift_SocketSwift.md in Resources */,
 				338FFCF82C6973F0006C3BE0 /* Wing@2x.png in Resources */,
 				D0651C082BFEE1F600D40829 /* localhost.direct.pfx in Resources */,
 				33DF8D7F2C0828FB00D6C05F /* Nuke.md in Resources */,
 				33BA379B2BF815A100FF530A /* LaunchScreen.storyboard in Resources */,
+				338FFCFD2C697C61006C3BE0 /* Evil@3x.png in Resources */,
 				33BA37982BF815A100FF530A /* Assets.xcassets in Resources */,
 				338FFCF92C6973F0006C3BE0 /* Wing@3x.png in Resources */,
 				33DF8D7B2C0828AC00D6C05F /* swift-markdown.md in Resources */,

@@ -1,0 +1,44 @@
+{
+  "name": "Feather Repository",
+  "identifier": "kh.crysalis.feather-repo",
+  "iconURL": "https://github.com/khcrysalis/feather/blob/main/feather/Resources/Assets.xcassets/AppIcon.appiconset/feather.png?raw=true",
+  "apps": [
+	{
+	  "name": "Feather",
+	  "bundleIdentifier": "kh.crysalis.feather",
+	  "developerName": "Samara",
+	  "iconURL": "https://github.com/khcrysalis/feather/blob/main/feather/Resources/Assets.xcassets/AppIcon.appiconset/feather.png?raw=true",
+	  "localizedDescription": "Feather is a free on-device iOS application manager/installer built with UIKit for quality.",
+	  "subtitle": "On-device signing application",
+	  "tintColor": "848ef9",
+	  "versions": [
+		{
+		  "version": "1.0",
+		  "date": "2024-04-08",
+		  "size": 0,
+		  "downloadURL": ""
+		}
+	  ],
+	  "appPermissions": {}
+	},
+	{
+	  "name": "Feather",
+	  "bundleIdentifier": "kh.crysalis.feather.beta",
+	  "developerName": "Samara",
+	  "iconURL": "https://github.com/khcrysalis/feather/blob/main/feather/Resources/Assets.xcassets/AppIcon.appiconset/feather.png?raw=true",
+	  "localizedDescription": "Feather is a free on-device iOS application manager/installer built with UIKit for quality.",
+	  "subtitle": "On-device signing application",
+	  "tintColor": "848ef9",
+	  "versions": [
+		{
+		  "version": "1.0",
+		  "date": "2024-04-08",
+		  "size": 0,
+		  "downloadURL": ""
+		}
+	  ],
+	  "appPermissions": {}
+	}
+  ],
+  "news": []
+}

@@ -23,6 +23,9 @@ enum Preferences {
 	
 	@Storage(key: "Feather.ppqcheckBypass", defaultValue: "")
 	static var pPQCheckString: String
+	
+	@Storage(key: "Feather.fuckOffPpqcheckDetection", defaultValue: false)
+	static var isFuckingPPqcheckDetectionOff: Bool
 }
 // MARK: - Callbacks
 fileprivate extension Preferences {

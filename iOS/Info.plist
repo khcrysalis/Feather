@@ -15,6 +15,24 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
+			<key>Early</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Early</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Evil</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Evil</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
 			<key>Wing</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
