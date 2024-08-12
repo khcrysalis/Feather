@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class AppSigningViewController: UITableViewController {
-    var appsViewController: DownloadedAppsViewController
+    var appsViewController: LibraryViewController
 	var largeButton = ActivityIndicatorButton()
 
     var toInject: [String] = []
@@ -41,7 +41,7 @@ class AppSigningViewController: UITableViewController {
 	
 	var certs: Certificate?
     
-    init(app: NSManagedObject, appsViewController: DownloadedAppsViewController) {
+    init(app: NSManagedObject, appsViewController: LibraryViewController) {
         self.appsViewController = appsViewController
         self.app = app
         super.init(style: .insetGrouped)

@@ -23,7 +23,6 @@
 		332476EE2C3E92BC008C8EF0 /* DisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476EC2C3E92BC008C8EF0 /* DisplayViewController.swift */; };
 		332476F02C3E95F3008C8EF0 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476EF2C3E95F3008C8EF0 /* ResetViewController.swift */; };
 		332AE3C02C097F180052F24A /* Feather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 332AE3BE2C097F180052F24A /* Feather.xcdatamodeld */; };
-		332D72362BFA672B004AF675 /* SignedAppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D72352BFA672B004AF675 /* SignedAppsViewController.swift */; };
 		333912A02BF9816B00E72360 /* CertificateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3339129F2BF9816B00E72360 /* CertificateModel.swift */; };
 		33570F612C32B80E008CB560 /* AppsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F602C32B80E008CB560 /* AppsTableViewCell.swift */; };
 		33570F672C34CCD5008CB560 /* AppsInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F662C34CCD5008CB560 /* AppsInformationViewController.swift */; };
@@ -33,7 +32,7 @@
 		335F0C302C5E175B00A4F0AE /* CertData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335F0C2F2C5E175B00A4F0AE /* CertData.swift */; };
 		336EEE812C32367C0011188D /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 336EEE802C32367C0011188D /* ZIPFoundation */; };
 		338FFCD92C682469006C3BE0 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338FFCD82C682469006C3BE0 /* PopupViewController.swift */; };
-		338FFCDB2C6870E2006C3BE0 /* DownloadedAppsViewController+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338FFCDA2C6870E2006C3BE0 /* DownloadedAppsViewController+Import.swift */; };
+		338FFCDB2C6870E2006C3BE0 /* LibraryViewController+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338FFCDA2C6870E2006C3BE0 /* LibraryViewController+Import.swift */; };
 		338FFCE42C695118006C3BE0 /* IconsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338FFCE32C695118006C3BE0 /* IconsListViewController.swift */; };
 		338FFCED2C695CA3006C3BE0 /* IconSelector in Frameworks */ = {isa = PBXBuildFile; productRef = 338FFCEC2C695CA3006C3BE0 /* IconSelector */; };
 		338FFCF12C695CEA006C3BE0 /* Mac@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 338FFCEF2C695CEA006C3BE0 /* Mac@2x.png */; };
@@ -66,6 +65,7 @@
 		33BA37AD2BF8197200FF530A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA37AC2BF8197200FF530A /* Storage.swift */; };
 		33BA37B02BF819ED00FF530A /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA37AF2BF819ED00FF530A /* UIColor+hex.swift */; };
 		33BA37BA2BF9426100FF530A /* Sources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA37B92BF9426100FF530A /* Sources.swift */; };
+		33BE875D2C6ABF2C0044D245 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE875C2C6ABF2C0044D245 /* LibraryViewController.swift */; };
 		33C0409B2C30B4A100243D90 /* AppDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C0409A2C30B4A100243D90 /* AppDownload.swift */; };
 		33C0409E2C30DD3E00243D90 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = 33C0409D2C30DD3E00243D90 /* AlertKit */; };
 		33CE81A92C4295F300C05327 /* CertImportingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CE81A82C4295F300C05327 /* CertImportingVC.swift */; };
@@ -86,7 +86,6 @@
 		33E4D8412C67E5C3006A1C26 /* DonationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8402C67E5C3006A1C26 /* DonationTableViewCell.swift */; };
 		33E4D8432C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8422C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift */; };
 		33EEDAA42C5D9358009089DC /* CoreDataManager+DownloadedApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */; };
-		33EEDAA72C5DA1C1009089DC /* DownloadedAppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EEDAA62C5DA1C1009089DC /* DownloadedAppsViewController.swift */; };
 		AF4D46EF2C432CCA003FA335 /* TweakLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */; };
 		AF4D46F12C4332D7003FA335 /* SwitchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D46F02C4332D7003FA335 /* SwitchViewCell.swift */; };
 		AF84EEFD2C4080610050CBE4 /* AppSigningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF84EEFC2C4080610050CBE4 /* AppSigningViewController.swift */; };
@@ -126,7 +125,6 @@
 		332476EC2C3E92BC008C8EF0 /* DisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayViewController.swift; sourceTree = "<group>"; };
 		332476EF2C3E95F3008C8EF0 /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 		332AE3BF2C097F180052F24A /* Feather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Feather.xcdatamodel; sourceTree = "<group>"; };
-		332D72352BFA672B004AF675 /* SignedAppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedAppsViewController.swift; sourceTree = "<group>"; };
 		3339129F2BF9816B00E72360 /* CertificateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateModel.swift; sourceTree = "<group>"; };
 		33570F602C32B80E008CB560 /* AppsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsTableViewCell.swift; sourceTree = "<group>"; };
 		33570F662C34CCD5008CB560 /* AppsInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsInformationViewController.swift; sourceTree = "<group>"; };
@@ -135,7 +133,7 @@
 		335F0C2D2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Certificates.swift"; sourceTree = "<group>"; };
 		335F0C2F2C5E175B00A4F0AE /* CertData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertData.swift; sourceTree = "<group>"; };
 		338FFCD82C682469006C3BE0 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
-		338FFCDA2C6870E2006C3BE0 /* DownloadedAppsViewController+Import.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DownloadedAppsViewController+Import.swift"; sourceTree = "<group>"; };
+		338FFCDA2C6870E2006C3BE0 /* LibraryViewController+Import.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LibraryViewController+Import.swift"; sourceTree = "<group>"; };
 		338FFCE32C695118006C3BE0 /* IconsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsListViewController.swift; sourceTree = "<group>"; };
 		338FFCEF2C695CEA006C3BE0 /* Mac@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mac@2x.png"; sourceTree = "<group>"; };
 		338FFCF02C695CEA006C3BE0 /* Mac@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mac@3x.png"; sourceTree = "<group>"; };
@@ -171,6 +169,7 @@
 		33BA37AC2BF8197200FF530A /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		33BA37AF2BF819ED00FF530A /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		33BA37B92BF9426100FF530A /* Sources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources.swift; sourceTree = "<group>"; };
+		33BE875C2C6ABF2C0044D245 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		33C0409A2C30B4A100243D90 /* AppDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDownload.swift; sourceTree = "<group>"; };
 		33CE81A82C4295F300C05327 /* CertImportingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertImportingVC.swift; sourceTree = "<group>"; };
 		33DF8D782C0828A400D6C05F /* Markdownosaur.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Markdownosaur.md; sourceTree = "<group>"; };
@@ -187,7 +186,6 @@
 		33E4D8402C67E5C3006A1C26 /* DonationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationTableViewCell.swift; sourceTree = "<group>"; };
 		33E4D8422C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+DownloadedApps.swift"; sourceTree = "<group>"; };
-		33EEDAA62C5DA1C1009089DC /* DownloadedAppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedAppsViewController.swift; sourceTree = "<group>"; };
 		AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakLibraryViewCell.swift; sourceTree = "<group>"; };
 		AF4D46F02C4332D7003FA335 /* SwitchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewCell.swift; sourceTree = "<group>"; };
 		AF84EEFC2C4080610050CBE4 /* AppSigningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSigningViewController.swift; sourceTree = "<group>"; };
@@ -284,9 +282,8 @@
 		336EEE822C324C9B0011188D /* Apps */ = {
 			isa = PBXGroup;
 			children = (
-				332D72352BFA672B004AF675 /* SignedAppsViewController.swift */,
-				33EEDAA62C5DA1C1009089DC /* DownloadedAppsViewController.swift */,
-				338FFCDA2C6870E2006C3BE0 /* DownloadedAppsViewController+Import.swift */,
+				33BE875C2C6ABF2C0044D245 /* LibraryViewController.swift */,
+				338FFCDA2C6870E2006C3BE0 /* LibraryViewController+Import.swift */,
 				33570F602C32B80E008CB560 /* AppsTableViewCell.swift */,
 				33EEDAA82C5DA1C9009089DC /* Information */,
 				33EEDAA52C5DA19A009089DC /* Signing */,
@@ -755,7 +752,7 @@
 				AF4D46EF2C432CCA003FA335 /* TweakLibraryViewCell.swift in Sources */,
 				33E4D8322C64CB39006A1C26 /* SearchResultsTableViewController.swift in Sources */,
 				335F0C2C2C5DC3AE00A4F0AE /* CoreDataManager+SignedApps.swift in Sources */,
-				338FFCDB2C6870E2006C3BE0 /* DownloadedAppsViewController+Import.swift in Sources */,
+				338FFCDB2C6870E2006C3BE0 /* LibraryViewController+Import.swift in Sources */,
 				335F0C302C5E175B00A4F0AE /* CertData.swift in Sources */,
 				332476EA2C3E905D008C8EF0 /* AboutViewController.swift in Sources */,
 				33BA37B02BF819ED00FF530A /* UIColor+hex.swift in Sources */,
@@ -766,6 +763,7 @@
 				D0651C092BFEE1F600D40829 /* HTTPSServer.swift in Sources */,
 				33163FF02C3D224C0038E1EC /* DownloadTaskManager.swift in Sources */,
 				D0651C1B2BFEE97F00D40829 /* common.cpp in Sources */,
+				33BE875D2C6ABF2C0044D245 /* LibraryViewController.swift in Sources */,
 				339CE29F2C58816500B58502 /* SourcesModel.swift in Sources */,
 				332476EE2C3E92BC008C8EF0 /* DisplayViewController.swift in Sources */,
 				AFAC50922C48DB1300EDEAB6 /* ActivityIndicatorViewCell.swift in Sources */,
@@ -779,7 +777,6 @@
 				3322FF492BFEC97F001768D8 /* SourceAppViewController.swift in Sources */,
 				33E4D8342C6593D2006A1C26 /* UIView+parentcontroller.swift in Sources */,
 				33570F692C34E5B2008CB560 /* SectionHeaders.swift in Sources */,
-				332D72362BFA672B004AF675 /* SignedAppsViewController.swift in Sources */,
 				335F0C2E2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift in Sources */,
 				AF4D46F12C4332D7003FA335 /* SwitchViewCell.swift in Sources */,
 				D0651C332BFEEA4B00D40829 /* macho.cpp in Sources */,
@@ -816,7 +813,6 @@
 				33CE81A92C4295F300C05327 /* CertImportingVC.swift in Sources */,
 				33570F612C32B80E008CB560 /* AppsTableViewCell.swift in Sources */,
 				33E4D8432C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift in Sources */,
-				33EEDAA72C5DA1C1009089DC /* DownloadedAppsViewController.swift in Sources */,
 				33AC87F12C3B7CBE003D1175 /* SettingsViewController.swift in Sources */,
 				338FFCD92C682469006C3BE0 /* PopupViewController.swift in Sources */,
 			);
@@ -964,7 +960,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 577Q6MMX9D;
+				DEVELOPMENT_TEAM = DLSL362JHJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Feather;
@@ -980,7 +976,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
+				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1003,7 +999,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 577Q6MMX9D;
+				DEVELOPMENT_TEAM = DLSL362JHJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Feather;
@@ -1019,7 +1015,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
+				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

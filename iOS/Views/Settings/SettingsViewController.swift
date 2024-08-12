@@ -147,6 +147,8 @@ extension SettingsViewController {
 			useS.switchControl.addTarget(self, action: #selector(onlinePathToggled(_:)), for: .valueChanged)
 			useS.switchControl.isOn = Preferences.userSelectedServer
 			useS.selectionStyle = .none
+			useS.switchControl.isEnabled = false
+			useS.textLabel?.textColor = .secondaryLabel
 			return useS
 		case "Use Custom Server":
 			if Preferences.onlinePath != Preferences.defaultInstallPath {
@@ -154,7 +156,8 @@ extension SettingsViewController {
 				cell.isUserInteractionEnabled = false
 				cell.textLabel?.text = Preferences.onlinePath!
 			} else {
-				cell.textLabel?.textColor = .tintColor
+				cell.textLabel?.textColor = .secondaryLabel
+				cell.isUserInteractionEnabled = false
 			}
 		case "Reset Configuration":
 			cell.textLabel?.textColor = .systemRed

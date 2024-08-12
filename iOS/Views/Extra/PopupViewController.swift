@@ -46,7 +46,7 @@ class PopupViewController: UIViewController {
 import UIKit
 
 class PopupViewControllerButton: UIButton {
-	
+	var onTap: (() -> Void)?
 	private var originalBackgroundColor: UIColor?
 	
 	init(title: String, color: UIColor, titleColor: UIColor? = .white) {
@@ -56,6 +56,8 @@ class PopupViewControllerButton: UIButton {
 		addTarget(self, action: #selector(buttonReleased), for: .touchUpInside)
 		addTarget(self, action: #selector(buttonReleased), for: .touchUpOutside)
 		addTarget(self, action: #selector(buttonCancelled), for: .touchCancel)
+		addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+
 	}
 	
 	required init?(coder: NSCoder) {
@@ -65,6 +67,8 @@ class PopupViewControllerButton: UIButton {
 		addTarget(self, action: #selector(buttonReleased), for: .touchUpInside)
 		addTarget(self, action: #selector(buttonReleased), for: .touchUpOutside)
 		addTarget(self, action: #selector(buttonCancelled), for: .touchCancel)
+		addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+
 	}
 	
 	private func setupButton(title: String, color: UIColor, titlecolor: UIColor) {
@@ -96,4 +100,9 @@ class PopupViewControllerButton: UIButton {
 			self.backgroundColor = self.originalBackgroundColor
 		}
 	}
+	
+	@objc private func buttonTapped() {
+		onTap?()
+	}
+	
 }
