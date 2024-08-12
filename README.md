@@ -58,6 +58,9 @@ make package SCHEME="'feather (Release)'" # Build
 - [Nuke](https://github.com/kean/Nuke) - Load images from different sources and display them in your app using simple and flexible APIs. Take advantage of the powerful image processing capabilities and a robust caching system.
 - [Markdownosaur](https://github.com/christianselig/Markdownosaur) - Allows markdown parsing for changelogs
 
+- [plistserver](https://github.com/QuickSign-Team/plistserver) - Hosted on https://api.palera.in
+> NOTE: The original license to plistserver is [GPL](https://github.com/nekohaxx/plistserver/commit/b207a76a9071a695d8b498db029db5d63a954e53), so changing the license is NOT viable as technically it's irrevocable. We are allowed to host it on our own server for use in Feather by technicality. 
+
 ## Contributions
 
 They are welcome! :)
