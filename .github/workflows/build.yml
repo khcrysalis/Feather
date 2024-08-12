@@ -1,0 +1,34 @@
+name: Create Beta Build
+
+on:
+
+  push:
+  
+jobs:
+  build:
+    runs-on: macos-13
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install dependencies (packages)
+        run: |
+          curl -LO https://github.com/ProcursusTeam/ldid/releases/download/v2.1.5-procursus7/ldid_macosx_x86_64
+          sudo install -m755 ldid_macosx_x86_64 /usr/local/bin/ldid
+          brew install 7zip gnu-sed
+
+      - name: Select Xcode 15.1
+        run: sudo xcode-select -s /Applications/Xcode_15.1.app/Contents/Developer
+
+      - name: Compile f
+        run: make package 
+
+      - name: Compile fts
+        run: make package TIPA=1 SCHEME='feather (Release)'
+
+      - name: Get Version Number
+        id: get_version
+        run: |
+          VERSION=$(defaults read Payload/feather.app/Contents/Info CFBundleShortVersionString)
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+
