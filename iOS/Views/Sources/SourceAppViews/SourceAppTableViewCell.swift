@@ -63,7 +63,7 @@ class AppTableViewCell: UITableViewCell {
 	let getButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.layer.cornerRadius = 15
-		button.layer.backgroundColor = UIColor.secondarySystemBackground.cgColor
+		button.layer.backgroundColor = UIColor.quaternarySystemFill.cgColor
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
 	}()
@@ -165,7 +165,7 @@ class AppTableViewCell: UITableViewCell {
 
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
 		super.traitCollectionDidChange(previousTraitCollection)
-		getButton.layer.backgroundColor =  UIColor.secondarySystemBackground.cgColor
+		getButton.layer.backgroundColor =  UIColor.quaternarySystemFill.cgColor
 		updateProgressLayerPath()
 	}
 

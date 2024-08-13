@@ -55,6 +55,7 @@ class SettingsViewController: UITableViewController {
 	fileprivate func setupViews() {
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
+		self.tableView.backgroundColor = .background
 	}
 	
 	fileprivate func setupNavigation() {

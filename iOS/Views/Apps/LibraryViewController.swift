@@ -38,6 +38,7 @@ class LibraryViewController: UITableViewController {
 	fileprivate func setupViews() {
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
+		self.tableView.backgroundColor = .background
 		tableView.register(AppsTableViewCell.self, forCellReuseIdentifier: "RoundedBackgroundCell")
 		NotificationCenter.default.addObserver(self, selector: #selector(afetch), name: Notification.Name("lfetch"), object: nil)
 		

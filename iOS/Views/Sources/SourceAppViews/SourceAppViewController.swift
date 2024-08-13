@@ -42,7 +42,7 @@ class SourceAppViewController: UITableViewController {
 		self.tableView.delegate = self
 		self.tableView.tableHeaderView = UIView()
 		self.tableView.register(AppTableViewCell.self, forCellReuseIdentifier: "AppTableViewCell")
-		
+		self.tableView.backgroundColor = .background
 		let barButton = UIBarButtonItem(customView: activityIndicator)
 		self.navigationItem.setRightBarButton(barButton, animated: true)
 		self.activityIndicator.startAnimating()

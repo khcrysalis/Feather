@@ -130,7 +130,7 @@ class GroupedSectionHeader: UIView {
 		let button = UIButton(type: .system)
 		button.titleLabel?.font = .boldSystemFont(ofSize: 14)
 		button.setTitleColor(.tintColor, for: .normal)
-		button.backgroundColor = .secondarySystemBackground
+		button.backgroundColor = .quaternarySystemFill
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.layer.cornerCurve = .continuous
 		button.layer.cornerRadius = 13

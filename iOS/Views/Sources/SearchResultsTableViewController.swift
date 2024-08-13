@@ -20,6 +20,7 @@ class SearchResultsTableViewController: UIViewController, UISearchResultsUpdatin
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.tableView = UITableView(frame: .zero, style: .insetGrouped)
+		self.tableView.backgroundColor = .background
 		self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 		self.view.addSubview(tableView)
 		self.tableView.translatesAutoresizingMaskIntoConstraints = false
