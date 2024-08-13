@@ -12,6 +12,7 @@ import CoreData
 class AppSigningViewController: UITableViewController {
     var appsViewController: LibraryViewController
 	var largeButton = ActivityIndicatorButton()
+	var iconCell = IconImageViewCell()
 
     var toInject: [String] = []
     var app: NSManagedObject!
@@ -19,6 +20,7 @@ class AppSigningViewController: UITableViewController {
     var bundleId: String = "unknown"
     var version: String = "unknown"
     var signing = false
+	var iconURL: URL?
 	
     var uuid = "unknown"
 	
@@ -160,7 +162,7 @@ class AppSigningViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch(section) {
         case 0:
-            return 3;
+            return 4;
         case 1:
             return 2;
         case 2:
@@ -201,15 +203,20 @@ class AppSigningViewController: UITableViewController {
         cell.selectionStyle = .gray
         
         switch (indexPath.section, indexPath.item) {
-        case (0, 0):
+		case (0, 0):
+			let cell = iconCell
+			cell.configure(with: CoreDataManager.shared.loadImage(from: getIcon()))
+			cell.accessoryType = .disclosureIndicator
+			return cell
+        case (0, 1):
             cell.textLabel?.text = "Name"
             cell.detailTextLabel?.text = name
             cell.accessoryType = .disclosureIndicator
-        case (0, 1):
+        case (0, 2):
             cell.textLabel?.text = "Bundle ID"
             cell.detailTextLabel?.text = bundleId
             cell.accessoryType = .disclosureIndicator
-        case (0, 2):
+        case (0, 3):
             cell.textLabel?.text = "Version"
             cell.detailTextLabel?.text = version
             cell.accessoryType = .disclosureIndicator
@@ -246,10 +253,12 @@ class AppSigningViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.item) {
 		case (0, 0):
-			navigationController?.pushViewController(AppSigningInputViewController(appSigningViewController: self, initialValue: self.name, valueToSaveTo: "name", indexPath: indexPath), animated: true)
+			break
 		case (0, 1):
-			navigationController?.pushViewController(AppSigningInputViewController(appSigningViewController: self, initialValue: self.bundleId, valueToSaveTo: "bundleId", indexPath: indexPath), animated: true)
+			navigationController?.pushViewController(AppSigningInputViewController(appSigningViewController: self, initialValue: self.name, valueToSaveTo: "name", indexPath: indexPath), animated: true)
 		case (0, 2):
+			navigationController?.pushViewController(AppSigningInputViewController(appSigningViewController: self, initialValue: self.bundleId, valueToSaveTo: "bundleId", indexPath: indexPath), animated: true)
+		case (0, 3):
 			navigationController?.pushViewController(AppSigningInputViewController(appSigningViewController: self, initialValue: self.version, valueToSaveTo: "version", indexPath: indexPath), animated: true)
         case (3, 0):
             navigationController?.pushViewController(AppSigningAdvancedViewController(appSigningViewController: self), animated: true)
@@ -309,6 +318,11 @@ class AppSigningViewController: UITableViewController {
 		}
 		self.tableView.reloadRows(at: [indexPath], with: .automatic)
 	}
+	
+	func getIcon() -> URL {
+		return CoreDataManager.shared.getFilesForDownloadedApps(for: app as! DownloadedApps, getuuidonly: false).appendingPathComponent((app.value(forKey: "iconURL") as? String)!)
+	}
+	
 
 }
 

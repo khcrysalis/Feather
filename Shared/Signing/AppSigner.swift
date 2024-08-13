@@ -13,7 +13,8 @@ struct AppSigningOptions {
     var name: String
     var version: String
     var bundleId: String
-    
+	var iconURL: URL?
+	
     var uuid: String
 	var injectionTool: String
     

@@ -17,7 +17,8 @@
 - Install applications straight to your device seemlessly over the air
 - Allows multiple certificate imports for easy switching
 - Configurable signing options (name, bundleid, version, other plist options)
- - Meant to be used with Apple Accounts that are apart of `ADP` (Apple Developer Program), however other certificates can also work!
+- Meant to be used with Apple Accounts that are apart of `ADP` (Apple Developer Program), however other certificates can also work!
+- No tracking, analytics, or any of the sort. Your information such as udid and certificates will never leave the device.
 
 ## GET IT NOW
 
