@@ -20,11 +20,11 @@
 - Meant to be used with Apple Accounts that are apart of `ADP` (Apple Developer Program), however other certificates can also work!
 - No tracking, analytics, or any of the sort. Your information such as udid and certificates will never leave the device.
 
-## GET IT NOW
+## Screenshots
 
-<p align="center">
-<a href="https://github.com/khcrysalis/feather/releases">>>>> Get Feather From Releases <<<<</a>
-</p>
+| <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Repos.png"><source media="(prefers-color-scheme: light)" srcset="Images/Repos_L.png"><img alt="Pointercrate-pocket." src="Images/Repos_L.png" width="200"></picture></p> | <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Store.png"><source media="(prefers-color-scheme: light)" srcset="Images/Store_L.png"><img alt="Pointercrate-pocket." src="Images/Store_L.png" width="200"></picture></p> | <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Library.png"><source media="(prefers-color-scheme: light)" srcset="Images/Library_L.png"><img alt="Pointercrate-pocket." src="Images/Library_L.png" width="200"></picture></p> | <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Sign.png"><source media="(prefers-color-scheme: light)" srcset="Images/Sign_L.png"><img alt="Pointercrate-pocket." src="Images/Sign_L.png" width="200"></picture></p> |
+|:--:|:--:|:--:|:--:|
+| **Library** | **Store** | **Library** | **Signing** |
 
 ## How it Works
 
