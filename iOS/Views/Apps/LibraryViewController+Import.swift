@@ -41,7 +41,7 @@ extension LibraryViewController: UIDocumentPickerDelegate {
 						MBProgressHUD.hide(for: self.view, animated: true)
 						Debug.shared.log(message: error.localizedDescription, type: .error)
 					} else if let targetBundle = targetBundle {
-						dl.addToApps(bundlePath: targetBundle, uuid: uuid) { error in
+						dl.addToApps(bundlePath: targetBundle, uuid: uuid, sourceLocation: "Imported") { error in
 							if let error = error {
 								MBProgressHUD.hide(for: self.view, animated: true)
 								Debug.shared.log(message: error.localizedDescription, type: .error)
