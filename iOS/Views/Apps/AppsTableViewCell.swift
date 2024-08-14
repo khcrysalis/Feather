@@ -35,6 +35,16 @@ class AppsTableViewCell: UITableViewCell {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
+	
+	private let pillsStackView: UIStackView = {
+		let stackView = UIStackView()
+		stackView.axis = .horizontal
+		stackView.spacing = 10
+		stackView.distribution = .fillEqually
+		stackView.alignment = .leading
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		return stackView
+	}()
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -48,21 +58,24 @@ class AppsTableViewCell: UITableViewCell {
 	private func setupViews() {
 		contentView.addSubview(nameLabel)
 		contentView.addSubview(versionLabel)
-		contentView.addSubview(detailLabel)
+		contentView.addSubview(pillsStackView)
 		imageView?.translatesAutoresizingMaskIntoConstraints = true
 
 		NSLayoutConstraint.activate([
+			
+			
 			nameLabel.leadingAnchor.constraint(equalTo: imageView!.trailingAnchor, constant: 15),
 			nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
 			
 			versionLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
 			versionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
 			versionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+			versionLabel.bottomAnchor.constraint(equalTo: pillsStackView.topAnchor, constant: -10),
 			
-			detailLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-			detailLabel.topAnchor.constraint(equalTo: versionLabel.bottomAnchor, constant: 4),
-			detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-			detailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+			pillsStackView.leadingAnchor.constraint(equalTo: imageView!.trailingAnchor, constant: 15),
+			pillsStackView.topAnchor.constraint(equalTo: versionLabel.bottomAnchor, constant: 10),
+			pillsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+			pillsStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
 		])
 	}
 
@@ -72,7 +85,7 @@ class AppsTableViewCell: UITableViewCell {
 	}
 	
 	func configure(with app: NSManagedObject, filePath: URL) {
-		
+		print(app)
 		var appname = ""
 		if let name = app.value(forKey: "name") as? String {
 			appname += name
@@ -93,17 +106,47 @@ class AppsTableViewCell: UITableViewCell {
 			
 		}
 		
+		pillsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+		
 		if FileManager.default.fileExists(atPath: filePath.path) {
-			if let uu = app.value(forKey: "uuid") as? String {
-				detailLabel.text = uu
+			if let timeToLive: Date = getValue(forKey: "timeToLive", from: app) {
+				let currentDate = Date()
+				let calendar = Calendar.current
+				let components = calendar.dateComponents([.day], from: currentDate, to: timeToLive)
+				
+				let daysLeft = components.day ?? 0
+				let expirationText = daysLeft < 0 ? "Expired" : "\(daysLeft) days left"
+				
+				let p1 = PillView(text: expirationText, backgroundColor: daysLeft < 0 ? .systemRed : .systemGreen, iconName: daysLeft < 0 ? "xmark" : "timer")
+				pillsStackView.addArrangedSubview(p1)
+			}
+			
+			if let name: String = getValue(forKey: "teamName", from: app) {
+				let p = PillView(text: name, backgroundColor: .systemGray, iconName: "person")
+				pillsStackView.addArrangedSubview(p)
 			}
 		} else {
-			detailLabel.text = "File has been deleted."
-			detailLabel.textColor = .systemRed
+			let p = PillView(text: "File Has Been Deleted", backgroundColor: .systemRed, iconName: "trash")
+			pillsStackView.addArrangedSubview(p)
 		}
 		
 		nameLabel.text = appname
 		versionLabel.text = desc
+	}
+}
+
+func getValue<T>(forKey key: String, from app: NSManagedObject) -> T? {
+	guard let attributeType = app.entity.attributesByName[key]?.attributeType else {
+		return nil
+	}
+	
+	switch attributeType {
+	case .stringAttributeType:
+		return app.value(forKey: key) as? T
+	case .dateAttributeType:
+		return app.value(forKey: key) as? T
+	default:
+		return nil
 	}
 }
 

@@ -35,6 +35,8 @@ extension CoreDataManager {
 		dateAdded: Date? = Date(),
 		uuid: String,
 		appPath: String?,
+		timeToLive: Date,
+		teamName: String,
 		completion: @escaping (Error?) -> Void) {
 			let context = context ?? self.context
 			let newApp = SignedApps(context: context)
@@ -46,7 +48,9 @@ extension CoreDataManager {
 			newApp.dateAdded = dateAdded
 			newApp.uuid = uuid
 			newApp.appPath = appPath
-			
+			newApp.timeToLive = timeToLive
+			newApp.teamName = teamName
+
 			do {
 				try context.save()
 				NotificationCenter.default.post(name: Notification.Name("lfetch"), object: nil)

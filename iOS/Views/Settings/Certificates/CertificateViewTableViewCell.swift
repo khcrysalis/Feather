@@ -255,7 +255,6 @@ class PillView: UIView {
 		layer.cornerCurve = .continuous
 		clipsToBounds = true
 		
-		// Set up the icon if provided
 		if let iconName = iconName {
 			iconImageView.image = UIImage(systemName: iconName)
 			iconImageView.tintColor = backgroundColor

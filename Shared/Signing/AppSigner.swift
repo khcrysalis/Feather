@@ -134,25 +134,24 @@ func signApp(options: AppSigningOptions, appPath: URL, completion: @escaping (Bo
 					bundleidentifier: options.bundleId,
 					iconURL: iconURL,
 					uuid: signedUUID,
-					appPath: appPath.lastPathComponent
+					appPath: appPath.lastPathComponent,
+					timeToLive: options.certificate?.certData?.expirationDate ?? Date(),
+					teamName: options.certificate?.certData?.name ?? ""
 				) {
 					error in
-					Debug.shared.log(message: "signApp: \(String(describing: error))", type: .critical)
+					Debug.shared.log(message: "signApp: \(String(describing: error))", type: .error)
 					completion(false)
 				}
-                DispatchQueue.main.async {
-                    let alertView = AlertAppleMusic17View(title: "Successfully signed \(options.name)", subtitle: nil, icon: .done)
-                    if let viewController = UIApplication.shared.windows.first?.rootViewController {
-                        alertView.present(on: viewController.view)
-                    }
-                }
+
+				Debug.shared.log(message: "Successfully signed \(options.name)", type: .success)
+                
 				UIApplication.shared.isIdleTimerDisabled = false
                 completion(true)
             }
         } catch {
             DispatchQueue.main.async {
 				UIApplication.shared.isIdleTimerDisabled = false
-				Debug.shared.log(message: "signApp: \(error)", type: .error)
+				Debug.shared.log(message: "signApp: \(error)", type: .critical)
                 completion(false)
             }
         }

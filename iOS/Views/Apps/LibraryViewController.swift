@@ -109,60 +109,71 @@ extension LibraryViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let source = getApplication(row: indexPath.row, section: indexPath.section)
 		let filePath = getApplicationFilePath(with: source!, row: indexPath.row, section: indexPath.section, getuuidonly: true)
+		let filePath2 = getApplicationFilePath(with: source!, row: indexPath.row, section: indexPath.section, getuuidonly: false)
+		
 		switch indexPath.section {
 		case 0:
-			popupVC = PopupViewController()
-			popupVC.modalPresentationStyle = .pageSheet
-							
-			let button1 = PopupViewControllerButton(title: "Install \((source!.value(forKey: "name") as? String ?? ""))", color: .tintColor.withAlphaComponent(0.9))
-			button1.onTap = { [weak self] in
-				guard let self = self else { return }
-				self.startInstallProcess(meow: source!, filePath: filePath?.path ?? "")
+			if FileManager.default.fileExists(atPath: filePath2!.path) {
+				popupVC = PopupViewController()
+				popupVC.modalPresentationStyle = .pageSheet
+				
+				let button1 = PopupViewControllerButton(title: "Install \((source!.value(forKey: "name") as? String ?? ""))", color: .tintColor.withAlphaComponent(0.9))
+				button1.onTap = { [weak self] in
+					guard let self = self else { return }
+					self.startInstallProcess(meow: source!, filePath: filePath?.path ?? "")
+				}
+				let button2 = PopupViewControllerButton(title: "Share \((source!.value(forKey: "name") as? String ?? ""))", color: .quaternarySystemFill, titleColor: .tintColor)
+				button2.onTap = { [weak self] in
+					guard let self = self else { return }
+					self.shareFile(meow: source!, filePath: filePath?.path ?? "")
+				}
+				popupVC.configureButtons([button1, button2])
+				
+				let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 160.0)
+				if let presentationController = popupVC.presentationController as? UISheetPresentationController {
+					presentationController.detents = [
+						detent2,
+						.medium(),
+						
+					]
+					presentationController.prefersGrabberVisible = true
+				}
+				
+				self.present(popupVC, animated: true)
+			} else {
+				Debug.shared.log(message: "The file has been deleted for this entry, please remove it manually.", type: .critical)
 			}
-			let button2 = PopupViewControllerButton(title: "Share \((source!.value(forKey: "name") as? String ?? ""))", color: .quaternarySystemFill, titleColor: .tintColor)
-			button2.onTap = { [weak self] in
-				guard let self = self else { return }
-				self.shareFile(meow: source!, filePath: filePath?.path ?? "")
-			}
-			popupVC.configureButtons([button1, button2])
-
-			let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 160.0)
-			if let presentationController = popupVC.presentationController as? UISheetPresentationController {
-				presentationController.detents = [
-				  detent2,
-				  .medium(),
-								
-				]
-				presentationController.prefersGrabberVisible = true
-			}
-
-			self.present(popupVC, animated: true)
 		case 1:
-			popupVC = PopupViewController()
-			popupVC.modalPresentationStyle = .pageSheet
-							
-			let button1 = PopupViewControllerButton(title: "Sign \((source!.value(forKey: "name") as? String ?? ""))", color: .tintColor.withAlphaComponent(0.9))
-			button1.onTap = { [weak self] in
-				guard let self = self else { return }
-				self.startSigning(meow: source!)
+			if FileManager.default.fileExists(atPath: filePath2!.path) {
+				popupVC = PopupViewController()
+				popupVC.modalPresentationStyle = .pageSheet
+				
+				let button1 = PopupViewControllerButton(title: "Sign \((source!.value(forKey: "name") as? String ?? ""))", color: .tintColor.withAlphaComponent(0.9))
+				button1.onTap = { [weak self] in
+					guard let self = self else { return }
+					self.startSigning(meow: source!)
+				}
+				
+				popupVC.configureButtons([button1])
+				
+				let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 110.0)
+				if let presentationController = popupVC.presentationController as? UISheetPresentationController {
+					presentationController.detents = [
+						detent2,
+						.medium(),
+						
+					]
+					presentationController.prefersGrabberVisible = true
+				}
+				
+				self.present(popupVC, animated: true)
+			} else {
+				Debug.shared.log(message: "The file has been deleted for this entry, please remove it manually.", type: .critical)
 			}
-			
-			popupVC.configureButtons([button1])
-
-			let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 110.0)
-			if let presentationController = popupVC.presentationController as? UISheetPresentationController {
-				presentationController.detents = [
-				  detent2,
-				  .medium(),
-								
-				]
-				presentationController.prefersGrabberVisible = true
-			}
-
-			self.present(popupVC, animated: true)
 		default:
 			break
 		}
+		
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 	
