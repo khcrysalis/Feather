@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import CoreData
+import UniformTypeIdentifiers
 
 class AppSigningViewController: UITableViewController {
     var appsViewController: LibraryViewController
@@ -20,7 +21,7 @@ class AppSigningViewController: UITableViewController {
     var bundleId: String = "unknown"
     var version: String = "unknown"
     var signing = false
-	var iconURL: URL?
+	var icon: UIImage?
 	
     var uuid = "unknown"
 	
@@ -130,6 +131,7 @@ class AppSigningViewController: UITableViewController {
 			name: name,
 			version: version,
 			bundleId: bundleId,
+			iconURL: icon ?? nil,
 			uuid: uuid,
 			injectionTool: injectionToolString[injectionTool],
 			removePlugins: removePlugins,
@@ -141,13 +143,14 @@ class AppSigningViewController: UITableViewController {
 			forceiTunesFileSharing: forceiTunesFileSharing,
 			forceMinimumVersion: forceMinimumVersionString[forceMinimumVersion],
 			forceLightDarkAppearence: forceLightDarkAppearenceString[forceLightDarkAppearence],
-			certificate: certs)
+			certificate: certs),
+				appPath:getFilesForDownloadedApps(app: app as! DownloadedApps, getuuidonly: false)
 		) { success in
 			if success {
-				self.dismiss(animated: true)
 				self.appsViewController.fetchSources()
 				self.appsViewController.tableView.reloadData()
 			}
+			self.dismiss(animated: true)
 		}
 	}
 	
@@ -205,7 +208,13 @@ class AppSigningViewController: UITableViewController {
         switch (indexPath.section, indexPath.item) {
 		case (0, 0):
 			let cell = iconCell
-			cell.configure(with: CoreDataManager.shared.loadImage(from: getIcon()))
+			
+			if (icon != nil) {
+				cell.configure(with: icon)
+			} else {
+				cell.configure(with: CoreDataManager.shared.loadImage(from: getIconURL(for: app as! DownloadedApps)))
+			}
+			
 			cell.accessoryType = .disclosureIndicator
 			return cell
         case (0, 1):
@@ -253,7 +262,8 @@ class AppSigningViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.item) {
 		case (0, 0):
-			break
+			importAppIconFile()
+			tableView.deselectRow(at: indexPath, animated: true)
 		case (0, 1):
 			navigationController?.pushViewController(AppSigningInputViewController(appSigningViewController: self, initialValue: self.name, valueToSaveTo: "name", indexPath: indexPath), animated: true)
 		case (0, 2):
@@ -319,13 +329,49 @@ class AppSigningViewController: UITableViewController {
 		self.tableView.reloadRows(at: [indexPath], with: .automatic)
 	}
 	
-	func getIcon() -> URL {
-		return CoreDataManager.shared.getFilesForDownloadedApps(for: app as! DownloadedApps, getuuidonly: false).appendingPathComponent((app.value(forKey: "iconURL") as? String)!)
+	func getFilesForDownloadedApps(app: DownloadedApps, getuuidonly: Bool) -> URL {
+		return CoreDataManager.shared.getFilesForDownloadedApps(for: app, getuuidonly: getuuidonly)
 	}
 	
+	func getIconURL(for app: DownloadedApps) -> URL? {
+		guard let iconURLString = app.value(forKey: "iconURL") as? String,
+			  let iconURL = URL(string: iconURLString) else {
+			return nil
+		}
+		
+		let filesURL = getFilesForDownloadedApps(app: app, getuuidonly: false)
+		return filesURL.appendingPathComponent(iconURL.lastPathComponent)
+	}
+}
+// MARK: - UIDocumentPickerDelegate
+extension AppSigningViewController: UIDocumentPickerDelegate {
+	func importAppIconFile() {
+		self.presentDocumentPicker(fileExtension: [ UTType.image ])
+	}
+	
+	func presentDocumentPicker(fileExtension: [UTType]) {
+		let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: fileExtension, asCopy: true)
+		documentPicker.delegate = self
+		documentPicker.allowsMultipleSelection = false
+		present(documentPicker, animated: true, completion: nil)
+	}
+	
+	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+		guard let selectedFileURL = urls.first else { return }
+		let meow = CoreDataManager.shared.loadImage(from: selectedFileURL)
+		icon = meow?.resizeToSquare()
+		Debug.shared.log(message: "\(selectedFileURL)")
+		self.tableView.reloadData()
+	}
 
+	
+	func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+		controller.dismiss(animated: true, completion: nil)
+	}
 }
 
+
+// MARK: - AppSigningInputViewController
 class AppSigningInputViewController: UITableViewController {
 	var appSigningViewController: AppSigningViewController
 	var initialValue: String!
@@ -423,7 +469,7 @@ class AppSigningInputViewController: UITableViewController {
 		return cell
 	}
 }
-
+// MARK: - AppSigningAdvancedViewController
 class AppSigningAdvancedViewController: UITableViewController {
 	var cellsForSection0 = [UITableViewCell]()
 	var cellsForSection1 = [UITableViewCell]()

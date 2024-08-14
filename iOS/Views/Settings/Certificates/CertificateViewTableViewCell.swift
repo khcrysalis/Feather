@@ -72,7 +72,7 @@ class CertificateViewTableViewCell: UITableViewCell {
 			
 			teamNameLabel.leadingAnchor.constraint(equalTo: roundedBackgroundView.leadingAnchor, constant: 15),
 			teamNameLabel.topAnchor.constraint(equalTo: roundedBackgroundView.topAnchor, constant: 10),
-			teamNameLabel.trailingAnchor.constraint(equalTo: roundedBackgroundView.trailingAnchor, constant: -15),
+			teamNameLabel.trailingAnchor.constraint(equalTo: roundedBackgroundView.trailingAnchor, constant: -45),
 			
 			expirationDateLabel.leadingAnchor.constraint(equalTo: roundedBackgroundView.leadingAnchor, constant: 15),
 			expirationDateLabel.topAnchor.constraint(equalTo: teamNameLabel.bottomAnchor, constant: 5),

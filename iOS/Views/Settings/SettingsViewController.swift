@@ -50,6 +50,7 @@ class SettingsViewController: UITableViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		setupNavigation()
+		self.tableView.reloadData()
 	}
 	
 	fileprivate func setupViews() {
