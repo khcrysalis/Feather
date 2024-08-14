@@ -37,7 +37,7 @@ extension SourceAppViewController: DownloadDelegate {
 }
 
 extension SourceAppViewController {
-	func startDownloadIfNeeded(for indexPath: IndexPath, in tableView: UITableView, downloadURL: URL?, appUUID: String?) {
+	func startDownloadIfNeeded(for indexPath: IndexPath, in tableView: UITableView, downloadURL: URL?, appUUID: String?, sourceLocation: String) {
 		guard let downloadURL = downloadURL, let appUUID = appUUID, let cell = tableView.cellForRow(at: indexPath) as? AppTableViewCell else {
 			return
 		}
@@ -61,7 +61,7 @@ extension SourceAppViewController {
 							downloadTaskManager.updateTask(uuid: appUUID, state: .failed(error: error))
 							Debug.shared.log(message: error.localizedDescription, type: .error)
 						} else if let targetBundle = targetBundle {
-							cell.appDownload?.addToApps(bundlePath: targetBundle, uuid: uuid) { error in
+							cell.appDownload?.addToApps(bundlePath: targetBundle, uuid: uuid, sourceLocation: sourceLocation) { error in
 								if let error = error {
 									downloadTaskManager.updateTask(uuid: appUUID, state: .failed(error: error))
 									Debug.shared.log(message: error.localizedDescription, type: .error)

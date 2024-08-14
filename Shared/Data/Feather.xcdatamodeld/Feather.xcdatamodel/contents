@@ -30,6 +30,7 @@
         <attribute name="iconURL" optional="YES" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="originalSourceURL" optional="YES" attributeType="URI"/>
+        <attribute name="oSU" optional="YES" attributeType="String" defaultValueString="Imported"/>
         <attribute name="uuid" attributeType="String"/>
         <attribute name="version" attributeType="String"/>
     </entity>

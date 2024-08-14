@@ -130,6 +130,11 @@ class AppsTableViewCell: UITableViewCell {
 			pillsStackView.addArrangedSubview(p)
 		}
 		
+		if let osu: String = getValue(forKey: "oSU", from: app) {
+			let p = PillView(text: osu, backgroundColor: .systemGray, iconName: "questionmark.app.dashed")
+			pillsStackView.addArrangedSubview(p)
+		}
+		
 		nameLabel.text = appname
 		versionLabel.text = desc
 	}

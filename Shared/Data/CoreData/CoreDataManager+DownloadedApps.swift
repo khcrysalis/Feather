@@ -34,6 +34,7 @@ extension CoreDataManager {
 		dateAdded: Date? = Date(),
 		uuid: String,
 		appPath: String?,
+		sourceLocation: String? = "Imported",
 		completion: @escaping (Error?) -> Void) {
 			let context = context ?? self.context
 			let newApp = DownloadedApps(context: context)
@@ -45,6 +46,7 @@ extension CoreDataManager {
 			newApp.dateAdded = dateAdded
 			newApp.uuid = uuid
 			newApp.appPath = appPath
+			newApp.oSU = sourceLocation
 			
 			do {
 				try context.save()

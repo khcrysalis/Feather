@@ -34,7 +34,7 @@ extension SourceAppViewController {
 			}
 		} else {
 			if let downloadURL = downloadURL {
-				startDownloadIfNeeded(for: indexPath, in: tableView, downloadURL: downloadURL, appUUID: appUUID)
+				startDownloadIfNeeded(for: indexPath, in: tableView, downloadURL: downloadURL, appUUID: appUUID, sourceLocation: self.name ?? "Unknown")
 			}
 		}
 	}
@@ -53,7 +53,7 @@ extension SourceAppViewController {
 					let downloadURL = version.downloadURL
 					
 					let action = UIAlertAction(title: versionString, style: .default) { action in
-						self.startDownloadIfNeeded(for: indexPath, in: self.tableView, downloadURL: downloadURL, appUUID: app.bundleIdentifier)
+						self.startDownloadIfNeeded(for: indexPath, in: self.tableView, downloadURL: downloadURL, appUUID: app.bundleIdentifier, sourceLocation: self.name ?? "Unknown")
 						alertController.dismiss(animated: true, completion: nil)
 					}
 					

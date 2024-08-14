@@ -130,7 +130,7 @@ class AppDownload: NSObject {
 
 
 
-	func addToApps(bundlePath: String, uuid: String, completion: @escaping (Error?) -> Void) {
+	func addToApps(bundlePath: String, uuid: String, sourceLocation: String? = nil, completion: @escaping (Error?) -> Void) {
 		guard let bundle = Bundle(path: bundlePath) else {
 			let error = NSError(domain: "Feather", code: 1, userInfo: [NSLocalizedDescriptionKey: "Failed to load bundle at \(bundlePath)"])
 			completion(error)
@@ -154,7 +154,8 @@ class AppDownload: NSObject {
 				bundleidentifier: (infoDict["CFBundleIdentifier"] as? String)!,
 				iconURL: iconURL,
 				uuid: uuid,
-				appPath: "\(URL(string: bundlePath)?.lastPathComponent ?? "")") {_ in
+				appPath: "\(URL(string: bundlePath)?.lastPathComponent ?? "")", 
+				sourceLocation: sourceLocation) {_ in
 			}
 
 			completion(nil)
