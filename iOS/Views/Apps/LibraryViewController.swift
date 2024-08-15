@@ -122,14 +122,29 @@ extension LibraryViewController {
 					guard let self = self else { return }
 					self.startInstallProcess(meow: source!, filePath: filePath?.path ?? "")
 				}
+				let button3 = PopupViewControllerButton(title: "Resign \((source!.value(forKey: "name") as? String ?? ""))", color: .quaternarySystemFill, titleColor: .tintColor)
+				button3.onTap = { [weak self] in
+					guard let self = self else { return }
+					self.popupVC.dismiss(animated: true)
+					let cert = CoreDataManager.shared.getCurrentCertificate()!
+					resignApp(certificate: cert, appPath: filePath2!) { success in
+						if success {
+							CoreDataManager.shared.updateSignedApp(app: source as! SignedApps, newTimeToLive: (cert.certData?.expirationDate)!, newTeamName: (cert.certData?.name)!) { _ in
+								Debug.shared.log(message: "Done action??")
+							}
+							self.tableView.reloadRows(at: [indexPath], with: .automatic)
+						}
+					}
+				}
+				
 				let button2 = PopupViewControllerButton(title: "Share \((source!.value(forKey: "name") as? String ?? ""))", color: .quaternarySystemFill, titleColor: .tintColor)
 				button2.onTap = { [weak self] in
 					guard let self = self else { return }
 					self.shareFile(meow: source!, filePath: filePath?.path ?? "")
 				}
-				popupVC.configureButtons([button1, button2])
+				popupVC.configureButtons([button1, button3, button2])
 				
-				let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 160.0)
+				let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 210.0)
 				if let presentationController = popupVC.presentationController as? UISheetPresentationController {
 					presentationController.detents = [
 						detent2,

@@ -32,7 +32,7 @@ class AppTableViewCell: UITableViewCell {
 	private let nameLabel: UILabel = {
 		let label = UILabel()
 		label.font = .boldSystemFont(ofSize: 16)
-		label.numberOfLines = 2
+		label.numberOfLines = 0
 		return label
 	}()
 
@@ -40,7 +40,7 @@ class AppTableViewCell: UITableViewCell {
 		let label = UILabel()
 		label.font = .systemFont(ofSize: 13, weight: .regular)
 		label.textColor = .gray
-		label.numberOfLines = 1
+		label.numberOfLines = 0
 		return label
 	}()
 

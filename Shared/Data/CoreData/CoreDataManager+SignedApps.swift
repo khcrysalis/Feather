@@ -84,4 +84,24 @@ extension CoreDataManager {
 		}
 	}
 	
+	func updateSignedApp(
+		app: SignedApps,
+		newTimeToLive: Date,
+		newTeamName: String,
+		completion: @escaping (Error?) -> Void) {
+		
+		let context = app.managedObjectContext ?? self.context
+		
+		app.timeToLive = newTimeToLive
+		app.teamName = newTeamName
+		
+		do {
+			try context.save()
+			completion(nil)
+		} catch {
+			Debug.shared.log(message: "Error updating SignedApps: \(error)", type: .error)
+			completion(error)
+		}
+	}
+	
 }

@@ -127,7 +127,7 @@ class AppSigningViewController: UITableViewController {
 		self.navigationItem.leftBarButtonItem = nil
 		signing = true
 		largeButton.showLoadingIndicator()
-		signApp(options: AppSigningOptions(
+		signInitialApp(options: AppSigningOptions(
 			name: name,
 			version: version,
 			bundleId: bundleId,
