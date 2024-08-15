@@ -185,6 +185,18 @@ extension SettingsViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let itemTapped = tableData[indexPath.section][indexPath.row]
 		switch itemTapped {
+		case "GitHub Repository":
+			guard let url = URL(string: "https://github.com/khcrysalis/Feather") else {
+				Debug.shared.log(message: "Invalid URL")
+				return
+			}
+			UIApplication.shared.open(url, options: [:], completionHandler: nil)
+		case "Submit Feedback":
+			guard let url = URL(string: "https://github.com/khcrysalis/Feather/issues") else {
+				Debug.shared.log(message: "Invalid URL")
+				return
+			}
+			UIApplication.shared.open(url, options: [:], completionHandler: nil)
 		case "Display":
 			let l = DisplayViewController()
 			navigationController?.pushViewController(l, animated: true)
