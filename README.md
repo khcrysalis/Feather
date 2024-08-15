@@ -18,6 +18,7 @@
 - Allows multiple certificate imports for easy switching
 - Configurable signing options (name, bundleid, version, other plist options)
 - Meant to be used with Apple Accounts that are apart of `ADP` (Apple Developer Program), however other certificates can also work!
+- Easy resigning! If you have another certificate you would like to use on an app you may resign and reinstall that same app!
 - No tracking, analytics, or any of the sort. Your information such as udid and certificates will never leave the device.
 
 ## Screenshots
