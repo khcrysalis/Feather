@@ -126,13 +126,18 @@ extension LibraryViewController {
 				button3.onTap = { [weak self] in
 					guard let self = self else { return }
 					self.popupVC.dismiss(animated: true)
+					MBProgressHUD.showAdded(to: self.view, animated: true)
 					let cert = CoreDataManager.shared.getCurrentCertificate()!
+					
 					resignApp(certificate: cert, appPath: filePath2!) { success in
 						if success {
 							CoreDataManager.shared.updateSignedApp(app: source as! SignedApps, newTimeToLive: (cert.certData?.expirationDate)!, newTeamName: (cert.certData?.name)!) { _ in
-								Debug.shared.log(message: "Done action??")
+								DispatchQueue.main.async {
+									MBProgressHUD.hide(for: self.view, animated: true)
+									Debug.shared.log(message: "Done action??")
+									self.tableView.reloadRows(at: [indexPath], with: .left)
+								}
 							}
-							self.tableView.reloadRows(at: [indexPath], with: .automatic)
 						}
 					}
 				}

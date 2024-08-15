@@ -98,18 +98,23 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 }
 
 func resignApp(certificate: Certificate, appPath: URL, completion: @escaping (Bool) -> Void) {
-	do {
-		let certPath = CoreDataManager.shared.getCertifcatePath(source: certificate)
-		let provisionPath = certPath.appendingPathComponent("\(certificate.provisionPath ?? "")").path
-		let p12Path = certPath.appendingPathComponent("\(certificate.p12Path ?? "")").path
-		
-		try signAppWithZSign(tmpDirApp: appPath, certPaths: (provisionPath, p12Path), password: certificate.password ?? "", options: nil)
-		
-		Debug.shared.log(message: "Successfully resigned!", type: .success)
-		completion(true)
-	} catch {
-		Debug.shared.log(message: "\(error)", type: .warning)
-		completion(false)
+	UIApplication.shared.isIdleTimerDisabled = true
+	DispatchQueue(label: "Resigning").async {
+		do {
+			let certPath = CoreDataManager.shared.getCertifcatePath(source: certificate)
+			let provisionPath = certPath.appendingPathComponent("\(certificate.provisionPath ?? "")").path
+			let p12Path = certPath.appendingPathComponent("\(certificate.p12Path ?? "")").path
+			
+			try signAppWithZSign(tmpDirApp: appPath, certPaths: (provisionPath, p12Path), password: certificate.password ?? "", options: nil)
+			DispatchQueue.main.async {
+				UIApplication.shared.isIdleTimerDisabled = false
+				Debug.shared.log(message: "Successfully resigned!", type: .success)
+			}
+			completion(true)
+		} catch {
+			Debug.shared.log(message: "\(error)", type: .warning)
+			completion(false)
+		}
 	}
 }
 
