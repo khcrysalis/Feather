@@ -35,6 +35,9 @@ enum Preferences {
 	
 	@Storage(key: "Feather.fuckOffPpqcheckDetection", defaultValue: false)
 	static var isFuckingPPqcheckDetectionOff: Bool
+	
+	@Storage(key: "Feather.idWhitelist", defaultValue: ["kh.crysalis.feather", "kh.crysalis.feather2"])
+	static var idWhitelist: [String]
 }
 // MARK: - Callbacks
 fileprivate extension Preferences {
