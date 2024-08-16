@@ -16,7 +16,7 @@ struct AppSigningOptions {
 	var iconURL: UIImage?
 	
     var uuid: String
-	var injectionTool: String?
+	var toInject: [URL]?
     
     var removePlugins: Bool?
     var forceFileSharing: Bool?

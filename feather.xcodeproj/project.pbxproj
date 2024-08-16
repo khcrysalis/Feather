@@ -68,6 +68,9 @@
 		33BE875D2C6ABF2C0044D245 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE875C2C6ABF2C0044D245 /* LibraryViewController.swift */; };
 		33BE875F2C6AF91B0044D245 /* IconImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE875E2C6AF91B0044D245 /* IconImageViewCell.swift */; };
 		33BE87612C6C37CE0044D245 /* UIImage+resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE87602C6C37CE0044D245 /* UIImage+resize.swift */; };
+		33BE87632C6F17870044D245 /* AppSigningInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE87622C6F17870044D245 /* AppSigningInputViewController.swift */; };
+		33BE87652C6F17980044D245 /* AppSigningAdvancedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE87642C6F17980044D245 /* AppSigningAdvancedViewController.swift */; };
+		33BE87672C6F17DF0044D245 /* AppSigningTweakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE87662C6F17DF0044D245 /* AppSigningTweakViewController.swift */; };
 		33C0409B2C30B4A100243D90 /* AppDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C0409A2C30B4A100243D90 /* AppDownload.swift */; };
 		33C0409E2C30DD3E00243D90 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = 33C0409D2C30DD3E00243D90 /* AlertKit */; };
 		33CE81A92C4295F300C05327 /* CertImportingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CE81A82C4295F300C05327 /* CertImportingVC.swift */; };
@@ -174,6 +177,9 @@
 		33BE875C2C6ABF2C0044D245 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		33BE875E2C6AF91B0044D245 /* IconImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconImageViewCell.swift; sourceTree = "<group>"; };
 		33BE87602C6C37CE0044D245 /* UIImage+resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+resize.swift"; sourceTree = "<group>"; };
+		33BE87622C6F17870044D245 /* AppSigningInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSigningInputViewController.swift; sourceTree = "<group>"; };
+		33BE87642C6F17980044D245 /* AppSigningAdvancedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSigningAdvancedViewController.swift; sourceTree = "<group>"; };
+		33BE87662C6F17DF0044D245 /* AppSigningTweakViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSigningTweakViewController.swift; sourceTree = "<group>"; };
 		33C0409A2C30B4A100243D90 /* AppDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDownload.swift; sourceTree = "<group>"; };
 		33CE81A82C4295F300C05327 /* CertImportingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertImportingVC.swift; sourceTree = "<group>"; };
 		33DF8D782C0828A400D6C05F /* Markdownosaur.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Markdownosaur.md; sourceTree = "<group>"; };
@@ -581,6 +587,9 @@
 			isa = PBXGroup;
 			children = (
 				AF84EEFC2C4080610050CBE4 /* AppSigningViewController.swift */,
+				33BE87622C6F17870044D245 /* AppSigningInputViewController.swift */,
+				33BE87642C6F17980044D245 /* AppSigningAdvancedViewController.swift */,
+				33BE87662C6F17DF0044D245 /* AppSigningTweakViewController.swift */,
 				AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */,
 				AF4D46F02C4332D7003FA335 /* SwitchViewCell.swift */,
 				AFAC50912C48DB1200EDEAB6 /* ActivityIndicatorViewCell.swift */,
@@ -771,6 +780,7 @@
 				33163FF02C3D224C0038E1EC /* DownloadTaskManager.swift in Sources */,
 				D0651C1B2BFEE97F00D40829 /* common.cpp in Sources */,
 				33BE875D2C6ABF2C0044D245 /* LibraryViewController.swift in Sources */,
+				33BE87672C6F17DF0044D245 /* AppSigningTweakViewController.swift in Sources */,
 				339CE29F2C58816500B58502 /* SourcesModel.swift in Sources */,
 				332476EE2C3E92BC008C8EF0 /* DisplayViewController.swift in Sources */,
 				AFAC50922C48DB1300EDEAB6 /* ActivityIndicatorViewCell.swift in Sources */,
@@ -781,6 +791,7 @@
 				338FFCE42C695118006C3BE0 /* IconsListViewController.swift in Sources */,
 				D0651C112BFEE93C00D40829 /* zsign.mm in Sources */,
 				332476DA2C3E4D35008C8EF0 /* SourceAppDownload.swift in Sources */,
+				33BE87632C6F17870044D245 /* AppSigningInputViewController.swift in Sources */,
 				3322FF492BFEC97F001768D8 /* SourceAppViewController.swift in Sources */,
 				33E4D8342C6593D2006A1C26 /* UIView+parentcontroller.swift in Sources */,
 				33BE87612C6C37CE0044D245 /* UIImage+resize.swift in Sources */,
@@ -789,6 +800,7 @@
 				AF4D46F12C4332D7003FA335 /* SwitchViewCell.swift in Sources */,
 				D0651C332BFEEA4B00D40829 /* macho.cpp in Sources */,
 				332476DC2C3E4D87008C8EF0 /* SourceViewActions.swift in Sources */,
+				33BE87652C6F17980044D245 /* AppSigningAdvancedViewController.swift in Sources */,
 				33A305D72C3A85F300D650BA /* SourceDownload.swift in Sources */,
 				33570F672C34CCD5008CB560 /* AppsInformationViewController.swift in Sources */,
 				332476D82C3E4CF7008C8EF0 /* SourceAppActions.swift in Sources */,
