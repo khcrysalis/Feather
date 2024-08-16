@@ -34,6 +34,7 @@ struct AppSigningOptions {
 
 func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escaping (Bool) -> Void) {
 	UIApplication.shared.isIdleTimerDisabled = true
+	Debug.shared.log(message: "\(options.toInject ?? [])")
     DispatchQueue(label: "Signing").async {
         let fileManager = FileManager.default
         let tmpDir = fileManager.temporaryDirectory.appendingPathComponent(UUID().uuidString)
