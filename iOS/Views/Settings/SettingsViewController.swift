@@ -216,6 +216,20 @@ extension SettingsViewController {
 			showChangeDownloadURLAlert()
 		case "Reset Configuration":
 			resetConfigDefault()
+		case "Debug Logs":
+			let transferPreview = TransferPreview()
+			let hostingController = UIHostingController(rootView: transferPreview)
+			hostingController.modalPresentationStyle = .pageSheet
+			
+			if let presentationController = hostingController.presentationController as? UISheetPresentationController {
+				let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 200.0)
+				presentationController.detents = [
+					detent2
+				]
+				presentationController.prefersGrabberVisible = true
+			}
+			
+			self.present(hostingController, animated: true)
 		default:
 			break
 		}
