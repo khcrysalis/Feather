@@ -16,11 +16,14 @@ class SettingsViewController: UITableViewController {
 		["About Feather", "Submit Feedback", "GitHub Repository"],
 		["Display", "App Icon"],
 		["Current Certificate", "Add Certificate"],
-		["Signing Configuration"],
+//		["Signing Configuration"],
 		["Fuck PPQCheck"],
-		["Use Server", "Use Custom Server"],
+//		["Use Server", "Use Custom Server"],
 		["Update Local Certificate"],
-		["Debug Logs", "Reset"]
+		[
+//			"Debug Logs",
+				"Reset"
+		]
 	]
 	
 	var sectionTitles =
@@ -29,10 +32,10 @@ class SettingsViewController: UITableViewController {
 		"",
 		"General",
 		"Signing",
-		"",
+//		"",
 		"",
 		"Signing Server",
-		"",
+//		"",
 		"Advanced"
 	]
 	
@@ -87,9 +90,8 @@ extension SettingsViewController {
 		switch section {
 		case 1:
 			return "If any issues occur within Feather please report it via the GitHub repository. When submitting an issue, be sure to submit any logs."
-		case 6:
-			return "Default server goes to \"\(Preferences.defaultInstallPath)\""
-		case 7:
+//		case 6: return "Default server goes to \"\(Preferences.defaultInstallPath)\""
+		case 5:
 			return "Sadly due to limitations server certificates will need to be re-renewed every year to keep Feathers local features working properly, tap this button to retrieve the most up-to-date files from our repositories."
 		default:
 			return nil
