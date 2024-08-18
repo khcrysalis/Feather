@@ -72,7 +72,7 @@ extension CertificatesViewController {
 		if indexPath.section == 0 {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "AddCell", for: indexPath) as! CertificateViewAddTableViewCell
 			
-			cell.configure(with: "Add Certificates", description: "+ Tap to add a certificate")
+			cell.configure(with: "Add Certificates", description: "Tap to add a certificate")
 			
 			cell.selectionStyle = .none
 			return cell
@@ -112,6 +112,15 @@ extension CertificatesViewController {
 			])
 		})
 		return configuration
+	}
+	
+	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+		switch section {
+		case 0:
+			return "Supported file formats:\n\n- P12 (.p12)\n- Mobile Provision (.mobileprovision)\n\nMake sure your certificates are valid and are able to sideload to your device!"
+		default:
+			return nil
+		}
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

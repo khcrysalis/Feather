@@ -34,7 +34,6 @@ struct AppSigningOptions {
 
 func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escaping (Bool) -> Void) {
 	UIApplication.shared.isIdleTimerDisabled = true
-	Debug.shared.log(message: "\(options.toInject ?? [])")
     DispatchQueue(label: "Signing").async {
         let fileManager = FileManager.default
         let tmpDir = fileManager.temporaryDirectory.appendingPathComponent(UUID().uuidString)
@@ -55,6 +54,8 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 					iconURL = iconFileName
 				}
 			}
+			
+			try DylibHandler.getInitialFiles(urls: options.toInject ?? [], app: tmpDirApp)
 
 			let certPath = CoreDataManager.shared.getCertifcatePath(source: options.certificate!)
 			let provisionPath = certPath.appendingPathComponent("\(options.certificate?.provisionPath ?? "")").path

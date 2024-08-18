@@ -71,6 +71,8 @@
 		33BE87632C6F17870044D245 /* AppSigningInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE87622C6F17870044D245 /* AppSigningInputViewController.swift */; };
 		33BE87652C6F17980044D245 /* AppSigningAdvancedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE87642C6F17980044D245 /* AppSigningAdvancedViewController.swift */; };
 		33BE87672C6F17DF0044D245 /* AppSigningTweakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE87662C6F17DF0044D245 /* AppSigningTweakViewController.swift */; };
+		33BE877B2C7178180044D245 /* DylibHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE877A2C7178180044D245 /* DylibHandler.swift */; };
+		33BE877D2C729A7D0044D245 /* DownloadCertificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE877C2C729A7D0044D245 /* DownloadCertificate.swift */; };
 		33C0409B2C30B4A100243D90 /* AppDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C0409A2C30B4A100243D90 /* AppDownload.swift */; };
 		33C0409E2C30DD3E00243D90 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = 33C0409D2C30DD3E00243D90 /* AlertKit */; };
 		33CE81A92C4295F300C05327 /* CertImportingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CE81A82C4295F300C05327 /* CertImportingVC.swift */; };
@@ -180,6 +182,8 @@
 		33BE87622C6F17870044D245 /* AppSigningInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSigningInputViewController.swift; sourceTree = "<group>"; };
 		33BE87642C6F17980044D245 /* AppSigningAdvancedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSigningAdvancedViewController.swift; sourceTree = "<group>"; };
 		33BE87662C6F17DF0044D245 /* AppSigningTweakViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSigningTweakViewController.swift; sourceTree = "<group>"; };
+		33BE877A2C7178180044D245 /* DylibHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DylibHandler.swift; sourceTree = "<group>"; };
+		33BE877C2C729A7D0044D245 /* DownloadCertificate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadCertificate.swift; sourceTree = "<group>"; };
 		33C0409A2C30B4A100243D90 /* AppDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDownload.swift; sourceTree = "<group>"; };
 		33CE81A82C4295F300C05327 /* CertImportingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertImportingVC.swift; sourceTree = "<group>"; };
 		33DF8D782C0828A400D6C05F /* Markdownosaur.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Markdownosaur.md; sourceTree = "<group>"; };
@@ -388,6 +392,7 @@
 				AFAC50932C48DC8E00EDEAB6 /* zsign */,
 				AFAC50942C48DF9300EDEAB6 /* AppSigner.swift */,
 				D0651C0E2BFEE93B00D40829 /* feather-Bridging-Header.h */,
+				33BE877A2C7178180044D245 /* DylibHandler.swift */,
 			);
 			path = Signing;
 			sourceTree = "<group>";
@@ -631,6 +636,7 @@
 			children = (
 				D0651C062BFEE1F600D40829 /* localhost.direct.pfx */,
 				D0651C072BFEE1F600D40829 /* HTTPSServer.swift */,
+				33BE877C2C729A7D0044D245 /* DownloadCertificate.swift */,
 			);
 			path = Server;
 			sourceTree = "<group>";
@@ -770,6 +776,7 @@
 				335F0C2C2C5DC3AE00A4F0AE /* CoreDataManager+SignedApps.swift in Sources */,
 				338FFCDB2C6870E2006C3BE0 /* LibraryViewController+Import.swift in Sources */,
 				335F0C302C5E175B00A4F0AE /* CertData.swift in Sources */,
+				33BE877B2C7178180044D245 /* DylibHandler.swift in Sources */,
 				332476EA2C3E905D008C8EF0 /* AboutViewController.swift in Sources */,
 				33BA37B02BF819ED00FF530A /* UIColor+hex.swift in Sources */,
 				33BA37932BF8159F00FF530A /* SourcesViewController.swift in Sources */,
@@ -819,6 +826,7 @@
 				33951CFE2C37AFCF00802F78 /* FloatingActionButton.swift in Sources */,
 				33E4D8412C67E5C3006A1C26 /* DonationTableViewCell.swift in Sources */,
 				33EEDAA42C5D9358009089DC /* CoreDataManager+DownloadedApps.swift in Sources */,
+				33BE877D2C729A7D0044D245 /* DownloadCertificate.swift in Sources */,
 				D0651C3B2BFEEA4B00D40829 /* bundle.cpp in Sources */,
 				332AE3C02C097F180052F24A /* Feather.xcdatamodeld in Sources */,
 				33BA37A32BF815F900FF530A /* main.swift in Sources */,
@@ -980,7 +988,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DLSL362JHJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Feather;
@@ -996,7 +1004,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
+				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1019,7 +1027,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DLSL362JHJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Feather;
@@ -1035,7 +1043,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
+				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

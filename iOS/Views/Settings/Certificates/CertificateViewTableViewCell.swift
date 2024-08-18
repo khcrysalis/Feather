@@ -126,7 +126,7 @@ class CertificateViewAddTableViewCell: UITableViewCell {
 	private let titleLabel: UILabel = {
 		let label = UILabel()
 		label.font = UIFont.boldSystemFont(ofSize: 19)
-		label.textColor = .label
+		label.textColor = .tintColor
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()

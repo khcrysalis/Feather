@@ -17,8 +17,9 @@ class SettingsViewController: UITableViewController {
 		["Display", "App Icon"],
 		["Current Certificate", "Add Certificate"],
 		["Signing Configuration"],
-		["Fuck PPQCheck", "Use Server"],
-		["Use Custom Server"],
+		["Fuck PPQCheck"],
+		["Use Server", "Use Custom Server"],
+		["Update Local Certificate"],
 		["Debug Logs", "Reset"]
 	]
 	
@@ -30,9 +31,12 @@ class SettingsViewController: UITableViewController {
 		"Signing",
 		"",
 		"",
+		"Signing Server",
 		"",
 		"Advanced"
 	]
+	
+	var isDownloadingCertifcate = false
 	
 	init() { super.init(style: .insetGrouped) }
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -83,10 +87,10 @@ extension SettingsViewController {
 		switch section {
 		case 1:
 			return "If any issues occur within Feather please report it via the GitHub repository. When submitting an issue, be sure to submit any logs."
-		case 5:
-			return "Using a signing server will disable the built-in server Feather uses to retrieve the manifest for itms services, use this in case of the local server failing."
 		case 6:
 			return "Default server goes to \"\(Preferences.defaultInstallPath)\""
+		case 7:
+			return "Sadly due to limitations server certificates will need to be re-renewed every year to keep Feathers local features working properly, tap this button to retrieve the most up-to-date files from our repositories."
 		default:
 			return nil
 		}
@@ -167,6 +171,20 @@ extension SettingsViewController {
 		case "App Icon":
 			cell.setAccessoryIcon(with: "app.dashed")
 			cell.selectionStyle = .default
+		case "Update Local Certificate":
+			if !isDownloadingCertifcate {
+				cell.textLabel?.textColor = .tintColor
+				cell.setAccessoryIcon(with: "signature")
+				cell.selectionStyle = .default
+			} else {
+				let cell = ActivityIndicatorViewCell()
+				cell.activityIndicator.startAnimating()
+				cell.selectionStyle = .none
+				cell.textLabel?.text = "Updating Local Certificate"
+				cell.textLabel?.textColor = .secondaryLabel
+				return cell
+			}
+			
 		default:
 			break
 		}
@@ -216,6 +234,30 @@ extension SettingsViewController {
 			showChangeDownloadURLAlert()
 		case "Reset Configuration":
 			resetConfigDefault()
+		case "Update Local Certificate":
+			if !isDownloadingCertifcate {
+				isDownloadingCertifcate = true
+				tableView.reloadRows(at: [indexPath], with: .automatic)
+				
+				downloadCertificateOnline(from: Preferences.downloadPath ?? Preferences.defaultDownloadPath) { result in
+					switch result {
+					case .success(_):
+						self.isDownloadingCertifcate = false
+						DispatchQueue.main.async {
+							Debug.shared.log(message: "File successfully downloaded!", type: .success)
+							tableView.reloadRows(at: [indexPath], with: .automatic)
+						}
+					case .failure(let error):
+						self.isDownloadingCertifcate = false
+						DispatchQueue.main.async {
+							Debug.shared.log(message: "\(error)", type: .critical)
+							tableView.reloadRows(at: [indexPath], with: .automatic)
+						}
+					}
+				}
+				
+			}
+			break
 		default:
 			break
 		}

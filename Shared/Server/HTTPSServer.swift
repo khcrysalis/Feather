@@ -69,7 +69,16 @@ func runHTTPSServer() {
 	}
 	
 	serverRunning = DispatchWorkItem {
-		try? server.run(port: 8443, certifiatePath: (Bundle.main.url(forResource: "localhost.direct", withExtension: "pfx")!, ""))
+		if let pfxFilePath = getPFXFilePath() {
+			do {
+				Debug.shared.log(message: "\(pfxFilePath)")
+				try server.run(port: 8443, certifiatePath: (pfxFilePath, ""))
+			} catch {
+				Debug.shared.log(message: "Failed to run server.", type: .error)
+			}
+		} else {
+			Debug.shared.log(message: "Server Certificate Not Found.", type: .error)
+		}
 	}
 	
 	if let serverRunning = serverRunning {
