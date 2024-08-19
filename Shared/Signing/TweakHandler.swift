@@ -84,9 +84,6 @@ class TweakHandler {
 		case "dylib":
 			let destinationURL = app.appendingPathComponent("Frameworks").appendingPathComponent(url.lastPathComponent)
 			try moveFile(from: url, to: destinationURL)
-			if let executableURL = try findExecutable(at: destinationURL) {
-				Debug.shared.log(message: "Executable path: \(executableURL)")
-			}
 			Debug.shared.log(message: "Dylib file path: \(destinationURL)")
 		case "framework":
 			let destinationURL = app.appendingPathComponent("Frameworks").appendingPathComponent(url.lastPathComponent)
