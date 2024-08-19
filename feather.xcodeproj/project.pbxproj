@@ -71,8 +71,11 @@
 		33BE87632C6F17870044D245 /* AppSigningInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE87622C6F17870044D245 /* AppSigningInputViewController.swift */; };
 		33BE87652C6F17980044D245 /* AppSigningAdvancedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE87642C6F17980044D245 /* AppSigningAdvancedViewController.swift */; };
 		33BE87672C6F17DF0044D245 /* AppSigningTweakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE87662C6F17DF0044D245 /* AppSigningTweakViewController.swift */; };
-		33BE877B2C7178180044D245 /* DylibHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE877A2C7178180044D245 /* DylibHandler.swift */; };
+		33BE877B2C7178180044D245 /* TweakHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE877A2C7178180044D245 /* TweakHandler.swift */; };
 		33BE877D2C729A7D0044D245 /* DownloadCertificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE877C2C729A7D0044D245 /* DownloadCertificate.swift */; };
+		33BE87802C72D2840044D245 /* AR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE877F2C72D2840044D245 /* AR.swift */; };
+		33BE87A52C72E1220044D245 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 33BE87A42C72E1220044D245 /* SWCompression */; };
+		33BE87A72C72F5720044D245 /* SWCompression.md in Resources */ = {isa = PBXBuildFile; fileRef = 33BE87A62C72F5720044D245 /* SWCompression.md */; };
 		33C0409B2C30B4A100243D90 /* AppDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C0409A2C30B4A100243D90 /* AppDownload.swift */; };
 		33C0409E2C30DD3E00243D90 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = 33C0409D2C30DD3E00243D90 /* AlertKit */; };
 		33CE81A92C4295F300C05327 /* CertImportingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CE81A82C4295F300C05327 /* CertImportingVC.swift */; };
@@ -182,8 +185,10 @@
 		33BE87622C6F17870044D245 /* AppSigningInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSigningInputViewController.swift; sourceTree = "<group>"; };
 		33BE87642C6F17980044D245 /* AppSigningAdvancedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSigningAdvancedViewController.swift; sourceTree = "<group>"; };
 		33BE87662C6F17DF0044D245 /* AppSigningTweakViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSigningTweakViewController.swift; sourceTree = "<group>"; };
-		33BE877A2C7178180044D245 /* DylibHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DylibHandler.swift; sourceTree = "<group>"; };
+		33BE877A2C7178180044D245 /* TweakHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakHandler.swift; sourceTree = "<group>"; };
 		33BE877C2C729A7D0044D245 /* DownloadCertificate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadCertificate.swift; sourceTree = "<group>"; };
+		33BE877F2C72D2840044D245 /* AR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AR.swift; sourceTree = "<group>"; };
+		33BE87A62C72F5720044D245 /* SWCompression.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = SWCompression.md; sourceTree = "<group>"; };
 		33C0409A2C30B4A100243D90 /* AppDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDownload.swift; sourceTree = "<group>"; };
 		33CE81A82C4295F300C05327 /* CertImportingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertImportingVC.swift; sourceTree = "<group>"; };
 		33DF8D782C0828A400D6C05F /* Markdownosaur.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Markdownosaur.md; sourceTree = "<group>"; };
@@ -239,6 +244,7 @@
 				338FFCED2C695CA3006C3BE0 /* IconSelector in Frameworks */,
 				D0651C0C2BFEE46400D40829 /* HttpSwift in Frameworks */,
 				3322FF4F2BFEE5B9001768D8 /* Nuke in Frameworks */,
+				33BE87A52C72E1220044D245 /* SWCompression in Frameworks */,
 				33DF8D8A2C082FBF00D6C05F /* cmark-gfm-bin in Frameworks */,
 				3322FF552BFEE5B9001768D8 /* NukeVideo in Frameworks */,
 				D0AA9D542BFF02AF00A65D45 /* OpenSSL in Frameworks */,
@@ -375,6 +381,7 @@
 				33C040992C30B47700243D90 /* Management */,
 				33BA37972BF815A100FF530A /* Assets.xcassets */,
 				338FFCE52C6954C3006C3BE0 /* Icons */,
+				33BE87A62C72F5720044D245 /* SWCompression.md */,
 				33DF8D782C0828A400D6C05F /* Markdownosaur.md */,
 				33DF8D7A2C0828AC00D6C05F /* swift-markdown.md */,
 				33DF8D7C2C0828CF00D6C05F /* Zsign.md */,
@@ -391,8 +398,9 @@
 				AF9B6B432C6346E900735748 /* p12_password_check.mm */,
 				AFAC50932C48DC8E00EDEAB6 /* zsign */,
 				AFAC50942C48DF9300EDEAB6 /* AppSigner.swift */,
+				33BE877A2C7178180044D245 /* TweakHandler.swift */,
+				33BE877E2C72D2720044D245 /* Decompression */,
 				D0651C0E2BFEE93B00D40829 /* feather-Bridging-Header.h */,
-				33BE877A2C7178180044D245 /* DylibHandler.swift */,
 			);
 			path = Signing;
 			sourceTree = "<group>";
@@ -500,6 +508,7 @@
 				339CE2802C584C7C00B58502 /* Shared */,
 				33BA378D2BF8159F00FF530A /* iOS */,
 				33BA378C2BF8159F00FF530A /* Products */,
+				33BE87902C72DAF90044D245 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -567,6 +576,21 @@
 				3322FF4A2BFEDAE8001768D8 /* SourceAppViews */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		33BE877E2C72D2720044D245 /* Decompression */ = {
+			isa = PBXGroup;
+			children = (
+				33BE877F2C72D2840044D245 /* AR.swift */,
+			);
+			path = Decompression;
+			sourceTree = "<group>";
+		};
+		33BE87902C72DAF90044D245 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		33C040992C30B47700243D90 /* Management */ = {
@@ -686,6 +710,7 @@
 				336EEE802C32367C0011188D /* ZIPFoundation */,
 				AF9B6B402C633AB400735748 /* MBProgressHUD */,
 				338FFCEC2C695CA3006C3BE0 /* IconSelector */,
+				33BE87A42C72E1220044D245 /* SWCompression */,
 			);
 			productName = feather;
 			productReference = 33BA378B2BF8159F00FF530A /* feather.app */;
@@ -726,6 +751,7 @@
 				336EEE7F2C32367C0011188D /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 				AF9B6B3F2C633AB400735748 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
 				338FFCEB2C695CA3006C3BE0 /* XCRemoteSwiftPackageReference "ios-icon-selector" */,
+				33BE87A32C72E1220044D245 /* XCRemoteSwiftPackageReference "SWCompression" */,
 			);
 			productRefGroup = 33BA378C2BF8159F00FF530A /* Products */;
 			projectDirPath = "";
@@ -752,6 +778,7 @@
 				338FFCF82C6973F0006C3BE0 /* Wing@2x.png in Resources */,
 				D0651C082BFEE1F600D40829 /* localhost.direct.pfx in Resources */,
 				33DF8D7F2C0828FB00D6C05F /* Nuke.md in Resources */,
+				33BE87A72C72F5720044D245 /* SWCompression.md in Resources */,
 				33BA379B2BF815A100FF530A /* LaunchScreen.storyboard in Resources */,
 				338FFCFD2C697C61006C3BE0 /* Evil@3x.png in Resources */,
 				33BA37982BF815A100FF530A /* Assets.xcassets in Resources */,
@@ -776,7 +803,7 @@
 				335F0C2C2C5DC3AE00A4F0AE /* CoreDataManager+SignedApps.swift in Sources */,
 				338FFCDB2C6870E2006C3BE0 /* LibraryViewController+Import.swift in Sources */,
 				335F0C302C5E175B00A4F0AE /* CertData.swift in Sources */,
-				33BE877B2C7178180044D245 /* DylibHandler.swift in Sources */,
+				33BE877B2C7178180044D245 /* TweakHandler.swift in Sources */,
 				332476EA2C3E905D008C8EF0 /* AboutViewController.swift in Sources */,
 				33BA37B02BF819ED00FF530A /* UIColor+hex.swift in Sources */,
 				33BA37932BF8159F00FF530A /* SourcesViewController.swift in Sources */,
@@ -831,6 +858,7 @@
 				332AE3C02C097F180052F24A /* Feather.xcdatamodeld in Sources */,
 				33BA37A32BF815F900FF530A /* main.swift in Sources */,
 				333912A02BF9816B00E72360 /* CertificateModel.swift in Sources */,
+				33BE87802C72D2840044D245 /* AR.swift in Sources */,
 				339CE28C2C5870AC00B58502 /* CoreDataManager+Sources.swift in Sources */,
 				AF84EEFD2C4080610050CBE4 /* AppSigningViewController.swift in Sources */,
 				33DF8D832C08298900D6C05F /* Markdown.swift in Sources */,
@@ -1104,6 +1132,14 @@
 				kind = branch;
 			};
 		};
+		33BE87A32C72E1220044D245 /* XCRemoteSwiftPackageReference "SWCompression" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tsolomko/SWCompression";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.8.6;
+			};
+		};
 		33C0409C2C30DD3E00243D90 /* XCRemoteSwiftPackageReference "AlertKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sparrowcode/AlertKit";
@@ -1184,6 +1220,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 338FFCEB2C695CA3006C3BE0 /* XCRemoteSwiftPackageReference "ios-icon-selector" */;
 			productName = IconSelector;
+		};
+		33BE87A42C72E1220044D245 /* SWCompression */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33BE87A32C72E1220044D245 /* XCRemoteSwiftPackageReference "SWCompression" */;
+			productName = SWCompression;
 		};
 		33C0409D2C30DD3E00243D90 /* AlertKit */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -55,7 +55,7 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 				}
 			}
 			
-			try DylibHandler.getInitialFiles(urls: options.toInject ?? [], app: tmpDirApp)
+			try TweakHandler.getInputFiles(urls: options.toInject ?? [], app: tmpDirApp)
 
 			let certPath = CoreDataManager.shared.getCertifcatePath(source: options.certificate!)
 			let provisionPath = certPath.appendingPathComponent("\(options.certificate?.provisionPath ?? "")").path

@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "bitbytedata",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tsolomko/BitByteData",
+      "state" : {
+        "revision" : "cdcdc5177ad536cfb11b95c620f926a81014b7fe",
+        "version" : "2.0.4"
+      }
+    },
+    {
       "identity" : "http.swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/BiAtoms/Http.swift.git",
@@ -70,6 +79,15 @@
       "state" : {
         "revision" : "36911c13adfe12859ed43dcba878052b1897fcd3",
         "version" : "2.4.0"
+      }
+    },
+    {
+      "identity" : "swcompression",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tsolomko/SWCompression",
+      "state" : {
+        "revision" : "390e0b0af8dd19a600005a242a89e570ff482e09",
+        "version" : "4.8.6"
       }
     },
     {
