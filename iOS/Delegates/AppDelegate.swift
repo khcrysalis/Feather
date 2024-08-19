@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		UserDefaults.standard.set(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, forKey: "currentVersion")
-		
+		addDefaultRepos()
 		imagePipline()
 		#if !targetEnvironment(simulator)
 		startPiping()
@@ -55,6 +55,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
 		
 		return true
+	}
+	
+	fileprivate func addDefaultRepos() {
+		if !Preferences.defaultRepos {
+			CoreDataManager.shared.saveSource(
+				name: "Feather Repostory",
+				id: "kh.crysalis.feather-repo",
+				iconURL: URL(string: "https://github.com/khcrysalis/feather/blob/main/feather/Resources/Assets.xcassets/AppIcon.appiconset/feather.png?raw=true"),
+				url: "https://github.com/khcrysalis/Feather/raw/main/app-repo.json")
+			{_ in
+				Debug.shared.log(message: "Added default repos!")
+				Preferences.defaultRepos = true
+			}
+		}
 	}
 	
 	fileprivate static func generateRandomString(length: Int = 8) -> String {

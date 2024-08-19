@@ -23,6 +23,9 @@ enum Preferences {
 	@Storage(key: "Feather.UserSelectedServer", defaultValue: false)
 	static var userSelectedServer: Bool
 	
+	@Storage(key: "Feather.DefaultRepos", defaultValue: false)
+	static var defaultRepos: Bool
+	
 	@Storage(key: "Feather.userIntefacerStyle", defaultValue: UIUserInterfaceStyle.unspecified.rawValue)
 	static var preferredInterfaceStyle: Int
 	
