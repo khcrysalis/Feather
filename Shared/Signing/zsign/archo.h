@@ -15,6 +15,7 @@ public:
 	bool InjectDyLib(bool bWeakInject, const char *szDyLibPath, bool &bCreate);
 	uint32_t ReallocCodeSignSpace(const string &strNewFile);
     void uninstallDylibs(set<string> dylibNames);
+	bool ChangeDylibPath(const char *oldPath, const char *newPath);
 
 private:
 	uint32_t BO(uint32_t uVal);

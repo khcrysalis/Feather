@@ -133,6 +133,17 @@ private func signAppWithZSign(tmpDirApp: URL, certPaths: (provisionPath: String,
 	}
 }
 
+func injectDylib(filePath: String, dylibPath: String, weakInject: Bool) -> Bool {
+	let bCreate: Bool = false
+	let success = InjectDyLib(filePath, dylibPath, weakInject, bCreate)
+	return success
+}
+
+func changeDylib(filePath: String, oldPath: String, newPath: String) -> Bool {
+	let success = ChangeDylibPath(filePath, oldPath, newPath)
+	return success
+}
+
 func updatePlugIns(options: AppSigningOptions, app: URL) throws {
 	if options.removePlugins! {
 		let filemanager = FileManager.default

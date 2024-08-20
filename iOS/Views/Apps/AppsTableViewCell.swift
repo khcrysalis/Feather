@@ -85,7 +85,7 @@ class AppsTableViewCell: UITableViewCell {
 	}
 	
 	func configure(with app: NSManagedObject, filePath: URL) {
-		print(app)
+		
 		var appname = ""
 		if let name = app.value(forKey: "name") as? String {
 			appname += name

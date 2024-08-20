@@ -86,17 +86,51 @@ class TweakHandler {
 			let destinationURL = app.appendingPathComponent("Frameworks").appendingPathComponent(url.lastPathComponent)
 			try moveFile(from: url, to: destinationURL)
             Debug.shared.log(message: "Dylib file path: \(destinationURL)")
-			let executablePath = try findExecutable(at: app)!
-            guard inject_dylib(executablePath.path, "@executable_path/Frameworks/\(url.lastPathComponent)") == 0 else {
-                throw FileProcessingError.failedToInject(url.lastPathComponent)
-            }
+
+			do {
+				guard let executablePath = try findExecutable(at: app) else {
+					Debug.shared.log(message: "Failed to find executable.")
+					return
+				}
+
+				let executablePathStr = executablePath.path
+				let dylibPathStr = "@executable_path/Frameworks/\(url.lastPathComponent)"
+				
+				if changeDylib(filePath: destinationURL.path, oldPath: "/Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate", newPath: "@rpath/CydiaSubstrate.framework/CydiaSubstrate") {
+					Debug.shared.log(message: "Dylib changed! successfully!")
+				}
+				
+				if injectDylib(filePath: executablePathStr, dylibPath: dylibPathStr, weakInject: true) {
+					Debug.shared.log(message: "Dylib injected successfully!")
+				}
+				
+				
+
+			} catch {
+				Debug.shared.log(message: "An error occurred: \(error)")
+			}
+
+
+
+		
+
+			
+			
+			
+			
 		case "framework":
 			let destinationURL = app.appendingPathComponent("Frameworks").appendingPathComponent(url.lastPathComponent)
 			try moveFile(from: url, to: destinationURL)
 			if let executableURL = try findExecutable(at: destinationURL) {
-				Debug.shared.log(message: "Executable path: \(executableURL)")
+				let executablePath = try findExecutable(at: app)!
+				let executablePathStr = executablePath.path
+				Debug.shared.log(message: "@executable_path/Frameworks/\(url.lastPathComponent)/\(executableURL.lastPathComponent)")
+				if injectDylib(filePath: executablePathStr, dylibPath: "@executable_path/Frameworks/\(url.lastPathComponent)/\(executableURL.lastPathComponent)", weakInject: true) {
+					Debug.shared.log(message: "Dylib injected successfully!")
+				}
+				
 			}
-			Debug.shared.log(message: "Framework file path: \(destinationURL)")
+			
 		case "appex":
 			let destinationURL = app.appendingPathComponent("PlugIns").appendingPathComponent(url.lastPathComponent)
 			try moveFile(from: url, to: destinationURL)
@@ -245,25 +279,35 @@ extension TweakHandler {
 	}
 	
 	private static func findExecutable(at frameworkURL: URL) throws -> URL? {
-		let infoPlistURL = frameworkURL.appendingPathComponent("Info.plist")
 		let fileManager = FileManager.default
-
-		guard fileManager.fileExists(atPath: infoPlistURL.path) else {
-			Debug.shared.log(message: "Info.plist not found at: \(infoPlistURL)")
-			return nil
-		}
-
-		let plistData = try Data(contentsOf: infoPlistURL)
-		if let plist = try PropertyListSerialization.propertyList(from: plistData, options: [], format: nil) as? [String: Any],
-		   let executableName = plist["CFBundleExecutable"] as? String {
-			let executableURL = frameworkURL.appendingPathComponent(executableName)
-			Debug.shared.log(message: "Executable path: \(executableURL)")
-			return executableURL
+		let infoPlistURL = frameworkURL.appendingPathComponent("Info.plist")
+		
+		if fileManager.fileExists(atPath: infoPlistURL.path) {
+			// If Info.plist exists, find executable as before
+			let plistData = try Data(contentsOf: infoPlistURL)
+			if let plist = try PropertyListSerialization.propertyList(from: plistData, options: [], format: nil) as? [String: Any],
+			   let executableName = plist["CFBundleExecutable"] as? String {
+				let executableURL = frameworkURL.appendingPathComponent(executableName)
+				Debug.shared.log(message: "Executable path from Info.plist: \(executableURL)")
+				return executableURL
+			} else {
+				Debug.shared.log(message: "CFBundleExecutable not found in Info.plist")
+				return nil
+			}
 		} else {
-			Debug.shared.log(message: "CFBundleExecutable not found in Info.plist")
+			let contents = try fileManager.contentsOfDirectory(at: frameworkURL, includingPropertiesForKeys: nil)
+			for fileURL in contents {
+				if fileManager.isExecutableFile(atPath: fileURL.path) {
+					Debug.shared.log(message: "Executable path found: \(fileURL)")
+					return fileURL
+				}
+			}
+			
+			Debug.shared.log(message: "No executable file found in the directory")
 			return nil
 		}
 	}
+
 
 
 	private static func moveFile(from sourceURL: URL, to destinationURL: URL) throws {
