@@ -56,6 +56,7 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 			}
 			
 			try TweakHandler.getInputFiles(urls: options.toInject ?? [], app: tmpDirApp)
+			try updatePlugIns(options: options, app: tmpDirApp)
 
 			let certPath = CoreDataManager.shared.getCertifcatePath(source: options.certificate!)
 			let provisionPath = certPath.appendingPathComponent("\(options.certificate?.provisionPath ?? "")").path
@@ -129,6 +130,20 @@ private func signAppWithZSign(tmpDirApp: URL, certPaths: (provisionPath: String,
 			 options?.name ?? "",
 			 options?.version ?? "") != 0 {
 		throw NSError(domain: "AppSigningErrorDomain", code: 1, userInfo: [NSLocalizedDescriptionKey: "Signing failed"])
+	}
+}
+
+func updatePlugIns(options: AppSigningOptions, app: URL) throws {
+	if options.removePlugins! {
+		let filemanager = FileManager.default
+		let path = app.appendingPathComponent("PlugIns")
+		if filemanager.fileExists(atPath: path.path) {
+			do {
+				try filemanager.removeItem(at: path)
+			} catch {
+				throw error
+			}
+		}
 	}
 }
 
