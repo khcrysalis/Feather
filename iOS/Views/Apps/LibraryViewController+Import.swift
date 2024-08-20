@@ -120,7 +120,7 @@ extension LibraryViewController {
 	}
 	
 	@objc func shareFile(meow: NSManagedObject, filePath: String) {
-		self.popupVC.dismiss(animated: true)
+		
 		let uuid = UUID().uuidString
 		let tempDirectory = FileManager.default.temporaryDirectory.appendingPathComponent(uuid)
 		let payloadPath = tempDirectory.appendingPathComponent("Payload").path

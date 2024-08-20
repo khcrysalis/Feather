@@ -120,6 +120,7 @@ extension LibraryViewController {
 				let button1 = PopupViewControllerButton(title: "Install \((source!.value(forKey: "name") as? String ?? ""))", color: .tintColor.withAlphaComponent(0.9))
 				button1.onTap = { [weak self] in
 					guard let self = self else { return }
+					self.popupVC.dismiss(animated: true)
 					self.startInstallProcess(meow: source!, filePath: filePath?.path ?? "")
 				}
 				let button3 = PopupViewControllerButton(title: "Resign \((source!.value(forKey: "name") as? String ?? ""))", color: .quaternarySystemFill, titleColor: .tintColor)
@@ -145,6 +146,7 @@ extension LibraryViewController {
 				let button2 = PopupViewControllerButton(title: "Share \((source!.value(forKey: "name") as? String ?? ""))", color: .quaternarySystemFill, titleColor: .tintColor)
 				button2.onTap = { [weak self] in
 					guard let self = self else { return }
+					self.popupVC.dismiss(animated: true)
 					self.shareFile(meow: source!, filePath: filePath?.path ?? "")
 				}
 				popupVC.configureButtons([button1, button3, button2])
@@ -171,6 +173,7 @@ extension LibraryViewController {
 				let button1 = PopupViewControllerButton(title: "Sign \((source!.value(forKey: "name") as? String ?? ""))", color: .tintColor.withAlphaComponent(0.9))
 				button1.onTap = { [weak self] in
 					guard let self = self else { return }
+					self.popupVC.dismiss(animated: true)
 					self.startSigning(meow: source!)
 				}
 				
@@ -198,7 +201,6 @@ extension LibraryViewController {
 	}
 	
 	@objc func startSigning(meow: NSManagedObject) {
-		popupVC.dismiss(animated: true)
 		if FileManager.default.fileExists(atPath: CoreDataManager.shared.getFilesForDownloadedApps(for:(meow as! DownloadedApps)).path) {
 			let ap = AppSigningViewController(app: meow, appsViewController: self)
 			let navigationController = UINavigationController(rootViewController: ap)
