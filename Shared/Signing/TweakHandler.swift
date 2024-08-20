@@ -11,6 +11,7 @@ import SWCompression
 class TweakHandler {
 	enum FileProcessingError: Error {
 		case unsupportedFileExtension(String)
+        case failedToInject(String)
 	}
 
 	static func getInputFiles(urls: [URL], app: URL) throws {
@@ -84,7 +85,11 @@ class TweakHandler {
 		case "dylib":
 			let destinationURL = app.appendingPathComponent("Frameworks").appendingPathComponent(url.lastPathComponent)
 			try moveFile(from: url, to: destinationURL)
-			Debug.shared.log(message: "Dylib file path: \(destinationURL)")
+            Debug.shared.log(message: "Dylib file path: \(destinationURL)")
+			let executablePath = try findExecutable(at: app)!
+            guard inject_dylib(executablePath.path, "@executable_path/Frameworks/\(url.lastPathComponent)") == 0 else {
+                throw FileProcessingError.failedToInject(url.lastPathComponent)
+            }
 		case "framework":
 			let destinationURL = app.appendingPathComponent("Frameworks").appendingPathComponent(url.lastPathComponent)
 			try moveFile(from: url, to: destinationURL)

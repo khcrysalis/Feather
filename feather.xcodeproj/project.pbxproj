@@ -96,6 +96,7 @@
 		33E4D8412C67E5C3006A1C26 /* DonationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8402C67E5C3006A1C26 /* DonationTableViewCell.swift */; };
 		33E4D8432C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8422C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift */; };
 		33EEDAA42C5D9358009089DC /* CoreDataManager+DownloadedApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */; };
+		6F33F4CE2C73C6E3003DA58E /* libinject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F33F4CD2C73C6E3003DA58E /* libinject.m */; };
 		AF4D46EF2C432CCA003FA335 /* TweakLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */; };
 		AF4D46F12C4332D7003FA335 /* SwitchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D46F02C4332D7003FA335 /* SwitchViewCell.swift */; };
 		AF84EEFD2C4080610050CBE4 /* AppSigningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF84EEFC2C4080610050CBE4 /* AppSigningViewController.swift */; };
@@ -205,6 +206,8 @@
 		33E4D8402C67E5C3006A1C26 /* DonationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationTableViewCell.swift; sourceTree = "<group>"; };
 		33E4D8422C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+DownloadedApps.swift"; sourceTree = "<group>"; };
+		6F235B3C2C73B1910033D799 /* libinject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libinject.h; sourceTree = "<group>"; };
+		6F33F4CD2C73C6E3003DA58E /* libinject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = libinject.m; sourceTree = "<group>"; };
 		AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakLibraryViewCell.swift; sourceTree = "<group>"; };
 		AF4D46F02C4332D7003FA335 /* SwitchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewCell.swift; sourceTree = "<group>"; };
 		AF84EEFC2C4080610050CBE4 /* AppSigningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSigningViewController.swift; sourceTree = "<group>"; };
@@ -394,13 +397,15 @@
 		339CE2812C584CE700B58502 /* Signing */ = {
 			isa = PBXGroup;
 			children = (
-				AF9B6B452C634B0300735748 /* p12_password_check.hpp */,
-				AF9B6B432C6346E900735748 /* p12_password_check.mm */,
-				AFAC50932C48DC8E00EDEAB6 /* zsign */,
 				AFAC50942C48DF9300EDEAB6 /* AppSigner.swift */,
-				33BE877A2C7178180044D245 /* TweakHandler.swift */,
 				33BE877E2C72D2720044D245 /* Decompression */,
 				D0651C0E2BFEE93B00D40829 /* feather-Bridging-Header.h */,
+				6F235B3A2C73B1910033D799 /* include */,
+				AF9B6B452C634B0300735748 /* p12_password_check.hpp */,
+				AF9B6B432C6346E900735748 /* p12_password_check.mm */,
+				33BE877A2C7178180044D245 /* TweakHandler.swift */,
+				6F33F4CD2C73C6E3003DA58E /* libinject.m */,
+				AFAC50932C48DC8E00EDEAB6 /* zsign */,
 			);
 			path = Signing;
 			sourceTree = "<group>";
@@ -635,6 +640,22 @@
 			path = Information;
 			sourceTree = "<group>";
 		};
+		6F235B3A2C73B1910033D799 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				6F235B3B2C73B1910033D799 /* libinject */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		6F235B3B2C73B1910033D799 /* libinject */ = {
+			isa = PBXGroup;
+			children = (
+				6F235B3C2C73B1910033D799 /* libinject.h */,
+			);
+			path = libinject;
+			sourceTree = "<group>";
+		};
 		AFAC50932C48DC8E00EDEAB6 /* zsign */ = {
 			isa = PBXGroup;
 			children = (
@@ -856,6 +877,7 @@
 				33BE877D2C729A7D0044D245 /* DownloadCertificate.swift in Sources */,
 				D0651C3B2BFEEA4B00D40829 /* bundle.cpp in Sources */,
 				332AE3C02C097F180052F24A /* Feather.xcdatamodeld in Sources */,
+				6F33F4CE2C73C6E3003DA58E /* libinject.m in Sources */,
 				33BA37A32BF815F900FF530A /* main.swift in Sources */,
 				333912A02BF9816B00E72360 /* CertificateModel.swift in Sources */,
 				33BE87802C72D2840044D245 /* AR.swift in Sources */,
@@ -1016,7 +1038,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = M485NQ89DK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Feather;
@@ -1032,8 +1054,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Shared/Signing",
+				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.mineek.feather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1056,7 +1082,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = M485NQ89DK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Feather;
@@ -1072,8 +1098,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Shared/Signing",
+				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.mineek.feather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
