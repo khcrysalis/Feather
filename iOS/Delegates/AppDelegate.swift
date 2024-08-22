@@ -8,9 +8,10 @@
 import UIKit
 import Nuke
 import CoreData
+import UIOnboarding
 
 var downloadTaskManager = DownloadTaskManager.shared
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControllerDelegate {
 
 	static let isSideloaded = Bundle.main.bundleIdentifier != "kh.crysalis.feather"
 	var window: UIWindow?
@@ -44,9 +45,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		if Preferences.pPQCheckString.isEmpty {
 			Preferences.pPQCheckString = generatedString
 		}
+    
+    if Preferences.isOnboardingActive {
+      let onboardingController: UIOnboardingViewController = .init(withConfiguration: .setUp())
+      onboardingController.delegate = self
+      self.window?.rootViewController?.present(onboardingController, animated: false)
+    }
 		
 		return true
 	}
+  
+  func didFinishOnboarding(onboardingViewController: UIOnboardingViewController) {
+    Preferences.isOnboardingActive = false // stop showing onboarding from now on.
+    onboardingViewController.modalTransitionStyle = .crossDissolve
+    onboardingViewController.dismiss(animated: true, completion: nil)
+  }
 	
 	fileprivate func addDefaultRepos() {
 		if !Preferences.defaultRepos {
@@ -104,3 +117,89 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 }
 
+#if !targetEnvironment(simulator)
+extension AppDelegate {
+	func startPiping() {
+		outPipe = Pipe()
+		semaphore = DispatchSemaphore(value: 0)
+		
+		
+		let fileManager = FileManager.default
+		let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+		let logFileURL = documentsDirectory.appendingPathComponent("stdout.log")
+		
+		if fileManager.fileExists(atPath: logFileURL.path) {
+			do { try! fileManager.removeItem(at: logFileURL) }
+		}
+		
+		FileManager.default.createFile(atPath: logFileURL.path, contents: nil, attributes: nil)
+		fileHandle = try? FileHandle(forWritingTo: logFileURL)
+		savedStdout = dup(STDOUT_FILENO)
+		savedStderr = dup(STDERR_FILENO)
+		dup2(outPipe!.fileHandleForWriting.fileDescriptor, STDOUT_FILENO)
+		dup2(outPipe!.fileHandleForWriting.fileDescriptor, STDERR_FILENO)
+		
+		outPipe!.fileHandleForReading.readabilityHandler = { [weak self] fileHandle in
+			let data = fileHandle.availableData
+			if data.isEmpty {
+				fileHandle.readabilityHandler = nil
+				self?.semaphore?.signal()
+			} else {
+				_ = String(data: data, encoding: .utf8) ?? ""
+				self?.fileHandle?.write(data)
+			}
+		}
+		
+		setvbuf(stdout, nil, _IONBF, 0)
+		setvbuf(stderr, nil, _IONBF, 0)
+	}
+	func applicationWillTerminate(_ application: UIApplication) {
+		dup2(savedStdout, STDOUT_FILENO)
+		dup2(savedStderr, STDERR_FILENO)
+		close(savedStdout)
+		close(savedStderr)
+		
+		fileHandle?.closeFile()
+		outPipe?.fileHandleForWriting.closeFile()
+		semaphore?.wait()
+	}
+}
+#endif
+
+
+extension UIOnboardingViewConfiguration {
+  static func setUp() -> Self {
+    let welcomeToLine = NSMutableAttributedString(string: "Welcome to")
+    let featherLine = NSMutableAttributedString(string: "Feather", attributes: [
+      .foregroundColor: Preferences.appTintColor.uiColor
+    ])
+    
+    let onboardingFeatures: [UIOnboardingFeature] = [
+      .init(
+        icon: UIImage(systemName: "square.and.arrow.down")!,
+        iconTint: Preferences.appTintColor.uiColor,
+        title: "Install Apps Directly on Your Device",
+        description: "Sideload apps without a computer; manage apps directly on your device."
+      ),
+      .init(
+        icon: UIImage(systemName: "wrench.and.screwdriver")!,
+        iconTint: Preferences.appTintColor.uiColor,
+        title: "Customize Apps with Tweaks",
+        description: "Inject tweaks and modifications into your apps."
+      ),
+      .init(
+        icon: UIImage(systemName: "tray.full")!,
+        iconTint: Preferences.appTintColor.uiColor,
+        title: "Access AltStore Repos",
+        description: "Browse and install apps from your AltStore repositories, all from within the app."
+      )
+    ]
+    return .init(
+      appIcon: .init(named: "AppIcon")!,
+      firstTitleLine: welcomeToLine,
+      secondTitleLine: featherLine,
+      features: onboardingFeatures,
+      buttonConfiguration: .init(title: "Continue", backgroundColor: Preferences.appTintColor.uiColor)
+    )
+  }
+}
