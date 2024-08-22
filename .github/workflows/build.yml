@@ -1,14 +1,9 @@
 name: Create Beta Build
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - iOS/**
-      - Shared/**
-      - Makefile
-      - feather.xcodeproj/**
+
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: macos-13
