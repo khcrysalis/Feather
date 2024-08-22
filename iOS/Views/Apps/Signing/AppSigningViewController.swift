@@ -128,7 +128,6 @@ class AppSigningViewController: UITableViewController {
 			forceiTunesFileSharing: forceiTunesFileSharing,
 			forceMinimumVersion: forceMinimumVersionString[forceMinimumVersion],
 			forceLightDarkAppearence: forceLightDarkAppearenceString[forceLightDarkAppearence],
-			removeProvisioningFile: removeProvisioningFile,
 			certificate: certs),
 				appPath:getFilesForDownloadedApps(app: app as! DownloadedApps, getuuidonly: false)
 		) { success in

@@ -12,8 +12,13 @@ class CreditsData {
 		let a = CreditsPerson(name: "Samara", role: "Developer", pfpURL: URL(string: "https://github.com/khcrysalis.png")!, socialLink: URL(string: "https://github.com/khcrysalis")!)
 
 		let b = CreditsPerson(name: "HHLS", role: "Operations", pfpURL: URL(string: "https://github.com/HAHALOSAH.png")!, socialLink: URL(string: "https://github.com/HAHALOSAH")!)
+		
+		let c = CreditsPerson(name: "Lakhan Lothiyi", role: "Help w/ Onboarding", pfpURL: URL(string: "https://github.com/llsc12.png")!, socialLink: URL(string: "https://github.com/llsc12")!)
 
-		return [a, b]
+		let d = CreditsPerson(name: "Mineek", role: "Help w/ Tweak Injection", pfpURL: URL(string: "https://github.com/mineek.png")!, socialLink: URL(string: "https://github.com/mineek")!)
+
+		
+		return [a, b, c, d]
 	}
 }
 
