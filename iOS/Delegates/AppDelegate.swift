@@ -21,9 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 		addDefaultRepos()
 		imagePipline()
 
-		let tabBarController = TabbarController()
 		window = UIWindow(frame: UIScreen.main.bounds)
-		window?.rootViewController = tabBarController
+		
+		if Preferences.isOnboardingActive {
+			let onboardingController: UIOnboardingViewController = .init(withConfiguration: .setUp())
+			onboardingController.delegate = self
+			window?.rootViewController = onboardingController
+		} else {
+			let tabBarController = TabbarController()
+			window?.rootViewController = tabBarController
+		}
 		
 		DispatchQueue.main.async {
 			self.window!.tintColor = Preferences.appTintColor.uiColor
@@ -32,34 +39,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 		
 		window?.makeKeyAndVisible()
 		createSourcesDirectory()
-        let fileManager = FileManager.default
-        let tmpDirectory = NSHomeDirectory() + "/tmp"
-        
-        if let files = try? fileManager.contentsOfDirectory(atPath: tmpDirectory) {
-            for file in files {
-                try? fileManager.removeItem(atPath: tmpDirectory + "/" + file)
-            }
-        }
+		
+		let fileManager = FileManager.default
+		let tmpDirectory = NSHomeDirectory() + "/tmp"
+		
+		if let files = try? fileManager.contentsOfDirectory(atPath: tmpDirectory) {
+			for file in files {
+				try? fileManager.removeItem(atPath: tmpDirectory + "/" + file)
+			}
+		}
 		
 		let generatedString = AppDelegate.generateRandomString()
 		if Preferences.pPQCheckString.isEmpty {
 			Preferences.pPQCheckString = generatedString
 		}
-    
-    if Preferences.isOnboardingActive {
-      let onboardingController: UIOnboardingViewController = .init(withConfiguration: .setUp())
-      onboardingController.delegate = self
-      self.window?.rootViewController?.present(onboardingController, animated: false)
-    }
 		
 		return true
 	}
-  
-  func didFinishOnboarding(onboardingViewController: UIOnboardingViewController) {
-    Preferences.isOnboardingActive = false // stop showing onboarding from now on.
-    onboardingViewController.modalTransitionStyle = .crossDissolve
-    onboardingViewController.dismiss(animated: true, completion: nil)
-  }
+
+	func didFinishOnboarding(onboardingViewController: UIOnboardingViewController) {
+		Preferences.isOnboardingActive = false
+
+		let tabBarController = TabbarController()
+
+		let transition = CATransition()
+		transition.type = .fade
+		transition.duration = 0.3
+		
+		window?.layer.add(transition, forKey: kCATransition)
+
+		window?.rootViewController = tabBarController
+	}
+
+
 	
 	fileprivate func addDefaultRepos() {
 		if !Preferences.defaultRepos {
@@ -103,7 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 				config.urlCache = nil
 				return DataLoader(configuration: config)
 			}()
-			let dataCache = try? DataCache(name: "com.ssalggnikool.pointercrate.datacache") // disk cache
+			let dataCache = try? DataCache(name: "kh.crysalis.feather.datacache") // disk cache
 			let imageCache = Nuke.ImageCache() // memory cache
 			dataCache?.sizeLimit = 500 * 1024 * 1024
 			imageCache.costLimit = 100 * 1024 * 1024
@@ -118,38 +130,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 }
 
 extension UIOnboardingViewConfiguration {
-  static func setUp() -> Self {
-    let welcomeToLine = NSMutableAttributedString(string: "Welcome to")
-    let featherLine = NSMutableAttributedString(string: "Feather", attributes: [
-      .foregroundColor: Preferences.appTintColor.uiColor
-    ])
-    
-    let onboardingFeatures: [UIOnboardingFeature] = [
-      .init(
-        icon: UIImage(systemName: "square.and.arrow.down")!,
-        iconTint: Preferences.appTintColor.uiColor,
-        title: "Install Apps Directly on Your Device",
-        description: "Sideload apps without a computer; manage apps directly on your device."
-      ),
-      .init(
-        icon: UIImage(systemName: "wrench.and.screwdriver")!,
-        iconTint: Preferences.appTintColor.uiColor,
-        title: "Customize Apps with Tweaks",
-        description: "Inject tweaks and modifications into your apps."
-      ),
-      .init(
-        icon: UIImage(systemName: "tray.full")!,
-        iconTint: Preferences.appTintColor.uiColor,
-        title: "Access AltStore Repos",
-        description: "Browse and install apps from your AltStore repositories, all from within the app."
-      )
-    ]
-    return .init(
-      appIcon: .init(named: "AppIcon")!,
-      firstTitleLine: welcomeToLine,
-      secondTitleLine: featherLine,
-      features: onboardingFeatures,
-      buttonConfiguration: .init(title: "Continue", backgroundColor: Preferences.appTintColor.uiColor)
-    )
-  }
+	static func setUp() -> Self {
+		let welcomeToLine = NSMutableAttributedString(string: "Welcome to")
+		let featherLine = NSMutableAttributedString(string: "Feather", attributes: [
+			.foregroundColor: UIColor.tintColor
+		])
+		
+		let text = UIOnboardingTextViewConfiguration(
+			text: "Developed by Samara. Made for users who are passionate for sideloading and freedom. Many features included inside.",
+			linkTitle: "Learn more...",
+			link: "https://github.com/khcrysalis/feather?tab=readme-ov-file#features",
+			tint: .tintColor
+		)
+		
+		let featureStyle = UIOnboardingFeatureStyle(
+			titleFontName: "",
+			titleFontSize: 17,
+			descriptionFontName: "",
+			descriptionFontSize: 16,
+			spacing: 0.8
+		)
+		
+		let onboardingFeatures: [UIOnboardingFeature] = [
+			.init(
+				icon: UIImage(systemName: "arrow.down.app.fill")!,
+				iconTint: .label,
+				title: "Sideload On Device",
+				description: "Sideload apps without a computer, all done from your device."
+			),
+			.init(
+				icon: UIImage(systemName: "sparkles.square.filled.on.square")!,
+				iconTint: .tintColor,
+				title: "Customize Apps",
+				description: "Manage and customize your apps for your needs."
+			),
+			.init(
+				icon: UIImage(systemName: "sparkles")!,
+				iconTint: .systemYellow,
+				title: "And Much More!",
+				description: "AltStore repositories, import IPA's, easy certificate switching, and much more."
+			)
+		]
+		
+		return .init(
+			appIcon: .init(named: "AppIcon")!,
+			firstTitleLine: welcomeToLine,
+			secondTitleLine: featherLine,
+			features: onboardingFeatures,
+			featureStyle: featureStyle,
+			textViewConfiguration: text,
+			buttonConfiguration: .init(title: "Continue", backgroundColor: .tintColor)
+		)
+	}
+	
+	
 }
+

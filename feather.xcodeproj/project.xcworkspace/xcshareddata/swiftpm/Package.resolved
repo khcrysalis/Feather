@@ -1,5 +1,4 @@
 {
-  "originHash" : "edb37b78247842d2fee3e5ece39890a194035389ce75048f300466eec1140940",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -110,12 +109,12 @@
       }
     },
     {
-      "identity" : "uionboarding",
+      "identity" : "uionboarding-18",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/lascic/UIOnboarding",
+      "location" : "https://github.com/khcrysalis/UIOnboarding-18",
       "state" : {
-        "revision" : "efd1e944c399de24c10d9f4947301e1c105dbb9b",
-        "version" : "2.0.3"
+        "branch" : "main",
+        "revision" : "efd1e944c399de24c10d9f4947301e1c105dbb9b"
       }
     },
     {

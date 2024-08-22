@@ -54,10 +54,12 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 					iconURL = iconFileName
 				}
 			}
+						
+			let handler = TweakHandler(urls: options.toInject ?? [], app: tmpDirApp)
+			try handler.getInputFiles()
 			
-			try TweakHandler.getInputFiles(urls: options.toInject ?? [], app: tmpDirApp)
 			try updatePlugIns(options: options, app: tmpDirApp)
-
+			
 			let certPath = CoreDataManager.shared.getCertifcatePath(source: options.certificate!)
 			let provisionPath = certPath.appendingPathComponent("\(options.certificate?.provisionPath ?? "")").path
 			let p12Path = certPath.appendingPathComponent("\(options.certificate?.p12Path ?? "")").path

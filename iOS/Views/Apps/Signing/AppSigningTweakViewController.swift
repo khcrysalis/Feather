@@ -96,8 +96,7 @@ extension AppSigningTweakViewController: UIDocumentPickerDelegate {
 	func importFile() {
 		self.presentDocumentPicker(fileExtension: [
 			UTType(filenameExtension: "deb")!,
-			UTType(filenameExtension: "dylib")!,
-			UTType(filenameExtension: "framework")!
+			UTType(filenameExtension: "dylib")!
 		])
 	}
 	

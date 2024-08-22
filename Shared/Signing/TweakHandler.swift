@@ -8,267 +8,256 @@
 import Foundation
 import SWCompression
 
+enum FileProcessingError: Error {
+	case unsupportedFileExtension(String)
+	case decompressionFailed(String)
+	case missingFile(String)
+}
+
 class TweakHandler {
-	enum FileProcessingError: Error {
-		case unsupportedFileExtension(String)
-        case failedToInject(String)
+	
+	let fileManager = FileManager.default
+	
+	private var urls: [URL]
+	private let app: URL
+	private var urlsToInject: [URL] = []
+	private var directoriesToCheck: [URL] = []
+
+	init(urls: [URL], app: URL) {
+		self.urls = urls
+		self.app = app
 	}
 
-	static func getInputFiles(urls: [URL], app: URL) throws {
+	public func getInputFiles() throws {
 		guard !urls.isEmpty else {
 			Debug.shared.log(message: "No dylibs to inject, skipping!")
 			return
 		}
 		
-		try createDirectoryIfNeeded(at: app.appendingPathComponent("Frameworks"))
-		
-		Debug.shared.log(message: "Attempting to inject...")
-		
-		let fileManager = FileManager.default
+		let frameworksPath = app.appendingPathComponent("Frameworks").appendingPathComponent("CydiaSubstrate.framework")
+		if !fileManager.fileExists(atPath: frameworksPath.path) {
+			if let ellekitURL = Bundle.main.url(forResource: "ellekit", withExtension: "deb") {
+				self.urls.insert(ellekitURL, at: 0)
+			} else {
+				Debug.shared.log(message: "Error: ellekit.deb not found in the app bundle ⁉️", type: .error)
+				return
+			}
+		}
+
 		let baseTmpDir = fileManager.temporaryDirectory.appendingPathComponent(UUID().uuidString)
 		
-		try fileManager.createDirectory(at: baseTmpDir, withIntermediateDirectories: true, attributes: nil)
-		
+		do {
+			try TweakHandler.createDirectoryIfNeeded(at: app.appendingPathComponent("Frameworks"))
+			try TweakHandler.createDirectoryIfNeeded(at: baseTmpDir)
+			
+			// check for appropriate files, if theres debs
+			// it will extract then add a url, if theres no url, i.e.
+			// you haven't added a deb, it will skip
+			for url in urls {
+				switch url.pathExtension.lowercased() {
+				case "dylib":
+					try handleDylib(at: url)
+				case "deb":
+					try handleDeb(at: url, baseTmpDir: baseTmpDir)
+				default:
+					Debug.shared.log(message: "Unsupported file type: \(url.lastPathComponent), skipping.")
+				}
+			}
+			
+			// check contents of data.tar's extracted from debs
+			if !directoriesToCheck.isEmpty {
+				try handleDirectories(at: directoriesToCheck)
+				if !urlsToInject.isEmpty {
+					try handleExtractedDirectoryContents(at: urlsToInject)
+				}
+			}
+			
+		} catch {
+			throw error
+		}
+	}
+	
+	// finally, handle extracted contents
+	private func handleExtractedDirectoryContents(at urls: [URL]) throws {
 		for url in urls {
-			try handleFile(url: url, baseTmpDir: baseTmpDir, app: app)
-		}
-	}
-
-	static func handleFile(url: URL, baseTmpDir: URL, app: URL) throws {
-		let fileExtension = url.pathExtension.lowercased()
-		
-		switch fileExtension {
-		case "dylib", "framework":
-			do {
-				try handleSpecificFile(url: url, baseTmpDir: baseTmpDir, app: app)
-			} catch {
-				Debug.shared.log(message: "Error handling file \(url): \(error)")
-				throw error
+			switch url.pathExtension.lowercased() {
+			case "dylib":
+				try handleDylib(at: url)
+			case "framework":
+				let destinationURL = app.appendingPathComponent("Frameworks").appendingPathComponent(url.lastPathComponent)
+				try TweakHandler.moveFile(from: url, to: destinationURL)
+				try handleDylib(framework: destinationURL)
+			case "bundle":
+				let destinationURL = app.appendingPathComponent(url.lastPathComponent)
+				try TweakHandler.moveFile(from: url, to: destinationURL)
+			default:
+				Debug.shared.log(message: "Unsupported file type: \(url.lastPathComponent), skipping.")
 			}
-		case "deb":
-			let uniqueSubDir = baseTmpDir.appendingPathComponent(UUID().uuidString)
-			let fileManager = FileManager.default
-			try fileManager.createDirectory(at: uniqueSubDir, withIntermediateDirectories: true, attributes: nil)
-			
-			Debug.shared.log(message: "Extracting file: \(url) into \(uniqueSubDir.path)")
-			
-			do {
-				let debData = try Data(contentsOf: url)
-				let arFiles = try extractAR(debData)
-				
-				for arFile in arFiles {
-					let outputPath = uniqueSubDir.appendingPathComponent(arFile.name)
-					try arFile.content.write(to: outputPath)
-					Debug.shared.log(message: "Extracted \(arFile.name) to \(outputPath.path)")
-					
-					if ["data.tar.lzma", "data.tar.gz", "data.tar.xz", "data.tar.bz2"].contains(arFile.name) {
-						var fileToProcess = outputPath
-						try processFile(at: &fileToProcess)
-						try processFile(at: &fileToProcess)
-						try handleExtractedDirectory(url: fileToProcess, app: app)
-					}
-				}
-			} catch {
-				Debug.shared.log(message: "Error handling file \(url): \(error)")
-				throw error
-			}
-			
-		default:
-			Debug.shared.log(message: "Unsupported file extension: \(fileExtension)")
-			throw FileProcessingError.unsupportedFileExtension(fileExtension)
 		}
 	}
 	
-	static func handleSpecificFile(url: URL, baseTmpDir: URL, app: URL) throws {
-		let fileExtension = url.pathExtension.lowercased()
-		switch fileExtension {
-		case "dylib":
+	// Inject imported dylib file
+	private func handleDylib(at url: URL) throws {
+		do {
 			let destinationURL = app.appendingPathComponent("Frameworks").appendingPathComponent(url.lastPathComponent)
-			try moveFile(from: url, to: destinationURL)
-            Debug.shared.log(message: "Dylib file path: \(destinationURL)")
-
-			do {
-				guard let executablePath = try findExecutable(at: app) else {
-					Debug.shared.log(message: "Failed to find executable.")
-					return
-				}
-
-				let executablePathStr = executablePath.path
-				let dylibPathStr = "@executable_path/Frameworks/\(url.lastPathComponent)"
-				
-				if changeDylib(filePath: destinationURL.path, oldPath: "/Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate", newPath: "@rpath/CydiaSubstrate.framework/CydiaSubstrate") {
-					Debug.shared.log(message: "Dylib changed! successfully!")
-				}
-				
-				if injectDylib(filePath: executablePathStr, dylibPath: dylibPathStr, weakInject: true) {
-					Debug.shared.log(message: "Dylib injected successfully!")
-				}
-				
-				
-
-			} catch {
-				Debug.shared.log(message: "An error occurred: \(error)")
+			try TweakHandler.moveFile(from: url, to: destinationURL)
+			
+			// change paths because some tweaks hardlink, which is not ideal.
+			_ = changeDylib(
+				filePath: destinationURL.path,
+				oldPath: "/Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate",
+				newPath: "@rpath/CydiaSubstrate.framework/CydiaSubstrate"
+			)
+			
+			// inject if there's a valid app main executable
+			if let exe = try TweakHandler.findExecutable(at: app) {
+				_ = injectDylib(
+					filePath: exe.path,
+					dylibPath: "@executable_path/Frameworks/\(destinationURL.lastPathComponent)",
+					weakInject: true
+				)
 			}
-
-
-
-		
-
-			
-			
-			
-			
-		case "framework":
-			let destinationURL = app.appendingPathComponent("Frameworks").appendingPathComponent(url.lastPathComponent)
-			try moveFile(from: url, to: destinationURL)
-			if let executableURL = try findExecutable(at: destinationURL) {
-				let executablePath = try findExecutable(at: app)!
-				let executablePathStr = executablePath.path
-				Debug.shared.log(message: "@executable_path/Frameworks/\(url.lastPathComponent)/\(executableURL.lastPathComponent)")
-				if injectDylib(filePath: executablePathStr, dylibPath: "@executable_path/Frameworks/\(url.lastPathComponent)/\(executableURL.lastPathComponent)", weakInject: true) {
-					Debug.shared.log(message: "Dylib injected successfully!")
-				}
-				
-			}
-			
-		case "appex":
-			let destinationURL = app.appendingPathComponent("PlugIns").appendingPathComponent(url.lastPathComponent)
-			try moveFile(from: url, to: destinationURL)
-		case "bundle":
-			let destinationURL = app.appendingPathComponent(url.lastPathComponent)
-			try moveFile(from: url, to: destinationURL)
-		default:
-			Debug.shared.log(message: "Unsupported file extension: \(fileExtension)")
-			throw FileProcessingError.unsupportedFileExtension(fileExtension)
+		} catch {
+			throw error
 		}
 	}
 	
-	static func handleExtractedDirectory(url: URL, app: URL) throws {
-
-		let pathsToCheck = [
-			url.appendingPathComponent("Library/Frameworks"),
-			url.appendingPathComponent("Library/MobileSubstrate/DynamicLibraries"),
-			url.appendingPathComponent("Library/Application Support")
+	// Inject imported framework dir
+	private func handleDylib(framework: URL) throws {
+		do {
+			if let fexe = try TweakHandler.findExecutable(at: framework) {
+				
+				// change paths because some tweaks hardlink, which is not ideal.
+				_ = changeDylib(
+					filePath: fexe.path,
+					oldPath: "/Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate",
+					newPath: "@rpath/CydiaSubstrate.framework/CydiaSubstrate"
+				)
+				
+				// inject if there's a valid app main executable
+				if let appexe = try TweakHandler.findExecutable(at: app) {
+					_ = injectDylib(
+						filePath: appexe.path,
+						dylibPath: "@executable_path/Frameworks/\(framework.lastPathComponent)/\(fexe.lastPathComponent)",
+						weakInject: true
+					)
+				}
+			}
+			
+			
+		} catch {
+			throw error
+		}
+	}
+	
+	// Extracy imported deb file
+	private func handleDeb(at url: URL, baseTmpDir: URL) throws {
+		let uniqueSubDir = baseTmpDir.appendingPathComponent(UUID().uuidString)
+		try TweakHandler.createDirectoryIfNeeded(at: uniqueSubDir)
+		
+		// I don't particularly like this code
+		// but it somehow works well enough,
+		// do note large lzma's are slow as hell
+		do {
+			let arFiles = try extractAR(try Data(contentsOf: url))
+			
+			for arFile in arFiles {
+				let outputPath = uniqueSubDir.appendingPathComponent(arFile.name)
+				try arFile.content.write(to: outputPath)
+				
+				if ["data.tar.lzma", "data.tar.gz", "data.tar.xz", "data.tar.bz2"].contains(arFile.name) {
+					var fileToProcess = outputPath
+					try processFile(at: &fileToProcess)
+					try processFile(at: &fileToProcess)
+					directoriesToCheck.append(fileToProcess)
+				}
+			}
+		} catch {
+			Debug.shared.log(message: "Error handling file \(url): \(error)")
+			throw error
+		}
+	}
+	
+	// Read extracted deb file, locate all neccessary contents to copy over to the .app
+	private func handleDirectories(at urls: [URL]) throws {
+		let directoriesToCheck = [
+			"Library/Frameworks/",
+			"Library/MobileSubstrate/DynamicLibraries/",
+			"Library/Application Support/"
 		]
 		
-		for path in pathsToCheck {
-			switch path.lastPathComponent {
-			case "Frameworks":
-				if let fileURL = checkFiles(in: path, extensions: ["framework"]) {
-					try handleSpecificFile(url: fileURL, baseTmpDir: url, app: app)
-				}
-			case "DynamicLibraries":
-				if let fileURL = checkFiles(in: path, extensions: ["dylib"]) {
-					try handleSpecificFile(url: fileURL, baseTmpDir: url, app: app)
-				}
-			case "Application Support":
-				try checkApplicationSupportFiles(in: path, baseTmpDir: url, app: app)
-			default:
-				break
-			}
-		}
-		
-		Debug.shared.log(message: "Handling of extracted directory complete.")
-	}
-
-	private static func checkApplicationSupportFiles(in path: URL, baseTmpDir: URL, app: URL) throws {
 		let fileManager = FileManager.default
-		if let enumerator = fileManager.enumerator(at: path, includingPropertiesForKeys: [.isDirectoryKey], options: [.skipsHiddenFiles]) {
-			for case let directoryURL as URL in enumerator {
-				var isDirectory: ObjCBool = false
-				if fileManager.fileExists(atPath: directoryURL.path, isDirectory: &isDirectory), isDirectory.boolValue {
-					if let fileURL = checkFiles(in: directoryURL, extensions: ["bundle"], isBundleCheck: true) {
-						try handleSpecificFile(url: fileURL, baseTmpDir: baseTmpDir, app: app)
-					}
-					break
-				}
-			}
-		}
-	}
-
-	static func checkFiles(in directory: URL, extensions: Set<String>, isBundleCheck: Bool = false) -> URL? {
-		let fileManager = FileManager.default
-		guard let enumerator = fileManager.enumerator(at: directory, includingPropertiesForKeys: [.isRegularFileKey, .isDirectoryKey], options: [.skipsHiddenFiles]) else {
-			return nil
-		}
 		
-		for case let fileURL as URL in enumerator {
-			var isDirectory: ObjCBool = false
-			if fileManager.fileExists(atPath: fileURL.path, isDirectory: &isDirectory) {
-				if isDirectory.boolValue {
-					if extensions.contains(fileURL.pathExtension) {
-						return fileURL
+		for baseURL in urls {
+			for directory in directoriesToCheck {
+				let directoryURL = baseURL.appendingPathComponent(directory)
+				
+				guard fileManager.fileExists(atPath: directoryURL.path) else {
+					print("Directory does not exist: \(directoryURL.path). Skipping.")
+					continue
+				}
+				
+				switch directory {
+				case "Library/MobileSubstrate/DynamicLibraries/":
+					let dylibFiles = try locateDylibFiles(in: directoryURL)
+					for fileURL in dylibFiles {
+						urlsToInject.append(fileURL)
 					}
-				} else if extensions.contains(fileURL.pathExtension) {
-					return fileURL
+					
+				case "Library/Frameworks/":
+					let frameworkDirectories = try locateFrameworkDirectories(in: directoryURL)
+					for frameworkURL in frameworkDirectories {
+						urlsToInject.append(frameworkURL)
+					}
+					
+				case "Library/Application Support/":
+					try searchForBundles(in: directoryURL)
+					
+				default:
+					print("Unexpected directory path: \(directoryURL.path)")
 				}
 			}
 		}
-		return nil
 	}
-
-
 }
 
 
-// MARK: - extract deb
+
+
+// MARK: - Find correct files in debs
 extension TweakHandler {
-	static func processFile(at packagesFile: inout URL) throws {
-		let succeededExtension = packagesFile.pathExtension.lowercased()
+	private func searchForBundles(in directory: URL) throws {
 		let fileManager = FileManager.default
-
-		switch succeededExtension {
-		case "xz":
-			let compressedData = try Data(contentsOf: packagesFile)
-			let decompressedData = try XZArchive.unarchive(archive: compressedData)
-			let outputURL = packagesFile.deletingPathExtension()
-			try decompressedData.write(to: outputURL)
-			packagesFile = outputURL
-
-		case "lzma":
-			let compressedData = try Data(contentsOf: packagesFile)
-			let decompressedData = try LZMA.decompress(data: compressedData)
-			let outputURL = packagesFile.deletingPathExtension()
-			try decompressedData.write(to: outputURL)
-			packagesFile = outputURL
-
-		case "bz2":
-			let compressedData = try Data(contentsOf: packagesFile)
-			let decompressedData = try BZip2.decompress(data: compressedData)
-			let outputURL = packagesFile.deletingPathExtension()
-			try decompressedData.write(to: outputURL)
-			packagesFile = outputURL
-
-		case "gz":
-			let compressedData = try Data(contentsOf: packagesFile)
-			let decompressedData = try GzipArchive.unarchive(archive: compressedData)
-			let outputURL = packagesFile.deletingPathExtension()
-			try decompressedData.write(to: outputURL)
-			packagesFile = outputURL
-
-		case "tar":
-			let tarData = try Data(contentsOf: packagesFile)
-			let tarContainer = try TarContainer.open(container: tarData)
-
-			let extractionDirectory = packagesFile.deletingLastPathComponent().appendingPathComponent(UUID().uuidString)
-			try fileManager.createDirectory(at: extractionDirectory, withIntermediateDirectories: true, attributes: nil)
-
-			for entry in tarContainer {
-				let entryPath = extractionDirectory.appendingPathComponent(entry.info.name)
-				if entry.info.type == .regular {
-					try entry.data?.write(to: entryPath)
-				} else if entry.info.type == .directory {
-					try fileManager.createDirectory(at: entryPath, withIntermediateDirectories: true, attributes: nil)
-				}
-			}
-
-			packagesFile = extractionDirectory
-
-		default:
-			throw FileProcessingError.unsupportedFileExtension(succeededExtension)
+		let allFiles = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
+		let bundleDirectories = allFiles.filter { $0.pathExtension.lowercased() == "bundle" && $0.hasDirectoryPath }
+		
+		for bundleURL in bundleDirectories {
+			urlsToInject.append(bundleURL)
+		}
+		
+		let directoriesToSearch = allFiles.filter { $0.hasDirectoryPath && !bundleDirectories.contains($0) }
+		for dirURL in directoriesToSearch {
+			try searchForBundles(in: dirURL)
 		}
 	}
+
+	private func locateDylibFiles(in directory: URL) throws -> [URL] {
+		let fileManager = FileManager.default
+		let files = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil, options: [])
+		let dylibFiles = files.filter { $0.pathExtension.lowercased() == "dylib" }
+		return dylibFiles
+	}
+
+	private func locateFrameworkDirectories(in directory: URL) throws -> [URL] {
+		let fileManager = FileManager.default
+		let files = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
+		let frameworkDirectories = files.filter { $0.pathExtension.lowercased() == "framework" && $0.hasDirectoryPath }
+		return frameworkDirectories
+	}
 }
+
+
+
 // MARK: - File management
 extension TweakHandler {
 	private static func createDirectoryIfNeeded(at url: URL) throws {
@@ -279,36 +268,19 @@ extension TweakHandler {
 	}
 	
 	private static func findExecutable(at frameworkURL: URL) throws -> URL? {
-		let fileManager = FileManager.default
+		
 		let infoPlistURL = frameworkURL.appendingPathComponent("Info.plist")
 		
-		if fileManager.fileExists(atPath: infoPlistURL.path) {
-			// If Info.plist exists, find executable as before
-			let plistData = try Data(contentsOf: infoPlistURL)
-			if let plist = try PropertyListSerialization.propertyList(from: plistData, options: [], format: nil) as? [String: Any],
-			   let executableName = plist["CFBundleExecutable"] as? String {
-				let executableURL = frameworkURL.appendingPathComponent(executableName)
-				Debug.shared.log(message: "Executable path from Info.plist: \(executableURL)")
-				return executableURL
-			} else {
-				Debug.shared.log(message: "CFBundleExecutable not found in Info.plist")
-				return nil
-			}
+		let plistData = try Data(contentsOf: infoPlistURL)
+		if let plist = try PropertyListSerialization.propertyList(from: plistData, options: [], format: nil) as? [String: Any],
+		   let executableName = plist["CFBundleExecutable"] as? String {
+			let executableURL = frameworkURL.appendingPathComponent(executableName)
+			return executableURL
 		} else {
-			let contents = try fileManager.contentsOfDirectory(at: frameworkURL, includingPropertiesForKeys: nil)
-			for fileURL in contents {
-				if fileManager.isExecutableFile(atPath: fileURL.path) {
-					Debug.shared.log(message: "Executable path found: \(fileURL)")
-					return fileURL
-				}
-			}
-			
-			Debug.shared.log(message: "No executable file found in the directory")
+			Debug.shared.log(message: "CFBundleExecutable not found in Info.plist")
 			return nil
 		}
 	}
-
-
 
 	private static func moveFile(from sourceURL: URL, to destinationURL: URL) throws {
 		let fileManager = FileManager.default
@@ -316,7 +288,7 @@ extension TweakHandler {
 			Debug.shared.log(message: "File already exists at destination: \(destinationURL)")
 		} else {
 			try fileManager.moveItem(at: sourceURL, to: destinationURL)
-			Debug.shared.log(message: "Moved file to: \(destinationURL)")
 		}
 	}
 }
+

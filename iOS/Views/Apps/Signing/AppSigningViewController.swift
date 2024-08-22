@@ -48,16 +48,6 @@ class AppSigningViewController: UITableViewController {
 		
 		if let hasGotCert = CoreDataManager.shared.getCurrentCertificate() {
 			self.certs = hasGotCert
-		} else {
-			DispatchQueue.main.async {
-				let alert = UIAlertController(title: "Error", message: "You do not have a certificate selected, please select one in the certificates tab.", preferredStyle: .alert)
-				alert.addAction(
-					UIAlertAction(title: "Lame", style: .default) { _ in
-						self.dismiss(animated: true)
-					}
-				)
-				self.present(alert, animated: true, completion: nil)
-			}
 		}
         
         if let name = app.value(forKey: "name") as? String {
@@ -79,21 +69,6 @@ class AppSigningViewController: UITableViewController {
         if let uuid = app.value(forKey: "uuid") as? String {
             self.uuid = uuid
         }
-		
-		
-		let selectedCertIndex = Preferences.selectedCert
-		
-		guard selectedCertIndex != -1 else {
-			let alert = UIAlertController(title: "Alert", message: "You do not have a certificate selected, please select one in the certificates tab.", preferredStyle: .alert)
-			alert.addAction(
-				UIAlertAction(title: "OK", style: .default) {_ in
-					self.dismiss(animated: true)
-				}
-			)
-			
-			self.present(alert, animated: true, completion: nil)
-			return
-		}
     }
 	
     required init?(coder: NSCoder) {
@@ -111,6 +86,19 @@ class AppSigningViewController: UITableViewController {
 		self.isModalInPresentation = true
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .done, target: self, action: #selector(closeSheet))
 		setupToolbar()
+		
+		if (certs == nil) {
+			#if !targetEnvironment(simulator)
+			DispatchQueue.main.async {
+				let alert = UIAlertController(title: "Error", message: "You do not have a certificate selected, please select one in the certificates tab.", preferredStyle: .alert)
+				alert.addAction(UIAlertAction(title: "Lame", style: .default) { _ in
+						self.dismiss(animated: true)
+					}
+				)
+				self.present(alert, animated: true, completion: nil)
+			}
+			#endif
+		}
 	}
 	
 	private func setupToolbar() {
