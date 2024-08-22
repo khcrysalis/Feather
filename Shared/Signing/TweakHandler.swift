@@ -103,6 +103,9 @@ class TweakHandler {
 			try TweakHandler.moveFile(from: url, to: destinationURL)
 			
 			// change paths because some tweaks hardlink, which is not ideal.
+			// this is not a good solution, at most this would work for basic tweaks
+			// we recommend you use newer theos to compile, and make sure it works
+			// using the ellekit framework
 			_ = changeDylib(
 				filePath: destinationURL.path,
 				oldPath: "/Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate",
@@ -128,6 +131,9 @@ class TweakHandler {
 			if let fexe = try TweakHandler.findExecutable(at: framework) {
 				
 				// change paths because some tweaks hardlink, which is not ideal.
+				// this is not a good solution, at most this would work for basic tweaks
+				// we recommend you use newer theos to compile, and make sure it works
+				// using the ellekit framework
 				_ = changeDylib(
 					filePath: fexe.path,
 					oldPath: "/Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate",
@@ -181,9 +187,9 @@ class TweakHandler {
 	// Read extracted deb file, locate all neccessary contents to copy over to the .app
 	private func handleDirectories(at urls: [URL]) throws {
 		let directoriesToCheck = [
-			"Library/Frameworks/",
-			"Library/MobileSubstrate/DynamicLibraries/",
-			"Library/Application Support/"
+			"Library/Frameworks/", "var/jb/Library/Frameworks/",
+			"Library/MobileSubstrate/DynamicLibraries/", "var/jb/Library/MobileSubstrate/DynamicLibraries/",
+			"Library/Application Support/", "var/jb/Library/Application Support/"
 		]
 		
 		let fileManager = FileManager.default
@@ -198,19 +204,19 @@ class TweakHandler {
 				}
 				
 				switch directory {
-				case "Library/MobileSubstrate/DynamicLibraries/":
+				case "Library/MobileSubstrate/DynamicLibraries/", "var/jb/Library/MobileSubstrate/DynamicLibraries/":
 					let dylibFiles = try locateDylibFiles(in: directoryURL)
 					for fileURL in dylibFiles {
 						urlsToInject.append(fileURL)
 					}
 					
-				case "Library/Frameworks/":
+				case "Library/Frameworks/", "var/jb/Library/Frameworks/":
 					let frameworkDirectories = try locateFrameworkDirectories(in: directoryURL)
 					for frameworkURL in frameworkDirectories {
 						urlsToInject.append(frameworkURL)
 					}
 					
-				case "Library/Application Support/":
+				case "Library/Application Support/", "var/jb/Library/Application Support/":
 					try searchForBundles(in: directoryURL)
 					
 				default:
@@ -229,13 +235,23 @@ extension TweakHandler {
 	private func searchForBundles(in directory: URL) throws {
 		let fileManager = FileManager.default
 		let allFiles = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
-		let bundleDirectories = allFiles.filter { $0.pathExtension.lowercased() == "bundle" && $0.hasDirectoryPath }
+
+		let bundleDirectories = allFiles.filter { url in
+			let attributes = try? fileManager.attributesOfItem(atPath: url.path)
+			let isSymlink = attributes?[.type] as? FileAttributeType == .typeSymbolicLink
+			return url.pathExtension.lowercased() == "bundle" && url.hasDirectoryPath && !isSymlink
+		}
 		
 		for bundleURL in bundleDirectories {
 			urlsToInject.append(bundleURL)
 		}
 		
-		let directoriesToSearch = allFiles.filter { $0.hasDirectoryPath && !bundleDirectories.contains($0) }
+		let directoriesToSearch = allFiles.filter { url in
+			let attributes = try? fileManager.attributesOfItem(atPath: url.path)
+			let isSymlink = attributes?[.type] as? FileAttributeType == .typeSymbolicLink
+			return url.hasDirectoryPath && !bundleDirectories.contains(url) && !isSymlink
+		}
+		
 		for dirURL in directoriesToSearch {
 			try searchForBundles(in: dirURL)
 		}
@@ -244,14 +260,26 @@ extension TweakHandler {
 	private func locateDylibFiles(in directory: URL) throws -> [URL] {
 		let fileManager = FileManager.default
 		let files = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil, options: [])
-		let dylibFiles = files.filter { $0.pathExtension.lowercased() == "dylib" }
+
+		let dylibFiles = files.filter { url in
+			let attributes = try? fileManager.attributesOfItem(atPath: url.path)
+			let isSymlink = attributes?[.type] as? FileAttributeType == .typeSymbolicLink
+			return url.pathExtension.lowercased() == "dylib" && !isSymlink
+		}
+		
 		return dylibFiles
 	}
 
 	private func locateFrameworkDirectories(in directory: URL) throws -> [URL] {
 		let fileManager = FileManager.default
 		let files = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
-		let frameworkDirectories = files.filter { $0.pathExtension.lowercased() == "framework" && $0.hasDirectoryPath }
+
+		let frameworkDirectories = files.filter { url in
+			let attributes = try? fileManager.attributesOfItem(atPath: url.path)
+			let isSymlink = attributes?[.type] as? FileAttributeType == .typeSymbolicLink
+			return url.pathExtension.lowercased() == "framework" && url.hasDirectoryPath && !isSymlink
+		}
+		
 		return frameworkDirectories
 	}
 }
