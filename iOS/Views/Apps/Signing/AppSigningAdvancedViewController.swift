@@ -102,7 +102,7 @@ class AppSigningAdvancedViewController: UITableViewController {
 		switch section {
 		case 0: return "Appearence"
 		case 1: return "Minimum App Version"
-		case 2: return "Plist Properties"
+		case 2: return "Properties"
 		default: return nil
 		}
 	}

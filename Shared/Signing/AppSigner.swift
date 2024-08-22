@@ -28,6 +28,8 @@ struct AppSigningOptions {
 	var forceiTunesFileSharing: Bool?
 	var forceMinimumVersion: String?
 	var forceLightDarkAppearence: String?
+	
+	var removeProvisioningFile: Bool?
     
     var certificate: Certificate?
 }
@@ -65,7 +67,7 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 			let p12Path = certPath.appendingPathComponent("\(options.certificate?.p12Path ?? "")").path
 			
 			try signAppWithZSign(tmpDirApp: tmpDirApp, certPaths: (provisionPath, p12Path), password: options.certificate?.password ?? "", options: options)
-			
+						
             let signedUUID = UUID().uuidString
             try fileManager.createDirectory(at: getDocumentsDirectory().appendingPathComponent("Apps/Signed"), withIntermediateDirectories: true)
             let path = getDocumentsDirectory().appendingPathComponent("Apps/Signed").appendingPathComponent(signedUUID)

@@ -128,6 +128,7 @@ class AppSigningViewController: UITableViewController {
 			forceiTunesFileSharing: forceiTunesFileSharing,
 			forceMinimumVersion: forceMinimumVersionString[forceMinimumVersion],
 			forceLightDarkAppearence: forceLightDarkAppearenceString[forceLightDarkAppearence],
+			removeProvisioningFile: removeProvisioningFile,
 			certificate: certs),
 				appPath:getFilesForDownloadedApps(app: app as! DownloadedApps, getuuidonly: false)
 		) { success in
@@ -216,8 +217,10 @@ class AppSigningViewController: UITableViewController {
 			}
             break
         case (2, 0):
-            cell.textLabel?.text = "Add Tweaks"
-			cell.accessoryType = .disclosureIndicator
+			cell.textLabel?.text = "Add Tweaks"
+			let badgeView = BadgeView(frame: CGRect(x: 0, y: 0, width: 60, height: 20))
+			cell.accessoryView = badgeView
+
             break
         case (3, 0):
             cell.textLabel?.text = "Advanced"
@@ -327,6 +330,3 @@ extension AppSigningViewController: UIDocumentPickerDelegate {
 		controller.dismiss(animated: true, completion: nil)
 	}
 }
-
-
-

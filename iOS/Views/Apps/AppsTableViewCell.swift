@@ -155,3 +155,40 @@ func getValue<T>(forKey key: String, from app: NSManagedObject) -> T? {
 	}
 }
 
+class BadgeView: UIView {
+	private let badgeLabel = UILabel()
+
+	override init(frame: CGRect) {
+		super.init(frame: frame)
+		setupView()
+	}
+
+	required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		setupView()
+	}
+
+	private func setupView() {
+		badgeLabel.text = "BETA"
+		badgeLabel.textColor = .white
+		badgeLabel.textAlignment = .center
+		badgeLabel.backgroundColor = .systemYellow.withAlphaComponent(0.2)
+		badgeLabel.font = .boldSystemFont(ofSize: 12)
+
+		badgeLabel.translatesAutoresizingMaskIntoConstraints = false
+		addSubview(badgeLabel)
+
+		NSLayoutConstraint.activate([
+			badgeLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+			badgeLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+			badgeLabel.widthAnchor.constraint(equalToConstant: 50),
+			badgeLabel.heightAnchor.constraint(equalToConstant: 20)
+		])
+		
+		badgeLabel.layer.cornerRadius = 10
+		badgeLabel.layer.cornerCurve = .continuous
+		badgeLabel.clipsToBounds = true
+		badgeLabel.layer.borderColor = UIColor.systemYellow.withAlphaComponent(0.3).cgColor
+		badgeLabel.layer.borderWidth = 1.0
+	}
+}
