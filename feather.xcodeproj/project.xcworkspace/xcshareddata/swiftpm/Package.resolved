@@ -1,4 +1,5 @@
 {
+  "originHash" : "edb37b78247842d2fee3e5ece39890a194035389ce75048f300466eec1140940",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -106,6 +107,15 @@
       "state" : {
         "revision" : "e4f95e2dc23097a1a9a1dfdfe3fe3ee44de77378",
         "version" : "0.3.0"
+      }
+    },
+    {
+      "identity" : "uionboarding",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/lascic/UIOnboarding",
+      "state" : {
+        "revision" : "efd1e944c399de24c10d9f4947301e1c105dbb9b",
+        "version" : "2.0.3"
       }
     },
     {

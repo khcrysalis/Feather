@@ -96,6 +96,9 @@
 		33E4D8412C67E5C3006A1C26 /* DonationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8402C67E5C3006A1C26 /* DonationTableViewCell.swift */; };
 		33E4D8432C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8422C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift */; };
 		33EEDAA42C5D9358009089DC /* CoreDataManager+DownloadedApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */; };
+		AA280D952C76AB7400CAC838 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA280D942C76AB7400CAC838 /* MobileCoreServices.framework */; };
+		AA280D972C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA280D962C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift */; };
+		AA280D9B2C76B05C00CAC838 /* UIOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = AA280D9A2C76B05B00CAC838 /* UIOnboarding */; };
 		AF4D46EF2C432CCA003FA335 /* TweakLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */; };
 		AF4D46F12C4332D7003FA335 /* SwitchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D46F02C4332D7003FA335 /* SwitchViewCell.swift */; };
 		AF84EEFD2C4080610050CBE4 /* AppSigningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF84EEFC2C4080610050CBE4 /* AppSigningViewController.swift */; };
@@ -205,6 +208,9 @@
 		33E4D8402C67E5C3006A1C26 /* DonationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationTableViewCell.swift; sourceTree = "<group>"; };
 		33E4D8422C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+DownloadedApps.swift"; sourceTree = "<group>"; };
+		AA280D922C76A60700CAC838 /* LSApplicationWorkspace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSApplicationWorkspace.h; sourceTree = "<group>"; };
+		AA280D942C76AB7400CAC838 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		AA280D962C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+returnToHomeScreen.swift"; sourceTree = "<group>"; };
 		AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakLibraryViewCell.swift; sourceTree = "<group>"; };
 		AF4D46F02C4332D7003FA335 /* SwitchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewCell.swift; sourceTree = "<group>"; };
 		AF84EEFC2C4080610050CBE4 /* AppSigningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSigningViewController.swift; sourceTree = "<group>"; };
@@ -245,6 +251,7 @@
 				D0651C0C2BFEE46400D40829 /* HttpSwift in Frameworks */,
 				3322FF4F2BFEE5B9001768D8 /* Nuke in Frameworks */,
 				33BE87A52C72E1220044D245 /* SWCompression in Frameworks */,
+				AA280D952C76AB7400CAC838 /* MobileCoreServices.framework in Frameworks */,
 				33DF8D8A2C082FBF00D6C05F /* cmark-gfm-bin in Frameworks */,
 				3322FF552BFEE5B9001768D8 /* NukeVideo in Frameworks */,
 				D0AA9D542BFF02AF00A65D45 /* OpenSSL in Frameworks */,
@@ -254,6 +261,7 @@
 				33DF8D862C082FBF00D6C05F /* cmark-gfm in Frameworks */,
 				AF9B6B412C633AB400735748 /* MBProgressHUD in Frameworks */,
 				3322FF532BFEE5B9001768D8 /* NukeUI in Frameworks */,
+				AA280D9B2C76B05C00CAC838 /* UIOnboarding in Frameworks */,
 				33C0409E2C30DD3E00243D90 /* AlertKit in Frameworks */,
 				336EEE812C32367C0011188D /* ZIPFoundation in Frameworks */,
 			);
@@ -409,7 +417,6 @@
 			isa = PBXGroup;
 			children = (
 				339CE2852C58508400B58502 /* UserDefaults */,
-				339CE2842C58507E00B58502 /* Models */,
 				339CE2832C58507300B58502 /* CoreData */,
 				332AE3BE2C097F180052F24A /* Feather.xcdatamodeld */,
 			);
@@ -428,13 +435,6 @@
 				335F0C2D2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift */,
 			);
 			path = CoreData;
-			sourceTree = "<group>";
-		};
-		339CE2842C58507E00B58502 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		339CE2852C58508400B58502 /* UserDefaults */ = {
@@ -558,6 +558,7 @@
 			children = (
 				33E4D8392C66C5CF006A1C26 /* Private */,
 				33BA37AF2BF819ED00FF530A /* UIColor+hex.swift */,
+				AA280D962C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift */,
 				339BDADF2BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift */,
 				33A305D42C3A858100D650BA /* UIButton+longpress.swift */,
 				33E4D8332C6593D2006A1C26 /* UIView+parentcontroller.swift */,
@@ -607,6 +608,7 @@
 		33E4D8392C66C5CF006A1C26 /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				AA280D922C76A60700CAC838 /* LSApplicationWorkspace.h */,
 				33E4D83E2C66C692006A1C26 /* UISheetPresentationControllerDetent+Private.h */,
 			);
 			path = Private;
@@ -633,6 +635,14 @@
 				33570F662C34CCD5008CB560 /* AppsInformationViewController.swift */,
 			);
 			path = Information;
+			sourceTree = "<group>";
+		};
+		AA280D932C76AB7400CAC838 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA280D942C76AB7400CAC838 /* MobileCoreServices.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		AFAC50932C48DC8E00EDEAB6 /* zsign */ = {
@@ -711,6 +721,7 @@
 				AF9B6B402C633AB400735748 /* MBProgressHUD */,
 				338FFCEC2C695CA3006C3BE0 /* IconSelector */,
 				33BE87A42C72E1220044D245 /* SWCompression */,
+				AA280D9A2C76B05B00CAC838 /* UIOnboarding */,
 			);
 			productName = feather;
 			productReference = 33BA378B2BF8159F00FF530A /* feather.app */;
@@ -752,6 +763,7 @@
 				AF9B6B3F2C633AB400735748 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
 				338FFCEB2C695CA3006C3BE0 /* XCRemoteSwiftPackageReference "ios-icon-selector" */,
 				33BE87A32C72E1220044D245 /* XCRemoteSwiftPackageReference "SWCompression" */,
+				AA280D992C76B05B00CAC838 /* XCRemoteSwiftPackageReference "UIOnboarding" */,
 			);
 			productRefGroup = 33BA378C2BF8159F00FF530A /* Products */;
 			projectDirPath = "";
@@ -856,6 +868,7 @@
 				33BE877D2C729A7D0044D245 /* DownloadCertificate.swift in Sources */,
 				D0651C3B2BFEEA4B00D40829 /* bundle.cpp in Sources */,
 				332AE3C02C097F180052F24A /* Feather.xcdatamodeld in Sources */,
+				AA280D972C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift in Sources */,
 				33BA37A32BF815F900FF530A /* main.swift in Sources */,
 				333912A02BF9816B00E72360 /* CertificateModel.swift in Sources */,
 				33BE87802C72D2840044D245 /* AR.swift in Sources */,
@@ -1174,6 +1187,14 @@
 				minimumVersion = 0.3.0;
 			};
 		};
+		AA280D992C76B05B00CAC838 /* XCRemoteSwiftPackageReference "UIOnboarding" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lascic/UIOnboarding";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.3;
+			};
+		};
 		AF9B6B3F2C633AB400735748 /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jdg/MBProgressHUD";
@@ -1260,6 +1281,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 33DF8D842C082FBF00D6C05F /* XCRemoteSwiftPackageReference "swift-cmark" */;
 			productName = "cmark-gfm-bin";
+		};
+		AA280D9A2C76B05B00CAC838 /* UIOnboarding */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA280D992C76B05B00CAC838 /* XCRemoteSwiftPackageReference "UIOnboarding" */;
+			productName = UIOnboarding;
 		};
 		AF9B6B402C633AB400735748 /* MBProgressHUD */ = {
 			isa = XCSwiftPackageProductDependency;
