@@ -199,7 +199,7 @@ class TweakHandler {
 				let directoryURL = baseURL.appendingPathComponent(directory)
 				
 				guard fileManager.fileExists(atPath: directoryURL.path) else {
-					print("Directory does not exist: \(directoryURL.path). Skipping.")
+					Debug.shared.log(message: "Directory does not exist: \(directoryURL.path). Skipping.")
 					continue
 				}
 				
@@ -220,7 +220,7 @@ class TweakHandler {
 					try searchForBundles(in: directoryURL)
 					
 				default:
-					print("Unexpected directory path: \(directoryURL.path)")
+					Debug.shared.log(message: "Unexpected directory path: \(directoryURL.path)")
 				}
 			}
 		}
