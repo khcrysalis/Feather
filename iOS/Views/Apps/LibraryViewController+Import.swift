@@ -10,6 +10,7 @@ import UIKit
 import UniformTypeIdentifiers
 import MBProgressHUD
 import CoreData
+import SwiftUI
 
 extension LibraryViewController: UIDocumentPickerDelegate {
 	func beginImportFile() {
@@ -56,7 +57,7 @@ extension LibraryViewController: UIDocumentPickerDelegate {
 			}
 		}
 	}
-
+	
 	
 	func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
 		controller.dismiss(animated: true, completion: nil)
@@ -65,103 +66,54 @@ extension LibraryViewController: UIDocumentPickerDelegate {
 
 extension LibraryViewController {
 	@objc func startInstallProcess(meow: NSManagedObject, filePath: String) {
-		let uuid = UUID().uuidString
-		let tempDirectory = NSHomeDirectory() + "/tmp/\(uuid)"
-		let payloadPath = "\(tempDirectory)/Payload"
-		let ipaPath = "\(tempDirectory).ipa"
+		UIApplication.shared.isIdleTimerDisabled = true
 		
-		do {
-			UIApplication.shared.isIdleTimerDisabled = true
-			try FileManager.default.createDirectory(atPath: tempDirectory, withIntermediateDirectories: true)
-			try FileManager.default.copyItem(atPath: filePath, toPath: payloadPath)
-			MBProgressHUD.showAdded(to: self.view, animated: true)
-			DispatchQueue(label: "compress").async {
-				do {
-					let payloadURL = URL(fileURLWithPath: payloadPath)
-					let ipaURL = URL(fileURLWithPath: ipaPath)
-					try FileManager.default.zipItem(at: payloadURL, to: ipaURL)
-					DispatchQueue.main.async {
-						UIApplication.shared.isIdleTimerDisabled = false
-						MBProgressHUD.hide(for: self.view, animated: true)
-						runHTTPSServer()
-						if Preferences.userSelectedServer {
-							
-							let bundleid = (meow.value(forKey: "bundleidentifier") as? String ?? "").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-							let name = (meow.value(forKey: "name") as? String ?? "").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-							let version = (meow.value(forKey: "version") as? String ?? "").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-							let fetchurl = "https://localhost.direct:8443/tempsigned.ipa?uuid=\(uuid)".addingPercentEncoding(withAllowedCharacters: .alphanumerics)!
-
-							let urlString = "itms-services://?action=download-manifest&url=" + ("\(Preferences.onlinePath ?? Preferences.defaultInstallPath)/genPlist?bundleid=\(bundleid)&name=\(name)&version=\(version)&fetchurl=\(fetchurl)").addingPercentEncoding(withAllowedCharacters: .alphanumerics)!
-							
-							if let url = URL(string: urlString) {
-								UIApplication.shared.open(url, options: [:], completionHandler: nil)
-							}
-
-							self.popupVC.dismiss(animated: true)
-						} else {
-
-							UIApplication.shared.open(URL(string: "itms-services://?action=download-manifest&url=\("https://localhost.direct:8443/manifest.plist?bundleid=\(meow.value(forKey: "bundleidentifier") as? String ?? "")&uuid=\(uuid)&name=\((meow.value(forKey: "name") as? String ?? "").addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)".addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)")!, options: [:], completionHandler: nil)
-							
-							self.popupVC.dismiss(animated: true)
-						}
-
-
-					}
-				} catch {
-					DispatchQueue.main.async {
-						MBProgressHUD.hide(for: self.view, animated: true)
-					}
-					Debug.shared.log(message: "\(error)", type: .error)
-				}
-			}
-		} catch {
-			Debug.shared.log(message: "\(error)", type: .error)
-		}
+		let name = (meow.value(forKey: "name") as? String) ?? "UnknownApp"
+		let id = (meow.value(forKey: "bundleidentifier") as? String) ?? "stupidfucking.shit"
+		let version = (meow.value(forKey: "version") as? String) ?? "1.0"
+		
+		self.presentTransferPreview(with: filePath, id: id, version: version, name: name)
 	}
 	
 	@objc func shareFile(meow: NSManagedObject, filePath: String) {
+		UIApplication.shared.isIdleTimerDisabled = true
 		
-		let uuid = UUID().uuidString
-		let tempDirectory = FileManager.default.temporaryDirectory.appendingPathComponent(uuid)
-		let payloadPath = tempDirectory.appendingPathComponent("Payload").path
+		let name = (meow.value(forKey: "name") as? String) ?? "UnknownApp"
+		let id = (meow.value(forKey: "bundleidentifier") as? String) ?? "stupidfucking.shit"
+		let version = (meow.value(forKey: "version") as? String) ?? "1.0"
 		
-		let fileName = (meow.value(forKey: "name") as? String ?? "UnknownApp").trimmingCharacters(in: .whitespacesAndNewlines)
-		let sanitizedFileName = fileName.replacingOccurrences(of: "/", with: "_")
-		let ipaPath = tempDirectory.appendingPathComponent("\(sanitizedFileName).ipa").path
-		
+		self.presentTransferPreview(with: filePath, isSharing: true, id: id, version: version, name: name)
+	}
+	
+	func presentTransferPreview(with appPath: String, isSharing: Bool? = false, id: String, version: String, name: String) {
 		do {
-			UIApplication.shared.isIdleTimerDisabled = true
-			try FileManager.default.createDirectory(atPath: tempDirectory.path, withIntermediateDirectories: true)
-			try FileManager.default.copyItem(atPath: filePath, toPath: payloadPath)
+			self.installer = try Installer(
+				path: nil,
+				metadata: AppData(id: id, version: Int(version) ?? Int(1.0), name: name)
+			)
 			
-			MBProgressHUD.showAdded(to: self.view, animated: true)
-			
-			DispatchQueue(label: "compress").async {
-				do {
-					let payloadURL = URL(fileURLWithPath: payloadPath)
-					let ipaURL = URL(fileURLWithPath: ipaPath)
-					try FileManager.default.zipItem(at: payloadURL, to: ipaURL)
-					
-					DispatchQueue.main.async {
-						UIApplication.shared.isIdleTimerDisabled = false
-						MBProgressHUD.hide(for: self.view, animated: true)
-						
-						let activityViewController = UIActivityViewController(activityItems: [ipaURL], applicationActivities: nil)
-						self.present(activityViewController, animated: true, completion: nil)
-					}
-				} catch {
-					DispatchQueue.main.async {
-						UIApplication.shared.isIdleTimerDisabled = false
-						MBProgressHUD.hide(for: self.view, animated: true)
-					}
-					Debug.shared.log(message: "Error compressing file: \(error)", type: .error)
+			let transferPreview = TransferPreview(installer: self.installer!, appPath: appPath, appName: name, isSharing: isSharing ?? false)
+				.onDisappear {
+					self.installer?.shutdownServer()
+					self.installer = nil
+					UIApplication.shared.isIdleTimerDisabled = true
 				}
+			
+			let hostingController = UIHostingController(rootView: transferPreview)
+			hostingController.modalPresentationStyle = .pageSheet
+			
+			if let presentationController = hostingController.presentationController as? UISheetPresentationController {
+				let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 200.0)
+				presentationController.detents = [detent2]
+				presentationController.prefersGrabberVisible = true
 			}
+			
+			self.present(hostingController, animated: true)
+			
 		} catch {
-			Debug.shared.log(message: "Error preparing file for sharing: \(error)", type: .error)
+			self.installer?.shutdownServer()
+			self.installer = nil
 		}
 	}
-
-
 	
 }

@@ -42,12 +42,9 @@ func downloadCertificateOnline(from urlString: String, completion: @escaping (Re
 	task.resume()
 }
 
-func getPFXFilePath() -> URL? {
-	let pfxFileURL = getDocumentsDirectory().appendingPathComponent("localhost.direct.pfx")
-
-	if FileManager.default.fileExists(atPath: pfxFileURL.path) {
-		return pfxFileURL
-	} else {
-		return Bundle.main.url(forResource: "localhost.direct", withExtension: "pfx")
-	}
+func getDocumentsDirectory() -> URL {
+	let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+	let documentsDirectory = paths[0]
+	return documentsDirectory
 }
+

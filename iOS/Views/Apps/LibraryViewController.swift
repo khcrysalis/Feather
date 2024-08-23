@@ -17,6 +17,8 @@ class LibraryViewController: UITableViewController {
 	var filteredSignedApps: [SignedApps] = []
 	var filteredDownloadedApps: [DownloadedApps] = []
 	
+	var installer: Installer?
+	
 	public var searchController: UISearchController!
 	var popupVC: PopupViewController!
 	
