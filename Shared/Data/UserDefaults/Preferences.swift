@@ -3,6 +3,7 @@
 //  feather
 //
 //  Created by samara on 5/17/24.
+//  Copyright (c) 2024 Samara M (khcrysalis)
 //
 
 import Foundation
@@ -25,6 +26,9 @@ enum Preferences {
 	
 	@Storage(key: "Feather.DefaultRepos", defaultValue: false)
 	static var defaultRepos: Bool
+	
+	@Storage(key: "Feather.automaticInstall", defaultValue: true)
+	static var automaticInstall: Bool
 	
 	@Storage(key: "Feather.userIntefacerStyle", defaultValue: UIUserInterfaceStyle.unspecified.rawValue)
 	static var preferredInterfaceStyle: Int

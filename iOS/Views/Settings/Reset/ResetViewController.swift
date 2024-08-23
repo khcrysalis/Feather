@@ -3,6 +3,7 @@
 //  feather
 //
 //  Created by samara on 7/10/24.
+//  Copyright (c) 2024 Samara M (khcrysalis)
 //
 
 import UIKit
@@ -12,7 +13,7 @@ class ResetViewController: UITableViewController {
 	let tintColor = Preferences.appTintColor.uiColor
 	var tableData =
 	[
-		["Clear Network Cache", "Reset Settings"]
+		["Clear Network Cache"]
 	]
 	
 	var sectionTitles =
@@ -93,7 +94,7 @@ extension ResetViewController {
 		case "Reset Settings":
 			confirmAction(
 				title: "Reset Settings",
-				message: "This action is irreversible. Preferences will be reset."
+				message: "This action is irreversible. Preferences will be reset.\n\nTHIS WILL ALSO RESET"
 			) {
 				self.resetSettings()
 			}

@@ -3,6 +3,8 @@
 //  feather
 //
 //  Created by samara on 8/16/24.
+//  Copyright © 2024 Lakr Aream. All Rights Reserved.
+//  ORIGINALLY LICENSED UNDER GPL-3.0, MODIFIED FOR USE FOR FEATHER
 //
 
 import SwiftUI

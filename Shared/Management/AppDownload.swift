@@ -3,6 +3,7 @@
 //  feather
 //
 //  Created by samara on 6/29/24.
+//  Copyright (c) 2024 Samara M (khcrysalis)
 //
 
 import Foundation

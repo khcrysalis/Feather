@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		331616912C786B9B00894427 /* TransferPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331616902C786B9B00894427 /* TransferPreview.swift */; };
 		331616932C7877B800894427 /* localhost.direct.pem in Resources */ = {isa = PBXBuildFile; fileRef = 331616922C7877B800894427 /* localhost.direct.pem */; };
+		331616952C78D55100894427 /* Asspp.md in Resources */ = {isa = PBXBuildFile; fileRef = 331616942C78D55100894427 /* Asspp.md */; };
 		33163FF02C3D224C0038E1EC /* DownloadTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33163FEF2C3D224C0038E1EC /* DownloadTaskManager.swift */; };
 		3322FF492BFEC97F001768D8 /* SourceAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3322FF482BFEC97F001768D8 /* SourceAppViewController.swift */; };
 		3322FF4C2BFEDB01001768D8 /* SourceAppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3322FF4B2BFEDB01001768D8 /* SourceAppTableViewCell.swift */; };
@@ -126,6 +127,7 @@
 /* Begin PBXFileReference section */
 		331616902C786B9B00894427 /* TransferPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferPreview.swift; sourceTree = "<group>"; };
 		331616922C7877B800894427 /* localhost.direct.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = localhost.direct.pem; sourceTree = "<group>"; };
+		331616942C78D55100894427 /* Asspp.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Asspp.md; sourceTree = "<group>"; };
 		33163FE82C3D09980038E1EC /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		33163FE92C3D09980038E1EC /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		33163FEA2C3D09980038E1EC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 				33DF8D802C08290F00D6C05F /* HttpSwift_RequestSwift_SocketSwift.md */,
 				33BDD09F2C76D06900AF6169 /* UIOnboarding.md */,
 				33BDD0A12C76D0FB00AF6169 /* Ellekit.md */,
+				331616942C78D55100894427 /* Asspp.md */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -806,6 +809,7 @@
 				33DF8D7F2C0828FB00D6C05F /* Nuke.md in Resources */,
 				33BE87A72C72F5720044D245 /* SWCompression.md in Resources */,
 				33BDD0A02C76D06900AF6169 /* UIOnboarding.md in Resources */,
+				331616952C78D55100894427 /* Asspp.md in Resources */,
 				331616932C7877B800894427 /* localhost.direct.pem in Resources */,
 				33BA379B2BF815A100FF530A /* LaunchScreen.storyboard in Resources */,
 				338FFCFD2C697C61006C3BE0 /* Evil@3x.png in Resources */,

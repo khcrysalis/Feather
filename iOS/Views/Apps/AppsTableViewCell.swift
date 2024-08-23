@@ -3,6 +3,7 @@
 //  feather
 //
 //  Created by samara on 7/1/24.
+//  Copyright (c) 2024 Samara M (khcrysalis)
 //
 
 import Foundation
@@ -170,7 +171,7 @@ class BadgeView: UIView {
 
 	private func setupView() {
 		badgeLabel.text = "BETA"
-		badgeLabel.textColor = .white
+		badgeLabel.textColor = .label
 		badgeLabel.textAlignment = .center
 		badgeLabel.backgroundColor = .systemYellow.withAlphaComponent(0.2)
 		badgeLabel.font = .boldSystemFont(ofSize: 12)
