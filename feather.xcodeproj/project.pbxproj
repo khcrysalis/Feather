@@ -70,6 +70,7 @@
 		33BDD0A22C76D0FB00AF6169 /* Ellekit.md in Resources */ = {isa = PBXBuildFile; fileRef = 33BDD0A12C76D0FB00AF6169 /* Ellekit.md */; };
 		33BDD0A32C76D15D00AF6169 /* ellekit.deb in Resources */ = {isa = PBXBuildFile; fileRef = 33BDD09D2C76D00500AF6169 /* ellekit.deb */; };
 		33BDD0A62C76EA4200AF6169 /* UIOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = 33BDD0A52C76EA4200AF6169 /* UIOnboarding */; };
+		33BDD0A92C78024600AF6169 /* ChangelogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BDD0A82C78024600AF6169 /* ChangelogViewController.swift */; };
 		33BE875D2C6ABF2C0044D245 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE875C2C6ABF2C0044D245 /* LibraryViewController.swift */; };
 		33BE875F2C6AF91B0044D245 /* IconImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE875E2C6AF91B0044D245 /* IconImageViewCell.swift */; };
 		33BE87612C6C37CE0044D245 /* UIImage+resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE87602C6C37CE0044D245 /* UIImage+resize.swift */; };
@@ -190,6 +191,7 @@
 		33BDD09D2C76D00500AF6169 /* ellekit.deb */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = ellekit.deb; sourceTree = "<group>"; };
 		33BDD09F2C76D06900AF6169 /* UIOnboarding.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = UIOnboarding.md; sourceTree = "<group>"; };
 		33BDD0A12C76D0FB00AF6169 /* Ellekit.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Ellekit.md; sourceTree = "<group>"; };
+		33BDD0A82C78024600AF6169 /* ChangelogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangelogViewController.swift; sourceTree = "<group>"; };
 		33BE875C2C6ABF2C0044D245 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		33BE875E2C6AF91B0044D245 /* IconImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconImageViewCell.swift; sourceTree = "<group>"; };
 		33BE87602C6C37CE0044D245 /* UIImage+resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+resize.swift"; sourceTree = "<group>"; };
@@ -497,6 +499,7 @@
 				332476E52C3E8E25008C8EF0 /* SettingsCreditsTableCell.swift */,
 				33E4D8402C67E5C3006A1C26 /* DonationTableViewCell.swift */,
 				332476E72C3E9044008C8EF0 /* About */,
+				33BDD0A72C78022000AF6169 /* Changelog */,
 				332476E42C3E8778008C8EF0 /* Display */,
 				338FFCE22C6950FC006C3BE0 /* AppIcon */,
 				33AC87EE2C3B7C3D003D1175 /* Certificates */,
@@ -605,6 +608,14 @@
 				33BDD09D2C76D00500AF6169 /* ellekit.deb */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		33BDD0A72C78022000AF6169 /* Changelog */ = {
+			isa = PBXGroup;
+			children = (
+				33BDD0A82C78024600AF6169 /* ChangelogViewController.swift */,
+			);
+			path = Changelog;
 			sourceTree = "<group>";
 		};
 		33BE877E2C72D2720044D245 /* Decompression */ = {
@@ -909,6 +920,7 @@
 				33E4D8432C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift in Sources */,
 				33AC87F12C3B7CBE003D1175 /* SettingsViewController.swift in Sources */,
 				338FFCD92C682469006C3BE0 /* PopupViewController.swift in Sources */,
+				33BDD0A92C78024600AF6169 /* ChangelogViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,7 +13,7 @@ class SettingsViewController: UITableViewController {
 	var tableData =
 	[
 		["Donate"],
-		["About Feather", "Submit Feedback", "GitHub Repository"],
+		["About Feather", "Changelog", "Submit Feedback", "GitHub Repository"],
 		["Display", "App Icon"],
 		["Current Certificate", "Add Certificate"],
 //		["Signing Configuration"],
@@ -114,7 +114,7 @@ extension SettingsViewController {
 		case "Debug Logs", "Signing Configuration":
 			cell.accessoryType = .disclosureIndicator
 			cell.selectionStyle = .default
-		case "About Feather":
+		case "About Feather", "Changelog":
 			cell.setAccessoryIcon(with: "info.circle")
 			cell.selectionStyle = .default
 		case "Display":
@@ -228,6 +228,9 @@ extension SettingsViewController {
 			navigationController?.pushViewController(l, animated: true)
 		case "Add Certificate":
 			let l = CertificatesViewController()
+			navigationController?.pushViewController(l, animated: true)
+		case "Changelog":
+			let l = ChangelogViewController()
 			navigationController?.pushViewController(l, animated: true)
 		case "App Icon":
 			let iconsListViewController = IconsListViewController()
