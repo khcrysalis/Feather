@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import UniformTypeIdentifiers
-import MBProgressHUD
 import CoreData
 import SwiftUI
 
@@ -30,33 +29,46 @@ extension LibraryViewController: UIDocumentPickerDelegate {
 	
 	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
 		guard let selectedFileURL = urls.first else { return }
+		self.present(self.loaderAlert!, animated: true)
 		let dl = AppDownload()
 		let uuid = UUID().uuidString
-		MBProgressHUD.showAdded(to: self.view, animated: true)
-		dl.importFile(url: selectedFileURL, uuid: uuid) {newUrl, error in
-			if let error = error {
-				MBProgressHUD.hide(for: self.view, animated: true)
-				Debug.shared.log(message: error.localizedDescription, type: .error)
-			} else if let newUrl = newUrl {
-				dl.extractCompressedBundle(packageURL: newUrl.path) { (targetBundle, error) in
-					if let error = error {
-						MBProgressHUD.hide(for: self.view, animated: true)
+		
+		DispatchQueue(label: "DL").async {
+			dl.importFile(url: selectedFileURL, uuid: uuid) {newUrl, error in
+				if let error = error {
+					DispatchQueue.main.async {
+						self.loaderAlert?.dismiss(animated: true)
 						Debug.shared.log(message: error.localizedDescription, type: .error)
-					} else if let targetBundle = targetBundle {
-						dl.addToApps(bundlePath: targetBundle, uuid: uuid, sourceLocation: "Imported") { error in
-							if let error = error {
-								MBProgressHUD.hide(for: self.view, animated: true)
+					}
+				} else if let newUrl = newUrl {
+					dl.extractCompressedBundle(packageURL: newUrl.path) { (targetBundle, error) in
+						if let error = error {
+							DispatchQueue.main.async {
+								self.loaderAlert?.dismiss(animated: true)
 								Debug.shared.log(message: error.localizedDescription, type: .error)
-							} else {
-								MBProgressHUD.hide(for: self.view, animated: true)
-								Debug.shared.log(message: "Done!", type: .success)
-								self.tableView.reloadData()
+							}
+						} else if let targetBundle = targetBundle {
+							dl.addToApps(bundlePath: targetBundle, uuid: uuid, sourceLocation: "Imported") { error in
+								if let error = error {
+									DispatchQueue.main.async {
+										self.loaderAlert?.dismiss(animated: true)
+										Debug.shared.log(message: error.localizedDescription, type: .error)
+									}
+								} else {
+									DispatchQueue.main.async {
+										self.loaderAlert?.dismiss(animated: true)
+										Debug.shared.log(message: "Done!", type: .success)
+										self.tableView.reloadData()
+									}
+								}
 							}
 						}
 					}
 				}
 			}
 		}
+		
+		
 	}
 	
 	
@@ -109,7 +121,9 @@ extension LibraryViewController {
 				presentationController.prefersGrabberVisible = true
 			}
 			
-			self.present(hostingController, animated: true)
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+				self.present(hostingController, animated: true)
+			}
 			
 		} catch {
 			self.installer?.shutdownServer()

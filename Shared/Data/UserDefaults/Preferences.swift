@@ -12,14 +12,9 @@ import UIKit
 enum Preferences {
 	static var installPathChangedCallback: ((String?) -> Void)?
 	static let defaultInstallPath: String = "https://api.palera.in"
-	static var downloadPathChangedCallback: ((String?) -> Void)?
-	static let defaultDownloadPath: String = "https://github.com/khcrysalis/localhost.direct-retriever/raw/main/localhost.direct.pfx"
 	
 	@Storage(key: "Feather.UserSpecifiedOnlinePath", defaultValue: defaultInstallPath)
 	static var onlinePath: String? { didSet { installPathChangedCallback?(onlinePath) } }
-	
-	@Storage(key: "Feather.UserSpecifiedCertDownloadPath", defaultValue: defaultDownloadPath)
-	static var downloadPath: String? { didSet { downloadPathChangedCallback?(downloadPath) } }
 	
 	@Storage(key: "Feather.UserSelectedServer", defaultValue: false)
 	static var userSelectedServer: Bool

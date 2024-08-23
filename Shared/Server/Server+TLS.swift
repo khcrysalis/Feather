@@ -14,26 +14,28 @@ import Vapor
 
 extension Installer {
 	static let sni = "app.localhost.direct"
-	static let key = Bundle.main.url(
-		forResource: "localhost.direct",
-		withExtension: "pem"
-	)
-	static let crt = Bundle.main.url(
-		forResource: "localhost.direct",
-		withExtension: "crt"
-	)
+	
+	static let bundleKeyURL = Bundle.main.url(forResource: "localhost.direct", withExtension: "pem")
+	static let bundleCrtURL = Bundle.main.url(forResource: "localhost.direct", withExtension: "crt")
+	
+	static let documentsKeyURL = getDocumentsDirectory().appendingPathComponent("localhost.direct.pem")
+	static let documentsCrtURL = getDocumentsDirectory().appendingPathComponent("localhost.direct.crt")
 
 	static func setupTLS() throws -> TLSConfiguration {
-		guard let crt, let key else {
+		let keyURL = FileManager.default.fileExists(atPath: documentsKeyURL.path) ? documentsKeyURL : bundleKeyURL
+		let crtURL = FileManager.default.fileExists(atPath: documentsCrtURL.path) ? documentsCrtURL : bundleCrtURL
+		
+		guard let crtURL, let keyURL else {
 			throw NSError(domain: "Installer", code: 0, userInfo: [
-				NSLocalizedDescriptionKey: "Failed to load ssl certificates",
+				NSLocalizedDescriptionKey: "Failed to load SSL certificates",
 			])
 		}
+		
 		return try TLSConfiguration.makeServerConfiguration(
 			certificateChain: NIOSSLCertificate
-				.fromPEMFile(crt.path)
+				.fromPEMFile(crtURL.path)
 				.map { NIOSSLCertificateSource.certificate($0) },
-			privateKey: .file(key.path)
+			privateKey: .file(keyURL.path)
 		)
 	}
 }

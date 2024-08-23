@@ -108,7 +108,6 @@
 		AF4D46EF2C432CCA003FA335 /* TweakLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */; };
 		AF4D46F12C4332D7003FA335 /* SwitchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D46F02C4332D7003FA335 /* SwitchViewCell.swift */; };
 		AF84EEFD2C4080610050CBE4 /* AppSigningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF84EEFC2C4080610050CBE4 /* AppSigningViewController.swift */; };
-		AF9B6B412C633AB400735748 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = AF9B6B402C633AB400735748 /* MBProgressHUD */; };
 		AF9B6B442C6346FF00735748 /* p12_password_check.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF9B6B432C6346E900735748 /* p12_password_check.mm */; };
 		AFAC50922C48DB1300EDEAB6 /* ActivityIndicatorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAC50912C48DB1200EDEAB6 /* ActivityIndicatorViewCell.swift */; };
 		AFAC50952C48DF9300EDEAB6 /* AppSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAC50942C48DF9300EDEAB6 /* AppSigner.swift */; };
@@ -266,7 +265,6 @@
 				D0AA9D542BFF02AF00A65D45 /* OpenSSL in Frameworks */,
 				3322FF512BFEE5B9001768D8 /* NukeExtensions in Frameworks */,
 				33BDD0A62C76EA4200AF6169 /* UIOnboarding in Frameworks */,
-				AF9B6B412C633AB400735748 /* MBProgressHUD in Frameworks */,
 				3322FF532BFEE5B9001768D8 /* NukeUI in Frameworks */,
 				33C0409E2C30DD3E00243D90 /* AlertKit in Frameworks */,
 				336EEE812C32367C0011188D /* ZIPFoundation in Frameworks */,
@@ -735,7 +733,6 @@
 				D0AA9D532BFF02AF00A65D45 /* OpenSSL */,
 				33C0409D2C30DD3E00243D90 /* AlertKit */,
 				336EEE802C32367C0011188D /* ZIPFoundation */,
-				AF9B6B402C633AB400735748 /* MBProgressHUD */,
 				338FFCEC2C695CA3006C3BE0 /* IconSelector */,
 				33BE87A42C72E1220044D245 /* SWCompression */,
 				33BDD0A52C76EA4200AF6169 /* UIOnboarding */,
@@ -775,7 +772,6 @@
 				D0AA9D522BFF02AF00A65D45 /* XCRemoteSwiftPackageReference "OpenSSL-Swift-Package" */,
 				33C0409C2C30DD3E00243D90 /* XCRemoteSwiftPackageReference "AlertKit" */,
 				336EEE7F2C32367C0011188D /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
-				AF9B6B3F2C633AB400735748 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
 				338FFCEB2C695CA3006C3BE0 /* XCRemoteSwiftPackageReference "ios-icon-selector" */,
 				33BE87A32C72E1220044D245 /* XCRemoteSwiftPackageReference "SWCompression" */,
 				33BDD0A42C76EA4100AF6169 /* XCRemoteSwiftPackageReference "UIOnboarding-18" */,
@@ -1212,14 +1208,6 @@
 				minimumVersion = 5.1.9;
 			};
 		};
-		AF9B6B3F2C633AB400735748 /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jdg/MBProgressHUD";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.0;
-			};
-		};
 		D0AA9D522BFF02AF00A65D45 /* XCRemoteSwiftPackageReference "OpenSSL-Swift-Package" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/HAHALOSAH/OpenSSL-Swift-Package";
@@ -1280,11 +1268,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 33C0409C2C30DD3E00243D90 /* XCRemoteSwiftPackageReference "AlertKit" */;
 			productName = AlertKit;
-		};
-		AF9B6B402C633AB400735748 /* MBProgressHUD */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AF9B6B3F2C633AB400735748 /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
-			productName = MBProgressHUD;
 		};
 		D0AA9D532BFF02AF00A65D45 /* OpenSSL */ = {
 			isa = XCSwiftPackageProductDependency;

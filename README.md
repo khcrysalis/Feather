@@ -42,7 +42,7 @@ Feather allows you to import a `.p12` and a `.mobileprovision` pair to sign the 
 
 > What does feather use for its server?
 
-It uses the [localhost.direct](https://github.com/Upinel/localhost.direct) certificate and [Http.swift](https://swiftpackageindex.com/BiAtoms/Http.swift) to self host an HTTPS server on your device - all itms services really needs is a valid certificate and a valid HTTPS server. Which allows iOS to accept the request and install the application.
+It uses the [localhost.direct](https://github.com/Upinel/localhost.direct) certificate and [Vapor](https://github.com/vapor/vapor) to self host an HTTPS server on your device - all itms services really needs is a valid certificate and a valid HTTPS server. Which allows iOS to accept the request and install the application.
 
 > Why does Feather append a random string on the bundle ID?
 
@@ -66,13 +66,13 @@ make package SCHEME="'feather (Release)'" # Build
 ## Acknowledgements
 
 - [localhost.direct](https://github.com/Upinel/localhost.direct) - localhost with public CA signed SSL certificate
-- [Http.swift](https://github.com/BiAtoms/Http.swift) - A tiny HTTP server engine written in swift.
+- [Vapor](https://github.com/vapor/vapor) - A server-side Swift HTTP web framework.
 - [Zsign](https://github.com/zhlynn/zsign) - Allowing to sign on-device, reimplimented to work on other platforms such as iOS.
-- [Nuke](https://github.com/kean/Nuke) - Load images from different sources and display them in your app using simple and flexible APIs. Take advantage of the powerful image processing capabilities and a robust caching system.
-- [Markdownosaur](https://github.com/christianselig/Markdownosaur) - Allows markdown parsing for changelogs
+- [Nuke](https://github.com/kean/Nuke) - Imagine caching.
+- [Asspp](https://github.com/Lakr233/Asspp) - Some code for setting up the http server.
 
-- [plistserver](https://github.com/QuickSign-Team/plistserver) - Hosted on https://api.palera.in
-> NOTE: The original license to plistserver is [GPL](https://github.com/nekohaxx/plistserver/commit/b207a76a9071a695d8b498db029db5d63a954e53), so changing the license is NOT viable as technically it's irrevocable. We are allowed to host it on our own server for use in Feather by technicality. 
+<!-- - [plistserver](https://github.com/QuickSign-Team/plistserver) - Hosted on https://api.palera.in
+> NOTE: The original license to plistserver is [GPL](https://github.com/nekohaxx/plistserver/commit/b207a76a9071a695d8b498db029db5d63a954e53), so changing the license is NOT viable as technically it's irrevocable. We are allowed to host it on our own server for use in Feather by technicality.  -->
 
 ## Contributions
 

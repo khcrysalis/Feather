@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 import UniformTypeIdentifiers
-import MBProgressHUD
 
 class LibraryViewController: UITableViewController {
 	var signedApps: [SignedApps]?
@@ -22,6 +21,7 @@ class LibraryViewController: UITableViewController {
 	
 	public var searchController: UISearchController!
 	var popupVC: PopupViewController!
+	var loaderAlert: UIAlertController?
 	
 	init() { super.init(style: .grouped) }
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -31,6 +31,7 @@ class LibraryViewController: UITableViewController {
 		setupViews()
 		setupSearchController()
 		fetchSources()
+		loaderAlert = presentLoader()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -129,17 +130,18 @@ extension LibraryViewController {
 				let button3 = PopupViewControllerButton(title: "Resign \((source!.value(forKey: "name") as? String ?? ""))", color: .quaternarySystemFill, titleColor: .tintColor)
 				button3.onTap = { [weak self] in
 					guard let self = self else { return }
-					self.popupVC.dismiss(animated: true)
-					MBProgressHUD.showAdded(to: self.view, animated: true)
-					let cert = CoreDataManager.shared.getCurrentCertificate()!
-					
-					resignApp(certificate: cert, appPath: filePath2!) { success in
-						if success {
-							CoreDataManager.shared.updateSignedApp(app: source as! SignedApps, newTimeToLive: (cert.certData?.expirationDate)!, newTeamName: (cert.certData?.name)!) { _ in
-								DispatchQueue.main.async {
-									MBProgressHUD.hide(for: self.view, animated: true)
-									Debug.shared.log(message: "Done action??")
-									self.tableView.reloadRows(at: [indexPath], with: .left)
+					self.popupVC.dismiss(animated: true) {
+						self.present(self.loaderAlert!, animated: true)
+						let cert = CoreDataManager.shared.getCurrentCertificate()!
+						
+						resignApp(certificate: cert, appPath: filePath2!) { success in
+							if success {
+								CoreDataManager.shared.updateSignedApp(app: source as! SignedApps, newTimeToLive: (cert.certData?.expirationDate)!, newTeamName: (cert.certData?.name)!) { _ in
+									DispatchQueue.main.async {
+										self.loaderAlert?.dismiss(animated: true)
+										Debug.shared.log(message: "Done action??")
+										self.tableView.reloadRows(at: [indexPath], with: .left)
+									}
 								}
 							}
 						}
@@ -208,7 +210,9 @@ extension LibraryViewController {
 			let ap = AppSigningViewController(app: meow, appsViewController: self)
 			let navigationController = UINavigationController(rootViewController: ap)
 			navigationController.modalPresentationStyle = .formSheet
-			self.present(navigationController, animated: true, completion: nil)
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+				self.present(navigationController, animated: true, completion: nil)
+			}
 		}
 	}
 	
@@ -385,3 +389,24 @@ extension LibraryViewController: UISearchControllerDelegate, UISearchBarDelegate
 		return searchController.searchBar.text?.isEmpty ?? true
 	}
 }
+
+/// https://stackoverflow.com/a/75310581
+func presentLoader() -> UIAlertController {
+	let alert = UIAlertController(title: nil, message: "", preferredStyle: .alert)
+	let activityIndicator = UIActivityIndicatorView(style: .large)
+	activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+	activityIndicator.isUserInteractionEnabled = false
+	activityIndicator.startAnimating()
+
+	alert.view.addSubview(activityIndicator)
+	
+	NSLayoutConstraint.activate([
+		alert.view.heightAnchor.constraint(equalToConstant: 95),
+		alert.view.widthAnchor.constraint(equalToConstant: 95),
+		activityIndicator.centerXAnchor.constraint(equalTo: alert.view.centerXAnchor),
+		activityIndicator.centerYAnchor.constraint(equalTo: alert.view.centerYAnchor)
+	])
+	
+	return alert
+}
+

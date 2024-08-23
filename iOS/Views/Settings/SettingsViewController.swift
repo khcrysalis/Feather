@@ -18,7 +18,7 @@ class SettingsViewController: UITableViewController {
 		["Display", "App Icon"],
 		["Current Certificate", "Add Certificate"],
 //		["Signing Configuration"],
-		["Fuck PPQCheck"],
+		["Fuck PPQCheck", "PPQCheckMitigationString", "PPQCheckMitigationExport"],
 //		["Use Server", "Use Custom Server"],
 		["Update Local Certificate"],
 		[
@@ -150,6 +150,14 @@ extension SettingsViewController {
 			fuckPPq.switchControl.isOn = Preferences.isFuckingPPqcheckDetectionOff
 			fuckPPq.selectionStyle = .none
 			return fuckPPq
+		case "PPQCheckMitigationString":
+			cell.textLabel?.text = "Change Random Identifier"
+			cell.textLabel?.textColor = .tintColor
+			cell.selectionStyle = .default
+		case "PPQCheckMitigationExport":
+			cell.textLabel?.text = "Export Random Identifier"
+			cell.textLabel?.textColor = .tintColor
+			cell.selectionStyle = .default
 		case "Use Server":
 			let useS = SwitchViewCell()
 			useS.textLabel?.text = "Online Install Method"
@@ -230,6 +238,12 @@ extension SettingsViewController {
 		case "Add Certificate":
 			let l = CertificatesViewController()
 			navigationController?.pushViewController(l, animated: true)
+		case "PPQCheckMitigationString":
+			showChangeIdentifierAlert()
+		case  "PPQCheckMitigationExport":
+			let shareText = Preferences.pPQCheckString
+			let activityViewController = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
+			present(activityViewController, animated: true, completion: nil)
 		case "App Icon":
 			let iconsListViewController = IconsListViewController()
 			navigationController?.pushViewController(iconsListViewController, animated: true)
@@ -242,12 +256,16 @@ extension SettingsViewController {
 				isDownloadingCertifcate = true
 				tableView.reloadRows(at: [indexPath], with: .automatic)
 				
-				downloadCertificateOnline(from: Preferences.downloadPath ?? Preferences.defaultDownloadPath) { result in
+				downloadCertificatesOnline(from: [
+					"https://github.com/khcrysalis/localhost.direct-retriever/raw/main/localhost.direct.pem", 
+					"https://github.com/khcrysalis/localhost.direct-retriever/raw/main/localhost.direct.crt"
+				]
+				) { result in
 					switch result {
 					case .success(_):
 						self.isDownloadingCertifcate = false
 						DispatchQueue.main.async {
-							Debug.shared.log(message: "File successfully downloaded!", type: .success)
+							Debug.shared.log(message: "File(s) successfully downloaded!", type: .success)
 							tableView.reloadRows(at: [indexPath], with: .automatic)
 						}
 					case .failure(let error):
@@ -301,6 +319,7 @@ extension UITableViewCell {
 		}
 	}
 }
+
 extension SettingsViewController {
 	func resetConfigDefault() {
 		Preferences.onlinePath = Preferences.defaultInstallPath
@@ -312,7 +331,7 @@ extension SettingsViewController {
 		alert.addTextField { textField in
 			textField.placeholder = Preferences.defaultInstallPath
 			textField.autocapitalizationType = .none
-			textField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+			textField.addTarget(self, action: #selector(self.textURLDidChange(_:)), for: .editingChanged)
 		}
 
 		let setAction = UIAlertAction(title: "Set", style: .default) { _ in
@@ -330,7 +349,7 @@ extension SettingsViewController {
 	}
 
 
-	@objc func textFieldDidChange(_ textField: UITextField) {
+	@objc func textURLDidChange(_ textField: UITextField) {
 		guard let alertController = presentedViewController as? UIAlertController, let setAction = alertController.actions.first(where: { $0.title == "Set" }) else { return }
 
 		let enteredURL = textField.text ?? ""
@@ -340,5 +359,31 @@ extension SettingsViewController {
 	func isValidURL(_ url: String) -> Bool {
 		let urlPredicate = NSPredicate(format: "SELF MATCHES %@", "https?://$")
 		return urlPredicate.evaluate(with: url)
+	}
+}
+
+extension SettingsViewController {
+	func showChangeIdentifierAlert() {
+		let alert = UIAlertController(title: "Change Random Identifier", message: nil, preferredStyle: .alert)
+
+		alert.addTextField { textField in
+			textField.placeholder = Preferences.pPQCheckString
+			textField.autocapitalizationType = .none
+		}
+
+		let setAction = UIAlertAction(title: "Set", style: .default) { _ in
+			guard let textField = alert.textFields?.first, let enteredURL = textField.text else { return }
+
+			if !enteredURL.isEmpty {
+				Preferences.pPQCheckString = enteredURL
+			}
+		}
+
+		setAction.isEnabled = true
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+		alert.addAction(setAction)
+		alert.addAction(cancelAction)
+		present(alert, animated: true, completion: nil)
 	}
 }
