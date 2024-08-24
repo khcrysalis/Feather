@@ -98,7 +98,7 @@ class AppSigningAdvancedViewController: UITableViewController {
 		let removeWatchPlaceHolder = SwitchViewCell()
 		removeWatchPlaceHolder.textLabel?.text = "Delete Placeholder Watch App"
 		removeWatchPlaceHolder.switchControl.addTarget(self, action: #selector(forceForceFullScreenToggled(_:)), for: .valueChanged)
-		removeWatchPlaceHolder.switchControl.isOn = appSigningViewController.forceForceFullScreen
+		removeWatchPlaceHolder.switchControl.isOn = appSigningViewController.removeWatchPlaceHolder
 		removeWatchPlaceHolder.selectionStyle = .none
 		cellsForSection2.append(removeWatchPlaceHolder)
 	}
