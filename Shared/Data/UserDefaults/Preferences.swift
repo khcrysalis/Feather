@@ -40,7 +40,7 @@ enum Preferences {
 	@Storage(key: "Feather.ppqcheckBypass", defaultValue: "")
 	static var pPQCheckString: String
 	
-	@Storage(key: "Feather.fuckOffPpqcheckDetection", defaultValue: false)
+	@Storage(key: "Feather.fuckOffPpqcheckDetection", defaultValue: true)
 	static var isFuckingPPqcheckDetectionOff: Bool
 	
 	@Storage(key: "Feather.idWhitelist", defaultValue: ["kh.crysalis.feather", "kh.crysalis.feather2"])

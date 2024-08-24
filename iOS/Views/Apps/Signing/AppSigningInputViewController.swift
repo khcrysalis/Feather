@@ -57,7 +57,7 @@ class AppSigningInputViewController: UITableViewController {
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {
 		if ((appSigningViewController.certs?.certData?.pPQCheck) != nil) && valueToSaveTo == "bundleId"{
-			return 3
+			return 2
 		} else {
 			return 1
 		}
@@ -87,20 +87,20 @@ class AppSigningInputViewController: UITableViewController {
 			cell.textLabel?.text = "PPQCheck is Enabled"
 			cell.textLabel?.textColor = .systemRed
 			
-			cell.detailTextLabel?.text = "Sadly your certificate seems to have the PPQCheck option enabled and cannot be turned off by any normal means, so we've appended a random string to your Bundle Identifier. If you wish to continue you may remove that prepended string or disable it in settings."
-			cell.detailTextLabel?.textColor = .systemOrange
+			cell.detailTextLabel?.text = "PPQCheck is a way for Apple to check if the app you're opening matches another bundle identifier found on the App Store, the check happens on the first time you open the signed installed application. We have an option for you to avoid this, however you will no longer receive the benefits of notifications and such relating to the default identifier."
+			cell.detailTextLabel?.textColor = .label
 			cell.textLabel?.numberOfLines = 0
 			cell.detailTextLabel?.numberOfLines = 0
-		case 2:
-			cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
-			
-			cell.textLabel?.text = "Information"
-			cell.textLabel?.textColor = .label
-			
-			cell.detailTextLabel?.text = "PPQCheck is a way for Apple to check if the app you're opening matches another bundle identifier found on the App Store, the check happens every time you open the signed installed application. By default we prepended the random string to save you from a headache of getting the Apple ID associated with the certificate locked."
-			cell.detailTextLabel?.textColor = .secondaryLabel
-			cell.textLabel?.numberOfLines = 0
-			cell.detailTextLabel?.numberOfLines = 0
+//		case 2:
+//			cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
+//			
+//			cell.textLabel?.text = "Information"
+//			cell.textLabel?.textColor = .label
+//			
+//			cell.detailTextLabel?.text = "PPQCheck is a way for Apple to check if the app you're opening matches another bundle identifier found on the App Store, the check happens every time you open the signed installed application. By default we prepended the random string to save you from a headache of getting the Apple ID associated with the certificate locked."
+//			cell.detailTextLabel?.textColor = .secondaryLabel
+//			cell.textLabel?.numberOfLines = 0
+//			cell.detailTextLabel?.numberOfLines = 0
 		default: break
 		}
 		return cell

@@ -145,11 +145,17 @@ extension SettingsViewController {
 			}
 		case "Fuck PPQCheck":
 			let fuckPPq = SwitchViewCell()
-			fuckPPq.textLabel?.text = "Disable PPQCheck Protections"
+			fuckPPq.textLabel?.text = "PPQCheck Protection"
 			fuckPPq.switchControl.addTarget(self, action: #selector(fuckPpqcheckToggled(_:)), for: .valueChanged)
 			fuckPPq.switchControl.isOn = Preferences.isFuckingPPqcheckDetectionOff
 			fuckPPq.selectionStyle = .none
+
+			let infoButton = UIButton(type: .infoLight)
+			infoButton.addTarget(self, action: #selector(showPPQInfoAlert), for: .touchUpInside)
+			fuckPPq.accessoryView = infoButton
+
 			return fuckPPq
+
 		case "PPQCheckMitigationString":
 			cell.textLabel?.text = "Change Random Identifier"
 			cell.textLabel?.textColor = .tintColor
@@ -201,6 +207,18 @@ extension SettingsViewController {
 		}
 		
 		return cell
+	}
+	
+	@objc func showPPQInfoAlert() {
+		let alertController = UIAlertController(
+			title: "PPQCheck Protections",
+			message: "This setting enables the PPQCheck protections, which is designed to prepend each bundle identifier for the apps you sideload with a random string.\n\nThis is meant to avoid apple flagging your account by (trying) to make it so they're unable to associate the app your sideloading with one from the App Store.",
+			preferredStyle: .alert
+		)
+		alertController.addAction(UIAlertAction(title: "???", style: .default))
+		alertController.addAction(UIAlertAction(title: "I don't care", style: .destructive))
+		alertController.addAction(UIAlertAction(title: "Good to know", style: .cancel))
+		present(alertController, animated: true, completion: nil)
 	}
 	
 	@objc func onlinePathToggled(_ sender: UISwitch) {
