@@ -94,7 +94,15 @@ class AppSigningAdvancedViewController: UITableViewController {
 		forceForceFullScreen.switchControl.isOn = appSigningViewController.forceForceFullScreen
 		forceForceFullScreen.selectionStyle = .none
 		cellsForSection2.append(forceForceFullScreen)
+		
+		let removeWatchPlaceHolder = SwitchViewCell()
+		removeWatchPlaceHolder.textLabel?.text = "Delete Placeholder Watch App"
+		removeWatchPlaceHolder.switchControl.addTarget(self, action: #selector(forceForceFullScreenToggled(_:)), for: .valueChanged)
+		removeWatchPlaceHolder.switchControl.isOn = appSigningViewController.forceForceFullScreen
+		removeWatchPlaceHolder.selectionStyle = .none
+		cellsForSection2.append(removeWatchPlaceHolder)
 	}
+	
 	override func numberOfSections(in tableView: UITableView) -> Int {
 		return 3
 	}
@@ -151,5 +159,8 @@ class AppSigningAdvancedViewController: UITableViewController {
 	}
 	@objc private func forceMinimumVersionDidChange(_ sender: UISegmentedControl) {
 		appSigningViewController.forceMinimumVersion = sender.selectedSegmentIndex
+	}
+	@objc private func removePlaceHolderWatchExtension(_ sender: UISwitch) {
+		appSigningViewController.removeWatchPlaceHolder = sender.isOn
 	}
 }

@@ -40,6 +40,8 @@ class AppSigningViewController: UITableViewController {
 	var forceForceFullScreen = false
 	var forceiTunesFileSharing = true
 	
+	var removeWatchPlaceHolder = true 
+	
 	var certs: Certificate?
     
     init(app: NSManagedObject, appsViewController: LibraryViewController) {
@@ -129,6 +131,7 @@ class AppSigningViewController: UITableViewController {
 			forceiTunesFileSharing: forceiTunesFileSharing,
 			forceMinimumVersion: forceMinimumVersionString[forceMinimumVersion],
 			forceLightDarkAppearence: forceLightDarkAppearenceString[forceLightDarkAppearence],
+			removeWatchPlaceHolder: removeWatchPlaceHolder,
 			certificate: certs),
 				appPath:getFilesForDownloadedApps(app: app as! DownloadedApps, getuuidonly: false)
 		) { success in

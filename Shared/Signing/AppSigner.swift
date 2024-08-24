@@ -31,6 +31,7 @@ struct AppSigningOptions {
 	var forceLightDarkAppearence: String?
 	
 	var removeProvisioningFile: Bool?
+	var removeWatchPlaceHolder: Bool?
     
     var certificate: Certificate?
 }
@@ -62,6 +63,7 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 			try handler.getInputFiles()
 			
 			try updatePlugIns(options: options, app: tmpDirApp)
+			try removeDumbAssPlaceHolderExtension(options: options, app: tmpDirApp)
 			
 			let certPath = CoreDataManager.shared.getCertifcatePath(source: options.certificate!)
 			let provisionPath = certPath.appendingPathComponent("\(options.certificate?.provisionPath ?? "")").path
@@ -153,6 +155,20 @@ func updatePlugIns(options: AppSigningOptions, app: URL) throws {
 	if options.removePlugins! {
 		let filemanager = FileManager.default
 		let path = app.appendingPathComponent("PlugIns")
+		if filemanager.fileExists(atPath: path.path) {
+			do {
+				try filemanager.removeItem(at: path)
+			} catch {
+				throw error
+			}
+		}
+	}
+}
+
+func removeDumbAssPlaceHolderExtension(options: AppSigningOptions, app: URL) throws {
+	if options.removeWatchPlaceHolder! {
+		let filemanager = FileManager.default
+		let path = app.appendingPathComponent("com.apple.WatchPlaceholder")
 		if filemanager.fileExists(atPath: path.path) {
 			do {
 				try filemanager.removeItem(at: path)
