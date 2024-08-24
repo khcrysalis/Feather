@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 			CoreDataManager.shared.saveSource(
 				name: "Feather Repostory",
 				id: "kh.crysalis.feather-repo",
-				iconURL: URL(string: "https://github.com/khcrysalis/feather/blob/main/feather/Resources/Assets.xcassets/AppIcon.appiconset/feather.png?raw=true"),
+				iconURL: URL(string: "https://github.com/khcrysalis/Feather/blob/main/iOS/Icons/Main/Mac%403x.png?raw=true"),
 				url: "https://github.com/khcrysalis/Feather/raw/main/app-repo.json")
 			{_ in
 				Debug.shared.log(message: "Added default repos!")
