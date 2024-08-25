@@ -15,7 +15,7 @@
 
 - **Import your own `.ipa`'s**.
 - **Inject tweaks when signing apps**.
-- **Install applications straight to your device seemlessly over the air**.
+- **Install applications straight to your device seamlessly over the air**.
 - **Allows multiple certificate imports for easy switching**.
 - **Configurable signing options**. *(name, bundleid, version, other plist options)*
 - **Meant to be used with Apple Accounts that are apart of `ADP` (Apple Developer Program)**. *however other certificates can also work!*
@@ -80,7 +80,7 @@ They are welcome! :)
 
 ## History
 
-There was a tool called ESign (Easy Sign) that would allow you to sideload applications seemlessly on device, however it was discovered it sadly sends analytics over to some other location. There were stuff that supposedly removed the analytics but it's hard to decipher if it actually removed the problem at hand.
+There was a tool called ESign (Easy Sign) that would allow you to sideload applications seamlessly on device, however it was discovered it sadly sends analytics over to some other location. There were stuff that supposedly removed the analytics but it's hard to decipher if it actually removed the problem at hand.
 
 So I decided to make an alternative with similar features so I don't need to use that tool, along with me an others. A lot of research has been done to get this working, and originally got it working a few months ago for the first time! Of course without the help with Dhinakg in discovering you can actually use a local server to deploy an app on your device!
 
