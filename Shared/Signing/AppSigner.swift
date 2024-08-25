@@ -65,7 +65,7 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 			try updatePlugIns(options: options, app: tmpDirApp)
 			try removeDumbAssPlaceHolderExtension(options: options, app: tmpDirApp)
 			
-			let certPath = CoreDataManager.shared.getCertifcatePath(source: options.certificate!)
+            let certPath = try CoreDataManager.shared.getCertifcatePath(source: options.certificate)
 			let provisionPath = certPath.appendingPathComponent("\(options.certificate?.provisionPath ?? "")").path
 			let p12Path = certPath.appendingPathComponent("\(options.certificate?.p12Path ?? "")").path
 			
@@ -111,7 +111,7 @@ func resignApp(certificate: Certificate, appPath: URL, completion: @escaping (Bo
 	UIApplication.shared.isIdleTimerDisabled = true
 	DispatchQueue(label: "Resigning").async {
 		do {
-			let certPath = CoreDataManager.shared.getCertifcatePath(source: certificate)
+            let certPath = try CoreDataManager.shared.getCertifcatePath(source: certificate)
 			let provisionPath = certPath.appendingPathComponent("\(certificate.provisionPath ?? "")").path
 			let p12Path = certPath.appendingPathComponent("\(certificate.p12Path ?? "")").path
 			

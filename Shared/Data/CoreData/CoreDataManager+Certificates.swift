@@ -96,13 +96,15 @@ extension CoreDataManager {
 		try CertData.copyFile(from: p12Path, to: destinationDirectory)
 	}
 	
-	func getCertifcatePath(source: Certificate) -> URL {
-		let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-		let p = documentsDirectory
-			.appendingPathComponent("Certificates")
-			.appendingPathComponent((source.uuid)!)
-		return p
-	}
+    func getCertifcatePath(source: Certificate?) throws -> URL {
+        guard let source, let uuid = source.uuid else { throw FileProcessingError.missingFile("Certificate or UUID") }
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let destinationDirectory = documentsDirectory
+            .appendingPathComponent("Certificates")
+            .appendingPathComponent(uuid)
+        
+        return destinationDirectory
+    }
 	
 	func deleteAllCertificateContent(for app: Certificate) {
 		do {

@@ -93,7 +93,11 @@ class AppSigningViewController: UITableViewController {
 		if (certs == nil) {
 			#if !targetEnvironment(simulator)
 			DispatchQueue.main.async {
-				let alert = UIAlertController(title: "Error", message: "You do not have a certificate selected, please select one in the certificates tab.", preferredStyle: .alert)
+                let alert = UIAlertController(
+                    title: "Error",
+                    message: "You do not have a certificate selected, please select or upload one in the signing section of the settings tab.",
+                    preferredStyle: .alert
+                )
 				alert.addAction(UIAlertAction(title: "Lame", style: .default) { _ in
 						self.dismiss(animated: true)
 					}
