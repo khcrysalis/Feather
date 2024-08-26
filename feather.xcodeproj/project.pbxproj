@@ -217,6 +217,7 @@
 		33BF316B2C7C466B0087F3D2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		33BF316C2C7C46780087F3D2 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		33BF316D2C7C46800087F3D2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		33BF316E2C7C4D0C0087F3D2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		33C0409A2C30B4A100243D90 /* AppDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDownload.swift; sourceTree = "<group>"; };
 		33C29F1F2C7BD73800EF7608 /* UIUserInterfaceStyle+allCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIUserInterfaceStyle+allCases.swift"; sourceTree = "<group>"; };
 		33CE81A82C4295F300C05327 /* CertImportingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertImportingVC.swift; sourceTree = "<group>"; };
@@ -794,6 +795,7 @@
 				es,
 				ko,
 				ja,
+				ru,
 			);
 			mainGroup = 33BA37822BF8159F00FF530A;
 			packageReferences = (
@@ -959,6 +961,7 @@
 				33BF316B2C7C466B0087F3D2 /* es */,
 				33BF316C2C7C46780087F3D2 /* ko */,
 				33BF316D2C7C46800087F3D2 /* ja */,
+				33BF316E2C7C4D0C0087F3D2 /* ru */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
