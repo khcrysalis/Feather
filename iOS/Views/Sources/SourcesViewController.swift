@@ -83,7 +83,11 @@ extension SourcesViewController {
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return sources?.count ?? 0 }
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 70 }
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-		let headerWithButton = GroupedSectionHeader(title: "Repositories", subtitle: "\(sources?.count ?? 0) Sources", buttonTitle: "Add Repo", buttonAction: {
+		//String.localized("SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES", arguments: (sources?.count ?? 0))
+		let headerWithButton = GroupedSectionHeader(
+			title: String.localized("SOURCES_VIEW_CONTROLLER_REPOSITORIES"),
+			subtitle: String.localized("SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES", arguments: "\(sources?.count ?? 0)"),
+			buttonTitle: String.localized("SOURCES_VIEW_CONTROLLER_ADD_SOURCES"), buttonAction: {
 			self.sourcesAddButtonTapped()
 		})
 		return headerWithButton
@@ -94,7 +98,7 @@ extension SourcesViewController {
 
 		let source = sources![indexPath.row]
 
-		cell.textLabel?.text = source.name ?? "Unknown"
+		cell.textLabel?.text = source.name ?? String.localized("UNKNOWN")
 		cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
 		cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 13)
 		cell.detailTextLabel?.text = source.sourceURL?.absoluteString
@@ -115,7 +119,7 @@ extension SourcesViewController {
 
 		let configuration = UIContextMenuConfiguration(identifier: nil, actionProvider: { _ in
 			return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [
-				UIAction(title: "Copy", image: UIImage(systemName: "doc.on.clipboard"), handler: {_ in
+				UIAction(title: String.localized("COPY"), image: UIImage(systemName: "doc.on.clipboard"), handler: {_ in
 					UIPasteboard.general.string = source.sourceURL?.absoluteString
 				})
 			])
@@ -124,7 +128,7 @@ extension SourcesViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-		let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+		let deleteAction = UIContextualAction(style: .destructive, title: String.localized("DELETE")) { (action, view, completionHandler) in
 			let sourceToRm = self.sources![indexPath.row]
 			CoreDataManager.shared.context.delete(sourceToRm)
 			do {
@@ -172,7 +176,7 @@ extension SourcesViewController: UISearchControllerDelegate, UISearchBarDelegate
 		self.searchController.obscuresBackgroundDuringPresentation = true
 		self.searchController.hidesNavigationBarDuringPresentation = true
 		self.searchController.delegate = self
-		self.searchController.searchBar.placeholder = "Search Sources"
+		self.searchController.searchBar.placeholder = String.localized("SOURCES_VIEW_CONTROLLER_SEARCH_SOURCES")
 		self.searchController.searchResultsUpdater = searchResultsTableViewController
 		searchResultsTableViewController.sources = sources ?? []
 		self.navigationItem.searchController = searchController

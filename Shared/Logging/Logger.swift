@@ -40,23 +40,23 @@ final class Debug {
 		switch type {
 		case .success:
 			logger.info("\(message)")
-			showSuccessAlert(with: "Success", subtitle: message)
+			showSuccessAlert(with: String.localized("ALERT_SUCCESS"), subtitle: message)
 		case .info:
 			logger.info("\(message)")
 		case .debug:
 			logger.debug("\(message)")
 		case .trace:
 			logger.trace("\(message)")
-			showErrorUIAlert(with: "Trace", subtitle: message)
+			showErrorUIAlert(with: String.localized("ALERT_TRACE"), subtitle: message)
 		case .warning:
 			logger.warning("\(message)")
-			showErrorAlert(with: "Error", subtitle: message)
+			showErrorAlert(with: String.localized("ALERT_ERROR"), subtitle: message)
 		case .error:
 			logger.error("\(message)")
-			showErrorAlert(with: "Error", subtitle: message)
+			showErrorAlert(with: String.localized("ALERT_ERROR"), subtitle: message)
 		case .critical:
 			logger.critical("\(message)")
-			showErrorUIAlert(with: "Critical", subtitle: message)
+			showErrorUIAlert(with: String.localized("ALERT_CRITICAL"), subtitle: message)
 		default:
 			logger.log("\(message)")
 		}

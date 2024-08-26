@@ -13,7 +13,7 @@ class ResetViewController: UITableViewController {
 	let tintColor = Preferences.appTintColor.uiColor
 	var tableData =
 	[
-		["Clear Network Cache"]
+		[String.localized("RESET_VIEW_CONTROLLER_CLEAR_CACHE")]
 	]
 	
 	var sectionTitles =
@@ -60,7 +60,7 @@ extension ResetViewController {
 		cell.textLabel?.text = cellText
 		
 		switch cellText {
-		case "Clear Network Cache":
+		case String.localized("RESET_VIEW_CONTROLLER_CLEAR_CACHE"):
 			cell.textLabel?.textColor = Preferences.appTintColor.uiColor
 		case "Reset Settings":
 			cell.textLabel?.textColor = UIColor.systemRed
@@ -75,17 +75,17 @@ extension ResetViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let itemTapped = tableData[indexPath.section][indexPath.row]
 		switch itemTapped {
-		case "Clear Network Cache":
+		case String.localized("RESET_VIEW_CONTROLLER_CLEAR_CACHE"):
 			var totalCacheSize = URLCache.shared.currentDiskUsage
 			if let nukeCache = ImagePipeline.shared.configuration.dataCache as? DataCache {
 				totalCacheSize += nukeCache.totalSize
 			}
-			let message = "This action is irreversible. Cached network requests and images will be cleared."
+			let message = String.localized("RESET_VIEW_CONTROLLER_CLEAR_CACHE_ALERT_TITLE")
 			+ "\n\n"
 			+ String("Cache size: \(ByteCountFormatter.string(fromByteCount: Int64(totalCacheSize), countStyle: .file))")
 			
 			confirmAction(
-				title: "Clear Network Cache",
+				title: String.localized("RESET_VIEW_CONTROLLER_CLEAR_CACHE"),
 				message: message
 			) {
 				self.clearNetworkCache()
@@ -108,7 +108,7 @@ extension ResetViewController {
 	func confirmAction(
 		title: String,
 		message: String,
-		continueActionName: String = "Continue",
+		continueActionName: String = .localized("CONTINUE"),
 		destructive: Bool = true,
 		proceed: @escaping () -> Void
 	) {
@@ -121,7 +121,7 @@ extension ResetViewController {
 		let action = UIAlertAction(title: continueActionName, style: destructive ? .destructive : .default) { _ in proceed() }
 		alertView.addAction(action)
 
-		alertView.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel))
+		alertView.addAction(UIAlertAction(title: String.localized("CANCEL"), style: .cancel))
 		present(alertView, animated: true)
 	}
 

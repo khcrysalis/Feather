@@ -17,9 +17,9 @@ class TabbarController: UITabBarController, UITabBarControllerDelegate {
 	}
 	
 	private func setupTabs() {
-		let sources = self.createNavigation(with: "Sources", and: UIImage(named: "globe2"), vc: SourcesViewController())
-		let n = self.createNavigation(with: "Library", and: UIImage(systemName: "square.grid.2x2.fill"), vc: LibraryViewController())
-		let settings = self.createNavigation(with: "Settings", and: UIImage(systemName: "gearshape.2.fill"), vc: SettingsViewController())
+		let sources = self.createNavigation(with: String.localized("TAB_SOURCES"), and: UIImage(named: "globe2"), vc: SourcesViewController())
+		let n = self.createNavigation(with: String.localized("TAB_LIBRARY"), and: UIImage(systemName: "square.grid.2x2.fill"), vc: LibraryViewController())
+		let settings = self.createNavigation(with: String.localized("TAB_SETTINGS"), and: UIImage(systemName: "gearshape.2.fill"), vc: SettingsViewController())
 
 		self.setViewControllers([sources, n, settings], animated: false)
 	}

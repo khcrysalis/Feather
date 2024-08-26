@@ -56,7 +56,7 @@ class ActivityIndicatorButton: UIButton {
 	}
 	
 	private func setupButton() {
-		setTitle("Start Signing", for: .normal)
+		setTitle(String.localized("APP_SIGNING_VIEW_CONTROLLER_START_SIGNING"), for: .normal)
 		titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
 		setTitleColor(.white, for: .normal)
 		frame.size = CGSize(width: 100, height: 64)

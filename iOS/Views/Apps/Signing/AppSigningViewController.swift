@@ -87,18 +87,18 @@ class AppSigningViewController: UITableViewController {
         tableView.register(SwitchViewCell.self, forCellReuseIdentifier: "SwitchViewCell")
         tableView.register(ActivityIndicatorViewCell.self, forCellReuseIdentifier: "ActivityIndicatorViewCell")
 		self.isModalInPresentation = true
-		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .done, target: self, action: #selector(closeSheet))
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: String.localized("DISMISS"), style: .done, target: self, action: #selector(closeSheet))
 		setupToolbar()
 		
 		if (certs == nil) {
 			#if !targetEnvironment(simulator)
 			DispatchQueue.main.async {
                 let alert = UIAlertController(
-                    title: "Error",
-                    message: "You do not have a certificate selected, please select or upload one in the signing section of the settings tab.",
+					title: String.localized("APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_TITLE"),
+					message: String.localized("APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_DESCRIPTION"),
                     preferredStyle: .alert
                 )
-				alert.addAction(UIAlertAction(title: "Lame", style: .default) { _ in
+				alert.addAction(UIAlertAction(title: String.localized("LAME"), style: .default) { _ in
 						self.dismiss(animated: true)
 					}
 				)
@@ -200,15 +200,15 @@ class AppSigningViewController: UITableViewController {
 			cell.accessoryType = .disclosureIndicator
 			return cell
         case (0, 1):
-            cell.textLabel?.text = "Name"
+			cell.textLabel?.text = String.localized("APPS_INFORMATION_TITLE_NAME")
             cell.detailTextLabel?.text = name
             cell.accessoryType = .disclosureIndicator
         case (0, 2):
-            cell.textLabel?.text = "Bundle ID"
+			cell.textLabel?.text = String.localized("APPS_INFORMATION_TITLE_IDENTIFIER")
             cell.detailTextLabel?.text = bundleId
             cell.accessoryType = .disclosureIndicator
         case (0, 3):
-            cell.textLabel?.text = "Version"
+			cell.textLabel?.text = String.localized("APPS_INFORMATION_TITLE_VERSION")
             cell.detailTextLabel?.text = version
             cell.accessoryType = .disclosureIndicator
 		case (1, 0):
@@ -218,19 +218,19 @@ class AppSigningViewController: UITableViewController {
 				cell.selectionStyle = .none
 				return cell
 			} else {
-				cell.textLabel?.text = "No certificates selected"
+				cell.textLabel?.text = String.localized("SETTINGS_VIEW_CONTROLLER_CELL_CURRENT_CERTIFICATE_NOSELECTED")
 				cell.textLabel?.textColor = .secondaryLabel
 				cell.selectionStyle = .none
 			}
             break
         case (2, 0):
-			cell.textLabel?.text = "Add Tweaks"
+			cell.textLabel?.text = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS")
 			let badgeView = BadgeView(frame: CGRect(x: 0, y: 0, width: 60, height: 20))
 			cell.accessoryView = badgeView
 
             break
         case (3, 0):
-            cell.textLabel?.text = "Advanced"
+			cell.textLabel?.text = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED")
             cell.accessoryType = .disclosureIndicator
             break
         default:

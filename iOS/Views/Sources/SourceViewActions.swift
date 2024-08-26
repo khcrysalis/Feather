@@ -12,16 +12,16 @@ import UIKit
 extension SourcesViewController {
 
 	func sourcesAddButtonTapped() {
-		let alertController = UIAlertController(title: "Add Source", message: "Add Altstore Repo URL", preferredStyle: .alert)
+		let alertController = UIAlertController(title: String.localized("SOURCES_VIEW_ADD_SOURCES_ALERT_TITLE"), message: String.localized("SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION"), preferredStyle: .alert)
 		
 		alertController.addTextField { textField in
 			textField.placeholder = "URL"
 		}
 		
-		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		let cancelAction = UIAlertAction(title: String.localized("CANCEL"), style: .cancel, handler: nil)
 		alertController.addAction(cancelAction)
 		
-		let addSourceAction = UIAlertAction(title: "Add Source", style: .default) { _ in
+		let addSourceAction = UIAlertAction(title: String.localized("SOURCES_VIEW_ADD_SOURCES_ALERT_TITLE"), style: .default) { _ in
 			if let sourceURL = alertController.textFields?.first?.text {
 				CoreDataManager.shared.getSourceData(urlString: sourceURL) { error in
 					if let error = error {

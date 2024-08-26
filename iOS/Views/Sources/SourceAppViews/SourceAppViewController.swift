@@ -13,6 +13,8 @@ import CoreData
 
 class SourceAppViewController: UITableViewController {
 	var apps: [StoreAppsData] = []
+	var filteredApps: [StoreAppsData] = []
+	
 	var name: String? { didSet { self.title = name } }
 	var uri: URL!
 	
@@ -21,6 +23,8 @@ class SourceAppViewController: UITableViewController {
 	var highlightDeveloperName: String?
 	
 	private let sourceGET = SourceGET()
+	
+	public var searchController: UISearchController!
 	
 	private let activityIndicator: UIActivityIndicatorView = {
 		let indicator = UIActivityIndicatorView(style: .medium)
@@ -34,6 +38,7 @@ class SourceAppViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupNavigation()
+		setupSearchController()
 		setupViews()
 		loadAppsData()
 	}
@@ -106,23 +111,23 @@ class SourceAppViewController: UITableViewController {
 
 extension SourceAppViewController {
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return apps.count
+		return isFiltering ? filteredApps.count : apps.count
 	}
 	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		
-		let app = apps[indexPath.row]
-		if (app.screenshotURLs != nil), !app.screenshotURLs!.isEmpty {
+		let app = isFiltering ? filteredApps[indexPath.row] : apps[indexPath.row]
+		if (app.screenshotURLs != nil), !app.screenshotURLs!.isEmpty, Preferences.appDescriptionAppearence != 2 {
 			return 322
+		} else if Preferences.appDescriptionAppearence == 2 {
+			return UITableView.automaticDimension
 		} else {
 			return 72
 		}
 	}
-
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = AppTableViewCell(style: .subtitle, reuseIdentifier: "RoundedBackgroundCell")
-		let app = apps[indexPath.row]
+		let app = isFiltering ? filteredApps[indexPath.row] : apps[indexPath.row]
 		cell.configure(with: app)
 		cell.selectionStyle = .none
 		cell.backgroundColor = .clear
@@ -135,10 +140,56 @@ extension SourceAppViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		if apps.isEmpty || (highlightAppName != nil) {
+		if isFiltering || apps.isEmpty || (highlightAppName != nil) {
 			return nil
 		} else {
-			return "\(apps.count) Apps"
+			//return "\(apps.count) Apps"
+			return String.localized("SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS", arguments: "\(apps.count)")
 		}
 	}
+}
+
+extension SourceAppViewController: UISearchControllerDelegate, UISearchBarDelegate {
+	func setupSearchController() {
+		searchController = UISearchController(searchResultsController: nil)
+		searchController.obscuresBackgroundDuringPresentation = false
+		searchController.hidesNavigationBarDuringPresentation = true
+		searchController.searchResultsUpdater = self
+		searchController.delegate = self
+		searchController.searchBar.placeholder = String.localized("SOURCES_APP_VIEW_CONTROLLER_SEARCH_APPS")
+		navigationItem.searchController = searchController
+		definesPresentationContext = true
+		navigationItem.hidesSearchBarWhenScrolling = true
+	}
+	
+	var isFiltering: Bool {
+		return searchController.isActive && !searchBarIsEmpty
+	}
+
+	var searchBarIsEmpty: Bool {
+		return searchController.searchBar.text?.isEmpty ?? true
+	}
+}
+
+extension SourceAppViewController: UISearchResultsUpdating {
+	func updateSearchResults(for searchController: UISearchController) {
+		let searchText = searchController.searchBar.text ?? ""
+		filterContentForSearchText(searchText)
+		tableView.reloadData()
+	}
+	
+	private func filterContentForSearchText(_ searchText: String) {
+		let lowercasedSearchText = searchText.lowercased()
+
+		filteredApps = apps.filter { app in
+			let nameMatch = app.name.lowercased().contains(lowercasedSearchText)
+			let bundleIdentifierMatch = app.bundleIdentifier.lowercased().contains(lowercasedSearchText) 
+			let developerNameMatch = app.developerName?.lowercased().contains(lowercasedSearchText) ?? false
+			let subtitleMatch = app.subtitle?.lowercased().contains(lowercasedSearchText) ?? false
+			let localizedDescriptionMatch = app.localizedDescription?.lowercased().contains(lowercasedSearchText) ?? false
+
+			return nameMatch || bundleIdentifierMatch || developerNameMatch || subtitleMatch || localizedDescriptionMatch
+		}
+	}
+
 }

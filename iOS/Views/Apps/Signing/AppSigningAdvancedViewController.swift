@@ -25,7 +25,7 @@ class AppSigningAdvancedViewController: UITableViewController {
 	}
 	
 	override func viewDidLoad() {
-		title = "Advanced"
+		title = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED")
 		navigationItem.largeTitleDisplayMode = .never
 		
 		let forceLightDarkAppearence = TweakLibraryViewCell()
@@ -47,56 +47,56 @@ class AppSigningAdvancedViewController: UITableViewController {
 		cellsForSection1.append(forceMinimumVersion)
 		
 		let removePluginsCell = SwitchViewCell()
-		removePluginsCell.textLabel?.text = "Remove all PlugIns"
+		removePluginsCell.textLabel?.text = String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS")
 		removePluginsCell.switchControl.addTarget(self, action: #selector(removePluginsToggled(_:)), for: .valueChanged)
 		removePluginsCell.switchControl.isOn = appSigningViewController.removePlugins
 		removePluginsCell.selectionStyle = .none
 		cellsForSection2.append(removePluginsCell)
 		
 		let removeSupportedDevicesCell = SwitchViewCell()
-		removeSupportedDevicesCell.textLabel?.text = "Remove UISupportedDevices"
+		removeSupportedDevicesCell.textLabel?.text = String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES")
 		removeSupportedDevicesCell.switchControl.addTarget(self, action: #selector(removeSupportedDevicesToggled(_:)), for: .valueChanged)
 		removeSupportedDevicesCell.switchControl.isOn = appSigningViewController.removeSupportedDevices
 		removeSupportedDevicesCell.selectionStyle = .none
 		cellsForSection2.append(removeSupportedDevicesCell)
 		
 		let removeURLSchemeCell = SwitchViewCell()
-		removeURLSchemeCell.textLabel?.text = "Remove URLScheme"
+		removeURLSchemeCell.textLabel?.text = String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME")
 		removeURLSchemeCell.switchControl.addTarget(self, action: #selector(removeURLSchemeToggled(_:)), for: .valueChanged)
 		removeURLSchemeCell.switchControl.isOn = appSigningViewController.removeURLScheme
 		removeURLSchemeCell.selectionStyle = .none
 		cellsForSection2.append(removeURLSchemeCell)
 		
 		let forceFileSharingCell = SwitchViewCell()
-		forceFileSharingCell.textLabel?.text = "Allow browsing Documents"
+		forceFileSharingCell.textLabel?.text = String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS")
 		forceFileSharingCell.switchControl.addTarget(self, action: #selector(forceFileSharingToggled(_:)), for: .valueChanged)
 		forceFileSharingCell.switchControl.isOn = appSigningViewController.forceFileSharing
 		forceFileSharingCell.selectionStyle = .none
 		cellsForSection2.append(forceFileSharingCell)
 		
 		let forceiTunesFileSharing = SwitchViewCell()
-		forceiTunesFileSharing.textLabel?.text = "Allow iTunes Sharing"
+		forceiTunesFileSharing.textLabel?.text = String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING")
 		forceiTunesFileSharing.switchControl.addTarget(self, action: #selector(forceiTunesFileSharingToggled(_:)), for: .valueChanged)
 		forceiTunesFileSharing.switchControl.isOn = appSigningViewController.forceiTunesFileSharing
 		forceiTunesFileSharing.selectionStyle = .none
 		cellsForSection2.append(forceiTunesFileSharing)
 		
 		let forceProMotion = SwitchViewCell()
-		forceProMotion.textLabel?.text = "Force Pro Motion"
+		forceProMotion.textLabel?.text = String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION")
 		forceProMotion.switchControl.addTarget(self, action: #selector(forceFileSharingToggled(_:)), for: .valueChanged)
 		forceProMotion.switchControl.isOn = appSigningViewController.forceProMotion
 		forceProMotion.selectionStyle = .none
 		cellsForSection2.append(forceProMotion)
 		
 		let forceForceFullScreen = SwitchViewCell()
-		forceForceFullScreen.textLabel?.text = "Force Fullscreen"
+		forceForceFullScreen.textLabel?.text = String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN")
 		forceForceFullScreen.switchControl.addTarget(self, action: #selector(forceForceFullScreenToggled(_:)), for: .valueChanged)
 		forceForceFullScreen.switchControl.isOn = appSigningViewController.forceForceFullScreen
 		forceForceFullScreen.selectionStyle = .none
 		cellsForSection2.append(forceForceFullScreen)
 		
 		let removeWatchPlaceHolder = SwitchViewCell()
-		removeWatchPlaceHolder.textLabel?.text = "Delete Placeholder Watch App"
+		removeWatchPlaceHolder.textLabel?.text = String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP")
 		removeWatchPlaceHolder.switchControl.addTarget(self, action: #selector(forceForceFullScreenToggled(_:)), for: .valueChanged)
 		removeWatchPlaceHolder.switchControl.isOn = appSigningViewController.removeWatchPlaceHolder
 		removeWatchPlaceHolder.selectionStyle = .none
@@ -109,9 +109,9 @@ class AppSigningAdvancedViewController: UITableViewController {
 	
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		switch section {
-		case 0: return "Appearence"
-		case 1: return "Minimum App Version"
-		case 2: return "Properties"
+		case 0: return String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE")
+		case 1: return String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION")
+		case 2: return String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES")
 		default: return nil
 		}
 	}

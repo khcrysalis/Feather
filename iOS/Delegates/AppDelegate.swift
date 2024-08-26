@@ -132,17 +132,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 
 extension UIOnboardingViewConfiguration {
 	static func setUp() -> Self {
-		let welcomeToLine = NSMutableAttributedString(string: "Welcome to")
+		let welcomeToLine = NSMutableAttributedString(string: String.localized("ONBOARDING_WELCOMETITLE_1"))
 		let featherLine = NSMutableAttributedString(string: "Feather", attributes: [
 			.foregroundColor: UIColor.tintColor
 		])
-		
-		let text = UIOnboardingTextViewConfiguration(
-			text: "Developed by Samara. Made for users who are passionate for sideloading and freedom. Many features included inside.",
-			linkTitle: "Learn more...",
-			link: "https://github.com/khcrysalis/feather?tab=readme-ov-file#features",
-			tint: .tintColor
-		)
 		
 		let featureStyle = UIOnboardingFeatureStyle(
 			titleFontName: "",
@@ -156,22 +149,29 @@ extension UIOnboardingViewConfiguration {
 			.init(
 				icon: UIImage(systemName: "arrow.down.app.fill")!,
 				iconTint: .label,
-				title: "Sideload On Device",
-				description: "Sideload apps without a computer, all done from your device."
+				title: String.localized("ONBOARDING_CELL_1_TITLE"),
+				description: String.localized("ONBOARDING_CELL_1_DESCRIPTION")
 			),
 			.init(
 				icon: UIImage(systemName: "sparkles.square.filled.on.square")!,
 				iconTint: .tintColor,
-				title: "Customize Apps",
-				description: "Manage and customize your apps for your needs."
+				title: String.localized("ONBOARDING_CELL_2_TITLE"),
+				description: String.localized("ONBOARDING_CELL_2_DESCRIPTION")
 			),
 			.init(
 				icon: UIImage(systemName: "sparkles")!,
 				iconTint: .systemYellow,
-				title: "And Much More!",
-				description: "AltStore repositories, import IPA's, easy certificate switching, and much more."
+				title: String.localized("ONBOARDING_CELL_3_TITLE"),
+				description: String.localized("ONBOARDING_CELL_3_DESCRIPTION")
 			)
-		]
+		] 
+		
+		let text = UIOnboardingTextViewConfiguration(
+			text: String.localized("ONBOARDING_FOOTER"),
+			linkTitle: String.localized("ONBOARDING_FOOTER_LINK"),
+			link: "https://github.com/khcrysalis/feather?tab=readme-ov-file#features",
+			tint: .tintColor
+		)
 		
 		return .init(
 			appIcon: .init(named: "AppIcon")!,
@@ -180,7 +180,7 @@ extension UIOnboardingViewConfiguration {
 			features: onboardingFeatures,
 			featureStyle: featureStyle,
 			textViewConfiguration: text,
-			buttonConfiguration: .init(title: "Continue", backgroundColor: .tintColor)
+			buttonConfiguration: .init(title: String.localized("ONBOARDING_CONTINUE_BUTTON"), backgroundColor: .tintColor)
 		)
 	}
 	

@@ -68,7 +68,7 @@ extension SourceAppViewController {
 									Debug.shared.log(message: error.localizedDescription, type: .error)
 								} else {
 									downloadTaskManager.updateTask(uuid: appUUID, state: .completed)
-									Debug.shared.log(message: "Done!", type: .success)
+									Debug.shared.log(message: String.localized("DONE"), type: .success)
 								}
 							}
 						}

@@ -41,7 +41,7 @@ class CertificatesViewController: UITableViewController {
 	}
 	
 	fileprivate func setupNavigation() {
-		self.title = "Certificates"
+		self.title = String.localized("CERTIFICATES_VIEW_CONTROLLER_TITLE")
 		self.navigationController?.navigationBar.prefersLargeTitles = false
 	}
 	
@@ -73,7 +73,7 @@ extension CertificatesViewController {
 		if indexPath.section == 0 {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "AddCell", for: indexPath) as! CertificateViewAddTableViewCell
 			
-			cell.configure(with: "Add Certificates", description: "Tap to add a certificate")
+			cell.configure(with: String.localized("CERTIFICATES_VIEW_CONTROLLER_CELL_ADD"), description: String.localized("CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_DESCRIPTION"))
 			
 			cell.selectionStyle = .none
 			return cell
@@ -95,7 +95,7 @@ extension CertificatesViewController {
 		
 		let configuration = UIContextMenuConfiguration(identifier: nil, actionProvider: { _ in
 			return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [
-				UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive, handler: {_ in
+				UIAction(title: String.localized("DELETE"), image: UIImage(systemName: "trash"), attributes: .destructive, handler: {_ in
 					if Preferences.selectedCert != indexPath.row {
 						do {
 							CoreDataManager.shared.deleteAllCertificateContent(for: source)
@@ -104,8 +104,8 @@ extension CertificatesViewController {
 						}
 					} else {
 						DispatchQueue.main.async {
-							let alert = UIAlertController(title: "You don't want to do this!", message: "You're trying to delete a selected certificate, try again later when you have another certificate on hand.", preferredStyle: UIAlertController.Style.alert)
-							alert.addAction(UIAlertAction(title: "Lame", style: UIAlertAction.Style.default, handler: nil))
+							let alert = UIAlertController(title: String.localized("CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_TITLE"), message: String.localized("CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_DESCRIPTION"), preferredStyle: UIAlertController.Style.alert)
+							alert.addAction(UIAlertAction(title: String.localized("LAME"), style: UIAlertAction.Style.default, handler: nil))
 							self.present(alert, animated: true, completion: nil)
 						}
 					}
@@ -118,7 +118,7 @@ extension CertificatesViewController {
 	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
 		switch section {
 		case 0:
-			return "Supported file formats:\n\n- P12 (.p12)\n- Mobile Provision (.mobileprovision)\n\nMake sure your certificates are valid and are able to sideload to your device!"
+			return String.localized("CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_FOOTER")
 		default:
 			return nil
 		}

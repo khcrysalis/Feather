@@ -14,16 +14,16 @@ class SettingsViewController: UITableViewController {
 	var tableData =
 	[
 		["Donate"],
-		["About Feather", "Submit Feedback", "GitHub Repository"],
-		["Display", "App Icon"],
-		["Current Certificate", "Add Certificate"],
+		[String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ABOUT", arguments: "Feather"), String.localized("SETTINGS_VIEW_CONTROLLER_CELL_SUBMIT_FEEDBACK"), String.localized("SETTINGS_VIEW_CONTROLLER_CELL_GITHUB")],
+		[String.localized("SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY"), String.localized("SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON")],
+		["Current Certificate", String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES")],
 //		["Signing Configuration"],
 		["Fuck PPQCheck", "PPQCheckMitigationString", "PPQCheckMitigationExport"],
-//		["Use Server", "Use Custom Server"],
-		["Update Local Certificate"],
+//		["Use Server", String.localized("SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER")],
+		[String.localized("SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE")],
 		[
 //			"Debug Logs",
-				"Reset"
+			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET")
 		]
 	]
 	
@@ -31,13 +31,13 @@ class SettingsViewController: UITableViewController {
 	[
 		"",
 		"",
-		"General",
-		"Signing",
+		String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_GENERAL"),
+		String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING"),
 //		"",
 		"",
-		"Signing Server",
+		String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING_SERVER"),
 //		"",
-		"Advanced"
+		String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED")
 	]
 	
 	var isDownloadingCertifcate = false
@@ -90,10 +90,10 @@ extension SettingsViewController {
 	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
 		switch section {
 		case 1:
-			return "If any issues occur within Feather please report it via the GitHub repository. When submitting an issue, be sure to submit any logs."
+			return String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES")
 //		case 6: return "Default server goes to \"\(Preferences.defaultInstallPath)\""
 		case 5:
-			return "Sadly due to limitations server certificates will need to be re-renewed every year to keep Feathers local features working properly, tap this button to retrieve the most up-to-date files from our repositories."
+			return String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS")
 		default:
 			return nil
 		}
@@ -115,21 +115,21 @@ extension SettingsViewController {
 		case "Debug Logs", "Signing Configuration":
 			cell.accessoryType = .disclosureIndicator
 			cell.selectionStyle = .default
-		case "About Feather":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ABOUT", arguments: "Feather"):
 			cell.setAccessoryIcon(with: "info.circle")
 			cell.selectionStyle = .default
-		case "Display":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY"):
 			cell.setAccessoryIcon(with: "paintbrush")
 			cell.selectionStyle = .default
-		case "Submit Feedback", "GitHub Repository":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_SUBMIT_FEEDBACK"), String.localized("SETTINGS_VIEW_CONTROLLER_CELL_GITHUB"):
 			cell.textLabel?.textColor = .tintColor
 			cell.setAccessoryIcon(with: "safari")
 			cell.selectionStyle = .default
-		case "Reset":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET"):
 			cell.textLabel?.textColor = .tintColor
 			cell.accessoryType = .disclosureIndicator
 			cell.selectionStyle = .default
-		case "Add Certificate":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES"):
 			cell.setAccessoryIcon(with: "plus")
 			cell.selectionStyle = .default
 		case "Current Certificate":
@@ -139,13 +139,13 @@ extension SettingsViewController {
 				cell.selectionStyle = .none
 				return cell
 			} else {
-				cell.textLabel?.text = "No certificates selected"
+				cell.textLabel?.text = String.localized("SETTINGS_VIEW_CONTROLLER_CELL_CURRENT_CERTIFICATE_NOSELECTED")
 				cell.textLabel?.textColor = .secondaryLabel
 				cell.selectionStyle = .none
 			}
 		case "Fuck PPQCheck":
 			let fuckPPq = SwitchViewCell()
-			fuckPPq.textLabel?.text = "PPQCheck Protection"
+			fuckPPq.textLabel?.text = String.localized("SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_TITLE")
 			fuckPPq.switchControl.addTarget(self, action: #selector(fuckPpqcheckToggled(_:)), for: .valueChanged)
 			fuckPPq.switchControl.isOn = Preferences.isFuckingPPqcheckDetectionOff
 			fuckPPq.selectionStyle = .none
@@ -157,23 +157,23 @@ extension SettingsViewController {
 			return fuckPPq
 
 		case "PPQCheckMitigationString":
-			cell.textLabel?.text = "Change Random Identifier"
+			cell.textLabel?.text = String.localized("SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_ID")
 			cell.textLabel?.textColor = .tintColor
 			cell.selectionStyle = .default
 		case "PPQCheckMitigationExport":
-			cell.textLabel?.text = "Export Random Identifier"
+			cell.textLabel?.text = String.localized("SETTINGS_VIEW_CONTROLLER_CELL_EXPORT_ID")
 			cell.textLabel?.textColor = .tintColor
 			cell.selectionStyle = .default
 		case "Use Server":
 			let useS = SwitchViewCell()
-			useS.textLabel?.text = "Online Install Method"
+			useS.textLabel?.text = String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ONLINE_INSTALL_METHOD")
 			useS.switchControl.addTarget(self, action: #selector(onlinePathToggled(_:)), for: .valueChanged)
 			useS.switchControl.isOn = Preferences.userSelectedServer
 			useS.selectionStyle = .none
 			useS.switchControl.isEnabled = false
 			useS.textLabel?.textColor = .secondaryLabel
 			return useS
-		case "Use Custom Server":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER"):
 			if Preferences.onlinePath != Preferences.defaultInstallPath {
 				cell.textLabel?.textColor = UIColor.systemGray
 				cell.isUserInteractionEnabled = false
@@ -182,13 +182,13 @@ extension SettingsViewController {
 				cell.textLabel?.textColor = .secondaryLabel
 				cell.isUserInteractionEnabled = false
 			}
-		case "Reset Configuration":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION"):
 			cell.textLabel?.textColor = .systemRed
 			cell.textLabel?.textAlignment = .center
-		case "App Icon":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON"):
 			cell.setAccessoryIcon(with: "app.dashed")
 			cell.selectionStyle = .default
-		case "Update Local Certificate":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE"):
 			if !isDownloadingCertifcate {
 				cell.textLabel?.textColor = .tintColor
 				cell.setAccessoryIcon(with: "signature")
@@ -197,7 +197,7 @@ extension SettingsViewController {
 				let cell = ActivityIndicatorViewCell()
 				cell.activityIndicator.startAnimating()
 				cell.selectionStyle = .none
-				cell.textLabel?.text = "Updating Local Certificate"
+				cell.textLabel?.text = String.localized("SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE_UPDATING")
 				cell.textLabel?.textColor = .secondaryLabel
 				return cell
 			}
@@ -211,13 +211,13 @@ extension SettingsViewController {
 	
 	@objc func showPPQInfoAlert() {
 		let alertController = UIAlertController(
-			title: "PPQCheck Protections",
-			message: "This setting enables the PPQCheck protections, which is designed to prepend each bundle identifier for the apps you sideload with a random string.\n\nThis is meant to avoid apple flagging your account by (trying) to make it so they're unable to associate the app your sideloading with one from the App Store.",
+			title: String.localized("SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_TITLE"),
+			message: String.localized("SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_DESCRIPTION"),
 			preferredStyle: .alert
 		)
 		alertController.addAction(UIAlertAction(title: "???", style: .default))
-		alertController.addAction(UIAlertAction(title: "I don't care", style: .destructive))
-		alertController.addAction(UIAlertAction(title: "Good to know", style: .cancel))
+		alertController.addAction(UIAlertAction(title: String.localized("SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_IDC"), style: .destructive))
+		alertController.addAction(UIAlertAction(title: String.localized("SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_GTK"), style: .cancel))
 		present(alertController, animated: true, completion: nil)
 	}
 	
@@ -232,28 +232,28 @@ extension SettingsViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let itemTapped = tableData[indexPath.section][indexPath.row]
 		switch itemTapped {
-		case "GitHub Repository":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_GITHUB"):
 			guard let url = URL(string: "https://github.com/khcrysalis/Feather") else {
 				Debug.shared.log(message: "Invalid URL")
 				return
 			}
 			UIApplication.shared.open(url, options: [:], completionHandler: nil)
-		case "Submit Feedback":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_SUBMIT_FEEDBACK"):
 			guard let url = URL(string: "https://github.com/khcrysalis/Feather/issues") else {
 				Debug.shared.log(message: "Invalid URL")
 				return
 			}
 			UIApplication.shared.open(url, options: [:], completionHandler: nil)
-		case "Display":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY"):
 			let l = DisplayViewController()
 			navigationController?.pushViewController(l, animated: true)
-		case "About Feather":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ABOUT", arguments: "Feather"):
 			let l = AboutViewController()
 			navigationController?.pushViewController(l, animated: true)
-		case "Reset":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET"):
 			let l = ResetViewController()
 			navigationController?.pushViewController(l, animated: true)
-		case "Add Certificate":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES"):
 			let l = CertificatesViewController()
 			navigationController?.pushViewController(l, animated: true)
 		case "PPQCheckMitigationString":
@@ -262,14 +262,14 @@ extension SettingsViewController {
 			let shareText = Preferences.pPQCheckString
 			let activityViewController = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
 			present(activityViewController, animated: true, completion: nil)
-		case "App Icon":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON"):
 			let iconsListViewController = IconsListViewController()
 			navigationController?.pushViewController(iconsListViewController, animated: true)
-		case "Use Custom Server":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER"):
 			showChangeDownloadURLAlert()
-		case "Reset Configuration":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION"):
 			resetConfigDefault()
-		case "Update Local Certificate":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE"):
 			if !isDownloadingCertifcate {
 				isDownloadingCertifcate = true
 				tableView.reloadRows(at: [indexPath], with: .automatic)
@@ -306,7 +306,7 @@ extension SettingsViewController {
 	
 	func updateCells() {
 		if Preferences.onlinePath != Preferences.defaultInstallPath {
-			tableData[6].insert("Reset Configuration", at: 1)
+			tableData[6].insert(String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION"), at: 1)
 		}
 		Preferences.installPathChangedCallback = { [weak self] newInstallPath in
 			self?.handleInstallPathChange(newInstallPath)
@@ -315,9 +315,9 @@ extension SettingsViewController {
 	
 	private func handleInstallPathChange(_ newInstallPath: String?) {
 		if newInstallPath != Preferences.defaultInstallPath {
-			tableData[6].insert("Reset Configuration", at: 1)
+			tableData[6].insert(String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION"), at: 1)
 		} else {
-			if let index = tableData[6].firstIndex(of: "Reset Configuration") {
+			if let index = tableData[6].firstIndex(of: String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION")) {
 				tableData[6].remove(at: index)
 			}
 		}
@@ -344,7 +344,7 @@ extension SettingsViewController {
 	}
 	
 	func showChangeDownloadURLAlert() {
-		let alert = UIAlertController(title: "Change Download URL", message: nil, preferredStyle: .alert)
+		let alert = UIAlertController(title: String.localized("SETTINGS_VIEW_CONTROLLER_URL_ALERT_TITLE"), message: nil, preferredStyle: .alert)
 
 		alert.addTextField { textField in
 			textField.placeholder = Preferences.defaultInstallPath
@@ -352,14 +352,14 @@ extension SettingsViewController {
 			textField.addTarget(self, action: #selector(self.textURLDidChange(_:)), for: .editingChanged)
 		}
 
-		let setAction = UIAlertAction(title: "Set", style: .default) { _ in
+		let setAction = UIAlertAction(title: String.localized("SET"), style: .default) { _ in
 			guard let textField = alert.textFields?.first, let enteredURL = textField.text else { return }
 
 			Preferences.onlinePath = enteredURL
 		}
 
 		setAction.isEnabled = false
-		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		let cancelAction = UIAlertAction(title: String.localized("CANCEL"), style: .cancel, handler: nil)
 
 		alert.addAction(setAction)
 		alert.addAction(cancelAction)
@@ -368,7 +368,7 @@ extension SettingsViewController {
 
 
 	@objc func textURLDidChange(_ textField: UITextField) {
-		guard let alertController = presentedViewController as? UIAlertController, let setAction = alertController.actions.first(where: { $0.title == "Set" }) else { return }
+		guard let alertController = presentedViewController as? UIAlertController, let setAction = alertController.actions.first(where: { $0.title == String.localized("SET") }) else { return }
 
 		let enteredURL = textField.text ?? ""
 		setAction.isEnabled = isValidURL(enteredURL)
@@ -382,14 +382,14 @@ extension SettingsViewController {
 
 extension SettingsViewController {
 	func showChangeIdentifierAlert() {
-		let alert = UIAlertController(title: "Change Random Identifier", message: nil, preferredStyle: .alert)
+		let alert = UIAlertController(title: String.localized("SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_IDENTIFIER"), message: nil, preferredStyle: .alert)
 
 		alert.addTextField { textField in
 			textField.placeholder = Preferences.pPQCheckString
 			textField.autocapitalizationType = .none
 		}
 
-		let setAction = UIAlertAction(title: "Set", style: .default) { _ in
+		let setAction = UIAlertAction(title: String.localized("SET"), style: .default) { _ in
 			guard let textField = alert.textFields?.first, let enteredURL = textField.text else { return }
 
 			if !enteredURL.isEmpty {
@@ -398,7 +398,7 @@ extension SettingsViewController {
 		}
 
 		setAction.isEnabled = true
-		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		let cancelAction = UIAlertAction(title: String.localized("CANCEL"), style: .cancel, handler: nil)
 
 		alert.addAction(setAction)
 		alert.addAction(cancelAction)

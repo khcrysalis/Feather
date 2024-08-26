@@ -90,8 +90,11 @@
 		33BE87802C72D2840044D245 /* AR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE877F2C72D2840044D245 /* AR.swift */; };
 		33BE87A52C72E1220044D245 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 33BE87A42C72E1220044D245 /* SWCompression */; };
 		33BE87A72C72F5720044D245 /* SWCompression.md in Resources */ = {isa = PBXBuildFile; fileRef = 33BE87A62C72F5720044D245 /* SWCompression.md */; };
+		33BF31622C7C05330087F3D2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 33BF31642C7C05330087F3D2 /* Localizable.strings */; };
+		33BF31672C7C05840087F3D2 /* Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BF31662C7C05840087F3D2 /* Foundation.swift */; };
 		33C0409B2C30B4A100243D90 /* AppDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C0409A2C30B4A100243D90 /* AppDownload.swift */; };
 		33C0409E2C30DD3E00243D90 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = 33C0409D2C30DD3E00243D90 /* AlertKit */; };
+		33C29F202C7BD73800EF7608 /* UIUserInterfaceStyle+allCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C29F1F2C7BD73800EF7608 /* UIUserInterfaceStyle+allCases.swift */; };
 		33CE81A92C4295F300C05327 /* CertImportingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CE81A82C4295F300C05327 /* CertImportingVC.swift */; };
 		33DF8D7D2C0828CF00D6C05F /* Zsign.md in Resources */ = {isa = PBXBuildFile; fileRef = 33DF8D7C2C0828CF00D6C05F /* Zsign.md */; };
 		33DF8D7F2C0828FB00D6C05F /* Nuke.md in Resources */ = {isa = PBXBuildFile; fileRef = 33DF8D7E2C0828FB00D6C05F /* Nuke.md */; };
@@ -206,7 +209,16 @@
 		33BE877C2C729A7D0044D245 /* DownloadCertificate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadCertificate.swift; sourceTree = "<group>"; };
 		33BE877F2C72D2840044D245 /* AR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AR.swift; sourceTree = "<group>"; };
 		33BE87A62C72F5720044D245 /* SWCompression.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = SWCompression.md; sourceTree = "<group>"; };
+		33BF31632C7C05330087F3D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		33BF31662C7C05840087F3D2 /* Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foundation.swift; sourceTree = "<group>"; };
+		33BF31682C7C46530087F3D2 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		33BF31692C7C465B0087F3D2 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
+		33BF316A2C7C46650087F3D2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		33BF316B2C7C466B0087F3D2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		33BF316C2C7C46780087F3D2 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		33BF316D2C7C46800087F3D2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		33C0409A2C30B4A100243D90 /* AppDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDownload.swift; sourceTree = "<group>"; };
+		33C29F1F2C7BD73800EF7608 /* UIUserInterfaceStyle+allCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIUserInterfaceStyle+allCases.swift"; sourceTree = "<group>"; };
 		33CE81A82C4295F300C05327 /* CertImportingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertImportingVC.swift; sourceTree = "<group>"; };
 		33DF8D7C2C0828CF00D6C05F /* Zsign.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Zsign.md; sourceTree = "<group>"; };
 		33DF8D7E2C0828FB00D6C05F /* Nuke.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Nuke.md; sourceTree = "<group>"; };
@@ -385,6 +397,7 @@
 		339CE2802C584C7C00B58502 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				33BF31542C7C033C0087F3D2 /* Localizations */,
 				339BDAE12BF95DB4007009D9 /* Design */,
 				339CE2822C58503E00B58502 /* Data */,
 				339CE2882C58535B00B58502 /* Logging */,
@@ -571,6 +584,7 @@
 				33E4D8332C6593D2006A1C26 /* UIView+parentcontroller.swift */,
 				33E4D8352C6593F4006A1C26 /* CGSize+aspectFit.swift */,
 				33BE87602C6C37CE0044D245 /* UIImage+resize.swift */,
+				33C29F1F2C7BD73800EF7608 /* UIUserInterfaceStyle+allCases.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -616,6 +630,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		33BF31542C7C033C0087F3D2 /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+				33BF31642C7C05330087F3D2 /* Localizable.strings */,
+				33BF31662C7C05840087F3D2 /* Foundation.swift */,
+			);
+			path = Localizations;
 			sourceTree = "<group>";
 		};
 		33C040992C30B47700243D90 /* Management */ = {
@@ -765,6 +788,12 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-HK",
+				cs,
+				de,
+				es,
+				ko,
+				ja,
 			);
 			mainGroup = 33BA37822BF8159F00FF530A;
 			packageReferences = (
@@ -804,6 +833,7 @@
 				338FFCF82C6973F0006C3BE0 /* Wing@2x.png in Resources */,
 				33DF8D7F2C0828FB00D6C05F /* Nuke.md in Resources */,
 				33BE87A72C72F5720044D245 /* SWCompression.md in Resources */,
+				33BF31622C7C05330087F3D2 /* Localizable.strings in Resources */,
 				33BDD0A02C76D06900AF6169 /* UIOnboarding.md in Resources */,
 				331616952C78D55100894427 /* Asspp.md in Resources */,
 				331616932C7877B800894427 /* localhost.direct.pem in Resources */,
@@ -823,6 +853,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				332476F02C3E95F3008C8EF0 /* ResetViewController.swift in Sources */,
+				33BF31672C7C05840087F3D2 /* Foundation.swift in Sources */,
 				D0651C372BFEEA4B00D40829 /* openssl.cpp in Sources */,
 				D0651C1A2BFEE97F00D40829 /* base64.cpp in Sources */,
 				33BE875F2C6AF91B0044D245 /* IconImageViewCell.swift in Sources */,
@@ -876,6 +907,7 @@
 				33BA37BA2BF9426100FF530A /* Sources.swift in Sources */,
 				D0651C1C2BFEE97F00D40829 /* json.cpp in Sources */,
 				339CE28A2C58539300B58502 /* Logger.swift in Sources */,
+				33C29F202C7BD73800EF7608 /* UIUserInterfaceStyle+allCases.swift in Sources */,
 				33BA378F2BF8159F00FF530A /* AppDelegate.swift in Sources */,
 				33E4D8382C659FE9006A1C26 /* CertificateViewTableViewCell.swift in Sources */,
 				33951CFE2C37AFCF00802F78 /* FloatingActionButton.swift in Sources */,
@@ -917,6 +949,20 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		33BF31642C7C05330087F3D2 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				33BF31632C7C05330087F3D2 /* en */,
+				33BF31682C7C46530087F3D2 /* zh-HK */,
+				33BF31692C7C465B0087F3D2 /* cs */,
+				33BF316A2C7C46650087F3D2 /* de */,
+				33BF316B2C7C466B0087F3D2 /* es */,
+				33BF316C2C7C46780087F3D2 /* ko */,
+				33BF316D2C7C46800087F3D2 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -925,6 +971,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -988,6 +1035,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1070,7 +1118,7 @@
 					"$(PROJECT_DIR)/Shared/Resources",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
+				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather22;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1115,7 +1163,7 @@
 					"$(PROJECT_DIR)/Shared/Resources",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
+				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather22;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

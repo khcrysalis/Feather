@@ -20,6 +20,7 @@ enum Preferences {
 	static var userSelectedServer: Bool
 	
 	@Storage(key: "Feather.DefaultRepos", defaultValue: false)
+	// Default repo is from the repository
 	static var defaultRepos: Bool
 	
 	@Storage(key: "Feather.automaticInstall", defaultValue: true)
@@ -38,17 +39,31 @@ enum Preferences {
 	static var selectedCert: Int
 	
 	@Storage(key: "Feather.ppqcheckBypass", defaultValue: "")
+	// random string
 	static var pPQCheckString: String
 	
 	@Storage(key: "Feather.fuckOffPpqcheckDetection", defaultValue: true)
 	static var isFuckingPPqcheckDetectionOff: Bool
 	
 	@Storage(key: "Feather.idWhitelist", defaultValue: ["kh.crysalis.feather", "kh.crysalis.feather2"])
+	// Unused
 	static var idWhitelist: [String]
+	
+	@Storage(key: "Feather.AppDescriptionAppearence", defaultValue: 0)
+	// 0 == Default appearence
+	// 1 == Replace subtitle with localizedDescription
+	// 2 == Move localizedDescription below app icon, and above screenshots
+	static var appDescriptionAppearence: Int
+	
+	@Storage(key: "UserPreferredLanguageCode", defaultValue: nil, callback: preferredLangChangedCallback)
+	/// Preferred language
+	static var preferredLanguageCode: String?
 }
 // MARK: - Callbacks
 fileprivate extension Preferences {
-
+	static func preferredLangChangedCallback(newValue: String?) {
+		Bundle.preferredLocalizationBundle = .makeLocalizationBundle(preferredLanguageCode: newValue)
+	}
 }
 // MARK: - Color
 

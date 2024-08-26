@@ -79,14 +79,20 @@ class SearchResultsTableViewController: UIViewController, UISearchResultsUpdatin
 		let source = Array(filteredSources.keys)[indexPath.section]
 		let app = filteredSources[source]?[indexPath.row]
 		
-		var appname = app?.name ?? "Unknown"
+		var appname = app?.name ?? String.localized("UNKNOWN")
 		
 		if app!.bundleIdentifier.hasSuffix("Beta") {
 			appname += " (Beta)"
 		}
 		
 		cell.textLabel?.text = appname
-		cell.detailTextLabel?.text = app?.versions?[0].version ?? app?.version
+		
+		let appVersion = (app?.versions?.first?.version ?? app?.version) ?? "1.0"
+		let appSubtitle = app?.subtitle ?? (app?.localizedDescription ?? String.localized("SOURCES_CELLS_DEFAULT_SUBTITLE"))
+		let displayText = appVersion + " • " + appSubtitle
+
+		
+		cell.detailTextLabel?.text = displayText
 		cell.detailTextLabel?.textColor = .secondaryLabel
 
 		cell.accessoryType = .disclosureIndicator

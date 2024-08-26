@@ -47,19 +47,19 @@ struct TransferPreview: View {
 	
 	var text: String {
 		if packaging {
-			return "Packaging..."
+			return String.localized("TRANSFER_PREVIEW_PACKAGING")
 		} else if !isSharing {
 			switch installer.status {
 			case .ready:
-				return "Ready To Install"
+				return String.localized("TRANSFER_PREVIEW_READY")
 			case .sendingManifest:
-				return "Sending Manifest..."
+				return String.localized("TRANSFER_PREVIEW_SENDING_MANIFEST")
 			case .sendingPayload:
-				return "Sending Payload..."
+				return String.localized("TRANSFER_PREVIEW_SENDING_PAYLOAD")
 			case let .completed(result):
 				switch result {
 				case .success:
-					return "Done."
+					return String.localized("TRANSFER_PREVIEW_DONE")
 				case let .failure(failure):
 					return failure.localizedDescription
 				}
@@ -67,7 +67,7 @@ struct TransferPreview: View {
 				return error.localizedDescription
 			}
 		} else {
-			return "Completed"
+			return String.localized("TRANSFER_PREVIEW_COMPLETED")
 		}
 	}
 	

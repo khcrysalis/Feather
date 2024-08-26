@@ -22,7 +22,7 @@ class DonationTableViewCell: UITableViewCell {
 	
 	private let donateLabel: UILabel = {
 		let label = UILabel()
-		label.text = "Donations"
+		label.text = String.localized("DONATION_DONATIONS")
 		label.font = .systemFont(ofSize: 26, weight: .bold)
 		label.textColor = .label
 		label.textAlignment = .center
@@ -32,7 +32,7 @@ class DonationTableViewCell: UITableViewCell {
 	
 	private let donateButton: UIButton = {
 		let button = UIButton(type: .system)
-		button.setTitle("Donate", for: .normal)
+		button.setTitle(String.localized("DONATION_TITLE"), for: .normal)
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
 		button.backgroundColor = .tintColor.withAlphaComponent(0.9)
 		button.setTitleColor(.white, for: .normal)
@@ -100,8 +100,8 @@ class DonationTableViewCell: UITableViewCell {
 	}
 	
 	private func configureStackViewItems() {
-		let item2 = DonationItemView(icon: UIImage(systemName: "lock.fill"), title: "Secret Repo", description: "Get access to our secret repo by donating, will provide you with beta access to Feather.")
-		let item3 = DonationItemView(icon: UIImage(systemName: "heart.fill"), title: "Show Your Support", description: "Show your support by donating! If you're unable to donate, spreading the word about Feather works too!")
+		let item2 = DonationItemView(icon: UIImage(systemName: "lock.fill"), title: String.localized("DONATION_CELL_1_TITLE"), description: String.localized("DONATION_CELL_1_DESCRIPTION"))
+		let item3 = DonationItemView(icon: UIImage(systemName: "heart.fill"), title: String.localized("DONATION_CELL_2_TITLE"), description: String.localized("DONATION_CELL_2_DESCRIPTION"))
 		
 		stackView.addArrangedSubview(item2)
 		stackView.addArrangedSubview(item3)

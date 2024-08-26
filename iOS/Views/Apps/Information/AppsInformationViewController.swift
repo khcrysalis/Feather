@@ -16,30 +16,30 @@ class AppsInformationViewController: UIViewController {
 	var tableData = 
 	[
 		[
-			"Name",
-			"Version",
-			"Identifier",
-			"Size"
+			String.localized("APPS_INFORMATION_TITLE_NAME"),
+			String.localized("APPS_INFORMATION_TITLE_VERSION"),
+			String.localized("APPS_INFORMATION_TITLE_IDENTIFIER")
+//			String.localized("APPS_INFORMATION_TITLE_SIZE")
 		],
 		[
-			"Date Added"
+			String.localized("APPS_INFORMATION_TITLE_DATE_ADDED")
 		],
 		[
-			"Bundle Name",
-			"Bundle Path",
-			"Icon File",
+			String.localized("APPS_INFORMATION_TITLE_BUNDLE_NAME"),
+			String.localized("APPS_INFORMATION_TITLE_BUNDLE_PATH"),
+			String.localized("APPS_INFORMATION_TITLE_ICON_FILE"),
 			"UUID"
 		],
 		[
-			"Open in Files"
+			String.localized("APPS_INFORMATION_TITLE_OPEN_IN_FILES")
 		]
 	]
 	
 	var sectionTitles = 
 	[
-		"Application",
+		String.localized("APPS_INFORMATION_SECTION_TITLE_NAME"),
 		"",
-		"Bundle",
+		String.localized("APPS_INFORMATION_SECTION_TITLE_NAME"),
 		""
 	]
 	
@@ -61,7 +61,7 @@ class AppsInformationViewController: UIViewController {
 		self.tableView.tableHeaderView = configureHeaderView()
 		
 		if !FileManager.default.fileExists(atPath: filePath.path) {
-			tableData.insert(["Deleted File"], at: 0)
+			tableData.insert([String.localized("APPS_INFORMATION_TITLE_DELETED_FILE")], at: 0)
 			sectionTitles.insert("", at: 0)
 		}
 		
@@ -148,13 +148,13 @@ extension AppsInformationViewController: UITableViewDelegate, UITableViewDataSou
 		cell.textLabel?.text = cellText
 		
 		switch cellText {
-		case "Deleted File":
+		case String.localized("APPS_INFORMATION_TITLE_DELETED_FILE"):
 			cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
 			
-			cell.textLabel?.text = "File has been deleted."
+			cell.textLabel?.text = String.localized("APPS_INFORMATION_TITLE_DELETED_FILE_TITLE")
 			cell.textLabel?.textColor = .systemRed
 			
-			cell.detailTextLabel?.text = "This is a useless entry, it does not have a file and Feather will not allow you to install it. It's recommended you delete by swiping on the cell in the Apps tab."
+			cell.detailTextLabel?.text = String.localized("APPS_INFORMATION_TITLE_DELETED_FILE_DESCRIPTION")
 			cell.detailTextLabel?.textColor = .systemYellow
 			
 			
@@ -164,32 +164,32 @@ extension AppsInformationViewController: UITableViewDelegate, UITableViewDataSou
 			cell.textLabel?.numberOfLines = 0
 			cell.detailTextLabel?.numberOfLines = 0
 			
-		case "Name":
+		case String.localized("APPS_INFORMATION_TITLE_NAME"):
 			if let aa = source.value(forKey: "name") as? String {
 				cell.detailTextLabel?.text = aa
 			}
-		case "Version":
+		case String.localized("APPS_INFORMATION_TITLE_VERSION"):
 			if let aa = source.value(forKey: "version") as? String {
 				cell.detailTextLabel?.text = aa
 			}
-		case "Size":
+		case String.localized("APPS_INFORMATION_TITLE_SIZE"):
 			cell.detailTextLabel?.text = "test"
-		case "Date Added":
+		case String.localized("APPS_INFORMATION_TITLE_DATE_ADDED"):
 			if let aa = source.value(forKey: "dateAdded") as? Date {
 				let dateFormatter = DateFormatter()
 				dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
 				let dateString = dateFormatter.string(from: aa)
 				cell.detailTextLabel?.text = dateString
 			}
-		case "Bundle Name":
+		case String.localized("APPS_INFORMATION_TITLE_BUNDLE_NAME"):
 			if let aa = source.value(forKey: "appPath") as? String {
 				cell.detailTextLabel?.text = aa
 			}
-		case "Identifier":
+		case String.localized("APPS_INFORMATION_TITLE_IDENTIFIER"):
 			if let aa = source.value(forKey: "bundleidentifier") as? String {
 				cell.detailTextLabel?.text = aa
 			}
-		case "Icon File":
+		case String.localized("APPS_INFORMATION_TITLE_ICON_FILE"):
 			if let aa = source.value(forKey: "iconURL") as? String {
 				cell.detailTextLabel?.text = aa
 			}
@@ -198,9 +198,9 @@ extension AppsInformationViewController: UITableViewDelegate, UITableViewDataSou
 				cell.detailTextLabel?.text = aa
 			}
 			
-		case "Bundle Path":
+		case String.localized("APPS_INFORMATION_TITLE_BUNDLE_PATH"):
 			cell.detailTextLabel?.text = self.filePath.path
-		case "Open in Files":
+		case String.localized("APPS_INFORMATION_TITLE_OPEN_IN_FILES"):
 			cell.textLabel?.textColor = Preferences.appTintColor.uiColor
 			cell.textLabel?.textAlignment = .center
 			cell.selectionStyle = .default
@@ -214,7 +214,7 @@ extension AppsInformationViewController: UITableViewDelegate, UITableViewDataSou
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let itemTapped = tableData[indexPath.section][indexPath.row]
 		switch itemTapped {
-		case "Open in Files":
+		case String.localized("APPS_INFORMATION_TITLE_OPEN_IN_FILES"):
 			guard let fileURL = self.filePath else {
 				Debug.shared.log(message: "File path is nil or invalid.")
 				return

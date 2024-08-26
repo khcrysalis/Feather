@@ -33,7 +33,7 @@ class AppSigningTweakViewController: UICollectionViewController, UICollectionVie
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		title = "Tweaks"
+		title = String.localized("APP_SIGNING_TWEAK_VIEW_CONTROLLER_TITLE")
 		navigationItem.largeTitleDisplayMode = .never
 		collectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.reuseIdentifier)
 
@@ -85,7 +85,7 @@ extension AppSigningTweakViewController {
 	override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
 		
 		return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
-			let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
+			let deleteAction = UIAction(title: String.localized("DELETE"), image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
 				self.tweaksToInject.remove(at: indexPath.item)
 			}
 			return UIMenu(title: "", children: [deleteAction])

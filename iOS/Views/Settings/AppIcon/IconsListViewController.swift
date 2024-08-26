@@ -43,7 +43,7 @@ class IconsListViewController: UITableViewController {
 	}
 	
 	fileprivate func setupNavigation() {
-		self.title = "App Icon"
+		self.title = String.localized("SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON")
 		self.navigationItem.largeTitleDisplayMode = .never
 	}
 	

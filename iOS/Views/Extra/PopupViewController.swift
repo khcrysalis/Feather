@@ -63,7 +63,7 @@ class PopupViewControllerButton: UIButton {
 	
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
-		setupButton(title: "Default", color: .systemBlue, titlecolor: .white)
+		setupButton(title: String.localized("DEFAULT"), color: .systemBlue, titlecolor: .white)
 		addTarget(self, action: #selector(buttonPressed), for: .touchDown)
 		addTarget(self, action: #selector(buttonReleased), for: .touchUpInside)
 		addTarget(self, action: #selector(buttonReleased), for: .touchUpOutside)

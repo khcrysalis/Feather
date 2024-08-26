@@ -16,16 +16,16 @@ class AboutViewController: UITableViewController {
 	[
 		["Header"],
 		[],
-		["Device Version", "Architecture", "App Version"],
+		[String.localized("ABOUT_VIEW_CONTROLLER_CELL_DEVICE_VERSION"), String.localized("ABOUT_VIEW_CONTROLLER_CELL_DEVICE_ARCH"), String.localized("ABOUT_VIEW_CONTROLLER_CELL_APP_VERSION")],
 		[]
 	]
 	
 	var sectionTitles =
 	[
 		"",
-		"Credits",
-		"Device",
-		"Acknowledgements"
+		String.localized("ABOUT_VIEW_CONTROLLER_SECTION_TITLE_CREDITS"),
+		String.localized("ABOUT_VIEW_CONTROLLER_SECTION_TITLE_DEVICE"),
+		String.localized("ABOUT_VIEW_CONTROLLER_SECTION_TITLE_ACKNOWLEDGEMENTS")
 	]
 	
 	init() { super.init(style: .insetGrouped) }
@@ -107,11 +107,11 @@ extension AboutViewController {
 			cell.selectionStyle = .none
 			cell.configure(withTitle: appName, versionString: versionString)
 			return cell
-		case "Device Version":
+		case String.localized("ABOUT_VIEW_CONTROLLER_CELL_DEVICE_VERSION"):
 			cell.detailTextLabel?.text = UIDevice.current.systemVersion
-		case "Architecture":
+		case String.localized("ABOUT_VIEW_CONTROLLER_CELL_DEVICE_ARCH"):
 			cell.detailTextLabel?.text = String(cString: NXGetLocalArchInfo().pointee.name)
-		case "App Version":
+		case String.localized("ABOUT_VIEW_CONTROLLER_CELL_APP_VERSION"):
 			guard let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
 				break
 			}
@@ -122,7 +122,7 @@ extension AboutViewController {
 			break
 		}
 		
-		if sectionTitles[indexPath.section] == "Credits" {
+		if sectionTitles[indexPath.section] == String.localized("ABOUT_VIEW_CONTROLLER_SECTION_TITLE_CREDITS") {
 			let personCellIdentifier = "PersonCell"
 			let personCell = tableView.dequeueReusableCell(withIdentifier: personCellIdentifier) as? PersonCell ?? PersonCell(style: .default, reuseIdentifier: personCellIdentifier)
 						
@@ -136,7 +136,7 @@ extension AboutViewController {
 			return personCell
 		}
 		
-		if sectionTitles[indexPath.section] == "Acknowledgements" {
+		if sectionTitles[indexPath.section] == String.localized("ABOUT_VIEW_CONTROLLER_SECTION_TITLE_ACKNOWLEDGEMENTS") {
 			let cell = UITableViewCell(style: .default, reuseIdentifier: reuseIdentifier)
 			cell.textLabel?.text = cellText
 			cell.accessoryType = .disclosureIndicator
@@ -147,7 +147,7 @@ extension AboutViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		if sectionTitles[indexPath.section] == "Credits" {
+		if sectionTitles[indexPath.section] == String.localized("ABOUT_VIEW_CONTROLLER_SECTION_TITLE_CREDITS") {
 			let developers = CreditsData.getCreditsData()
 			let developer = developers[indexPath.row]
 			if let socialLink = developer.socialLink {
@@ -157,7 +157,7 @@ extension AboutViewController {
 		
 		let selectedFileName = tableData[indexPath.section][indexPath.row]
 		
-		if sectionTitles[indexPath.section] == "Acknowledgements" {
+		if sectionTitles[indexPath.section] == String.localized("ABOUT_VIEW_CONTROLLER_SECTION_TITLE_ACKNOWLEDGEMENTS") {
 			if let fileContents = loadFileContents(fileName: selectedFileName) {
 				let textViewController = TextViewController()
 				textViewController.textContent = fileContents

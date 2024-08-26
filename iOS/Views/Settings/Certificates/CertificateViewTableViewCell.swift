@@ -108,7 +108,7 @@ class CertificateViewTableViewCell: UITableViewCell {
 			let components = calendar.dateComponents([.day], from: currentDate, to: expirationDate)
 			
 			let daysLeft = components.day ?? 0
-			let expirationText = daysLeft < 0 ? "Expired" : "\(daysLeft) days left"
+			let expirationText = daysLeft < 0 ? String.localized("CERTIFICATES_VIEW_CONTROLLER_CELL_EXPIRED") : String.localized("CERTIFICATES_VIEW_CONTROLLER_CELL_DAYS_LEFT", arguments: "\(daysLeft)")
 			
 			let p1 = PillView(text: expirationText, backgroundColor: daysLeft < 0 ? .systemRed : .systemGray, iconName: daysLeft < 0 ? "xmark" : "timer")
 			pillsStackView.addArrangedSubview(p1)

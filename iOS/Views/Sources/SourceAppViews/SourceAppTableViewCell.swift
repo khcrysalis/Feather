@@ -33,7 +33,7 @@ class AppTableViewCell: UITableViewCell {
 	private let nameLabel: UILabel = {
 		let label = UILabel()
 		label.font = .boldSystemFont(ofSize: 16)
-		label.numberOfLines = 0
+		label.numberOfLines = 1
 		return label
 	}()
 
@@ -41,7 +41,15 @@ class AppTableViewCell: UITableViewCell {
 		let label = UILabel()
 		label.font = .systemFont(ofSize: 13, weight: .regular)
 		label.textColor = .gray
-		label.numberOfLines = 0
+		label.numberOfLines = 2
+		return label
+	}()
+	
+	private let descriptionLabel: UILabel = {
+		let label = UILabel()
+		label.font = .systemFont(ofSize: 13, weight: .regular)
+		label.textColor = .gray
+		label.numberOfLines = 20
 		return label
 	}()
 
@@ -90,6 +98,7 @@ class AppTableViewCell: UITableViewCell {
 		contentView.addSubview(screenshotsScrollView)
 		screenshotsScrollView.addSubview(screenshotsStackView)
 		contentView.addSubview(getButton)
+		contentView.addSubview(descriptionLabel)
 		
 
 		iconImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -97,6 +106,8 @@ class AppTableViewCell: UITableViewCell {
 		screenshotsScrollView.translatesAutoresizingMaskIntoConstraints = false
 		screenshotsStackView.translatesAutoresizingMaskIntoConstraints = false
 		getButton.translatesAutoresizingMaskIntoConstraints = false
+		descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+
 		getButtonWidthConstraint = getButton.widthAnchor.constraint(equalToConstant: 70)
 		NSLayoutConstraint.activate([
 			iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
@@ -112,6 +123,9 @@ class AppTableViewCell: UITableViewCell {
 			getButton.centerYAnchor.constraint(equalTo: iconImageView.centerYAnchor),
 			getButtonWidthConstraint!,
 			getButton.heightAnchor.constraint(equalToConstant: 30),
+			
+			descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+			descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
 
 			screenshotsScrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
 			screenshotsScrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -183,7 +197,24 @@ class AppTableViewCell: UITableViewCell {
 		}
 		
 		nameLabel.text = appname
-		versionLabel.text = app.subtitle ?? "An awesome application."
+
+		let appVersion = (app.versions?.first?.version ?? app.version) ?? "1.0"
+		var displayText = appVersion
+		var descText = ""
+		
+		if Preferences.appDescriptionAppearence == 0 {
+			let appSubtitle = app.subtitle ?? String.localized("SOURCES_CELLS_DEFAULT_SUBTITLE")
+			displayText += " • " + appSubtitle
+		} else if Preferences.appDescriptionAppearence == 1 {
+			let appSubtitle = app.localizedDescription ?? String.localized("SOURCES_CELLS_DEFAULT_SUBTITLE")
+			displayText += " • " + appSubtitle
+		} else if Preferences.appDescriptionAppearence == 2 {
+			let appSubtitle = app.subtitle ?? String.localized("SOURCES_CELLS_DEFAULT_SUBTITLE")
+			displayText += " • " + appSubtitle
+			descText = app.localizedDescription ?? String.localized("SOURCES_CELLS_DEFAULT_DESCRIPTION")
+		}
+		descriptionLabel.text = descText
+		versionLabel.text = displayText
 		iconImageView.image = UIImage(named: "unknown")
 
 		if let iconURL = app.iconURL {
@@ -196,8 +227,10 @@ class AppTableViewCell: UITableViewCell {
 
 		screenshotsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
 
-		if let screenshotUrls = app.screenshotURLs, !screenshotUrls.isEmpty {
+		if let screenshotUrls = app.screenshotURLs, !screenshotUrls.isEmpty, Preferences.appDescriptionAppearence != 2 {
 			setupScreenshots(for: screenshotUrls)
+		} else if Preferences.appDescriptionAppearence == 2 {
+			setupDescription()
 		} else {
 			iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
 		}
@@ -219,17 +252,22 @@ class AppTableViewCell: UITableViewCell {
 			imageView.isUserInteractionEnabled = true
 			return imageView
 		}
-
 		screenshotsScrollView.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 10).isActive = true
 		screenshotsScrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15).isActive = true
 		iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15).isActive = true
-
+		
 		imageViews.forEach { imageView in
 			screenshotsStackView.addArrangedSubview(imageView)
 			imageView.heightAnchor.constraint(equalTo: screenshotsScrollView.heightAnchor).isActive = true
 		}
 
 		loadImages(from: urls, into: imageViews)
+	}
+	
+	private func setupDescription() {
+		iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15).isActive = true
+		descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15).isActive = true
+		descriptionLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 15).isActive = true
 	}
 	
 	@objc private func handleScreenshotTap(_ sender: UITapGestureRecognizer) {

@@ -12,7 +12,7 @@ import UniformTypeIdentifiers
 
 class CertImportingVC: UITableViewController {
 		
-	lazy var saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveAction))
+	lazy var saveButton = UIBarButtonItem(title: String.localized("SAVE"), style: .plain, target: self, action: #selector(saveAction))
 	private var passwordTextField: UITextField?
 	
 	enum FileType: Hashable {
@@ -49,10 +49,10 @@ class CertImportingVC: UITableViewController {
 	
 	fileprivate func setupNavigation() {
 		self.navigationItem.largeTitleDisplayMode = .never
-		self.title = "Import"
+		self.title = String.localized("CERT_IMPORTING_VIEWCONTROLLER_TITLE")
 		saveButton.isEnabled = false
 		self.navigationItem.rightBarButtonItem = saveButton
-		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .done, target: self, action: #selector(closeSheet))
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: String.localized("Dismiss"), style: .done, target: self, action: #selector(closeSheet))
 	}
 	
 	@objc func closeSheet() {
@@ -68,8 +68,8 @@ class CertImportingVC: UITableViewController {
         if let p12path = selectedFiles[.p12] as? URL {
             password_check_fix_WHAT_THE_FUCK(mobileProvisionPath.path)
             if (!p12_password_check(p12path.path, selectedFiles[.password] as? String ?? "")) {
-                let alert = UIAlertController(title: "Bad Password", message: "Please check the password and try again.", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+				let alert = UIAlertController(title: String.localized("CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_TITLE"), message: String.localized("CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_DESCRIPTION"), preferredStyle: UIAlertController.Style.alert)
+				alert.addAction(UIAlertAction(title: String.localized("OK"), style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 return
             }
@@ -80,7 +80,7 @@ class CertImportingVC: UITableViewController {
 			CoreDataManager.shared.addToCertificates(cert: fileContent, files: selectedFiles)
 			self.dismiss(animated: true)
 		} else {
-			Debug.shared.log(message: "Failed to read mobileprovision file", type: .error)
+			Debug.shared.log(message: String.localized("ERROR_FAILED_TO_READ_MOBILEPROVISION"), type: .error)
 		}
 	}
 	
@@ -112,11 +112,11 @@ extension CertImportingVC {
 		
 		switch sectionData[indexPath.section] {
 		case "provision":
-			cell.textLabel?.text = "Import Provisioning File"
+			cell.textLabel?.text = String.localized("CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PROV")
 			cell.detailTextLabel?.text = ".mobileprovision"
 			fileType = .provision
 		case "certs":
-			cell.textLabel?.text = "Import Certificate File"
+			cell.textLabel?.text = String.localized("CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_CERT")
 			cell.detailTextLabel?.text = ".p12"
 			
 			if (selectedFiles[.p12] != nil) {
@@ -136,11 +136,11 @@ extension CertImportingVC {
 			let passwordCell = UITableViewCell(style: .default, reuseIdentifier: "PasswordCell")
 			let textField = UITextField(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
 			
-			textField.placeholder = "Enter password"
+			textField.placeholder = String.localized("CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_ENTER_PW")
 			textField.isSecureTextEntry = true
 			textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
 			
-			passwordCell.textLabel?.text = "Password"
+			passwordCell.textLabel?.text = String.localized("CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PW")
 			passwordCell.selectionStyle = .none
 			passwordCell.accessoryView = textField
 			
@@ -172,11 +172,11 @@ extension CertImportingVC {
 	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
 		switch sectionData[section] {
 		case "provision":
-			return "Import a provisioning file to be able to sideload to your device."
+			return String.localized("CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PROV")
 		case "certs":
-			return "Import a file containing a valid certificate."
+			return String.localized("CERT_IMPORTING_VIEWCONTROLLER_FOOTER_CERT")
 		case "pass":
-			return "Enter the password associated with the private key, leave it blank if theres no password required."
+			return String.localized("Enter the password associated with the private key, leave it blank if theres no password required.")
 		default:
 			return nil
 		}

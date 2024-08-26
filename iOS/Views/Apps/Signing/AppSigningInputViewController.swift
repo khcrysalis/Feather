@@ -38,7 +38,7 @@ class AppSigningInputViewController: UITableViewController {
 		navigationItem.largeTitleDisplayMode = .never
 		self.title = valueToSaveTo.capitalized
 		
-		let saveButton = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveButton))
+		let saveButton = UIBarButtonItem(title: String.localized("SAVE"), style: .done, target: self, action: #selector(saveButton))
 		saveButton.isEnabled = false
 		navigationItem.rightBarButtonItem = saveButton
 		

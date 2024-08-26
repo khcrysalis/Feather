@@ -91,8 +91,8 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 					Debug.shared.log(message: "signApp: \(String(describing: error))", type: .error)
 					completion(false)
 				}
-
-				Debug.shared.log(message: "Successfully signed \(options.name ?? "Unknown")", type: .success)
+				
+				Debug.shared.log(message: String.localized("SUCCESS_SIGNED", arguments: "\(options.name ?? String.localized("UNKNOWN"))"), type: .success)
                 
 				UIApplication.shared.isIdleTimerDisabled = false
                 completion(true)
@@ -118,7 +118,7 @@ func resignApp(certificate: Certificate, appPath: URL, completion: @escaping (Bo
 			try signAppWithZSign(tmpDirApp: appPath, certPaths: (provisionPath, p12Path), password: certificate.password ?? "", options: nil)
 			DispatchQueue.main.async {
 				UIApplication.shared.isIdleTimerDisabled = false
-				Debug.shared.log(message: "Successfully resigned!", type: .success)
+				Debug.shared.log(message: String.localized("SUCCESS_RESIGN"), type: .success)
 			}
 			completion(true)
 		} catch {
@@ -136,7 +136,7 @@ private func signAppWithZSign(tmpDirApp: URL, certPaths: (provisionPath: String,
 			 options?.bundleId ?? "",
 			 options?.name ?? "",
 			 options?.version ?? "") != 0 {
-		throw NSError(domain: "AppSigningErrorDomain", code: 1, userInfo: [NSLocalizedDescriptionKey: "Signing failed"])
+		throw NSError(domain: "AppSigningErrorDomain", code: 1, userInfo: [NSLocalizedDescriptionKey: String.localized("ERROR_ZSIGN_FAILED")])
 	}
 }
 
