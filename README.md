@@ -6,6 +6,8 @@
     Feather is a free on-device iOS application manager/installer built with UIKit for quality.
 </p>
 
+#### README In Other Languages
+- [Русский🇷🇺](https://github.com/khcrysalis/Feather/blob/main/README_ru.md)
 
 
 
@@ -25,13 +27,13 @@
 > [!IMPORTANT]
 > **Tweak support is in beta**, make sure your tweaks work on the [Ellekit](https://theapplewiki.com/wiki/ElleKit) hooking platform, and built with the latest version of theos.
 > 
-> **Some tweaks, not all, should work with Feather.** However, don't expect tweaks to work out of the box. As we will not change any dylib load commmand that isn't CydiaSubstrate.
+> **Some tweaks, not all, should work with Feather.** However, don't expect tweaks to work out of the box. As we will not change any dylib load command that isn't CydiaSubstrate.
 
 ## Screenshots
 
 | <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Repos.png"><source media="(prefers-color-scheme: light)" srcset="Images/Repos_L.png"><img alt="Pointercrate-pocket." src="Images/Repos_L.png" width="200"></picture></p> | <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Store.png"><source media="(prefers-color-scheme: light)" srcset="Images/Store_L.png"><img alt="Pointercrate-pocket." src="Images/Store_L.png" width="200"></picture></p> | <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Library.png"><source media="(prefers-color-scheme: light)" srcset="Images/Library_L.png"><img alt="Pointercrate-pocket." src="Images/Library_L.png" width="200"></picture></p> | <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Sign.png"><source media="(prefers-color-scheme: light)" srcset="Images/Sign_L.png"><img alt="Pointercrate-pocket." src="Images/Sign_L.png" width="200"></picture></p> |
 |:--:|:--:|:--:|:--:|
-| **Library** | **Store** | **Library** | **Signing** |
+| **Sources** | **Store** | **Library** | **Signing** |
 > Tip: Go into lightmode to see lightmode screenshots!
 
 ## How it Works
@@ -68,7 +70,7 @@ make package SCHEME="'feather (Release)'" # Build
 - [localhost.direct](https://github.com/Upinel/localhost.direct) - localhost with public CA signed SSL certificate
 - [Vapor](https://github.com/vapor/vapor) - A server-side Swift HTTP web framework.
 - [Zsign](https://github.com/zhlynn/zsign) - Allowing to sign on-device, reimplimented to work on other platforms such as iOS.
-- [Nuke](https://github.com/kean/Nuke) - Imagine caching.
+- [Nuke](https://github.com/kean/Nuke) - Image caching.
 - [Asspp](https://github.com/Lakr233/Asspp) - Some code for setting up the http server.
 
 <!-- - [plistserver](https://github.com/QuickSign-Team/plistserver) - Hosted on https://api.palera.in
