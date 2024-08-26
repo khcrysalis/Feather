@@ -6,6 +6,7 @@
     Feather is a free on-device iOS application manager/installer built with UIKit for quality.
 </p>
 
+Read in other Languages: [Русский🇷🇺](https://github.com/khcrysalis/Feather/blob/main/README_ru.md)
 
 
 
