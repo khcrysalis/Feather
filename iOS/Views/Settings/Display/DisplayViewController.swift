@@ -115,12 +115,12 @@ extension DisplayViewController {
 			cell.backgroundColor = .clear
 			return cell
 		case "Certificate Name":
-			let removeWatchPlaceHolder = SwitchViewCell()
-			removeWatchPlaceHolder.textLabel?.text = "Use Team Name"
-			removeWatchPlaceHolder.switchControl.addTarget(self, action: #selector(certificateNameToggle(_:)), for: .valueChanged)
-			removeWatchPlaceHolder.switchControl.isOn = Preferences.certificateTitleAppIDtoTeamID
-			removeWatchPlaceHolder.selectionStyle = .none
-			return removeWatchPlaceHolder
+			let useTeamName = SwitchViewCell()
+			useTeamName.textLabel?.text = "Use Team Name"
+			useTeamName.switchControl.addTarget(self, action: #selector(certificateNameToggle(_:)), for: .valueChanged)
+			useTeamName.switchControl.isOn = Preferences.certificateTitleAppIDtoTeamID
+			useTeamName.selectionStyle = .none
+			return useTeamName
 		default:
 			break
 		}
