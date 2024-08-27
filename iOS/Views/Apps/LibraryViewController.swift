@@ -182,9 +182,34 @@ extension LibraryViewController {
 					self.startSigning(meow: source!)
 				}
 				
-				popupVC.configureButtons([button1])
+				let button2 = PopupViewControllerButton(title: "Install \((source!.value(forKey: "name") as? String ?? ""))", color: .quaternarySystemFill, titleColor: .tintColor)
+				button2.onTap = { [weak self] in
+					guard let self = self else { return }
+					self.popupVC.dismiss(animated: true) {
+						let alertController = UIAlertController(
+							title: "Confirm Installation",
+							message: "Trying to install via the downloaded apps tab may not work as they are most likely not signed! It's recommended you sign that application first before installing.",
+							preferredStyle: .alert
+						)
+						
+						let confirmAction = UIAlertAction(title: "Install", style: .default) { _ in
+							
+							self.startInstallProcess(meow: source!, filePath: filePath?.path ?? "")
+							
+						}
+						
+						let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+						
+						alertController.addAction(confirmAction)
+						alertController.addAction(cancelAction)
+						
+						self.present(alertController, animated: true, completion: nil)
+					}
+				}
 				
-				let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 110.0)
+				popupVC.configureButtons([button1, button2])
+				
+				let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 150.0)
 				if let presentationController = popupVC.presentationController as? UISheetPresentationController {
 					presentationController.detents = [
 						detent2,
