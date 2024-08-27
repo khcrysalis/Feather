@@ -13,13 +13,15 @@ class DisplayViewController: UITableViewController {
 	let tableData = [
 		[String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE")],
 		["Collection View"],
-		[]
+		[],
+		["Certificate Name"]
 	]
 	
 	var sectionTitles = [
 		"",
 		String.localized("DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_TINT_COLOR"),
-		String.localized("DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARENCE")
+		"Store",
+		"Certificates"
 	]
 
 	let collectionData = ["Default", "Berry", "Mint", "Dr Pepper", "Cool Blue", "Fuchsia", "Purplish"]
@@ -112,6 +114,13 @@ extension DisplayViewController {
 			cell.setData(collectionData: collectionData, colors: collectionDataColors)
 			cell.backgroundColor = .clear
 			return cell
+		case "Certificate Name":
+			let removeWatchPlaceHolder = SwitchViewCell()
+			removeWatchPlaceHolder.textLabel?.text = "Use Team Name"
+			removeWatchPlaceHolder.switchControl.addTarget(self, action: #selector(certificateNameToggle(_:)), for: .valueChanged)
+			removeWatchPlaceHolder.switchControl.isOn = Preferences.certificateTitleAppIDtoTeamID
+			removeWatchPlaceHolder.selectionStyle = .none
+			return removeWatchPlaceHolder
 		default:
 			break
 		}
@@ -128,11 +137,25 @@ extension DisplayViewController {
 			tableView.reloadRows(at: [previousIndexPath, indexPath], with: .fade)
 		}
 	}
-
+	
+	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+		switch section {
+		case 3:
+			return "Replaces the certificate name with your team name, could be for better to distinguish between certificates if providers happen to always use the same App ID name."
+		default:
+			return nil
+		}
+	}
+	
 	
 	@objc private func appearanceSegmentedControlChanged(_ sender: UISegmentedControl) {
 		let selectedStyle = UIUserInterfaceStyle.allCases[sender.selectedSegmentIndex]
 		updateAppearance(with: selectedStyle)
 	}
+	
+	@objc private func certificateNameToggle(_ sender: UISwitch) {
+		Preferences.certificateTitleAppIDtoTeamID = sender.isOn
+	}
+	
 }
 

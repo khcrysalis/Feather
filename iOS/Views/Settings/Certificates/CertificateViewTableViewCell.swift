@@ -96,7 +96,12 @@ class CertificateViewTableViewCell: UITableViewCell {
 	}
 	
 	func configure(with certificate: Certificate, isSelected: Bool) {
-		teamNameLabel.text = certificate.certData?.name
+		if !Preferences.certificateTitleAppIDtoTeamID {
+			teamNameLabel.text = certificate.certData?.name
+		} else {
+			teamNameLabel.text = certificate.certData?.teamName
+		}
+		
 		expirationDateLabel.text = certificate.certData?.appIDName
 		certs = certificate
 		
