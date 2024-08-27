@@ -7,7 +7,9 @@
 </p>
 
 #### README In Other Languages
+- [English🇬🇧](https://github.com/khcrysalis/Feather/blob/main/README.md)
 - [Русский🇷🇺](https://github.com/khcrysalis/Feather/blob/main/README_ru.md)
+- [Spanish🇪🇸] (Soon)
 
 
 
@@ -22,7 +24,7 @@
 - **Configurable signing options**. *(name, bundleid, version, other plist options)*
 - **Meant to be used with Apple Accounts that are apart of `ADP` (Apple Developer Program)**. *however other certificates can also work!*
 - **Easy resigning**! *If you have another certificate you would like to use on an app you may resign and reinstall that same app!*
-- **No tracking, analytics, or any of the sort**. *Your information such as udid and certificates will never leave the device.*
+- **No tracking, analytics, or any of the sort**. *Your information such as UDID and certificates will never leave the device.*
 
 > [!IMPORTANT]
 > **Tweak support is in beta**, make sure your tweaks work on the [Ellekit](https://theapplewiki.com/wiki/ElleKit) hooking platform, and built with the latest version of theos.
