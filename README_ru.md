@@ -6,7 +6,7 @@
     Feather - это бесплатный менеджер/установщик iOS-приложений на устройство, созданный на основе качественного UIKit.
 </p>
 
-#### README In Other Languages
+#### README на других языках
 - [English🇬🇧](https://github.com/khcrysalis/Feather/blob/main/README.md)
 - [Русский🇷🇺](https://github.com/khcrysalis/Feather/blob/main/README_ru.md)
 - Spanish🇪🇸 (Soon)
