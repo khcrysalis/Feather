@@ -13,10 +13,11 @@ import UIOnboarding
 
 var downloadTaskManager = DownloadTaskManager.shared
 class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControllerDelegate {
-
+	
 	static let isSideloaded = Bundle.main.bundleIdentifier != "kh.crysalis.feather"
 	var window: UIWindow?
-
+	var loaderAlert = presentLoader()
+	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		UserDefaults.standard.set(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, forKey: "currentVersion")
 		addDefaultRepos()
@@ -57,6 +58,73 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 		
 		return true
 	}
+	
+	func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+		if url.scheme == "feather" {
+			
+			// I know this is super hacky, honestly
+			// I don't *exactly* care as it just works :shrug:
+			if url.host == "source" {
+				let fullPath = url.absoluteString.replacingOccurrences(of: "feather://source/", with: "")
+				
+				if fullPath.starts(with: "https://") {
+					
+					CoreDataManager.shared.getSourceData(urlString: fullPath) { error in
+						if let error = error {
+							Debug.shared.log(message: "SourcesViewController.sourcesAddButtonTapped: \(error)", type: .critical)
+						} else {
+							Debug.shared.log(message: "Successfully added!", type: .success)
+							NotificationCenter.default.post(name: Notification.Name("sfetch"), object: nil)
+						}
+					}
+
+				} else {
+					Debug.shared.log(message: "Invalid or non-HTTPS URL", type: .error)
+				}
+			}
+			
+			return true
+		}
+		// bwah
+		if url.pathExtension == "ipa" {
+			guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else {
+				return false
+			}
+			
+			DispatchQueue.main.async {
+				rootViewController.present(self.loaderAlert, animated: true)
+			}
+			
+			DispatchQueue.global(qos: .background).async {
+				do {
+					let tempDirectory = FileManager.default.temporaryDirectory
+					let destinationURL = tempDirectory.appendingPathComponent(url.lastPathComponent)
+					try FileManager.default.copyItem(at: url, to: destinationURL)
+					
+					let dl = AppDownload()
+					let uuid = UUID().uuidString
+					
+					try handleIPAFile(destinationURL: destinationURL, uuid: uuid, dl: dl)
+					
+					DispatchQueue.main.async {
+						self.loaderAlert.dismiss(animated: true)
+						Debug.shared.log(message: "Moved IPA file to: \(destinationURL)")
+					}
+				} catch {
+					DispatchQueue.main.async {
+						self.loaderAlert.dismiss(animated: true)
+						Debug.shared.log(message: "Failed to move IPA file: \(error)")
+					}
+				}
+			}
+			
+			return true
+		}
+
+		
+		return false
+	}
+
 
 	func didFinishOnboarding(onboardingViewController: UIOnboardingViewController) {
 		Preferences.isOnboardingActive = false

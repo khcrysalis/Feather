@@ -157,9 +157,11 @@ extension SourceAppViewController: UISearchControllerDelegate, UISearchBarDelega
 		searchController.searchResultsUpdater = self
 		searchController.delegate = self
 		searchController.searchBar.placeholder = String.localized("SOURCES_APP_VIEW_CONTROLLER_SEARCH_APPS")
-		navigationItem.searchController = searchController
-		definesPresentationContext = true
-		navigationItem.hidesSearchBarWhenScrolling = true
+		if (highlightAppName == nil) {
+			navigationItem.searchController = searchController
+			definesPresentationContext = true
+			navigationItem.hidesSearchBarWhenScrolling = true
+		}
 	}
 	
 	var isFiltering: Bool {

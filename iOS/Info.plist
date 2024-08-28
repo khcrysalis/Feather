@@ -2,6 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>iOS Package Archive</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>kh.crysalis.feather.ipa</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundleAlternateIcons</key>
@@ -53,7 +66,51 @@
 			<false/>
 		</dict>
 	</dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLIconFile</key>
+			<string>Mac@3x</string>
+			<key>CFBundleURLName</key>
+			<string>kh.crysalis.feather</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>feather</string>
+			</array>
+		</dict>
+		<dict/>
+	</array>
 	<key>UIFileSharingEnabled</key>
 	<true/>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>com.apple.itunes.ipa</string>
+				<string>public.data</string>
+				<string>public.content</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>iOS Package Archive</string>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>kh.crysalis.feather.ipa</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>ipa</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/octet-stream</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>

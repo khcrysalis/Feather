@@ -29,47 +29,37 @@ extension LibraryViewController: UIDocumentPickerDelegate {
 	
 	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
 		guard let selectedFileURL = urls.first else { return }
-		self.present(self.loaderAlert!, animated: true)
+		
+		guard let loaderAlert = self.loaderAlert else {
+			Debug.shared.log(message: "Loader alert is not initialized.", type: .error)
+			return
+		}
+		
+		DispatchQueue.main.async {
+			self.present(loaderAlert, animated: true)
+		}
+		
 		let dl = AppDownload()
 		let uuid = UUID().uuidString
 		
-		DispatchQueue(label: "DL").async {
-			dl.importFile(url: selectedFileURL, uuid: uuid) {newUrl, error in
-				if let error = error {
-					DispatchQueue.main.async {
-						self.loaderAlert?.dismiss(animated: true)
-						Debug.shared.log(message: error.localizedDescription, type: .error)
-					}
-				} else if let newUrl = newUrl {
-					dl.extractCompressedBundle(packageURL: newUrl.path) { (targetBundle, error) in
-						if let error = error {
-							DispatchQueue.main.async {
-								self.loaderAlert?.dismiss(animated: true)
-								Debug.shared.log(message: error.localizedDescription, type: .error)
-							}
-						} else if let targetBundle = targetBundle {
-							dl.addToApps(bundlePath: targetBundle, uuid: uuid, sourceLocation: "Imported") { error in
-								if let error = error {
-									DispatchQueue.main.async {
-										self.loaderAlert?.dismiss(animated: true)
-										Debug.shared.log(message: error.localizedDescription, type: .error)
-									}
-								} else {
-									DispatchQueue.main.async {
-										self.loaderAlert?.dismiss(animated: true)
-										Debug.shared.log(message: "Done!", type: .success)
-										self.tableView.reloadData()
-									}
-								}
-							}
-						}
-					}
+		DispatchQueue.global(qos: .background).async {
+			do {
+				try handleIPAFile(destinationURL: selectedFileURL, uuid: uuid, dl: dl)
+				
+				DispatchQueue.main.async {
+					self.loaderAlert?.dismiss(animated: true)
+				}
+				
+			} catch {
+				Debug.shared.log(message: "Failed to Import: \(error)", type: .error)
+				
+				DispatchQueue.main.async {
+					self.loaderAlert?.dismiss(animated: true)
 				}
 			}
 		}
-		
-		
 	}
+
 	
 	
 	func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {

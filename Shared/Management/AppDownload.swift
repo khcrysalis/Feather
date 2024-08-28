@@ -199,3 +199,72 @@ extension AppDownload: URLSessionDownloadDelegate {
 		}
 	}
 }
+enum HandleIPAFileError: Error {
+	case importFailed(String)
+	case extractionFailed(String)
+	case additionFailed(String)
+}
+
+func handleIPAFile(destinationURL: URL, uuid: String, dl: AppDownload) throws {
+	let semaphore = DispatchSemaphore(value: 0)
+	
+	var functionError: Error? = nil
+	var newUrl: URL? = nil
+	var targetBundle: String? = nil
+	
+	DispatchQueue(label: "DL").async {
+		dl.importFile(url: destinationURL, uuid: uuid) { resultUrl, error in
+			if let error = error {
+				functionError = HandleIPAFileError.importFailed(error.localizedDescription)
+				semaphore.signal()
+				return
+			}
+			
+			newUrl = resultUrl
+			
+			guard let validNewUrl = newUrl else {
+				functionError = HandleIPAFileError.importFailed("No URL returned from import.")
+				semaphore.signal()
+				return
+			}
+			
+			dl.extractCompressedBundle(packageURL: validNewUrl.path) { bundle, error in
+				if let error = error {
+					functionError = HandleIPAFileError.extractionFailed(error.localizedDescription)
+					semaphore.signal()
+					return
+				}
+				
+				targetBundle = bundle
+				
+				guard let validTargetBundle = targetBundle else {
+					functionError = HandleIPAFileError.extractionFailed("No bundle returned from extraction.")
+					semaphore.signal()
+					return
+				}
+				
+				dl.addToApps(bundlePath: validTargetBundle, uuid: uuid, sourceLocation: "Imported") { error in
+					if let error = error {
+						functionError = HandleIPAFileError.additionFailed(error.localizedDescription)
+					}
+					
+					semaphore.signal()
+				}
+			}
+		}
+	}
+	
+	semaphore.wait()
+	
+	if let error = functionError {
+		DispatchQueue.main.async {
+			Debug.shared.log(message: error.localizedDescription, type: .error)
+		}
+		throw error
+	} else {
+		DispatchQueue.main.async {
+			Debug.shared.log(message: "Done!", type: .success)
+			NotificationCenter.default.post(name: Notification.Name("lfetch"), object: nil)
+		}
+	}
+}
