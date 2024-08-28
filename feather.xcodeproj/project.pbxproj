@@ -110,6 +110,7 @@
 		AA280D972C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA280D962C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift */; };
 		AF4D46EF2C432CCA003FA335 /* TweakLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */; };
 		AF4D46F12C4332D7003FA335 /* SwitchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D46F02C4332D7003FA335 /* SwitchViewCell.swift */; };
+		AF7B88442C7ED81000DF92B6 /* RepoImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7B88432C7ED80800DF92B6 /* RepoImportViewController.swift */; };
 		AF84EEFD2C4080610050CBE4 /* AppSigningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF84EEFC2C4080610050CBE4 /* AppSigningViewController.swift */; };
 		AF9B6B442C6346FF00735748 /* p12_password_check.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF9B6B432C6346E900735748 /* p12_password_check.mm */; };
 		AFAC50922C48DB1300EDEAB6 /* ActivityIndicatorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAC50912C48DB1200EDEAB6 /* ActivityIndicatorViewCell.swift */; };
@@ -237,6 +238,7 @@
 		AA280D962C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+returnToHomeScreen.swift"; sourceTree = "<group>"; };
 		AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakLibraryViewCell.swift; sourceTree = "<group>"; };
 		AF4D46F02C4332D7003FA335 /* SwitchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewCell.swift; sourceTree = "<group>"; };
+		AF7B88432C7ED80800DF92B6 /* RepoImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoImportViewController.swift; sourceTree = "<group>"; };
 		AF84EEFC2C4080610050CBE4 /* AppSigningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSigningViewController.swift; sourceTree = "<group>"; };
 		AF9B6B432C6346E900735748 /* p12_password_check.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = p12_password_check.mm; sourceTree = "<group>"; };
 		AF9B6B452C634B0300735748 /* p12_password_check.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = p12_password_check.hpp; sourceTree = "<group>"; };
@@ -593,6 +595,7 @@
 		33BA37B12BF8FA0600FF530A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				AF7B88432C7ED80800DF92B6 /* RepoImportViewController.swift */,
 				33BA37922BF8159F00FF530A /* SourcesViewController.swift */,
 				332476DB2C3E4D87008C8EF0 /* SourceViewActions.swift */,
 				33E4D8312C64CB39006A1C26 /* SearchResultsTableViewController.swift */,
@@ -923,6 +926,7 @@
 				33BA37A32BF815F900FF530A /* main.swift in Sources */,
 				333912A02BF9816B00E72360 /* CertificateModel.swift in Sources */,
 				33BE87802C72D2840044D245 /* AR.swift in Sources */,
+				AF7B88442C7ED81000DF92B6 /* RepoImportViewController.swift in Sources */,
 				339CE28C2C5870AC00B58502 /* CoreDataManager+Sources.swift in Sources */,
 				AF84EEFD2C4080610050CBE4 /* AppSigningViewController.swift in Sources */,
 				33BDD0B62C785F5F00AF6169 /* Server+TLS.swift in Sources */,
@@ -1144,7 +1148,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DLSL362JHJ;
+				DEVELOPMENT_TEAM = 577Q6MMX9D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Feather;

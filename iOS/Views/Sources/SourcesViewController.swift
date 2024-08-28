@@ -43,6 +43,16 @@ class SourcesViewController: UITableViewController {
 		self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 		self.tableView.refreshControl = refreshControl
 		NotificationCenter.default.addObserver(self, selector: #selector(fetch), name: Notification.Name("sfetch"), object: nil)
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, image: .init(systemName: "ellipsis"), primaryAction: nil, menu: UIMenu(title: "", image: nil, identifier: nil, options: [], children: [
+            UIAction(title: "Export Repositories", image: UIImage(systemName: "square.and.arrow.up"), handler: { (_) in
+                Debug.shared.showSuccessAlert(with: "Copied Repositories to Clipboard", subtitle: "")
+                UIPasteboard.general.string = self.sources?.map{ $0.sourceURL!.absoluteString }.joined(separator: "\n")
+            }),
+            UIAction(title: "Import Repositories", image: UIImage(systemName: "square.and.arrow.down"), handler: { (_) in
+                self.present(UINavigationController(rootViewController: RepoImportViewController()), animated: true)
+            }),
+        ]))
 	}
 	
 	deinit {
@@ -70,12 +80,6 @@ class SourcesViewController: UITableViewController {
 
 		self.present(navigationController, animated: true)
 	}
-
-
-
-	
-	
-	
 }
 
 // MARK: - Tabelview
