@@ -9,6 +9,7 @@
 import UIKit
 import Nuke
 import CoreData
+import SwiftUI
 
 class SourcesViewController: UITableViewController {
 
@@ -43,16 +44,6 @@ class SourcesViewController: UITableViewController {
 		self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 		self.tableView.refreshControl = refreshControl
 		NotificationCenter.default.addObserver(self, selector: #selector(fetch), name: Notification.Name("sfetch"), object: nil)
-        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, image: .init(systemName: "ellipsis"), primaryAction: nil, menu: UIMenu(title: "", image: nil, identifier: nil, options: [], children: [
-            UIAction(title: "Export Repositories", image: UIImage(systemName: "square.and.arrow.up"), handler: { (_) in
-                Debug.shared.showSuccessAlert(with: "Copied Repositories to Clipboard", subtitle: "")
-                UIPasteboard.general.string = self.sources?.map{ $0.sourceURL!.absoluteString }.joined(separator: "\n")
-            }),
-            UIAction(title: "Import Repositories", image: UIImage(systemName: "square.and.arrow.down"), handler: { (_) in
-                self.present(UINavigationController(rootViewController: RepoImportViewController()), animated: true)
-            }),
-        ]))
 	}
 	
 	deinit {
@@ -91,8 +82,23 @@ extension SourcesViewController {
 		let headerWithButton = GroupedSectionHeader(
 			title: String.localized("SOURCES_VIEW_CONTROLLER_REPOSITORIES"),
 			subtitle: String.localized("SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES", arguments: "\(sources?.count ?? 0)"),
-			buttonTitle: String.localized("SOURCES_VIEW_CONTROLLER_ADD_SOURCES"), buttonAction: {
-			self.sourcesAddButtonTapped()
+			buttonTitle: "Modify", buttonAction: {
+				
+				let transferPreview = RepoViewController(sources: self.sources)
+				
+				let hostingController = UIHostingController(rootView: transferPreview)
+				hostingController.modalPresentationStyle = .pageSheet
+				
+				if let presentationController = hostingController.presentationController as? UISheetPresentationController {
+					presentationController.detents = [.medium()]
+				}
+				
+				DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+					self.present(hostingController, animated: true)
+				}
+				
+				
+//			self.sourcesAddButtonTapped()
 		})
 		return headerWithButton
 	}

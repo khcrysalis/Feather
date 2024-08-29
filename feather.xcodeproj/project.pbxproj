@@ -19,7 +19,6 @@
 		3322FF552BFEE5B9001768D8 /* NukeVideo in Frameworks */ = {isa = PBXBuildFile; productRef = 3322FF542BFEE5B9001768D8 /* NukeVideo */; };
 		332476D82C3E4CF7008C8EF0 /* SourceAppActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476D72C3E4CF7008C8EF0 /* SourceAppActions.swift */; };
 		332476DA2C3E4D35008C8EF0 /* SourceAppDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476D92C3E4D35008C8EF0 /* SourceAppDownload.swift */; };
-		332476DC2C3E4D87008C8EF0 /* SourceViewActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476DB2C3E4D87008C8EF0 /* SourceViewActions.swift */; };
 		332476E62C3E8E25008C8EF0 /* SettingsCreditsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476E52C3E8E25008C8EF0 /* SettingsCreditsTableCell.swift */; };
 		332476EA2C3E905D008C8EF0 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476E92C3E905D008C8EF0 /* AboutViewController.swift */; };
 		332476ED2C3E92BC008C8EF0 /* DisplayCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476EB2C3E92BC008C8EF0 /* DisplayCollectionTableViewCell.swift */; };
@@ -99,6 +98,7 @@
 		33DF8D7D2C0828CF00D6C05F /* Zsign.md in Resources */ = {isa = PBXBuildFile; fileRef = 33DF8D7C2C0828CF00D6C05F /* Zsign.md */; };
 		33DF8D7F2C0828FB00D6C05F /* Nuke.md in Resources */ = {isa = PBXBuildFile; fileRef = 33DF8D7E2C0828FB00D6C05F /* Nuke.md */; };
 		33DF8D812C08290F00D6C05F /* HttpSwift_RequestSwift_SocketSwift.md in Resources */ = {isa = PBXBuildFile; fileRef = 33DF8D802C08290F00D6C05F /* HttpSwift_RequestSwift_SocketSwift.md */; };
+		33E3B6702C7FE06C0075E3A2 /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3B66F2C7FE06C0075E3A2 /* RepoViewController.swift */; };
 		33E4D8322C64CB39006A1C26 /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8312C64CB39006A1C26 /* SearchResultsTableViewController.swift */; };
 		33E4D8342C6593D2006A1C26 /* UIView+parentcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8332C6593D2006A1C26 /* UIView+parentcontroller.swift */; };
 		33E4D8362C6593F4006A1C26 /* CGSize+aspectFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8352C6593F4006A1C26 /* CGSize+aspectFit.swift */; };
@@ -110,7 +110,6 @@
 		AA280D972C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA280D962C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift */; };
 		AF4D46EF2C432CCA003FA335 /* TweakLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */; };
 		AF4D46F12C4332D7003FA335 /* SwitchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D46F02C4332D7003FA335 /* SwitchViewCell.swift */; };
-		AF7B88442C7ED81000DF92B6 /* RepoImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7B88432C7ED80800DF92B6 /* RepoImportViewController.swift */; };
 		AF84EEFD2C4080610050CBE4 /* AppSigningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF84EEFC2C4080610050CBE4 /* AppSigningViewController.swift */; };
 		AF9B6B442C6346FF00735748 /* p12_password_check.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF9B6B432C6346E900735748 /* p12_password_check.mm */; };
 		AFAC50922C48DB1300EDEAB6 /* ActivityIndicatorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAC50912C48DB1200EDEAB6 /* ActivityIndicatorViewCell.swift */; };
@@ -140,7 +139,6 @@
 		3322FF4B2BFEDB01001768D8 /* SourceAppTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceAppTableViewCell.swift; sourceTree = "<group>"; };
 		332476D72C3E4CF7008C8EF0 /* SourceAppActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceAppActions.swift; sourceTree = "<group>"; };
 		332476D92C3E4D35008C8EF0 /* SourceAppDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceAppDownload.swift; sourceTree = "<group>"; };
-		332476DB2C3E4D87008C8EF0 /* SourceViewActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceViewActions.swift; sourceTree = "<group>"; };
 		332476E52C3E8E25008C8EF0 /* SettingsCreditsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCreditsTableCell.swift; sourceTree = "<group>"; };
 		332476E92C3E905D008C8EF0 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		332476EB2C3E92BC008C8EF0 /* DisplayCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayCollectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -225,6 +223,7 @@
 		33DF8D7C2C0828CF00D6C05F /* Zsign.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Zsign.md; sourceTree = "<group>"; };
 		33DF8D7E2C0828FB00D6C05F /* Nuke.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Nuke.md; sourceTree = "<group>"; };
 		33DF8D802C08290F00D6C05F /* HttpSwift_RequestSwift_SocketSwift.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = HttpSwift_RequestSwift_SocketSwift.md; sourceTree = "<group>"; };
+		33E3B66F2C7FE06C0075E3A2 /* RepoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
 		33E4D8312C64CB39006A1C26 /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		33E4D8332C6593D2006A1C26 /* UIView+parentcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+parentcontroller.swift"; sourceTree = "<group>"; };
 		33E4D8352C6593F4006A1C26 /* CGSize+aspectFit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+aspectFit.swift"; sourceTree = "<group>"; };
@@ -238,7 +237,6 @@
 		AA280D962C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+returnToHomeScreen.swift"; sourceTree = "<group>"; };
 		AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakLibraryViewCell.swift; sourceTree = "<group>"; };
 		AF4D46F02C4332D7003FA335 /* SwitchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewCell.swift; sourceTree = "<group>"; };
-		AF7B88432C7ED80800DF92B6 /* RepoImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoImportViewController.swift; sourceTree = "<group>"; };
 		AF84EEFC2C4080610050CBE4 /* AppSigningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSigningViewController.swift; sourceTree = "<group>"; };
 		AF9B6B432C6346E900735748 /* p12_password_check.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = p12_password_check.mm; sourceTree = "<group>"; };
 		AF9B6B452C634B0300735748 /* p12_password_check.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = p12_password_check.hpp; sourceTree = "<group>"; };
@@ -595,9 +593,8 @@
 		33BA37B12BF8FA0600FF530A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				AF7B88432C7ED80800DF92B6 /* RepoImportViewController.swift */,
+				33E3B66F2C7FE06C0075E3A2 /* RepoViewController.swift */,
 				33BA37922BF8159F00FF530A /* SourcesViewController.swift */,
-				332476DB2C3E4D87008C8EF0 /* SourceViewActions.swift */,
 				33E4D8312C64CB39006A1C26 /* SearchResultsTableViewController.swift */,
 				3322FF4A2BFEDAE8001768D8 /* SourceAppViews */,
 			);
@@ -875,6 +872,7 @@
 				33A305D52C3A858100D650BA /* UIButton+longpress.swift in Sources */,
 				D0651C3A2BFEEA4B00D40829 /* archo.cpp in Sources */,
 				33163FF02C3D224C0038E1EC /* DownloadTaskManager.swift in Sources */,
+				33E3B6702C7FE06C0075E3A2 /* RepoViewController.swift in Sources */,
 				D0651C1B2BFEE97F00D40829 /* common.cpp in Sources */,
 				33BE875D2C6ABF2C0044D245 /* LibraryViewController.swift in Sources */,
 				33BE87672C6F17DF0044D245 /* AppSigningTweakViewController.swift in Sources */,
@@ -897,7 +895,6 @@
 				335F0C2E2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift in Sources */,
 				AF4D46F12C4332D7003FA335 /* SwitchViewCell.swift in Sources */,
 				D0651C332BFEEA4B00D40829 /* macho.cpp in Sources */,
-				332476DC2C3E4D87008C8EF0 /* SourceViewActions.swift in Sources */,
 				33BE87652C6F17980044D245 /* AppSigningAdvancedViewController.swift in Sources */,
 				33A305D72C3A85F300D650BA /* SourceDownload.swift in Sources */,
 				33570F672C34CCD5008CB560 /* AppsInformationViewController.swift in Sources */,
@@ -926,7 +923,6 @@
 				33BA37A32BF815F900FF530A /* main.swift in Sources */,
 				333912A02BF9816B00E72360 /* CertificateModel.swift in Sources */,
 				33BE87802C72D2840044D245 /* AR.swift in Sources */,
-				AF7B88442C7ED81000DF92B6 /* RepoImportViewController.swift in Sources */,
 				339CE28C2C5870AC00B58502 /* CoreDataManager+Sources.swift in Sources */,
 				AF84EEFD2C4080610050CBE4 /* AppSigningViewController.swift in Sources */,
 				33BDD0B62C785F5F00AF6169 /* Server+TLS.swift in Sources */,
@@ -1148,7 +1144,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 577Q6MMX9D;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Feather;
