@@ -1,0 +1,289 @@
+/* 
+  Localizable.strings
+  feather
+
+  Created by samara on 25.08.2024.
+  
+*/
+
+// MARK: - Generic
+// Unknown, default string for applications
+"UNKNOWN" = "Onbekend";
+// Default string
+"DEFAULT" = "Standaard";
+// Copy provided string in a menu
+"COPY" = "Kopiëren";
+// Delete item
+"DELETE" = "Verwijder";
+// Cancel alert action
+"CANCEL" = "Annuleren";
+// Done action
+"DONE" = "Klaar";
+// Dismiss action
+"DISMISS" = "Afwijzen";
+// Dismiss 2 action
+"LAME" = "Afwijzen";
+// Save action
+"SAVE" = "Opslaan";
+// Set action
+"SET" = "Opslaan";
+// OK action
+"OK" = "OK";
+// Continue action
+"CONTINUE" = "Doorgaan";
+
+// MARK: - Alerts
+// Alert titles
+"ALERT_SUCCESS" = "Succes";
+"ALERT_TRACE" = "Spoor";
+"ALERT_ERROR" = "Fout";
+"ALERT_CRITICAL" = "Kritisch";
+
+// MARK: - Error messages
+// Installer Error Title
+"ERROR_INSTALLER" = "Installateur";
+// Installer Error Description
+"ERROR_INSTALLER_DESCRIPTION" = "Het laden van SSL-certificaten is mislukt";
+"ERROR_ZSIGN_FAILED" = "Ondertekening mislukt.";
+"ERROR_FAILED_TO_READ_MOBILEPROVISION" = "Het is niet gelukt om het mobileprovision-bestand te lezen";
+
+// MARK: - Success messages
+// Successfully signed an application
+"SUCCESS_SIGNED" = "Succesvol %@ ondertekend";
+// Successfully resigned an application
+"SUCCESS_RESIGN" = "Succesvol opnieuw ondertekend!";
+
+// MARK: - Onboarding
+// Welcome to Feather!!!!!!!!
+"ONBOARDING_WELCOMETITLE_1" = "Welkom bij";
+// First feature inside of onboarding
+"ONBOARDING_CELL_1_TITLE" = "Sideload Op Apparaat";
+"ONBOARDING_CELL_1_DESCRIPTION" = "Sideload apps zonder computer, doe het allemaal vanaf uw apparaat.";
+// Second feature inside of onboarding
+"ONBOARDING_CELL_2_TITLE" = "Apps Aanpassen";
+"ONBOARDING_CELL_2_DESCRIPTION" = "Beheer en pas uw apps aan uw behoeften aan.";
+// Third feature inside of onboarding
+"ONBOARDING_CELL_3_TITLE" = "En Nog Veel Meer!";
+"ONBOARDING_CELL_3_DESCRIPTION" = "AltStore-repositories, IPA's importeren, eenvoudig wisselen van certificaten en nog veel meer.";
+// "Developed by Samara. Made for users who are passionate for sideloading and freedom. Many features included inside. Learn more..."
+"ONBOARDING_FOOTER" = "Ontwikkeld door Samara. Gemaakt voor gebruikers die gepassioneerd zijn door sideloading en vrijheid. Veel functies inbegrepen.";
+"ONBOARDING_FOOTER_LINK" = "Meer informatie...";
+// Continue button to exit onboarding
+"ONBOARDING_CONTINUE_BUTTON" = "Doorgaan";
+
+// MARK: - Tab area
+// Sources tab
+"TAB_SOURCES" = "Bronnen";
+// Library tab
+"TAB_LIBRARY" = "Bibliotheek";
+// Settings tab
+"TAB_SETTINGS" = "Instellingen";
+
+// MARK: - TransferPreview
+// Packaging application to get ready for install
+"TRANSFER_PREVIEW_PACKAGING" = "Verpakken...";
+// Ready to install package
+"TRANSFER_PREVIEW_READY" = "Klaar Om Te Installeren";
+// Opening manifest.plist for iOS
+"TRANSFER_PREVIEW_SENDING_MANIFEST" = "Manifest Verzenden...";
+// iOS is retrieving IPA file
+"TRANSFER_PREVIEW_SENDING_PAYLOAD" = "Payload Verzenden...";
+// Done transferring IPA file
+"TRANSFER_PREVIEW_DONE" = "Klaar";
+// Completed packaging so you can share
+"TRANSFER_PREVIEW_COMPLETED" = "Voltooid";
+
+// MARK: - SourcesViewController
+// Repositories title
+"SOURCES_VIEW_CONTROLLER_REPOSITORIES" = "Repositories";
+// Add repo button
+"SOURCES_VIEW_CONTROLLER_ADD_SOURCES" = "Voeg Repo";
+// Number of sources, i.e. "100 Sources"
+"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES" = "%@ Bronnen";
+// Search sources in search bar
+"SOURCES_VIEW_CONTROLLER_SEARCH_SOURCES" = "Zoek Bronnen";
+
+// MARK: - SourcesViewController - Add Sources
+"SOURCES_VIEW_ADD_SOURCES_ALERT_TITLE" = "Voek Bron";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "Voeg Altstore Repo URL";
+
+// MARK: - SourcesViewController -> SourcesAppViewController
+// Number of apps, i.e. "444 Apps"
+"SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS" = "%@ Apps";
+// Search apps in search bar
+"SOURCES_APP_VIEW_CONTROLLER_SEARCH_APPS" = "Zoek Apps";
+
+// MARK: - SourcesViewController ... - Cells
+// Default subtitle string
+"SOURCES_CELLS_DEFAULT_SUBTITLE" = "Een geweldige applicatie.";
+// Default description string
+"SOURCES_CELLS_DEFAULT_DESCRIPTION" = "Een coole beschrijving.";
+
+// MARK: - SourceAppViewController ... - Actions
+// Available Versions Alert Title
+"SOURCES_CELLS_ACTIONS_HOLD_AVAILABLE_VERSIONS" = "Beschikbare Versies";
+
+// MARK: - AppsInformationViewController
+// Application Section
+"APPS_INFORMATION_SECTION_TITLE_NAME" = "Applicatie";
+// Bundle Section
+"APPS_INFORMATION_SECTION_TITLE_NAME" = "Bundel";
+
+//
+"APPS_INFORMATION_TITLE_DELETED_FILE" = "Bestand Verwijderd";
+"APPS_INFORMATION_TITLE_DELETED_FILE_TITLE" = "Bestand is verwijderd.";
+"APPS_INFORMATION_TITLE_DELETED_FILE_DESCRIPTION" = "Dit is een nutteloze invoer, het heeft geen bestand en Feather staat niet toe dat u het installeert. Het wordt aanbevolen om te verwijderen door over de cel in het tabblad Apps te vegen.";
+// Application Section
+"APPS_INFORMATION_TITLE_NAME" = "Naam";
+"APPS_INFORMATION_TITLE_VERSION" = "Versie";
+"APPS_INFORMATION_TITLE_IDENTIFIER" = "Identificatie";
+"APPS_INFORMATION_TITLE_SIZE" = "Grootte";
+//
+"APPS_INFORMATION_TITLE_DATE_ADDED" = "Datum Toegevoegd";
+// Bundle Section
+"APPS_INFORMATION_TITLE_BUNDLE_NAME" = "Bundel Naam";
+"APPS_INFORMATION_TITLE_BUNDLE_PATH" = "Bundel Pad";
+"APPS_INFORMATION_TITLE_ICON_FILE" = "Icoonbestand";
+//
+"APPS_INFORMATION_TITLE_OPEN_IN_FILES" = "Open in Bestanden";
+
+// MARK: - AppSigningViewController
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS" = "Voeg Tweaks";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED" = "Geavanceerd";
+"APP_SIGNING_VIEW_CONTROLLER_START_SIGNING" = "Begin Tekenen";
+
+// MARK: - AppSigningViewController - No Certificates Alert
+"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_TITLE" = "Fout";
+"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_DESCRIPTION" = "U hebt geen certificaat geselecteerd. Selecteer of upload er een in het ondertekeningsgedeelte in Instellingen.";
+
+// MARK: - AppSigningViewController -> AppSigningInputViewController
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_CELL_PPQCHECK" = "PPQCheck is Ingeschakeld";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_CELL_PPQCHECK_DESCRIPTION" = "PPQCheck is een manier voor Apple om te controleren of de app die u opent overeenkomt met een andere bundel-ID die in de App Store is gevonden. De controle vindt plaats op het moment dat u de ondertekende geïnstalleerde applicatie voor het eerst opent. We hebben een optie om dit te voorkomen, maar u ontvangt dan niet langer de voordelen van meldingen en dergelijke met betrekking tot de standaard-ID.";
+
+// MARK: - AppSigningViewController -> AppSigningAdvancedViewController
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE" = "Verschijning";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION" = "Minimum App Versie";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES" = "Eigenschappen";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "Verwijder alle Plugins";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES" = "Verwijder UISupportedDevices";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME" = "Verwijder URLScheme";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS" = "Bladeren door Documents Toestaan";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING" = "Sta iTunes-deling Toe";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION" = "Force Pro-beweging";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "Forceer Volledig Scherm;
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP" = "Verwijder Tijdelijke Watch-app";
+
+// MARK: - AppSigningViewController -> AppSigningTweakViewController
+"APP_SIGNING_TWEAK_VIEW_CONTROLLER_TITLE" = "Tweaks";
+
+// MARK: - SettingsViewController
+// Headers
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_GENERAL" = "Algemeen";
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING" = "Ondertekening";
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING_SERVER" = "Ondertekening Server";
+
+// Footers
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES" = "Als er problemen optreden in Feather, meld dit dan via de GitHub-repository. Wanneer u een probleem indient, zorg er dan voor dat u logs indient.";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS" = "Helaas moeten servercertificaten vanwege beperkingen elk jaar opnieuw worden verlengd om ervoor te zorgen dat de lokale functies van Feathers goed blijven werken. Tik op deze knop om de meest recente bestanden uit onze repositories op te halen.";
+
+// Cell Titles
+// About Feather
+"SETTINGS_VIEW_CONTROLLER_CELL_ABOUT" = "Over %@";
+"SETTINGS_VIEW_CONTROLLER_CELL_SUBMIT_FEEDBACK" = "Feedback Indienen";
+"SETTINGS_VIEW_CONTROLLER_CELL_GITHUB" = "GitHub Repository";
+"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY" = "Weergave";
+"SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON" = "App Icoon";
+"SETTINGS_VIEW_CONTROLLER_CELL_CURRENT_CERTIFICATE_NOSELECTED" = "Geen certificaten geselecteerd";
+"SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES" = "Certificaat Toevoegen";
+"SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE" = "Lokaal Certificaat Bijwerken";
+"SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE_UPDATING" = "Lokaal Certificaat Bijwerken";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET" = "Reset";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION" = "Configuratie Resetten";
+"SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER" = "Gebruik Aangepaste Server";
+
+"SETTINGS_VIEW_CONTROLLER_CELL_ONLINE_INSTALL_METHOD" = "Online Installatiemethode";
+
+
+"SETTINGS_VIEW_CONTROLLER_CELL_EXPORT_ID" = "Exporteer Willekeurige Identificatie";
+"SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_ID" = "Willekeurige Identificatie Wijzigen";
+
+//
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_TITLE" = "PPQCheck Beveiligingen";
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_DESCRIPTION" = "Met deze instelling schakelt u de PPQCheck-beveiliging in. Deze is ontworpen om elke bundel-ID voor de apps die u sideloadt, vooraf te laten gaan door een willekeurige tekenreeks.\n\nDit is bedoeld om te voorkomen dat Apple uw account markeert door (te proberen) de app die u sideloadt, niet te koppelen aan een app uit de App Store.";
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_IDC" = "Kan me niet schelen";
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_GTK" = "Goed om te weten";
+
+"SETTINGS_VIEW_CONTROLLER_URL_ALERT_TITLE" = "Download-URL wWijzigen";
+"SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_IDENTIFIER" = "Willekeurige Identificatie Wijzigen";
+
+// MARK: - SettingsViewController -> AboutViewController
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_CREDITS" = "Credits";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_DEVICE" = "Apparaat";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_ACKNOWLEDGEMENTS" = "Dankbetuigingen";
+
+
+"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_VERSION" = "Apparaat Versie";
+"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_ARCH" = "Architectuur";
+"ABOUT_VIEW_CONTROLLER_CELL_APP_VERSION" = "App Versie";
+
+// MARK: - SettingsViewController -> DisplayViewController
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_TINT_COLOR" = "Tintkleur";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARENCE" = "App Verschijning";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE" = "Standaard Ondertitel";
+"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE_DESCRIPTION" = "Standaardstijl voor feather, verbergt de gelokaliseerde beschrijving en bevat alleen ondertiteling.";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE" = "Gelokaliseerde Ondertiteling";
+"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE_DESCRIPTION" = "Vervangt ondertitel door app-beschrijving.";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION" = "Grote beschrijving";
+"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION_DESCRIPTION" = "Vervangt schermafbeeldingen door de appbeschrijving.";
+
+// MARK: - SettingsViewController -> CertificatesViewController
+"CERTIFICATES_VIEW_CONTROLLER_TITLE" = "Certificaten";
+
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_FOOTER" = "Ondersteunde bestandsformaten:\n\n- P12 (.p12)\n- Mobileprovision (.mobileprovision)\n\nZorg ervoor dat uw certificaten geldig zijn en dat u ze op uw apparaat kunt sideloaden!";
+
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD" = "Voeg Certificaat";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_DESCRIPTION" = "Tik om een ​​certificaat toe te voegen";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> Delete Alert
+"CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_TITLE" = "Dit wil je niet doen!";
+"CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_DESCRIPTION" = "U probeert een geselecteerd certificaat te verwijderen. Probeer het later opnieuw wanneer u een ander certificaat bij de hand hebt.";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> Cell
+"CERTIFICATES_VIEW_CONTROLLER_CELL_EXPIRED" = "Verlopen";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_DAYS_LEFT" = "%@ dagen resterend";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> CertImportingViewController
+"CERT_IMPORTING_VIEWCONTROLLER_TITLE" = "Importeer";
+"CERT_IMPORTING_VIEWCONTROLLER_SECTION_PROVISIONING" = "";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> CertImportingViewController -> Password Alert
+
+"CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_TITLE" = "Slect Wachtwoord";
+"CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_DESCRIPTION" = "Controleer het wachtwoord en probeer het opnieuw.";
+
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PROV" = "Importeer Provisioningbestand";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_CERT" = "Importeer Certificaat Bestand";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_ENTER_PW" = "Voer Wachtwoord In";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PW" = "Wachtwoord";
+
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PROV" = "Importeer een provisioningbestand om sideloading naar uw apparaat te kunnen uitvoeren.";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_CERT" = "Importeer een bestand met een geldig certificaat.";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PASS" = "Voer het wachtwoord in dat bij de privésleutel hoort. Laat het leeg als er geen wachtwoord vereist is.";
+
+// MARK: - SettingsViewController -> ResetViewController
+"RESET_VIEW_CONTROLLER_CLEAR_CACHE" = "Wis Netwerkcache";
+"RESET_VIEW_CONTROLLER_CLEAR_CACHE_ALERT_TITLE" = "Deze actie is onomkeerbaar. Gecachte netwerkverzoeken en afbeeldingen worden gewist.";
+
+// MARK: - Donation
+"DONATION_TITLE" = "Doneren";
+"DONATION_DONATIONS" = "Donaties";
+
+"DONATION_CELL_1_TITLE" = "Geheime Repo";
+"DONATION_CELL_1_DESCRIPTION" = "Krijg toegang tot onze geheime repository door een donatie te doen. U krijgt dan bètatoegang tot Feather.";
+
+"DONATION_CELL_2_TITLE" = "Toon Je Steun";
+"DONATION_CELL_2_DESCRIPTION" = "Toon je steun door te doneren! Als je niet kunt doneren, helpt het ook om de boodschap over Feather te verspreiden!";
