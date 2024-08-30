@@ -15,6 +15,8 @@ public:
 	bool Sign(ZSignAsset *pSignAsset, bool bForce, string strBundleId, string strInfoPlistSHA1, string strInfoPlistSHA256, const string &strCodeResourcesData);
 	bool InjectDyLib(bool bWeakInject, const char *szDyLibPath, bool &bCreate);
 	bool ChangeDylibPath(const char *oldPath, const char *newPath);
+	std::vector<std::string> ListDylibs();
+	bool RemoveDylib(const std::set<std::string> &dylibNames);
 private:
 	bool OpenFile(const char *szPath);
 	bool CloseFile();

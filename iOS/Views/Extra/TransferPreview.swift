@@ -95,6 +95,14 @@ struct TransferPreview: View {
 								showShareSheet = true
 							} else if case .ready = installer.status {
 								UIApplication.shared.open(installer.iTunesLink)
+								
+//								let urlString =
+//								"itms-services://?action=download-manifest&url=" + ("\(Preferences.onlinePath ?? Preferences.defaultInstallPath)/genPlist?bundleid=\(installer.metadata.id)&name=\(installer.metadata.name)&version=\(installer.metadata.name)&fetchurl=\(installer.payloadEndpoint.absoluteString)").addingPercentEncoding(withAllowedCharacters: .alphanumerics)!
+//								
+//								
+//								UIApplication.shared.open(URL(string: urlString)!)
+
+								
 							}
 						}
 					}

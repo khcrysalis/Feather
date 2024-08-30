@@ -18,6 +18,7 @@ struct AppSigningOptions {
 	
     var uuid: String
 	var toInject: [URL]?
+	var removeInjectPaths: [String]?
     
     var removePlugins: Bool?
     var forceFileSharing: Bool?
@@ -61,6 +62,12 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 						
 			let handler = TweakHandler(urls: options.toInject ?? [], app: tmpDirApp)
 			try handler.getInputFiles()
+			
+			if let removeInjectPaths = options.removeInjectPaths, !removeInjectPaths.isEmpty {
+				if let appexe = try TweakHandler.findExecutable(at: tmpDirApp) {
+					_ = uninstallDylibs(filePath: appexe.path, dylibPaths: removeInjectPaths)
+				}
+			}
 			
 			try updatePlugIns(options: options, app: tmpDirApp)
 			try removeDumbAssPlaceHolderExtension(options: options, app: tmpDirApp)
@@ -150,6 +157,25 @@ func changeDylib(filePath: String, oldPath: String, newPath: String) -> Bool {
 	let success = ChangeDylibPath(filePath, oldPath, newPath)
 	return success
 }
+
+func listDylibs(filePath: String) -> [String]? {
+	let dylibPathsArray = NSMutableArray()
+
+	let success = ListDylibs(filePath, dylibPathsArray)
+
+	if success {
+		let dylibPaths = dylibPathsArray as! [String]
+		return dylibPaths
+	} else {
+		print("Failed to list dylibs.")
+		return nil
+	}
+}
+
+func uninstallDylibs(filePath: String, dylibPaths: [String]) -> Bool {
+	return UninstallDylibs(filePath, dylibPaths)
+}
+
 
 func updatePlugIns(options: AppSigningOptions, app: URL) throws {
 	if options.removePlugins! {

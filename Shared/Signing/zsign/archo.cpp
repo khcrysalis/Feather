@@ -838,3 +838,21 @@ void ZArchO::uninstallDylibs(set<string> dylibNames)
     memcpy(pLoadCommand,new_load_command_data,new_load_command_size);
     free(new_load_command_data);
 }
+
+std::vector<std::string> ZArchO::ListDylibs() {
+	std::vector<std::string> dylibList;
+	uint8_t *pLoadCommand = m_pBase + m_uHeaderSize;
+
+	for (uint32_t i = 0; i < BO(m_pHeader->ncmds); i++) {
+		load_command *plc = (load_command *)pLoadCommand;
+		if (LC_LOAD_DYLIB == BO(plc->cmd) || LC_LOAD_WEAK_DYLIB == BO(plc->cmd)) {
+			dylib_command *dlc = (dylib_command *)pLoadCommand;
+			const char *szDyLib = (const char *)(pLoadCommand + BO(dlc->dylib.name.offset));
+			dylibList.push_back(std::string(szDyLib));
+		}
+		pLoadCommand += BO(plc->cmdsize);
+	}
+
+	return dylibList;
+}
+

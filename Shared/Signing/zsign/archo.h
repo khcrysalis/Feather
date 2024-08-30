@@ -16,7 +16,7 @@ public:
 	uint32_t ReallocCodeSignSpace(const string &strNewFile);
     void uninstallDylibs(set<string> dylibNames);
 	bool ChangeDylibPath(const char *oldPath, const char *newPath);
-
+	std::vector<std::string> ListDylibs();
 private:
 	uint32_t BO(uint32_t uVal);
 	const char *GetFileType(uint32_t uFileType);

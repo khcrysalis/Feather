@@ -42,7 +42,6 @@ class LibraryViewController: UITableViewController {
 	fileprivate func setupViews() {
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
-		self.tableView.backgroundColor = .background
 		tableView.register(AppsTableViewCell.self, forCellReuseIdentifier: "RoundedBackgroundCell")
 		NotificationCenter.default.addObserver(self, selector: #selector(afetch), name: Notification.Name("lfetch"), object: nil)
 		
@@ -234,7 +233,7 @@ extension LibraryViewController {
 		if FileManager.default.fileExists(atPath: CoreDataManager.shared.getFilesForDownloadedApps(for:(meow as! DownloadedApps)).path) {
 			let ap = AppSigningViewController(app: meow, appsViewController: self)
 			let navigationController = UINavigationController(rootViewController: ap)
-			navigationController.modalPresentationStyle = .formSheet
+			navigationController.modalPresentationStyle = .fullScreen
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
 				self.present(navigationController, animated: true, completion: nil)
 			}

@@ -99,6 +99,7 @@
 		33DF8D7F2C0828FB00D6C05F /* Nuke.md in Resources */ = {isa = PBXBuildFile; fileRef = 33DF8D7E2C0828FB00D6C05F /* Nuke.md */; };
 		33DF8D812C08290F00D6C05F /* HttpSwift_RequestSwift_SocketSwift.md in Resources */ = {isa = PBXBuildFile; fileRef = 33DF8D802C08290F00D6C05F /* HttpSwift_RequestSwift_SocketSwift.md */; };
 		33E3B6702C7FE06C0075E3A2 /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3B66F2C7FE06C0075E3A2 /* RepoViewController.swift */; };
+		33E3B6722C8151ED0075E3A2 /* AppSigningDylibViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3B6712C8151ED0075E3A2 /* AppSigningDylibViewController.swift */; };
 		33E4D8322C64CB39006A1C26 /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8312C64CB39006A1C26 /* SearchResultsTableViewController.swift */; };
 		33E4D8342C6593D2006A1C26 /* UIView+parentcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8332C6593D2006A1C26 /* UIView+parentcontroller.swift */; };
 		33E4D8362C6593F4006A1C26 /* CGSize+aspectFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8352C6593F4006A1C26 /* CGSize+aspectFit.swift */; };
@@ -224,6 +225,7 @@
 		33DF8D7E2C0828FB00D6C05F /* Nuke.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Nuke.md; sourceTree = "<group>"; };
 		33DF8D802C08290F00D6C05F /* HttpSwift_RequestSwift_SocketSwift.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = HttpSwift_RequestSwift_SocketSwift.md; sourceTree = "<group>"; };
 		33E3B66F2C7FE06C0075E3A2 /* RepoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
+		33E3B6712C8151ED0075E3A2 /* AppSigningDylibViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSigningDylibViewController.swift; sourceTree = "<group>"; };
 		33E4D8312C64CB39006A1C26 /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		33E4D8332C6593D2006A1C26 /* UIView+parentcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+parentcontroller.swift"; sourceTree = "<group>"; };
 		33E4D8352C6593F4006A1C26 /* CGSize+aspectFit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+aspectFit.swift"; sourceTree = "<group>"; };
@@ -669,6 +671,7 @@
 				33BE87622C6F17870044D245 /* AppSigningInputViewController.swift */,
 				33BE87642C6F17980044D245 /* AppSigningAdvancedViewController.swift */,
 				33BE87662C6F17DF0044D245 /* AppSigningTweakViewController.swift */,
+				33E3B6712C8151ED0075E3A2 /* AppSigningDylibViewController.swift */,
 				AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */,
 				AF4D46F02C4332D7003FA335 /* SwitchViewCell.swift */,
 				AFAC50912C48DB1200EDEAB6 /* ActivityIndicatorViewCell.swift */,
@@ -927,6 +930,7 @@
 				AF84EEFD2C4080610050CBE4 /* AppSigningViewController.swift in Sources */,
 				33BDD0B62C785F5F00AF6169 /* Server+TLS.swift in Sources */,
 				33BDD0B82C785F9500AF6169 /* Server+Compute.swift in Sources */,
+				33E3B6722C8151ED0075E3A2 /* AppSigningDylibViewController.swift in Sources */,
 				339BDAE32BF95DC0007009D9 /* SectionIcons.swift in Sources */,
 				331616912C786B9B00894427 /* TransferPreview.swift in Sources */,
 				33AC87F32C3B7D24003D1175 /* CertificatesViewController.swift in Sources */,
@@ -1099,7 +1103,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DLSL362JHJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Feather;
@@ -1121,7 +1125,7 @@
 					"$(PROJECT_DIR)/Shared/Resources",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
+				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather22;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1144,7 +1148,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DLSL362JHJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Feather;
@@ -1166,7 +1170,7 @@
 					"$(PROJECT_DIR)/Shared/Resources",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
+				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather22;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

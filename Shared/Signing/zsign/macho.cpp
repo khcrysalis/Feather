@@ -324,3 +324,27 @@ bool ZMachO::ChangeDylibPath(const char *oldPath, const char *newPath) {
 	}
 	return pathChanged;
 }
+
+std::vector<std::string> ZMachO::ListDylibs() {
+	std::vector<std::string> dylibList;
+
+	for (size_t i = 0; i < m_arrArchOes.size(); i++) {
+		std::vector<std::string> archDylibs = m_arrArchOes[i]->ListDylibs();
+		dylibList.insert(dylibList.end(), archDylibs.begin(), archDylibs.end());
+	}
+
+	ZLog::WarnV(">>> Found %zu dylibs:\n", dylibList.size());
+
+	return dylibList;
+}
+bool ZMachO::RemoveDylib(const std::set<std::string> &dylibNames) {
+	ZLog::Warn(">>> Removing specified dylibs...\n");
+
+	bool removalSuccessful = true;
+	for (size_t i = 0; i < m_arrArchOes.size(); i++) {
+		m_arrArchOes[i]->uninstallDylibs(dylibNames);
+	}
+
+	ZLog::Warn(">>> Finished removing specified dylibs!\n");
+	return removalSuccessful;
+}

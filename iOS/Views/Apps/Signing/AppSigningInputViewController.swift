@@ -33,6 +33,16 @@ class AppSigningInputViewController: UITableViewController {
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		navigationController?.setToolbarHidden(true, animated: animated)
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		navigationController?.setToolbarHidden(false, animated: animated)
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		navigationItem.largeTitleDisplayMode = .never

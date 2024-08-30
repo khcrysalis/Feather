@@ -17,6 +17,8 @@ class AppSigningViewController: UITableViewController {
 	var iconCell = IconImageViewCell()
 
     var toInject: [URL] = []
+	var removeInjectPaths: [String] = []
+	
     var app: NSManagedObject!
     var name: String = "Unknown"
     var bundleId: String = "unknown"
@@ -126,6 +128,7 @@ class AppSigningViewController: UITableViewController {
 			iconURL: icon ?? nil,
 			uuid: uuid,
 			toInject: toInject,
+			removeInjectPaths: removeInjectPaths,
 			removePlugins: removePlugins,
 			forceFileSharing: forceFileSharing,
 			removeSupportedDevices: removeSupportedDevices,
@@ -162,7 +165,7 @@ class AppSigningViewController: UITableViewController {
         case 1:
             return 1;
         case 2:
-			return 1;
+			return 2;
         case 3:
             return 1;
         default:
@@ -229,6 +232,11 @@ class AppSigningViewController: UITableViewController {
 			cell.accessoryView = badgeView
 
             break
+		case (2, 1):
+			cell.textLabel?.text = "Remove dylibs"
+			let badgeView = BadgeView(frame: CGRect(x: 0, y: 0, width: 60, height: 20))
+			cell.accessoryView = badgeView
+			break
         case (3, 0):
 			cell.textLabel?.text = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED")
             cell.accessoryType = .disclosureIndicator
@@ -252,6 +260,8 @@ class AppSigningViewController: UITableViewController {
 			navigationController?.pushViewController(AppSigningInputViewController(appSigningViewController: self, initialValue: self.version, valueToSaveTo: "version", indexPath: indexPath), animated: true)
 		case (2, 0):
 			navigationController?.pushViewController(AppSigningTweakViewController(appSigningViewController: self), animated: true)
+		case (2, 1):
+			navigationController?.pushViewController(AppSigningDylibViewController(appSigningViewController: self, app: getFilesForDownloadedApps(app: app as! DownloadedApps, getuuidonly: false)), animated: true)
         case (3, 0):
             navigationController?.pushViewController(AppSigningAdvancedViewController(appSigningViewController: self), animated: true)
         default:

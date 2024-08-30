@@ -24,6 +24,9 @@ bool ChangeDylibPath(NSString *filePath,
 					 NSString *oldPath,
 					 NSString *newPath);
 
+bool ListDylibs(NSString *filePath, NSMutableArray *dylibPathsArray);
+bool UninstallDylibs(NSString *filePath, NSArray<NSString *> *dylibPathsArray);
+
 int zsign(NSString *app,
 		  NSString *prov,
 		  NSString *key,

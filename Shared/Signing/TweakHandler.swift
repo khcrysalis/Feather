@@ -296,7 +296,7 @@ extension TweakHandler {
 		}
 	}
 	
-	private static func findExecutable(at frameworkURL: URL) throws -> URL? {
+	public static func findExecutable(at frameworkURL: URL) throws -> URL? {
 		
 		let infoPlistURL = frameworkURL.appendingPathComponent("Info.plist")
 		

@@ -24,6 +24,16 @@ class AppSigningAdvancedViewController: UITableViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		navigationController?.setToolbarHidden(true, animated: animated)
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		navigationController?.setToolbarHidden(false, animated: animated)
+	}
+	
 	override func viewDidLoad() {
 		title = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED")
 		navigationItem.largeTitleDisplayMode = .never

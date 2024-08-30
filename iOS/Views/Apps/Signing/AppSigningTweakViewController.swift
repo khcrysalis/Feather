@@ -42,6 +42,16 @@ class AppSigningTweakViewController: UICollectionViewController, UICollectionVie
 		self.tweaksToInject = self.appSigningViewController.toInject
 	}
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		navigationController?.setToolbarHidden(true, animated: animated)
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		navigationController?.setToolbarHidden(false, animated: animated)
+	}
+	
 	@objc func openDocuments() {
 		importFile()
 	}
