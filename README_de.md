@@ -47,39 +47,39 @@ Mit Feather können Sie ein `.p12`- und ein `.mobileprovision`-Paar importieren,
 
 ## FAQ
 
-> What does feather use for its server?
+> Was verwendet Feather für seinen Server?
 
-It uses the [localhost.direct](https://github.com/Upinel/localhost.direct) certificate and [Vapor](https://github.com/vapor/vapor) to self host an HTTPS server on your device - all itms services really needs is a valid certificate and a valid HTTPS server. Which allows iOS to accept the request and install the application.
+Es verwendet das [localhost.direct](https://github.com/Upinel/localhost.direct)-Zertifikat und [Vapor](https://github.com/vapor/vapor), um selbst einen HTTPS-Server auf deinem Gerät zu hosten - Alles, was die itms-Dienste wirklich benötigen, ist ein gültiges Zertifikat und ein gültiger HTTPS-Server. Dadurch kann iOS die Anfrage annehmen und die Anwendung installieren.
 
-> Why does Feather append a random string on the bundle ID?
+> Warum hängt Feather eine zufällige Zeichenfolge an die Bundle-ID an?
 
-New ADP (Apple Developer Program) memberships created after June 6, 2021, require development and ad-hoc signed apps for iOS, iPadOS, and tvOS to check with a PPQ (Provisioning Profile Query Check) service when the app is first launched. The device must be connected to the internet to verify.
+Neue ADP-Mitgliedschaften (Apple Developer Program), die nach dem 6. Juni 2021 erstellt wurden, erfordern, dass Entwicklungs- und Ad-hoc-signierte Apps für iOS, iPadOS und tvOS beim ersten Start der App mit einem PPQ-Dienst (Provisioning Profile Query Check) überprüft werden. Zur Überprüfung muss das Gerät mit dem Internet verbunden sein.
 
-PPQCheck checks for a similar bundle identifier on the App Store, if said identifier matches the app you're launching and is happened to be signed with a non-appstore certificate, your Apple ID may be flagged and even banned from using the program for any longer.
+PPQCheck sucht im App Store nach einer ähnlichen Bundle-ID. Wenn diese ID mit der von dir gestarteten App übereinstimmt und zufällig mit einem Nicht-Appstore-Zertifikat signiert ist, wird deine Apple-ID möglicherweise markiert und sogar für die Nutzung des Programms gesperrt für lange Zeit.
 
-This is why we prepend the random string before each identifier, its done as a safety meassure - however you can disable it if you *really* want to in Feathers settings page.
+Aus diesem Grund stellen wir eine Zufallszeichenfolge vor jeder Kennung aus Sicherheitsgründen voran. Du kannst sie jedoch auf der Einstellungsseite von Feathers *wirklich* deaktivieren, wenn du unbedingt willst.
 
-*NOTE: IF YOU WANT TO KEEP APPLICATION DATA THROUGH REINSTALLS, MAKE SURE YOU HAVE THE SAME BUNDLEID.*
+*HINWEIS: Wenn du Anwendungsdaten auch bei Neuinstallationen behalten möchtest, stelle sicher, dass Sie über dieselbe BundleID verfügt.*
 
-## Building
+## Aufbau
 
 ```sh
 git clone https://github.com/khcrysalis/feather # Clone
 cd feather
 make package SCHEME="'feather (Release)'" # Build
 ```
-> Use `SCHEME="'feather (Debug)'"` for debug build
+> Nutze `SCHEME="'feather (Debug)'"` für Debug-Build
 
-## Acknowledgements
+## Danksagungen
 
-- [localhost.direct](https://github.com/Upinel/localhost.direct) - localhost with public CA signed SSL certificate
-- [Vapor](https://github.com/vapor/vapor) - A server-side Swift HTTP web framework.
-- [Zsign](https://github.com/zhlynn/zsign) - Allowing to sign on-device, reimplimented to work on other platforms such as iOS.
-- [Nuke](https://github.com/kean/Nuke) - Image caching.
-- [Asspp](https://github.com/Lakr233/Asspp) - Some code for setting up the http server.
+- [localhost.direct](https://github.com/Upinel/localhost.direct) - localhost mit öffentlichem, von einer Zertifizierungsstelle signiertem SSL-Zertifikat
+- [Vapor](https://github.com/vapor/vapor) - Ein serverseitiges Swift HTTP-Webframework.
+- [Zsign](https://github.com/zhlynn/zsign) - Ermöglicht das Signieren auf dem Gerät, neu implementiert für die Arbeit auf anderen Plattformen wie iOS.
+- [Nuke](https://github.com/kean/Nuke) - Bild-Zwischenspeicher.
+- [Asspp](https://github.com/Lakr233/Asspp) - Etwas Code zum Einrichten des http-Servers.
 
-<!-- - [plistserver](https://github.com/QuickSign-Team/plistserver) - Hosted on https://api.palera.in
-> NOTE: The original license to plistserver is [GPL](https://github.com/nekohaxx/plistserver/commit/b207a76a9071a695d8b498db029db5d63a954e53), so changing the license is NOT viable as technically it's irrevocable. We are allowed to host it on our own server for use in Feather by technicality.  -->
+<!-- - [plistserver](https://github.com/QuickSign-Team/plistserver) - Gehostet auf https://api.palera.in
+> HINWEIS: Die Originallizenz für plistserver ist [GPL](https://github.com/nekohaxx/plistserver/commit/b207a76a9071a695d8b498db029db5d63a954e53), eine Änderung der Lizenz ist daher NICHT sinnvoll, da sie technisch gesehen unwiderruflich ist. Aus technischen Gründen ist es uns gestattet, es auf unserem eigenen Server zur Verwendung in Feather zu hosten.  -->
 
 ## Star History
 
@@ -91,7 +91,7 @@ make package SCHEME="'feather (Release)'" # Build
  </picture>
 </a>
 
-## Contributions
+## Mitwirkung
 
 - Deutsche Lokalisierung und README_DE von t0mi (https://x.com/t0mi292)
 
