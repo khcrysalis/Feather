@@ -93,12 +93,12 @@ make package SCHEME="'feather (Release)'" # Build
 
 ## Contributions
 
-- German localization and README_DE by t0mi (https://x.com/t0mi292)
+- Deutsche Lokalisierung und README_DE von t0mi (https://x.com/t0mi292)
 
-## History
+## Geschichte
 
-There was a tool called ESign (Easy Sign) that would allow you to sideload applications seamlessly on device, however it was discovered it sadly sends analytics over to some other location. There were stuff that supposedly removed the analytics but it's hard to decipher if it actually removed the problem at hand.
+Es gab ein Tool namens ESign (Easy Sign), mit dem Sie Anwendungen nahtlos auf das Gerät laden konnten. Es wurde jedoch festgestellt, dass es Analysen leider an einen anderen Ort sendet. Es gab Dinge, die angeblich die Analyse entfernt haben, aber es ist schwer zu entschlüsseln, ob das Problem dadurch tatsächlich behoben wurde.
 
-So I decided to make an alternative with similar features so I don't need to use that tool, along with me an others. A lot of research has been done to get this working, and originally got it working a few months ago for the first time! Of course without the help with Dhinakg in discovering you can actually use a local server to deploy an app on your device!
+Deshalb habe ich beschlossen, eine Alternative mit ähnlichen Funktionen zu entwickeln, damit ich dieses Tool nicht zusammen mit anderen verwenden muss. Es wurde viel Forschung betrieben, um dies zum Laufen zu bringen und vor ein paar Monaten hat es zum ersten Mal funktioniert! Natürlich können Sie ohne die Hilfe von Dhinakg bei der Entdeckung tatsächlich einen lokalen Server verwenden, um eine App auf deinem Gerät bereitzustellen!
 
-And now we're here! Hopefully this satisfies most people that want to sideload with their developer account or in general!
+Und jetzt sind wir da! Hoffentlich stellt dies die meisten Leute zufrieden, die mit ihrem Entwicklerkonto oder allgemein einen Sideload durchführen möchten!
