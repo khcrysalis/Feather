@@ -38,12 +38,12 @@
 
 | <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Repos.png"><source media="(prefers-color-scheme: light)" srcset="Images/Repos_L.png"><img alt="Pointercrate-pocket." src="Images/Repos_L.png" width="200"></picture></p> | <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Store.png"><source media="(prefers-color-scheme: light)" srcset="Images/Store_L.png"><img alt="Pointercrate-pocket." src="Images/Store_L.png" width="200"></picture></p> | <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Library.png"><source media="(prefers-color-scheme: light)" srcset="Images/Library_L.png"><img alt="Pointercrate-pocket." src="Images/Library_L.png" width="200"></picture></p> | <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Sign.png"><source media="(prefers-color-scheme: light)" srcset="Images/Sign_L.png"><img alt="Pointercrate-pocket." src="Images/Sign_L.png" width="200"></picture></p> |
 |:--:|:--:|:--:|:--:|
-| **Sources** | **Store** | **Library** | **Signing** |
-> Tip: Go into lightmode to see lightmode screenshots!
+| **Quellen** | **Store** | **Mediathek** | **Signierung** |
+> Tipp: Gehe in den Hell-Modus, um Bildschirmfotos im Hell-Modus zu sehen!
 
-## How it Works
+## Wie es funktioniert
 
-Feather allows you to import a `.p12` and a `.mobileprovision` pair to sign the application with (you will need a correct password to the p12 before importing). [Zsign](https://github.com/zhlynn/zsign) is used for the signing aspect, feather feeds it the certificates you have selected in its certificates tab and will sign the app on your device - after its finished it will now be added to your signed applications tab. When selected, it will take awhile as its compressing and will prompt you to install it.
+Mit Feather können Sie ein `.p12`- und ein `.mobileprovision`-Paar importieren, um die Anwendung zu signieren (Du benötigst vor dem Import ein korrektes Passwort für p12). [Zsign](https://github.com/zhlynn/zsign) wird für den Signaturaspekt verwendet, Feather fügt die Zertifikate ein, die in der Registerkarte "Zertifikate" ausgewählt wurden und signiert die App auf Ihrem Gerät - nachdem sie abgeschlossen ist, wird sie nun zu deiner Registerkarte "Signierte Anwendungen" hinzugefügt. Wenn es ausgewählt ist, dauert es eine Weile, da es komprimiert wird, und du wirst aufgefordert, es zu installieren.
 
 ## FAQ
 
@@ -93,7 +93,7 @@ make package SCHEME="'feather (Release)'" # Build
 
 ## Contributions
 
-They are welcome! :)
+- German localization and README_DE by t0mi (https://x.com/t0mi292)
 
 ## History
 
