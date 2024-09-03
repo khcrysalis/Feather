@@ -94,7 +94,7 @@ make package SCHEME="'feather (Release)'" # Build
 
 ## Contributions
 
-They are welcome! :)
+- German localization and README_DE by t0mi (https://x.com/t0mi292)
 
 ## History
 
