@@ -93,7 +93,7 @@ make package SCHEME="'feather (Release)'" # Build
 
 ## Mitwirkung
 
-- Deutsche Lokalisierung und README_DE von t0mi (https://x.com/t0mi292)
+Sie sind willkommen! :)
 
 ## Geschichte
 
