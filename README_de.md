@@ -25,7 +25,7 @@
 - **Einfache Wieder-Signierung**! *Wenn du ein anderes Zertifikat hast, das du für eine App verwenden möchtest, kannst du dieselbe App neu installieren!*
 - **Kein Tracking, keine Analysen oder der Art**. *Ihre Informationen wie UDID und Zertifikate werden das Gerät nie verlassen.*
 
-> [!WICHTIG]
+> [!WARNING]
 > **Tweak-Unterstützung befindet sich in der Beta-Phase**, stelle sicher, dass deine Optimierungen auf der [Ellekit](https://theapplewiki.com/wiki/ElleKit) Hooking-Plattform funktioniert und mit der neuesten Version von Theos gebaut wurde.
 > 
 > **Einige Optimierungen, nicht alle, sollten mit Feather funktionieren.** Erwarte jedoch nicht, dass Optimierungen sofort funktionieren. Da wir keinen dylib-Load-Befehl ändern werden, der nicht CydiaSubstrate ist.
