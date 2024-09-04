@@ -7,6 +7,7 @@
 </p>
 
 #### README In Other Languages
+- [Deutsch🇩🇪](https://github.com/khcrysalis/Feather/blob/main/README_de.md)
 - [Русский🇷🇺](https://github.com/khcrysalis/Feather/blob/main/README_ru.md)
 
 
