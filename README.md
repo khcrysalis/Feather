@@ -69,6 +69,7 @@ git clone https://github.com/khcrysalis/feather # Clone
 cd feather
 make package SCHEME="'feather (Release)'" # Build
 ```
+> [!Tip]
 > Use `SCHEME="'feather (Debug)'"` for debug build
 
 ## Acknowledgements
