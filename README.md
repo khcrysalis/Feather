@@ -89,7 +89,7 @@ make package SCHEME="'feather (Release)'" # Build
 | Thanks to all my [sponsors](https://github.com/sponsors/khcrysalis)!! |
 |:-:|
 | <img src="https://raw.githubusercontent.com/khcrysalis/github-sponsor-graph/main/graph.png"> |
-| _**Vendicated: samara is cute**_ |
+| _**"samara is cute" - Vendicated**_ |
 
 ## Star History
 
