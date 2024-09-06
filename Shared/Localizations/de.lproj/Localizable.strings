@@ -132,7 +132,7 @@
 //
 "APPS_INFORMATION_TITLE_DELETED_FILE" = "Gelöschte Datei";
 "APPS_INFORMATION_TITLE_DELETED_FILE_TITLE" = "Die Datei wurde gelöscht.";
-"APPS_INFORMATION_TITLE_DELETED_FILE_DESCRIPTION" = "Das ist ein nutzloser Eintrag, er hat keine Datei und Feather lässt es nicht installieren. Es wird empfohlen, dass du es löscht, indem du bei "Apps" zur Seite wischt.";
+"APPS_INFORMATION_TITLE_DELETED_FILE_DESCRIPTION" = "Das ist ein nutzloser Eintrag, er hat keine Datei und Feather lässt es nicht installieren. Es wird empfohlen, dass du es löscht, indem du bei \"Apps\" zur Seite wischt.";
 // Application Section
 "APPS_INFORMATION_TITLE_NAME" = "Name";
 "APPS_INFORMATION_TITLE_VERSION" = "Version";
@@ -154,7 +154,7 @@
 
 // MARK: - AppSigningViewController - No Certificates Alert
 "APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_TITLE" = "Fehler";
-"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_DESCRIPTION" = "Du hast kein Zertifikat ausgewählt. Wähle eines im Abschnitt "Signierung" der Registerkarte "Einstellungen" aus oder lade eines hoch.";
+"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_DESCRIPTION" = "Du hast kein Zertifikat ausgewählt. Wähle eines im Abschnitt \"Signierung\" der Registerkarte \"Einstellungen\" aus oder lade eines hoch.";
 
 // MARK: - AppSigningViewController -> AppSigningInputViewController
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_CELL_PPQCHECK" = "PPQCheck ist aktiviert";
