@@ -87,7 +87,7 @@
 // Opening manifest.plist for iOS
 "TRANSFER_PREVIEW_SENDING_MANIFEST" = "Отправка манифеста...";
 // iOS is retrieving IPA file
-"TRANSFER_PREVIEW_SENDING_PAYLOAD" = "Отправка груза...";
+"TRANSFER_PREVIEW_SENDING_PAYLOAD" = "Отправка данных...";
 // Done transferring IPA file
 "TRANSFER_PREVIEW_DONE" = "Готово";
 // Completed packaging so you can share
@@ -105,7 +105,7 @@
 
 // MARK: - SourcesViewController - Add Sources
 "SOURCES_VIEW_ADD_SOURCES_ALERT_TITLE" = "Добавить источник";
-"SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "Add Altstore Repo URL";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "Добавить URL репозитория AltStore";
 
 // MARK: - SourcesViewController -> SourcesAppViewController
 // Number of apps, i.e. "444 Apps"
@@ -170,7 +170,7 @@
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME" = "Удалить URLScheme";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS" = "Разрешить просмотр документов";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING" = "Разрешить общий доступ к iTunes";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION" = "Принудить Pro Motion";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION" = "Принудить ProMotion";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "Принудить полноэкранный режим";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP" = "Удалить приложение для часов";
 
@@ -209,7 +209,7 @@
 "SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_ID" = "Изменить случайный идентификатор";
 
 //
-"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_TITLE" = "Защитные меры PPQCheck";
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_TITLE" = "Защита PPQCheck";
 "SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_DESCRIPTION" = "Этот параметр включает защиту PPQCheck, которая предназначена для добавления к идентификатору каждого пакета приложений, загружаемых с интернета, случайной строки.\n\nЭто сделано для того, чтобы Apple не отметила ваш аккаунт, (пытаясь) сделать так, чтобы они не смогли связать приложение, загружаемое с интернета, с приложением из App Store.";
 "SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_IDC" = "Мне все равно";
 "SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_GTK" = "Понятно";
