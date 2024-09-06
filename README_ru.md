@@ -28,7 +28,7 @@
 > **Некоторые твики, но не все, должны работать с Feather.** Однако не ждите, что твики будут работать из коробки. Так как мы не будем менять ни одну команду загрузки dylib, которая не является CydiaSubstrate.
 
 ## Ссылки
- → [Посетите вики о Feather здесь!](https://github.com/khcrysalis/Feather/wiki)
+ → [Посетите вики о Feather здесь!](https://github.com/khcrysalis/Feather/wiki)\
  → [Посетите план развития здесь!](https://github.com/khcrysalis/Feather/issues/26)
 
 ## Скриншоты
