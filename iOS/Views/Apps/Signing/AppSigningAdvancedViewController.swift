@@ -111,6 +111,13 @@ class AppSigningAdvancedViewController: UITableViewController {
 		removeWatchPlaceHolder.switchControl.isOn = appSigningViewController.removeWatchPlaceHolder
 		removeWatchPlaceHolder.selectionStyle = .none
 		cellsForSection2.append(removeWatchPlaceHolder)
+		
+//		let removeProvisioningFile = SwitchViewCell()
+//		removeProvisioningFile.textLabel?.text = "Remove Provisioning File"
+//		removeProvisioningFile.switchControl.addTarget(self, action: #selector(removeProvisioningFile(_:)), for: .valueChanged)
+//		removeProvisioningFile.switchControl.isOn = appSigningViewController.removeProvisioningFile
+//		removeProvisioningFile.selectionStyle = .none
+//		cellsForSection2.append(removeProvisioningFile)
 	}
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {
@@ -172,5 +179,8 @@ class AppSigningAdvancedViewController: UITableViewController {
 	}
 	@objc private func removePlaceHolderWatchExtension(_ sender: UISwitch) {
 		appSigningViewController.removeWatchPlaceHolder = sender.isOn
+	}
+	@objc private func removeProvisioningFile(_ sender: UISwitch) {
+		appSigningViewController.removeProvisioningFile = sender.isOn
 	}
 }

@@ -78,6 +78,9 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 			
 			try signAppWithZSign(tmpDirApp: tmpDirApp, certPaths: (provisionPath, p12Path), password: options.certificate?.password ?? "", options: options)
 						
+			try updateMobileProvision(options: options, app: tmpDirApp)
+
+			
             let signedUUID = UUID().uuidString
             try fileManager.createDirectory(at: getDocumentsDirectory().appendingPathComponent("Apps/Signed"), withIntermediateDirectories: true)
             let path = getDocumentsDirectory().appendingPathComponent("Apps/Signed").appendingPathComponent(signedUUID)
@@ -190,6 +193,24 @@ func updatePlugIns(options: AppSigningOptions, app: URL) throws {
 		}
 	}
 }
+
+func updateMobileProvision(options: AppSigningOptions, app: URL) throws {
+	if options.removeProvisioningFile == true {
+		let provisioningFilePath = app.appendingPathComponent("embedded.mobileprovision")
+		if FileManager.default.fileExists(atPath: provisioningFilePath.path) {
+			do {
+				try FileManager.default.removeItem(at: provisioningFilePath)
+				Debug.shared.log(message: "embedded.mobileprovision file removed successfully.")
+			} catch {
+				Debug.shared.log(message: "Failed to remove embedded.mobileprovision file: \(error)")
+				throw error
+			}
+		} else {
+			Debug.shared.log(message: "No embedded.mobileprovision file found.")
+		}
+	}
+}
+
 
 func removeDumbAssPlaceHolderExtension(options: AppSigningOptions, app: URL) throws {
 	if options.removeWatchPlaceHolder! {

@@ -13,9 +13,12 @@ import CoreData
 
 class SourceAppViewController: UITableViewController {
 	var apps: [StoreAppsData] = []
+	var oApps: [StoreAppsData] = []
 	var filteredApps: [StoreAppsData] = []
 	
 	var name: String? { didSet { self.title = name } }
+	private var selectedFilterOption: AppFilterOption = .default
+
 	var uri: URL!
 	
 	var highlightAppName: String?
@@ -48,9 +51,60 @@ class SourceAppViewController: UITableViewController {
 		self.tableView.delegate = self
 		self.tableView.tableHeaderView = UIView()
 		self.tableView.register(AppTableViewCell.self, forCellReuseIdentifier: "AppTableViewCell")
-		let barButton = UIBarButtonItem(customView: activityIndicator)
-		self.navigationItem.setRightBarButton(barButton, animated: true)
+		self.navigationItem.titleView = activityIndicator
 		self.activityIndicator.startAnimating()
+	}
+	
+	private func updateFilterMenu() {
+		let defaultAction = UIAction(title: "Default", image: UIImage()) { [weak self] _ in
+			self?.applyFilter(.default)
+		}
+		
+		let nameAction = UIAction(title: "Name", image: UIImage(systemName: "textformat")) { [weak self] _ in
+			self?.applyFilter(.name)
+		}
+		
+		let dateAction = UIAction(title: "Date", image: UIImage(systemName: "calendar")) { [weak self] _ in
+			self?.applyFilter(.date)
+		}
+		
+		// Update actions with checkmarks
+		defaultAction.state = selectedFilterOption == .default ? .on : .off
+		nameAction.state = selectedFilterOption == .name ? .on : .off
+		dateAction.state = selectedFilterOption == .date ? .on : .off
+		
+		let filterMenu = UIMenu(title: "Filter by", children: [defaultAction, nameAction, dateAction])
+		let filterButton = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.decrease"), menu: filterMenu)
+		self.navigationItem.rightBarButtonItem = filterButton
+	}
+	
+	enum AppFilterOption {
+		case `default`
+		case name
+		case date
+	}
+	
+	func applyFilter(_ option: AppFilterOption) {
+		selectedFilterOption = option
+		
+		switch option {
+		case .default:
+			apps = oApps
+		case .name:
+			apps = apps.sorted { $0.name < $1.name }
+		case .date:
+			apps = apps.sorted {
+				guard let date0 = $0.versionDate else { return false }
+				guard let date1 = $1.versionDate else { return true }
+				return date0 < date1
+			}
+		}
+		
+		UIView.transition(with: tableView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+			self.tableView.reloadData()
+		}, completion: nil)
+		
+		updateFilterMenu()
 	}
 	
 	fileprivate func setupNavigation() {
@@ -66,7 +120,9 @@ class SourceAppViewController: UITableViewController {
 				switch parseResult {
 				case .success(let sourceData):
 					DispatchQueue.main.async {
+						
 						self?.apps = sourceData.apps
+						self?.oApps = sourceData.apps
 						
 						if let fil = self?.shouldFilter() {
 							self?.apps = [fil].compactMap { $0 }
@@ -74,6 +130,8 @@ class SourceAppViewController: UITableViewController {
 						
 						UIView.transition(with: self!.tableView, duration: 0.3, options: .transitionCrossDissolve, animations: {
 							self!.activityIndicator.stopAnimating()
+							self?.navigationItem.titleView = nil
+							self?.updateFilterMenu()
 							self?.tableView.reloadData()
 						}, completion: nil)
 					}

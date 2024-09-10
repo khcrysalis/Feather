@@ -98,4 +98,5 @@ public struct StoreAppsDataVersion: Codable {
 	public var localizedDescription: String?
 	public var downloadURL: URL
 	public var size: Int?
+	public var date: String?
 }
