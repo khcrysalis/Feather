@@ -211,7 +211,7 @@ class AppTableViewCell: UITableViewCell {
 		} else if Preferences.appDescriptionAppearence == 2 {
 			let appSubtitle = app.subtitle ?? String.localized("SOURCES_CELLS_DEFAULT_SUBTITLE")
 			displayText += " • " + appSubtitle
-			descText = app.localizedDescription ?? String.localized("SOURCES_CELLS_DEFAULT_DESCRIPTION")
+			descText = app.localizedDescription ?? (app.versions?[0].localizedDescription ?? String.localized("SOURCES_CELLS_DEFAULT_DESCRIPTION"))
 		}
 		descriptionLabel.text = descText
 		versionLabel.text = displayText
