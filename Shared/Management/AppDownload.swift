@@ -121,6 +121,7 @@ class AppDownload: NSObject {
 			}
 			
 		} catch {
+			Debug.shared.log(message: "\(error)")
 			if fileManager.fileExists(atPath: destinationURL.path) {
 				try? fileManager.removeItem(at: destinationURL)
 			}

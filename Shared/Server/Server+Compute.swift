@@ -12,7 +12,7 @@ import Foundation
 extension Installer {
 	var plistEndpoint: URL {
 		var comps = URLComponents()
-		comps.scheme = "https"
+		comps.scheme = Preferences.userSelectedServer ? "http" : "https"
 		comps.host = Self.sni
 		comps.path = "/\(id).plist"
 		comps.port = port
@@ -21,9 +21,18 @@ extension Installer {
 
 	var payloadEndpoint: URL {
 		var comps = URLComponents()
-		comps.scheme = "https"
+		comps.scheme = Preferences.userSelectedServer ? "http" : "https"
 		comps.host = Self.sni
 		comps.path = "/\(id).ipa"
+		comps.port = port
+		return comps.url!
+	}
+	
+	var pageEndpoint: URL {
+		var comps = URLComponents()
+		comps.scheme = Preferences.userSelectedServer ? "http" : "https"
+		comps.host = Self.sni
+		comps.path = "/i"
 		comps.port = port
 		return comps.url!
 	}

@@ -19,7 +19,7 @@ class SettingsViewController: UITableViewController {
 		["Current Certificate", String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES")],
 //		["Signing Configuration"],
 		["Fuck PPQCheck", "PPQCheckMitigationString", "PPQCheckMitigationExport"],
-//		["Use Server", String.localized("SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER")],
+		["Use Server", String.localized("SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER")],
 		[String.localized("SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE")],
 		[
 //			"Debug Logs",
@@ -90,8 +90,8 @@ extension SettingsViewController {
 		switch section {
 		case 1:
 			return String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES")
-//		case 6: return "Default server goes to \"\(Preferences.defaultInstallPath)\""
-		case 5:
+		case 5: return "Default server goes to \"\(Preferences.defaultInstallPath)\""
+		case 6:
 			return String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS")
 		default:
 			return nil
@@ -169,19 +169,27 @@ extension SettingsViewController {
 			useS.switchControl.addTarget(self, action: #selector(onlinePathToggled(_:)), for: .valueChanged)
 			useS.switchControl.isOn = Preferences.userSelectedServer
 			useS.selectionStyle = .none
-			useS.switchControl.isEnabled = false
-			useS.textLabel?.textColor = .secondaryLabel
 			return useS
 		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER"):
+			if !Preferences.userSelectedServer {
+				cell.textLabel?.textColor = UIColor.systemGray
+				cell.isUserInteractionEnabled = false
+				
+			}
+			
 			if Preferences.onlinePath != Preferences.defaultInstallPath {
 				cell.textLabel?.textColor = UIColor.systemGray
 				cell.isUserInteractionEnabled = false
 				cell.textLabel?.text = Preferences.onlinePath!
 			} else {
-				cell.textLabel?.textColor = .secondaryLabel
-				cell.isUserInteractionEnabled = false
+				cell.textLabel?.textColor = .tintColor
 			}
 		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION"):
+			if !Preferences.userSelectedServer {
+				cell.textLabel?.textColor = UIColor.systemGray
+				cell.isUserInteractionEnabled = false
+			}
+			
 			cell.textLabel?.textColor = .systemRed
 			cell.textLabel?.textAlignment = .center
 		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON"):
@@ -214,9 +222,7 @@ extension SettingsViewController {
 			message: String.localized("SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_DESCRIPTION"),
 			preferredStyle: .alert
 		)
-		alertController.addAction(UIAlertAction(title: "???", style: .default))
-		alertController.addAction(UIAlertAction(title: String.localized("SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_IDC"), style: .destructive))
-		alertController.addAction(UIAlertAction(title: String.localized("SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_GTK"), style: .cancel))
+		alertController.addAction(UIAlertAction(title: String.localized("OK"), style: .cancel))
 		present(alertController, animated: true, completion: nil)
 	}
 	
@@ -305,7 +311,7 @@ extension SettingsViewController {
 	
 	func updateCells() {
 		if Preferences.onlinePath != Preferences.defaultInstallPath {
-			tableData[6].insert(String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION"), at: 1)
+			tableData[5].insert(String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION"), at: 2)
 		}
 		Preferences.installPathChangedCallback = { [weak self] newInstallPath in
 			self?.handleInstallPathChange(newInstallPath)
@@ -314,14 +320,14 @@ extension SettingsViewController {
 	
 	private func handleInstallPathChange(_ newInstallPath: String?) {
 		if newInstallPath != Preferences.defaultInstallPath {
-			tableData[6].insert(String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION"), at: 1)
+			tableData[5].insert(String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION"), at: 2)
 		} else {
-			if let index = tableData[6].firstIndex(of: String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION")) {
-				tableData[6].remove(at: index)
+			if let index = tableData[5].firstIndex(of: String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION")) {
+				tableData[5].remove(at: index)
 			}
 		}
 
-		tableView.reloadSections(IndexSet(integer: 6), with: .automatic)
+		tableView.reloadSections(IndexSet(integer: 5), with: .automatic)
 	}
 	
 }

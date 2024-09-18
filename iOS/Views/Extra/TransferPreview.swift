@@ -9,6 +9,7 @@
 
 import SwiftUI
 import UIKit
+import SafariServices
 
 struct TransferPreview: View {
 	@StateObject var installer: Installer
@@ -71,6 +72,8 @@ struct TransferPreview: View {
 		}
 	}
 	
+	@State private var isPresentWebView = false
+	
 	var body: some View {
 		VStack {
 			Spacer()
@@ -85,6 +88,17 @@ struct TransferPreview: View {
 					.bold()
 					.frame(alignment: .center)
 			}
+			.fullScreenCover(isPresented: $isPresentWebView) {
+				SafariWebView(url: installer.pageEndpoint)
+					.ignoresSafeArea()
+				
+			}
+			.onReceive(installer.$status) { newStatus in
+				if case .sendingPayload = newStatus, Preferences.userSelectedServer {
+					isPresentWebView = false
+				}
+			}
+
 			.onAppear {
 				if Preferences.automaticInstall {
 					archivePayload(at: appPath, with: appName) { archiveURL in
@@ -94,15 +108,11 @@ struct TransferPreview: View {
 								shareURL = archiveURL
 								showShareSheet = true
 							} else if case .ready = installer.status {
-								UIApplication.shared.open(installer.iTunesLink)
-								
-//								let urlString =
-//								"itms-services://?action=download-manifest&url=" + ("\(Preferences.onlinePath ?? Preferences.defaultInstallPath)/genPlist?bundleid=\(installer.metadata.id)&name=\(installer.metadata.name)&version=\(installer.metadata.name)&fetchurl=\(installer.payloadEndpoint.absoluteString)").addingPercentEncoding(withAllowedCharacters: .alphanumerics)!
-//								
-//								
-//								UIApplication.shared.open(URL(string: urlString)!)
-
-								
+								if Preferences.userSelectedServer {
+									isPresentWebView = true
+								} else {
+									UIApplication.shared.open(installer.iTunesLink)
+								}
 							}
 						}
 					}
@@ -164,4 +174,16 @@ struct ActivityViewController: UIViewControllerRepresentable {
 	}
 
 	func updateUIViewController(_ uiViewController: UIActivityViewController, context: UIViewControllerRepresentableContext<ActivityViewController>) {}
+}
+
+struct SafariWebView: UIViewControllerRepresentable {
+	let url: URL
+	
+	func makeUIViewController(context: Context) -> SFSafariViewController {
+		return SFSafariViewController(url: url)
+	}
+	
+	func updateUIViewController(_ uiViewController: SFSafariViewController, context: Context) {
+		//
+	}
 }

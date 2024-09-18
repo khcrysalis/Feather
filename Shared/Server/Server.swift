@@ -80,6 +80,24 @@ class Installer: Identifiable, ObservableObject {
 				return Response(status: .notFound)
 			}
 		}
+		
+		app.get("i") { req -> Response in
+
+			let testurl = "itms-services://?action=download-manifest&url=" + ("\(Preferences.onlinePath ?? Preferences.defaultInstallPath)/genPlist?bundleid=\(metadata.id)&name=\(metadata.name)&version=\(metadata.name)&fetchurl=\(self.payloadEndpoint.absoluteString)").addingPercentEncoding(withAllowedCharacters: .alphanumerics)!
+
+			var html = ""
+			
+			html = """
+			<script type="text/javascript">window.location="\(testurl)"</script>
+			"""
+			
+			
+			var headers = HTTPHeaders()
+			headers.add(name: .contentType, value: "text/html")
+			
+			return Response(status: .ok, headers: headers, body: .init(string: html))
+		}
+
 
 		try app.server.start()
 		needsShutdown = true
@@ -112,9 +130,12 @@ extension Installer {
 		let app = Application(env)
 
 		app.threadPool = .init(numberOfThreads: 1)
-
-		app.http.server.configuration.tlsConfiguration = try Self.setupTLS()
+		
+		if !Preferences.userSelectedServer {
+			app.http.server.configuration.tlsConfiguration = try Self.setupTLS()
+		}
 		app.http.server.configuration.hostname = Self.sni
+		print(self.sni)
 		app.http.server.configuration.tcpNoDelay = true
 
 		app.http.server.configuration.address = .hostname("0.0.0.0", port: port)
