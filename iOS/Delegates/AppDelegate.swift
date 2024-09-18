@@ -64,8 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 			
 			// I know this is super hacky, honestly
 			// I don't *exactly* care as it just works :shrug:
-			if url.host == "source" {
-				let fullPath = url.absoluteString.replacingOccurrences(of: "feather://source/", with: "")
+			if let config = url.absoluteString.range(of: "/source/") {
+				let fullPath = String(url.absoluteString[config.upperBound...])
 				
 				if fullPath.starts(with: "https://") {
 					
