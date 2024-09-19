@@ -75,6 +75,7 @@ class SourceAppViewController: UITableViewController {
 		
 		let filterMenu = UIMenu(title: "Filter by", children: [defaultAction, nameAction, dateAction])
 		let filterButton = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.decrease"), menu: filterMenu)
+		
 		self.navigationItem.rightBarButtonItem = filterButton
 	}
 	
@@ -131,7 +132,9 @@ class SourceAppViewController: UITableViewController {
 						UIView.transition(with: self!.tableView, duration: 0.3, options: .transitionCrossDissolve, animations: {
 							self!.activityIndicator.stopAnimating()
 							self?.navigationItem.titleView = nil
-							self?.updateFilterMenu()
+							if (self?.highlightAppName == nil) {
+								self?.updateFilterMenu()
+							}
 							self?.tableView.reloadData()
 						}, completion: nil)
 					}
