@@ -44,8 +44,6 @@ class PopupViewController: UIViewController {
 	}
 }
 
-import UIKit
-
 class PopupViewControllerButton: UIButton {
 	var onTap: (() -> Void)?
 	private var originalBackgroundColor: UIColor?

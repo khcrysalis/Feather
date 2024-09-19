@@ -126,6 +126,20 @@ extension LibraryViewController {
 					self.popupVC.dismiss(animated: true)
 					self.startInstallProcess(meow: source!, filePath: filePath?.path ?? "")
 				}
+				
+				let button4 = PopupViewControllerButton(title: "Open \((source!.value(forKey: "name") as? String ?? ""))", color: .quaternarySystemFill, titleColor: .tintColor)
+				button4.onTap = { [weak self] in
+					guard let self = self else { return }
+					self.popupVC.dismiss(animated: true)
+					if let workspace = LSApplicationWorkspace.default() {
+						let success = workspace.openApplication(withBundleID: "\((source!.value(forKey: "bundleidentifier") as? String ?? ""))")
+						if !success {
+							Debug.shared.log(message: "Unable to open, do you have the app installed?", type: .warning)
+						}
+					}
+
+				}
+				
 				let button3 = PopupViewControllerButton(title: "Resign \((source!.value(forKey: "name") as? String ?? ""))", color: .quaternarySystemFill, titleColor: .tintColor)
 				button3.onTap = { [weak self] in
 					guard let self = self else { return }
@@ -153,9 +167,9 @@ extension LibraryViewController {
 					self.popupVC.dismiss(animated: true)
 					self.shareFile(meow: source!, filePath: filePath?.path ?? "")
 				}
-				popupVC.configureButtons([button1, button3, button2])
+				popupVC.configureButtons([button1, button4, button3, button2])
 				
-				let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 210.0)
+				let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 270.0)
 				if let presentationController = popupVC.presentationController as? UISheetPresentationController {
 					presentationController.detents = [
 						detent2,

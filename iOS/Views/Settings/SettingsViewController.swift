@@ -171,12 +171,6 @@ extension SettingsViewController {
 			useS.selectionStyle = .none
 			return useS
 		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER"):
-			if !Preferences.userSelectedServer {
-				cell.textLabel?.textColor = UIColor.systemGray
-				cell.isUserInteractionEnabled = false
-				
-			}
-			
 			if Preferences.onlinePath != Preferences.defaultInstallPath {
 				cell.textLabel?.textColor = UIColor.systemGray
 				cell.isUserInteractionEnabled = false
@@ -185,11 +179,6 @@ extension SettingsViewController {
 				cell.textLabel?.textColor = .tintColor
 			}
 		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION"):
-			if !Preferences.userSelectedServer {
-				cell.textLabel?.textColor = UIColor.systemGray
-				cell.isUserInteractionEnabled = false
-			}
-			
 			cell.textLabel?.textColor = .systemRed
 			cell.textLabel?.textAlignment = .center
 		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON"):
@@ -228,6 +217,21 @@ extension SettingsViewController {
 	
 	@objc func onlinePathToggled(_ sender: UISwitch) {
 		Preferences.userSelectedServer = sender.isOn
+		
+		let alertController = UIAlertController(
+			title: "",
+			message: "You must close the app for changes to take effect.",
+			preferredStyle: .alert
+		)
+		
+		let closeAction = UIAlertAction(title: String.localized("OK"), style: .default) { _ in
+			CFPreferencesAppSynchronize(kCFPreferencesCurrentApplication)
+			UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+			exit(0)
+		}
+		
+		alertController.addAction(closeAction)
+		present(alertController, animated: true, completion: nil)
 	}
 	
 	@objc func fuckPpqcheckToggled(_ sender: UISwitch) {
