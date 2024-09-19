@@ -12,15 +12,17 @@ import UIKit
 import SafariServices
 
 struct TransferPreview: View {
+	@Environment(\.presentationMode) var presentationMode
+	
 	@StateObject var installer: Installer
+	
 	@State var appPath: String
 	@State var appName: String
 	@State var isSharing: Bool = false
-	@State private var packaging: Bool = true
 	
+	@State private var packaging: Bool = true
 	@State private var showShareSheet = false
 	@State private var shareURL: URL?
-
 
 	var icon: String {
 		if packaging {
@@ -88,14 +90,22 @@ struct TransferPreview: View {
 					.bold()
 					.frame(alignment: .center)
 			}
-			.fullScreenCover(isPresented: $isPresentWebView) {
+			.sheet(isPresented: $isPresentWebView) {
 				SafariWebView(url: installer.pageEndpoint)
 					.ignoresSafeArea()
-				
+					
 			}
 			.onReceive(installer.$status) { newStatus in
 				if case .sendingPayload = newStatus, Preferences.userSelectedServer {
 					isPresentWebView = false
+				}
+				
+				if case let .completed(result) = newStatus {
+					if case .success = result {
+						DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+							presentationMode.wrappedValue.dismiss()
+						}
+					}
 				}
 			}
 
@@ -163,7 +173,6 @@ struct TransferPreview: View {
 	}
 
 }
-
 
 struct ActivityViewController: UIViewControllerRepresentable {
 	var activityItems: [Any]
