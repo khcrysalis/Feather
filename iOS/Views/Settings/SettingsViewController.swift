@@ -384,7 +384,7 @@ extension SettingsViewController {
 	}
 
 	func isValidURL(_ url: String) -> Bool {
-		let urlPredicate = NSPredicate(format: "SELF MATCHES %@", "https?://$")
+		let urlPredicate = NSPredicate(format: "SELF MATCHES %@", "https://.+")
 		return urlPredicate.evaluate(with: url)
 	}
 }
