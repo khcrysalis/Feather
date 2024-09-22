@@ -62,6 +62,7 @@ class SearchAppSectionHeader: UIView {
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		imageView.layer.cornerRadius = 5
 		imageView.layer.borderWidth = 1
+		imageView.layer.cornerCurve = .continuous
 		imageView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
 		imageView.clipsToBounds = true
 		return imageView
