@@ -44,7 +44,7 @@ func getLocalIPAddress() -> String? {
 
 
 extension Installer {
-	static let sni = Preferences.userSelectedServer ? (getLocalIPAddress() ?? "app.localhost.direct") : "app.localhost.direct"
+	static let sni = Preferences.userSelectedServer ? (getLocalIPAddress() ?? "127.0.0.1") : "app.localhost.direct"
 	
 	static let bundleKeyURL = Bundle.main.url(forResource: "localhost.direct", withExtension: "pem")
 	static let bundleCrtURL = Bundle.main.url(forResource: "localhost.direct", withExtension: "crt")
