@@ -23,7 +23,9 @@ class SourceAppViewController: UITableViewController {
 	
 	var highlightAppName: String?
 	var highlightBundleID: String?
+	var highlightVersion: String?
 	var highlightDeveloperName: String?
+	var highlightDescription: String?
 	
 	private let sourceGET = SourceGET()
 	
@@ -153,17 +155,23 @@ class SourceAppViewController: UITableViewController {
 	private func shouldFilter() -> StoreAppsData? {
 		guard
 			let name = highlightAppName,
-			let id = highlightBundleID
+			let id = highlightBundleID,
+			let version = highlightVersion,
+			let desc = highlightDescription
 		else {
 			return nil
 		}
 		
-		return filterApps(from: apps, name: name, id: id, devname: highlightDeveloperName).first
+		return filterApps(from: apps, name: name, id: id, version: version, desc: desc, devname: highlightDeveloperName).first
 	}
 
-	private func filterApps(from apps: [StoreAppsData], name: String, id: String, devname: String?) -> [StoreAppsData] {
+	private func filterApps(from apps: [StoreAppsData], name: String, id: String, version: String, desc: String, devname: String?) -> [StoreAppsData] {
 		return apps.filter { app in
-			return app.name == name && app.bundleIdentifier == id && (devname == nil || app.developerName == devname)
+			return app.name == name &&
+				   app.bundleIdentifier == id &&
+				   app.version == version &&
+				   app.localizedDescription == desc &&
+				   (devname == nil || app.developerName == devname)
 		}
 	}
 

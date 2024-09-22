@@ -138,7 +138,9 @@ class SearchResultsTableViewController: UIViewController, UISearchResultsUpdatin
 			
 			savc.highlightAppName = app?.name
 			savc.highlightBundleID = app?.bundleIdentifier
+			savc.highlightVersion = app?.version ?? app?.versions?[0].version
 			savc.highlightDeveloperName = app?.developerName
+			savc.highlightDescription = app?.localizedDescription
 			
 			let navigationController = UINavigationController(rootViewController: savc)
 
