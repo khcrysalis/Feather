@@ -31,7 +31,6 @@ class SearchResultsTableViewController: UIViewController, UISearchResultsUpdatin
 			tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
 		])
-		self.tableView.isHidden = true
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
 		
@@ -159,10 +158,14 @@ class SearchResultsTableViewController: UIViewController, UISearchResultsUpdatin
 		let searchText = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
 		
 		if !dataFetched { fetchAppsForSources() }
-		
+
 		filteredSources.removeAll()
-		
-		if !searchText.isEmpty {
+
+		if searchText.isEmpty {
+			for (_, source) in fetchedSources {
+				filteredSources[source] = source.apps
+			}
+		} else {
 			for (_, source) in fetchedSources {
 				let matchingApps = source.apps.filter { app in
 					app.name.localizedCaseInsensitiveContains(searchText)
@@ -171,13 +174,10 @@ class SearchResultsTableViewController: UIViewController, UISearchResultsUpdatin
 					filteredSources[source] = matchingApps
 				}
 			}
-		} else {
-			for (_, source) in fetchedSources {
-				filteredSources[source] = source.apps
-			}
 		}
 		tableView.reloadData()
 	}
+
 
 
 	private func fetchAppsForSources() {
@@ -211,7 +211,6 @@ class SearchResultsTableViewController: UIViewController, UISearchResultsUpdatin
 		dispatchGroup.notify(queue: .main) {
 			self.fetchedSources = allSources
 			UIView.transition(with: self.tableView, duration: 0.3, options: .transitionCrossDissolve, animations: {
-				self.tableView.isHidden = false
 				self.tableView.reloadData()
 				self.activityIndicator.stopAnimating()
 			}, completion: nil)
