@@ -64,7 +64,8 @@ PPQCheck checks for a similar bundle identifier on the App Store, if said identi
 
 This is why we prepend the random string before each identifier, its done as a safety meassure - however you can disable it if you *really* want to in Feathers settings page.
 
-*NOTE: IF YOU WANT TO KEEP APPLICATION DATA THROUGH REINSTALLS, MAKE SURE YOU HAVE THE SAME BUNDLEID.*
+> [!WARNING]
+> If you want to keep application data through reinstalls, make sure you have the same bundleid.
 
 > What is remove dylib inside of options?
 
@@ -108,9 +109,7 @@ make package SCHEME="'feather (Release)'" # Build
 - [Zsign](https://github.com/zhlynn/zsign) - Allowing to sign on-device, reimplimented to work on other platforms such as iOS.
 - [Nuke](https://github.com/kean/Nuke) - Image caching.
 - [Asspp](https://github.com/Lakr233/Asspp) - Some code for setting up the http server.
-
-<!-- - [plistserver](https://github.com/QuickSign-Team/plistserver) - Hosted on https://api.palera.in
-> NOTE: The original license to plistserver is [GPL](https://github.com/nekohaxx/plistserver/commit/b207a76a9071a695d8b498db029db5d63a954e53), so changing the license is NOT viable as technically it's irrevocable. We are allowed to host it on our own server for use in Feather by technicality.  -->
+- [plistserver](https://github.com/QuickSign-Team/plistserver) - Hosted on https://api.palera.in
 
 ## Contributions
 

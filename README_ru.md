@@ -63,7 +63,8 @@ PPQCheck проверяет наличие похожего идентифика
 
 Именно поэтому мы добавляем случайную строку перед каждым идентификатором, это сделано в качестве меры безопасности - однако вы можете отключить ее, если вы *действительно* хотите этого, на странице настроек Feather.
 
-*ПРИМЕЧАНИЕ: ЕСЛИ ВЫ ХОТИТЕ СОХРАНИТЬ ДАННЫЕ ПРИЛОЖЕНИЯ ПРИ ПЕРЕУСТАНОВКЕ, УБЕДИТЕСЬ, ЧТО У ВАС ОДИН И ТОТ ЖЕ BUNDLEID.*
+> [!WARNING]
+> Если вы хотите сохранить данные приложения при переустановке, убедитесь, что у вас один и тот же bundleid.
 
 > Что такое удалить dylib внутри опций?
 
@@ -107,9 +108,7 @@ make package SCHEME="'feather (Release)'" # Билд
 - [Zsign](https://github.com/zhlynn/zsign) - Позволяет подписывать приложения на устройстве, переделан для работы на других платформах, таких как iOS.
 - [Nuke](https://github.com/kean/Nuke) - Кэширование изображений.
 - [Asspp](https://github.com/Lakr233/Asspp) - Код для настройки http-сервера.
-
-<!-- - [plistserver](https://github.com/QuickSign-Team/plistserver) - Hosted on https://api.palera.in
-> NOTE: The original license to plistserver is [GPL](https://github.com/nekohaxx/plistserver/commit/b207a76a9071a695d8b498db029db5d63a954e53), so changing the license is NOT viable as technically it's irrevocable. We are allowed to host it on our own server for use in Feather by technicality.  -->
+- [plistserver](https://github.com/QuickSign-Team/plistserver) - Размещено на https://api.palera.in
 
 
 ## Вклады
