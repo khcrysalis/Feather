@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class TabbarController: UITabBarController, UITabBarControllerDelegate {
 
@@ -18,10 +19,20 @@ class TabbarController: UITabBarController, UITabBarControllerDelegate {
 	
 	private func setupTabs() {
 		let sources = self.createNavigation(with: String.localized("TAB_SOURCES"), and: UIImage(named: "globe2"), vc: SourcesViewController())
-		let n = self.createNavigation(with: String.localized("TAB_LIBRARY"), and: UIImage(systemName: "square.grid.2x2.fill"), vc: LibraryViewController())
+		let library = self.createNavigation(with: String.localized("TAB_LIBRARY"), and: UIImage(systemName: "square.grid.2x2.fill"), vc: LibraryViewController())
 		let settings = self.createNavigation(with: String.localized("TAB_SETTINGS"), and: UIImage(systemName: "gearshape.2.fill"), vc: SettingsViewController())
+		
+		#if DEBUG
+		let debug = self.createNavigation(with: "Debug", and: UIImage(systemName: "ladybug.fill"), vc: DebugHostingController(rootView: DebugViewController()))
+		#endif
 
-		self.setViewControllers([sources, n, settings], animated: false)
+		var viewControllers = [sources, library, settings]
+
+		#if DEBUG
+		viewControllers.append(debug)
+		#endif
+
+		self.setViewControllers(viewControllers, animated: false)
 	}
 	
 	private func createNavigation(with title: String, and image: UIImage?, vc: UIViewController) -> UINavigationController {
