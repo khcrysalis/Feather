@@ -51,11 +51,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 			}
 		}
 		
-		#if TARGET_BETA
-		if !Preferences.beta {
-			Preferences.beta = true
+		if ProcessInfo.processInfo.environment["BETA_298NBaAS"] == "TRUE" {
+			if !Preferences.beta {
+				Preferences.beta = true
+			}
 		}
-		#endif
 		
 		let generatedString = AppDelegate.generateRandomString()
 		if Preferences.pPQCheckString.isEmpty {
