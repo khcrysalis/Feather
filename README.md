@@ -50,11 +50,11 @@ Feather allows you to import a `.p12` and a `.mobileprovision` pair to sign the 
 
 It uses the [localhost.direct](https://github.com/Upinel/localhost.direct) certificate and [Vapor](https://github.com/vapor/vapor) to self host an HTTPS server on your device - all itms services really needs is a valid certificate and a valid HTTPS server. Which allows iOS to accept the request and install the application.
 
-> Does Feather bundle its own certificate for the server
+> Does Feather bundle its own certificate for the server?
 
 Yes, to be able to install applications on device the server needs to be HTTPS. Which, we use a localhost.direct certificate for when turning on the server while attempting to install.
 
-We have an option to download a new certificate to make this server be able to run in the far future but no guarentees. It entirely depends on the owners of localhost.direct to be able to provide a certificate for use. If it does expire and theres a new one available, hopefully we'll be there to update the files in the background so Feather is able to retrieve those.
+We have an option to download a new certificate to make this server be able to run in the far future but no guarantees. It entirely depends on the owners of localhost.direct to be able to provide a certificate for use. If it does expire and theres a new one available, hopefully we'll be there to update the files in the background so Feather is able to retrieve those.
 
 > Why does Feather append a random string on the bundle ID?
 
@@ -64,9 +64,10 @@ PPQCheck checks for a similar bundle identifier on the App Store, if said identi
 
 This is why we prepend the random string before each identifier, its done as a safety meassure - however you can disable it if you *really* want to in Feathers settings page.
 
-*NOTE: IF YOU WANT TO KEEP APPLICATION DATA THROUGH REINSTALLS, MAKE SURE YOU HAVE THE SAME BUNDLEID.*
+> [!WARNING]
+> If you want to keep application data through reinstalls, make sure you have the same bundleid.
 
-> What is remove dylib inside of options
+> What is remove dylib inside of options?
 
 There's a very specific reason its there, for those wanting to remove pre-existing injected dylibs inside but it really serves no other practical use other than that. Don't use this if you have no idea what you're doing.
 
@@ -113,4 +114,3 @@ make package SCHEME="'feather (Release)'" # Build
 ## Contributions
 
 They are welcome! :)
-
