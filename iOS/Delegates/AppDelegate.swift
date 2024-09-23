@@ -51,6 +51,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 			}
 		}
 		
+		#if TARGET_BETA
+		if !Preferences.beta {
+			Preferences.beta = true
+		}
+		#endif
+		
 		let generatedString = AppDelegate.generateRandomString()
 		if Preferences.pPQCheckString.isEmpty {
 			Preferences.pPQCheckString = generatedString

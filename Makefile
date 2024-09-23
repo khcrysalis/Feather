@@ -17,9 +17,19 @@ all: package
 
 package:
 	@rm -rf $(APP_TMP)
+	
 	@set -o pipefail; \
-		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project '$(NAME).xcodeproj' -scheme $(SCHEME) -configuration $(CONFIGURATION) -arch arm64 -sdk $(PLATFORM) -derivedDataPath $(APP_TMP) \
-		CODE_SIGNING_ALLOWED=NO DSTROOT=$(APP_TMP)/install ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
+		xcodebuild \
+		-jobs $(shell sysctl -n hw.ncpu) \
+		-project '$(NAME).xcodeproj' \
+		-scheme $(SCHEME) \
+		-configuration $(CONFIGURATION) \
+		-arch arm64 -sdk $(PLATFORM) \
+		-derivedDataPath $(APP_TMP) \
+		CODE_SIGNING_ALLOWED=NO \
+		DSTROOT=$(APP_TMP)/install \
+		ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
+		
 	@rm -rf Payload
 	@rm -rf $(STAGE_DIR)/
 	@mkdir -p $(STAGE_DIR)/Payload

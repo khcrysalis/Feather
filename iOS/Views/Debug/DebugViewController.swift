@@ -29,10 +29,10 @@ struct DebugViewController: View {
 	
 	var body: some View {
 		List {
-			
+				
 		}
 		.onAppear {
-
+			
 		}
 	}
 }

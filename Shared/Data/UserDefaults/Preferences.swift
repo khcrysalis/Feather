@@ -61,6 +61,12 @@ enum Preferences {
 	@Storage(key: "UserPreferredLanguageCode", defaultValue: nil, callback: preferredLangChangedCallback)
 	/// Preferred language
 	static var preferredLanguageCode: String?
+	
+	
+	@Storage(key: "Feather.Beta", defaultValue: false)
+	//
+	static var beta: Bool
+	
 }
 // MARK: - Callbacks
 fileprivate extension Preferences {
