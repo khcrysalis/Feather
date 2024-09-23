@@ -21,16 +21,13 @@ class TabbarController: UITabBarController, UITabBarControllerDelegate {
 		let sources = self.createNavigation(with: String.localized("TAB_SOURCES"), and: UIImage(named: "globe2"), vc: SourcesViewController())
 		let library = self.createNavigation(with: String.localized("TAB_LIBRARY"), and: UIImage(systemName: "square.grid.2x2.fill"), vc: LibraryViewController())
 		let settings = self.createNavigation(with: String.localized("TAB_SETTINGS"), and: UIImage(systemName: "gearshape.2.fill"), vc: SettingsViewController())
-		
-		#if DEBUG
-		let debug = self.createNavigation(with: "Debug", and: UIImage(systemName: "ladybug.fill"), vc: DebugHostingController(rootView: DebugViewController()))
-		#endif
 
 		var viewControllers = [sources, library, settings]
 
-		#if DEBUG
-		viewControllers.append(debug)
-		#endif
+		if Preferences.beta {
+			let debug = self.createNavigation(with: "Debug", and: UIImage(systemName: "ladybug.fill"), vc: DebugHostingController(rootView: DebugViewController()))
+			viewControllers.append(debug)
+		}
 
 		self.setViewControllers(viewControllers, animated: false)
 	}
