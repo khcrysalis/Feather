@@ -109,7 +109,7 @@ make package SCHEME="'feather (Release)'" # Build
 - [Zsign](https://github.com/zhlynn/zsign) - Allowing to sign on-device, reimplimented to work on other platforms such as iOS.
 - [Nuke](https://github.com/kean/Nuke) - Image caching.
 - [Asspp](https://github.com/Lakr233/Asspp) - Some code for setting up the http server.
-- [plistserver](https://github.com/QuickSign-Team/plistserver) - Hosted on https://api.palera.in
+- [plistserver](https://github.com/nekohaxx/plistserver) - Hosted on https://api.palera.in
 
 ## Contributions
 
