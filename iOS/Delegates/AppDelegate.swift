@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 	var loaderAlert = presentLoader()
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-Preferences.beta = true
 		UserDefaults.standard.set(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, forKey: "currentVersion")
 		addDefaultRepos()
 		imagePipline()
@@ -61,7 +60,6 @@ Preferences.beta = true
 	}
 	
 	func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-Preferences.beta = true
 		if url.scheme == "feather" {
 			
 			// I know this is super hacky, honestly
