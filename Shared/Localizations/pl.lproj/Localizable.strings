@@ -1,0 +1,290 @@
+/* 
+  Localizable.strings
+  feather
+
+  Created by Xiseous on 18.09.2024.
+  
+*/
+
+// MARK: - Ogólne
+// Nieznany, domyślny ciąg dla aplikacji
+"UNKNOWN" = "Nieznany";
+// Domyślny ciąg
+"DEFAULT" = "Domyślny";
+// Skopiuj podany ciąg w menu
+"COPY" = "Kopiuj";
+// Usuń element
+"DELETE" = "Usuń";
+// Anuluj akcję alertu
+"CANCEL" = "Anuluj";
+// Akcja zakończona
+"DONE" = "Zrobione";
+// Akcja zamknij
+"DISMISS" = "Zamknij";
+// Akcja zamknij 2
+"LAME" = "Słabe";
+// Akcja zapisz
+"SAVE" = "Zapisz";
+// Akcja ustaw
+"SET" = "Ustaw";
+// Akcja OK
+"OK" = "OK";
+// Akcja kontynuuj
+"CONTINUE" = "Kontynuuj"
+
+// MARK: - Alerty
+// Tytuły alertów
+"ALERT_SUCCESS" = "Sukces";
+"ALERT_TRACE" = "Ślad";
+"ALERT_ERROR" = "Błąd";
+"ALERT_CRITICAL" = "Krytyczny";
+
+// MARK: - Komunikaty o błędach
+// Tytuł błędu instalatora
+"ERROR_INSTALLER" = "Instalator";
+// Opis błędu instalatora
+"ERROR_INSTALLER_DESCRIPTION" = "Nie udało się załadować certyfikatów SSL";
+"ERROR_ZSIGN_FAILED" = "Podpisywanie pliku nie powiodło się.";
+"ERROR_FAILED_TO_READ_MOBILEPROVISION" = "Nie udało się odczytać pliku mobileprovision";
+
+// MARK: - Komunikaty o sukcesie
+// Aplikacja została pomyślnie podpisana
+"SUCCESS_SIGNED" = "Pomyślnie podpisano %@";
+// Aplikacja została pomyślnie ponownie podpisana
+"SUCCESS_RESIGN" = "Pomyślnie odświeżenie podpisu!";
+
+// MARK: - Wprowadzenie
+// Witaj w Feather!!!!!!!!
+"ONBOARDING_WELCOMETITLE_1" = "Witaj w";
+// Pierwsza funkcja w wprowadzeniu
+"ONBOARDING_CELL_1_TITLE" = "Instaluj na urządzeniu";
+"ONBOARDING_CELL_1_DESCRIPTION" = "Instaluj aplikacje bez komputera, wszystko zrobione z Twojego urządzenia.";
+// Druga funkcja w wprowadzeniu
+"ONBOARDING_CELL_2_TITLE" = "Dostosuj aplikacje";
+"ONBOARDING_CELL_2_DESCRIPTION" = "Zarządzaj i dostosowuj swoje aplikacje do swoich potrzeb.";
+// Trzecia funkcja w wprowadzeniu
+"ONBOARDING_CELL_3_TITLE" = "I wiele więcej!";
+"ONBOARDING_CELL_3_DESCRIPTION" = "Repozytoria AltStore, importuj pliki IPA, łatwe przełączanie certyfikatów i wiele więcej.";
+// "Opracowane przez Samarę. Stworzone dla użytkowników, którzy są pasjonatami instalacji i wolności. Wiele funkcji zawartych wewnątrz. Dowiedz się więcej..."
+"ONBOARDING_FOOTER" = "Opracowane przez Samarę. Stworzone dla użytkowników, którzy są pasjonatami instalacji i wolności. Wiele funkcji zawartych wewnątrz.";
+"ONBOARDING_FOOTER_LINK" = "Dowiedz się więcej...";
+// Przycisk kontynuacji do zakończenia wprowadzenia
+"ONBOARDING_CONTINUE_BUTTON" = "Kontynuuj";
+
+
+// MARK: - Tab area
+// Sources tab
+"TAB_SOURCES" = "Źródła";
+// Library tab
+"TAB_LIBRARY" = "Biblioteka";
+// Settings tab
+"TAB_SETTINGS" = "Opcje";
+
+// MARK: - PodglądTransferu
+// Pakowanie aplikacji w celu przygotowania do instalacji
+"TRANSFER_PREVIEW_PACKAGING" = "Pakowanie...";
+// Pakiet gotowy do instalacji
+"TRANSFER_PREVIEW_READY" = "Gotowe do instalacji";
+// Otwieranie manifest.plist dla iOS
+"TRANSFER_PREVIEW_SENDING_MANIFEST" = "Wysyłanie manifestu...";
+// iOS pobiera plik IPA
+"TRANSFER_PREVIEW_SENDING_PAYLOAD" = "Wysyłanie ładunku...";
+// Transfer pliku IPA zakończony
+"TRANSFER_PREVIEW_DONE" = "Zakończono";
+// Pakowanie zakończone, możesz udostępnić
+"TRANSFER_PREVIEW_COMPLETED" = "Zakończono";
+
+// MARK: - WidokŹródeł
+// Tytuł repozytoriów
+"SOURCES_VIEW_CONTROLLER_REPOSITORIES" = "Źródła";
+// Przycisk dodawania repozytoriów
+"SOURCES_VIEW_CONTROLLER_ADD_SOURCES" = "Dodaj Źródła";
+// Liczba źródeł, np. "100 Źródeł"
+"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES" = "%@ Źródeł";
+// Wyszukiwanie źródeł w pasku wyszukiwania
+"SOURCES_VIEW_CONTROLLER_SEARCH_SOURCES" = "Szukaj Źródeł";
+
+// MARK: - WidokŹródeł - Dodaj Źródła
+"SOURCES_VIEW_ADD_SOURCES_ALERT_TITLE" = "Dodaj Źródło";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "Dodaj URL repozytorium Altstore";
+
+// MARK: - WidokŹródeł -> WidokAplikacjiŹródła
+// Liczba aplikacji, np. "444 Aplikacje"
+"SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS" = "%@ Aplikacji";
+// Wyszukiwanie aplikacji w pasku wyszukiwania
+"SOURCES_APP_VIEW_CONTROLLER_SEARCH_APPS" = "Szukaj Aplikacji";
+
+// MARK: - WidokŹródeł ... - Komórki
+// Domyślny ciąg podtytułu
+"SOURCES_CELLS_DEFAULT_SUBTITLE" = "Niesamowita aplikacja.";
+// Domyślny ciąg opisu
+"SOURCES_CELLS_DEFAULT_DESCRIPTION" = "Fajny opis.";
+
+// MARK: - WidokAplikacjiŹródła ... - Akcje
+// Tytuł alertu dostępnych wersji
+"SOURCES_CELLS_ACTIONS_HOLD_AVAILABLE_VERSIONS" = "Dostępne Wersje";
+
+// MARK: - WidokInformacjiAplikacji
+// Sekcja aplikacji
+"APPS_INFORMATION_SECTION_TITLE_NAME" = "Aplikacja";
+// Sekcja pakietu
+"APPS_INFORMATION_SECTION_TITLE_BUNDLE" = "Pakiet";
+
+//
+"APPS_INFORMATION_TITLE_DELETED_FILE" = "Usunięty Plik";
+"APPS_INFORMATION_TITLE_DELETED_FILE_TITLE" = "Plik został usunięty.";
+"APPS_INFORMATION_TITLE_DELETED_FILE_DESCRIPTION" = "To jest bezużyteczny wpis, nie ma pliku i Pióro nie pozwoli Ci go zainstalować. Zaleca się usunięcie go przez przesunięcie w komórce na karcie Aplikacje.";
+// Sekcja aplikacji
+"APPS_INFORMATION_TITLE_NAME" = "Nazwa";
+"APPS_INFORMATION_TITLE_VERSION" = "Wersja";
+"APPS_INFORMATION_TITLE_IDENTIFIER" = "Identyfikator";
+"APPS_INFORMATION_TITLE_SIZE" = "Rozmiar";
+//
+"APPS_INFORMATION_TITLE_DATE_ADDED" = "Data Dodania";
+// Sekcja pakietu
+"APPS_INFORMATION_TITLE_BUNDLE_NAME" = "Nazwa Pakietu";
+"APPS_INFORMATION_TITLE_BUNDLE_PATH" = "Ścieżka Pakietu";
+"APPS_INFORMATION_TITLE_ICON_FILE" = "Plik Ikony";
+//
+"APPS_INFORMATION_TITLE_OPEN_IN_FILES" = "Otwórz w Plikach";
+
+// MARK: - WidokPodpisywaniaAplikacji
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS" = "Dodaj Poprawki";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED" = "Zaawansowane";
+"APP_SIGNING_VIEW_CONTROLLER_START_SIGNING" = "Rozpocznij Podpisywanie";
+
+// MARK: - WidokPodpisywaniaAplikacji - Alert Brak Certyfikatów
+"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_TITLE" = "Błąd";
+"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_DESCRIPTION" = "Nie masz wybranego certyfikatu, proszę wybierz lub załaduj jeden w sekcji podpisywania na karcie ustawień.";
+
+// MARK: - WidokPodpisywaniaAplikacji -> WidokWprowadzaniaPodpisuAplikacji
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_CELL_PPQCHECK" = "PPQCheck jest Włączony";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_CELL_PPQCHECK_DESCRIPTION" = "PPQCheck to sposób dla Apple na sprawdzenie, czy aplikacja, którą otwierasz, odpowiada innemu identyfikatorowi pakietu znajdującemu się w App Store; sprawdzenie odbywa się przy pierwszym otwarciu zainstalowanej aplikacji podpisanej. Mamy opcję, aby to ominąć, jednak nie będziesz już otrzymywać powiadomień i innych korzyści związanych z domyślnym identyfikatorem.";
+
+// MARK: - WidokPodpisywaniaAplikacji -> WidokZaawansowanegoPodpisywaniaAplikacji
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE" = "Wygląd";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION" = "Minimalna Wersja Aplikacji";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES" = "Właściwości";
+
+// MARK: - WidokWprowadzaniaPodpisuAplikacji
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "Usuń wszystkie wtyczki";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES" = "Usuń UISupportedDevices";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME" = "Usuń URLScheme";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS" = "Zezwól na przeglądanie dokumentów";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING" = "Zezwól na udostępnianie przez iTunes";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION" = "Wymuś Pro Motion";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "Wymuś Pełny Ekran";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP" = "Usuń aplikację na Apple Watch";
+
+// MARK: - WidokPodpisywaniaAplikacji -> WidokPoprawekPodpisywaniaAplikacji
+"APP_SIGNING_TWEAK_VIEW_CONTROLLER_TITLE" = "Poprawki";
+
+// MARK: - WidokUstawień
+// Nagłówki
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_GENERAL" = "Ogólne";
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING" = "Podpisywanie";
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING_SERVER" = "Serwer Podpisywania";
+
+// Stopki
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES" = "Jeśli wystąpią jakiekolwiek problemy w Piórze, prosimy o zgłoszenie ich za pośrednictwem repozytorium GitHub. Podczas zgłaszania problemu upewnij się, że dołączyłeś wszelkie logi.";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS" = "Niestety, z powodu ograniczeń certyfikaty serwera będą musiały być odnawiane co roku, aby lokalne funkcje Pióra działały poprawnie; naciśnij ten przycisk, aby pobrać najnowsze pliki z naszych repozytoriów.";
+
+// Tytuły komórek
+// O Piórze
+"SETTINGS_VIEW_CONTROLLER_CELL_ABOUT" = "O %@";
+"SETTINGS_VIEW_CONTROLLER_CELL_SUBMIT_FEEDBACK" = "Prześlij opinię";
+"SETTINGS_VIEW_CONTROLLER_CELL_GITHUB" = "Źródło GitHub";
+"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY" = "Wyświetlacz";
+"SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON" = "Ikona Aplikacji";
+"SETTINGS_VIEW_CONTROLLER_CELL_CURRENT_CERTIFICATE_NOSELECTED" = "Nie wybrano certyfikatów";
+"SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES" = "Dodaj Certyfikat";
+"SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE" = "Zaktualizuj Certyfikat Lokalny";
+"SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE_UPDATING" = "Aktualizacja Certyfikatu Lokalnego";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET" = "Resetuj";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION" = "Resetuj Konfigurację";
+"SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER" = "Użyj Niestandardowego Serwera"
+
+"SETTINGS_VIEW_CONTROLLER_CELL_ONLINE_INSTALL_METHOD" = "Metoda Instalacji Online";
+
+"SETTINGS_VIEW_CONTROLLER_CELL_EXPORT_ID" = "Eksportuj Losowy Identyfikator";
+"SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_ID" = "Zmień Losowy Identyfikator";
+
+//
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_TITLE" = "Ochrony PPQCheck";
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_DESCRIPTION" = "To ustawienie włącza ochrony PPQCheck, które mają na celu dodanie losowego ciągu do każdego identyfikatora pakietu dla aplikacji, które instalujesz z zewnątrz.\n\nMa to na celu uniknięcie oznaczenia Twojego konta przez Apple poprzez (próby) uniemożliwienie powiązania aplikacji, którą instalujesz z jedną z App Store.";
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_IDC" = "Nie obchodzi mnie to";
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_GTK" = "Dobrze wiedzieć";
+
+"SETTINGS_VIEW_CONTROLLER_URL_ALERT_TITLE" = "Zmień URL Pobierania";
+"SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_IDENTIFIER" = "Zmień Losowy Identyfikator";
+
+// MARK: - WidokUstawień -> WidokInformacjiOProgramie
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_CREDITS" = "Podziękowania";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_DEVICE" = "Urządzenie";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_ACKNOWLEDGEMENTS" = "Podziękowania";
+
+"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_VERSION" = "Wersja Urządzenia";
+"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_ARCH" = "Architektura";
+"ABOUT_VIEW_CONTROLLER_CELL_APP_VERSION" = "Wersja Aplikacji";
+
+// MARK: - WidokUstawień -> WidokWyświetlania
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_TINT_COLOR" = "Kolor Akcentu";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARENCE" = "Wygląd Aplikacji";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE" = "Domyślny Podtytuł";
+"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE_DESCRIPTION" = "Domyślny styl dla Pióra, ukrywa zlokalizowany opis i zawiera tylko podtytuł.";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE" = "Zlokalizowany Podtytuł";
+"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE_DESCRIPTION" = "Zastępuje podtytuł opisem aplikacji.";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION" = "Duży Opis";
+"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION_DESCRIPTION" = "Zastępuje zrzuty ekranu opisem aplikacji.";
+
+// MARK: - WidokUstawień -> WidokCertyfikatów
+"CERTIFICATES_VIEW_CONTROLLER_TITLE" = "Certyfikaty";
+
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_FOOTER" = "Obsługiwane formaty plików:\n\n- P12 (.p12)\n- Mobile Provision (.mobileprovision)\n\nUpewnij się, że Twoje certyfikaty są ważne i mogą być używane do instalacji na Twoim urządzeniu!";
+
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD" = "Dodaj Certyfikaty";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_DESCRIPTION" = "Naciśnij, aby dodać certyfikat";
+
+// MARK: - WidokUstawień -> WidokCertyfikatów -> Alert Usunięcia
+"CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_TITLE" = "Nie chcesz tego robić!";
+"CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_DESCRIPTION" = "Próbujesz usunąć wybrany certyfikat, spróbuj ponownie później, gdy będziesz miał inny certyfikat pod ręką.";
+
+// MARK: - WidokUstawień -> WidokCertyfikatów -> Komórka
+"CERTIFICATES_VIEW_CONTROLLER_CELL_EXPIRED" = "Wygasły";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_DAYS_LEFT" = "%@ dni pozostało";
+
+// MARK: - WidokUstawień -> WidokCertyfikatów -> WidokImportowaniaCertyfikatów
+"CERT_IMPORTING_VIEWCONTROLLER_TITLE" = "Importuj";
+"CERT_IMPORTING_VIEWCONTROLLER_SECTION_PROVISIONING" = "";
+
+// MARK: - WidokUstawień -> WidokCertyfikatów -> WidokImportowaniaCertyfikatów -> Alert Hasła
+
+"CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_TITLE" = "Złe Hasło";
+"CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_DESCRIPTION" = "Proszę sprawdzić hasło i spróbować ponownie.";
+
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PROV" = "Importuj Plik Mobile Provisioning";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_CERT" = "Importuj Plik Certyfikatu";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_ENTER_PW" = "Wprowadź Hasło";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PW" = "Hasło";
+
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PROV" = "Importuj plik provisioning, aby móc instalować na swoim urządzeniu.";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_CERT" = "Importuj plik zawierający ważny certyfikat.";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PASS" = "Wprowadź hasło powiązane z kluczem prywatnym, pozostaw puste, jeśli nie jest wymagane żadne hasło.";
+
+// MARK: - WidokUstawień -> WidokResetowania
+"RESET_VIEW_CONTROLLER_CLEAR_CACHE" = "Wyczyść Pamięć Cache";
+"RESET_VIEW_CONTROLLER_CLEAR_CACHE_ALERT_TITLE" = "Ta akcja jest nieodwracalna. Pamięć podręczna żądań sieciowych i obrazów zostanie wyczyszczona.";
+
+// MARK: - Darowizna
+"DONATION_TITLE" = "Darowizna";
+"DONATION_DONATIONS" = "Dotacja";
+
+"DONATION_CELL_1_TITLE" = "Tajne Źródło";
+"DONATION_CELL_1_DESCRIPTION" = "Uzyskaj dostęp do naszego tajnego repozytorium poprzez darowiznę, co zapewni Ci dostęp beta do Pióra.";
+
+"DONATION_CELL_2_TITLE" = "Pokaż Swoje Wsparcie";
+"DONATION_CELL_2_DESCRIPTION" = "Pokaż swoje wsparcie poprzez darowiznę! Jeśli nie możesz wpłacić darowizny, rozprzestrzenienie informacji o Piórze również działa!";
+

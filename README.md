@@ -9,6 +9,7 @@
 #### README In Other Languages
 
 - [Deutsch🇩🇪](https://github.com/khcrysalis/Feather/blob/main/README_de.md)
+- [Polski🇵🇱](https://github.com/khcrysalis/Feather/blob/main/README_pl.md)
 - [Русский🇷🇺](https://github.com/khcrysalis/Feather/blob/main/README_ru.md)
 
 ## Features
