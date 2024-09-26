@@ -23,6 +23,9 @@ jobs:
         run: | 
           sudo xcode-select -s /Applications/Xcode_15.1.app/Contents/Developer
           mkdir upload
+          sed -i '' '/func application(/a\
+          Preferences.beta = true
+          ' iOS/Delegates/AppDelegate.swift
 
       - name: Compile f
         run: | 

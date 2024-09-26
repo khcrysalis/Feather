@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 	var loaderAlert = presentLoader()
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+Preferences.beta = true
 		UserDefaults.standard.set(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, forKey: "currentVersion")
 		addDefaultRepos()
 		imagePipline()
@@ -51,12 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 			}
 		}
 		
-		if ProcessInfo.processInfo.environment["BETA_298NBaAS"] == "TRUE" {
-			if !Preferences.beta {
-				Preferences.beta = true
-			}
-		}
-		
 		let generatedString = AppDelegate.generateRandomString()
 		if Preferences.pPQCheckString.isEmpty {
 			Preferences.pPQCheckString = generatedString
@@ -66,6 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 	}
 	
 	func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+Preferences.beta = true
 		if url.scheme == "feather" {
 			
 			// I know this is super hacky, honestly
