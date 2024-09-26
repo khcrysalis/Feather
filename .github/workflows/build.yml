@@ -27,18 +27,24 @@ jobs:
           make package SCHEME="'feather (Release)'"
           mv packages/* upload/
 
-      - name: Get Version Number
-        id: get_version
+
+
+
+
+      - name: Install pyupload
         run: |
-          VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" Payload/feather.app/Info.plist)
-          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+          pip install pyupload
 
-
-
-
-
-
-
+      - name: Upload file to Catbox
+        id: upload_catbox
+        run: |
+          UPLOAD_OUTPUT=$(pyupload upload/feather.ipa --host=catbox)
+          echo "Upload Output: $UPLOAD_OUTPUT"
+          
+          LINK=$(echo "$UPLOAD_OUTPUT" | sed -n 's/.*Your link : //p')
+          echo "Uploaded file link: $LINK"
+          
+          echo "catbox_link=$LINK" >> $GITHUB_ENV
 
       - name: Send Discord build message
         run: |
@@ -66,12 +72,13 @@ jobs:
                 "components":[
                   {
                     "type":2,
-                    "url":"https://google.com",
+                    "url":"${{ env.catbox_link }}",
                     "label":"Download",
                     "style":5
                   }
                 ]
               }
             ]
-          }')
+          }'
           )
+
