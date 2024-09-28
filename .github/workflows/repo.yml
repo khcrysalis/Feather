@@ -20,16 +20,16 @@ jobs:
 
           updated_at=$(echo "$clean_release_info" | jq -r '.created_at // empty')
           size=$(echo "$clean_release_info" | jq -r '.assets[]? | select(.name | endswith(".ipa")) | .size // empty')
-          tag_name=$(echo "$clean_release_info" | jq -r '.tag_name // empty')
+          version=$(echo "$clean_release_info" | jq -r '.tag_name // empty | .[1:]')
           download_url=$(echo "$clean_release_info" | jq -r '.assets[]? | select(.name | endswith(".ipa")) | .browser_download_url // empty')
 
           if [ -n "$download_url" ]; then
             echo "Download URL for .ipa file: $download_url"
             echo "Updated at: $updated_at"
             echo "Size: $size bytes"
-            echo "Tag name: $tag_name"
+            echo "Version: $version"
 
-            jq --arg version "$tag_name" \
+            jq --arg version "$version" \
                --arg date "$updated_at" \
                --argjson size "$size" \
                --arg url "$download_url" \
@@ -50,7 +50,7 @@ jobs:
           else
             echo "No .ipa file found in the latest release or missing information."
             echo "Updated at: $updated_at"
-            echo "Tag name: $tag_name"
+            echo "Version: $version"
           fi
 
       - name: Commit changes
