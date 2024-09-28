@@ -115,6 +115,14 @@ class AppDownload: NSObject {
 				let targetURL = destinationURL.appendingPathComponent(sourceURL.lastPathComponent)
 				try fileManager.moveItem(at: sourceURL, to: targetURL)
 				try fileManager.removeItem(at: destinationURL.appendingPathComponent("Payload"))
+				
+				let codeSignatureDirectory = targetURL.appendingPathComponent("_CodeSignature")
+				if fileManager.fileExists(atPath: codeSignatureDirectory.path) {
+					try fileManager.removeItem(at: codeSignatureDirectory)
+					Debug.shared.log(message: "Removed _CodeSignature directory")
+				}
+				
+				
 				completion(targetURL.path, nil)
 			} else {
 				completion(nil, NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "No .app directory found in Payload"]))
