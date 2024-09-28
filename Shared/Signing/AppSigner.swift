@@ -29,7 +29,7 @@ struct AppSigningOptions {
 	var forceForceFullScreen: Bool?
 	var forceiTunesFileSharing: Bool?
 	var forceMinimumVersion: String?
-	var forceLightDarkAppearence: String?
+	var forceLightDarkAppearance: String?
 	
 	var removeProvisioningFile: Bool?
 	var removeWatchPlaceHolder: Bool?
@@ -276,6 +276,6 @@ func updateInfoPlist(infoDict: NSMutableDictionary, options: AppSigningOptions, 
 	if options.forceProMotion! { infoDict.setObject(true, forKey: "CADisableMinimumFrameDurationOnPhone" as NSCopying)}
 	if options.forceForceFullScreen! { infoDict.setObject(true, forKey: "UIRequiresFullScreen" as NSCopying) }
 	if options.forceMinimumVersion! != "Automatic" { infoDict.setObject(options.forceMinimumVersion!, forKey: "MinimumOSVersion" as NSCopying) }
-	if options.forceLightDarkAppearence! != "Automatic" { infoDict.setObject(options.forceLightDarkAppearence!, forKey: "UIUserInterfaceStyle" as NSCopying)}
+	if options.forceLightDarkAppearance! != "Automatic" { infoDict.setObject(options.forceLightDarkAppearance!, forKey: "UIUserInterfaceStyle" as NSCopying)}
 	try infoDict.write(to: app.appendingPathComponent("Info.plist"))
 }

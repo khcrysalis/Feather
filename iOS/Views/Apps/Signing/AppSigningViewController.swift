@@ -31,8 +31,8 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 	var forceMinimumVersion = 0
 	var forceMinimumVersionString = ["Automatic", "15.0", "14.0", "13.0"]
 	
-	var forceLightDarkAppearence = 0
-	var forceLightDarkAppearenceString = ["Automatic", "Light", "Dark"]
+	var forceLightDarkAppearance = 0
+	var forceLightDarkAppearanceString = ["Automatic", "Light", "Dark"]
     
     var removePlugins = false
     var forceFileSharing = true
@@ -138,7 +138,7 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 			forceForceFullScreen: forceForceFullScreen,
 			forceiTunesFileSharing: forceiTunesFileSharing,
 			forceMinimumVersion: forceMinimumVersionString[forceMinimumVersion],
-			forceLightDarkAppearence: forceLightDarkAppearenceString[forceLightDarkAppearence],
+			forceLightDarkAppearance: forceLightDarkAppearanceString[forceLightDarkAppearance],
 			removeProvisioningFile: removeProvisioningFile, removeWatchPlaceHolder: removeWatchPlaceHolder,
 			certificate: certs),
 				appPath:getFilesForDownloadedApps(app: app as! DownloadedApps, getuuidonly: false)

@@ -202,13 +202,13 @@ class AppTableViewCell: UITableViewCell {
 		var displayText = appVersion
 		var descText = ""
 		
-		if Preferences.appDescriptionAppearence == 0 {
+		if Preferences.appDescriptionAppearance == 0 {
 			let appSubtitle = app.subtitle ?? String.localized("SOURCES_CELLS_DEFAULT_SUBTITLE")
 			displayText += " • " + appSubtitle
-		} else if Preferences.appDescriptionAppearence == 1 {
+		} else if Preferences.appDescriptionAppearance == 1 {
 			let appSubtitle = app.localizedDescription ?? String.localized("SOURCES_CELLS_DEFAULT_SUBTITLE")
 			displayText += " • " + appSubtitle
-		} else if Preferences.appDescriptionAppearence == 2 {
+		} else if Preferences.appDescriptionAppearance == 2 {
 			let appSubtitle = app.subtitle ?? String.localized("SOURCES_CELLS_DEFAULT_SUBTITLE")
 			displayText += " • " + appSubtitle
 			descText = app.localizedDescription ?? (app.versions?[0].localizedDescription ?? String.localized("SOURCES_CELLS_DEFAULT_DESCRIPTION"))
@@ -227,9 +227,9 @@ class AppTableViewCell: UITableViewCell {
 
 		screenshotsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
 
-		if let screenshotUrls = app.screenshotURLs, !screenshotUrls.isEmpty, Preferences.appDescriptionAppearence != 2 {
+		if let screenshotUrls = app.screenshotURLs, !screenshotUrls.isEmpty, Preferences.appDescriptionAppearance != 2 {
 			setupScreenshots(for: screenshotUrls)
-		} else if Preferences.appDescriptionAppearence == 2 {
+		} else if Preferences.appDescriptionAppearance == 2 {
 			setupDescription()
 		} else {
 			iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true

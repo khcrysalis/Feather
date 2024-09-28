@@ -161,7 +161,7 @@
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_CELL_PPQCHECK_DESCRIPTION" = "PPQCheck это способ, с помощью которого Apple проверяет, совпадает ли открываемое вами приложение с другим идентификатором пакета, найденным в App Store. Проверка происходит при первом открытии подписанного установленного приложения. У нас есть возможность избежать этого, однако вы больше не будете получать уведомления и другие преимущества, связанные с идентификатором по умолчанию.";
 
 // MARK: - AppSigningViewController -> AppSigningAdvancedViewController
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE" = "Внешний вид";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARANCE" = "Внешний вид";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION" = "Минимальная версия приложения";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES" = "Свойства";
 
@@ -229,7 +229,7 @@
 
 // MARK: - SettingsViewController -> DisplayViewController
 "DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_TINT_COLOR" = "Цвет тона";
-"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARENCE" = "Внешний вид приложения";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARANCE" = "Внешний вид приложения";
 
 "DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE" = "Субтитр по умолчанию";
 "DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE_DESCRIPTION" = "Стиль по умолчанию для Feather, скрывает локализованное описание и включает только субтитры.";

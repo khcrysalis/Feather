@@ -11,7 +11,7 @@ import UIKit
 class DisplayViewController: UITableViewController {
 
 	let tableData = [
-		[String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE")],
+		[String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARANCE")],
 		["Collection View"],
 		[],
 		["Certificate Name"]
@@ -92,7 +92,7 @@ extension DisplayViewController {
 			cell.textLabel?.numberOfLines = 0
 			cell.detailTextLabel?.numberOfLines = 0
 
-			if Preferences.appDescriptionAppearence == indexPath.row {
+			if Preferences.appDescriptionAppearance == indexPath.row {
 				cell.accessoryType = .checkmark
 			} else {
 				cell.accessoryType = .none
@@ -102,8 +102,8 @@ extension DisplayViewController {
 		
 		let cellText = tableData[indexPath.section][indexPath.row]
 		switch cellText {
-		case String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE"):
-			cell.textLabel?.text = String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE")
+		case String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARANCE"):
+			cell.textLabel?.text = String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARANCE")
 			let segmentedControl = UISegmentedControl(items: UIUserInterfaceStyle.allCases.map { $0.description })
 			segmentedControl.selectedSegmentIndex = UIUserInterfaceStyle.allCases.firstIndex { $0.rawValue == Preferences.preferredInterfaceStyle } ?? 0
 			segmentedControl.addTarget(self, action: #selector(appearanceSegmentedControlChanged(_:)), for: .valueChanged)
@@ -130,8 +130,8 @@ extension DisplayViewController {
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		if indexPath.section == 2 {
-			let previousSelection = Preferences.appDescriptionAppearence
-			Preferences.appDescriptionAppearence = indexPath.row
+			let previousSelection = Preferences.appDescriptionAppearance
+			Preferences.appDescriptionAppearance = indexPath.row
 
 			let previousIndexPath = IndexPath(row: previousSelection, section: indexPath.section)
 			tableView.reloadRows(at: [previousIndexPath, indexPath], with: .fade)
@@ -141,7 +141,7 @@ extension DisplayViewController {
 	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
 		switch section {
 		case 3:
-			return "Replaces the certificate name with your team name, could be for better to distinguish between certificates if providers happen to always use the same App ID name."
+			return "Replace the certificate name with your team name; this can help distinguish between certificates, especially if providers always use the same App ID name."
 		default:
 			return nil
 		}

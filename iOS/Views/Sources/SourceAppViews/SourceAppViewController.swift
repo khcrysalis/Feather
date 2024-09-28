@@ -184,9 +184,9 @@ extension SourceAppViewController {
 	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		let app = isFiltering ? filteredApps[indexPath.row] : apps[indexPath.row]
-		if (app.screenshotURLs != nil), !app.screenshotURLs!.isEmpty, Preferences.appDescriptionAppearence != 2 {
+		if (app.screenshotURLs != nil), !app.screenshotURLs!.isEmpty, Preferences.appDescriptionAppearance != 2 {
 			return 322
-		} else if Preferences.appDescriptionAppearence == 2 {
+		} else if Preferences.appDescriptionAppearance == 2 {
 			return UITableView.automaticDimension
 		} else {
 			return 72

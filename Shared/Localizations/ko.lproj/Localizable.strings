@@ -105,7 +105,7 @@
 
 // MARK: - SourcesViewController - Add Sources
 "SOURCES_VIEW_ADD_SOURCES_ALERT_TITLE" = "Add Source";
-"SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "Add Altstore Repo URL";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "Add AltStore Repo URL";
 
 // MARK: - SourcesViewController -> SourcesAppViewController
 // Number of apps, i.e. "444 Apps"
@@ -154,14 +154,14 @@
 
 // MARK: - AppSigningViewController - No Certificates Alert
 "APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_TITLE" = "Error";
-"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_DESCRIPTION" = "You do not have a certificate selected, please select or upload one in the signing section of the settings tab.";
+"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_DESCRIPTION" = "You do not have a certificate selected! Please select or upload one in the signing section of the settings tab.";
 
 // MARK: - AppSigningViewController -> AppSigningInputViewController
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_CELL_PPQCHECK" = "PPQCheck is Enabled";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_CELL_PPQCHECK_DESCRIPTION" = "PPQCheck is a way for Apple to check if the app you're opening matches another bundle identifier found on the App Store, the check happens on the first time you open the signed installed application. We have an option for you to avoid this, however you will no longer receive the benefits of notifications and such relating to the default identifier.";
 
 // MARK: - AppSigningViewController -> AppSigningAdvancedViewController
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE" = "Appearence";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARANCE" = "Appearance";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION" = "Minimum App Version";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES" = "Properties";
 
@@ -184,8 +184,8 @@
 "SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING_SERVER" = "Signing Server";
 
 // Footers
-"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES" = "If any issues occur within Feather please report it via the GitHub repository. When submitting an issue, be sure to submit any logs.";
-"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS" = "Sadly due to limitations server certificates will need to be re-renewed every year to keep Feathers local features working properly, tap this button to retrieve the most up-to-date files from our repositories.";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES" = "If any issues occur within Feather, please report them via the GitHub repository. When submitting an issue, be sure to include any logs, if applicable.";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS" = "Sadly, due to limitations, server certificates will need to be re-renewed every year to keep Feather's local features working properly. Tap this button to retrieve the most up-to-date files from our repositories.";
 
 // Cell Titles
 // About Feather
@@ -210,7 +210,7 @@
 
 //
 "SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_TITLE" = "PPQCheck Protections";
-"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_DESCRIPTION" = "This setting enables the PPQCheck protections, which is designed to prepend each bundle identifier for the apps you sideload with a random string.\n\nThis is meant to avoid apple flagging your account by (trying) to make it so they're unable to associate the app your sideloading with one from the App Store.";
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_DESCRIPTION" = "This setting enables the PPQCheck protections, which is designed to prepend each bundle identifier for the apps you sideload with a random string.\n\nThis is meant to prevent Apple from flagging your account by making it difficult for them to associate the app you're sideloading with the one from the App Store.";
 "SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_IDC" = "I don't care";
 "SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_GTK" = "Good to know";
 
@@ -229,7 +229,7 @@
 
 // MARK: - SettingsViewController -> DisplayViewController
 "DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_TINT_COLOR" = "Tint Color";
-"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARENCE" = "App Appearence";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARANCE" = "App Appearance";
 
 "DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE" = "Default Subtitle";
 "DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE_DESCRIPTION" = "Default style for feather, hides localized description and only includes subtitle.";
@@ -243,7 +243,7 @@
 // MARK: - SettingsViewController -> CertificatesViewController
 "CERTIFICATES_VIEW_CONTROLLER_TITLE" = "Certificates";
 
-"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_FOOTER" = "Supported file formats:\n\n- P12 (.p12)\n- Mobile Provision (.mobileprovision)\n\nMake sure your certificates are valid and are able to sideload to your device!";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_FOOTER" = "Supported file formats:\n\n- P12 (.p12)\n- Mobile Provision (.mobileprovision)\n\nMake sure your certificates are valid, and are able to be sideloaded onto your device!";
 
 "CERTIFICATES_VIEW_CONTROLLER_CELL_ADD" = "Add Certificates";
 "CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_DESCRIPTION" = "Tap to add a certificate";
@@ -272,7 +272,7 @@
 
 "CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PROV" = "Import a provisioning file to be able to sideload to your device.";
 "CERT_IMPORTING_VIEWCONTROLLER_FOOTER_CERT" = "Import a file containing a valid certificate.";
-"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PASS" = "Enter the password associated with the private key, leave it blank if theres no password required.";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PASS" = "Enter the password associated with the private key; leave blank if no password is required.";
 
 // MARK: - SettingsViewController -> ResetViewController
 "RESET_VIEW_CONTROLLER_CLEAR_CACHE" = "Clear Network Cache";
@@ -283,7 +283,7 @@
 "DONATION_DONATIONS" = "Donations";
 
 "DONATION_CELL_1_TITLE" = "Secret Repo";
-"DONATION_CELL_1_DESCRIPTION" = "Get access to our secret repo by donating, will provide you with beta access to Feather.";
+"DONATION_CELL_1_DESCRIPTION" = "By donating, you'll gain access to our secret repo and receive access to beta builds of Feather.";
 
 "DONATION_CELL_2_TITLE" = "Show Your Support";
 "DONATION_CELL_2_DESCRIPTION" = "Show your support by donating! If you're unable to donate, spreading the word about Feather works too!";

@@ -105,7 +105,7 @@
 
 // MARK: - SourcesViewController - Add Sources
 "SOURCES_VIEW_ADD_SOURCES_ALERT_TITLE" = "Añadir Fuente";
-"SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "Añadir URL de Repositorio de Altstore";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "Añadir URL de Repositorio de AltStore";
 
 // MARK: - SourcesViewController -> SourcesAppViewController
 // Number of apps, i.e. "444 Apps"
@@ -161,7 +161,7 @@
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_CELL_PPQCHECK_DESCRIPTION" = "PPQCheck es una forma en la que Apple comprueba si la aplicación que abres coincide con un identificador de Bundle en el App Store, la comprobación tiene lugar la primera vez que abres una aplicación firmada instalada. Tenemos una opción para evitar esto, al coste de no poder recibir notificaciones ni otros benificios del identificador por defecto.";
 
 // MARK: - AppSigningViewController -> AppSigningAdvancedViewController
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE" = "Apariencia";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARANCE" = "Apariencia";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION" = "Versión de App mínima";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES" = "Propiedades";
 
@@ -229,7 +229,7 @@
 
 // MARK: - SettingsViewController -> DisplayViewController
 "DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_TINT_COLOR" = "Color del Tinte";
-"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARENCE" = "Apariencia de la App";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARANCE" = "Apariencia de la App";
 
 "DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE" = "Subtítulo por Defecto";
 "DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE_DESCRIPTION" = "Estilo por defecto de Feather, oculta la descripción localizada y solo incluye el subtítulo.";

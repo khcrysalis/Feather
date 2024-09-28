@@ -38,14 +38,14 @@ class AppSigningAdvancedViewController: UITableViewController {
 		title = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED")
 		navigationItem.largeTitleDisplayMode = .never
 		
-		let forceLightDarkAppearence = TweakLibraryViewCell()
-		forceLightDarkAppearence.selectionStyle = .none
-		forceLightDarkAppearence.configureSegmentedControl(
-			with: appSigningViewController.forceLightDarkAppearenceString,
-			selectedIndex: appSigningViewController.forceLightDarkAppearence
+		let forceLightDarkAppearance = TweakLibraryViewCell()
+		forceLightDarkAppearance.selectionStyle = .none
+		forceLightDarkAppearance.configureSegmentedControl(
+			with: appSigningViewController.forceLightDarkAppearanceString,
+			selectedIndex: appSigningViewController.forceLightDarkAppearance
 		)
-		forceLightDarkAppearence.segmentedControl.addTarget(self, action: #selector(forceLightDarkAppearenceDidChange(_:)), for: .valueChanged)
-		cellsForSection0.append(forceLightDarkAppearence)
+		forceLightDarkAppearance.segmentedControl.addTarget(self, action: #selector(forceLightDarkAppearanceDidChange(_:)), for: .valueChanged)
+		cellsForSection0.append(forceLightDarkAppearance)
 		
 		let forceMinimumVersion = TweakLibraryViewCell()
 		forceMinimumVersion.selectionStyle = .none
@@ -126,7 +126,7 @@ class AppSigningAdvancedViewController: UITableViewController {
 	
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		switch section {
-		case 0: return String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE")
+		case 0: return String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARANCE")
 		case 1: return String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION")
 		case 2: return String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES")
 		default: return nil
@@ -171,8 +171,8 @@ class AppSigningAdvancedViewController: UITableViewController {
 	@objc private func forceiTunesFileSharingToggled(_ sender: UISwitch) {
 		appSigningViewController.forceiTunesFileSharing = sender.isOn
 	}
-	@objc private func forceLightDarkAppearenceDidChange(_ sender: UISegmentedControl) {
-		appSigningViewController.forceLightDarkAppearence = sender.selectedSegmentIndex
+	@objc private func forceLightDarkAppearanceDidChange(_ sender: UISegmentedControl) {
+		appSigningViewController.forceLightDarkAppearance = sender.selectedSegmentIndex
 	}
 	@objc private func forceMinimumVersionDidChange(_ sender: UISegmentedControl) {
 		appSigningViewController.forceMinimumVersion = sender.selectedSegmentIndex

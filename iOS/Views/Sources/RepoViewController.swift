@@ -49,7 +49,7 @@ struct RepoViewController: View {
 		NavigationView {
 			List {
 				Section(footer: Text(footerText).foregroundColor(footerTextColor)) {
-					TextField("Enter Altstore URL", text: $repoName, onCommit: validateJSON)
+					TextField("Enter AltStore URL", text: $repoName, onCommit: validateJSON)
 						.onChange(of: repoName) { newValue in
 							debounceRequest()
 						}

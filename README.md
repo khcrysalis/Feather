@@ -8,7 +8,7 @@
 
 ## Features
 
-- **Altstore repo support**. *Supporting Legacy and 2.0 repo structures*
+- **AltStore repo support**. *Supporting Legacy and 2.0 repo structures*
 - **Import your own `.ipa`'s**.
 - **Inject tweaks when signing apps**.
 - **Install applications straight to your device seamlessly over the air**.
@@ -68,7 +68,7 @@ There's a very specific reason its there, for those wanting to remove pre-existi
 
 > What about free developer accounts?
 
-Sadly Feather is unlikely to ever support those as there are plenty of alternatives that exist! Here's a few: [Altstore](https://altstore.io), [Sideloadly](https://sideloadly.io/)
+Sadly Feather is unlikely to ever support those as there are plenty of alternatives that exist! Here's a few: [AltStore](https://altstore.io), [Sideloadly](https://sideloadly.io/)
 
 ## Building
 

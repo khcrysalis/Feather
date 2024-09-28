@@ -52,11 +52,11 @@ enum Preferences {
 	// Unused
 	static var idWhitelist: [String]
 	
-	@Storage(key: "Feather.AppDescriptionAppearence", defaultValue: 0)
-	// 0 == Default appearence
+	@Storage(key: "Feather.AppDescriptionAppearance", defaultValue: 0)
+	// 0 == Default appearance
 	// 1 == Replace subtitle with localizedDescription
 	// 2 == Move localizedDescription below app icon, and above screenshots
-	static var appDescriptionAppearence: Int
+	static var appDescriptionAppearance: Int
 	
 	@Storage(key: "UserPreferredLanguageCode", defaultValue: nil, callback: preferredLangChangedCallback)
 	/// Preferred language
