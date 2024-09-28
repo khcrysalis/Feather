@@ -13,12 +13,98 @@ import CoreData
 import SwiftUI
 
 extension LibraryViewController: UIDocumentPickerDelegate {
-	func beginImportFile() {
-		self.presentDocumentPicker(fileExtension: [
-			UTType(filenameExtension: "ipa")!,
-			UTType(filenameExtension: "tipa")!
-		])
+	func startImporting() {
+		let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+		
+		let documentPickerAction = UIAlertAction(title: "Import from Files", style: .default) { [weak self] _ in
+			self?.presentDocumentPicker(fileExtension: [
+				UTType(filenameExtension: "ipa")!,
+				UTType(filenameExtension: "tipa")!
+			])
+		}
+		
+		let photoLibraryAction = UIAlertAction(title: "Import from URL", style: .default) { [weak self] _ in
+			self?.downloadFileFromUrl()
+		}
+		
+		let cancelAction = UIAlertAction(title: String.localized("CANCEL"), style: .cancel, handler: nil)
+		
+		actionSheet.addAction(documentPickerAction)
+		actionSheet.addAction(photoLibraryAction)
+		actionSheet.addAction(cancelAction)
+		
+		if let popoverController = actionSheet.popoverPresentationController {
+			popoverController.sourceView = self.view
+			popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+			popoverController.permittedArrowDirections = []
+		}
+		
+		self.present(actionSheet, animated: true, completion: nil)
 	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	func downloadFileFromUrl() {
+		let alert = UIAlertController(title: "Import from URL", message: nil, preferredStyle: .alert)
+
+		alert.addTextField { textField in
+			textField.placeholder = "URL"
+			textField.autocapitalizationType = .none
+			textField.addTarget(self, action: #selector(self.textURLDidChange(_:)), for: .editingChanged)
+		}
+
+		let setAction = UIAlertAction(title: "Import", style: .default) { _ in
+			guard let textField = alert.textFields?.first, let enteredURL = textField.text else { return }
+			self.startDownloadIfNeeded(downloadURL: URL(string: enteredURL), sourceLocation: "Imported from URL")
+//			Preferences.onlinePath = enteredURL
+		}
+
+		setAction.isEnabled = false
+		let cancelAction = UIAlertAction(title: String.localized("CANCEL"), style: .cancel, handler: nil)
+
+		alert.addAction(setAction)
+		alert.addAction(cancelAction)
+		present(alert, animated: true, completion: nil)
+	}
+
+
+	@objc func textURLDidChange(_ textField: UITextField) {
+		guard let alertController = presentedViewController as? UIAlertController, let setAction = alertController.actions.first(where: { $0.title == "Import" }) else { return }
+
+		let enteredURL = textField.text ?? ""
+		setAction.isEnabled = isValidURL(enteredURL)
+	}
+
+	func isValidURL(_ url: String) -> Bool {
+		let urlPredicate = NSPredicate(format: "SELF MATCHES %@", "https://.+")
+		return urlPredicate.evaluate(with: url)
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//
 	
 	func presentDocumentPicker(fileExtension: [UTType]) {
 		let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: fileExtension, asCopy: true)
@@ -60,12 +146,68 @@ extension LibraryViewController: UIDocumentPickerDelegate {
 		}
 	}
 
-	
-	
 	func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
 		controller.dismiss(animated: true, completion: nil)
 	}
 }
+
+
+
+
+
+extension LibraryViewController {
+	static var appDownload: AppDownload?
+	func startDownloadIfNeeded(downloadURL: URL?, sourceLocation: String) {
+		guard let downloadURL = downloadURL else {
+			return
+		}
+		
+		DispatchQueue.main.async {
+			self.present(self.loaderAlert!, animated: true)
+		}
+
+		if LibraryViewController.appDownload == nil {
+			LibraryViewController.appDownload = AppDownload()
+		}
+		DispatchQueue(label: "DL").async {
+			
+			LibraryViewController.appDownload?.downloadFile(url: downloadURL, appuuid: UUID().uuidString) { [weak self] (uuid, filePath, error) in
+				guard let self = self else { return }
+				if let error = error {
+					DispatchQueue.main.async {
+						self.loaderAlert?.dismiss(animated: true)
+					}
+					
+				} else if let uuid = uuid, let filePath = filePath {
+					LibraryViewController.appDownload?.extractCompressedBundle(packageURL: filePath) { (targetBundle, error) in
+						
+						if let error = error {
+							DispatchQueue.main.async {
+								self.loaderAlert?.dismiss(animated: true)
+							}
+						} else if let targetBundle = targetBundle {
+							LibraryViewController.appDownload?.addToApps(bundlePath: targetBundle, uuid: uuid, sourceLocation: sourceLocation) { error in
+								if let error = error {
+									DispatchQueue.main.async {
+										self.loaderAlert?.dismiss(animated: true)
+									}
+								} else {
+									DispatchQueue.main.async {
+										self.loaderAlert?.dismiss(animated: true)
+									}
+									Debug.shared.log(message: String.localized("DONE"), type: .success)
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
 
 extension LibraryViewController {
 	@objc func startInstallProcess(meow: NSManagedObject, filePath: String) {

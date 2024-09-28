@@ -73,7 +73,7 @@ extension LibraryViewController {
 		switch section {
 		case 0:
 			let headerWithButton = GroupedSectionHeader(title: "Signed Apps", subtitle: "\(signedApps?.count ?? 0) Signed", buttonTitle: "Import", buttonAction: {
-				self.beginImportFile()
+				self.startImporting()
 			})
 			return headerWithButton
 		case 1:
