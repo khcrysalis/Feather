@@ -107,17 +107,17 @@ class AppSigningAdvancedViewController: UITableViewController {
 		
 		let removeWatchPlaceHolder = SwitchViewCell()
 		removeWatchPlaceHolder.textLabel?.text = String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP")
-		removeWatchPlaceHolder.switchControl.addTarget(self, action: #selector(forceForceFullScreenToggled(_:)), for: .valueChanged)
+		removeWatchPlaceHolder.switchControl.addTarget(self, action: #selector(removePlaceHolderWatchExtension(_:)), for: .valueChanged)
 		removeWatchPlaceHolder.switchControl.isOn = appSigningViewController.removeWatchPlaceHolder
 		removeWatchPlaceHolder.selectionStyle = .none
 		cellsForSection2.append(removeWatchPlaceHolder)
 		
-//		let removeProvisioningFile = SwitchViewCell()
-//		removeProvisioningFile.textLabel?.text = "Remove Provisioning File"
-//		removeProvisioningFile.switchControl.addTarget(self, action: #selector(removeProvisioningFile(_:)), for: .valueChanged)
-//		removeProvisioningFile.switchControl.isOn = appSigningViewController.removeProvisioningFile
-//		removeProvisioningFile.selectionStyle = .none
-//		cellsForSection2.append(removeProvisioningFile)
+		let removeProvisioningFile = SwitchViewCell()
+		removeProvisioningFile.textLabel?.text = "Remove Provisioning File"
+		removeProvisioningFile.switchControl.addTarget(self, action: #selector(removeProvisioningFile(_:)), for: .valueChanged)
+		removeProvisioningFile.switchControl.isOn = appSigningViewController.removeProvisioningFile
+		removeProvisioningFile.selectionStyle = .none
+		cellsForSection2.append(removeProvisioningFile)
 	}
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {
