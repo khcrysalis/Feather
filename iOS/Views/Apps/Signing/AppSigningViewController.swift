@@ -15,6 +15,14 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
     var appsViewController: LibraryViewController
 	var largeButton = ActivityIndicatorButton()
 	var iconCell = IconImageViewCell()
+	
+	private let blurView: UIView = {
+		let view = UIView()
+		view.backgroundColor = .clear
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
+
 
     var toInject: [URL] = []
 	var removeInjectPaths: [String] = []
@@ -112,11 +120,31 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 	}
 	
 	private func setupToolbar() {
+		largeButton.translatesAutoresizingMaskIntoConstraints = false
 		largeButton.addTarget(self, action: #selector(startSign), for: .touchUpInside)
-		let largeButtonItem = UIBarButtonItem(customView: largeButton)
-		toolbarItems = [ largeButtonItem, ]
-		navigationController?.setToolbarHidden(false, animated: false)
+		
+		view.addSubview(blurView)
+		blurView.addSubview(largeButton)
+		
+		NSLayoutConstraint.activate([
+			blurView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+			blurView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+			blurView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+			blurView.heightAnchor.constraint(equalToConstant: 80)
+		])
+		
+		NSLayoutConstraint.activate([
+			largeButton.leadingAnchor.constraint(equalTo: blurView.leadingAnchor, constant: 18),
+			largeButton.trailingAnchor.constraint(equalTo: blurView.trailingAnchor, constant: -18),
+			largeButton.centerYAnchor.constraint(equalTo: blurView.centerYAnchor),
+			largeButton.heightAnchor.constraint(equalToConstant: 50)
+		])
+		blurView.layer.zPosition = 10
+		largeButton.layer.zPosition = 12
+
 	}
+
+
 	
 	@objc func startSign() {
 		self.navigationItem.leftBarButtonItem = nil
