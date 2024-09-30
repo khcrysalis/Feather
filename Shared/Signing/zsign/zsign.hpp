@@ -33,7 +33,8 @@ int zsign(NSString *app,
 		  NSString *pass,
 		  NSString *bundleid,
 		  NSString *displayname,
-		  NSString *bundleversion
+		  NSString *bundleversion,
+		  bool dontGenerateEmbeddedMobileProvision
 		  );
 
 #ifdef __cplusplus

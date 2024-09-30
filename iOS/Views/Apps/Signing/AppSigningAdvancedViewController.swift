@@ -113,7 +113,7 @@ class AppSigningAdvancedViewController: UITableViewController {
 		cellsForSection2.append(removeWatchPlaceHolder)
 		
 		let removeProvisioningFile = SwitchViewCell()
-		removeProvisioningFile.textLabel?.text = "Remove Provisioning File"
+		removeProvisioningFile.textLabel?.text = "Include Provisioning File"
 		removeProvisioningFile.switchControl.addTarget(self, action: #selector(removeProvisioningFile(_:)), for: .valueChanged)
 		removeProvisioningFile.switchControl.isOn = appSigningViewController.removeProvisioningFile
 		removeProvisioningFile.selectionStyle = .none

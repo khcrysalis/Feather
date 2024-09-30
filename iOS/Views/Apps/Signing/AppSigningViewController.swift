@@ -43,7 +43,7 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 	var forceiTunesFileSharing = true
 	
 	var removeWatchPlaceHolder = true 
-	var removeProvisioningFile = false
+	var removeProvisioningFile = true
 	
 	var certs: Certificate?
     
@@ -139,9 +139,11 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 			forceiTunesFileSharing: forceiTunesFileSharing,
 			forceMinimumVersion: forceMinimumVersionString[forceMinimumVersion],
 			forceLightDarkAppearence: forceLightDarkAppearenceString[forceLightDarkAppearence],
-			removeProvisioningFile: removeProvisioningFile, removeWatchPlaceHolder: removeWatchPlaceHolder,
-			certificate: certs),
-				appPath:getFilesForDownloadedApps(app: app as! DownloadedApps, getuuidonly: false)
+			removeProvisioningFile: removeProvisioningFile, 
+			removeWatchPlaceHolder: removeWatchPlaceHolder,
+			certificate: certs
+		), 
+			appPath:getFilesForDownloadedApps(app: app as! DownloadedApps, getuuidonly: false)
 		) { success in
 			if success {
 				self.appsViewController.fetchSources()

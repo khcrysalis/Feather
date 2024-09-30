@@ -71,15 +71,13 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 			
 			try updatePlugIns(options: options, app: tmpDirApp)
 			try removeDumbAssPlaceHolderExtension(options: options, app: tmpDirApp)
+			try updateMobileProvision(app: tmpDirApp)
 			
             let certPath = try CoreDataManager.shared.getCertifcatePath(source: options.certificate)
 			let provisionPath = certPath.appendingPathComponent("\(options.certificate?.provisionPath ?? "")").path
 			let p12Path = certPath.appendingPathComponent("\(options.certificate?.p12Path ?? "")").path
 			
 			try signAppWithZSign(tmpDirApp: tmpDirApp, certPaths: (provisionPath, p12Path), password: options.certificate?.password ?? "", options: options)
-						
-			try updateMobileProvision(options: options, app: tmpDirApp)
-
 			
             let signedUUID = UUID().uuidString
             try fileManager.createDirectory(at: getDocumentsDirectory().appendingPathComponent("Apps/Signed"), withIntermediateDirectories: true)
@@ -145,7 +143,9 @@ private func signAppWithZSign(tmpDirApp: URL, certPaths: (provisionPath: String,
 			 password,
 			 options?.bundleId ?? "",
 			 options?.name ?? "",
-			 options?.version ?? "") != 0 {
+			 options?.version ?? "",
+			 options?.removeProvisioningFile ?? false
+	) != 0 {
 		throw NSError(domain: "AppSigningErrorDomain", code: 1, userInfo: [NSLocalizedDescriptionKey: String.localized("ERROR_ZSIGN_FAILED")])
 	}
 }
@@ -159,6 +159,21 @@ func injectDylib(filePath: String, dylibPath: String, weakInject: Bool) -> Bool 
 func changeDylib(filePath: String, oldPath: String, newPath: String) -> Bool {
 	let success = ChangeDylibPath(filePath, oldPath, newPath)
 	return success
+}
+
+func updateMobileProvision(app: URL) throws {
+	let provisioningFilePath = app.appendingPathComponent("embedded.mobileprovision")
+	if FileManager.default.fileExists(atPath: provisioningFilePath.path) {
+		do {
+			try FileManager.default.removeItem(at: provisioningFilePath)
+			Debug.shared.log(message: "embedded.mobileprovision file removed successfully.")
+		} catch {
+			Debug.shared.log(message: "Failed to remove embedded.mobileprovision file: \(error)")
+			throw error
+		}
+	} else {
+		Debug.shared.log(message: "No embedded.mobileprovision file found.")
+	}
 }
 
 func listDylibs(filePath: String) -> [String]? {
@@ -193,24 +208,6 @@ func updatePlugIns(options: AppSigningOptions, app: URL) throws {
 		}
 	}
 }
-
-func updateMobileProvision(options: AppSigningOptions, app: URL) throws {
-	if options.removeProvisioningFile == true {
-		let provisioningFilePath = app.appendingPathComponent("embedded.mobileprovision")
-		if FileManager.default.fileExists(atPath: provisioningFilePath.path) {
-			do {
-				try FileManager.default.removeItem(at: provisioningFilePath)
-				Debug.shared.log(message: "embedded.mobileprovision file removed successfully.")
-			} catch {
-				Debug.shared.log(message: "Failed to remove embedded.mobileprovision file: \(error)")
-				throw error
-			}
-		} else {
-			Debug.shared.log(message: "No embedded.mobileprovision file found.")
-		}
-	}
-}
-
 
 func removeDumbAssPlaceHolderExtension(options: AppSigningOptions, app: URL) throws {
 	if options.removeWatchPlaceHolder! {
