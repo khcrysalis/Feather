@@ -51,7 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 		}
 		UserDefaults.standard.set(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, forKey: "currentVersion")
 
-		Debug.shared.log(message: "Device: \(UIDevice.current.model)")
 		Debug.shared.log(message: "Version: \(UIDevice.current.systemVersion)")
 		Debug.shared.log(message: "Name: \(UIDevice.current.name)")
 		Debug.shared.log(message: "Model: \(UIDevice.current.model)")
