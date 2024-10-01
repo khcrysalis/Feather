@@ -98,7 +98,6 @@ class Installer: Identifiable, ObservableObject {
 			return Response(status: .ok, headers: headers, body: .init(string: html))
 		}
 
-
 		try app.server.start()
 		needsShutdown = true
 		Debug.shared.log(message: "Server started: Port \(port) for \(Self.sni)")
@@ -135,7 +134,7 @@ extension Installer {
 			app.http.server.configuration.tlsConfiguration = try Self.setupTLS()
 		}
 		app.http.server.configuration.hostname = Self.sni
-		print(self.sni)
+		Debug.shared.log(message: self.sni)
 		app.http.server.configuration.tcpNoDelay = true
 
 		app.http.server.configuration.address = .hostname("0.0.0.0", port: port)

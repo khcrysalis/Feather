@@ -14,7 +14,6 @@ NSString* getTmpDir() {
 	return [[[paths objectAtIndex:0] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"tmp"];
 }
 
-
 extern "C" {
 
 bool InjectDyLib(NSString *filePath, NSString *dylibPath, bool weakInject, bool bCreate) {

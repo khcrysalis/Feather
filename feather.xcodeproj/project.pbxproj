@@ -30,6 +30,7 @@
 		33570F612C32B80E008CB560 /* AppsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F602C32B80E008CB560 /* AppsTableViewCell.swift */; };
 		33570F672C34CCD5008CB560 /* AppsInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F662C34CCD5008CB560 /* AppsInformationViewController.swift */; };
 		33570F692C34E5B2008CB560 /* SectionHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F682C34E5B2008CB560 /* SectionHeaders.swift */; };
+		335EB8602CAB889C00208442 /* Utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 335EB85E2CAB889C00208442 /* Utils.mm */; };
 		335F0C2C2C5DC3AE00A4F0AE /* CoreDataManager+SignedApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335F0C2B2C5DC3AE00A4F0AE /* CoreDataManager+SignedApps.swift */; };
 		335F0C2E2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335F0C2D2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift */; };
 		335F0C302C5E175B00A4F0AE /* CertData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335F0C2F2C5E175B00A4F0AE /* CertData.swift */; };
@@ -152,6 +153,8 @@
 		33570F602C32B80E008CB560 /* AppsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsTableViewCell.swift; sourceTree = "<group>"; };
 		33570F662C34CCD5008CB560 /* AppsInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsInformationViewController.swift; sourceTree = "<group>"; };
 		33570F682C34E5B2008CB560 /* SectionHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaders.swift; sourceTree = "<group>"; };
+		335EB85E2CAB889C00208442 /* Utils.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Utils.mm; sourceTree = "<group>"; };
+		335EB85F2CAB889C00208442 /* Utils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Utils.hpp; sourceTree = "<group>"; };
 		335F0C2B2C5DC3AE00A4F0AE /* CoreDataManager+SignedApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+SignedApps.swift"; sourceTree = "<group>"; };
 		335F0C2D2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Certificates.swift"; sourceTree = "<group>"; };
 		335F0C2F2C5E175B00A4F0AE /* CertData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertData.swift; sourceTree = "<group>"; };
@@ -715,6 +718,8 @@
 				D0651C2B2BFEEA4B00D40829 /* signing.h */,
 				D0651C0F2BFEE93C00D40829 /* zsign.mm */,
 				D0651C102BFEE93C00D40829 /* zsign.hpp */,
+				335EB85E2CAB889C00208442 /* Utils.mm */,
+				335EB85F2CAB889C00208442 /* Utils.hpp */,
 			);
 			path = zsign;
 			sourceTree = "<group>";
@@ -873,6 +878,7 @@
 				D0651C372BFEEA4B00D40829 /* openssl.cpp in Sources */,
 				D0651C1A2BFEE97F00D40829 /* base64.cpp in Sources */,
 				33BE875F2C6AF91B0044D245 /* IconImageViewCell.swift in Sources */,
+				335EB8602CAB889C00208442 /* Utils.mm in Sources */,
 				AF4D46EF2C432CCA003FA335 /* TweakLibraryViewCell.swift in Sources */,
 				33E4D8322C64CB39006A1C26 /* SearchResultsTableViewController.swift in Sources */,
 				335F0C2C2C5DC3AE00A4F0AE /* CoreDataManager+SignedApps.swift in Sources */,

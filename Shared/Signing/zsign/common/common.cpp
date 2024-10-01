@@ -4,6 +4,8 @@
 #include <sys/stat.h>
 #include <inttypes.h>
 #include <openssl/sha.h>
+#include "Utils.hpp"
+#include <fstream>
 
 #define PARSEVALIST(szFormatArgs, szArgs)                       \
 	ZBuffer buffer;                                             \
@@ -701,20 +703,33 @@ void ZLog::SetLogLever(int nLogLevel)
 	g_nLogLevel = nLogLevel;
 }
 
+void ZLog::writeToLogFile(const std::string& message) {
+	const char* documentsPath = getDocumentsDirectory();
+	std::string logFilePath = std::string(documentsPath) + "/logs.txt";
+
+	std::ofstream logFile(logFilePath, std::ios_base::app);
+	if (logFile.is_open()) {
+		logFile << message;
+		logFile.close();
+	} else {
+		std::cerr << "Failed to open log file: " << logFilePath << std::endl;
+	}
+}
+
 void ZLog::Print(int nLevel, const char *szLog)
 {
 	if (g_nLogLevel >= nLevel)
 	{
 		write(STDOUT_FILENO, szLog, strlen(szLog));
+		writeToLogFile(szLog);
 	}
 }
 
-void ZLog::PrintV(int nLevel, const char *szFormatArgs, ...)
-{
-	if (g_nLogLevel >= nLevel)
-	{
+void ZLog::PrintV(int nLevel, const char *szFormatArgs, ...) {
+	if (g_nLogLevel >= nLevel) {
 		PARSEVALIST(szFormatArgs, szLog)
 		write(STDOUT_FILENO, szLog, strlen(szLog));
+		writeToLogFile(szLog);
 	}
 }
 
@@ -723,6 +738,7 @@ bool ZLog::Error(const char *szLog)
 	write(STDOUT_FILENO, "\033[31m", 5);
 	write(STDOUT_FILENO, szLog, strlen(szLog));
 	write(STDOUT_FILENO, "\033[0m", 4);
+	writeToLogFile(szLog);
 	return false;
 }
 
@@ -732,6 +748,7 @@ bool ZLog::ErrorV(const char *szFormatArgs, ...)
 	write(STDOUT_FILENO, "\033[31m", 5);
 	write(STDOUT_FILENO, szLog, strlen(szLog));
 	write(STDOUT_FILENO, "\033[0m", 4);
+	writeToLogFile(szLog);
 	return false;
 }
 
@@ -740,6 +757,7 @@ bool ZLog::Success(const char *szLog)
 	write(STDOUT_FILENO, "\033[32m", 5);
 	write(STDOUT_FILENO, szLog, strlen(szLog));
 	write(STDOUT_FILENO, "\033[0m", 4);
+	writeToLogFile(szLog);
 	return true;
 }
 
@@ -749,6 +767,7 @@ bool ZLog::SuccessV(const char *szFormatArgs, ...)
 	write(STDOUT_FILENO, "\033[32m", 5);
 	write(STDOUT_FILENO, szLog, strlen(szLog));
 	write(STDOUT_FILENO, "\033[0m", 4);
+	writeToLogFile(szLog);
 	return true;
 }
 
@@ -768,6 +787,7 @@ bool ZLog::Warn(const char *szLog)
 	write(STDOUT_FILENO, "\033[33m", 5);
 	write(STDOUT_FILENO, szLog, strlen(szLog));
 	write(STDOUT_FILENO, "\033[0m", 4);
+	writeToLogFile(szLog);
 	return false;
 }
 
@@ -777,6 +797,7 @@ bool ZLog::WarnV(const char *szFormatArgs, ...)
 	write(STDOUT_FILENO, "\033[33m", 5);
 	write(STDOUT_FILENO, szLog, strlen(szLog));
 	write(STDOUT_FILENO, "\033[0m", 4);
+	writeToLogFile(szLog);
 	return false;
 }
 
@@ -785,6 +806,7 @@ void ZLog::Print(const char *szLog)
 	if (g_nLogLevel >= E_INFO)
 	{
 		write(STDOUT_FILENO, szLog, strlen(szLog));
+		writeToLogFile(szLog);
 	}
 }
 
@@ -794,6 +816,7 @@ void ZLog::PrintV(const char *szFormatArgs, ...)
 	{
 		PARSEVALIST(szFormatArgs, szLog)
 		write(STDOUT_FILENO, szLog, strlen(szLog));
+		writeToLogFile(szLog);
 	}
 }
 
@@ -802,6 +825,7 @@ void ZLog::Debug(const char *szLog)
 	if (g_nLogLevel >= E_DEBUG)
 	{
 		write(STDOUT_FILENO, szLog, strlen(szLog));
+		writeToLogFile(szLog);
 	}
 }
 
@@ -811,6 +835,7 @@ void ZLog::DebugV(const char *szFormatArgs, ...)
 	{
 		PARSEVALIST(szFormatArgs, szLog)
 		write(STDOUT_FILENO, szLog, strlen(szLog));
+		writeToLogFile(szLog);
 	}
 }
 

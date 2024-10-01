@@ -59,7 +59,7 @@ struct RepoViewController: View {
 					Button(action: {
 						let pasteboard = UIPasteboard.general
 						if let clipboardText = pasteboard.string {
-							Debug.shared.log(message: "meow2")
+							Debug.shared.log(message: "Pasted from clipboard")
 							self.decodeRepositories(text: clipboardText)
 						}
 					}) {
@@ -165,7 +165,7 @@ extension RepoViewController {
 		isSyncing = true
 		let isBase64 = isValidBase64String(text)
 		let repoLinks: [String]
-		Debug.shared.log(message: "meow")
+		Debug.shared.log(message: "Trying to add repositories...")
 		if isBase64 {
 			guard let decodedString = decodeBase64String(text) else {
 				Debug.shared.log(message: "Failed to decode base64 string", type: .error)
@@ -193,7 +193,7 @@ extension RepoViewController {
 				}
 			}
 			DispatchQueue.main.async {
-				Debug.shared.showSuccessAlert(with: "Successfully imported \(success) repos", subtitle: "")
+				Debug.shared.log(message: "Successfully imported \(success) repos", type: .success)
 				presentationMode.wrappedValue.dismiss()
 				NotificationCenter.default.post(name: Notification.Name("sfetch"), object: nil)
 			}

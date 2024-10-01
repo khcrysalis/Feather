@@ -46,6 +46,9 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 		var iconURL = ""
 		
         do {
+			Debug.shared.log(message: "============================================")
+			Debug.shared.log(message: "\(options)")
+			Debug.shared.log(message: "============================================")
 			try fileManager.createDirectory(at: tmpDir, withIntermediateDirectories: true)
             try fileManager.copyItem(at: appPath, to: tmpDirApp)
 			
@@ -77,8 +80,12 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 			let provisionPath = certPath.appendingPathComponent("\(options.certificate?.provisionPath ?? "")").path
 			let p12Path = certPath.appendingPathComponent("\(options.certificate?.p12Path ?? "")").path
 			
+			Debug.shared.log(message: "🦋 Start Signing 🦋")
+			
 			try signAppWithZSign(tmpDirApp: tmpDirApp, certPaths: (provisionPath, p12Path), password: options.certificate?.password ?? "", options: options)
 			
+			Debug.shared.log(message: "🦋 End Signing 🦋")
+						
             let signedUUID = UUID().uuidString
             try fileManager.createDirectory(at: getDocumentsDirectory().appendingPathComponent("Apps/Signed"), withIntermediateDirectories: true)
             let path = getDocumentsDirectory().appendingPathComponent("Apps/Signed").appendingPathComponent(signedUUID)
@@ -101,6 +108,7 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 				}
 				
 				Debug.shared.log(message: String.localized("SUCCESS_SIGNED", arguments: "\(options.name ?? String.localized("UNKNOWN"))"), type: .success)
+				Debug.shared.log(message: "============================================")
                 
 				UIApplication.shared.isIdleTimerDisabled = false
                 completion(true)
@@ -123,11 +131,17 @@ func resignApp(certificate: Certificate, appPath: URL, completion: @escaping (Bo
 			let provisionPath = certPath.appendingPathComponent("\(certificate.provisionPath ?? "")").path
 			let p12Path = certPath.appendingPathComponent("\(certificate.p12Path ?? "")").path
 			
+			Debug.shared.log(message: "============================================")
+			Debug.shared.log(message: "🦋 Start Resigning 🦋")
+			
 			try signAppWithZSign(tmpDirApp: appPath, certPaths: (provisionPath, p12Path), password: certificate.password ?? "", options: nil)
+			
+			Debug.shared.log(message: "🦋 End Resigning 🦋")
 			DispatchQueue.main.async {
 				UIApplication.shared.isIdleTimerDisabled = false
 				Debug.shared.log(message: String.localized("SUCCESS_RESIGN"), type: .success)
 			}
+			Debug.shared.log(message: "============================================")
 			completion(true)
 		} catch {
 			Debug.shared.log(message: "\(error)", type: .warning)
@@ -166,13 +180,12 @@ func updateMobileProvision(app: URL) throws {
 	if FileManager.default.fileExists(atPath: provisioningFilePath.path) {
 		do {
 			try FileManager.default.removeItem(at: provisioningFilePath)
-			Debug.shared.log(message: "embedded.mobileprovision file removed successfully.")
+			Debug.shared.log(message: "Embedded.mobileprovision file removed successfully!")
 		} catch {
-			Debug.shared.log(message: "Failed to remove embedded.mobileprovision file: \(error)")
 			throw error
 		}
 	} else {
-		Debug.shared.log(message: "No embedded.mobileprovision file found.")
+		Debug.shared.log(message: "Could not find any mobileprovision to remove. ")
 	}
 }
 
@@ -185,7 +198,7 @@ func listDylibs(filePath: String) -> [String]? {
 		let dylibPaths = dylibPathsArray as! [String]
 		return dylibPaths
 	} else {
-		print("Failed to list dylibs.")
+		Debug.shared.log(message: "Failed to list dylibs.")
 		return nil
 	}
 }
@@ -202,9 +215,12 @@ func updatePlugIns(options: AppSigningOptions, app: URL) throws {
 		if filemanager.fileExists(atPath: path.path) {
 			do {
 				try filemanager.removeItem(at: path)
+				Debug.shared.log(message: "Removed PlugIns!")
 			} catch {
 				throw error
 			}
+		} else {
+			Debug.shared.log(message: "Could not find any PlugIns to remove.")
 		}
 	}
 }
@@ -216,9 +232,12 @@ func removeDumbAssPlaceHolderExtension(options: AppSigningOptions, app: URL) thr
 		if filemanager.fileExists(atPath: path.path) {
 			do {
 				try filemanager.removeItem(at: path)
+				Debug.shared.log(message: "Removed placeholder watch app!")
 			} catch {
 				throw error
 			}
+		} else {
+			Debug.shared.log(message: "Placeholder watch app not found.")
 		}
 	}
 }
@@ -263,7 +282,7 @@ func updateInfoPlist(infoDict: NSMutableDictionary, options: AppSigningOptions, 
 		infoDict["CFBundleIcons~ipad"] = cfBundleIconsIpad
 		
 	} else {
-		Debug.shared.log(message: "updateInfoPlist.updateicon: Does not include an icon! Will not this.")
+		Debug.shared.log(message: "updateInfoPlist.updateicon: Does not include an icon! Will not do this.")
 	}
 	
 	if options.forceFileSharing! { infoDict.setObject(true, forKey: "UISupportsDocumentBrowser" as NSCopying) }

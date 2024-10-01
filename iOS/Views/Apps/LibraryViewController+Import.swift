@@ -177,7 +177,7 @@ extension LibraryViewController {
 					DispatchQueue.main.async {
 						self.loaderAlert?.dismiss(animated: true)
 					}
-					
+					Debug.shared.log(message: "Failed to Import: \(error)", type: .error)
 				} else if let uuid = uuid, let filePath = filePath {
 					LibraryViewController.appDownload?.extractCompressedBundle(packageURL: filePath) { (targetBundle, error) in
 						
@@ -185,12 +185,14 @@ extension LibraryViewController {
 							DispatchQueue.main.async {
 								self.loaderAlert?.dismiss(animated: true)
 							}
+							Debug.shared.log(message: "Failed to Import: \(error)", type: .error)
 						} else if let targetBundle = targetBundle {
 							LibraryViewController.appDownload?.addToApps(bundlePath: targetBundle, uuid: uuid, sourceLocation: sourceLocation) { error in
 								if let error = error {
 									DispatchQueue.main.async {
 										self.loaderAlert?.dismiss(animated: true)
 									}
+									Debug.shared.log(message: "Failed to Import: \(error)", type: .error)
 								} else {
 									DispatchQueue.main.async {
 										self.loaderAlert?.dismiss(animated: true)
