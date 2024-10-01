@@ -285,6 +285,10 @@ func updateInfoPlist(infoDict: NSMutableDictionary, options: AppSigningOptions, 
 		Debug.shared.log(message: "updateInfoPlist.updateicon: Does not include an icon! Will not do this.")
 	}
 	
+	if infoDict.value(forKey: "CFBundleDisplayName") as? String != options.name {
+		try updateLocalizedInfoPlist(in: app, newDisplayName: options.name!)
+	}
+	
 	if options.forceFileSharing! { infoDict.setObject(true, forKey: "UISupportsDocumentBrowser" as NSCopying) }
 	if options.forceiTunesFileSharing! { infoDict.setObject(true, forKey: "UIFileSharingEnabled" as NSCopying) }
 	if options.removeSupportedDevices! { infoDict.removeObject(forKey: "UISupportedDevices") }
@@ -294,4 +298,25 @@ func updateInfoPlist(infoDict: NSMutableDictionary, options: AppSigningOptions, 
 	if options.forceMinimumVersion! != "Automatic" { infoDict.setObject(options.forceMinimumVersion!, forKey: "MinimumOSVersion" as NSCopying) }
 	if options.forceLightDarkAppearence! != "Automatic" { infoDict.setObject(options.forceLightDarkAppearence!, forKey: "UIUserInterfaceStyle" as NSCopying)}
 	try infoDict.write(to: app.appendingPathComponent("Info.plist"))
+}
+
+func updateLocalizedInfoPlist(in appDirectory: URL, newDisplayName: String) throws {
+	let fileManager = FileManager.default
+	let contents = try fileManager.contentsOfDirectory(at: appDirectory, includingPropertiesForKeys: nil)
+	let localizationBundles = contents.filter { $0.pathExtension == "lproj" }
+	
+	for localizationBundle in localizationBundles {
+		let infoPlistStringsURL = localizationBundle.appendingPathComponent("InfoPlist.strings")
+		
+		if fileManager.fileExists(atPath: infoPlistStringsURL.path) {
+			var localizedStrings = try String(contentsOf: infoPlistStringsURL, encoding: .utf8)
+				let localizedDict = NSDictionary(contentsOf: infoPlistStringsURL) as! [String: String]
+
+			if localizedDict["CFBundleDisplayName"] != newDisplayName {
+				localizedStrings = localizedStrings.replacingOccurrences(of: localizedDict["CFBundleDisplayName"] ?? "", with: newDisplayName)
+				try localizedStrings.write(to: infoPlistStringsURL, atomically: true, encoding: .utf8)
+				Debug.shared.log(message: "Updated CFBundleDisplayName in \(infoPlistStringsURL.path)")
+			}
+		}
+	}
 }
