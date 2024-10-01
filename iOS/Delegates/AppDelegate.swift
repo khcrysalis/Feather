@@ -204,14 +204,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 			do {
 				try FileManager.default.removeItem(at: logFilePath)
 			} catch {
-				print("Error removing existing logs.txt: \(error)")
+				Debug.shared.log(message: "Error removing existing logs.txt: \(error)", type: .error)
 			}
 		}
 		
 		do {
 			try "".write(to: logFilePath, atomically: true, encoding: .utf8)
 		} catch {
-			print("Error removing existing logs.txt: \(error)")
+			Debug.shared.log(message: "Error removing existing logs.txt: \(error)", type: .error)
 		}
 	}
 	

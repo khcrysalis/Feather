@@ -201,17 +201,6 @@ struct DebugViewController: View {
 	
 }
 
-extension View {
-	@ViewBuilder
-	func ifAvailable<T: View>(iOS17Modifier: (Self) -> T) -> some View {
-		if #available(iOS 17, *) {
-			iOS17Modifier(self)
-		} else {
-			self
-		}
-	}
-}
-
 func sfGradient(systemName: String, gradientColors: [Color]) -> some View {
 	Image(systemName: systemName)
 		.resizable()
