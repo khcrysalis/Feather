@@ -56,6 +56,8 @@
 "SUCCESS_SIGNED" = "Successfully signed %@";
 // Successfully resigned an application
 "SUCCESS_RESIGN" = "Successfully resigned!";
+// Success message requiring user to restart app
+"SUCCESS_REQUIRES_RESTART" = "You must close the app for changes to take effect.";
 
 // MARK: - Onboarding
 // Welcome to Feather!!!!!!!!
@@ -220,6 +222,7 @@
 // Footers
 "SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES" = "If any issues occur within Feather please report it via the GitHub repository. When submitting an issue, be sure to submit any logs.";
 "SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS" = "Sadly due to limitations server certificates will need to be re-renewed every year to keep Feathers local features working properly, tap this button to retrieve the most up-to-date files from our repositories.";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER" = "Default server goes to %@";
 
 // Cell Titles
 // About Feather

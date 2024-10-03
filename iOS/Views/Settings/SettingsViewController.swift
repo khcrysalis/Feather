@@ -90,7 +90,7 @@ extension SettingsViewController {
 		switch section {
 		case 1:
 			return String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES")
-		case 5: return "Default server goes to \"\(Preferences.defaultInstallPath)\""
+		case 5: return String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER", arguments: Preferences.defaultInstallPath)
 		case 6:
 			return String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS")
 		default:
@@ -220,7 +220,7 @@ extension SettingsViewController {
 		
 		let alertController = UIAlertController(
 			title: "",
-			message: "You must close the app for changes to take effect.",
+			message: String.localized("SUCCESS_REQUIRES_RESTART"),
 			preferredStyle: .alert
 		)
 		
