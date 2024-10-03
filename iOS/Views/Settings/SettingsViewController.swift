@@ -16,9 +16,9 @@ class SettingsViewController: UITableViewController {
 		["Donate"],
 		[String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ABOUT", arguments: "Feather"), String.localized("SETTINGS_VIEW_CONTROLLER_CELL_SUBMIT_FEEDBACK"), String.localized("SETTINGS_VIEW_CONTROLLER_CELL_GITHUB")],
 		[String.localized("SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY"), String.localized("SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON")],
-		["Current Certificate", String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES"), "Auto Install"],
+		["Current Certificate", String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES")],
 //		["Signing Configuration"],
-		["Fuck PPQCheck", "PPQCheckMitigationString", "PPQCheckMitigationExport"],
+		["Auto Install", "Fuck PPQCheck", "PPQCheckMitigationString", "PPQCheckMitigationExport"],
 		["Use Server", String.localized("SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER")],
 		[String.localized("SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE")],
 		[
