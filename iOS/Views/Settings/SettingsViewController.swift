@@ -278,9 +278,16 @@ extension SettingsViewController {
 			navigationController?.pushViewController(l, animated: true)
 		case "PPQCheckMitigationString":
 			showChangeIdentifierAlert()
-		case  "PPQCheckMitigationExport":
+		case "PPQCheckMitigationExport":
 			let shareText = Preferences.pPQCheckString
 			let activityViewController = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
+            
+			if let popoverController = activityViewController.popoverPresentationController {
+				popoverController.sourceView = self.view
+				popoverController.sourceRect = self.view.bounds
+				popoverController.permittedArrowDirections = []
+            }
+            
 			present(activityViewController, animated: true, completion: nil)
 		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON"):
 			let iconsListViewController = IconsListViewController()
