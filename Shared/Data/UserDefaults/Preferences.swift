@@ -44,6 +44,9 @@ enum Preferences {
 	
 	@Storage(key: "Feather.fuckOffPpqcheckDetection", defaultValue: true)
 	static var isFuckingPPqcheckDetectionOff: Bool
+    
+	@Storage(key: "Feather.autoInstallAfterSign", defaultValue: false)
+	static var autoInstallAfterSign: Bool
 	
 	@Storage(key: "Feather.CertificateTitleAppIDtoTeamID", defaultValue: false)
 	static var certificateTitleAppIDtoTeamID: Bool
