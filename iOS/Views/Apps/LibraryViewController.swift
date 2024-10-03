@@ -72,12 +72,16 @@ extension LibraryViewController {
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		switch section {
 		case 0:
-			let headerWithButton = GroupedSectionHeader(title: "Signed Apps", subtitle: "\(signedApps?.count ?? 0) Signed", buttonTitle: "Import", buttonAction: {
+			let headerWithButton = GroupedSectionHeader(
+                title: String.localized("LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS"),
+				subtitle: String.localized(signedApps?.count ?? 0 > 1 ? "LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL_PLURAL" : "LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL", arguments: String(signedApps?.count ?? 0)),
+                buttonTitle: String.localized("LIBRARY_VIEW_CONTROLLER_SECTION_BUTTON_IMPORT"),
+                buttonAction: {
 				self.startImporting()
 			})
 			return headerWithButton
 		case 1:
-			let headerWithButton = GroupedSectionHeader(title: "Downloaded Apps")
+            let headerWithButton = GroupedSectionHeader(title: String.localized("LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS"))
 			return headerWithButton
 		default:
 			return nil
@@ -413,7 +417,7 @@ extension LibraryViewController: UISearchControllerDelegate, UISearchBarDelegate
 		searchController.hidesNavigationBarDuringPresentation = true
 		searchController.searchResultsUpdater = self
 		searchController.delegate = self
-		searchController.searchBar.placeholder = "Search Library"
+        searchController.searchBar.placeholder = String.localized("SETTINGS_VIEW_CONTROLLER_SEARCH_PLACEHOLDER")
 		navigationItem.searchController = searchController
 		definesPresentationContext = true
 		navigationItem.hidesSearchBarWhenScrolling = false
