@@ -28,6 +28,7 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 	var removeInjectPaths: [String] = []
 	
     var app: NSManagedObject!
+    var filePath: String = ""
     var name: String = "Unknown"
     var bundleId: String = "unknown"
     var version: String = "unknown"
@@ -55,9 +56,10 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 	
 	var certs: Certificate?
     
-    init(app: NSManagedObject, appsViewController: LibraryViewController) {
+    init(app: NSManagedObject, filePath: String, appsViewController: LibraryViewController) {
         self.appsViewController = appsViewController
         self.app = app
+        self.filePath = filePath
         super.init(style: .insetGrouped)
 		
 		if let hasGotCert = CoreDataManager.shared.getCurrentCertificate() {
@@ -176,6 +178,9 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 			if success {
 				self.appsViewController.fetchSources()
 				self.appsViewController.tableView.reloadData()
+                if Preferences.autoInstallAfterSign {
+                    self.appsViewController.startInstallProcess(meow: self.app, filePath: self.filePath)
+                }
 			}
 			self.dismiss(animated: true)
 		}

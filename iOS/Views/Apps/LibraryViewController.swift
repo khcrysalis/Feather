@@ -188,11 +188,15 @@ extension LibraryViewController {
 				popupVC = PopupViewController()
 				popupVC.modalPresentationStyle = .pageSheet
 				
-				let button1 = PopupViewControllerButton(title: "Sign \((source!.value(forKey: "name") as? String ?? ""))", color: .tintColor.withAlphaComponent(0.9))
+				let button1 = PopupViewControllerButton(
+					title: Preferences.autoInstallAfterSign
+					? "Sign & Install \((source!.value(forKey: "name") as? String ?? ""))"
+					: "Sign \((source!.value(forKey: "name") as? String ?? ""))",
+					color: .tintColor.withAlphaComponent(0.9))
 				button1.onTap = { [weak self] in
 					guard let self = self else { return }
 					self.popupVC.dismiss(animated: true)
-					self.startSigning(meow: source!)
+					self.startSigning(meow: source!, filePath: filePath?.path ?? "")
 				}
 				
 				let button2 = PopupViewControllerButton(title: "Install \((source!.value(forKey: "name") as? String ?? ""))", color: .quaternarySystemFill, titleColor: .tintColor)
@@ -243,9 +247,9 @@ extension LibraryViewController {
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 	
-	@objc func startSigning(meow: NSManagedObject) {
+	@objc func startSigning(meow: NSManagedObject, filePath: String) {
 		if FileManager.default.fileExists(atPath: CoreDataManager.shared.getFilesForDownloadedApps(for:(meow as! DownloadedApps)).path) {
-			let ap = AppSigningViewController(app: meow, appsViewController: self)
+			let ap = AppSigningViewController(app: meow, filePath: filePath, appsViewController: self)
 			let navigationController = UINavigationController(rootViewController: ap)
 			navigationController.modalPresentationStyle = .fullScreen
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
