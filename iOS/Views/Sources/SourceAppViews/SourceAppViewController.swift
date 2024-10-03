@@ -58,15 +58,15 @@ class SourceAppViewController: UITableViewController {
 	}
 	
 	private func updateFilterMenu() {
-		let defaultAction = UIAction(title: "Default", image: UIImage()) { [weak self] _ in
+		let defaultAction = UIAction(title: String.localized("SOURCES_CELLS_ACTIONS_FILTER_BY_DEFAULT"), image: UIImage()) { [weak self] _ in
 			self?.applyFilter(.default)
 		}
 		
-		let nameAction = UIAction(title: "Name", image: UIImage(systemName: "textformat")) { [weak self] _ in
+		let nameAction = UIAction(title: String.localized("SOURCES_CELLS_ACTIONS_FILTER_BY_NAME"), image: UIImage(systemName: "textformat")) { [weak self] _ in
 			self?.applyFilter(.name)
 		}
 		
-		let dateAction = UIAction(title: "Date", image: UIImage(systemName: "calendar")) { [weak self] _ in
+		let dateAction = UIAction(title: String.localized("SOURCES_CELLS_ACTIONS_FILTER_BY_DATE"), image: UIImage(systemName: "calendar")) { [weak self] _ in
 			self?.applyFilter(.date)
 		}
 		
@@ -75,7 +75,7 @@ class SourceAppViewController: UITableViewController {
 		nameAction.state = selectedFilterOption == .name ? .on : .off
 		dateAction.state = selectedFilterOption == .date ? .on : .off
 		
-		let filterMenu = UIMenu(title: "Filter by", children: [defaultAction, nameAction, dateAction])
+		let filterMenu = UIMenu(title: String.localized("SOURCES_CELLS_ACTIONS_FILTER_TITLE"), children: [defaultAction, nameAction, dateAction])
 		let filterButton = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.decrease"), menu: filterMenu)
 		
 		self.navigationItem.rightBarButtonItem = filterButton
@@ -212,7 +212,7 @@ extension SourceAppViewController {
 			return nil
 		} else {
 			//return "\(apps.count) Apps"
-			return String.localized("SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS", arguments: "\(apps.count)")
+			return String.localized(apps.count > 1 ? "SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS_PLURAL" : "SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS", arguments: "\(apps.count)")
 		}
 	}
 }

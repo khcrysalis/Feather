@@ -16,14 +16,14 @@ extension LibraryViewController: UIDocumentPickerDelegate {
 	func startImporting() {
 		let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 		
-		let documentPickerAction = UIAlertAction(title: "Import from Files", style: .default) { [weak self] _ in
+		let documentPickerAction = UIAlertAction(title: String.localized("LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_FILE"), style: .default) { [weak self] _ in
 			self?.presentDocumentPicker(fileExtension: [
 				UTType(filenameExtension: "ipa")!,
 				UTType(filenameExtension: "tipa")!
 			])
 		}
 		
-		let photoLibraryAction = UIAlertAction(title: "Import from URL", style: .default) { [weak self] _ in
+		let photoLibraryAction = UIAlertAction(title: String.localized("LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_URL"), style: .default) { [weak self] _ in
 			self?.downloadFileFromUrl()
 		}
 		
@@ -52,7 +52,7 @@ extension LibraryViewController: UIDocumentPickerDelegate {
 	
 	
 	func downloadFileFromUrl() {
-		let alert = UIAlertController(title: "Import from URL", message: nil, preferredStyle: .alert)
+		let alert = UIAlertController(title: String.localized("LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_URL"), message: nil, preferredStyle: .alert)
 
 		alert.addTextField { textField in
 			textField.placeholder = "URL"
@@ -60,7 +60,7 @@ extension LibraryViewController: UIDocumentPickerDelegate {
 			textField.addTarget(self, action: #selector(self.textURLDidChange(_:)), for: .editingChanged)
 		}
 
-		let setAction = UIAlertAction(title: "Import", style: .default) { _ in
+		let setAction = UIAlertAction(title: String.localized("IMPORT"), style: .default) { _ in
 			guard let textField = alert.textFields?.first, let enteredURL = textField.text else { return }
 			self.startDownloadIfNeeded(downloadURL: URL(string: enteredURL), sourceLocation: "Imported from URL")
 //			Preferences.onlinePath = enteredURL
@@ -76,7 +76,7 @@ extension LibraryViewController: UIDocumentPickerDelegate {
 
 
 	@objc func textURLDidChange(_ textField: UITextField) {
-		guard let alertController = presentedViewController as? UIAlertController, let setAction = alertController.actions.first(where: { $0.title == "Import" }) else { return }
+		guard let alertController = presentedViewController as? UIAlertController, let setAction = alertController.actions.first(where: { $0.title == String.localized("IMPORT") }) else { return }
 
 		let enteredURL = textField.text ?? ""
 		setAction.isEnabled = isValidURL(enteredURL)

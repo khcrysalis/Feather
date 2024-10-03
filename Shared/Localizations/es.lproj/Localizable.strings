@@ -31,6 +31,10 @@
 "OK" = "OK";
 // Continue action
 "CONTINUE" = "Continuar";
+// Import Action
+"IMPORT" = "Import";
+// Add Action
+"ADD" = "Add";
 
 // MARK: - Alerts
 // Alert titles
@@ -52,6 +56,8 @@
 "SUCCESS_SIGNED" = "Firmado %@ correctamente";
 // Successfully resigned an application
 "SUCCESS_RESIGN" = "¡Refirmado correctamente!";
+// Success message requiring user to restart app
+"SUCCESS_REQUIRES_RESTART" = "You must close the app for changes to take effect.";
 
 // MARK: - Onboarding
 // Welcome to Feather!!!!!!!!
@@ -99,17 +105,26 @@
 // Add repo button
 "SOURCES_VIEW_CONTROLLER_ADD_SOURCES" = "Añadir Repo";
 // Number of sources, i.e. "100 Sources"
-"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES" = "%@ Fuentes";
+"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES" = "%@ Fuente";
+"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES_PLURAL" = "%@ Fuentes";
 // Search sources in search bar
 "SOURCES_VIEW_CONTROLLER_SEARCH_SOURCES" = "Buscar Fuentes";
 
 // MARK: - SourcesViewController - Add Sources
 "SOURCES_VIEW_ADD_SOURCES_ALERT_TITLE" = "Añadir Fuente";
 "SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "Añadir URL de Repositorio de Altstore";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_IMPORT_REPO" = "Import Repositories";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO" = "Export Repositories";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO_ACTION_SUCCESS" = "Copied Repositories to Clipboard";
+//Footer Validation
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTSTARTED" = "Enter a URL to start validation.";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTVALIDJSON" = "Invalid JSON, please check your input.";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_VALID" = "Valid JSON entered.";
 
 // MARK: - SourcesViewController -> SourcesAppViewController
 // Number of apps, i.e. "444 Apps"
-"SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS" = "%@ Apps";
+"SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS" = "%@ App";
+"SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS_PLURAL" = "%@ Apps";
 // Search apps in search bar
 "SOURCES_APP_VIEW_CONTROLLER_SEARCH_APPS" = "Buscar Apps";
 
@@ -122,6 +137,11 @@
 // MARK: - SourceAppViewController ... - Actions
 // Available Versions Alert Title
 "SOURCES_CELLS_ACTIONS_HOLD_AVAILABLE_VERSIONS" = "Versiones Disponibles";
+//Filter Menu
+"SOURCES_CELLS_ACTIONS_FILTER_TITLE" = "Filter by";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_DEFAULT" = "Default";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_NAME" = "Name";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_DATE" = "Date";
 
 // MARK: - AppsInformationViewController
 // Application Section
@@ -148,6 +168,9 @@
 "APPS_INFORMATION_TITLE_OPEN_IN_FILES" = "Abrir en Archivos";
 
 // MARK: - AppSigningViewController
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_CUSTOMIZATION" = "Customization";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_SIGNING" = "Signing";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_ADVANCED" = "Advanced";
 "APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS" = "Añadir Tweaks";
 "APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED" = "Avanzado";
 "APP_SIGNING_VIEW_CONTROLLER_START_SIGNING" = "Empezar a Firmar";
@@ -177,6 +200,19 @@
 // MARK: - AppSigningViewController -> AppSigningTweakViewController
 "APP_SIGNING_TWEAK_VIEW_CONTROLLER_TITLE" = "Tweaks";
 
+// MARK: - LibraryViewController
+//Search Library placeholder
+"SETTINGS_VIEW_CONTROLLER_SEARCH_PLACEHOLDER" = "Search Library";
+//Headers
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS" = "Signed Apps";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL" = "%@ Signed";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL_PLURAL" = "%@ Signed";
+"LIBRARY_VIEW_CONTROLLER_SECTION_BUTTON_IMPORT" = "Import";
+"LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS" = "Downloaded Apps";
+//Import Action Sheet
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_FILE" = "Import from Files";
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_URL" = "Import from URL";
+
 // MARK: - SettingsViewController
 // Headers
 "SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_GENERAL" = "General";
@@ -186,6 +222,7 @@
 // Footers
 "SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES" = "Si ocurre algún problema con Feather, por favor repórtelo en el repositorio de GitHub. Al reportar un problema, recuerde enviar registros.";
 "SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS" = "Desafortunadamente debido a limitaciones los certificados de servidor deberán ser re-renovados cada año para mantener las funciones locales de Feather funcionando correctamente, presione este botón para obtener los archivos actualizados de nuestros repositorios.";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER" = "Default server goes to %@";
 
 // Cell Titles
 // About Feather

@@ -318,9 +318,9 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		
 		let titles = [
-			"Customization",
-			"Signing",
-			"Advanced",
+			String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_CUSTOMIZATION"),
+			String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_SIGNING"),
+			String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_ADVANCED"),
 			"",
 			""
 		][section]
