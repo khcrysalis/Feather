@@ -1,0 +1,326 @@
+/*
+  Localizable.strings
+  feather
+
+  Created by ismailcarlik on 04.10.2024.
+  
+*/
+// MARK: - Generic
+// Unknown, default string for applications
+
+"UNKNOWN" = "Bilinmeyen";
+// Default string
+"DEFAULT" = "Varsayılan";
+// Copy provided string in a menu
+"COPY" = "Kopyala";
+// Delete item
+"DELETE" = "Sil";
+// Cancel alert action
+"CANCEL" = "Vazgeç";
+// Done action
+"DONE" = "Tamam";
+// Dismiss action
+"DISMISS" = "Kapat";
+// Dismiss 2 action
+"LAME" = "Lame";
+// Save action
+"SAVE" = "Kaydet";
+// Set action
+"SET" = "Kaydet";
+// OK action
+"OK" = "Tamam";
+// Continue action
+"CONTINUE" = "Devam Et";
+// Import Action
+"IMPORT" = "İçe Aktar";
+// Add Action
+"ADD" = "Ekle";
+
+// MARK: - Alerts
+// Alert titles
+"ALERT_SUCCESS" = "Başarılı";
+"ALERT_TRACE" = "İzle";
+"ALERT_ERROR" = "Hata";
+"ALERT_CRITICAL" = "Kritik";
+
+// MARK: - Error messages
+// Installer Error Title
+"ERROR_INSTALLER" = "Yükleyici";
+// Installer Error Description
+"ERROR_INSTALLER_DESCRIPTION" = "SSL sertifikaları yüklenemedi";
+"ERROR_ZSIGN_FAILED" = "İmzalama başarısız oldu.";
+"ERROR_FAILED_TO_READ_MOBILEPROVISION" = "Provizyon dosyası okunamadı";
+
+// MARK: - Success messages
+// Successfully signed an application
+"SUCCESS_SIGNED" = "%@ başarıyla imzalandı";
+// Successfully resigned an application
+"SUCCESS_RESIGN" = "Başarıyla yeniden imzalandı!";
+// Success message requiring user to restart app
+"SUCCESS_REQUIRES_RESTART" = "Değişikliklerin etkili olması için uygulamayı kapatmanız gerekir.";
+
+// MARK: - Onboarding
+// Welcome to Feather!!!!!!!!
+"ONBOARDING_WELCOMETITLE_1" = "Hoş Geldiniz";
+// First feature inside of onboarding
+"ONBOARDING_CELL_1_TITLE" = "Cihazınızdan Yükleme";
+"ONBOARDING_CELL_1_DESCRIPTION" = "Bilgisayara ihtiyaç duymadan uygulamaları cihazınızdan yükleyin.";
+// Second feature inside of onboarding
+"ONBOARDING_CELL_2_TITLE" = "Uygulamaları Özelleştirme";
+"ONBOARDING_CELL_2_DESCRIPTION" = "Uygulamalarınızı ihtiyaçlarınıza göre yönetin ve özelleştirin.";
+// Third feature inside of onboarding
+"ONBOARDING_CELL_3_TITLE" = "Ve Daha Fazlası!";
+"ONBOARDING_CELL_3_DESCRIPTION" = "AltStore depoları, IPA’ları içe aktarma, kolayca sertifika değiştirme ve çok daha fazlası.";
+// "Developed by Samara. Made for users who are passionate for sideloading and freedom. Many features included inside. Learn more..."
+"ONBOARDING_FOOTER" = "Samara tarafından geliştirildi. Sideloading ve özgürlük tutkunu kullanıcılar için hazırlandı. İçerisine bir çok özellik eklendi.";
+"ONBOARDING_FOOTER_LINK" = "Daha fazlası...";
+// Continue button to exit onboarding
+"ONBOARDING_CONTINUE_BUTTON" = "Devam Et";
+
+// MARK: - Tab area
+// Sources tab
+"TAB_SOURCES" = "Kaynaklar";
+// Library tab
+"TAB_LIBRARY" = "Kitaplık";
+// Settings tab
+"TAB_SETTINGS" = "Ayarlar";
+
+// MARK: - TransferPreview
+// Packaging application to get ready for install
+"TRANSFER_PREVIEW_PACKAGING" = "Paketleniyor...";
+// Ready to install package
+"TRANSFER_PREVIEW_READY" = "Kuruluma Hazır";
+// Opening manifest.plist for iOS
+"TRANSFER_PREVIEW_SENDING_MANIFEST" = "Manifest Gönderiliyor...";
+// iOS is retrieving IPA file
+"TRANSFER_PREVIEW_SENDING_PAYLOAD" = "Payload Gönderiliyor...";
+// Done transferring IPA file
+"TRANSFER_PREVIEW_DONE" = "Tamamlandı";
+// Completed packaging so you can share
+"TRANSFER_PREVIEW_COMPLETED" = "Hazır";
+
+// MARK: - SourcesViewController
+// Repositories title
+"SOURCES_VIEW_CONTROLLER_REPOSITORIES" = "Depolar";
+// Add repo button
+"SOURCES_VIEW_CONTROLLER_ADD_SOURCES" = "Depo Ekle";
+// Number of sources, i.e. "100 Sources"
+"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES" = "%@ Kaynak";
+"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES_PLURAL" = "%@ Kaynak";
+// Search sources in search bar
+"SOURCES_VIEW_CONTROLLER_SEARCH_SOURCES" = "Kaynaklarda Ara";
+
+// MARK: - SourcesViewController - Add Sources
+"SOURCES_VIEW_ADD_SOURCES_ALERT_TITLE" = "Kaynak Ekle";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "AltStore Depo Adresini Ekleyin";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_IMPORT_REPO" = "Depoları İçe Aktar";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO" = "Depoları Dışa Aktar";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO_ACTION_SUCCESS" = "Depolar Panoya Kopyalandı";
+//Footer Validation
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTSTARTED" = "Doğrulamayı başlatmak için bir URL girin.";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTVALIDJSON" = "Geçersiz JSON, lütfen girişinizi kontrol edin.";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_VALID" = "JSON Geçerli.";
+
+// MARK: - SourcesViewController -> SourcesAppViewController
+// Number of apps, i.e. "444 Apps"
+"SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS" = "%@ Uygulama";
+"SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS_PLURAL" = "%@ Uygulama";
+// Search apps in search bar
+"SOURCES_APP_VIEW_CONTROLLER_SEARCH_APPS" = "Uygulamaları Ara";
+
+// MARK: - SourcesViewController ... - Cells
+// Default subtitle string
+"SOURCES_CELLS_DEFAULT_SUBTITLE" = "Harika bir uygulama.";
+// Default description string
+"SOURCES_CELLS_DEFAULT_DESCRIPTION" = "Havalı bir açıklama.";
+
+// MARK: - SourceAppViewController ... - Actions
+// Available Versions Alert Title
+"SOURCES_CELLS_ACTIONS_HOLD_AVAILABLE_VERSIONS" = "Mevcut Sürümler";
+//Filter Menu
+"SOURCES_CELLS_ACTIONS_FILTER_TITLE" = "Filtreleme ölçütü";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_DEFAULT" = "Varsayılan";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_NAME" = "Başlık";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_DATE" = "Tarih";
+
+// MARK: - AppsInformationViewController
+// Application Section
+"APPS_INFORMATION_SECTION_TITLE_NAME" = "Paket";
+// Bundle Section
+"APPS_INFORMATION_SECTION_TITLE_NAME" = "Paket";
+
+//
+"APPS_INFORMATION_TITLE_DELETED_FILE" = "Dosya Silindi";
+"APPS_INFORMATION_TITLE_DELETED_FILE_TITLE" = "Dosya silindi.";
+"APPS_INFORMATION_TITLE_DELETED_FILE_DESCRIPTION" = "Bu işe yaramaz bir girdi olup herhangi bir dosyası yoktur. Bu nedenle Feather bunu yüklemenize izin vermez. Uygulamalar sekmesinde hücreyi kaydırarak silmeniz önerilir.";
+// Application Section
+"APPS_INFORMATION_TITLE_NAME" = "Başlık";
+"APPS_INFORMATION_TITLE_VERSION" = "Sürüm";
+"APPS_INFORMATION_TITLE_IDENTIFIER" = "Tanımlayıcı";
+"APPS_INFORMATION_TITLE_SIZE" = "Boyut";
+//
+"APPS_INFORMATION_TITLE_DATE_ADDED" = "Eklenme Tarihi";
+// Bundle Section
+"APPS_INFORMATION_TITLE_BUNDLE_NAME" = "Paket Adı";
+"APPS_INFORMATION_TITLE_BUNDLE_PATH" = "Paket Yolu";
+"APPS_INFORMATION_TITLE_ICON_FILE" = "Simge Dosyası";
+//
+"APPS_INFORMATION_TITLE_OPEN_IN_FILES" = "Dosyalar’da Aç";
+
+// MARK: - AppSigningViewController
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_CUSTOMIZATION" = "Özelleştir";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_SIGNING" = "İmzalama";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_ADVANCED" = "Gelişmiş";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS" = "Tweak Ekle";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED" = "Gelişmiş";
+"APP_SIGNING_VIEW_CONTROLLER_START_SIGNING" = "İmzalamayı Başlat";
+
+// MARK: - AppSigningViewController - No Certificates Alert
+"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_TITLE" = "Hata";
+"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_DESCRIPTION" = "Seçili bir sertifikanız yok, lütfen ayarlar sekmesinin imzalama bölümünden bir tane seçin veya yükleyin.";
+
+// MARK: - AppSigningViewController -> AppSigningInputViewController
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_CELL_PPQCHECK" = "PPQCheck Devrede";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_CELL_PPQCHECK_DESCRIPTION" = "PPQCheck, Apple’ın açtığınız uygulamanın App Store’da bulunan başka bir paket tanımlayıcısıyla eşleşip eşleşmediğini kontrol etmesinin bir yoludur. Bu kontrol imzalanmış yüklü uygulamayı ilk açtığınızda gerçekleşir. Bunu önlemeniz için bir seçeneğimiz var, ancak artık varsayılan tanımlayıcıyla ilgili bildirimlerin ve benzeri şeylerin faydalarını almayacaksınız.";
+
+// MARK: - AppSigningViewController -> AppSigningAdvancedViewController
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE" = "Görünüm";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION" = "En Düşük Sürüm";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES" = "Özellikler";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "Tüm eklentileri kaldır";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES" = "UISupportedDevices’ı Kaldır";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME" = "URLScheme’i kaldır";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS" = "Belgelere Göz Atmaya İzin Ver";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING" = "iTunes paylaşımına izin ver";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION" = "ProMotion’ı zorla";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "Tam ekran modunu zorla";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP" = "Yer tutucu Watch uygulamasını sil";
+
+// MARK: - AppSigningViewController -> AppSigningTweakViewController
+"APP_SIGNING_TWEAK_VIEW_CONTROLLER_TITLE" = "Tweak’ler";
+
+// MARK: - LibraryViewController
+//Search Library placeholder
+"SETTINGS_VIEW_CONTROLLER_SEARCH_PLACEHOLDER" = "Kitaplıkta Ara";
+//Headers
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS" = "İmzalı Uygulamalar";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL" = "%@ İmzalı";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL_PLURAL" = "%@ İmzalı";
+"LIBRARY_VIEW_CONTROLLER_SECTION_BUTTON_IMPORT" = "İçe Aktar";
+"LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS" = "İndirilen Uygulamalar";
+//Import Action Sheet
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_FILE" = "Dosyalar’dan İçe Aktar";
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_URL" = "URL’den içe aktar";
+
+// MARK: - SettingsViewController
+// Headers
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_GENERAL" = "Genel";
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING" = "İmzalama";
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING_SERVER" = "İmzalama Sunucusu";
+
+// Footers
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES" = "Feather’da herhangi bir sorun oluşursa lütfen GitHub deposu üzerinden bildirin. Bir sorun gönderirken, tüm günlükleri gönderdiğinizden emin olun.";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS" = "Ne yazık ki kısıtlamalar nedeniyle Feather’ın yerel özelliklerinin düzgün çalışmasını sağlamak için sunucu sertifikalarının her yıl yenilenmesi gerekecektir. En güncel dosyaları depolarımızdan almak için bu düğmeye dokunun.";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER" = "Varsayılan sunucu: %@";
+
+// Cell Titles
+// About Feather
+"SETTINGS_VIEW_CONTROLLER_CELL_ABOUT" = "%@ Hakkında";
+"SETTINGS_VIEW_CONTROLLER_CELL_SUBMIT_FEEDBACK" = "Geri Bildirim Gönder";
+"SETTINGS_VIEW_CONTROLLER_CELL_GITHUB" = "GitHub Deposu";
+"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY" = "Görünüm";
+"SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON" = "Uygulama Simgesi";
+"SETTINGS_VIEW_CONTROLLER_CELL_CURRENT_CERTIFICATE_NOSELECTED" = "Sertifika seçilmedi";
+"SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES" = "Sertifika Ekle";
+"SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE" = "Yerel Sertifikayı Güncelle";
+"SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE_UPDATING" = "Yerel Sertifika Güncelleniyor";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET" = "Sıfırla";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION" = "Yapılandırmayı Sıfırla";
+"SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER" = "Özel Sunucu Kullan";
+
+"SETTINGS_VIEW_CONTROLLER_CELL_ONLINE_INSTALL_METHOD" = "Çevrimiçi Yükleme Yöntemi";
+
+
+"SETTINGS_VIEW_CONTROLLER_CELL_EXPORT_ID" = "Rastgele Tanıtıcıyı Dışa Aktar";
+"SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_ID" = "Rastgele Tanıtıcıyı Değiştir";
+
+//
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_TITLE" = "PPQCheck Korumaları";
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_DESCRIPTION" = "Bu ayar, yüklediğiniz uygulamalar için her paket tanımlayıcısına rastgele bir dize eklemek üzere tasarlanmış PPQCheck korumalarını etkinleştirir.\n\nBu, Apple’ın yüklediğiniz uygulamayı App Store’dan bir uygulamayla ilişkilendirmesini engelleyerek hesabınızı işaretlemesini önlemek içindir.";
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_IDC" = "Umrumda Değil";
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_GTK" = "Bildiğim İyi Oldu";
+
+"SETTINGS_VIEW_CONTROLLER_URL_ALERT_TITLE" = "İndirme URL’ini Değiştir";
+"SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_IDENTIFIER" = "Rastgele Tanıtıcıyı Değiştir";
+
+// MARK: - SettingsViewController -> AboutViewController
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_CREDITS" = "Geliştiriciler";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_DEVICE" = "Cihaz";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_ACKNOWLEDGEMENTS" = "Teşekkürler";
+
+
+"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_VERSION" = "Cihaz Sürümü";
+"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_ARCH" = "Mimari";
+"ABOUT_VIEW_CONTROLLER_CELL_APP_VERSION" = "Uygulama Sürümü";
+
+// MARK: - SettingsViewController -> DisplayViewController
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_TINT_COLOR" = "Renk Tonu";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARENCE" = "App Appearence";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE" = "Varsayılan Alt Başlık";
+"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE_DESCRIPTION" = "Feather için varsayılan stil, yerelleştirilmiş açıklamayı gizler ve yalnızca alt başlığı içerir.";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE" = "Yerelleştirilmiş Alt Başlık";
+"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE_DESCRIPTION" = "Alt başlığı uygulama açıklamasıyla değiştirir.";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION" = "Geniş Açıklama";
+"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION_DESCRIPTION" = "Ekran görüntüleri bölümünü uygulama açıklamasıyla değiştirir.";
+
+// MARK: - SettingsViewController -> CertificatesViewController
+"CERTIFICATES_VIEW_CONTROLLER_TITLE" = "Sertifikalar";
+
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_FOOTER" = "Geçerli dosya biçimleri:\n\n- P12 (.p12)\n- Mobile Provision (.mobileprovision)\n\nSertifikalarınızın geçerli olduğundan ve cihazınıza yükleme yapılabildiğinden emin olun!";
+
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD" = "Sertifika Ekle";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_DESCRIPTION" = "Sertifika eklemek için dokunun";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> Delete Alert
+"CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_TITLE" = "Bunu yapmak istemezsin!";
+"CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_DESCRIPTION" = "Seçili bir sertifikayı silmeye çalışıyorsunuz. Elinizde başka bir sertifika olduğunda tekrar deneyin.";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> Cell
+"CERTIFICATES_VIEW_CONTROLLER_CELL_EXPIRED" = "Süresi dolmuş";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_DAYS_LEFT" = "%@ gün kaldı";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> CertImportingViewController
+"CERT_IMPORTING_VIEWCONTROLLER_TITLE" = "İçe Aktar";
+"CERT_IMPORTING_VIEWCONTROLLER_SECTION_PROVISIONING" = "";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> CertImportingViewController -> Password Alert
+
+"CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_TITLE" = "Hatalı Parola";
+"CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_DESCRIPTION" = "Lütfen parolayı kontrol edip tekrar deneyin.";
+
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PROV" = "Provizyon Dosyasını İçe Aktar";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_CERT" = "Sertifikayı İçe Aktar";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_ENTER_PW" = "Parolayı Girin";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PW" = "Parola";
+
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PROV" = "Cihazınıza yükleme yapabilmeye uygun bir provizyon dosyası içe aktarın.";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_CERT" = "Geçerli bir sertifika içeren bir dosyayı içe aktarın.";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PASS" = "Özel anahtarla ilişkili parolayı girin, parola gerekmiyorsa boş bırakın.";
+
+// MARK: - SettingsViewController -> ResetViewController
+"RESET_VIEW_CONTROLLER_CLEAR_CACHE" = "Ağ Önbelleğini Temizle";
+"RESET_VIEW_CONTROLLER_CLEAR_CACHE_ALERT_TITLE" = "Bu eylem geri alınamaz. Önbelleğe alınmış ağ istekleri ve görüntüler temizlenecek.";
+
+// MARK: - Donation
+"DONATION_TITLE" = "Bağış Yap";
+"DONATION_DONATIONS" = "Bağışlar";
+
+"DONATION_CELL_1_TITLE" = "Gizli Depo";
+"DONATION_CELL_1_DESCRIPTION" = "Bağış yaparak gizli depomuza erişin, Feather’a beta erişiminiz olsun.";
+
+"DONATION_CELL_2_TITLE" = "Desteğinizi Gösterin";
+"DONATION_CELL_2_DESCRIPTION" = "Bağış yaparak desteğinizi gösterin! Bağış yapamıyorsanız, Feather’ın işe yaradığı hakkında bilgi yaymak da işe yarar!";

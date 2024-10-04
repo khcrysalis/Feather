@@ -239,6 +239,7 @@
 		33E4D8402C67E5C3006A1C26 /* DonationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationTableViewCell.swift; sourceTree = "<group>"; };
 		33E4D8422C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+DownloadedApps.swift"; sourceTree = "<group>"; };
+		392517742CAFF3CD001F15F4 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		88DE4CC52CA5A13200D68F1E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AA280D922C76A60700CAC838 /* LSApplicationWorkspace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSApplicationWorkspace.h; sourceTree = "<group>"; };
 		AA280D942C76AB7400CAC838 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -817,6 +818,7 @@
 				ja,
 				ru,
 				fr,
+				tr,
 			);
 			mainGroup = 33BA37822BF8159F00FF530A;
 			packageReferences = (
@@ -987,6 +989,7 @@
 				33BF316D2C7C46800087F3D2 /* ja */,
 				33BF316E2C7C4D0C0087F3D2 /* ru */,
 				88DE4CC52CA5A13200D68F1E /* fr */,
+				392517742CAFF3CD001F15F4 /* tr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
