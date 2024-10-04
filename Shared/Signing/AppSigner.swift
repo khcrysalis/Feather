@@ -293,13 +293,18 @@ func updateInfoPlist(infoDict: NSMutableDictionary, options: AppSigningOptions, 
 		infoDict["CFBundleIcons~ipad"] = cfBundleIconsIpad
 		
 	} else {
-		Debug.shared.log(message: "updateInfoPlist.updateicon: Does not include an icon! Will not do this.")
+		Debug.shared.log(message: "updateInfoPlist.updateicon: Does not include an icon, skipping!")
 	}
 	
-	if infoDict.value(forKey: "CFBundleDisplayName") as? String != options.name {
-		try updateLocalizedInfoPlist(in: app, newDisplayName: options.name!)
+	if let displayName = infoDict.value(forKey: "CFBundleDisplayName") as? String {
+		if displayName != options.name {
+			try updateLocalizedInfoPlist(in: app, newDisplayName: options.name!)
+		}
+	} else {
+		Debug.shared.log(message: "updateInfoPlist.displayName: CFBundleDisplayName not found, skipping!")
 	}
-	
+
+
 	if options.forceFileSharing! { infoDict.setObject(true, forKey: "UISupportsDocumentBrowser" as NSCopying) }
 	if options.forceiTunesFileSharing! { infoDict.setObject(true, forKey: "UIFileSharingEnabled" as NSCopying) }
 	if options.removeSupportedDevices! { infoDict.removeObject(forKey: "UISupportedDevices") }
@@ -315,6 +320,11 @@ func updateLocalizedInfoPlist(in appDirectory: URL, newDisplayName: String) thro
 	let fileManager = FileManager.default
 	let contents = try fileManager.contentsOfDirectory(at: appDirectory, includingPropertiesForKeys: nil)
 	let localizationBundles = contents.filter { $0.pathExtension == "lproj" }
+	
+	guard !localizationBundles.isEmpty else {
+		Debug.shared.log(message: "No .lproj directories found in \(appDirectory.path), skipping!")
+		return
+	}
 	
 	for localizationBundle in localizationBundles {
 		let infoPlistStringsURL = localizationBundle.appendingPathComponent("InfoPlist.strings")
