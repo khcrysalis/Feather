@@ -37,20 +37,20 @@ struct AppSigningOptions {
     var certificate: Certificate?
 }
 
-func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escaping (Bool) -> Void) {
+func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escaping (Result<URL, Error>) -> Void) {
 	UIApplication.shared.isIdleTimerDisabled = true
-    DispatchQueue(label: "Signing").async {
-        let fileManager = FileManager.default
-        let tmpDir = fileManager.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+	DispatchQueue(label: "Signing").async {
+		let fileManager = FileManager.default
+		let tmpDir = fileManager.temporaryDirectory.appendingPathComponent(UUID().uuidString)
 		let tmpDirApp = tmpDir.appendingPathComponent(appPath.lastPathComponent)
 		var iconURL = ""
-		
-        do {
+
+		do {
 			Debug.shared.log(message: "============================================")
 			Debug.shared.log(message: "\(options)")
 			Debug.shared.log(message: "============================================")
 			try fileManager.createDirectory(at: tmpDir, withIntermediateDirectories: true)
-            try fileManager.copyItem(at: appPath, to: tmpDirApp)
+			try fileManager.copyItem(at: appPath, to: tmpDirApp)
 			
 			if let info = NSDictionary(contentsOf: tmpDirApp.appendingPathComponent("Info.plist"))!.mutableCopy() as? NSMutableDictionary {
 				try updateInfoPlist(infoDict: info, options: options, icon: options.iconURL, app: tmpDirApp)
@@ -62,36 +62,36 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 					iconURL = iconFileName
 				}
 			}
-						
+
 			let handler = TweakHandler(urls: options.toInject ?? [], app: tmpDirApp)
 			try handler.getInputFiles()
-			
+
 			if let removeInjectPaths = options.removeInjectPaths, !removeInjectPaths.isEmpty {
 				if let appexe = try TweakHandler.findExecutable(at: tmpDirApp) {
 					_ = uninstallDylibs(filePath: appexe.path, dylibPaths: removeInjectPaths)
 				}
 			}
-			
+
 			try updatePlugIns(options: options, app: tmpDirApp)
 			try removeDumbAssPlaceHolderExtension(options: options, app: tmpDirApp)
 			try updateMobileProvision(app: tmpDirApp)
-			
-            let certPath = try CoreDataManager.shared.getCertifcatePath(source: options.certificate)
+
+			let certPath = try CoreDataManager.shared.getCertifcatePath(source: options.certificate)
 			let provisionPath = certPath.appendingPathComponent("\(options.certificate?.provisionPath ?? "")").path
 			let p12Path = certPath.appendingPathComponent("\(options.certificate?.p12Path ?? "")").path
-			
+
 			Debug.shared.log(message: "🦋 Start Signing 🦋")
-			
+
 			try signAppWithZSign(tmpDirApp: tmpDirApp, certPaths: (provisionPath, p12Path), password: options.certificate?.password ?? "", options: options)
-			
+
 			Debug.shared.log(message: "🦋 End Signing 🦋")
-						
-            let signedUUID = UUID().uuidString
-            try fileManager.createDirectory(at: getDocumentsDirectory().appendingPathComponent("Apps/Signed"), withIntermediateDirectories: true)
-            let path = getDocumentsDirectory().appendingPathComponent("Apps/Signed").appendingPathComponent(signedUUID)
-            try fileManager.moveItem(at: tmpDir, to: path)
-			
-            DispatchQueue.main.async {
+
+			let signedUUID = UUID().uuidString
+			try fileManager.createDirectory(at: getDocumentsDirectory().appendingPathComponent("Apps/Signed"), withIntermediateDirectories: true)
+			let signedPath = getDocumentsDirectory().appendingPathComponent("Apps/Signed").appendingPathComponent(signedUUID)
+			try fileManager.moveItem(at: tmpDir, to: signedPath)
+
+			DispatchQueue.main.async {
 				CoreDataManager.shared.addToSignedApps(
 					version: options.version!,
 					name: options.name!,
@@ -101,27 +101,29 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 					appPath: appPath.lastPathComponent,
 					timeToLive: options.certificate?.certData?.expirationDate ?? Date(),
 					teamName: options.certificate?.certData?.name ?? ""
-				) {
-					error in
-					Debug.shared.log(message: "signApp: \(String(describing: error))", type: .error)
-					completion(false)
+				) { error in
+					if let error = error {
+						Debug.shared.log(message: "signApp: \(error)", type: .error)
+						completion(.failure(error))
+					}
 				}
 				
 				Debug.shared.log(message: String.localized("SUCCESS_SIGNED", arguments: "\(options.name ?? String.localized("UNKNOWN"))"), type: .success)
 				Debug.shared.log(message: "============================================")
-                
+				
 				UIApplication.shared.isIdleTimerDisabled = false
-                completion(true)
-            }
-        } catch {
-            DispatchQueue.main.async {
+				completion(.success(signedPath.appendingPathComponent(appPath.lastPathComponent)))
+			}
+		} catch {
+			DispatchQueue.main.async {
 				UIApplication.shared.isIdleTimerDisabled = false
 				Debug.shared.log(message: "signApp: \(error)", type: .critical)
-                completion(false)
-            }
-        }
-    }
+				completion(.failure(error))
+			}
+		}
+	}
 }
+
 
 func resignApp(certificate: Certificate, appPath: URL, completion: @escaping (Bool) -> Void) {
 	UIApplication.shared.isIdleTimerDisabled = true

@@ -28,7 +28,6 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 	var removeInjectPaths: [String] = []
 	
     var app: NSManagedObject!
-    var filePath: String = ""
     var name: String = "Unknown"
     var bundleId: String = "unknown"
     var version: String = "unknown"
@@ -56,10 +55,9 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 	
 	var certs: Certificate?
     
-    init(app: NSManagedObject, filePath: String, appsViewController: LibraryViewController) {
+    init(app: NSManagedObject, appsViewController: LibraryViewController) {
         self.appsViewController = appsViewController
         self.app = app
-        self.filePath = filePath
         super.init(style: .insetGrouped)
 		
 		if let hasGotCert = CoreDataManager.shared.getCurrentCertificate() {
@@ -174,14 +172,20 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 			certificate: certs
 		), 
 			appPath:getFilesForDownloadedApps(app: app as! DownloadedApps, getuuidonly: false)
-		) { success in
-			if success {
+		) { result in
+			switch result {
+			case .success(let signedPath):
 				self.appsViewController.fetchSources()
 				self.appsViewController.tableView.reloadData()
-                if Preferences.autoInstallAfterSign {
-                    self.appsViewController.startInstallProcess(meow: self.app, filePath: self.filePath)
-                }
+				Debug.shared.log(message: signedPath.path)
+				if Preferences.autoInstallAfterSign {
+					self.appsViewController.startInstallProcess(meow: self.app, filePath: signedPath.path)
+				}
+
+			case .failure(let error):
+				Debug.shared.log(message: "Signing failed: \(error.localizedDescription)", type: .error)
 			}
+			
 			self.dismiss(animated: true)
 		}
 	}
