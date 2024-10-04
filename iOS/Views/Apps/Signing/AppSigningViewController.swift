@@ -174,12 +174,12 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 			appPath:getFilesForDownloadedApps(app: app as! DownloadedApps, getuuidonly: false)
 		) { result in
 			switch result {
-			case .success(let signedPath):
+			case .success(let (signedPath, signedApp)):
 				self.appsViewController.fetchSources()
 				self.appsViewController.tableView.reloadData()
 				Debug.shared.log(message: signedPath.path)
 				if Preferences.autoInstallAfterSign {
-					self.appsViewController.startInstallProcess(meow: self.app, filePath: signedPath.path)
+					self.appsViewController.startInstallProcess(meow: signedApp, filePath: signedPath.path)
 				}
 
 			case .failure(let error):

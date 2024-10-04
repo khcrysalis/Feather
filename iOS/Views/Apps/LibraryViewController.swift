@@ -128,6 +128,7 @@ extension LibraryViewController {
 				button1.onTap = { [weak self] in
 					guard let self = self else { return }
 					self.popupVC.dismiss(animated: true)
+					print(filePath?.path ?? "")
 					self.startInstallProcess(meow: source!, filePath: filePath?.path ?? "")
 				}
 				
@@ -214,7 +215,6 @@ extension LibraryViewController {
 						)
 						
 						let confirmAction = UIAlertAction(title: "Install", style: .default) { _ in
-							
 							self.startInstallProcess(meow: source!, filePath: filePath?.path ?? "")
 							
 						}

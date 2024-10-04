@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import AlertKit
+import CoreData
 
 struct AppSigningOptions {
     var name: String?
@@ -37,13 +38,14 @@ struct AppSigningOptions {
     var certificate: Certificate?
 }
 
-func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escaping (Result<URL, Error>) -> Void) {
+func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escaping (Result<(URL, NSManagedObject), Error>) -> Void) {
 	UIApplication.shared.isIdleTimerDisabled = true
 	DispatchQueue(label: "Signing").async {
 		let fileManager = FileManager.default
 		let tmpDir = fileManager.temporaryDirectory.appendingPathComponent(UUID().uuidString)
 		let tmpDirApp = tmpDir.appendingPathComponent(appPath.lastPathComponent)
 		var iconURL = ""
+		
 
 		do {
 			Debug.shared.log(message: "============================================")
@@ -92,6 +94,8 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 			try fileManager.moveItem(at: tmpDir, to: signedPath)
 
 			DispatchQueue.main.async {
+				var signedAppObject: NSManagedObject? = nil
+				
 				CoreDataManager.shared.addToSignedApps(
 					version: options.version!,
 					name: options.name!,
@@ -101,8 +105,13 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 					appPath: appPath.lastPathComponent,
 					timeToLive: options.certificate?.certData?.expirationDate ?? Date(),
 					teamName: options.certificate?.certData?.name ?? ""
-				) { error in
-					if let error = error {
+				) { result in
+					
+
+					switch result {
+					case .success(let signedApp):
+						signedAppObject = signedApp
+					case .failure(let error):
 						Debug.shared.log(message: "signApp: \(error)", type: .error)
 						completion(.failure(error))
 					}
@@ -112,7 +121,7 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 				Debug.shared.log(message: "============================================")
 				
 				UIApplication.shared.isIdleTimerDisabled = false
-				completion(.success(signedPath.appendingPathComponent(appPath.lastPathComponent)))
+				completion(.success((signedPath, signedAppObject!)))
 			}
 		} catch {
 			DispatchQueue.main.async {
