@@ -65,7 +65,7 @@
 "ONBOARDING_WELCOMETITLE_1" = "Добро пожаловать в";
 // First feature inside of onboarding
 "ONBOARDING_CELL_1_TITLE" = "Установка приложений из интернета";
-"ONBOARDING_CELL_1_DESCRIPTION" = "Устанавливайте приложения из интернета без компьютера, все на вашем устройстве.";
+"ONBOARDING_CELL_1_DESCRIPTION" = "Устанавливайте приложения из интернета без компьютера.";
 // Second feature inside of onboarding
 "ONBOARDING_CELL_2_TITLE" = "Настраивайте приложения";
 "ONBOARDING_CELL_2_DESCRIPTION" = "Управляйте приложениями и настраивайте их под свои нужды.";
@@ -104,7 +104,7 @@
 // Repositories title
 "SOURCES_VIEW_CONTROLLER_REPOSITORIES" = "Репозитории";
 // Add repo button
-"SOURCES_VIEW_CONTROLLER_ADD_SOURCES" = "Добавить репозиторий";
+"SOURCES_VIEW_CONTROLLER_ADD_SOURCES" = "Добавить";
 // Number of sources, i.e. "100 Sources"
 "SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES" = "%@ источников";
 "SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES_PLURAL" = "%@ источников";
@@ -169,7 +169,7 @@
 "APPS_INFORMATION_TITLE_OPEN_IN_FILES" = "Открыть в файлах";
 
 // MARK: - AppSigningViewController
-"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_CUSTOMIZATION" = "Настройка";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_CUSTOMIZATION" = "Кастомизация";
 "APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_SIGNING" = "Подпись";
 "APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_ADVANCED" = "Расширенные";
 "APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS" = "Добавить твики";
@@ -232,7 +232,7 @@
 "SETTINGS_VIEW_CONTROLLER_CELL_GITHUB" = "GitHub репозиторий";
 "SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY" = "Внешний вид";
 "SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON" = "Иконка приложения";
-"SETTINGS_VIEW_CONTROLLER_CELL_CURRENT_CERTIFICATE_NOSELECTED" = "Нет выбранный сертификатов";
+"SETTINGS_VIEW_CONTROLLER_CELL_CURRENT_CERTIFICATE_NOSELECTED" = "Нет выбранных сертификатов";
 "SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES" = "Добавить сертификат";
 "SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE" = "Обновить локальный сертификат";
 "SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE_UPDATING" = "Обновление локального сертификата";
@@ -257,11 +257,11 @@
 
 // MARK: - SettingsViewController -> AboutViewController
 "ABOUT_VIEW_CONTROLLER_SECTION_TITLE_CREDITS" = "Участники";
-"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_DEVICE" = "Устройсво";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_DEVICE" = "Устройство";
 "ABOUT_VIEW_CONTROLLER_SECTION_TITLE_ACKNOWLEDGEMENTS" = "Благодарности";
 
 
-"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_VERSION" = "Версия устройсва";
+"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_VERSION" = "Версия устройства";
 "ABOUT_VIEW_CONTROLLER_CELL_DEVICE_ARCH" = "Архитектура";
 "ABOUT_VIEW_CONTROLLER_CELL_APP_VERSION" = "Версия приложения";
 
