@@ -57,7 +57,7 @@
 // Successfully resigned an application
 "SUCCESS_RESIGN" = "Başarıyla yeniden imzalandı!";
 // Success message requiring user to restart app
-"SUCCESS_REQUIRES_RESTART" = "Değişikliklerin etkili olması için uygulamayı kapatmanız gerekir.";
+"SUCCESS_REQUIRES_RESTART" = "Değişikliklerin etkili olabilmesi için uygulamanın yeniden başlatılması gereklidir.";
 
 // MARK: - Onboarding
 // Welcome to Feather!!!!!!!!
