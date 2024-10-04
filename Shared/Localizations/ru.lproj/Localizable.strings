@@ -16,13 +16,13 @@
 // Delete item
 "DELETE" = "Удалить";
 // Cancel alert action
-"CANCEL" = "Отмена";
+"CANCEL" = "Отменить";
 // Done action
 "DONE" = "Готово";
 // Dismiss action
 "DISMISS" = "Закрыть";
 // Dismiss 2 action
-"LAME" = "Понятно";
+"LAME" = "ОК";
 // Save action
 "SAVE" = "Сохранить";
 // Set action
