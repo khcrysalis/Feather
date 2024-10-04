@@ -8,7 +8,7 @@
 
 // MARK: - Generic
 // Unknown, default string for applications
-"UNKNOWN" = "Неизвестный";
+"UNKNOWN" = "Неизвестно";
 // Default string
 "DEFAULT" = "По умолчанию";
 // Copy provided string in a menu
@@ -16,13 +16,13 @@
 // Delete item
 "DELETE" = "Удалить";
 // Cancel alert action
-"CANCEL" = "Отменить";
+"CANCEL" = "Отмена";
 // Done action
 "DONE" = "Готово";
 // Dismiss action
-"DISMISS" = "Отклонить";
+"DISMISS" = "Закрыть";
 // Dismiss 2 action
-"LAME" = "ОК";
+"LAME" = "Понятно";
 // Save action
 "SAVE" = "Сохранить";
 // Set action
@@ -32,16 +32,17 @@
 // Continue action
 "CONTINUE" = "Продолжить";
 // Import Action
-"IMPORT" = "Import";
+"IMPORT" = "Импортировать";
 // Add Action
-"ADD" = "Add";
+"ADD" = "Добавить";
 
 // MARK: - Alerts
 // Alert titles
 "ALERT_SUCCESS" = "Успешно";
-"ALERT_TRACE" = "Оповещение";
+"ALERT_INFO" = "Информация";
+"ALERT_WARNING" = "Предупреждение";
 "ALERT_ERROR" = "Ошибка";
-"ALERT_CRITICAL" = "Критическое";
+"ALERT_CRITICAL" = "Критическая ошибка";
 
 // MARK: - Error messages
 // Installer Error Title
@@ -57,7 +58,7 @@
 // Successfully resigned an application
 "SUCCESS_RESIGN" = "Успешно переписано!";
 // Success message requiring user to restart app
-"SUCCESS_REQUIRES_RESTART" = "You must close the app for changes to take effect.";
+"SUCCESS_REQUIRES_RESTART" = "Вы должны закрыть приложение, чтобы изменения вступили в силу.";
 
 // MARK: - Onboarding
 // Welcome to Feather!!!!!!!!
@@ -113,13 +114,13 @@
 // MARK: - SourcesViewController - Add Sources
 "SOURCES_VIEW_ADD_SOURCES_ALERT_TITLE" = "Добавить источник";
 "SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "Добавить URL репозитория AltStore";
-"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_IMPORT_REPO" = "Import Repositories";
-"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO" = "Export Repositories";
-"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO_ACTION_SUCCESS" = "Copied Repositories to Clipboard";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_IMPORT_REPO" = "Импорт репозиториев";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO" = "Экспорт репозиториев";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO_ACTION_SUCCESS" = "Репозитории скопированы в буфер обмена";
 //Footer Validation
-"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTSTARTED" = "Enter a URL to start validation.";
-"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTVALIDJSON" = "Invalid JSON, please check your input.";
-"SOURCES_VIEW_ADD_SOURCES_FOOTER_VALID" = "Valid JSON entered.";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTSTARTED" = "Введите URL чтобы начать проверку.";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTVALIDJSON" = "Неверный JSON, пожалуйста, проверьте ввод.";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_VALID" = "Введен верный JSON.";
 
 // MARK: - SourcesViewController -> SourcesAppViewController
 // Number of apps, i.e. "444 Apps"
@@ -138,10 +139,10 @@
 // Available Versions Alert Title
 "SOURCES_CELLS_ACTIONS_HOLD_AVAILABLE_VERSIONS" = "Доступные версии";
 //Filter Menu
-"SOURCES_CELLS_ACTIONS_FILTER_TITLE" = "Filter by";
-"SOURCES_CELLS_ACTIONS_FILTER_BY_DEFAULT" = "Default";
-"SOURCES_CELLS_ACTIONS_FILTER_BY_NAME" = "Name";
-"SOURCES_CELLS_ACTIONS_FILTER_BY_DATE" = "Date";
+"SOURCES_CELLS_ACTIONS_FILTER_TITLE" = "Фильтр по";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_DEFAULT" = "По умолчанию";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_NAME" = "Имя";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_DATE" = "Дата";
 
 // MARK: - AppsInformationViewController
 // Application Section
@@ -168,16 +169,16 @@
 "APPS_INFORMATION_TITLE_OPEN_IN_FILES" = "Открыть в файлах";
 
 // MARK: - AppSigningViewController
-"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_CUSTOMIZATION" = "Customization";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_SIGNING" = "Signing";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_ADVANCED" = "Advanced";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_CUSTOMIZATION" = "Настройка";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_SIGNING" = "Подпись";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_ADVANCED" = "Расширенные";
 "APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS" = "Добавить твики";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED" = "Расширеные";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED" = "Расширенные";
 "APP_SIGNING_VIEW_CONTROLLER_START_SIGNING" = "Начать подпись";
 
 // MARK: - AppSigningViewController - No Certificates Alert
 "APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_TITLE" = "Ошибка";
-"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_DESCRIPTION" = "У вас не выбран сертификат, пожалуйста, выберите или загрузите его в разделе подписи в настройках.";
+"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_DESCRIPTION" = "У вас не выбран сертификат! Пожалуйста, выберите или загрузите его в разделе подписи в настройках.";
 
 // MARK: - AppSigningViewController -> AppSigningInputViewController
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_CELL_PPQCHECK" = "PPQCheck включен";
@@ -188,30 +189,30 @@
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION" = "Минимальная версия приложения";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES" = "Свойства";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "Удалить все плагины";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "Удалить плагины";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES" = "Удалить UISupportedDevices";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME" = "Удалить URLScheme";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS" = "Разрешить просмотр документов";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING" = "Разрешить общий доступ к iTunes";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING" = "Разрешить доступ к iTunes";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION" = "Принудить ProMotion";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "Принудить полноэкранный режим";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP" = "Удалить приложение для часов";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "Принудить полный экран";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP" = "Удалить Watch-приложение";
 
 // MARK: - AppSigningViewController -> AppSigningTweakViewController
 "APP_SIGNING_TWEAK_VIEW_CONTROLLER_TITLE" = "Твики";
 
 // MARK: - LibraryViewController
 //Search Library placeholder
-"SETTINGS_VIEW_CONTROLLER_SEARCH_PLACEHOLDER" = "Search Library";
+"SETTINGS_VIEW_CONTROLLER_SEARCH_PLACEHOLDER" = "Поиск в библиотеке";
 //Headers
-"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS" = "Signed Apps";
-"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL" = "%@ Signed";
-"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL_PLURAL" = "%@ Signed";
-"LIBRARY_VIEW_CONTROLLER_SECTION_BUTTON_IMPORT" = "Import";
-"LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS" = "Downloaded Apps";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS" = "Подписанные приложения";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL" = "%@ Подписано";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL_PLURAL" = "%@ Подписано";
+"LIBRARY_VIEW_CONTROLLER_SECTION_BUTTON_IMPORT" = "Импорт";
+"LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS" = "Загруженные приложения";
 //Import Action Sheet
-"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_FILE" = "Import from Files";
-"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_URL" = "Import from URL";
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_FILE" = "Импорт из Файлов";
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_URL" = "Импорт по URL";
 
 // MARK: - SettingsViewController
 // Headers
@@ -221,8 +222,8 @@
 
 // Footers
 "SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES" = "Если в Feather возникли какие-либо проблемы, пожалуйста, сообщите об этом через репозиторий GitHub. При отправке проблемы не забудьте предоставить все логи.";
-"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS" = "К сожалению, из-за ограничений сертификаты сервера необходимо обновлять каждый год, чтобы локальные функции Feathers работали должным образом. Нажмите эту кнопку, чтобы получить самые актуальные файлы из наших репозиториев.";
-"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER" = "Default server goes to %@";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS" = "К сожалению, из-за ограничений, сертификаты сервера необходимо будет обновлять каждый год, чтобы локальные функции Feather продолжали работать корректно. Нажмите эту кнопку, чтобы получить самые актуальные файлы из наших репозиториев.";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER" = "Сервер по умолчанию идет на %@";
 
 // Cell Titles
 // About Feather
@@ -247,7 +248,7 @@
 
 //
 "SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_TITLE" = "Защита PPQCheck";
-"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_DESCRIPTION" = "Этот параметр включает защиту PPQCheck, которая предназначена для добавления к идентификатору каждого пакета приложений, загружаемых с интернета, случайной строки.\n\nЭто сделано для того, чтобы Apple не отметила ваш аккаунт, (пытаясь) сделать так, чтобы они не смогли связать приложение, загружаемое с интернета, с приложением из App Store.";
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_DESCRIPTION" = "Эта настройка включает защиту PPQCheck, которая предназначена для добавления случайной строки перед идентификатором пакета для приложений, которые вы устанавливаете через сайдлоадинг.\n\nЭто сделано для того, чтобы предотвратить пометку вашего аккаунта Apple, затрудняя им связывание устанавливаемого вами приложения с тем, что находится в App Store.";
 "SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_IDC" = "Мне все равно";
 "SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_GTK" = "Понятно";
 
@@ -268,14 +269,14 @@
 "DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_TINT_COLOR" = "Цвет тона";
 "DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARENCE" = "Внешний вид приложения";
 
-"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE" = "Субтитр по умолчанию";
+"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE" = "По умолчанию";
 "DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE_DESCRIPTION" = "Стиль по умолчанию для Feather, скрывает локализованное описание и включает только субтитры.";
 
 "DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE" = "Локализованные субтитры";
 "DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE_DESCRIPTION" = "Заменяет субтитры описанием приложения.";
 
 "DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION" = "Большое описание";
-"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION_DESCRIPTION" = "Заменяет скриншоты описанием приложения.";
+"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION_DESCRIPTION" = "Заменяет скриншоты на описание приложения.";
 
 // MARK: - SettingsViewController -> CertificatesViewController
 "CERTIFICATES_VIEW_CONTROLLER_TITLE" = "Сертификаты";
@@ -309,7 +310,7 @@
 
 "CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PROV" = "Импортируйте файл инициализации, чтобы иметь возможность установки приложений из интернета на устройство.";
 "CERT_IMPORTING_VIEWCONTROLLER_FOOTER_CERT" = "Импортируйте файл, содержащий действительный сертификат.";
-"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PASS" = "Введите пароль, связанный с приватным ключом, или оставьте это поле пустым, если пароль не требуется.";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PASS" = "Введите пароль связанный с приватным ключом; оставьте это поле пустым если пароль не требуется.";
 
 // MARK: - SettingsViewController -> ResetViewController
 "RESET_VIEW_CONTROLLER_CLEAR_CACHE" = "Очистить сетевой кэш";
@@ -320,7 +321,7 @@
 "DONATION_DONATIONS" = "Пожертвования";
 
 "DONATION_CELL_1_TITLE" = "Секретный репозиторий";
-"DONATION_CELL_1_DESCRIPTION" = "Получите доступ к нашему секретному репозиторию, пожертвовав, вы получите бета-доступ к Feather.";
+"DONATION_CELL_1_DESCRIPTION" = "Сделав пожертвование, вы получите доступ к нашему секретному репозиторию и бета-версиям Feather.";
 
 "DONATION_CELL_2_TITLE" = "Выразите свою поддержку";
 "DONATION_CELL_2_DESCRIPTION" = "Выразите свою поддержку, сделав пожертвование! Если у вас нет возможности пожертвовать, распространите информацию о Feather!";
