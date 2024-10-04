@@ -118,7 +118,7 @@
 "SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO" = "Экспорт репозиториев";
 "SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO_ACTION_SUCCESS" = "Репозитории скопированы в буфер обмена";
 //Footer Validation
-"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTSTARTED" = "Введите URL чтобы начать проверку.";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTSTARTED" = "Введите URL, чтобы начать проверку.";
 "SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTVALIDJSON" = "Неверный JSON, пожалуйста, проверьте ввод.";
 "SOURCES_VIEW_ADD_SOURCES_FOOTER_VALID" = "Введен верный JSON.";
 
