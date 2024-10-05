@@ -57,7 +57,7 @@
 // Successfully resigned an application
 "SUCCESS_RESIGN" = "Erfolgreich signiert!";
 // Success message requiring user to restart app
-"SUCCESS_REQUIRES_RESTART" = "Du musst die App bei Änderungen schließen, damit sie in Kraft treten.";
+"SUCCESS_REQUIRES_RESTART" = "Du musst die App schließen, damit es in Kraft tritt.";
 
 // MARK: - Onboarding
 // Welcome to Feather!!!!!!!!
