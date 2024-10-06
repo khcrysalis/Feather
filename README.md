@@ -51,6 +51,10 @@ Yes, to be able to install applications on device the server needs to be HTTPS. 
 
 We have an option to download a new certificate to make this server be able to run in the far future but no guarantees. It entirely depends on the owners of localhost.direct to be able to provide a certificate for use. If it does expire and theres a new one available, hopefully we'll be there to update the files in the background so Feather is able to retrieve those.
 
+> Notifications aren't working
+
+This is because of a default setting applied when using Feather, read below.
+
 > Why does Feather append a random string on the bundle ID?
 
 New ADP (Apple Developer Program) memberships created after June 6, 2021, require development and ad-hoc signed apps for iOS, iPadOS, and tvOS to check with a PPQ (Provisioning Profile Query Check) service when the app is first launched. The device must be connected to the internet to verify.

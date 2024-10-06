@@ -26,11 +26,11 @@ struct RepoViewController: View {
 	private var footerText: String {
 		switch validationStatus {
 		case .notStarted:
-			return "Enter a URL to start validation."
+			return String.localized("SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTSTARTED")
 		case .notValidJSON:
-			return "Invalid JSON, please check your input."
+			return String.localized("SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTVALIDJSON")
 		case .validJSON:
-			return "Valid JSON entered."
+			return String.localized("SOURCES_VIEW_ADD_SOURCES_FOOTER_VALID")
 		}
 	}
 	
@@ -49,7 +49,7 @@ struct RepoViewController: View {
 		NavigationView {
 			List {
 				Section(footer: Text(footerText).foregroundColor(footerTextColor)) {
-					TextField("Enter AltStore URL", text: $repoName, onCommit: validateJSON)
+					TextField(String.localized("SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION"), text: $repoName, onCommit: validateJSON)
 						.onChange(of: repoName) { newValue in
 							debounceRequest()
 						}
@@ -59,28 +59,28 @@ struct RepoViewController: View {
 					Button(action: {
 						let pasteboard = UIPasteboard.general
 						if let clipboardText = pasteboard.string {
-							Debug.shared.log(message: "meow2")
+							Debug.shared.log(message: "Pasted from clipboard")
 							self.decodeRepositories(text: clipboardText)
 						}
 					}) {
-						Text("Import Repositories")
+						Text(String.localized("SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_IMPORT_REPO"))
 					}
 
 					Button(action: {
-						Debug.shared.showSuccessAlert(with: "Copied Repositories to Clipboard", subtitle: "")
+						Debug.shared.showSuccessAlert(with: String.localized("SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO_ACTION_SUCCESS"), subtitle: "")
 						UIPasteboard.general.string = self.sources?.map{ $0.sourceURL!.absoluteString }.joined(separator: "\n")
 						presentationMode.wrappedValue.dismiss()
 					}) {
-						Text("Export Repositories")
+						Text(String.localized("SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO"))
 					}
 				}
 			}
-			.navigationTitle("Manage")
+			.navigationTitle(String.localized("SOURCES_VIEW_ADD_SOURCES_ALERT_TITLE"))
 			.navigationBarTitleDisplayMode(.inline)
 			.toolbar {
 				ToolbarItem(placement: .navigationBarLeading) {
 					if !isSyncing {
-						Button("Dismiss") {
+						Button(String.localized("DISMISS")) {
 							presentationMode.wrappedValue.dismiss()
 						}
 						.font(.system(size: 17, weight: .bold, design: .default))
@@ -91,7 +91,7 @@ struct RepoViewController: View {
 						ProgressView()
 							.progressViewStyle(CircularProgressViewStyle())
 					} else if validationStatus == .validJSON {
-						Button("Add") {
+						Button(String.localized("ADD")) {
 							CoreDataManager.shared.getSourceData(urlString: repoName) { error in
 								if let error = error {
 									Debug.shared.log(message: "SourcesViewController.sourcesAddButtonTapped: \(error)", type: .critical)
@@ -165,7 +165,7 @@ extension RepoViewController {
 		isSyncing = true
 		let isBase64 = isValidBase64String(text)
 		let repoLinks: [String]
-		Debug.shared.log(message: "meow")
+		Debug.shared.log(message: "Trying to add repositories...")
 		if isBase64 {
 			guard let decodedString = decodeBase64String(text) else {
 				Debug.shared.log(message: "Failed to decode base64 string", type: .error)
@@ -193,7 +193,7 @@ extension RepoViewController {
 				}
 			}
 			DispatchQueue.main.async {
-				Debug.shared.showSuccessAlert(with: "Successfully imported \(success) repos", subtitle: "")
+				Debug.shared.log(message: "Successfully imported \(success) repos", type: .success)
 				presentationMode.wrappedValue.dismiss()
 				NotificationCenter.default.post(name: Notification.Name("sfetch"), object: nil)
 			}

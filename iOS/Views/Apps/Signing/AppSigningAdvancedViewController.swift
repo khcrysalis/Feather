@@ -24,16 +24,6 @@ class AppSigningAdvancedViewController: UITableViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		navigationController?.setToolbarHidden(true, animated: animated)
-	}
-	
-	override func viewWillDisappear(_ animated: Bool) {
-		super.viewWillDisappear(animated)
-		navigationController?.setToolbarHidden(false, animated: animated)
-	}
-	
 	override func viewDidLoad() {
 		title = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED")
 		navigationItem.largeTitleDisplayMode = .never
@@ -113,7 +103,7 @@ class AppSigningAdvancedViewController: UITableViewController {
 		cellsForSection2.append(removeWatchPlaceHolder)
 		
 		let removeProvisioningFile = SwitchViewCell()
-		removeProvisioningFile.textLabel?.text = "Remove Provisioning File"
+		removeProvisioningFile.textLabel?.text = "Include Provisioning File"
 		removeProvisioningFile.switchControl.addTarget(self, action: #selector(removeProvisioningFile(_:)), for: .valueChanged)
 		removeProvisioningFile.switchControl.isOn = appSigningViewController.removeProvisioningFile
 		removeProvisioningFile.selectionStyle = .none
@@ -124,13 +114,24 @@ class AppSigningAdvancedViewController: UITableViewController {
 		return 3
 	}
 	
-	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		switch section {
-		case 0: return String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARANCE")
-		case 1: return String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION")
-		case 2: return String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES")
-		default: return nil
-		}
+	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		
+		let titles = [
+			String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARANCE"),
+			String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION"),
+			String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES")
+		][section]
+		
+		let headerView = InsetGroupedSectionHeader(title: titles)
+		return headerView
+	}
+	
+	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return [
+			40,
+			40,
+			40
+		][section]
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -38,7 +38,7 @@ extension CoreDataManager {
 		appPath: String?,
 		timeToLive: Date,
 		teamName: String,
-		completion: @escaping (Error?) -> Void) {
+		completion: @escaping (Result<SignedApps, Error>) -> Void) {
 			let context = context ?? self.context
 			let newApp = SignedApps(context: context)
 			
@@ -55,8 +55,10 @@ extension CoreDataManager {
 			do {
 				try context.save()
 				NotificationCenter.default.post(name: Notification.Name("lfetch"), object: nil)
+				completion(.success(newApp)) // one exception for this single function out of all of them 
 			} catch {
 				Debug.shared.log(message: "Error saving data: \(error)", type: .error)
+				completion(.failure(error))
 			}
 	}
 	

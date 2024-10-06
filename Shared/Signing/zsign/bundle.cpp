@@ -291,13 +291,13 @@ void ZAppBundle::GetChangedFiles(JValue &jvNode, vector<string> &arrChangedFiles
 	}
 }
 
-void ZAppBundle::GetNodeChangedFiles(JValue &jvNode)
+void ZAppBundle::GetNodeChangedFiles(JValue &jvNode, bool dontGenerateEmbeddedMobileProvision)
 {
 	if (jvNode.has("folders"))
 	{
 		for (size_t i = 0; i < jvNode["folders"].size(); i++)
 		{
-			GetNodeChangedFiles(jvNode["folders"][i]);
+			GetNodeChangedFiles(jvNode["folders"][i], dontGenerateEmbeddedMobileProvision);
 		}
 	}
 
@@ -307,10 +307,12 @@ void ZAppBundle::GetNodeChangedFiles(JValue &jvNode)
 	{
 		jvNode["changed"].push_back(arrChangedFiles[i]);
 	}
-
-	if ("/" == jvNode["path"])
-	{ //root
-		jvNode["changed"].push_back("embedded.mobileprovision");
+// TODO: try
+	if (dontGenerateEmbeddedMobileProvision) {
+		if ("/" == jvNode["path"])
+		{ //root
+			jvNode["changed"].push_back("embedded.mobileprovision");
+		}
 	}
 }
 
@@ -375,7 +377,8 @@ bool ZAppBundle::SignNode(JValue &jvNode)
 		ZLog::ErrorV(">>> Can't Parse BundleExecute File! %s\n", strExePath.c_str());
 		return false;
 	}
-
+	
+	RemoveFolderV("%s/_CodeSignature", strBaseFolder.c_str());
 	CreateFolderV("%s/_CodeSignature", strBaseFolder.c_str());
 	string strCodeResFile = strBaseFolder + "/_CodeSignature/CodeResources";
 
@@ -479,7 +482,9 @@ bool ZAppBundle::SignFolder(ZSignAsset *pSignAsset,
 							const string &strDyLibFile,
 							bool bForce,
 							bool bWeakInject,
-							bool bEnableCache)
+							bool bEnableCache,
+							bool dontGenerateEmbeddedMobileProvision
+							)
 {
 	m_bForceSign = bForce;
 	m_pSignAsset = pSignAsset;
@@ -594,11 +599,12 @@ bool ZAppBundle::SignFolder(ZSignAsset *pSignAsset,
 			jvInfoPlistStrings.writePListPath("%s/zh-Hans.lproj/InfoPlist.strings", m_strAppFolder.c_str());
 		}
 	}
-
-	if (!WriteFile(pSignAsset->m_strProvisionData, "%s/embedded.mobileprovision", m_strAppFolder.c_str()))
-	{ //embedded.mobileprovision
-		ZLog::ErrorV(">>> Can't Write embedded.mobileprovision!\n");
-		return false;
+	if (dontGenerateEmbeddedMobileProvision) {
+		if  (!WriteFile(pSignAsset->m_strProvisionData, "%s/embedded.mobileprovision", m_strAppFolder.c_str()))
+		{ //embedded.mobileprovision
+			ZLog::ErrorV(">>> Can't Write embedded.mobileprovision!\n");
+			return false;
+		}
 	}
 
 	if (!strDyLibFile.empty())
@@ -636,7 +642,7 @@ bool ZAppBundle::SignFolder(ZSignAsset *pSignAsset,
 		{
 			return false;
 		}
-		GetNodeChangedFiles(jvRoot);
+		GetNodeChangedFiles(jvRoot, dontGenerateEmbeddedMobileProvision);
 	}
 	else
 	{
@@ -650,6 +656,8 @@ bool ZAppBundle::SignFolder(ZSignAsset *pSignAsset,
 	ZLog::PrintV(">>> TeamId: \t%s\n", m_pSignAsset->m_strTeamId.c_str());
 	ZLog::PrintV(">>> SubjectCN: \t%s\n", m_pSignAsset->m_strSubjectCN.c_str());
 	ZLog::PrintV(">>> ReadCache: \t%s\n", m_bForceSign ? "NO" : "YES");
+	ZLog::PrintV(">>> Exclude MobileProvision: \t%s\n", dontGenerateEmbeddedMobileProvision ? "NO" : "YES");
+	
 
 	if (SignNode(jvRoot))
 	{

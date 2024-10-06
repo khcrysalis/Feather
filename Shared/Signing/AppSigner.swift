@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import AlertKit
+import CoreData
 
 struct AppSigningOptions {
     var name: String?
@@ -37,17 +38,21 @@ struct AppSigningOptions {
     var certificate: Certificate?
 }
 
-func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escaping (Bool) -> Void) {
+func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escaping (Result<(URL, NSManagedObject), Error>) -> Void) {
 	UIApplication.shared.isIdleTimerDisabled = true
-    DispatchQueue(label: "Signing").async {
-        let fileManager = FileManager.default
-        let tmpDir = fileManager.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+	DispatchQueue(label: "Signing").async {
+		let fileManager = FileManager.default
+		let tmpDir = fileManager.temporaryDirectory.appendingPathComponent(UUID().uuidString)
 		let tmpDirApp = tmpDir.appendingPathComponent(appPath.lastPathComponent)
 		var iconURL = ""
 		
-        do {
+
+		do {
+			Debug.shared.log(message: "============================================")
+			Debug.shared.log(message: "\(options)")
+			Debug.shared.log(message: "============================================")
 			try fileManager.createDirectory(at: tmpDir, withIntermediateDirectories: true)
-            try fileManager.copyItem(at: appPath, to: tmpDirApp)
+			try fileManager.copyItem(at: appPath, to: tmpDirApp)
 			
 			if let info = NSDictionary(contentsOf: tmpDirApp.appendingPathComponent("Info.plist"))!.mutableCopy() as? NSMutableDictionary {
 				try updateInfoPlist(infoDict: info, options: options, icon: options.iconURL, app: tmpDirApp)
@@ -59,34 +64,38 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 					iconURL = iconFileName
 				}
 			}
-						
+
 			let handler = TweakHandler(urls: options.toInject ?? [], app: tmpDirApp)
 			try handler.getInputFiles()
-			
+
 			if let removeInjectPaths = options.removeInjectPaths, !removeInjectPaths.isEmpty {
 				if let appexe = try TweakHandler.findExecutable(at: tmpDirApp) {
 					_ = uninstallDylibs(filePath: appexe.path, dylibPaths: removeInjectPaths)
 				}
 			}
-			
+
 			try updatePlugIns(options: options, app: tmpDirApp)
 			try removeDumbAssPlaceHolderExtension(options: options, app: tmpDirApp)
-			
-            let certPath = try CoreDataManager.shared.getCertifcatePath(source: options.certificate)
+			try updateMobileProvision(app: tmpDirApp)
+
+			let certPath = try CoreDataManager.shared.getCertifcatePath(source: options.certificate)
 			let provisionPath = certPath.appendingPathComponent("\(options.certificate?.provisionPath ?? "")").path
 			let p12Path = certPath.appendingPathComponent("\(options.certificate?.p12Path ?? "")").path
-			
-			try signAppWithZSign(tmpDirApp: tmpDirApp, certPaths: (provisionPath, p12Path), password: options.certificate?.password ?? "", options: options)
-						
-			try updateMobileProvision(options: options, app: tmpDirApp)
 
-			
-            let signedUUID = UUID().uuidString
-            try fileManager.createDirectory(at: getDocumentsDirectory().appendingPathComponent("Apps/Signed"), withIntermediateDirectories: true)
-            let path = getDocumentsDirectory().appendingPathComponent("Apps/Signed").appendingPathComponent(signedUUID)
-            try fileManager.moveItem(at: tmpDir, to: path)
-			
-            DispatchQueue.main.async {
+			Debug.shared.log(message: "🦋 Start Signing 🦋")
+
+			try signAppWithZSign(tmpDirApp: tmpDirApp, certPaths: (provisionPath, p12Path), password: options.certificate?.password ?? "", options: options)
+
+			Debug.shared.log(message: "🦋 End Signing 🦋")
+
+			let signedUUID = UUID().uuidString
+			try fileManager.createDirectory(at: getDocumentsDirectory().appendingPathComponent("Apps/Signed"), withIntermediateDirectories: true)
+			let signedPath = getDocumentsDirectory().appendingPathComponent("Apps/Signed").appendingPathComponent(signedUUID)
+			try fileManager.moveItem(at: tmpDir, to: signedPath)
+
+			DispatchQueue.main.async {
+				var signedAppObject: NSManagedObject? = nil
+				
 				CoreDataManager.shared.addToSignedApps(
 					version: options.version!,
 					name: options.name!,
@@ -96,26 +105,34 @@ func signInitialApp(options: AppSigningOptions, appPath: URL, completion: @escap
 					appPath: appPath.lastPathComponent,
 					timeToLive: options.certificate?.certData?.expirationDate ?? Date(),
 					teamName: options.certificate?.certData?.name ?? ""
-				) {
-					error in
-					Debug.shared.log(message: "signApp: \(String(describing: error))", type: .error)
-					completion(false)
+				) { result in
+					
+
+					switch result {
+					case .success(let signedApp):
+						signedAppObject = signedApp
+					case .failure(let error):
+						Debug.shared.log(message: "signApp: \(error)", type: .error)
+						completion(.failure(error))
+					}
 				}
 				
 				Debug.shared.log(message: String.localized("SUCCESS_SIGNED", arguments: "\(options.name ?? String.localized("UNKNOWN"))"), type: .success)
-                
+				Debug.shared.log(message: "============================================")
+				
 				UIApplication.shared.isIdleTimerDisabled = false
-                completion(true)
-            }
-        } catch {
-            DispatchQueue.main.async {
+				completion(.success((signedPath, signedAppObject!)))
+			}
+		} catch {
+			DispatchQueue.main.async {
 				UIApplication.shared.isIdleTimerDisabled = false
 				Debug.shared.log(message: "signApp: \(error)", type: .critical)
-                completion(false)
-            }
-        }
-    }
+				completion(.failure(error))
+			}
+		}
+	}
 }
+
 
 func resignApp(certificate: Certificate, appPath: URL, completion: @escaping (Bool) -> Void) {
 	UIApplication.shared.isIdleTimerDisabled = true
@@ -125,11 +142,17 @@ func resignApp(certificate: Certificate, appPath: URL, completion: @escaping (Bo
 			let provisionPath = certPath.appendingPathComponent("\(certificate.provisionPath ?? "")").path
 			let p12Path = certPath.appendingPathComponent("\(certificate.p12Path ?? "")").path
 			
+			Debug.shared.log(message: "============================================")
+			Debug.shared.log(message: "🦋 Start Resigning 🦋")
+			
 			try signAppWithZSign(tmpDirApp: appPath, certPaths: (provisionPath, p12Path), password: certificate.password ?? "", options: nil)
+			
+			Debug.shared.log(message: "🦋 End Resigning 🦋")
 			DispatchQueue.main.async {
 				UIApplication.shared.isIdleTimerDisabled = false
 				Debug.shared.log(message: String.localized("SUCCESS_RESIGN"), type: .success)
 			}
+			Debug.shared.log(message: "============================================")
 			completion(true)
 		} catch {
 			Debug.shared.log(message: "\(error)", type: .warning)
@@ -145,7 +168,9 @@ private func signAppWithZSign(tmpDirApp: URL, certPaths: (provisionPath: String,
 			 password,
 			 options?.bundleId ?? "",
 			 options?.name ?? "",
-			 options?.version ?? "") != 0 {
+			 options?.version ?? "",
+			 options?.removeProvisioningFile ?? false
+	) != 0 {
 		throw NSError(domain: "AppSigningErrorDomain", code: 1, userInfo: [NSLocalizedDescriptionKey: String.localized("ERROR_ZSIGN_FAILED")])
 	}
 }
@@ -161,6 +186,20 @@ func changeDylib(filePath: String, oldPath: String, newPath: String) -> Bool {
 	return success
 }
 
+func updateMobileProvision(app: URL) throws {
+	let provisioningFilePath = app.appendingPathComponent("embedded.mobileprovision")
+	if FileManager.default.fileExists(atPath: provisioningFilePath.path) {
+		do {
+			try FileManager.default.removeItem(at: provisioningFilePath)
+			Debug.shared.log(message: "Embedded.mobileprovision file removed successfully!")
+		} catch {
+			throw error
+		}
+	} else {
+		Debug.shared.log(message: "Could not find any mobileprovision to remove. ")
+	}
+}
+
 func listDylibs(filePath: String) -> [String]? {
 	let dylibPathsArray = NSMutableArray()
 
@@ -170,7 +209,7 @@ func listDylibs(filePath: String) -> [String]? {
 		let dylibPaths = dylibPathsArray as! [String]
 		return dylibPaths
 	} else {
-		print("Failed to list dylibs.")
+		Debug.shared.log(message: "Failed to list dylibs.")
 		return nil
 	}
 }
@@ -187,30 +226,15 @@ func updatePlugIns(options: AppSigningOptions, app: URL) throws {
 		if filemanager.fileExists(atPath: path.path) {
 			do {
 				try filemanager.removeItem(at: path)
+				Debug.shared.log(message: "Removed PlugIns!")
 			} catch {
-				throw error
-			}
-		}
-	}
-}
-
-func updateMobileProvision(options: AppSigningOptions, app: URL) throws {
-	if options.removeProvisioningFile == true {
-		let provisioningFilePath = app.appendingPathComponent("embedded.mobileprovision")
-		if FileManager.default.fileExists(atPath: provisioningFilePath.path) {
-			do {
-				try FileManager.default.removeItem(at: provisioningFilePath)
-				Debug.shared.log(message: "embedded.mobileprovision file removed successfully.")
-			} catch {
-				Debug.shared.log(message: "Failed to remove embedded.mobileprovision file: \(error)")
 				throw error
 			}
 		} else {
-			Debug.shared.log(message: "No embedded.mobileprovision file found.")
+			Debug.shared.log(message: "Could not find any PlugIns to remove.")
 		}
 	}
 }
-
 
 func removeDumbAssPlaceHolderExtension(options: AppSigningOptions, app: URL) throws {
 	if options.removeWatchPlaceHolder! {
@@ -219,9 +243,12 @@ func removeDumbAssPlaceHolderExtension(options: AppSigningOptions, app: URL) thr
 		if filemanager.fileExists(atPath: path.path) {
 			do {
 				try filemanager.removeItem(at: path)
+				Debug.shared.log(message: "Removed placeholder watch app!")
 			} catch {
 				throw error
 			}
+		} else {
+			Debug.shared.log(message: "Placeholder watch app not found.")
 		}
 	}
 }
@@ -266,9 +293,18 @@ func updateInfoPlist(infoDict: NSMutableDictionary, options: AppSigningOptions, 
 		infoDict["CFBundleIcons~ipad"] = cfBundleIconsIpad
 		
 	} else {
-		Debug.shared.log(message: "updateInfoPlist.updateicon: Does not include an icon! Will not this.")
+		Debug.shared.log(message: "updateInfoPlist.updateicon: Does not include an icon, skipping!")
 	}
 	
+	if let displayName = infoDict.value(forKey: "CFBundleDisplayName") as? String {
+		if displayName != options.name {
+			try updateLocalizedInfoPlist(in: app, newDisplayName: options.name!)
+		}
+	} else {
+		Debug.shared.log(message: "updateInfoPlist.displayName: CFBundleDisplayName not found, skipping!")
+	}
+
+
 	if options.forceFileSharing! { infoDict.setObject(true, forKey: "UISupportsDocumentBrowser" as NSCopying) }
 	if options.forceiTunesFileSharing! { infoDict.setObject(true, forKey: "UIFileSharingEnabled" as NSCopying) }
 	if options.removeSupportedDevices! { infoDict.removeObject(forKey: "UISupportedDevices") }
@@ -278,4 +314,30 @@ func updateInfoPlist(infoDict: NSMutableDictionary, options: AppSigningOptions, 
 	if options.forceMinimumVersion! != "Automatic" { infoDict.setObject(options.forceMinimumVersion!, forKey: "MinimumOSVersion" as NSCopying) }
 	if options.forceLightDarkAppearance! != "Automatic" { infoDict.setObject(options.forceLightDarkAppearance!, forKey: "UIUserInterfaceStyle" as NSCopying)}
 	try infoDict.write(to: app.appendingPathComponent("Info.plist"))
+}
+
+func updateLocalizedInfoPlist(in appDirectory: URL, newDisplayName: String) throws {
+	let fileManager = FileManager.default
+	let contents = try fileManager.contentsOfDirectory(at: appDirectory, includingPropertiesForKeys: nil)
+	let localizationBundles = contents.filter { $0.pathExtension == "lproj" }
+	
+	guard !localizationBundles.isEmpty else {
+		Debug.shared.log(message: "No .lproj directories found in \(appDirectory.path), skipping!")
+		return
+	}
+	
+	for localizationBundle in localizationBundles {
+		let infoPlistStringsURL = localizationBundle.appendingPathComponent("InfoPlist.strings")
+		
+		if fileManager.fileExists(atPath: infoPlistStringsURL.path) {
+			var localizedStrings = try String(contentsOf: infoPlistStringsURL, encoding: .utf8)
+				let localizedDict = NSDictionary(contentsOf: infoPlistStringsURL) as! [String: String]
+
+			if localizedDict["CFBundleDisplayName"] != newDisplayName {
+				localizedStrings = localizedStrings.replacingOccurrences(of: localizedDict["CFBundleDisplayName"] ?? "", with: newDisplayName)
+				try localizedStrings.write(to: infoPlistStringsURL, atomically: true, encoding: .utf8)
+				Debug.shared.log(message: "Updated CFBundleDisplayName in \(infoPlistStringsURL.path)")
+			}
+		}
+	}
 }

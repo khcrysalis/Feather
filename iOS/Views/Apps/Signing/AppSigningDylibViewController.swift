@@ -64,16 +64,6 @@ class AppSigningDylibViewController: UITableViewController {
 		title = "Remove Dylibs"
 		
 	}
-	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		navigationController?.setToolbarHidden(true, animated: animated)
-	}
-	
-	override func viewWillDisappear(_ animated: Bool) {
-		super.viewWillDisappear(animated)
-		navigationController?.setToolbarHidden(false, animated: animated)
-	}
 
 	fileprivate func groupDylibs(_ dylibs: [String]) {
 		groupedDylibs["@rpath"] = dylibs.filter { $0.hasPrefix("@rpath") }

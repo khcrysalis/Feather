@@ -30,6 +30,7 @@
 		33570F612C32B80E008CB560 /* AppsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F602C32B80E008CB560 /* AppsTableViewCell.swift */; };
 		33570F672C34CCD5008CB560 /* AppsInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F662C34CCD5008CB560 /* AppsInformationViewController.swift */; };
 		33570F692C34E5B2008CB560 /* SectionHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F682C34E5B2008CB560 /* SectionHeaders.swift */; };
+		335EB8602CAB889C00208442 /* Utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 335EB85E2CAB889C00208442 /* Utils.mm */; };
 		335F0C2C2C5DC3AE00A4F0AE /* CoreDataManager+SignedApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335F0C2B2C5DC3AE00A4F0AE /* CoreDataManager+SignedApps.swift */; };
 		335F0C2E2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335F0C2D2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift */; };
 		335F0C302C5E175B00A4F0AE /* CertData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335F0C2F2C5E175B00A4F0AE /* CertData.swift */; };
@@ -152,6 +153,8 @@
 		33570F602C32B80E008CB560 /* AppsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsTableViewCell.swift; sourceTree = "<group>"; };
 		33570F662C34CCD5008CB560 /* AppsInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsInformationViewController.swift; sourceTree = "<group>"; };
 		33570F682C34E5B2008CB560 /* SectionHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaders.swift; sourceTree = "<group>"; };
+		335EB85E2CAB889C00208442 /* Utils.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Utils.mm; sourceTree = "<group>"; };
+		335EB85F2CAB889C00208442 /* Utils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Utils.hpp; sourceTree = "<group>"; };
 		335F0C2B2C5DC3AE00A4F0AE /* CoreDataManager+SignedApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+SignedApps.swift"; sourceTree = "<group>"; };
 		335F0C2D2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Certificates.swift"; sourceTree = "<group>"; };
 		335F0C2F2C5E175B00A4F0AE /* CertData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertData.swift; sourceTree = "<group>"; };
@@ -236,6 +239,8 @@
 		33E4D8402C67E5C3006A1C26 /* DonationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationTableViewCell.swift; sourceTree = "<group>"; };
 		33E4D8422C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+DownloadedApps.swift"; sourceTree = "<group>"; };
+		392517742CAFF3CD001F15F4 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		88DE4CC52CA5A13200D68F1E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AA280D922C76A60700CAC838 /* LSApplicationWorkspace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSApplicationWorkspace.h; sourceTree = "<group>"; };
 		AA280D942C76AB7400CAC838 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		AA280D962C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+returnToHomeScreen.swift"; sourceTree = "<group>"; };
@@ -715,6 +720,8 @@
 				D0651C2B2BFEEA4B00D40829 /* signing.h */,
 				D0651C0F2BFEE93C00D40829 /* zsign.mm */,
 				D0651C102BFEE93C00D40829 /* zsign.hpp */,
+				335EB85E2CAB889C00208442 /* Utils.mm */,
+				335EB85F2CAB889C00208442 /* Utils.hpp */,
 			);
 			path = zsign;
 			sourceTree = "<group>";
@@ -810,6 +817,8 @@
 				ko,
 				ja,
 				ru,
+				fr,
+				tr,
 			);
 			mainGroup = 33BA37822BF8159F00FF530A;
 			packageReferences = (
@@ -873,6 +882,7 @@
 				D0651C372BFEEA4B00D40829 /* openssl.cpp in Sources */,
 				D0651C1A2BFEE97F00D40829 /* base64.cpp in Sources */,
 				33BE875F2C6AF91B0044D245 /* IconImageViewCell.swift in Sources */,
+				335EB8602CAB889C00208442 /* Utils.mm in Sources */,
 				AF4D46EF2C432CCA003FA335 /* TweakLibraryViewCell.swift in Sources */,
 				33E4D8322C64CB39006A1C26 /* SearchResultsTableViewController.swift in Sources */,
 				335F0C2C2C5DC3AE00A4F0AE /* CoreDataManager+SignedApps.swift in Sources */,
@@ -978,6 +988,8 @@
 				33BF316C2C7C46780087F3D2 /* ko */,
 				33BF316D2C7C46800087F3D2 /* ja */,
 				33BF316E2C7C4D0C0087F3D2 /* ru */,
+				88DE4CC52CA5A13200D68F1E /* fr */,
+				392517742CAFF3CD001F15F4 /* tr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1136,7 +1148,7 @@
 					"$(PROJECT_DIR)/Shared/Signing",
 					"$(PROJECT_DIR)/Shared/Resources",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1183,7 +1195,7 @@
 					"$(PROJECT_DIR)/Shared/Signing",
 					"$(PROJECT_DIR)/Shared/Resources",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

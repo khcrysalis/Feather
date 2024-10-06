@@ -10,6 +10,7 @@ import UIKit
 import Nuke
 import CoreData
 import UIOnboarding
+import Foundation
 
 var downloadTaskManager = DownloadTaskManager.shared
 class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControllerDelegate {
@@ -19,10 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 	var loaderAlert = presentLoader()
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		UserDefaults.standard.set(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, forKey: "currentVersion")
+		
 		addDefaultRepos()
 		imagePipline()
-
+		setupLogFile()
+		cleanTmp()
+		createSourcesDirectory()
+		
 		window = UIWindow(frame: UIScreen.main.bounds)
 		
 		if Preferences.isOnboardingActive {
@@ -40,22 +44,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 		}
 		
 		window?.makeKeyAndVisible()
-		createSourcesDirectory()
-		
-		let fileManager = FileManager.default
-		let tmpDirectory = NSHomeDirectory() + "/tmp"
-		
-		if let files = try? fileManager.contentsOfDirectory(atPath: tmpDirectory) {
-			for file in files {
-				try? fileManager.removeItem(atPath: tmpDirectory + "/" + file)
-			}
-		}
-		
+
 		let generatedString = AppDelegate.generateRandomString()
 		if Preferences.pPQCheckString.isEmpty {
 			Preferences.pPQCheckString = generatedString
 		}
-		
+		UserDefaults.standard.set(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, forKey: "currentVersion")
+
+		Debug.shared.log(message: "Version: \(UIDevice.current.systemVersion)")
+		Debug.shared.log(message: "Name: \(UIDevice.current.name)")
+		Debug.shared.log(message: "Model: \(UIDevice.current.model)")
+		Debug.shared.log(message: "Feather Version: \(logAppVersionInfo())\n")
+
 		return true
 	}
 	
@@ -195,6 +195,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 			$0.isStoringPreviewsInMemoryCache = false
 		}
 		ImagePipeline.shared = pipeline
+	}
+	
+	func setupLogFile() {
+		let logFilePath = getDocumentsDirectory().appendingPathComponent("logs.txt")
+		if FileManager.default.fileExists(atPath: logFilePath.path) {
+			do {
+				try FileManager.default.removeItem(at: logFilePath)
+			} catch {
+				Debug.shared.log(message: "Error removing existing logs.txt: \(error)", type: .error)
+			}
+		}
+		
+		do {
+			try "".write(to: logFilePath, atomically: true, encoding: .utf8)
+		} catch {
+			Debug.shared.log(message: "Error removing existing logs.txt: \(error)", type: .error)
+		}
+	}
+	
+	func cleanTmp() {
+		let fileManager = FileManager.default
+		let tmpDirectory = NSHomeDirectory() + "/tmp"
+		
+		if let files = try? fileManager.contentsOfDirectory(atPath: tmpDirectory) {
+			for file in files {
+				try? fileManager.removeItem(atPath: tmpDirectory + "/" + file)
+			}
+		}
+	}
+	
+	func logAppVersionInfo() -> String {
+		if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+		   let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+			return "App Version: \(version), Build Number: \(build)"
+		}
+		return ""
 	}
 }
 

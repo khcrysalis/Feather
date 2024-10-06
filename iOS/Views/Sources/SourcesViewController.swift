@@ -80,8 +80,8 @@ extension SourcesViewController {
 		//String.localized("SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES", arguments: (sources?.count ?? 0))
 		let headerWithButton = GroupedSectionHeader(
 			title: String.localized("SOURCES_VIEW_CONTROLLER_REPOSITORIES"),
-			subtitle: String.localized("SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES", arguments: "\(sources?.count ?? 0)"),
-			buttonTitle: "Modify", buttonAction: {
+			subtitle: String.localized(sources?.count ?? 0 > 1 ? "SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES_PLURAL" : "SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES", arguments: "\(sources?.count ?? 0)"),
+            buttonTitle: String.localized("SOURCES_VIEW_CONTROLLER_ADD_SOURCES"), buttonAction: {
 				
 				let transferPreview = RepoViewController(sources: self.sources)
 				

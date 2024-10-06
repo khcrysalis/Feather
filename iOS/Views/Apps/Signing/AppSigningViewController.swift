@@ -15,6 +15,14 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
     var appsViewController: LibraryViewController
 	var largeButton = ActivityIndicatorButton()
 	var iconCell = IconImageViewCell()
+	
+	private let blurView: UIView = {
+		let view = UIView()
+		view.backgroundColor = .clear
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
+
 
     var toInject: [URL] = []
 	var removeInjectPaths: [String] = []
@@ -43,7 +51,7 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 	var forceiTunesFileSharing = true
 	
 	var removeWatchPlaceHolder = true 
-	var removeProvisioningFile = false
+	var removeProvisioningFile = true
 	
 	var certs: Certificate?
     
@@ -112,11 +120,31 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 	}
 	
 	private func setupToolbar() {
+		largeButton.translatesAutoresizingMaskIntoConstraints = false
 		largeButton.addTarget(self, action: #selector(startSign), for: .touchUpInside)
-		let largeButtonItem = UIBarButtonItem(customView: largeButton)
-		toolbarItems = [ largeButtonItem, ]
-		navigationController?.setToolbarHidden(false, animated: false)
+		
+		view.addSubview(blurView)
+		blurView.addSubview(largeButton)
+		
+		NSLayoutConstraint.activate([
+			blurView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+			blurView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+			blurView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+			blurView.heightAnchor.constraint(equalToConstant: 80)
+		])
+		
+		NSLayoutConstraint.activate([
+			largeButton.leadingAnchor.constraint(equalTo: blurView.leadingAnchor, constant: 18),
+			largeButton.trailingAnchor.constraint(equalTo: blurView.trailingAnchor, constant: -18),
+			largeButton.centerYAnchor.constraint(equalTo: blurView.centerYAnchor),
+			largeButton.heightAnchor.constraint(equalToConstant: 50)
+		])
+		blurView.layer.zPosition = 10
+		largeButton.layer.zPosition = 12
+
 	}
+
+
 	
 	@objc func startSign() {
 		self.navigationItem.leftBarButtonItem = nil
@@ -139,14 +167,25 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 			forceiTunesFileSharing: forceiTunesFileSharing,
 			forceMinimumVersion: forceMinimumVersionString[forceMinimumVersion],
 			forceLightDarkAppearance: forceLightDarkAppearanceString[forceLightDarkAppearance],
-			removeProvisioningFile: removeProvisioningFile, removeWatchPlaceHolder: removeWatchPlaceHolder,
-			certificate: certs),
-				appPath:getFilesForDownloadedApps(app: app as! DownloadedApps, getuuidonly: false)
-		) { success in
-			if success {
+			removeProvisioningFile: removeProvisioningFile, 
+			removeWatchPlaceHolder: removeWatchPlaceHolder,
+			certificate: certs
+		), 
+			appPath:getFilesForDownloadedApps(app: app as! DownloadedApps, getuuidonly: false)
+		) { result in
+			switch result {
+			case .success(let (signedPath, signedApp)):
 				self.appsViewController.fetchSources()
 				self.appsViewController.tableView.reloadData()
+				Debug.shared.log(message: signedPath.path)
+				if Preferences.autoInstallAfterSign {
+					self.appsViewController.startInstallProcess(meow: signedApp, filePath: signedPath.path)
+				}
+
+			case .failure(let error):
+				Debug.shared.log(message: "Signing failed: \(error.localizedDescription)", type: .error)
 			}
+			
 			self.dismiss(animated: true)
 		}
 	}
@@ -283,9 +322,9 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		
 		let titles = [
-			"Customization",
-			"Signing",
-			"Advanced",
+			String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_CUSTOMIZATION"),
+			String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_SIGNING"),
+			String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_ADVANCED"),
 			"",
 			""
 		][section]

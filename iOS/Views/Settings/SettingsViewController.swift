@@ -18,7 +18,7 @@ class SettingsViewController: UITableViewController {
 		[String.localized("SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY"), String.localized("SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON")],
 		["Current Certificate", String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES")],
 //		["Signing Configuration"],
-		["Fuck PPQCheck", "PPQCheckMitigationString", "PPQCheckMitigationExport"],
+		["Auto Install", "Fuck PPQCheck", "PPQCheckMitigationString", "PPQCheckMitigationExport"],
 		["Use Server", String.localized("SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER")],
 		[String.localized("SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE")],
 		[
@@ -90,7 +90,7 @@ extension SettingsViewController {
 		switch section {
 		case 1:
 			return String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES")
-		case 5: return "Default server goes to \"\(Preferences.defaultInstallPath)\""
+		case 5: return String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER", arguments: Preferences.defaultInstallPath)
 		case 6:
 			return String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS")
 		default:
@@ -142,6 +142,13 @@ extension SettingsViewController {
 				cell.textLabel?.textColor = .secondaryLabel
 				cell.selectionStyle = .none
 			}
+		case "Auto Install":
+			let autoInstall = SwitchViewCell()
+			autoInstall.textLabel?.text = "Install after signing"
+			autoInstall.switchControl.addTarget(self, action: #selector(autoInstallAfterSignToggled(_:)), for: .valueChanged)
+			autoInstall.switchControl.isOn = Preferences.autoInstallAfterSign
+			autoInstall.selectionStyle = .none
+			return autoInstall
 		case "Fuck PPQCheck":
 			let fuckPPq = SwitchViewCell()
 			fuckPPq.textLabel?.text = String.localized("SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_TITLE")
@@ -220,7 +227,7 @@ extension SettingsViewController {
 		
 		let alertController = UIAlertController(
 			title: "",
-			message: "You must close the app for changes to take effect.",
+			message: String.localized("SUCCESS_REQUIRES_RESTART"),
 			preferredStyle: .alert
 		)
 		
@@ -236,6 +243,10 @@ extension SettingsViewController {
 	
 	@objc func fuckPpqcheckToggled(_ sender: UISwitch) {
 		Preferences.isFuckingPPqcheckDetectionOff = sender.isOn
+	}
+    
+	@objc func autoInstallAfterSignToggled(_ sender: UISwitch) {
+		Preferences.autoInstallAfterSign = sender.isOn
 	}
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -267,9 +278,16 @@ extension SettingsViewController {
 			navigationController?.pushViewController(l, animated: true)
 		case "PPQCheckMitigationString":
 			showChangeIdentifierAlert()
-		case  "PPQCheckMitigationExport":
+		case "PPQCheckMitigationExport":
 			let shareText = Preferences.pPQCheckString
 			let activityViewController = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
+            
+			if let popoverController = activityViewController.popoverPresentationController {
+				popoverController.sourceView = self.view
+				popoverController.sourceRect = self.view.bounds
+				popoverController.permittedArrowDirections = []
+            }
+            
 			present(activityViewController, animated: true, completion: nil)
 		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON"):
 			let iconsListViewController = IconsListViewController()

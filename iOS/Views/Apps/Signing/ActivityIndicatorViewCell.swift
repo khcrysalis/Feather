@@ -64,7 +64,12 @@ class ActivityIndicatorButton: UIButton {
 		layer.cornerRadius = 12
 		layer.backgroundColor = Preferences.appTintColor.uiColor.cgColor
 		layer.cornerCurve = .continuous
-		layer.masksToBounds = true
+		layer.masksToBounds = false
+		
+		layer.shadowColor = UIColor.black.cgColor
+		layer.shadowOpacity = 0.5
+		layer.shadowOffset = CGSize(width: 0, height: 2)
+		layer.shadowRadius = 4
 		
 		isEnabled = true
 	}

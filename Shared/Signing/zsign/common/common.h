@@ -157,4 +157,6 @@ public:
 
 private:
     static int g_nLogLevel;
+	static void writeToLogFile(const std::string& message);
+
 };
