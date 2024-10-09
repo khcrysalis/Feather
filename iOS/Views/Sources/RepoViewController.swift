@@ -21,6 +21,7 @@ struct RepoViewController: View {
 	@State private var debounceWorkItem: DispatchWorkItem?
 	@State private var isVerifying: Bool = false
 	@State private var isSyncing: Bool = false
+    @State private var progress: Float = 0.0
 	@State var sources: [Source]?
 
 	private var footerText: String {
@@ -88,8 +89,14 @@ struct RepoViewController: View {
 				}
 				ToolbarItem(placement: .navigationBarTrailing) {
 					if isVerifying || isSyncing {
-						ProgressView()
-							.progressViewStyle(CircularProgressViewStyle())
+                        ZStack {
+                                    ProgressView()
+                                    Text("\(Int((isVerifying ? progress : 0) * 100))%")
+                                        .foregroundColor(.secondary)
+                                        .font(.system(size: 12))
+                                        .multilineTextAlignment(.center)
+                                }
+                        .frame(width: 40, height: 40)
 					} else if validationStatus == .validJSON {
 						Button(String.localized("ADD")) {
 							CoreDataManager.shared.getSourceData(urlString: repoName) { error in
@@ -107,6 +114,7 @@ struct RepoViewController: View {
 		}
 	}
 }
+
 
 extension RepoViewController {
 	private func debounceRequest() {
