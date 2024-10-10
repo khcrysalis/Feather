@@ -176,7 +176,7 @@ extension CertImportingVC {
 		case "certs":
 			return String.localized("CERT_IMPORTING_VIEWCONTROLLER_FOOTER_CERT")
 		case "pass":
-			return String.localized("Enter the password associated with the private key, leave it blank if theres no password required.")
+			return String.localized("Enter the password associated with the private key; leave blank if no password is required.")
 		default:
 			return nil
 		}

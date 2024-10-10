@@ -184,7 +184,7 @@
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_CELL_PPQCHECK_DESCRIPTION" = "PPQCheck, Apple’ın açtığınız uygulamanın App Store’da bulunan başka bir paket tanımlayıcısıyla eşleşip eşleşmediğini kontrol etmesinin bir yoludur. Bu kontrol imzalanmış yüklü uygulamayı ilk açtığınızda gerçekleşir. Bunu önlemeniz için bir seçeneğimiz var, ancak artık varsayılan tanımlayıcıyla ilgili bildirimlerin ve benzeri şeylerin faydalarını almayacaksınız.";
 
 // MARK: - AppSigningViewController -> AppSigningAdvancedViewController
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE" = "Görünüm";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARANCE" = "Görünüm";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION" = "En Düşük Sürüm";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES" = "Özellikler";
 
@@ -266,7 +266,7 @@
 
 // MARK: - SettingsViewController -> DisplayViewController
 "DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_TINT_COLOR" = "Renk Tonu";
-"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARENCE" = "App Appearence";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARANCE" = "App Appearance";
 
 "DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE" = "Varsayılan Alt Başlık";
 "DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE_DESCRIPTION" = "Feather için varsayılan stil, yerelleştirilmiş açıklamayı gizler ve yalnızca alt başlığı içerir.";

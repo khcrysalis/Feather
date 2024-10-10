@@ -112,7 +112,7 @@
 
 // MARK: - SourcesViewController - Add Sources
 "SOURCES_VIEW_ADD_SOURCES_ALERT_TITLE" = "Ajouter une source";
-"SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "Ajouter une URL Altstore";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "Ajouter une URL AltStore";
 "SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_IMPORT_REPO" = "Importer les dépôts";
 "SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO" = "Exporter les dépôts";
 "SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO_ACTION_SUCCESS" = "Dépôts copiés dans le presse-papiers";
@@ -184,7 +184,7 @@
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_CELL_PPQCHECK_DESCRIPTION" = "PPQCheck est un moyen pour Apple de vérifier si l'application que vous ouvrez correspond à un autre identifiant bundle trouvé sur l'App Store. La vérification se fait la première fois que vous ouvrez l'application signée installée. Nous vous proposons une option pour éviter cela, cependant vous ne bénéficierez plus des notifications et autres fonctionnalités liées à l'identifiant par défaut.";
 
 // MARK: - AppSigningViewController -> AppSigningAdvancedViewController
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE" = "Apparence";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARANCE" = "Apparence";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION" = "Version minimum de l'app";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES" = "Propriétés";
 
@@ -265,7 +265,7 @@
 
 // MARK: - SettingsViewController -> DisplayViewController
 "DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_TINT_COLOR" = "Couleur d'accentuation";
-"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARENCE" = "Apparence de l'application";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARANCE" = "Apparence de l'application";
 
 "DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE" = "Sous-titre par défaut";
 "DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE_DESCRIPTION" = "Style par défaut pour Feather, masque la description localisée et n'inclut que le sous-titre.";
