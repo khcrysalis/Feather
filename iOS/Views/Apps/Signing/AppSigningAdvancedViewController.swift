@@ -95,6 +95,13 @@ class AppSigningAdvancedViewController: UITableViewController {
 		forceForceFullScreen.selectionStyle = .none
 		cellsForSection2.append(forceForceFullScreen)
 		
+		let forceLocalize = SwitchViewCell()
+		forceLocalize.textLabel?.text = "Force Localize"
+		forceLocalize.switchControl.addTarget(self, action: #selector(forceLocalized(_:)), for: .valueChanged)
+		forceLocalize.switchControl.isOn = appSigningViewController.forceTryToLocalize
+		forceLocalize.selectionStyle = .none
+		cellsForSection2.append(forceLocalize)
+		
 		let removeWatchPlaceHolder = SwitchViewCell()
 		removeWatchPlaceHolder.textLabel?.text = String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP")
 		removeWatchPlaceHolder.switchControl.addTarget(self, action: #selector(removePlaceHolderWatchExtension(_:)), for: .valueChanged)
@@ -183,5 +190,8 @@ class AppSigningAdvancedViewController: UITableViewController {
 	}
 	@objc private func removeProvisioningFile(_ sender: UISwitch) {
 		appSigningViewController.removeProvisioningFile = sender.isOn
+	}
+	@objc private func forceLocalized(_ sender: UISwitch) {
+		appSigningViewController.forceTryToLocalize = sender.isOn
 	}
 }

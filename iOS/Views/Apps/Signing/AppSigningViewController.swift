@@ -52,6 +52,7 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 	
 	var removeWatchPlaceHolder = true 
 	var removeProvisioningFile = true
+	var forceTryToLocalize = false
 	
 	var certs: Certificate?
     
@@ -167,7 +168,8 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 			forceiTunesFileSharing: forceiTunesFileSharing,
 			forceMinimumVersion: forceMinimumVersionString[forceMinimumVersion],
 			forceLightDarkAppearence: forceLightDarkAppearenceString[forceLightDarkAppearence],
-			removeProvisioningFile: removeProvisioningFile, 
+			forceTryToLocalize: forceTryToLocalize,
+			removeProvisioningFile: removeProvisioningFile,
 			removeWatchPlaceHolder: removeWatchPlaceHolder,
 			certificate: certs
 		), 
