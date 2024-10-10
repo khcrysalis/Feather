@@ -30,18 +30,18 @@
 // OK action
 "OK" = "Okay";
 // Continue action
-"CONTINUE" = "Fortsetzen";
+"CONTINUE" = "Fortfahren";
 // Import Action
-"IMPORT" = "Import";
+"IMPORT" = "Importieren";
 // Add Action
-"ADD" = "Add";
+"ADD" = "Hinzufügen";
 
 // MARK: - Alerts
 // Alert titles
 "ALERT_SUCCESS" = "Erfolg";
 "ALERT_TRACE" = "Alarm";
 "ALERT_ERROR" = "Fehler";
-"ALERT_CRITICAL" = "Kritisch";
+"ALERT_CRITICAL" = "Kritischer Fehler";
 
 // MARK: - Error messages
 // Installer Error Title
@@ -63,19 +63,19 @@
 // Welcome to Feather!!!!!!!!
 "ONBOARDING_WELCOMETITLE_1" = "Willkommen zu";
 // First feature inside of onboarding
-"ONBOARDING_CELL_1_TITLE" = "Sideload auf dem Gerät";
-"ONBOARDING_CELL_1_DESCRIPTION" = "Signierte Apps ohne Computer, alles von deinen Gerät aus erledigt.";
+"ONBOARDING_CELL_1_TITLE" = "Sideloading auf dem Gerät";
+"ONBOARDING_CELL_1_DESCRIPTION" = "Signierte Apps ohne Computer, alles von deinem Gerät aus.";
 // Second feature inside of onboarding
 "ONBOARDING_CELL_2_TITLE" = "Apps anpassen";
 "ONBOARDING_CELL_2_DESCRIPTION" = "Verwalte und passe deine Apps an deine Bedürfnisse an.";
 // Third feature inside of onboarding
 "ONBOARDING_CELL_3_TITLE" = "Und vieles mehr!";
-"ONBOARDING_CELL_3_DESCRIPTION" = "AltStore-Quellen, IPAs-Import, einfacher Zertifikatswechsel und vieles mehr.";
+"ONBOARDING_CELL_3_DESCRIPTION" = "AltStore-Quellen, IPA-Import, einfacher Zertifikatswechsel und vieles mehr.";
 // "Developed by Samara. Made for users who are passionate for sideloading and freedom. Many features included inside. Learn more..."
 "ONBOARDING_FOOTER" = "Entwickelt von Samara. Gemacht für Benutzer, die sich für Sideloading und Freiheit begeistern. Viele Funktionen sind enthalten.";
 "ONBOARDING_FOOTER_LINK" = "Lerne mehr...";
 // Continue button to exit onboarding
-"ONBOARDING_CONTINUE_BUTTON" = "Fortsetzen";
+"ONBOARDING_CONTINUE_BUTTON" = "Fortfahren";
 
 // MARK: - Tab area
 // Sources tab
@@ -87,13 +87,13 @@
 
 // MARK: - TransferPreview
 // Packaging application to get ready for install
-"TRANSFER_PREVIEW_PACKAGING" = "Packe...";
+"TRANSFER_PREVIEW_PACKAGING" = "Wird gepackt...";
 // Ready to install package
 "TRANSFER_PREVIEW_READY" = "Bereit zur Installation";
 // Opening manifest.plist for iOS
-"TRANSFER_PREVIEW_SENDING_MANIFEST" = "Manifest senden...";
+"TRANSFER_PREVIEW_SENDING_MANIFEST" = "Manifest wird gesendet...";
 // iOS is retrieving IPA file
-"TRANSFER_PREVIEW_SENDING_PAYLOAD" = "Payload senden...";
+"TRANSFER_PREVIEW_SENDING_PAYLOAD" = "Payload wird gesendet...";
 // Done transferring IPA file
 "TRANSFER_PREVIEW_DONE" = "Fertig";
 // Completed packaging so you can share
@@ -115,9 +115,9 @@
 "SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "Altstore-Quellen-URL hinzufügen";
 "SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_IMPORT_REPO" = "Importiere eine Quelle";
 "SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO" = "Exportiere eine Quelle";
-"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO_ACTION_SUCCESS" = "Quelle zur Zwischenablage kopiert";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO_ACTION_SUCCESS" = "Quelle in die Zwischenablage kopiert";
 //Footer Validation
-"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTSTARTED" = "Gebe eine URL zur Überprüfung ein.";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTSTARTED" = "Gib eine URL zur Überprüfung ein.";
 "SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTVALIDJSON" = "JSON ungültig, bitte überprüfe deine Eingabe.";
 "SOURCES_VIEW_ADD_SOURCES_FOOTER_VALID" = "Gültige JSON eingegeben.";
 
@@ -152,14 +152,14 @@
 //
 "APPS_INFORMATION_TITLE_DELETED_FILE" = "Gelöschte Datei";
 "APPS_INFORMATION_TITLE_DELETED_FILE_TITLE" = "Die Datei wurde gelöscht.";
-"APPS_INFORMATION_TITLE_DELETED_FILE_DESCRIPTION" = "Das ist ein nutzloser Eintrag, er hat keine Datei und Feather lässt es nicht installieren. Es wird empfohlen, dass du es löscht, indem du bei \"Apps\" zur Seite wischt.";
+"APPS_INFORMATION_TITLE_DELETED_FILE_DESCRIPTION" = "Dies ist ein nutzloser Eintrag, er hat keine Datei und Feather kann ihn nicht installieren. Am besten löscht du ihn, indem du ihn bei \"Apps\" zur Seite wischt.";
 // Application Section
 "APPS_INFORMATION_TITLE_NAME" = "Name";
 "APPS_INFORMATION_TITLE_VERSION" = "Version";
 "APPS_INFORMATION_TITLE_IDENTIFIER" = "Kennung";
 "APPS_INFORMATION_TITLE_SIZE" = "Größe";
 //
-"APPS_INFORMATION_TITLE_DATE_ADDED" = "Datum hinzugefügt";
+"APPS_INFORMATION_TITLE_DATE_ADDED" = "Hinzugefügt am";
 // Bundle Section
 "APPS_INFORMATION_TITLE_BUNDLE_NAME" = "Paketname";
 "APPS_INFORMATION_TITLE_BUNDLE_PATH" = "Paketpfad";
@@ -169,11 +169,11 @@
 
 // MARK: - AppSigningViewController
 "APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_CUSTOMIZATION" = "Anpassungen";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_SIGNING" = "Signing";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_SIGNING" = "Signierung";
 "APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_ADVANCED" = "Erweitert";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS" = "Tweaks hinzufügen";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED" = "Fortgeschritten";
-"APP_SIGNING_VIEW_CONTROLLER_START_SIGNING" = "Signierung starten";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS" = "Tweaks Hinzufügen";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED" = "Erweitert";
+"APP_SIGNING_VIEW_CONTROLLER_START_SIGNING" = "Signierung Starten";
 
 // MARK: - AppSigningViewController - No Certificates Alert
 "APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_TITLE" = "Fehler";
@@ -181,19 +181,19 @@
 
 // MARK: - AppSigningViewController -> AppSigningInputViewController
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_CELL_PPQCHECK" = "PPQCheck ist aktiviert";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_CELL_PPQCHECK_DESCRIPTION" = "PPQCheck ist eine Möglichkeit für Apple zu überprüfen, ob die App, die du öffnest, mit einer anderen BundleID übereinstimmt, die im App Store zu finden ist. Die Überprüfung erfolgt beim ersten Öffnen der signierten installierten Anwendung. Wir haben eine Option, dies zu vermeiden, aber du hast nicht mehr die Vorteile von Benachrichtigungen und dergleichen in Bezug auf die Standardkennung.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_CELL_PPQCHECK_DESCRIPTION" = "Mit PPQCheck kann Apple prüfen, ob eine von dir geöffnete App mit einer anderen im App Store gefundenen BundleID übereinstimmt. Die Überprüfung erfolgt beim ersten Öffnen der signierten installierten Anwendung. Es ist möglich, dies zu vermeiden, wodurch du jedoch Vorteile wie Benachrichtigungen und Ähnliches verlierst.";
 
 // MARK: - AppSigningViewController -> AppSigningAdvancedViewController
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE" = "Erscheinung";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION" = "Minimale App-Version";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE" = "Erscheinungsbild";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION" = "Mindest-App-Version";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES" = "Eigenschaften";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "Alle Plug-Ins entfernen";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "Alle Plug-ins entfernen";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES" = "UISupportedDevices entfernen";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME" = "URLScheme entfernen";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS" = "Durchsuchen von Dokumenten zulassen";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING" = "iTunes-Freigabe zulassen";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION" = "Pro Motion erzwingen";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION" = "ProMotion erzwingen";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "Vollbild erzwingen";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP" = "Platzhalter-Uhr-App löschen";
 
@@ -202,16 +202,16 @@
 
 // MARK: - LibraryViewController
 //Search Library placeholder
-"SETTINGS_VIEW_CONTROLLER_SEARCH_PLACEHOLDER" = "Suche Mediathek";
+"SETTINGS_VIEW_CONTROLLER_SEARCH_PLACEHOLDER" = "Mediathek durchsuchen";
 //Headers
 "LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS" = "Signierte Apps";
 "LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL" = "%@ signiert";
 "LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL_PLURAL" = "%@ signiert";
-"LIBRARY_VIEW_CONTROLLER_SECTION_BUTTON_IMPORT" = "Import";
+"LIBRARY_VIEW_CONTROLLER_SECTION_BUTTON_IMPORT" = "Importieren";
 "LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS" = "Heruntergeladene Apps";
 //Import Action Sheet
-"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_FILE" = "Import von Dateien";
-"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_URL" = "Import von URL";
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_FILE" = "Von Dateien importieren";
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_URL" = "Von URL importieren";
 
 // MARK: - SettingsViewController
 // Headers
@@ -220,7 +220,7 @@
 "SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING_SERVER" = "Signierungsserver";
 
 // Footers
-"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES" = "Wenn Probleme in Feather auftreten, melde dies bitte über die GitHub-Quelle. Wenn du ein Problem einreichst, stelle sicher, dass du alle Protokolle einreichst.";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES" = "Sollten Probleme in Feather auftreten, melde dies bitte über die GitHub-Repository. Wenn du ein Problem einreichst, stelle sicher, dass du alle Logs einreichst.";
 "SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS" = "Leider müssen Serverzertifikate aufgrund von Einschränkungen jedes Jahr neu verlängert werden, damit die lokalen Funktionen von Feather ordnungsgemäß funktionieren. Tippe auf diese Schaltfläche, um die aktuellsten Dateien aus unseren Quellen abzurufen.";
 "SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER" = "Standard-Server führt zu %@";
 
@@ -228,8 +228,8 @@
 // About Feather
 "SETTINGS_VIEW_CONTROLLER_CELL_ABOUT" = "Über %@";
 "SETTINGS_VIEW_CONTROLLER_CELL_SUBMIT_FEEDBACK" = "Feedback senden";
-"SETTINGS_VIEW_CONTROLLER_CELL_GITHUB" = "GitHub-Quellen";
-"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY" = "Bildschirm";
+"SETTINGS_VIEW_CONTROLLER_CELL_GITHUB" = "GitHub-Repository";
+"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY" = "Erscheinungsbild";
 "SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON" = "App-Icon";
 "SETTINGS_VIEW_CONTROLLER_CELL_CURRENT_CERTIFICATE_NOSELECTED" = "Keine Zertifikate ausgewählt";
 "SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES" = "Zertifikat hinzufügen";
@@ -247,7 +247,7 @@
 
 //
 "SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_TITLE" = "PPQCheck-Schutz";
-"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_DESCRIPTION" = "Diese Einstellung aktiviert den PPQCheck-Schutz, der jeder BundleID für die von dir geladenen Apps mit einer zufälligen Zeichenfolge voranstellt.\n\nDies soll verhindern, dass Apple dein Konto markiert, indem die von dir geladene App mit einer App aus dem App Store verknüpft wird.";
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_DESCRIPTION" = "Diese Einstellung aktiviert den PPQCheck-Schutz, der jeder BundleID der von dir geladenen Apps eine zufällige Zeichenfolge voranstellt.\n\nDadurch soll verhindert werden, dass Apple die Apps, die du lädst, mit Apps aus dem App Store verknüpfen kann, um einem Account-Flagging hervorzubeugen.";
 "SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_IDC" = "Ist mir egal";
 "SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_GTK" = "Gut zu wissen";
 
@@ -255,9 +255,9 @@
 "SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_IDENTIFIER" = "Zufällige Kennung ändern";
 
 // MARK: - SettingsViewController -> AboutViewController
-"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_CREDITS" = "Danksagung";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_CREDITS" = "Credits";
 "ABOUT_VIEW_CONTROLLER_SECTION_TITLE_DEVICE" = "Gerät";
-"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_ACKNOWLEDGEMENTS" = "Würdigungen";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_ACKNOWLEDGEMENTS" = "Danksagungen";
 
 
 "ABOUT_VIEW_CONTROLLER_CELL_DEVICE_VERSION" = "Geräteversion";
@@ -266,7 +266,7 @@
 
 // MARK: - SettingsViewController -> DisplayViewController
 "DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_TINT_COLOR" = "Tönungsfarbe";
-"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARENCE" = "App-Erscheinung";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARENCE" = "App-Erscheinungsbild";
 
 "DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE" = "Standard Untertitel";
 "DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE_DESCRIPTION" = "Standardstil für Feather, verbirgt lokalisierte Beschreibung und enthält nur Untertitel.";
@@ -307,9 +307,9 @@
 "CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_ENTER_PW" = "Passwort eingeben";
 "CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PW" = "Passwort";
 
-"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PROV" = "Importiere eine Provisioningsdatei, um sie auf deinen Gerät laden zu können.";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PROV" = "Importiere eine Provisioningsdatei, um auf dein Gerät laden zu können.";
 "CERT_IMPORTING_VIEWCONTROLLER_FOOTER_CERT" = "Importiere eine Datei, die ein gültiges Zertifikat enthält.";
-"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PASS" = "Gebe das Passwort ein, das mit dem privaten Schlüssel verknüpft ist und lasse es leer, wenn kein Passwort erforderlich ist.";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PASS" = "Gib das Passwort ein, das mit dem privaten Schlüssel verknüpft ist. Lasse es leer, wenn kein Passwort erforderlich ist.";
 
 // MARK: - SettingsViewController -> ResetViewController
 "RESET_VIEW_CONTROLLER_CLEAR_CACHE" = "Netzwerk-Cache löschen";
@@ -319,8 +319,8 @@
 "DONATION_TITLE" = "Spenden";
 "DONATION_DONATIONS" = "Spenden";
 
-"DONATION_CELL_1_TITLE" = "Geheime Quelle";
-"DONATION_CELL_1_DESCRIPTION" = "Erhalte Zugang zu unserer geheimen Quelle durch eine Spende, die dir Beta-Zugriff auf Feather bietet.";
+"DONATION_CELL_1_TITLE" = "Geheime Repository";
+"DONATION_CELL_1_DESCRIPTION" = "Erhalte durch eine Spende Zugang zu unserer geheimen Repository, die dir Beta-Zugriff auf Feather bietet.";
 
 "DONATION_CELL_2_TITLE" = "Zeige deine Unterstützung";
-"DONATION_CELL_2_DESCRIPTION" = "Zeige deine Unterstützung mit einer Spende! Wenn du nicht in der Lage bist zu spenden, verbreite eine Nachricht über Feather!";
+"DONATION_CELL_2_DESCRIPTION" = "Zeige deine Unterstützung mit einer Spende! Sollest du nicht in der Lage sein, zu spenden, kannst du auch einfach deinen Freunden über Feather erzählen!";
