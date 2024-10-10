@@ -57,7 +57,7 @@
 // Successfully resigned an application
 "SUCCESS_RESIGN" = "Erfolgreich signiert!";
 // Success message requiring user to restart app
-"SUCCESS_REQUIRES_RESTART" = "You must close the app for changes to take effect.";
+"SUCCESS_REQUIRES_RESTART" = "Du musst die App schließen, damit es in Kraft tritt.";
 
 // MARK: - Onboarding
 // Welcome to Feather!!!!!!!!
@@ -105,21 +105,21 @@
 // Add repo button
 "SOURCES_VIEW_CONTROLLER_ADD_SOURCES" = "Quelle hinzufügen";
 // Number of sources, i.e. "100 Quellen"
-"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES" = "%@ Quellen";
-"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES_PLURAL" = "%@ Quellens";
+"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES" = "%@ Quelle";
+"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES_PLURAL" = "%@ Quellen";
 // Search sources in search bar
 "SOURCES_VIEW_CONTROLLER_SEARCH_SOURCES" = "Quellen durchsuchen";
 
 // MARK: - SourcesViewController - Add Sources
 "SOURCES_VIEW_ADD_SOURCES_ALERT_TITLE" = "Quelle hinzufügen";
 "SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "Altstore-Quellen-URL hinzufügen";
-"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_IMPORT_REPO" = "Import Repositories";
-"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO" = "Export Repositories";
-"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO_ACTION_SUCCESS" = "Copied Repositories to Clipboard";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_IMPORT_REPO" = "Importiere eine Quelle";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO" = "Exportiere eine Quelle";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO_ACTION_SUCCESS" = "Quelle zur Zwischenablage kopiert";
 //Footer Validation
-"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTSTARTED" = "Enter a URL to start validation.";
-"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTVALIDJSON" = "Invalid JSON, please check your input.";
-"SOURCES_VIEW_ADD_SOURCES_FOOTER_VALID" = "Valid JSON entered.";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTSTARTED" = "Gebe eine URL zur Überprüfung ein.";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTVALIDJSON" = "JSON ungültig, bitte überprüfe deine Eingabe.";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_VALID" = "Gültige JSON eingegeben.";
 
 // MARK: - SourcesViewController -> SourcesAppViewController
 // Number of apps, i.e. "444 Apps"
@@ -138,10 +138,10 @@
 // Available Versions Alert Title
 "SOURCES_CELLS_ACTIONS_HOLD_AVAILABLE_VERSIONS" = "Verfügbare Versionen";
 //Filter Menu
-"SOURCES_CELLS_ACTIONS_FILTER_TITLE" = "Filter by";
-"SOURCES_CELLS_ACTIONS_FILTER_BY_DEFAULT" = "Default";
+"SOURCES_CELLS_ACTIONS_FILTER_TITLE" = "Filtern nach";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_DEFAULT" = "Standard";
 "SOURCES_CELLS_ACTIONS_FILTER_BY_NAME" = "Name";
-"SOURCES_CELLS_ACTIONS_FILTER_BY_DATE" = "Date";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_DATE" = "Datum";
 
 // MARK: - AppsInformationViewController
 // Application Section
@@ -168,9 +168,9 @@
 "APPS_INFORMATION_TITLE_OPEN_IN_FILES" = "In Dateien öffnen";
 
 // MARK: - AppSigningViewController
-"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_CUSTOMIZATION" = "Customization";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_CUSTOMIZATION" = "Anpassungen";
 "APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_SIGNING" = "Signing";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_ADVANCED" = "Advanced";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_ADVANCED" = "Erweitert";
 "APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS" = "Tweaks hinzufügen";
 "APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED" = "Fortgeschritten";
 "APP_SIGNING_VIEW_CONTROLLER_START_SIGNING" = "Signierung starten";
@@ -188,7 +188,7 @@
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION" = "Minimale App-Version";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES" = "Eigenschaften";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "Alle PlugIns entfernen";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "Alle Plug-Ins entfernen";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES" = "UISupportedDevices entfernen";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME" = "URLScheme entfernen";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS" = "Durchsuchen von Dokumenten zulassen";
@@ -202,16 +202,16 @@
 
 // MARK: - LibraryViewController
 //Search Library placeholder
-"SETTINGS_VIEW_CONTROLLER_SEARCH_PLACEHOLDER" = "Search Library";
+"SETTINGS_VIEW_CONTROLLER_SEARCH_PLACEHOLDER" = "Suche Mediathek";
 //Headers
-"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS" = "Signed Apps";
-"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL" = "%@ Signed";
-"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL_PLURAL" = "%@ Signed";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS" = "Signierte Apps";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL" = "%@ signiert";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL_PLURAL" = "%@ signiert";
 "LIBRARY_VIEW_CONTROLLER_SECTION_BUTTON_IMPORT" = "Import";
-"LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS" = "Downloaded Apps";
+"LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS" = "Heruntergeladene Apps";
 //Import Action Sheet
-"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_FILE" = "Import from Files";
-"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_URL" = "Import from URL";
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_FILE" = "Import von Dateien";
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_URL" = "Import von URL";
 
 // MARK: - SettingsViewController
 // Headers
@@ -222,7 +222,7 @@
 // Footers
 "SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES" = "Wenn Probleme in Feather auftreten, melde dies bitte über die GitHub-Quelle. Wenn du ein Problem einreichst, stelle sicher, dass du alle Protokolle einreichst.";
 "SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS" = "Leider müssen Serverzertifikate aufgrund von Einschränkungen jedes Jahr neu verlängert werden, damit die lokalen Funktionen von Feather ordnungsgemäß funktionieren. Tippe auf diese Schaltfläche, um die aktuellsten Dateien aus unseren Quellen abzurufen.";
-"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER" = "Default server goes to %@";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER" = "Standard-Server führt zu %@";
 
 // Cell Titles
 // About Feather
@@ -268,13 +268,13 @@
 "DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_TINT_COLOR" = "Tönungsfarbe";
 "DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARENCE" = "App-Erscheinung";
 
-"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE" = "Default Subtitle";
+"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE" = "Standard Untertitel";
 "DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE_DESCRIPTION" = "Standardstil für Feather, verbirgt lokalisierte Beschreibung und enthält nur Untertitel.";
 
-"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE" = "Localized Subtitle";
+"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE" = "Lokalisierte Untertitel";
 "DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE_DESCRIPTION" = "Untertitel durch App-Beschreibung ersetzen.";
 
-"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION" = "Big Description";
+"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION" = "Große Beschreibung";
 "DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION_DESCRIPTION" = "Screenshots durch die App-Beschreibung ersetzen.";
 
 // MARK: - SettingsViewController -> CertificatesViewController
