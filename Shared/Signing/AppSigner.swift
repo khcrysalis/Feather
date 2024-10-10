@@ -30,8 +30,10 @@ struct AppSigningOptions {
 	var forceForceFullScreen: Bool?
 	var forceiTunesFileSharing: Bool?
 	var forceMinimumVersion: String?
+  
 	var forceLightDarkAppearance: String?
-	
+	var forceTryToLocalize: Bool?
+
 	var removeProvisioningFile: Bool?
 	var removeWatchPlaceHolder: Bool?
     
@@ -296,14 +298,15 @@ func updateInfoPlist(infoDict: NSMutableDictionary, options: AppSigningOptions, 
 		Debug.shared.log(message: "updateInfoPlist.updateicon: Does not include an icon, skipping!")
 	}
 	
-	if let displayName = infoDict.value(forKey: "CFBundleDisplayName") as? String {
-		if displayName != options.name {
-			try updateLocalizedInfoPlist(in: app, newDisplayName: options.name!)
+	if options.forceTryToLocalize! {
+		if let displayName = infoDict.value(forKey: "CFBundleDisplayName") as? String {
+			if displayName != options.name {
+				updateLocalizedInfoPlist(in: app, newDisplayName: options.name!)
+			}
+		} else {
+			Debug.shared.log(message: "updateInfoPlist.displayName: CFBundleDisplayName not found, skipping!")
 		}
-	} else {
-		Debug.shared.log(message: "updateInfoPlist.displayName: CFBundleDisplayName not found, skipping!")
 	}
-
 
 	if options.forceFileSharing! { infoDict.setObject(true, forKey: "UISupportsDocumentBrowser" as NSCopying) }
 	if options.forceiTunesFileSharing! { infoDict.setObject(true, forKey: "UIFileSharingEnabled" as NSCopying) }
@@ -316,28 +319,32 @@ func updateInfoPlist(infoDict: NSMutableDictionary, options: AppSigningOptions, 
 	try infoDict.write(to: app.appendingPathComponent("Info.plist"))
 }
 
-func updateLocalizedInfoPlist(in appDirectory: URL, newDisplayName: String) throws {
+func updateLocalizedInfoPlist(in appDirectory: URL, newDisplayName: String) {
 	let fileManager = FileManager.default
-	let contents = try fileManager.contentsOfDirectory(at: appDirectory, includingPropertiesForKeys: nil)
-	let localizationBundles = contents.filter { $0.pathExtension == "lproj" }
-	
-	guard !localizationBundles.isEmpty else {
-		Debug.shared.log(message: "No .lproj directories found in \(appDirectory.path), skipping!")
-		return
-	}
-	
-	for localizationBundle in localizationBundles {
-		let infoPlistStringsURL = localizationBundle.appendingPathComponent("InfoPlist.strings")
+	do {
+		let contents = try fileManager.contentsOfDirectory(at: appDirectory, includingPropertiesForKeys: nil)
+		let localizationBundles = contents.filter { $0.pathExtension == "lproj" }
 		
-		if fileManager.fileExists(atPath: infoPlistStringsURL.path) {
-			var localizedStrings = try String(contentsOf: infoPlistStringsURL, encoding: .utf8)
+		guard !localizationBundles.isEmpty else {
+			Debug.shared.log(message: "No .lproj directories found in \(appDirectory.path), skipping!")
+			return
+		}
+		
+		for localizationBundle in localizationBundles {
+			let infoPlistStringsURL = localizationBundle.appendingPathComponent("InfoPlist.strings")
+			
+			if fileManager.fileExists(atPath: infoPlistStringsURL.path) {
+				var localizedStrings = try String(contentsOf: infoPlistStringsURL, encoding: .utf8)
 				let localizedDict = NSDictionary(contentsOf: infoPlistStringsURL) as! [String: String]
-
-			if localizedDict["CFBundleDisplayName"] != newDisplayName {
-				localizedStrings = localizedStrings.replacingOccurrences(of: localizedDict["CFBundleDisplayName"] ?? "", with: newDisplayName)
-				try localizedStrings.write(to: infoPlistStringsURL, atomically: true, encoding: .utf8)
-				Debug.shared.log(message: "Updated CFBundleDisplayName in \(infoPlistStringsURL.path)")
+				
+				if localizedDict["CFBundleDisplayName"] != newDisplayName {
+					localizedStrings = localizedStrings.replacingOccurrences(of: localizedDict["CFBundleDisplayName"] ?? "", with: newDisplayName)
+					try localizedStrings.write(to: infoPlistStringsURL, atomically: true, encoding: .utf8)
+					Debug.shared.log(message: "Updated CFBundleDisplayName in \(infoPlistStringsURL.path)")
+				}
 			}
 		}
+	} catch {
+		Debug.shared.log(message: "Unable to localize, skipping!", type: .debug)
 	}
 }
