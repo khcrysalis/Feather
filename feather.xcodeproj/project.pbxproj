@@ -115,6 +115,7 @@
 		33E5A5A72CC86F7300532930 /* VariableBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5A5A62CC86F7300532930 /* VariableBlurView.swift */; };
 		33E5A5AA2CC88ABF00532930 /* ResetDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5A5A92CC88ABF00532930 /* ResetDataClass.swift */; };
 		33E5A5AC2CC88BF500532930 /* ResetAlertOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5A5AB2CC88BF500532930 /* ResetAlertOptions.swift */; };
+		33E5A5AE2CC8A41E00532930 /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5A5AD2CC8A41E00532930 /* LogsViewController.swift */; };
 		33EEDAA42C5D9358009089DC /* CoreDataManager+DownloadedApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */; };
 		AA280D952C76AB7400CAC838 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA280D942C76AB7400CAC838 /* MobileCoreServices.framework */; };
 		AA280D972C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA280D962C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift */; };
@@ -249,6 +250,7 @@
 		33E5A5A62CC86F7300532930 /* VariableBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariableBlurView.swift; sourceTree = "<group>"; };
 		33E5A5A92CC88ABF00532930 /* ResetDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetDataClass.swift; sourceTree = "<group>"; };
 		33E5A5AB2CC88BF500532930 /* ResetAlertOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetAlertOptions.swift; sourceTree = "<group>"; };
+		33E5A5AD2CC8A41E00532930 /* LogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsViewController.swift; sourceTree = "<group>"; };
 		33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+DownloadedApps.swift"; sourceTree = "<group>"; };
 		392517742CAFF3CD001F15F4 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		88DE4CC52CA5A13200D68F1E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -536,6 +538,7 @@
 				33E5A5A32CC86C7D00532930 /* Signing Options */,
 				33E5A5A12CC85CAA00532930 /* ServerOptionsViewController.swift */,
 				332476E12C3E874F008C8EF0 /* Reset */,
+				33E5A5AD2CC8A41E00532930 /* LogsViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -984,6 +987,7 @@
 				33BDD0B62C785F5F00AF6169 /* Server+TLS.swift in Sources */,
 				33BDD0B82C785F9500AF6169 /* Server+Compute.swift in Sources */,
 				33E3B6722C8151ED0075E3A2 /* AppSigningDylibViewController.swift in Sources */,
+				33E5A5AE2CC8A41E00532930 /* LogsViewController.swift in Sources */,
 				339BDAE32BF95DC0007009D9 /* SectionIcons.swift in Sources */,
 				33E5A5AC2CC88BF500532930 /* ResetAlertOptions.swift in Sources */,
 				331616912C786B9B00894427 /* TransferPreview.swift in Sources */,

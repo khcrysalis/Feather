@@ -88,11 +88,6 @@ class AppDownload: NSObject {
 			return
 		}
 
-		// Define a progress object observer
-		let progressObserver = progress.observe(\.fractionCompleted) { progress, _ in
-			Debug.shared.log(message: "Unzipping progress: \(progress.fractionCompleted)")
-		}
-
 		do {
 			try fileManager.unzipItem(at: fileURL, to: destinationURL, progress: progress)
 			

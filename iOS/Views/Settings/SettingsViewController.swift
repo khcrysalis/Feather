@@ -239,6 +239,10 @@ extension SettingsViewController {
 			let l = ServerOptionsViewController()
 			navigationController?.pushViewController(l, animated: true)
 			
+		case "View Logs":
+			let l = LogsViewController()
+			navigationController?.pushViewController(l, animated: true)
+			
 		case "Open Apps Folder":
 			openDirectory(named: "Apps")
 		case "Open Certificates Folder":

@@ -47,18 +47,18 @@ class AboutViewController: UITableViewController {
 		self.tableView.delegate = self
 	}
 	
-        @objc func shareButtonTapped() {
-            let shareText = "Feather - https://github.com/khcrysalis/feather"
-            let activityViewController = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
-            
-            if let popoverController = activityViewController.popoverPresentationController {
-                popoverController.sourceView = self.view
-                popoverController.sourceRect = self.view.bounds
-                popoverController.permittedArrowDirections = []
-            }
-            
-            present(activityViewController, animated: true, completion: nil)
-        }
+	@objc func shareButtonTapped() {
+		let shareText = "Feather - https://github.com/khcrysalis/feather"
+		let activityViewController = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
+		
+		if let popoverController = activityViewController.popoverPresentationController {
+			popoverController.sourceView = self.view
+			popoverController.sourceRect = self.view.bounds
+			popoverController.permittedArrowDirections = []
+		}
+		
+		present(activityViewController, animated: true, completion: nil)
+	}
 	
 	fileprivate func setupNavigation() {
 		self.title = "About"

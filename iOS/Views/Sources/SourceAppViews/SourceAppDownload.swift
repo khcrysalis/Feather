@@ -32,7 +32,6 @@ extension SourceAppViewController: DownloadDelegate {
 
 	
 	func updateDownloadProgress(progress: Double, uuid: String) {
-		Debug.shared.log(message: "\(progress)")
 		downloadTaskManager.updateTask(uuid: uuid, state: .inProgress(progress: progress))
 	}
 }
