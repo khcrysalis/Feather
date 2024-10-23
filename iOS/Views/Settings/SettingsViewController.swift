@@ -26,6 +26,7 @@ class SettingsViewController: UITableViewController {
 			"Language",
 		],
 		[
+			"Current Certificate",
 			"Certificates",
 			"Signing Options",
 			"Server Options",
@@ -149,6 +150,17 @@ extension SettingsViewController {
 			cell.setAccessoryIcon(with: "character.bubble")
 			cell.selectionStyle = .default
 			
+		case "Current Certificate":
+			if let hasGotCert = CoreDataManager.shared.getCurrentCertificate() {
+				let cell = CertificateViewTableViewCell()
+				cell.configure(with: hasGotCert, isSelected: false)
+				cell.selectionStyle = .none
+				return cell
+			} else {
+				cell.textLabel?.text = String.localized("SETTINGS_VIEW_CONTROLLER_CELL_CURRENT_CERTIFICATE_NOSELECTED")
+				cell.textLabel?.textColor = .secondaryLabel
+				cell.selectionStyle = .none
+			}
 		case "Certificates":
 			cell.setAccessoryIcon(with: "rectangle.dashed.and.paperclip")
 			cell.selectionStyle = .default
