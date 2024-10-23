@@ -56,8 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 		Debug.shared.log(message: "Model: \(UIDevice.current.model)")
 		Debug.shared.log(message: "Feather Version: \(logAppVersionInfo())\n")
 		
-		Preferences.beta = false
-
 		return true
 	}
 	
