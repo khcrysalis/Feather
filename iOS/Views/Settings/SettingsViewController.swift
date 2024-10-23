@@ -109,8 +109,13 @@ extension SettingsViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+		if Preferences.beta && section == 0 {
+			return String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES")
+		} else if !Preferences.beta && section == 1 {
+			return String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES")
+		}
+		
 		switch section {
-		case 1: return String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES")
 		case sectionTitles.count - 1: return "Feather \(AppDelegate().logAppVersionInfo()) • iOS \(UIDevice.current.systemVersion)"
 		default:
 			return nil
