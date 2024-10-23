@@ -24,7 +24,6 @@
 		332476EA2C3E905D008C8EF0 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476E92C3E905D008C8EF0 /* AboutViewController.swift */; };
 		332476ED2C3E92BC008C8EF0 /* DisplayCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476EB2C3E92BC008C8EF0 /* DisplayCollectionTableViewCell.swift */; };
 		332476EE2C3E92BC008C8EF0 /* DisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476EC2C3E92BC008C8EF0 /* DisplayViewController.swift */; };
-		332476F02C3E95F3008C8EF0 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476EF2C3E95F3008C8EF0 /* ResetViewController.swift */; };
 		332AE3C02C097F180052F24A /* Feather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 332AE3BE2C097F180052F24A /* Feather.xcdatamodeld */; };
 		333912A02BF9816B00E72360 /* CertificateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3339129F2BF9816B00E72360 /* CertificateModel.swift */; };
 		33570F612C32B80E008CB560 /* AppsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F602C32B80E008CB560 /* AppsTableViewCell.swift */; };
@@ -155,7 +154,6 @@
 		332476E92C3E905D008C8EF0 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		332476EB2C3E92BC008C8EF0 /* DisplayCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		332476EC2C3E92BC008C8EF0 /* DisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayViewController.swift; sourceTree = "<group>"; };
-		332476EF2C3E95F3008C8EF0 /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 		332AE3BF2C097F180052F24A /* Feather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Feather.xcdatamodel; sourceTree = "<group>"; };
 		3339129F2BF9816B00E72360 /* CertificateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateModel.swift; sourceTree = "<group>"; };
 		33570F602C32B80E008CB560 /* AppsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsTableViewCell.swift; sourceTree = "<group>"; };
@@ -323,7 +321,6 @@
 		332476E12C3E874F008C8EF0 /* Reset */ = {
 			isa = PBXGroup;
 			children = (
-				332476EF2C3E95F3008C8EF0 /* ResetViewController.swift */,
 				33E5A5A92CC88ABF00532930 /* ResetDataClass.swift */,
 				33E5A5AB2CC88BF500532930 /* ResetAlertOptions.swift */,
 			);
@@ -907,7 +904,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				332476F02C3E95F3008C8EF0 /* ResetViewController.swift in Sources */,
 				33BF31672C7C05840087F3D2 /* Foundation.swift in Sources */,
 				D0651C372BFEEA4B00D40829 /* openssl.cpp in Sources */,
 				D0651C1A2BFEE97F00D40829 /* base64.cpp in Sources */,
