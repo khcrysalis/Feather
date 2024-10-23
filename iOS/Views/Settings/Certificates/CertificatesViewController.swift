@@ -28,7 +28,7 @@ class CertificatesViewController: UITableViewController {
 	}
 	
 	deinit {
-		NotificationCenter.default.removeObserver(self, name: Notification.Name("t"), object: nil)
+		NotificationCenter.default.removeObserver(self, name: Notification.Name("cfetch"), object: nil)
 	}
 	
 	fileprivate func setupViews() {
@@ -46,7 +46,7 @@ class CertificatesViewController: UITableViewController {
 	}
 	
 	@objc func addCert() {
-		let viewController = CertImportingVC()
+		let viewController = CertImportingViewController()
 		let navigationController = UINavigationController(rootViewController: viewController)
 		
 		if #available(iOS 15.0, *) {
@@ -58,7 +58,31 @@ class CertificatesViewController: UITableViewController {
 		self.present(navigationController, animated: true)
 	}
 }
+
 extension CertificatesViewController {
+	override func numberOfSections(in tableView: UITableView) -> Int {
+		return 2
+	}
+	
+	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		switch section {
+		case 0: return 40
+		default: return 0
+		}
+	}
+	
+	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		var title = ""
+		
+		switch section {
+		case 0: title = "Add Certificate"
+		default: break
+		}
+		
+		let headerView = InsetGroupedSectionHeader(title: title)
+		return headerView
+	}
+	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		switch section {
 		case 0: return 1
@@ -67,67 +91,71 @@ extension CertificatesViewController {
 		}
 	}
 	
-	override func numberOfSections(in tableView: UITableView) -> Int { return 2 }
-	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { return 0 }
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		if indexPath.section == 0 {
+		let reuseIdentifier = "Cell"
+		var cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
+		
+		switch indexPath.section {
+		case 0:
 			let cell = tableView.dequeueReusableCell(withIdentifier: "AddCell", for: indexPath) as! CertificateViewAddTableViewCell
-			
-			cell.configure(with: String.localized("CERTIFICATES_VIEW_CONTROLLER_CELL_ADD"), description: String.localized("CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_DESCRIPTION"))
-			
+			cell.configure(with: "plus")
 			cell.selectionStyle = .none
 			return cell
-		} else {
+			
+		case 1:
 			let cell = tableView.dequeueReusableCell(withIdentifier: "CertificateCell", for: indexPath) as! CertificateViewTableViewCell
 			let certificate = certs![indexPath.row]
-			cell.configure(with: certificate, isSelected: Preferences.selectedCert == indexPath.row)
-			cell.selectionStyle = .none
+			
+			cell.configure(
+				with: certificate,
+				isSelected: Preferences.selectedCert == indexPath.row
+			)
+			
 			return cell
+		default:
+			break
 		}
+		
+		return cell
 	}
 	
 	override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-		if indexPath.section == 0 {
-			return nil
-		}
 		
-		let source = certs![indexPath.row]
-		
-		let configuration = UIContextMenuConfiguration(identifier: nil, actionProvider: { _ in
-			return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [
-				UIAction(title: String.localized("DELETE"), image: UIImage(systemName: "trash"), attributes: .destructive, handler: {_ in
-					if Preferences.selectedCert != indexPath.row {
-						do {
-							CoreDataManager.shared.deleteAllCertificateContent(for: source)
-							self.certs?.remove(at: indexPath.row)
-							tableView.deleteRows(at: [indexPath], with: .automatic)
+		switch indexPath.section {
+		case 1:
+			let source = certs![indexPath.row]
+			
+			let configuration = UIContextMenuConfiguration(identifier: nil, actionProvider: { _ in
+				return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [
+					UIAction(title: String.localized("DELETE"), image: UIImage(systemName: "trash"), attributes: .destructive, handler: {_ in
+						if Preferences.selectedCert != indexPath.row {
+							do {
+								CoreDataManager.shared.deleteAllCertificateContent(for: source)
+								self.certs?.remove(at: indexPath.row)
+								tableView.deleteRows(at: [indexPath], with: .automatic)
+							}
+						} else {
+							DispatchQueue.main.async {
+								let alert = UIAlertController(title: String.localized("CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_TITLE"), message: String.localized("CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_DESCRIPTION"), preferredStyle: UIAlertController.Style.alert)
+								alert.addAction(UIAlertAction(title: String.localized("LAME"), style: UIAlertAction.Style.default, handler: nil))
+								self.present(alert, animated: true, completion: nil)
+							}
 						}
-					} else {
-						DispatchQueue.main.async {
-							let alert = UIAlertController(title: String.localized("CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_TITLE"), message: String.localized("CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_DESCRIPTION"), preferredStyle: UIAlertController.Style.alert)
-							alert.addAction(UIAlertAction(title: String.localized("LAME"), style: UIAlertAction.Style.default, handler: nil))
-							self.present(alert, animated: true, completion: nil)
-						}
-					}
-				})
-			])
-		})
-		return configuration
-	}
-	
-	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-		switch section {
-		case 0:
-			return String.localized("CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_FOOTER")
+					})
+				])
+			})
+			
+			return configuration
 		default:
 			return nil
 		}
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		if indexPath.section == 0 {
+		switch indexPath.section {
+		case 0:
 			addCert()
-		} else {
+		case 1:
 			let previousSelectedCert = Preferences.selectedCert
 			
 			Preferences.selectedCert = indexPath.row
@@ -139,16 +167,23 @@ extension CertificatesViewController {
 			
 			tableView.reloadRows(at: indexPathsToReload, with: .fade)
 			tableView.deselectRow(at: indexPath, animated: true)
+			tableView.reloadSections(IndexSet([0]), with: .automatic)
+		default:
+			break
 		}
 	}
 }
 
 extension CertificatesViewController {
-	@objc func afetch() { self.fetchSources() }
+	@objc func afetch() {
+		self.fetchSources()
+	}
 	func fetchSources() {
 		do {
 			self.certs = CoreDataManager.shared.getDatedCertificate()
-			DispatchQueue.main.async { self.tableView.reloadData() }
+			DispatchQueue.main.async {
+				self.tableView.reloadData()
+			}
 		}
 	}
 }

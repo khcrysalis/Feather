@@ -55,6 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 		Debug.shared.log(message: "Name: \(UIDevice.current.name)")
 		Debug.shared.log(message: "Model: \(UIDevice.current.model)")
 		Debug.shared.log(message: "Feather Version: \(logAppVersionInfo())\n")
+		
+		Preferences.beta = false
 
 		return true
 	}
@@ -225,10 +227,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 		}
 	}
 	
-	func logAppVersionInfo() -> String {
+	public func logAppVersionInfo() -> String {
 		if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
 		   let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
-			return "App Version: \(version), Build Number: \(build)"
+			return "App Version: \(version)"
 		}
 		return ""
 	}

@@ -11,18 +11,14 @@ import UIKit
 import CoreData
 import UniformTypeIdentifiers
 
-class AppSigningViewController: UITableViewController, UINavigationControllerDelegate {
+class AppSigningViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+	var tableView: UITableView!
+	
     var appsViewController: LibraryViewController
 	var largeButton = ActivityIndicatorButton()
 	var iconCell = IconImageViewCell()
 	
-	private let blurView: UIView = {
-		let view = UIView()
-		view.backgroundColor = .clear
-		view.translatesAutoresizingMaskIntoConstraints = false
-		return view
-	}()
-
+	private var variableBlurView: UIVariableBlurView?
 
     var toInject: [URL] = []
 	var removeInjectPaths: [String] = []
@@ -59,7 +55,7 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
     init(app: NSManagedObject, appsViewController: LibraryViewController) {
         self.appsViewController = appsViewController
         self.app = app
-        super.init(style: .insetGrouped)
+		super.init(nibName: nil, bundle: nil)
 		
 		if let hasGotCert = CoreDataManager.shared.getCurrentCertificate() {
 			self.certs = hasGotCert
@@ -91,15 +87,8 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
     }
     
     override func viewDidLoad() {
-		let logoImageView = UIImageView(image: UIImage(named: "feather_glyph"))
-		logoImageView.contentMode = .scaleAspectFit
-		navigationItem.titleView = logoImageView
-		self.navigationController?.navigationBar.prefersLargeTitles = false
-        tableView.register(TweakLibraryViewCell.self, forCellReuseIdentifier: "TweakLibraryViewCell")
-        tableView.register(SwitchViewCell.self, forCellReuseIdentifier: "SwitchViewCell")
-        tableView.register(ActivityIndicatorViewCell.self, forCellReuseIdentifier: "ActivityIndicatorViewCell")
-		self.isModalInPresentation = true
-		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: String.localized("DISMISS"), style: .done, target: self, action: #selector(closeSheet))
+		setupViews()
+		setupNavigation()
 		setupToolbar()
 		
 		if (certs == nil) {
@@ -120,33 +109,59 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 		}
 	}
 	
-	private func setupToolbar() {
+	fileprivate func setupViews() {
+		self.tableView = UITableView(frame: .zero, style: .insetGrouped)
+		self.tableView.translatesAutoresizingMaskIntoConstraints = false
+		self.tableView.dataSource = self
+		self.tableView.delegate = self
+		
+		tableView.register(TweakLibraryViewCell.self, forCellReuseIdentifier: "TweakLibraryViewCell")
+		tableView.register(SwitchViewCell.self, forCellReuseIdentifier: "SwitchViewCell")
+		tableView.register(ActivityIndicatorViewCell.self, forCellReuseIdentifier: "ActivityIndicatorViewCell")
+		
+		self.view.addSubview(tableView)
+		self.tableView.constraintCompletely(to: view)
+	}
+	
+	fileprivate func setupNavigation() {
+		let logoImageView = UIImageView(image: UIImage(named: "feather_glyph"))
+		logoImageView.contentMode = .scaleAspectFit
+		navigationItem.titleView = logoImageView
+		self.navigationController?.navigationBar.prefersLargeTitles = false
+		
+		self.isModalInPresentation = true
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: String.localized("DISMISS"), style: .done, target: self, action: #selector(closeSheet))
+	}
+	
+	fileprivate func setupToolbar() {
 		largeButton.translatesAutoresizingMaskIntoConstraints = false
 		largeButton.addTarget(self, action: #selector(startSign), for: .touchUpInside)
 		
-		view.addSubview(blurView)
-		blurView.addSubview(largeButton)
+		let gradientMask = VariableBlurViewConstants.defaultGradientMask
+		variableBlurView = UIVariableBlurView(frame: .zero)
+		variableBlurView?.gradientMask = gradientMask
+		variableBlurView?.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+		variableBlurView?.translatesAutoresizingMaskIntoConstraints = false
+		
+		view.addSubview(variableBlurView!)
+		view.addSubview(largeButton)
 		
 		NSLayoutConstraint.activate([
-			blurView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-			blurView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-			blurView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-			blurView.heightAnchor.constraint(equalToConstant: 80)
-		])
-		
-		NSLayoutConstraint.activate([
-			largeButton.leadingAnchor.constraint(equalTo: blurView.leadingAnchor, constant: 18),
-			largeButton.trailingAnchor.constraint(equalTo: blurView.trailingAnchor, constant: -18),
-			largeButton.centerYAnchor.constraint(equalTo: blurView.centerYAnchor),
+			variableBlurView!.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+			variableBlurView!.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+			variableBlurView!.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+			variableBlurView!.heightAnchor.constraint(equalToConstant: 90),
+			
+			largeButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 17),
+			largeButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -17),
+			largeButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -17),
 			largeButton.heightAnchor.constraint(equalToConstant: 50)
 		])
-		blurView.layer.zPosition = 10
+		
+		variableBlurView?.layer.zPosition = 11
 		largeButton.layer.zPosition = 12
-
 	}
 
-
-	
 	@objc func startSign() {
 		self.navigationItem.leftBarButtonItem = nil
 		signing = true
@@ -196,11 +211,11 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 		dismiss(animated: true, completion: nil)
 	}
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 5;
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch(section) {
         case 0:
             return 4;
@@ -215,20 +230,9 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
         }
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        /*if (indexPath.section == 3) {
-            if (indexPath.row == 0) {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchViewCell", for: indexPath) as! SwitchViewCell
-                cell.textLabel?.text = "Remove all PlugIns"
-                cell.switchControl.isOn = removePlugins
-                cell.switchControl.addTarget(self, action: #selector(removePluginsToggled(_:)), for: .valueChanged)
-                return cell
-            }
-        }*/
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "Cell")
         cell.accessoryType = .none
-        cell.selectionStyle = .none
         cell.textLabel?.textColor = .label
         cell.selectionStyle = .gray
         
@@ -272,7 +276,6 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 			cell.textLabel?.text = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS")
 			let badgeView = BadgeView(frame: CGRect(x: 0, y: 0, width: 60, height: 20))
 			cell.accessoryView = badgeView
-
             break
 		case (2, 1):
 			cell.textLabel?.text = "Remove dylibs"
@@ -289,11 +292,10 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.item) {
 		case (0, 0):
 			importAppIconFile()
-			tableView.deselectRow(at: indexPath, animated: true)
 		case (0, 1):
 			navigationController?.pushViewController(AppSigningInputViewController(appSigningViewController: self, initialValue: self.name, valueToSaveTo: "name", indexPath: indexPath), animated: true)
 		case (0, 2):
@@ -309,9 +311,10 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
         default:
             break
         }
+		tableView.deselectRow(at: indexPath, animated: true)
     }
 	
-	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		return [
 			40,
 			40,
@@ -321,7 +324,7 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 		][section]
 	}
 	
-	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		
 		let titles = [
 			String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_CUSTOMIZATION"),
@@ -364,7 +367,7 @@ class AppSigningViewController: UITableViewController, UINavigationControllerDel
 	}
 }
 // MARK: - UIDocumentPickerDelegate
-extension AppSigningViewController: UIDocumentPickerDelegate & UIImagePickerControllerDelegate {
+extension AppSigningViewController: UIDocumentPickerDelegate & UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 	func importAppIconFile() {
 		let actionSheet = UIAlertController(title: "Select App Icon", message: nil, preferredStyle: .actionSheet)
 		

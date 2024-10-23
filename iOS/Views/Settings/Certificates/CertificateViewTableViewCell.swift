@@ -191,8 +191,8 @@ class CertificateViewAddTableViewCell: UITableViewCell {
 			
 			iconImageView.centerXAnchor.constraint(equalTo: roundedBackgroundView.centerXAnchor),
 			iconImageView.centerYAnchor.constraint(equalTo: roundedBackgroundView.centerYAnchor),
-			iconImageView.widthAnchor.constraint(equalToConstant: 24),
-			iconImageView.heightAnchor.constraint(equalToConstant: 24),
+			iconImageView.widthAnchor.constraint(equalToConstant: 20),
+			iconImageView.heightAnchor.constraint(equalToConstant: 20),
 			
 			titleLabel.centerXAnchor.constraint(equalTo: roundedBackgroundView.centerXAnchor),
 			titleLabel.topAnchor.constraint(equalTo: roundedBackgroundView.topAnchor, constant: 30),

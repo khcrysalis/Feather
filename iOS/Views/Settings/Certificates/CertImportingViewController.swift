@@ -1,5 +1,5 @@
 //
-//  CertImportingVC.swift
+//  CertImportingViewController.swift
 //  feather
 //
 //  Created by samara on 7/13/24.
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import UniformTypeIdentifiers
 
-class CertImportingVC: UITableViewController {
+class CertImportingViewController: UITableViewController {
 		
 	lazy var saveButton = UIBarButtonItem(title: String.localized("SAVE"), style: .plain, target: self, action: #selector(saveAction))
 	private var passwordTextField: UITextField?
@@ -93,7 +93,7 @@ class CertImportingVC: UITableViewController {
 	}
 }
 
-extension CertImportingVC {
+extension CertImportingViewController {
 	override func numberOfSections(in tableView: UITableView) -> Int { return sectionData.count }
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return 1 }
 	
@@ -213,7 +213,7 @@ extension CertImportingVC {
 
 }
 
-extension CertImportingVC: UIDocumentPickerDelegate {
+extension CertImportingViewController: UIDocumentPickerDelegate {
 	func presentDocumentPicker(fileExtension: [UTType]) {
 		let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: fileExtension, asCopy: true)
 		documentPicker.delegate = self

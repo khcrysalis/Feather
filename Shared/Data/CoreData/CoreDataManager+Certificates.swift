@@ -37,7 +37,7 @@ extension CoreDataManager {
 	}
 
 	
-	func addToCertificates(cert: Cert, files: [CertImportingVC.FileType: Any], context: NSManagedObjectContext? = nil) {
+	func addToCertificates(cert: Cert, files: [CertImportingViewController.FileType: Any], context: NSManagedObjectContext? = nil) {
 		let context = context ?? self.context
 		
 		guard let provisionPath = files[.provision] as? URL else {
