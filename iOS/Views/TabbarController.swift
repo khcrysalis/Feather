@@ -24,11 +24,6 @@ class TabbarController: UITabBarController, UITabBarControllerDelegate {
 
 		var viewControllers = [sources, library, settings]
 
-		if Preferences.beta {
-			let debug = self.createNavigation(with: "Debug", and: UIImage(systemName: "ladybug.fill"), vc: DebugHostingController(rootView: DebugViewController()))
-			viewControllers.append(debug)
-		}
-
 		self.setViewControllers(viewControllers, animated: false)
 	}
 	

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		330DAC292C9D6557009E4A6F /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330DAC282C9D6557009E4A6F /* DebugViewController.swift */; };
 		331616912C786B9B00894427 /* TransferPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331616902C786B9B00894427 /* TransferPreview.swift */; };
 		331616932C7877B800894427 /* localhost.direct.pem in Resources */ = {isa = PBXBuildFile; fileRef = 331616922C7877B800894427 /* localhost.direct.pem */; };
 		331616952C78D55100894427 /* Asspp.md in Resources */ = {isa = PBXBuildFile; fileRef = 331616942C78D55100894427 /* Asspp.md */; };
@@ -138,7 +137,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		330DAC282C9D6557009E4A6F /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		331616902C786B9B00894427 /* TransferPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferPreview.swift; sourceTree = "<group>"; };
 		331616922C7877B800894427 /* localhost.direct.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = localhost.direct.pem; sourceTree = "<group>"; };
 		331616942C78D55100894427 /* Asspp.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Asspp.md; sourceTree = "<group>"; };
@@ -546,7 +544,6 @@
 		33ACB4C82C9FBC0900062511 /* Debug */ = {
 			isa = PBXGroup;
 			children = (
-				330DAC282C9D6557009E4A6F /* DebugViewController.swift */,
 			);
 			path = Debug;
 			sourceTree = "<group>";
@@ -921,7 +918,6 @@
 				332476EA2C3E905D008C8EF0 /* AboutViewController.swift in Sources */,
 				33BA37B02BF819ED00FF530A /* UIColor+hex.swift in Sources */,
 				33BA37932BF8159F00FF530A /* SourcesViewController.swift in Sources */,
-				330DAC292C9D6557009E4A6F /* DebugViewController.swift in Sources */,
 				332476E62C3E8E25008C8EF0 /* SettingsCreditsTableCell.swift in Sources */,
 				33A305D52C3A858100D650BA /* UIButton+longpress.swift in Sources */,
 				D0651C3A2BFEEA4B00D40829 /* archo.cpp in Sources */,
