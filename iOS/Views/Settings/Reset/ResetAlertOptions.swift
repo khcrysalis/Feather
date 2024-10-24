@@ -73,8 +73,8 @@ extension SettingsViewController {
 		let message = ""
 		+ "\(cacheSize())\n"
 		+ "\(sourcesCount())\n"
-		+ "\(downloadedCount())\n"
 		+ "\(signedCount())\n"
+		+ "\(downloadedCount())\n"
 		+ "\(certificateCount())"
 		
 		resetAlert(

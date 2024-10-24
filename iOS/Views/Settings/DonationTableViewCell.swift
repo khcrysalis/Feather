@@ -100,10 +100,24 @@ class DonationTableViewCell: UITableViewCell {
 	}
 	
 	private func configureStackViewItems() {
-		let item2 = DonationItemView(icon: UIImage(systemName: "lock.fill"), title: String.localized("DONATION_CELL_1_TITLE"), description: String.localized("DONATION_CELL_1_DESCRIPTION"))
-		let item3 = DonationItemView(icon: UIImage(systemName: "heart.fill"), title: String.localized("DONATION_CELL_2_TITLE"), description: String.localized("DONATION_CELL_2_DESCRIPTION"))
+		let item2 = DonationItemView(
+			icon: UIImage(systemName: "lock.fill"),
+			title: String.localized("DONATION_CELL_1_TITLE"),
+			description: String.localized("DONATION_CELL_1_DESCRIPTION")
+		)
+		let item3 = DonationItemView(
+			icon: UIImage(systemName: "heart.fill"),
+			title: String.localized("DONATION_CELL_2_TITLE"),
+			description: String.localized("DONATION_CELL_2_DESCRIPTION")
+		)
+		let item4 = DonationItemView(
+			icon: UIImage(systemName: "heart.text.square.fill"),
+			title: "Remove This Alert",
+			description: "Remove annoying alerts like these after getting beta access!"
+		)
 		
 		stackView.addArrangedSubview(item2)
+		stackView.addArrangedSubview(item4)
 		stackView.addArrangedSubview(item3)
 	}
 }
