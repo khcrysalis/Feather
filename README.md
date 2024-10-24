@@ -6,6 +6,12 @@
     Feather is a free on-device iOS application manager/installer built with UIKit for quality.
 </p>
 
+#### README In Other Languages
+
+- [Deutsch🇩🇪](https://github.com/khcrysalis/Feather/blob/main/README_de.md)
+- [Polski🇵🇱](https://github.com/khcrysalis/Feather/blob/main/README_pl.md)
+- [Русский🇷🇺](https://github.com/khcrysalis/Feather/blob/main/README_ru.md)
+
 ## Features
 
 - **Altstore repo support**. *Supporting Legacy and 2.0 repo structures*
@@ -113,3 +119,5 @@ make package SCHEME="'feather (Release)'" # Build
 ## Contributions
 
 They are welcome! :)
+
+
