@@ -47,10 +47,10 @@ class SettingsViewController: UITableViewController {
 	var sectionTitles =
 	[
 		"",
-		"Settings",
+		"General",
 		"",
-		"",
-		"",
+		"Signing",
+		"Debug",
 		"",
 		"",
 	]
