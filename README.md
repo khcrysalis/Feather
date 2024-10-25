@@ -3,7 +3,7 @@
 </div>
 <h1>Feather</h1>
 <p>
-    Feather is a free on-device iOS application manager/installer built with UIKit for quality.
+    Feather is a free on-device iOS application manager/installer, using certificates part of the Apple Developer Program.
 </p>
 
 ## Features
