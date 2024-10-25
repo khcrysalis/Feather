@@ -53,6 +53,7 @@ class LibraryViewController: UITableViewController {
 	
 	fileprivate func setupNavigation() {
 		self.navigationController?.navigationBar.prefersLargeTitles = true
+		self.title = String.localized("TAB_LIBRARY")
 	}
 }
 
@@ -255,7 +256,11 @@ extension LibraryViewController {
 		if FileManager.default.fileExists(atPath: CoreDataManager.shared.getFilesForDownloadedApps(for:(meow as! DownloadedApps)).path) {
 			let ap = AppSigningViewController(app: meow, appsViewController: self)
 			let navigationController = UINavigationController(rootViewController: ap)
-			navigationController.modalPresentationStyle = .fullScreen
+			if UIDevice.current.userInterfaceIdiom == .pad {
+				navigationController.modalPresentationStyle = .formSheet
+			} else {
+				navigationController.modalPresentationStyle = .fullScreen
+			}
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
 				self.present(navigationController, animated: true, completion: nil)
 			}

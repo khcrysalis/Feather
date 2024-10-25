@@ -52,23 +52,7 @@ class SourcesViewController: UITableViewController {
 	fileprivate func setupNavigation() {
 		self.navigationController?.navigationBar.prefersLargeTitles = true
 		self.navigationItem.largeTitleDisplayMode = .always
-	}
-	
-	@objc func openSettings() {
-		let settings = SettingsViewController()
-		
-		let navigationController = UINavigationController(rootViewController: settings)
-		let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 200.0)
-		
-		if let presentationController = navigationController.presentationController as? UISheetPresentationController {
-			presentationController.detents = [
-				detent2,
-				.large(),
-				
-			]
-		}
-
-		self.present(navigationController, animated: true)
+		self.title = String.localized("TAB_SOURCES")
 	}
 }
 
@@ -86,7 +70,7 @@ extension SourcesViewController {
 				let transferPreview = RepoViewController(sources: self.sources)
 				
 				let hostingController = UIHostingController(rootView: transferPreview)
-				hostingController.modalPresentationStyle = .pageSheet
+				hostingController.modalPresentationStyle = .formSheet
 				
 				if let presentationController = hostingController.presentationController as? UISheetPresentationController {
 					presentationController.detents = [.medium()]

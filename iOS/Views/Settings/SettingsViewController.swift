@@ -92,6 +92,7 @@ class SettingsViewController: UITableViewController {
 	
 	fileprivate func setupNavigation() {
 		self.navigationController?.navigationBar.prefersLargeTitles = true
+		self.title = String.localized("TAB_SETTINGS")
 	}
 }
 

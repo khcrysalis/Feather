@@ -114,10 +114,13 @@ class AppSigningViewController: UIViewController, UITableViewDataSource, UITable
 		self.tableView.translatesAutoresizingMaskIntoConstraints = false
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
+		self.tableView.showsHorizontalScrollIndicator = false
+		self.tableView.showsVerticalScrollIndicator = false
+		self.tableView.contentInset.bottom = 40
 		
-		tableView.register(TweakLibraryViewCell.self, forCellReuseIdentifier: "TweakLibraryViewCell")
-		tableView.register(SwitchViewCell.self, forCellReuseIdentifier: "SwitchViewCell")
-		tableView.register(ActivityIndicatorViewCell.self, forCellReuseIdentifier: "ActivityIndicatorViewCell")
+		self.tableView.register(TweakLibraryViewCell.self, forCellReuseIdentifier: "TweakLibraryViewCell")
+		self.tableView.register(SwitchViewCell.self, forCellReuseIdentifier: "SwitchViewCell")
+		self.tableView.register(ActivityIndicatorViewCell.self, forCellReuseIdentifier: "ActivityIndicatorViewCell")
 		
 		self.view.addSubview(tableView)
 		self.tableView.constraintCompletely(to: view)
@@ -146,11 +149,18 @@ class AppSigningViewController: UIViewController, UITableViewDataSource, UITable
 		view.addSubview(variableBlurView!)
 		view.addSubview(largeButton)
 		
+		
+		var height = 90.0
+		
+		if UIDevice.current.userInterfaceIdiom == .pad {
+			height = 50.0
+		}
+		
 		NSLayoutConstraint.activate([
 			variableBlurView!.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
 			variableBlurView!.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
 			variableBlurView!.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-			variableBlurView!.heightAnchor.constraint(equalToConstant: 90),
+			variableBlurView!.heightAnchor.constraint(equalToConstant: height),
 			
 			largeButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 17),
 			largeButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -17),
@@ -158,8 +168,8 @@ class AppSigningViewController: UIViewController, UITableViewDataSource, UITable
 			largeButton.heightAnchor.constraint(equalToConstant: 50)
 		])
 		
-		variableBlurView?.layer.zPosition = 11
-		largeButton.layer.zPosition = 12
+		variableBlurView?.layer.zPosition = 3
+		largeButton.layer.zPosition = 4
 	}
 
 	@objc func startSign() {
