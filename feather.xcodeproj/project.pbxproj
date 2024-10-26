@@ -57,6 +57,12 @@
 		33A305D72C3A85F300D650BA /* SourceDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A305D62C3A85F300D650BA /* SourceDownload.swift */; };
 		33AC87F12C3B7CBE003D1175 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AC87F02C3B7CBE003D1175 /* SettingsViewController.swift */; };
 		33AC87F32C3B7D24003D1175 /* CertificatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AC87F22C3B7D24003D1175 /* CertificatesViewController.swift */; };
+		33B7D0682CCB860600BD9199 /* SigningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B7D0672CCB860600BD9199 /* SigningView.swift */; };
+		33B7D06A2CCB8E5900BD9199 /* SigningOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B7D0692CCB8E5900BD9199 /* SigningOptions.swift */; };
+		33B7D06E2CCC890400BD9199 /* SigningDataWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B7D06D2CCC890400BD9199 /* SigningDataWrapper.swift */; };
+		33B7D0742CCCAA7500BD9199 /* IdentifiersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B7D0732CCCAA7500BD9199 /* IdentifiersView.swift */; };
+		33B7D0762CCCAACB00BD9199 /* AddTweaksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B7D0752CCCAACB00BD9199 /* AddTweaksView.swift */; };
+		33B7D0782CCCB14100BD9199 /* SigningViewHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B7D0772CCCB14100BD9199 /* SigningViewHostingController.swift */; };
 		33BA378F2BF8159F00FF530A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA378E2BF8159F00FF530A /* AppDelegate.swift */; };
 		33BA37932BF8159F00FF530A /* SourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA37922BF8159F00FF530A /* SourcesViewController.swift */; };
 		33BA37982BF815A100FF530A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33BA37972BF815A100FF530A /* Assets.xcassets */; };
@@ -188,6 +194,12 @@
 		33A305D62C3A85F300D650BA /* SourceDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceDownload.swift; sourceTree = "<group>"; };
 		33AC87F02C3B7CBE003D1175 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		33AC87F22C3B7D24003D1175 /* CertificatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificatesViewController.swift; sourceTree = "<group>"; };
+		33B7D0672CCB860600BD9199 /* SigningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigningView.swift; sourceTree = "<group>"; };
+		33B7D0692CCB8E5900BD9199 /* SigningOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigningOptions.swift; sourceTree = "<group>"; };
+		33B7D06D2CCC890400BD9199 /* SigningDataWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigningDataWrapper.swift; sourceTree = "<group>"; };
+		33B7D0732CCCAA7500BD9199 /* IdentifiersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiersView.swift; sourceTree = "<group>"; };
+		33B7D0752CCCAACB00BD9199 /* AddTweaksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTweaksView.swift; sourceTree = "<group>"; };
+		33B7D0772CCCB14100BD9199 /* SigningViewHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigningViewHostingController.swift; sourceTree = "<group>"; };
 		33BA378B2BF8159F00FF530A /* feather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = feather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33BA378E2BF8159F00FF530A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33BA37922BF8159F00FF530A /* SourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesViewController.swift; sourceTree = "<group>"; };
@@ -541,11 +553,41 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		33ACB4C82C9FBC0900062511 /* Debug */ = {
+		33B7D0642CCB613700BD9199 /* Signing */ = {
 			isa = PBXGroup;
 			children = (
+				33B7D0712CCC895F00BD9199 /* SigningView */,
+				33B7D06C2CCC88F700BD9199 /* SigningData */,
 			);
-			path = Debug;
+			path = Signing;
+			sourceTree = "<group>";
+		};
+		33B7D06C2CCC88F700BD9199 /* SigningData */ = {
+			isa = PBXGroup;
+			children = (
+				33B7D0692CCB8E5900BD9199 /* SigningOptions.swift */,
+				33B7D06D2CCC890400BD9199 /* SigningDataWrapper.swift */,
+			);
+			path = SigningData;
+			sourceTree = "<group>";
+		};
+		33B7D0712CCC895F00BD9199 /* SigningView */ = {
+			isa = PBXGroup;
+			children = (
+				33B7D0772CCCB14100BD9199 /* SigningViewHostingController.swift */,
+				33B7D0672CCB860600BD9199 /* SigningView.swift */,
+				33B7D0792CCCB21000BD9199 /* Configuration */,
+				33B7D0752CCCAACB00BD9199 /* AddTweaksView.swift */,
+			);
+			path = SigningView;
+			sourceTree = "<group>";
+		};
+		33B7D0792CCCB21000BD9199 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				33B7D0732CCCAA7500BD9199 /* IdentifiersView.swift */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 		33BA37822BF8159F00FF530A = {
@@ -604,7 +646,7 @@
 				336EEE822C324C9B0011188D /* Apps */,
 				33AC87EF2C3B7C46003D1175 /* Settings */,
 				338FFCD72C682457006C3BE0 /* Extra */,
-				33ACB4C82C9FBC0900062511 /* Debug */,
+				33B7D0642CCB613700BD9199 /* Signing */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -905,6 +947,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33BF31672C7C05840087F3D2 /* Foundation.swift in Sources */,
+				33B7D0742CCCAA7500BD9199 /* IdentifiersView.swift in Sources */,
 				D0651C372BFEEA4B00D40829 /* openssl.cpp in Sources */,
 				D0651C1A2BFEE97F00D40829 /* base64.cpp in Sources */,
 				33BE875F2C6AF91B0044D245 /* IconImageViewCell.swift in Sources */,
@@ -920,6 +963,8 @@
 				33BA37932BF8159F00FF530A /* SourcesViewController.swift in Sources */,
 				332476E62C3E8E25008C8EF0 /* SettingsCreditsTableCell.swift in Sources */,
 				33A305D52C3A858100D650BA /* UIButton+longpress.swift in Sources */,
+				33B7D0682CCB860600BD9199 /* SigningView.swift in Sources */,
+				33B7D06E2CCC890400BD9199 /* SigningDataWrapper.swift in Sources */,
 				D0651C3A2BFEEA4B00D40829 /* archo.cpp in Sources */,
 				33163FF02C3D224C0038E1EC /* DownloadTaskManager.swift in Sources */,
 				33E3B6702C7FE06C0075E3A2 /* RepoViewController.swift in Sources */,
@@ -949,6 +994,7 @@
 				D0651C332BFEEA4B00D40829 /* macho.cpp in Sources */,
 				33BE87652C6F17980044D245 /* AppSigningAdvancedViewController.swift in Sources */,
 				33A305D72C3A85F300D650BA /* SourceDownload.swift in Sources */,
+				33B7D06A2CCB8E5900BD9199 /* SigningOptions.swift in Sources */,
 				33570F672C34CCD5008CB560 /* AppsInformationViewController.swift in Sources */,
 				332476D82C3E4CF7008C8EF0 /* SourceAppActions.swift in Sources */,
 				33E5A5AA2CC88ABF00532930 /* ResetDataClass.swift in Sources */,
@@ -992,6 +1038,8 @@
 				338FFCF42C6971B2006C3BE0 /* IconsListTableViewCell.swift in Sources */,
 				33BA37AD2BF8197200FF530A /* Storage.swift in Sources */,
 				33CE81A92C4295F300C05327 /* CertImportingViewController.swift in Sources */,
+				33B7D0762CCCAACB00BD9199 /* AddTweaksView.swift in Sources */,
+				33B7D0782CCCB14100BD9199 /* SigningViewHostingController.swift in Sources */,
 				33570F612C32B80E008CB560 /* AppsTableViewCell.swift in Sources */,
 				33E4D8432C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift in Sources */,
 				33AC87F12C3B7CBE003D1175 /* SettingsViewController.swift in Sources */,

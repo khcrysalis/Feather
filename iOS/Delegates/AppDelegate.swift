@@ -11,6 +11,7 @@ import Nuke
 import CoreData
 import UIOnboarding
 import Foundation
+import SwiftUI
 
 var downloadTaskManager = DownloadTaskManager.shared
 class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControllerDelegate {
@@ -20,6 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 	var loaderAlert = presentLoader()
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+		
+		let userDefaults = UserDefaults.standard
+		
+		userDefaults.set(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, forKey: "currentVersion")
+		
+		if userDefaults.data(forKey: UserDefaults.signingDataKey) == nil {
+			userDefaults.signingOptions = UserDefaults.defaultSigningData
+		}
 		
 		addDefaultRepos()
 		imagePipline()
@@ -34,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 			onboardingController.delegate = self
 			window?.rootViewController = onboardingController
 		} else {
-			let tabBarController = TabbarController()
+			let tabBarController = UIHostingController(rootView: TabbarView())
 			window?.rootViewController = tabBarController
 		}
 		
@@ -49,7 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 		if Preferences.pPQCheckString.isEmpty {
 			Preferences.pPQCheckString = generatedString
 		}
-		UserDefaults.standard.set(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, forKey: "currentVersion")
 
 		Debug.shared.log(message: "Version: \(UIDevice.current.systemVersion)")
 		Debug.shared.log(message: "Name: \(UIDevice.current.name)")
@@ -129,7 +137,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
 	func didFinishOnboarding(onboardingViewController: UIOnboardingViewController) {
 		Preferences.isOnboardingActive = false
 
-		let tabBarController = TabbarController()
+		let tabBarController = UIHostingController(rootView: TabbarView())
 
 		let transition = CATransition()
 		transition.type = .fade
@@ -278,7 +286,7 @@ extension UIOnboardingViewConfiguration {
 		)
 		
 		return .init(
-			appIcon: .init(named: "AppIcon")!,
+			appIcon: .init(named: "AppIcon60x60")!,
 			firstTitleLine: welcomeToLine,
 			secondTitleLine: featherLine,
 			features: onboardingFeatures,

@@ -1,0 +1,69 @@
+//
+//  SigningOptions.swift
+//  feather
+//
+//  Created by samara on 25.10.2024.
+//
+
+import Foundation
+
+struct MainSigningOptions {
+	var name: String?
+	var version: String?
+	var bundleId: String?
+	var iconURL: UIImage?
+
+	var uuid: String?
+	var removeInjectPaths: [String]?
+	
+	var certificate: Certificate?
+}
+
+struct SigningOptions: Codable {
+	var ppqCheckProtection: Bool = false
+	var installAfterSigned: Bool = false
+	
+	var bundleIdConfig: [String: String] = [:]
+	var toInject: [String] = []
+	
+	var removePlugins: Bool = false
+	var forceFileSharing: Bool = true
+	var removeSupportedDevices: Bool = true
+	var removeURLScheme: Bool = false
+	var forceProMotion: Bool = false
+	
+	var forceForceFullScreen: Bool = false
+	var forceiTunesFileSharing: Bool = true
+	var forceMinimumVersion: String = "Automatic"
+	var forceLightDarkAppearence: String = "Automatic"
+	var forceTryToLocalize: Bool = false
+	
+	var removeProvisioningFile: Bool = true
+	var removeWatchPlaceHolder: Bool = true
+}
+
+extension UserDefaults {
+	static let signingDataKey = "defaultSigningData"
+	
+	static let defaultSigningData = SigningOptions()
+	
+	var signingOptions: SigningOptions {
+		get {
+			if let data = data(forKey: UserDefaults.signingDataKey),
+			   let options = try? JSONDecoder().decode(SigningOptions.self, from: data) {
+				return options
+			}
+			return UserDefaults.defaultSigningData
+		}
+		set {
+			if let data = try? JSONEncoder().encode(newValue) {
+				set(data, forKey: UserDefaults.signingDataKey)
+			}
+		}
+	}
+	
+	func resetSigningOptions() {
+		signingOptions = UserDefaults.defaultSigningData
+	}
+}
+

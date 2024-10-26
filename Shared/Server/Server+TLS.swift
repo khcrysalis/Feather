@@ -15,30 +15,34 @@ import SystemConfiguration.CaptiveNetwork
 
 func getLocalIPAddress() -> String? {
 	var address: String?
-	
 	var ifaddr: UnsafeMutablePointer<ifaddrs>?
-	guard getifaddrs(&ifaddr) == 0 else { return nil }
 	
-	var ptr = ifaddr
-	while ptr != nil {
-		defer { ptr = ptr?.pointee.ifa_next }
-		
-		guard let interface = ptr?.pointee,
-			  let name = String(cString: interface.ifa_name, encoding: .ascii),
-			  name == "en0", // Wi-Fi interface
-			  let addr = interface.ifa_addr.pointee.sa_family == UInt8(AF_INET) ? interface.ifa_addr : nil else {
-			continue
+	if getifaddrs(&ifaddr) == 0 {
+		var ptr = ifaddr
+		while ptr != nil {
+			let interface = ptr!.pointee
+			let addrFamily = interface.ifa_addr.pointee.sa_family
+			
+			if addrFamily == UInt8(AF_INET) || addrFamily == UInt8(AF_INET6) {
+				
+				let name = String(cString: interface.ifa_name)
+				if name == "en0" || name == "pdp_ip0" {
+					
+					var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
+					if getnameinfo(interface.ifa_addr, socklen_t(interface.ifa_addr.pointee.sa_len),
+								   &hostname, socklen_t(hostname.count),
+								   nil, socklen_t(0), NI_NUMERICHOST) == 0 {
+						address = String(cString: hostname)
+						Debug.shared.log(message: "Testing (\(name)): \(address!)")
+					}
+					
+				}
+			}
+			ptr = ptr!.pointee.ifa_next
 		}
-		
-		var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
-		if getnameinfo(addr, socklen_t(interface.ifa_addr.pointee.sa_len),
-					   &hostname, socklen_t(hostname.count),
-					   nil, 0, NI_NUMERICHOST) == 0 {
-			address = String(cString: hostname)
-		}
+		freeifaddrs(ifaddr)
 	}
 	
-	freeifaddrs(ifaddr)
 	return address
 }
 

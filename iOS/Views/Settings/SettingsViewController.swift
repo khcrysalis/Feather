@@ -234,7 +234,7 @@ extension SettingsViewController {
 			let l = CertificatesViewController()
 			navigationController?.pushViewController(l, animated: true)
 		case "Signing Options":
-			let l = SigningOptionsViewController()
+			let l = SigningViewHostingController()
 			navigationController?.pushViewController(l, animated: true)
 		case "Server Options":
 			let l = ServerOptionsViewController()

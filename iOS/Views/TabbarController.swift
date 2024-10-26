@@ -6,59 +6,65 @@
 //  Copyright (c) 2024 Samara M (khcrysalis)
 //
 
-import UIKit
 import SwiftUI
 
-class TabbarController: UITabBarController, UITabBarControllerDelegate {
-
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		self.setupTabs()
-		self.delegate = self
-	}
+struct TabbarView: View {
+	@State private var selectedTab: Tab = Tab(rawValue: UserDefaults.standard.string(forKey: "selectedTab") ?? "sources") ?? .sources
 	
-	private func setupTabs() {
-		let sources = self.createNavigation(
-			with: String.localized("TAB_SOURCES"),
-			and: UIImage(named: "globe2"), vc: SourcesViewController()
-		)
-		let library = self.createNavigation(
-			with: String.localized("TAB_LIBRARY"),
-			and: UIImage(systemName: "square.grid.2x2.fill"),
-			vc: LibraryViewController()
-		)
-		let settings = self.createNavigation(
-			with: String.localized("TAB_SETTINGS"),
-			and: UIImage(systemName: "gearshape.2.fill"),
-			vc: SettingsViewController()
-		)
-
-		var viewControllers = [
-			sources,
-			library,
-			settings
-		]
-
-		self.setViewControllers(viewControllers, animated: false)
+	enum Tab: String {
+		case sources
+		case library
+		case settings
 	}
-	
-	private func createNavigation(with title: String, and image: UIImage?, vc: UIViewController) -> UINavigationController {
-		let nav = UINavigationController(rootViewController: vc)
-		nav.tabBarItem.title = title
-		nav.tabBarItem.image = image
-		nav.viewControllers.first?.navigationItem.title = title
-		return nav
-	}
-	
-	func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-		guard let fromView = selectedViewController?.view, let toView = viewController.view else { return false }
-		
-		if fromView != toView {
-			UIView.transition(from: fromView, to: toView, duration: 0.15, options: [.transitionCrossDissolve], completion: nil)
+
+	var body: some View {
+		TabView(selection: $selectedTab) {
+			tab(for: .sources)
+			tab(for: .library)
+			tab(for: .settings)
 		}
-		
-		return true
+		.onChange(of: selectedTab) { newTab in
+			UserDefaults.standard.set(newTab.rawValue, forKey: "selectedTab")
+		}
+	}
+
+	@ViewBuilder
+	func tab(for tab: Tab) -> some View {
+		switch tab {
+		case .sources:
+			NavigationViewController(SourcesViewController.self, title: String.localized("TAB_SOURCES"))
+				.edgesIgnoringSafeArea(.all)
+				.tabItem { Label(String.localized("TAB_SOURCES"), systemImage: "books.vertical.fill") }
+				.tag(Tab.sources)
+		case .library:
+			NavigationViewController(LibraryViewController.self, title: String.localized("TAB_LIBRARY"))
+				.edgesIgnoringSafeArea(.all)
+				.tabItem { Label(String.localized("TAB_LIBRARY"), systemImage: "square.grid.2x2.fill") }
+				.tag(Tab.library)
+		case .settings:
+			NavigationViewController(SettingsViewController.self, title: String.localized("TAB_SETTINGS"))
+				.edgesIgnoringSafeArea(.all)
+				.tabItem { Label(String.localized("TAB_SETTINGS"), systemImage: "gearshape.2.fill") }
+				.tag(Tab.settings)
+		}
 	}
 }
 
 
+struct NavigationViewController<Content: UIViewController>: UIViewControllerRepresentable {
+	let content: Content.Type
+	let title: String
+
+	init(_ content: Content.Type, title: String) {
+		self.content = content
+		self.title = title
+	}
+
+	func makeUIViewController(context: Context) -> UINavigationController {
+		let viewController = content.init()
+		viewController.navigationItem.title = title
+		return UINavigationController(rootViewController: viewController)
+	}
+	
+	func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {}
+}
