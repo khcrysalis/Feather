@@ -23,9 +23,6 @@ enum Preferences {
 	// Default repo is from the repository
 	static var defaultRepos: Bool
 	
-	@Storage(key: "Feather.automaticInstall", defaultValue: true)
-	static var automaticInstall: Bool
-	
 	@Storage(key: "Feather.userIntefacerStyle", defaultValue: UIUserInterfaceStyle.unspecified.rawValue)
 	static var preferredInterfaceStyle: Int
 	
@@ -42,18 +39,8 @@ enum Preferences {
 	// random string
 	static var pPQCheckString: String
 	
-	@Storage(key: "Feather.fuckOffPpqcheckDetection", defaultValue: true)
-	static var isFuckingPPqcheckDetectionOff: Bool
-    
-	@Storage(key: "Feather.autoInstallAfterSign", defaultValue: false)
-	static var autoInstallAfterSign: Bool
-	
 	@Storage(key: "Feather.CertificateTitleAppIDtoTeamID", defaultValue: false)
 	static var certificateTitleAppIDtoTeamID: Bool
-	
-	@Storage(key: "Feather.idWhitelist", defaultValue: ["kh.crysalis.feather", "kh.crysalis.feather2"])
-	// Unused
-	static var idWhitelist: [String]
 	
 	@Storage(key: "Feather.AppDescriptionAppearence", defaultValue: 0)
 	// 0 == Default appearence
@@ -65,12 +52,17 @@ enum Preferences {
 	/// Preferred language
 	static var preferredLanguageCode: String?
 	
-	
 	@Storage(key: "Feather.Beta", defaultValue: false)
 	//
 	static var beta: Bool
 	
+	@CodableStorage(key: "SortOption", defaultValue: SortOption.default)
+	static var currentSortOption: SortOption
+	
+	@Storage(key: "SortOptionAscending", defaultValue: true)
+	static var currentSortOptionAscending: Bool
 }
+
 // MARK: - Callbacks
 fileprivate extension Preferences {
 	static func preferredLangChangedCallback(newValue: String?) {

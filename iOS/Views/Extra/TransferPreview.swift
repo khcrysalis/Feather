@@ -110,19 +110,17 @@ struct TransferPreview: View {
 			}
 
 			.onAppear {
-				if Preferences.automaticInstall {
-					archivePayload(at: appPath, with: appName) { archiveURL in
-						if let archiveURL = archiveURL {
-							installer.package = archiveURL
-							if isSharing {
-								shareURL = archiveURL
-								showShareSheet = true
-							} else if case .ready = installer.status {
-								if Preferences.userSelectedServer {
-									isPresentWebView = true
-								} else {
-									UIApplication.shared.open(installer.iTunesLink)
-								}
+				archivePayload(at: appPath, with: appName) { archiveURL in
+					if let archiveURL = archiveURL {
+						installer.package = archiveURL
+						if isSharing {
+							shareURL = archiveURL
+							showShareSheet = true
+						} else if case .ready = installer.status {
+							if Preferences.userSelectedServer {
+								isPresentWebView = true
+							} else {
+								UIApplication.shared.open(installer.iTunesLink)
 							}
 						}
 					}

@@ -58,96 +58,141 @@ class SourcesViewController: UITableViewController {
 
 // MARK: - Tabelview
 extension SourcesViewController {
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return sources?.count ?? 0 }
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		switch section {
+		case 0:
+			return 1
+		case 1:
+			return sources?.count ?? 0
+		default:
+			return 0
+		}
+	}
+	
+	override func numberOfSections(in tableView: UITableView) -> Int { return 2 }
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 70 }
+	
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-		//String.localized("SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES", arguments: (sources?.count ?? 0))
-		let headerWithButton = GroupedSectionHeader(
-			title: String.localized("SOURCES_VIEW_CONTROLLER_REPOSITORIES"),
-			subtitle: String.localized(sources?.count ?? 0 > 1 ? "SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES_PLURAL" : "SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES", arguments: "\(sources?.count ?? 0)"),
-            buttonTitle: String.localized("SOURCES_VIEW_CONTROLLER_ADD_SOURCES"), buttonAction: {
-				
-				let transferPreview = RepoViewController(sources: self.sources)
-				
-				let hostingController = UIHostingController(rootView: transferPreview)
-				hostingController.modalPresentationStyle = .formSheet
-				
-				if let presentationController = hostingController.presentationController as? UISheetPresentationController {
-					presentationController.detents = [.medium()]
-				}
-				
-				DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-					self.present(hostingController, animated: true)
-				}
-				
-				
-//			self.sourcesAddButtonTapped()
-		})
-		return headerWithButton
+		if section == 1 {
+			let headerWithButton = GroupedSectionHeader(
+				title: String.localized("SOURCES_VIEW_CONTROLLER_REPOSITORIES"),
+				subtitle: String.localized(sources?.count ?? 0 > 1 ? "SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES_PLURAL" : "SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES", arguments: "\(sources?.count ?? 0)"),
+				buttonTitle: String.localized("SOURCES_VIEW_CONTROLLER_ADD_SOURCES"), buttonAction: {
+					let transferPreview = RepoViewController(sources: self.sources)
+					
+					let hostingController = UIHostingController(rootView: transferPreview)
+					hostingController.modalPresentationStyle = .formSheet
+					
+					if let presentationController = hostingController.presentationController as? UISheetPresentationController {
+						presentationController.detents = [.medium()]
+					}
+					
+					DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+						self.present(hostingController, animated: true)
+					}
+				})
+			
+			return headerWithButton
+		} else {
+			return nil
+		}
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
 
 		let source = sources![indexPath.row]
-
-		cell.textLabel?.text = source.name ?? String.localized("UNKNOWN")
+		
 		cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
 		cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 13)
-		cell.detailTextLabel?.text = source.sourceURL?.absoluteString
 		cell.detailTextLabel?.textColor = .secondaryLabel
 		cell.accessoryType = .disclosureIndicator
 		cell.backgroundColor = .clear
 
-		if let thumbnailURL = source.iconURL {
-			SectionIcons.loadSectionImageFromURL(from: thumbnailURL, for: cell, at: indexPath, in: tableView)
-		} else {
-			SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
+		switch indexPath.section {
+		case 0:
+			cell.textLabel?.text = "All Repositories"
+			cell.detailTextLabel?.text = "See all apps from your sources"
+			SectionIcons.sectionIcon(to: cell, with: "books.vertical.fill", backgroundColor: Preferences.appTintColor.uiColor.withAlphaComponent(0.7))
+			return cell
+		case 1:
+			cell.textLabel?.text = source.name ?? String.localized("UNKNOWN")
+			cell.detailTextLabel?.text = source.sourceURL?.absoluteString
+			
+			if let thumbnailURL = source.iconURL {
+				SectionIcons.loadSectionImageFromURL(from: thumbnailURL, for: cell, at: indexPath, in: tableView)
+			} else {
+				SectionIcons.sectionImage(to: cell, with: UIImage(named: "unknown")!)
+			}
+			return cell
+		default:
+			break
 		}
+
 		return cell
 	}
 
 	override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-		let source = sources![indexPath.row]
-
-		let configuration = UIContextMenuConfiguration(identifier: nil, actionProvider: { _ in
-			return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [
-				UIAction(title: String.localized("COPY"), image: UIImage(systemName: "doc.on.clipboard"), handler: {_ in
-					UIPasteboard.general.string = source.sourceURL?.absoluteString
-				})
-			])
-		})
-		return configuration
+		if indexPath.section == 1 {
+			let source = sources![indexPath.row]
+			
+			let configuration = UIContextMenuConfiguration(identifier: nil, actionProvider: { _ in
+				return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [
+					UIAction(title: String.localized("COPY"), image: UIImage(systemName: "doc.on.clipboard"), handler: {_ in
+						UIPasteboard.general.string = source.sourceURL?.absoluteString
+					})
+				])
+			})
+			return configuration
+		} else {
+			return nil
+		}
 	}
 
 	override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-		let deleteAction = UIContextualAction(style: .destructive, title: String.localized("DELETE")) { (action, view, completionHandler) in
-			let sourceToRm = self.sources![indexPath.row]
-			CoreDataManager.shared.context.delete(sourceToRm)
-			do {
-				try CoreDataManager.shared.context.save()
-				self.sources?.remove(at: indexPath.row)
-				self.searchResultsTableViewController.sources = self.sources ?? []
-				self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-			} catch {
-				Debug.shared.log(message: "trailingSwipeActionsConfigurationForRowAt.deleteAction", type: .error)
+		if indexPath.section == 1 {
+			let deleteAction = UIContextualAction(style: .destructive, title: String.localized("DELETE")) { (action, view, completionHandler) in
+				let sourceToRm = self.sources![indexPath.row]
+				CoreDataManager.shared.context.delete(sourceToRm)
+				do {
+					try CoreDataManager.shared.context.save()
+					self.sources?.remove(at: indexPath.row)
+					self.searchResultsTableViewController.sources = self.sources ?? []
+					self.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
+				} catch {
+					Debug.shared.log(message: "trailingSwipeActionsConfigurationForRowAt.deleteAction", type: .error)
+				}
+				completionHandler(true)
 			}
-			completionHandler(true)
+			deleteAction.backgroundColor = UIColor.red
+			
+			let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+			configuration.performsFirstActionWithFullSwipe = true
+			
+			return configuration
+		} else {
+			return nil
 		}
-		deleteAction.backgroundColor = UIColor.red
-
-		let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-		configuration.performsFirstActionWithFullSwipe = true
-
-		return configuration
 	}
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		guard let sourcerow = sources?[indexPath.row] else { return }
-		let savc = SourceAppViewController()
-		savc.name = sourcerow.name
-		savc.uri = sourcerow.sourceURL
-		navigationController?.pushViewController(savc, animated: true)
+		
+		switch indexPath.section {
+		case 0:
+			let savc = SourceAppViewController()
+			savc.name = "All Repositories"
+			savc.uri = sources!.compactMap { $0.sourceURL }
+			navigationController?.pushViewController(savc, animated: true)
+		case 1:
+			let savc = SourceAppViewController()
+			savc.name = sourcerow.name
+			savc.uri = [sourcerow.sourceURL!]
+			navigationController?.pushViewController(savc, animated: true)
+		default:
+			break
+		}
+		
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 }
@@ -158,7 +203,7 @@ extension SourcesViewController {
 		sources = CoreDataManager.shared.getAZSources()
 		searchResultsTableViewController.sources = sources ?? []
 		DispatchQueue.main.async {
-			self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+			self.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
 		}
 	}
 }

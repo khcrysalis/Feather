@@ -194,8 +194,9 @@ extension LibraryViewController {
 				popupVC = PopupViewController()
 				popupVC.modalPresentationStyle = .pageSheet
 				
+				let singingData = SigningDataWrapper(signingOptions: UserDefaults.standard.signingOptions)
 				let button1 = PopupViewControllerButton(
-					title: Preferences.autoInstallAfterSign
+					title: singingData.signingOptions.installAfterSigned
 					? "Sign & Install \((source!.value(forKey: "name") as? String ?? ""))"
 					: "Sign \((source!.value(forKey: "name") as? String ?? ""))",
 					color: .tintColor.withAlphaComponent(0.9))
@@ -254,7 +255,8 @@ extension LibraryViewController {
 	
 	@objc func startSigning(meow: NSManagedObject) {
 		if FileManager.default.fileExists(atPath: CoreDataManager.shared.getFilesForDownloadedApps(for:(meow as! DownloadedApps)).path) {
-			let ap = AppSigningViewController(app: meow, appsViewController: self)
+			let signingDataWrapper = SigningDataWrapper(signingOptions: UserDefaults.standard.signingOptions)
+			let ap = SigningsViewController(signingDataWrapper: signingDataWrapper, application: meow, appsViewController: self)
 			let navigationController = UINavigationController(rootViewController: ap)
 			if UIDevice.current.userInterfaceIdiom == .pad {
 				navigationController.modalPresentationStyle = .formSheet

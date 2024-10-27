@@ -19,12 +19,12 @@ class TweakHandler {
 	
 	let fileManager = FileManager.default
 	
-	private var urls: [URL]
+	private var urls: [String]
 	private let app: URL
 	private var urlsToInject: [URL] = []
 	private var directoriesToCheck: [URL] = []
 
-	init(urls: [URL], app: URL) {
+	init(urls: [String], app: URL) {
 		self.urls = urls
 		self.app = app
 	}
@@ -38,7 +38,7 @@ class TweakHandler {
 		let frameworksPath = app.appendingPathComponent("Frameworks").appendingPathComponent("CydiaSubstrate.framework")
 		if !fileManager.fileExists(atPath: frameworksPath.path) {
 			if let ellekitURL = Bundle.main.url(forResource: "ellekit", withExtension: "deb") {
-				self.urls.insert(ellekitURL, at: 0)
+				self.urls.insert(ellekitURL.absoluteString, at: 0)
 			} else {
 				Debug.shared.log(message: "Error: ellekit.deb not found in the app bundle ⁉️", type: .error)
 				return
@@ -55,13 +55,14 @@ class TweakHandler {
 			// it will extract then add a url, if theres no url, i.e.
 			// you haven't added a deb, it will skip
 			for url in urls {
-				switch url.pathExtension.lowercased() {
+				let urlf = URL(string: url)
+				switch urlf!.pathExtension.lowercased() {
 				case "dylib":
-					try handleDylib(at: url)
+					try handleDylib(at: urlf!)
 				case "deb":
-					try handleDeb(at: url, baseTmpDir: baseTmpDir)
+					try handleDeb(at: urlf!, baseTmpDir: baseTmpDir)
 				default:
-					Debug.shared.log(message: "Unsupported file type: \(url.lastPathComponent), skipping.")
+					Debug.shared.log(message: "Unsupported file type: \(urlf!.lastPathComponent), skipping.")
 				}
 			}
 			

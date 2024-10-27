@@ -12,29 +12,18 @@ import Nuke
 
 class SectionIcons {
 	@available(iOS 13.0, *)
-	static public func sectionIcon(to cell: UITableViewCell, with symbolName: String, gradientColors: [UIColor]) {
-		let symbolConfig = UIImage.SymbolConfiguration(pointSize: 14, weight: .medium)
+	static public func sectionIcon(to cell: UITableViewCell, with symbolName: String, backgroundColor: UIColor) {
+		let symbolConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .medium)
 		guard let symbolImage = UIImage(systemName: symbolName, withConfiguration: symbolConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal) else {
 			return
 		}
-		let imageSize = CGSize(width: 42, height: 42)
-		
-		let insetAmount: CGFloat = 5
+		let imageSize = CGSize(width: 52, height: 52)
+		let insetAmount: CGFloat = 7
 		let scaledSymbolSize = symbolImage.size.aspectFit(in: imageSize, insetBy: insetAmount)
 
 		let coloredBackgroundImage = UIGraphicsImageRenderer(size: imageSize).image { context in
-			let gradientLayer = CAGradientLayer()
-			gradientLayer.frame = CGRect(origin: .zero, size: imageSize)
-			gradientLayer.colors = gradientColors.map { $0.cgColor }
-			gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-			gradientLayer.endPoint = CGPoint(x: 1, y: 1)
-
-			gradientLayer.render(in: context.cgContext)
-			
-			// Optionally add rounded corners to the gradient background
-			let path = UIBezierPath(roundedRect: CGRect(origin: .zero, size: imageSize), cornerRadius: 10)
-			context.cgContext.addPath(path.cgPath)
-			context.cgContext.clip()
+			backgroundColor.setFill()
+			UIBezierPath(roundedRect: CGRect(origin: .zero, size: imageSize), cornerRadius: 7).fill()
 		}
 
 		let mergedImage = UIGraphicsImageRenderer(size: imageSize).image { context in
@@ -48,9 +37,9 @@ class SectionIcons {
 		}
 
 		cell.imageView?.image = mergedImage
-		cell.imageView?.layer.cornerRadius = 10
-		cell.imageView?.layer.cornerCurve = .continuous
+		cell.imageView?.layer.cornerRadius = 12
 		cell.imageView?.clipsToBounds = true
+		cell.imageView?.layer.borderWidth = 1
 		cell.imageView?.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
 	}
 

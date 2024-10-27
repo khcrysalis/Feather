@@ -133,7 +133,7 @@ class SearchResultsTableViewController: UIViewController, UISearchResultsUpdatin
 		if let url = sourceURLMapping[source] {
 			let savc = SourceAppViewController()
 			savc.name = source.name
-			savc.uri = url
+			savc.uri = [url]
 			
 			savc.highlightAppName = app?.name
 			savc.highlightBundleID = app?.bundleIdentifier

@@ -74,25 +74,25 @@ extension SigningOptionsViewController {
 		cell.textLabel?.text = cellText
 		
 		switch cellText {
-		case "Auto Install":
-			let autoInstall = SwitchViewCell()
-			autoInstall.textLabel?.text = "Install after signing"
-			autoInstall.switchControl.addTarget(self, action: #selector(autoInstallAfterSignToggled(_:)), for: .valueChanged)
-			autoInstall.switchControl.isOn = Preferences.autoInstallAfterSign
-			autoInstall.selectionStyle = .none
-			return autoInstall
-		case "Fuck PPQCheck":
-			let fuckPPq = SwitchViewCell()
-			fuckPPq.textLabel?.text = String.localized("SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_TITLE")
-			fuckPPq.switchControl.addTarget(self, action: #selector(fuckPpqcheckToggled(_:)), for: .valueChanged)
-			fuckPPq.switchControl.isOn = Preferences.isFuckingPPqcheckDetectionOff
-			fuckPPq.selectionStyle = .none
-
-			let infoButton = UIButton(type: .infoLight)
-			infoButton.addTarget(self, action: #selector(showPPQInfoAlert), for: .touchUpInside)
-			fuckPPq.accessoryView = infoButton
-
-			return fuckPPq
+//		case "Auto Install":
+//			let autoInstall = SwitchViewCell()
+//			autoInstall.textLabel?.text = "Install after signing"
+//			autoInstall.switchControl.addTarget(self, action: #selector(autoInstallAfterSignToggled(_:)), for: .valueChanged)
+//			autoInstall.switchControl.isOn = Preferences.autoInstallAfterSign
+//			autoInstall.selectionStyle = .none
+//			return autoInstall
+//		case "Fuck PPQCheck":
+//			let fuckPPq = SwitchViewCell()
+//			fuckPPq.textLabel?.text = String.localized("SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_TITLE")
+//			fuckPPq.switchControl.addTarget(self, action: #selector(fuckPpqcheckToggled(_:)), for: .valueChanged)
+//			fuckPPq.switchControl.isOn = Preferences.isFuckingPPqcheckDetectionOff
+//			fuckPPq.selectionStyle = .none
+//
+//			let infoButton = UIButton(type: .infoLight)
+//			infoButton.addTarget(self, action: #selector(showPPQInfoAlert), for: .touchUpInside)
+//			fuckPPq.accessoryView = infoButton
+//
+//			return fuckPPq
 
 		case "PPQCheckMitigationString":
 			cell.textLabel?.text = String.localized("SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_ID")
@@ -143,13 +143,13 @@ extension SigningOptionsViewController {
 		present(alertController, animated: true, completion: nil)
 	}
 	
-	@objc func fuckPpqcheckToggled(_ sender: UISwitch) {
-		Preferences.isFuckingPPqcheckDetectionOff = sender.isOn
-	}
-	
-	@objc func autoInstallAfterSignToggled(_ sender: UISwitch) {
-		Preferences.autoInstallAfterSign = sender.isOn
-	}
+//	@objc func fuckPpqcheckToggled(_ sender: UISwitch) {
+//		Preferences.isFuckingPPqcheckDetectionOff = sender.isOn
+//	}
+//	
+//	@objc func autoInstallAfterSignToggled(_ sender: UISwitch) {
+//		Preferences.autoInstallAfterSign = sender.isOn
+//	}
 	
 }
 

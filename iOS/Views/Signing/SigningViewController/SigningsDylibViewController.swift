@@ -7,19 +7,20 @@
 
 import UIKit
 
-class AppSigningDylibViewController: UITableViewController {
-	var appSigningViewController: AppSigningViewController
+class SigningsDylibViewController: UITableViewController {
 	var applicationPath: URL
 	var groupedDylibs: [String: [String]] = [:]
 	var dylibSections: [String] = ["@rpath", "@executable_path", "/usr/lib", "/System/Library", "Other"]
 	var dylibstoremove: [String] = [] {
 		didSet {
-			self.appSigningViewController.removeInjectPaths = self.dylibstoremove
+			self.mainOptions.mainOptions.removeInjectPaths = self.dylibstoremove
 		}
 	}
+	
+	var mainOptions: SigningMainDataWrapper
 
-	init(appSigningViewController: AppSigningViewController, app: URL) {
-		self.appSigningViewController = appSigningViewController
+	init(mainOptions: SigningMainDataWrapper, app: URL) {
+		self.mainOptions = mainOptions
 		self.applicationPath = app
 		super.init(style: .insetGrouped)
 
@@ -41,7 +42,7 @@ class AppSigningDylibViewController: UITableViewController {
 		super.viewDidLoad()
 		setupViews()
 		setupNavigation()
-		self.dylibstoremove = self.appSigningViewController.removeInjectPaths
+		self.dylibstoremove = self.mainOptions.mainOptions.removeInjectPaths
 		
 	}
 

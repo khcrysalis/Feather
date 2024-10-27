@@ -15,8 +15,10 @@ class IconImageViewCell: UITableViewCell {
 		let imageView = UIImageView()
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		imageView.contentMode = .scaleAspectFit
-		imageView.layer.cornerRadius = 9
+		imageView.layer.cornerRadius = 10
 		imageView.layer.cornerCurve = .continuous
+		imageView.layer.borderWidth = 1
+		imageView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
 		imageView.clipsToBounds = true
 		return imageView
 	}()

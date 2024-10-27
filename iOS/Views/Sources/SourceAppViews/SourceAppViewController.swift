@@ -11,21 +11,28 @@ import Nuke
 import AlertKit
 import CoreData
 
+enum SortOption: String, Codable {
+	case `default`
+	case name
+	case date
+}
+
 class SourceAppViewController: UITableViewController {
 	var apps: [StoreAppsData] = []
 	var oApps: [StoreAppsData] = []
 	var filteredApps: [StoreAppsData] = []
 	
 	var name: String? { didSet { self.title = name } }
-	private var selectedFilterOption: AppFilterOption = .default
 
-	var uri: URL!
+	var uri: [URL]!
 	
 	var highlightAppName: String?
 	var highlightBundleID: String?
 	var highlightVersion: String?
 	var highlightDeveloperName: String?
 	var highlightDescription: String?
+	
+	var sortActionsGroup: UIMenu?
 	
 	private let sourceGET = SourceGET()
 	
@@ -58,48 +65,48 @@ class SourceAppViewController: UITableViewController {
 	}
 	
 	private func updateFilterMenu() {
-		let defaultAction = UIAction(title: String.localized("SOURCES_CELLS_ACTIONS_FILTER_BY_DEFAULT"), image: UIImage()) { [weak self] _ in
-			self?.applyFilter(.default)
-		}
-		
-		let nameAction = UIAction(title: String.localized("SOURCES_CELLS_ACTIONS_FILTER_BY_NAME"), image: UIImage(systemName: "textformat")) { [weak self] _ in
-			self?.applyFilter(.name)
-		}
-		
-		let dateAction = UIAction(title: String.localized("SOURCES_CELLS_ACTIONS_FILTER_BY_DATE"), image: UIImage(systemName: "calendar")) { [weak self] _ in
-			self?.applyFilter(.date)
-		}
-		
-		// Update actions with checkmarks
-		defaultAction.state = selectedFilterOption == .default ? .on : .off
-		nameAction.state = selectedFilterOption == .name ? .on : .off
-		dateAction.state = selectedFilterOption == .date ? .on : .off
-		
-		let filterMenu = UIMenu(title: String.localized("SOURCES_CELLS_ACTIONS_FILTER_TITLE"), children: [defaultAction, nameAction, dateAction])
+		let filterMenu = UIMenu(title: String.localized("SOURCES_CELLS_ACTIONS_FILTER_TITLE"), children: createSubSortMenu())
 		let filterButton = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.decrease"), menu: filterMenu)
 		
 		self.navigationItem.rightBarButtonItem = filterButton
 	}
 	
-	enum AppFilterOption {
-		case `default`
-		case name
-		case date
-	}
-	
-	func applyFilter(_ option: AppFilterOption) {
-		selectedFilterOption = option
+	private func createSubSortMenu() -> [UIMenuElement] {
+		let sortByDAction = createSortAction(title: "Default", sortOption: .default)
+		let sortByNameAction = createSortAction(title: "Name", sortOption: .name)
+		let sortBySizeAction = createSortAction(title: "Date", sortOption: .date)
 		
-		switch option {
+		let meowMenu = UIMenu(title: "",
+							  image: nil,
+							  identifier: nil,
+							  options: .displayInline,
+							  children: [sortByDAction, sortByNameAction, sortBySizeAction])
+		
+		return [meowMenu]
+	}
+
+	
+	func applyFilter() {
+		let sortOption = Preferences.currentSortOption
+		let ascending = Preferences.currentSortOptionAscending
+		
+		switch sortOption {
 		case .default:
-			apps = oApps
+			apps = ascending ? oApps : oApps.reversed()
 		case .name:
-			apps = apps.sorted { $0.name < $1.name }
+			apps = apps.sorted { ascending ? $0.name < $1.name : $0.name > $1.name }
 		case .date:
 			apps = apps.sorted {
-				guard let date0 = $0.versionDate else { return false }
-				guard let date1 = $1.versionDate else { return true }
-				return date0 < date1
+				let date0 = $0.versions?.first?.date ?? $0.versionDate
+				let date1 = $1.versions?.first?.date ?? $1.versionDate
+				
+				if date0 == nil && date1 == nil { return ascending }
+				
+				guard let date0 = date0, let date1 = date1 else {
+					return date0 != nil
+				}
+				
+				return ascending ? date0 > date1 : date0 < date1
 			}
 		}
 		
@@ -109,48 +116,95 @@ class SourceAppViewController: UITableViewController {
 		
 		updateFilterMenu()
 	}
+
+	
+	private func createSortAction(title: String, sortOption: SortOption) -> UIAction {
+		return UIAction(title: title,
+						image: arrowImage(for: sortOption),
+						identifier: UIAction.Identifier("sort\(title)"),
+						state: Preferences.currentSortOption == sortOption ? .on : .off,
+						handler: { [weak self] _ in
+			guard let self = self else { return }
+			
+			if Preferences.currentSortOption == sortOption {
+				Preferences.currentSortOptionAscending.toggle()
+			} else {
+				Preferences.currentSortOption = sortOption
+				updateSortOrderImage(for: sortOption)
+			}
+			applyFilter()
+		})
+	}
+	
+	/// Arrowimages for Sort options
+	func arrowImage(for sortOption: SortOption) -> UIImage? {
+		let isAscending = Preferences.currentSortOptionAscending
+		let imageName = isAscending ? "chevron.up" : "chevron.down"
+		return sortOption == Preferences.currentSortOption ? UIImage(systemName: imageName) : nil
+	}
+	
+	func updateSortOrderImage(for sortOption: SortOption) {
+		guard let sortActionsGroup = sortActionsGroup else {
+			print("sortActionsGroup is nil")
+			return
+		}
+		
+		for case let action as UIAction in sortActionsGroup.children {
+			if action.identifier == UIAction.Identifier("sort\(sortOption)") {
+				if let image = arrowImage(for: sortOption) {
+					action.image = image
+				}
+			}
+		}
+	}
 	
 	fileprivate func setupNavigation() {
 		self.navigationItem.largeTitleDisplayMode = .never
 	}
 	
 	private func loadAppsData() {
-		guard let uri = uri else { return }
-		sourceGET.downloadURL(from: uri) { [weak self] result in
-			switch result {
-			case .success(let (data, _)):
-				let parseResult = self?.sourceGET.parse(data: data)
-				switch parseResult {
-				case .success(let sourceData):
-					DispatchQueue.main.async {
-						
-						self?.apps = sourceData.apps
-						self?.oApps = sourceData.apps
-						
-						if let fil = self?.shouldFilter() {
-							self?.apps = [fil].compactMap { $0 }
-						}
-						
-						UIView.transition(with: self!.tableView, duration: 0.3, options: .transitionCrossDissolve, animations: {
-							self!.activityIndicator.stopAnimating()
-							self?.navigationItem.titleView = nil
-							if (self?.highlightAppName == nil) {
-								self?.updateFilterMenu()
-							}
-							self?.tableView.reloadData()
-						}, completion: nil)
+		guard let urls = uri else { return }
+		let dispatchGroup = DispatchGroup()
+		var allApps: [StoreAppsData] = []
+		
+		for uri in urls {
+			dispatchGroup.enter()
+			
+			sourceGET.downloadURL(from: uri) { [weak self] result in
+				switch result {
+				case .success(let (data, _)):
+					if let parseResult = self?.sourceGET.parse(data: data), case .success(let sourceData) = parseResult {
+						allApps.append(contentsOf: sourceData.apps)
 					}
 				case .failure(let error):
-					Debug.shared.log(message: "Error parsing data: \(error.localizedDescription)")
-				case .none:
-					break
+					Debug.shared.log(message: "Error fetching data from \(uri): \(error.localizedDescription)")
 				}
 				
-			case .failure(let error):
-				Debug.shared.log(message: "Error fetching data: \(error.localizedDescription)")
+				dispatchGroup.leave()
 			}
 		}
+		
+		dispatchGroup.notify(queue: .main) { [weak self] in
+			self?.apps = allApps
+			self?.oApps = allApps
+			
+			if let fil = self?.shouldFilter() {
+				self?.apps = [fil].compactMap { $0 }
+			} else {
+				self?.applyFilter()
+			}
+			
+			UIView.transition(with: self!.tableView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+				self!.activityIndicator.stopAnimating()
+				self?.navigationItem.titleView = nil
+				if self?.highlightAppName == nil {
+					self?.updateFilterMenu()
+				}
+				self?.tableView.reloadData()
+			}, completion: nil)
+		}
 	}
+
 	
 	private func shouldFilter() -> StoreAppsData? {
 		guard

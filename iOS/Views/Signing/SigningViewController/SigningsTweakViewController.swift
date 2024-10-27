@@ -10,19 +10,21 @@ import Foundation
 import UIKit
 import UniformTypeIdentifiers
 
-class AppSigningTweakViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-	var appSigningViewController: AppSigningViewController
-	var tweaksToInject: [URL] = [] {
+class SigningsTweakViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+	var tweaksToInject: [String] = [] {
 		didSet {
 			UIView.animate(withDuration: 0.3) {
-				self.appSigningViewController.toInject = self.tweaksToInject 
+				self.signingDataWrapper.signingOptions.toInject = self.tweaksToInject
 				self.collectionView.reloadData()
 			}
 		}
 	}
 	
-	init(appSigningViewController: AppSigningViewController) {
-		self.appSigningViewController = appSigningViewController
+	var signingDataWrapper: SigningDataWrapper
+	
+	init(signingDataWrapper: SigningDataWrapper) {
+		self.signingDataWrapper = signingDataWrapper
+		
 		let layout = UICollectionViewFlowLayout()
 		layout.scrollDirection = .vertical
 		layout.minimumLineSpacing = 16
@@ -39,7 +41,7 @@ class AppSigningTweakViewController: UICollectionViewController, UICollectionVie
 
 		navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(openDocuments))
 		collectionView.backgroundColor = .systemBackground
-		self.tweaksToInject = self.appSigningViewController.toInject
+		self.tweaksToInject = self.signingDataWrapper.signingOptions.toInject
 	}
 	
 	@objc func openDocuments() {
@@ -51,7 +53,7 @@ class AppSigningTweakViewController: UICollectionViewController, UICollectionVie
 	}
 }
 
-extension AppSigningTweakViewController {
+extension SigningsTweakViewController {
 	override func numberOfSections(in collectionView: UICollectionView) -> Int {
 		return 1
 	}
@@ -77,7 +79,7 @@ extension AppSigningTweakViewController {
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.reuseIdentifier, for: indexPath) as! ProductCollectionViewCell
 		let tweak = tweaksToInject[indexPath.item]
-		cell.titleLabel.text = "\(tweak.lastPathComponent)"
+		cell.titleLabel.text = "\(URL(string: tweak)!.lastPathComponent)"
 		
 		return cell
 	}
@@ -93,7 +95,7 @@ extension AppSigningTweakViewController {
 	}
 }
 
-extension AppSigningTweakViewController: UIDocumentPickerDelegate {
+extension SigningsTweakViewController: UIDocumentPickerDelegate {
 	func importFile() {
 		self.presentDocumentPicker(fileExtension: [
 			UTType(filenameExtension: "deb")!,
@@ -113,8 +115,8 @@ extension AppSigningTweakViewController: UIDocumentPickerDelegate {
 		
 		Debug.shared.log(message: "\(selectedFileURL)")
 		
-		if !tweaksToInject.contains(selectedFileURL) {
-			self.tweaksToInject.append(selectedFileURL)
+		if !tweaksToInject.contains(where: { $0 == selectedFileURL.absoluteString }) {
+			tweaksToInject.append(selectedFileURL.absoluteString)
 		}
 		
 		collectionView.reloadData()

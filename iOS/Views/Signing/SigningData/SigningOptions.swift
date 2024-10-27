@@ -14,7 +14,10 @@ struct MainSigningOptions {
 	var iconURL: UIImage?
 
 	var uuid: String?
-	var removeInjectPaths: [String]?
+	var removeInjectPaths: [String] = []
+	
+	let forceMinimumVersionString = ["Automatic", "15.0", "14.0", "13.0"]
+	let forceLightDarkAppearenceString = ["Automatic", "Light", "Dark"]
 	
 	var certificate: Certificate?
 }
@@ -34,12 +37,13 @@ struct SigningOptions: Codable {
 	
 	var forceForceFullScreen: Bool = false
 	var forceiTunesFileSharing: Bool = true
-	var forceMinimumVersion: String = "Automatic"
-	var forceLightDarkAppearence: String = "Automatic"
 	var forceTryToLocalize: Bool = false
 	
 	var removeProvisioningFile: Bool = true
 	var removeWatchPlaceHolder: Bool = true
+	
+	var forceMinimumVersion: String = "Automatic"
+	var forceLightDarkAppearence: String = "Automatic"
 }
 
 extension UserDefaults {
