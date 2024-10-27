@@ -23,7 +23,7 @@ func getLocalIPAddress() -> String? {
 			let interface = ptr!.pointee
 			let addrFamily = interface.ifa_addr.pointee.sa_family
 			
-			if addrFamily == UInt8(AF_INET) || addrFamily == UInt8(AF_INET6) {
+			if addrFamily == UInt8(AF_INET) {
 				
 				let name = String(cString: interface.ifa_name)
 				if name == "en0" || name == "pdp_ip0" {
