@@ -85,8 +85,7 @@ extension LibraryViewController {
 			
 			let headerWithButton = GroupedSectionHeader(
 				title: String.localized("LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS"),
-				subtitle: String.localized("%@ Downloaded", arguments: String(downloadedApps?.count ?? 0)),
-				buttonTitle: String.localized("LIBRARY_VIEW_CONTROLLER_SECTION_BUTTON_IMPORT")
+				subtitle: String.localized("%@ Downloaded", arguments: String(downloadedApps?.count ?? 0))
 			)
 			
 			return headerWithButton
