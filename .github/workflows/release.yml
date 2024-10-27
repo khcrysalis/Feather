@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-13
+    runs-on: macos-14
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -17,9 +17,9 @@ jobs:
           sudo install -m755 ldid_macosx_x86_64 /usr/local/bin/ldid
           brew install 7zip gnu-sed
 
-      - name: Select Xcode 15.1
+      - name: Select Xcode 16.0
         run: | 
-          sudo xcode-select -s /Applications/Xcode_15.1.app/Contents/Developer
+          sudo xcode-select -s /Applications/Xcode_16.app/Contents/Developer
           mkdir upload
 
       - name: Compile f
