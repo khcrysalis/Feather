@@ -113,7 +113,11 @@ extension SourcesViewController {
 		case 0:
 			cell.textLabel?.text = "All Repositories"
 			cell.detailTextLabel?.text = "See all apps from your sources"
-			SectionIcons.sectionIcon(to: cell, with: "books.vertical.fill", backgroundColor: Preferences.appTintColor.uiColor.withAlphaComponent(0.7))
+			
+			var repoIcon = "books.vertical.fill"
+			if #available(iOS 16.0, *) { repoIcon = "globe.desk.fill" }
+			
+			SectionIcons.sectionIcon(to: cell, with: repoIcon, backgroundColor: Preferences.appTintColor.uiColor.withAlphaComponent(0.7))
 			return cell
 		case 1:
 			cell.textLabel?.text = source.name ?? String.localized("UNKNOWN")

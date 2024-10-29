@@ -34,7 +34,18 @@ struct TabbarView: View {
 		case .sources:
 			NavigationViewController(SourcesViewController.self, title: String.localized("TAB_SOURCES"))
 				.edgesIgnoringSafeArea(.all)
-				.tabItem { Label(String.localized("TAB_SOURCES"), systemImage: "books.vertical.fill") }
+				.tabItem {
+					Label(
+						String.localized("TAB_SOURCES"),
+						systemImage: {
+							if #available(iOS 16.0, *) {
+								return "globe.desk.fill"
+							} else {
+								return "books.vertical.fill"
+							}
+						}()
+					)
+				}
 				.tag(Tab.sources)
 		case .library:
 			NavigationViewController(LibraryViewController.self, title: String.localized("TAB_LIBRARY"))

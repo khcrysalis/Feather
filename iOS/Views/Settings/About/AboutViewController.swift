@@ -21,7 +21,7 @@ class AboutViewController: UITableViewController {
 	var tableData = [
 		["Header"],
 		[],
-		[""],
+		["", "Thanks"], // Don't translate this
 		[]
 	]
 	
@@ -168,11 +168,19 @@ extension AboutViewController {
 			}
 			return personCell
 		case 2:
-			let personCellIdentifier = "BatchPersonCell"
-			let personCell = tableView.dequeueReusableCell(withIdentifier: personCellIdentifier) as? BatchPersonCell ?? BatchPersonCell(style: .default, reuseIdentifier: personCellIdentifier)
-						
-			personCell.configure(with: creditsSponsors)
-			return personCell
+			if cellText != "Thanks" {
+				let personCellIdentifier = "BatchPersonCell"
+				let personCell = tableView.dequeueReusableCell(withIdentifier: personCellIdentifier) as? BatchPersonCell ?? BatchPersonCell(style: .default, reuseIdentifier: personCellIdentifier)
+							
+				personCell.configure(with: creditsSponsors)
+				return personCell
+			} else {
+				// Don't translate this
+				cell.textLabel?.text = "💙 This couldn't of been done without my sponsors!"
+				cell.textLabel?.textColor = .secondaryLabel
+				cell.textLabel?.numberOfLines = 0
+				return cell
+			}
 		case 3:
 			let cell = UITableViewCell(style: .default, reuseIdentifier: reuseIdentifier)
 			cell.textLabel?.text = cellText
