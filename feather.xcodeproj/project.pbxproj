@@ -23,6 +23,7 @@
 		332476EA2C3E905D008C8EF0 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476E92C3E905D008C8EF0 /* AboutViewController.swift */; };
 		332476ED2C3E92BC008C8EF0 /* DisplayCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476EB2C3E92BC008C8EF0 /* DisplayCollectionTableViewCell.swift */; };
 		332476EE2C3E92BC008C8EF0 /* DisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476EC2C3E92BC008C8EF0 /* DisplayViewController.swift */; };
+		33275B6C2CD0A598007ED278 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33275B6B2CD0A590007ED278 /* LicenseViewController.swift */; };
 		332AE3C02C097F180052F24A /* Feather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 332AE3BE2C097F180052F24A /* Feather.xcdatamodeld */; };
 		333912A02BF9816B00E72360 /* CertificateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3339129F2BF9816B00E72360 /* CertificateModel.swift */; };
 		33570F612C32B80E008CB560 /* AppsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F602C32B80E008CB560 /* AppsTableViewCell.swift */; };
@@ -159,6 +160,7 @@
 		332476E92C3E905D008C8EF0 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		332476EB2C3E92BC008C8EF0 /* DisplayCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		332476EC2C3E92BC008C8EF0 /* DisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayViewController.swift; sourceTree = "<group>"; };
+		33275B6B2CD0A590007ED278 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		332AE3BF2C097F180052F24A /* Feather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Feather.xcdatamodel; sourceTree = "<group>"; };
 		3339129F2BF9816B00E72360 /* CertificateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateModel.swift; sourceTree = "<group>"; };
 		33570F602C32B80E008CB560 /* AppsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsTableViewCell.swift; sourceTree = "<group>"; };
@@ -352,9 +354,35 @@
 			isa = PBXGroup;
 			children = (
 				332476E92C3E905D008C8EF0 /* AboutViewController.swift */,
+				33275B6B2CD0A590007ED278 /* LicenseViewController.swift */,
+				332476E52C3E8E25008C8EF0 /* SettingsCreditsTableCell.swift */,
 				33E4D8422C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift */,
 			);
 			path = About;
+			sourceTree = "<group>";
+		};
+		33275B662CD0A4A6007ED278 /* Server Options */ = {
+			isa = PBXGroup;
+			children = (
+				33E5A5A12CC85CAA00532930 /* ServerOptionsViewController.swift */,
+			);
+			path = "Server Options";
+			sourceTree = "<group>";
+		};
+		33275B692CD0A4D8007ED278 /* View Logs */ = {
+			isa = PBXGroup;
+			children = (
+				33E5A5AD2CC8A41E00532930 /* LogsViewController.swift */,
+			);
+			path = "View Logs";
+			sourceTree = "<group>";
+		};
+		33275B6A2CD0A4E4007ED278 /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				33E5A5982CC8586E00532930 /* LanguageViewController.swift */,
+			);
+			path = Language;
 			sourceTree = "<group>";
 		};
 		336EEE822C324C9B0011188D /* Apps */ = {
@@ -580,17 +608,16 @@
 			isa = PBXGroup;
 			children = (
 				33AC87F02C3B7CBE003D1175 /* SettingsViewController.swift */,
-				332476E52C3E8E25008C8EF0 /* SettingsCreditsTableCell.swift */,
 				33E4D8402C67E5C3006A1C26 /* DonationTableViewCell.swift */,
 				332476E72C3E9044008C8EF0 /* About */,
 				332476E42C3E8778008C8EF0 /* Display */,
 				338FFCE22C6950FC006C3BE0 /* AppIcon */,
-				33E5A5982CC8586E00532930 /* LanguageViewController.swift */,
+				33275B6A2CD0A4E4007ED278 /* Language */,
 				33AC87EE2C3B7C3D003D1175 /* Certificates */,
 				33E5A5A32CC86C7D00532930 /* Signing Options */,
-				33E5A5A12CC85CAA00532930 /* ServerOptionsViewController.swift */,
+				33275B662CD0A4A6007ED278 /* Server Options */,
+				33275B692CD0A4D8007ED278 /* View Logs */,
 				332476E12C3E874F008C8EF0 /* Reset */,
-				33E5A5AD2CC8A41E00532930 /* LogsViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1012,6 +1039,7 @@
 				D0651C392BFEEA4B00D40829 /* signing.cpp in Sources */,
 				33C0409B2C30B4A100243D90 /* AppDownload.swift in Sources */,
 				33BA37BA2BF9426100FF530A /* Sources.swift in Sources */,
+				33275B6C2CD0A598007ED278 /* LicenseViewController.swift in Sources */,
 				D0651C1C2BFEE97F00D40829 /* json.cpp in Sources */,
 				339CE28A2C58539300B58502 /* Logger.swift in Sources */,
 				33C29F202C7BD73800EF7608 /* UIUserInterfaceStyle+allCases.swift in Sources */,

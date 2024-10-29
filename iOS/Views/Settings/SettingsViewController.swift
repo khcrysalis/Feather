@@ -49,8 +49,8 @@ class SettingsViewController: UITableViewController {
 		"",
 		"General",
 		"",
-		"Signing",
-		"Debug",
+		"",
+		"",
 		"",
 		"",
 	]

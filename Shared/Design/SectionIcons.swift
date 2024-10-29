@@ -41,6 +41,7 @@ class SectionIcons {
 		cell.imageView?.clipsToBounds = true
 		cell.imageView?.layer.borderWidth = 1
 		cell.imageView?.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
+		cell.imageView?.layer.cornerCurve = .continuous
 	}
 
 	
