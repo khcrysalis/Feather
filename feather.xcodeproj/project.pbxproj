@@ -1244,7 +1244,7 @@
 					"$(PROJECT_DIR)/Shared/Signing",
 					"$(PROJECT_DIR)/Shared/Resources",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1291,7 +1291,7 @@
 					"$(PROJECT_DIR)/Shared/Signing",
 					"$(PROJECT_DIR)/Shared/Resources",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
