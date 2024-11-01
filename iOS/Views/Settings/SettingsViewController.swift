@@ -11,38 +11,54 @@ import Nuke
 import SwiftUI
 
 class SettingsViewController: UITableViewController {
-	var tableData =
-	[
-		[
-			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ABOUT", arguments: "Feather"),
-			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_SUBMIT_FEEDBACK"),
-			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_GITHUB")
-		],
-		[
-			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY"),
-			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON")
-		],
-		[
-			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_LANGUAGE"),
-		],
-		[
-			"Current Certificate",
-			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES"),
-			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_SIGN_OPTIONS"),
-			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_SERVER_OPTIONS"),
-		],
-		[
-			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_VIEW_LOGS"),
-		],
-		[
-			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_APPS_FOLDER"),
-			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_CERTS_FOLDER"),
-		],
-		[
-			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET"),
-			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_ALL"),
-		]
+	let aboutSection = [
+		String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ABOUT", arguments: "Feather"),
+		String.localized("SETTINGS_VIEW_CONTROLLER_CELL_SUBMIT_FEEDBACK"),
+		String.localized("SETTINGS_VIEW_CONTROLLER_CELL_GITHUB")
 	]
+
+	let displaySection = [
+		String.localized("SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY"),
+		String.localized("SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON")
+	]
+
+	let languageSection = [
+		String.localized("SETTINGS_VIEW_CONTROLLER_CELL_LANGUAGE")
+	]
+
+	let certificateSection = [
+		"Current Certificate",
+		String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES"),
+		String.localized("SETTINGS_VIEW_CONTROLLER_CELL_SIGN_OPTIONS"),
+		String.localized("SETTINGS_VIEW_CONTROLLER_CELL_SERVER_OPTIONS")
+	]
+
+	let logsSection = [
+		String.localized("SETTINGS_VIEW_CONTROLLER_CELL_VIEW_LOGS")
+	]
+
+	let foldersSection = [
+		String.localized("SETTINGS_VIEW_CONTROLLER_CELL_APPS_FOLDER"),
+		String.localized("SETTINGS_VIEW_CONTROLLER_CELL_CERTS_FOLDER")
+	]
+
+	let resetSection = [
+		String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET"),
+		String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_ALL")
+	]
+
+	lazy var tableData: [[String]] = {
+		return [
+			aboutSection,
+			displaySection,
+			languageSection,
+			certificateSection,
+			logsSection,
+			foldersSection,
+			resetSection
+		]
+	}()
+
 
 	var sectionTitles =
 	[
