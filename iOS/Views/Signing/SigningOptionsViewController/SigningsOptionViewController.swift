@@ -37,8 +37,8 @@ func toggleOptions(signingDataWrapper: SigningDataWrapper) -> [TogglesOption] {
 			binding: signingDataWrapper.signingOptions.removeURLScheme
 		   ),
 		   TogglesOption(
-			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCE_PRO_MOTION"),
-			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCE_PRO_MOTION_DESCRIPTION"),
+			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION"),
+			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION_DESCRIPTION"),
 			binding: signingDataWrapper.signingOptions.forceProMotion
 		   ),
 		   TogglesOption(
