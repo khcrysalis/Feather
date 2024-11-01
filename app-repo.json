@@ -13,6 +13,12 @@
       "tintColor": "848ef9",
       "versions": [
 		{
+			"version": "1.1.2",
+			"date": "2024-10-31T18:35:10Z",
+		    "size": 12375230,
+			"downloadURL": "https://github.com/khcrysalis/Feather/releases/download/v1.1.2/feather_v1.1.2.ipa"
+		},
+		{
 			"version": "1.1.1",
 			"date": "2024-10-31T18:34:10Z",
 			"size": 12375230,
@@ -62,9 +68,9 @@
         }
       ],
       "size": 12375230,
-      "version": "1.1.1",
-      "versionDate": "2024-10-31T18:34:10Z",
-      "downloadURL": "https://github.com/khcrysalis/Feather/releases/download/v1.1.1/feather_v1.1.1.ipa",
+      "version": "1.1.2",
+      "versionDate": "2024-10-31T18:35:10Z",
+      "downloadURL": "https://github.com/khcrysalis/Feather/releases/download/v1.1.2/feather_v1.1.2.ipa",
       "appPermissions": {}
     }
   ],
