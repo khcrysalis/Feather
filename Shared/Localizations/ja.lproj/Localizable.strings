@@ -179,26 +179,60 @@
 "APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_TITLE" = "Error";
 "APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_DESCRIPTION" = "You do not have a certificate selected, please select or upload one in the signing section of the settings tab.";
 
-// MARK: - AppSigningViewController -> AppSigningInputViewController
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_CELL_PPQCHECK" = "PPQCheck is Enabled";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_CELL_PPQCHECK_DESCRIPTION" = "PPQCheck is a way for Apple to check if the app you're opening matches another bundle identifier found on the App Store, the check happens on the first time you open the signed installed application. We have an option for you to avoid this, however you will no longer receive the benefits of notifications and such relating to the default identifier.";
-
 // MARK: - AppSigningViewController -> AppSigningAdvancedViewController
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE" = "Appearence";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION" = "Minimum App Version";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES" = "Properties";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "Remove all PlugIns";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES" = "Remove UISupportedDevices";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME" = "Remove URLScheme";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS" = "Allow browsing Documents";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING" = "Allow iTunes Sharing";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION" = "Force Pro Motion";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "Force Fullscreen";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP" = "Delete Placeholder Watch App";
-
 // MARK: - AppSigningViewController -> AppSigningTweakViewController
 "APP_SIGNING_TWEAK_VIEW_CONTROLLER_TITLE" = "Tweaks";
+
+// MARK: - SigningsOptionsViewController
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS" = "Enable Protection";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS_DESCRIPTION" = "Enabling protections will pre-append every bundle identifier with a random string, this is to protect the Apple ID related to your certificate from being flagged by Apple. However, if you don't care about this you can ignore.";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS" = "Bundle Identifiers";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_NEW" = "New Identifier";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID" = "Identifier";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID_REPLACEMENT" = "Replacement";
+
+
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_INSTALLAFTERSIGNED" = "Install after Signing";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_TITLE" = "Signing Options";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "Remove all PlugIns";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS_DESCRIPTION" = "Removes the PlugIns directory inside of the app, which would usually have some components for the app to function properly.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES" = "Remove UISupportedDevices";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES_DESCRIPTION" = "Removes device restrictions for the application.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME" = "Remove URLScheme";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME_DESCRIPTION" = "Removes any possible URL schemes (i.e. 'feather://')";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS" = "Allow Browsing Documents";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS_DESCRIPTION" = "Allows other apps to open and edit the files stored in the Documents folder. This option also lets users set the app’s default save location in Settings.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING" = "Allow iTunes Sharing";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING_DESCRIPTION" = "Forces the app to share their documents directory, allowing sharing between iTunes and Finder.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION" = "Force ProMotion";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION_DESCRIPTION" = "Enables ProMotion capabilities within the app, however on lower versions of 15.x this may not be enough.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "Force Fullscreen";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN_DESCRIPTION" = "Forces only fullscreen capabilities within iPad apps, disallowing sharing the screen with other apps. On an external screen, the window for an app with this setting maintains its canvas size.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP" = "Delete Placeholder Watch App";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP_DESCRIPTION" = "Removes unwanted watch placeholder which isn't supposed to be there, present in apps such as YouTube music, etc.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS" = "Force Try To Localize";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS_DESCRIPTION" = "Forces localization by modifying every localizable bundle within the app when trying to change a name of the app.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING" = "Remove Provisioning File";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING_DESCRIPTION" = "Removes .mobileprovison from appearing in your app after signing.";
+
 
 // MARK: - LibraryViewController
 //Search Library placeholder

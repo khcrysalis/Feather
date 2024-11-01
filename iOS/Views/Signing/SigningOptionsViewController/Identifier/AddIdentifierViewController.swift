@@ -12,7 +12,7 @@ class AddIdentifierViewController: UITableViewController {
 	
 	private let identifierTextField: UITextField = {
 		let textField = UITextField(frame: .zero)
-		textField.placeholder = "Identifier"
+		textField.placeholder = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID")
 		textField.borderStyle = .none
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
@@ -20,7 +20,7 @@ class AddIdentifierViewController: UITableViewController {
 	
 	private let replacementTextField: UITextField = {
 		let textField = UITextField(frame: .zero)
-		textField.placeholder = "Replacement"
+		textField.placeholder = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID_REPLACEMENT")
 		textField.borderStyle = .none
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
@@ -34,14 +34,14 @@ class AddIdentifierViewController: UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		title = "New Identifier"
+		title = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_NEW")
 		view.backgroundColor = .systemBackground
 		
 		identifierTextField.addTarget(self, action: #selector(textFieldsDidChange), for: .editingChanged)
 		replacementTextField.addTarget(self, action: #selector(textFieldsDidChange), for: .editingChanged)
 		
 		navigationItem.rightBarButtonItem = UIBarButtonItem(
-			title: "Add",
+			title: String.localized("ADD"),
 			style: .done,
 			target: self,
 			action: #selector(addButtonTapped)

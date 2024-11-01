@@ -15,7 +15,7 @@ class IdentifiersViewController: UITableViewController {
 	init(signingDataWrapper: SigningDataWrapper) {
 		self.signingDataWrapper = signingDataWrapper
 		super.init(style: .insetGrouped)
-		title = "Identifiers"
+		title = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS")
 	}
 	
 	required init?(coder: NSCoder) {
@@ -58,7 +58,7 @@ class IdentifiersViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-		let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] _, _, completionHandler in
+		let deleteAction = UIContextualAction(style: .destructive, title: String.localized("DELETE")) { [weak self] _, _, completionHandler in
 			self?.deleteIdentifier(at: indexPath.section)
 			completionHandler(true)
 		}

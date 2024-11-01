@@ -28,7 +28,6 @@ class LogsViewController: UIViewController {
 	}
 	
 	fileprivate func setupNavigation() {
-		self.title = "Logs"
 		self.navigationItem.largeTitleDisplayMode = .never
 	}
 	
@@ -155,7 +154,7 @@ class LogsViewController: UIViewController {
 			}
 
 		} catch {
-			print("Error reading log file: \(error)")
+			Debug.shared.log(message: "Error reading log file: \(error)")
 		}
 	}
 	
@@ -182,7 +181,7 @@ extension LogsViewController: UITableViewDataSource, UITableViewDelegate {
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let reuseIdentifier = "Cell"
-		var cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
+		let cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
 		cell.accessoryType = .none
 		cell.selectionStyle = .none
 

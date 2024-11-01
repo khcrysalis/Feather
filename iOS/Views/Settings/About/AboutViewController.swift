@@ -28,7 +28,7 @@ class AboutViewController: UITableViewController {
 	var sectionTitles = [
 		"",
 		String.localized("ABOUT_VIEW_CONTROLLER_SECTION_TITLE_CREDITS"),
-		"Sponsors",
+		String.localized("ABOUT_VIEW_CONTROLLER_SECTION_TITLE_SPONSORS"),
 		String.localized("ABOUT_VIEW_CONTROLLER_SECTION_TITLE_ACKNOWLEDGEMENTS")
 	]
 	

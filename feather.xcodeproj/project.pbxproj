@@ -119,7 +119,6 @@
 		33E5A59D2CC859E400532930 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 33BF31642C7C05330087F3D2 /* Localizable.strings */; };
 		33E5A5A02CC85C1B00532930 /* Antoine.md in Resources */ = {isa = PBXBuildFile; fileRef = 33E5A59F2CC85C1B00532930 /* Antoine.md */; };
 		33E5A5A22CC85CAA00532930 /* ServerOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5A5A12CC85CAA00532930 /* ServerOptionsViewController.swift */; };
-		33E5A5A52CC86C9400532930 /* SigningOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5A5A42CC86C9400532930 /* SigningOptionsViewController.swift */; };
 		33E5A5A72CC86F7300532930 /* VariableBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5A5A62CC86F7300532930 /* VariableBlurView.swift */; };
 		33E5A5AA2CC88ABF00532930 /* ResetDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5A5A92CC88ABF00532930 /* ResetDataClass.swift */; };
 		33E5A5AC2CC88BF500532930 /* ResetAlertOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5A5AB2CC88BF500532930 /* ResetAlertOptions.swift */; };
@@ -239,8 +238,6 @@
 		33BF31662C7C05840087F3D2 /* Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foundation.swift; sourceTree = "<group>"; };
 		33BF316A2C7C46650087F3D2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		33BF316B2C7C466B0087F3D2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		33BF316D2C7C46800087F3D2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		33BF316E2C7C4D0C0087F3D2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		33C0409A2C30B4A100243D90 /* AppDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDownload.swift; sourceTree = "<group>"; };
 		33C29F1F2C7BD73800EF7608 /* UIUserInterfaceStyle+allCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIUserInterfaceStyle+allCases.swift"; sourceTree = "<group>"; };
 		33CE81A82C4295F300C05327 /* CertImportingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertImportingViewController.swift; sourceTree = "<group>"; };
@@ -260,13 +257,11 @@
 		33E5A59A2CC858FE00532930 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		33E5A59F2CC85C1B00532930 /* Antoine.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Antoine.md; sourceTree = "<group>"; };
 		33E5A5A12CC85CAA00532930 /* ServerOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerOptionsViewController.swift; sourceTree = "<group>"; };
-		33E5A5A42CC86C9400532930 /* SigningOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigningOptionsViewController.swift; sourceTree = "<group>"; };
 		33E5A5A62CC86F7300532930 /* VariableBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariableBlurView.swift; sourceTree = "<group>"; };
 		33E5A5A92CC88ABF00532930 /* ResetDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetDataClass.swift; sourceTree = "<group>"; };
 		33E5A5AB2CC88BF500532930 /* ResetAlertOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetAlertOptions.swift; sourceTree = "<group>"; };
 		33E5A5AD2CC8A41E00532930 /* LogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsViewController.swift; sourceTree = "<group>"; };
 		33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+DownloadedApps.swift"; sourceTree = "<group>"; };
-		392517742CAFF3CD001F15F4 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		88DE4CC52CA5A13200D68F1E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AA280D922C76A60700CAC838 /* LSApplicationWorkspace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSApplicationWorkspace.h; sourceTree = "<group>"; };
 		AA280D942C76AB7400CAC838 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -614,7 +609,6 @@
 				338FFCE22C6950FC006C3BE0 /* AppIcon */,
 				33275B6A2CD0A4E4007ED278 /* Language */,
 				33AC87EE2C3B7C3D003D1175 /* Certificates */,
-				33E5A5A32CC86C7D00532930 /* Signing Options */,
 				33275B662CD0A4A6007ED278 /* Server Options */,
 				33275B692CD0A4D8007ED278 /* View Logs */,
 				332476E12C3E874F008C8EF0 /* Reset */,
@@ -789,14 +783,6 @@
 				33E4D83E2C66C692006A1C26 /* UISheetPresentationControllerDetent+Private.h */,
 			);
 			path = Private;
-			sourceTree = "<group>";
-		};
-		33E5A5A32CC86C7D00532930 /* Signing Options */ = {
-			isa = PBXGroup;
-			children = (
-				33E5A5A42CC86C9400532930 /* SigningOptionsViewController.swift */,
-			);
-			path = "Signing Options";
 			sourceTree = "<group>";
 		};
 		33EEDAA82C5DA1C9009089DC /* Information */ = {
@@ -1059,7 +1045,6 @@
 				333912A02BF9816B00E72360 /* CertificateModel.swift in Sources */,
 				33BE87802C72D2840044D245 /* AR.swift in Sources */,
 				339CE28C2C5870AC00B58502 /* CoreDataManager+Sources.swift in Sources */,
-				33E5A5A52CC86C9400532930 /* SigningOptionsViewController.swift in Sources */,
 				33BDD0B62C785F5F00AF6169 /* Server+TLS.swift in Sources */,
 				339FE3422CCE29B400C297BA /* SigningsAdvancedViewController.swift in Sources */,
 				33BDD0B82C785F9500AF6169 /* Server+Compute.swift in Sources */,
@@ -1100,10 +1085,7 @@
 				33BF31632C7C05330087F3D2 /* en */,
 				33BF316A2C7C46650087F3D2 /* de */,
 				33BF316B2C7C466B0087F3D2 /* es */,
-				33BF316D2C7C46800087F3D2 /* ja */,
-				33BF316E2C7C4D0C0087F3D2 /* ru */,
 				88DE4CC52CA5A13200D68F1E /* fr */,
-				392517742CAFF3CD001F15F4 /* tr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

@@ -20,8 +20,8 @@ class DisplayViewController: UITableViewController {
 	var sectionTitles = [
 		"",
 		String.localized("DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_TINT_COLOR"),
-		"Store",
-		"Certificates"
+		String.localized("DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_STORE"),
+		String.localized("CERTIFICATES_VIEW_CONTROLLER_TITLE")
 	]
 
 	let collectionData = ["Default", "Berry", "Mint", "Dr Pepper", "Cool Blue", "Fuchsia", "Purplish"]
@@ -116,7 +116,7 @@ extension DisplayViewController {
 			return cell
 		case "Certificate Name":
 			let useTeamName = SwitchViewCell()
-			useTeamName.textLabel?.text = "Use Team Name"
+			useTeamName.textLabel?.text = String.localized("DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME")
 			useTeamName.switchControl.addTarget(self, action: #selector(certificateNameToggle(_:)), for: .valueChanged)
 			useTeamName.switchControl.isOn = Preferences.certificateTitleAppIDtoTeamID
 			useTeamName.selectionStyle = .none
@@ -141,7 +141,7 @@ extension DisplayViewController {
 	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
 		switch section {
 		case 3:
-			return "Replaces the certificate name with your team name, could be for better to distinguish between certificates if providers happen to always use the same App ID name."
+			return String.localized("DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME_DESCRIPTION")
 		default:
 			return nil
 		}

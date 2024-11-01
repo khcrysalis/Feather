@@ -179,26 +179,59 @@
 "APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_TITLE" = "Fehler";
 "APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_DESCRIPTION" = "Du hast kein Zertifikat ausgewählt. Wähle eines im Abschnitt \"Signierung\" der Registerkarte \"Einstellungen\" aus oder lade eines hoch.";
 
-// MARK: - AppSigningViewController -> AppSigningInputViewController
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_CELL_PPQCHECK" = "PPQCheck ist aktiviert";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_CELL_PPQCHECK_DESCRIPTION" = "Mit PPQCheck kann Apple prüfen, ob eine von dir geöffnete App mit einer anderen im App Store gefundenen BundleID übereinstimmt. Die Überprüfung erfolgt beim ersten Öffnen der signierten installierten Anwendung. Es ist möglich, dies zu vermeiden, wodurch du jedoch Vorteile wie Benachrichtigungen und Ähnliches verlierst.";
-
 // MARK: - AppSigningViewController -> AppSigningAdvancedViewController
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE" = "Erscheinungsbild";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION" = "Mindest-App-Version";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES" = "Eigenschaften";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "Alle Plug-ins entfernen";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES" = "UISupportedDevices entfernen";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME" = "URLScheme entfernen";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS" = "Durchsuchen von Dokumenten zulassen";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING" = "iTunes-Freigabe zulassen";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION" = "ProMotion erzwingen";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "Vollbild erzwingen";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP" = "Platzhalter-Uhr-App löschen";
-
 // MARK: - AppSigningViewController -> AppSigningTweakViewController
 "APP_SIGNING_TWEAK_VIEW_CONTROLLER_TITLE" = "Tweaks";
+
+// MARK: - SigningsOptionsViewController
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS" = "Enable Protection";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS_DESCRIPTION" = "Enabling protections will pre-append every bundle identifier with a random string, this is to protect the Apple ID related to your certificate from being flagged by Apple. However, if you don't care about this you can ignore.";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS" = "Bundle Identifiers";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_NEW" = "New Identifier";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID" = "Identifier";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID_REPLACEMENT" = "Replacement";
+
+
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_INSTALLAFTERSIGNED" = "Install after Signing";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_TITLE" = "Signing Options";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "Remove all PlugIns";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS_DESCRIPTION" = "Removes the PlugIns directory inside of the app, which would usually have some components for the app to function properly.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES" = "Remove UISupportedDevices";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES_DESCRIPTION" = "Removes device restrictions for the application.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME" = "Remove URLScheme";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME_DESCRIPTION" = "Removes any possible URL schemes (i.e. 'feather://')";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS" = "Allow Browsing Documents";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS_DESCRIPTION" = "Allows other apps to open and edit the files stored in the Documents folder. This option also lets users set the app’s default save location in Settings.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING" = "Allow iTunes Sharing";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING_DESCRIPTION" = "Forces the app to share their documents directory, allowing sharing between iTunes and Finder.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION" = "Force ProMotion";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION_DESCRIPTION" = "Enables ProMotion capabilities within the app, however on lower versions of 15.x this may not be enough.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "Force Fullscreen";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN_DESCRIPTION" = "Forces only fullscreen capabilities within iPad apps, disallowing sharing the screen with other apps. On an external screen, the window for an app with this setting maintains its canvas size.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP" = "Delete Placeholder Watch App";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP_DESCRIPTION" = "Removes unwanted watch placeholder which isn't supposed to be there, present in apps such as YouTube music, etc.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS" = "Force Try To Localize";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS_DESCRIPTION" = "Forces localization by modifying every localizable bundle within the app when trying to change a name of the app.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING" = "Remove Provisioning File";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING_DESCRIPTION" = "Removes .mobileprovison from appearing in your app after signing.";
 
 // MARK: - LibraryViewController
 //Search Library placeholder
@@ -231,11 +264,25 @@
 "SETTINGS_VIEW_CONTROLLER_CELL_GITHUB" = "GitHub-Repository";
 "SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY" = "Erscheinungsbild";
 "SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON" = "App-Icon";
+"SETTINGS_VIEW_CONTROLLER_CELL_LANGUAGE" = "Language";
+
 "SETTINGS_VIEW_CONTROLLER_CELL_CURRENT_CERTIFICATE_NOSELECTED" = "Keine Zertifikate ausgewählt";
 "SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES" = "Zertifikat hinzufügen";
+
+
+
+"SETTINGS_VIEW_CONTROLLER_CELL_SIGN_OPTIONS" = "Signing Options";
+"SETTINGS_VIEW_CONTROLLER_CELL_SERVER_OPTIONS" = "Server Options";
+"SETTINGS_VIEW_CONTROLLER_CELL_VIEW_LOGS" = "View Logs";
+"SETTINGS_VIEW_CONTROLLER_CELL_APPS_FOLDER" = "Open Apps Folder";
+"SETTINGS_VIEW_CONTROLLER_CELL_CERTS_FOLDER" = "Open Certificates Folder";
+
+
 "SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE" = "Lokales Zertifikat aktualisieren";
 "SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE_UPDATING" = "Lokales Zertifikat aktualisieren";
 "SETTINGS_VIEW_CONTROLLER_CELL_RESET" = "Zurücksetzen";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_ALL" = "Reset All";
+
 "SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION" = "Konfiguration zurücksetzen";
 "SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER" = "Eigenen Server verwenden";
 
@@ -256,6 +303,7 @@
 
 // MARK: - SettingsViewController -> AboutViewController
 "ABOUT_VIEW_CONTROLLER_SECTION_TITLE_CREDITS" = "Credits";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_SPONSORS" = "Sponsors";
 "ABOUT_VIEW_CONTROLLER_SECTION_TITLE_DEVICE" = "Gerät";
 "ABOUT_VIEW_CONTROLLER_SECTION_TITLE_ACKNOWLEDGEMENTS" = "Danksagungen";
 
@@ -267,6 +315,7 @@
 // MARK: - SettingsViewController -> DisplayViewController
 "DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_TINT_COLOR" = "Tönungsfarbe";
 "DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARENCE" = "App-Erscheinungsbild";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_STORE" = "Store";
 
 "DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE" = "Standard Untertitel";
 "DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE_DESCRIPTION" = "Standardstil für Feather, verbirgt lokalisierte Beschreibung und enthält nur Untertitel.";
@@ -276,6 +325,9 @@
 
 "DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION" = "Große Beschreibung";
 "DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION_DESCRIPTION" = "Screenshots durch die App-Beschreibung ersetzen.";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME" = "Use Team Name";
+"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME_DESCRIPTION" = "Replaces the certificate name with your team name, could be for better to distinguish between certificates if providers happen to always use the same App ID name.";
 
 // MARK: - SettingsViewController -> CertificatesViewController
 "CERTIFICATES_VIEW_CONTROLLER_TITLE" = "Zertifikate";

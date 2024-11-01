@@ -23,31 +23,31 @@ class SettingsViewController: UITableViewController {
 			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON")
 		],
 		[
-			"Language",
+			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_LANGUAGE"),
 		],
 		[
 			"Current Certificate",
-			"Certificates",
-			"Signing Options",
-			"Server Options",
+			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES"),
+			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_SIGN_OPTIONS"),
+			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_SERVER_OPTIONS"),
 		],
 		[
-			"View Logs",
+			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_VIEW_LOGS"),
 		],
 		[
-			"Open Apps Folder",
-			"Open Certificates Folder",
+			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_APPS_FOLDER"),
+			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_CERTS_FOLDER"),
 		],
 		[
-			"Reset",
-			"Reset All",
+			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET"),
+			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_ALL"),
 		]
 	]
 
 	var sectionTitles =
 	[
 		"",
-		"General",
+		String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_GENERAL"),
 		"",
 		"",
 		"",
@@ -152,7 +152,7 @@ extension SettingsViewController {
 			cell.setAccessoryIcon(with: "app.dashed")
 			cell.selectionStyle = .default
 			
-		case "Language":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_LANGUAGE"):
 			cell.setAccessoryIcon(with: "character.bubble")
 			cell.selectionStyle = .default
 			
@@ -167,28 +167,28 @@ extension SettingsViewController {
 				cell.textLabel?.textColor = .secondaryLabel
 				cell.selectionStyle = .none
 			}
-		case "Certificates":
-			cell.setAccessoryIcon(with: "rectangle.dashed.and.paperclip")
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES"):
+			cell.setAccessoryIcon(with: "plus")
 			cell.selectionStyle = .default
-		case "Signing Options":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_SIGN_OPTIONS"):
 			cell.setAccessoryIcon(with: "signature")
 			cell.selectionStyle = .default
-		case "Server Options":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_SERVER_OPTIONS"):
 			cell.setAccessoryIcon(with: "server.rack")
 			cell.selectionStyle = .default
 			
-		case "View Logs":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_VIEW_LOGS"):
 			cell.setAccessoryIcon(with: "newspaper")
 			cell.selectionStyle = .default
 			
-		case "Open Apps Folder",
-			 "Open Certificates Folder":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_APPS_FOLDER"),
+			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_CERTS_FOLDER"):
 			cell.accessoryType = .disclosureIndicator
 			cell.textLabel?.textColor = .tintColor
 			cell.selectionStyle = .default
 			
 		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET"), 
-			 "Reset All":
+			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_ALL"):
 			cell.textLabel?.textColor = .tintColor
 			cell.accessoryType = .disclosureIndicator
 			cell.selectionStyle = .default
@@ -226,33 +226,33 @@ extension SettingsViewController {
 			let l = IconsListViewController()
 			navigationController?.pushViewController(l, animated: true)
 			
-		case "Language":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_LANGUAGE"):
 			let l = PreferredLanguageViewController()
 			navigationController?.pushViewController(l, animated: true)
 			
-		case "Certificates":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES"):
 			let l = CertificatesViewController()
 			navigationController?.pushViewController(l, animated: true)
-		case "Signing Options":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_SIGN_OPTIONS"):
 			let signingDataWrapper = SigningDataWrapper(signingOptions: UserDefaults.standard.signingOptions)
 			let l = SigningsOptionViewController(signingDataWrapper: signingDataWrapper)
 			navigationController?.pushViewController(l, animated: true)
-		case "Server Options":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_SERVER_OPTIONS"):
 			let l = ServerOptionsViewController()
 			navigationController?.pushViewController(l, animated: true)
 			
-		case "View Logs":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_VIEW_LOGS"):
 			let l = LogsViewController()
 			navigationController?.pushViewController(l, animated: true)
 			
-		case "Open Apps Folder":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_APPS_FOLDER"):
 			openDirectory(named: "Apps")
-		case "Open Certificates Folder":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_CERTS_FOLDER"):
 			openDirectory(named: "Certificates")
 			
 		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET"):
 			self.resetOptionsAction()
-		case "Reset All":
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_ALL"):
 			self.resetAllAction()
 		default:
 			break

@@ -17,54 +17,54 @@ struct TogglesOption {
 func toggleOptions(signingDataWrapper: SigningDataWrapper) -> [TogglesOption] {
 	return [
 		TogglesOption(
-			   title: "Remove all PlugIns",
-			   footer: "Removes the PlugIns directory inside of the app, which would usually have some components for the app to function properly.",
-			   binding: signingDataWrapper.signingOptions.removePlugins
+			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS"),
+			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS_DESCRIPTION"),
+			binding: signingDataWrapper.signingOptions.removePlugins
 		   ),
 		   TogglesOption(
-			   title: "Force File Sharing",
-			   footer: "Allows other apps to open and edit the files stored in the Documents folder. This option also lets users set the app’s default save location in Settings.",
-			   binding: signingDataWrapper.signingOptions.forceFileSharing
+			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS"),
+			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS_DESCRIPTION"),
+			binding: signingDataWrapper.signingOptions.forceFileSharing
 		   ),
 		   TogglesOption(
-			   title: "Remove UISupportedDevices",
-			   footer: "Removes device restrictions for the application.",
-			   binding: signingDataWrapper.signingOptions.removeSupportedDevices
+			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES"),
+			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES_DESCRIPTION"),
+			binding: signingDataWrapper.signingOptions.removeSupportedDevices
 		   ),
 		   TogglesOption(
-			   title: "Remove URL Scheme",
-			   footer: "Removes any possible URL schemes (i.e. 'feather://')",
-			   binding: signingDataWrapper.signingOptions.removeURLScheme
+			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME"),
+			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME_DESCRIPTION"),
+			binding: signingDataWrapper.signingOptions.removeURLScheme
 		   ),
 		   TogglesOption(
-			   title: "Enable ProMotion",
-			   footer: "Enables ProMotion capabilities within the app, however on lower versions of 15.x this may not be enough.",
-			   binding: signingDataWrapper.signingOptions.forceProMotion
+			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCE_PRO_MOTION"),
+			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCE_PRO_MOTION_DESCRIPTION"),
+			binding: signingDataWrapper.signingOptions.forceProMotion
 		   ),
 		   TogglesOption(
-			   title: "Force Full Screen",
-			   footer: "Forces only fullscreen capabilities within iPad apps, disallowing sharing the screen with other apps. On an external screen, the window for an app with this setting maintains its canvas size.",
-			   binding: signingDataWrapper.signingOptions.forceForceFullScreen
+			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN"),
+			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN_DESCRIPTION"),
+				binding: signingDataWrapper.signingOptions.forceForceFullScreen
 		   ),
 		   TogglesOption(
-			   title: "Force iTunes File Sharing",
-			   footer: "Forces the app to share their documents directory, allowing sharing between iTunes and Finder.",
-			   binding: signingDataWrapper.signingOptions.forceiTunesFileSharing
+			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING"),
+			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING_DESCRIPTION"),
+			binding: signingDataWrapper.signingOptions.forceiTunesFileSharing
 		   ),
 		   TogglesOption(
-			   title: "Force Try To Localize",
-			   footer: "Forces localization by modifying every localizable bundle within the app when trying to change a name of the app.",
-			   binding: signingDataWrapper.signingOptions.forceTryToLocalize
+			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS"),
+			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS_DESCRIPTION"),
+			binding: signingDataWrapper.signingOptions.forceTryToLocalize
 		   ),
 		   TogglesOption(
-			   title: "Remove Provisioning File",
-			   footer: "Removes .mobileprovison from appearing in your app after signing.",
-			   binding: signingDataWrapper.signingOptions.removeProvisioningFile
+			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING"),
+			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING_DESCRIPTION"),
+			binding: signingDataWrapper.signingOptions.removeProvisioningFile
 		   ),
 		   TogglesOption(
-			   title: "Remove Watch Placeholder",
-			   footer: "Removes unwanted watch placeholder which isn't supposed to be there, present in apps such as YouTube music, etc.",
-			   binding: signingDataWrapper.signingOptions.removeWatchPlaceHolder
+			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP"),
+			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP_DESCRIPTION"),
+			binding: signingDataWrapper.signingOptions.removeWatchPlaceHolder
 		   )
 	   ]
 }
@@ -101,7 +101,7 @@ class SigningsOptionViewController: UITableViewController {
 
 	fileprivate func setupNavigation() {
 		self.navigationItem.largeTitleDisplayMode = .never
-		self.title = "Signing Options"
+		self.title = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_TITLE")
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
 	}
 	
@@ -114,42 +114,55 @@ class SigningsOptionViewController: UITableViewController {
 extension SigningsOptionViewController {
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {
-		return 1 + toggleOptions.count
+		return 2 + toggleOptions.count
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return section == 0 ? 3 : 1
+		switch section {
+		case 0:  return 2
+		case 1:  return 3
+		default: return 1
+		}
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
+		cell.textLabel?.textColor = .label
+		cell.accessoryView = nil
 		
 		switch [indexPath.section, indexPath.row] {
 		case [0,0]:
+			cell.textLabel?.text = String.localized("SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_ID")
+			cell.textLabel?.textColor = .tintColor
+			cell.selectionStyle = .default
+		case [0,1]:
+			cell.textLabel?.text = String.localized("SETTINGS_VIEW_CONTROLLER_CELL_EXPORT_ID")
+			cell.textLabel?.textColor = .tintColor
+			cell.selectionStyle = .default
+		case [1,0]:
 			let toggleSwitch = UISwitch()
-			cell.textLabel?.text = "Enable Protection"
+			cell.textLabel?.text = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS")
 			toggleSwitch.isOn = signingDataWrapper.signingOptions.ppqCheckProtection
 			toggleSwitch.tag = 0
 			toggleSwitch.addTarget(self, action: #selector(toggleOptionsSwitches(_:)), for: .valueChanged)
 			cell.accessoryView = toggleSwitch
-		case [0,1]:
-			cell.textLabel?.text = "Bundle Identifiers"
+		case [1,1]:
+			cell.textLabel?.text = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS")
 			cell.accessoryType = .disclosureIndicator
-			cell.accessoryView = nil
-		case [0,2]:
+		case [1,2]:
 			let toggleSwitch = UISwitch()
-			cell.textLabel?.text = "Install after Signing"
+			cell.textLabel?.text = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_INSTALLAFTERSIGNED")
 			toggleSwitch.isOn = signingDataWrapper.signingOptions.installAfterSigned
 			toggleSwitch.tag = 1
 			toggleSwitch.addTarget(self, action: #selector(toggleOptionsSwitches(_:)), for: .valueChanged)
 			cell.accessoryView = toggleSwitch
 		default:
-			let toggleOption = toggleOptions[indexPath.section - 1]
+			let toggleOption = toggleOptions[indexPath.section - 2]
 			cell.textLabel?.text = toggleOption.title
 			
 			let toggleSwitch = UISwitch()
 			toggleSwitch.isOn = toggleOption.binding
-			toggleSwitch.tag = indexPath.section + 1
+			toggleSwitch.tag = indexPath.section + 2
 			toggleSwitch.addTarget(self, action: #selector(toggleOptionsSwitches(_:)), for: .valueChanged)
 			cell.accessoryView = toggleSwitch
 		}
@@ -161,7 +174,20 @@ extension SigningsOptionViewController {
 		tableView.deselectRow(at: indexPath, animated: true)
 		
 		switch [indexPath.section, indexPath.row] {
+		case [0, 0]:
+			showChangeIdentifierAlert()
 		case [0, 1]:
+			let shareText = Preferences.pPQCheckString
+			let activityViewController = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
+			
+			if let popoverController = activityViewController.popoverPresentationController {
+				popoverController.sourceView = self.view
+				popoverController.sourceRect = self.view.bounds
+				popoverController.permittedArrowDirections = []
+			}
+			
+			present(activityViewController, animated: true, completion: nil)
+		case [1, 1]:
 			let l = IdentifiersViewController(signingDataWrapper: signingDataWrapper)
 			navigationController?.pushViewController(l, animated: true)
 		default:
@@ -202,10 +228,42 @@ extension SigningsOptionViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-		guard section > 0 else {
-			return "Enabling protections will pre-append every bundle identifier with a random string, this is to protect the Apple ID related to your certificate from being flagged by Apple. However, if you don't care about this you can ignore."
+		if section == 1 {
+			return String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS_DESCRIPTION")
+		} else {
+			let toggleIndex = section - 2
+			if toggleIndex >= 0 && toggleIndex < toggleOptions.count {
+				let toggleOption = toggleOptions[toggleIndex]
+				return toggleOption.footer
+			}
 		}
-		let toggleOption = toggleOptions[section - 1]
-		return toggleOption.footer
+		return nil // Return nil if section is out of bounds
+	}
+
+}
+
+extension SigningsOptionViewController {
+	func showChangeIdentifierAlert() {
+		let alert = UIAlertController(title: String.localized("SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_IDENTIFIER"), message: nil, preferredStyle: .alert)
+
+		alert.addTextField { textField in
+			textField.placeholder = Preferences.pPQCheckString
+			textField.autocapitalizationType = .none
+		}
+
+		let setAction = UIAlertAction(title: String.localized("SET"), style: .default) { _ in
+			guard let textField = alert.textFields?.first, let enteredURL = textField.text else { return }
+
+			if !enteredURL.isEmpty {
+				Preferences.pPQCheckString = enteredURL
+			}
+		}
+
+		setAction.isEnabled = true
+		let cancelAction = UIAlertAction(title: String.localized("CANCEL"), style: .cancel, handler: nil)
+
+		alert.addAction(setAction)
+		alert.addAction(cancelAction)
+		present(alert, animated: true, completion: nil)
 	}
 }
