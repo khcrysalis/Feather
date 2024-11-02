@@ -162,7 +162,7 @@ extension SigningsOptionViewController {
 			
 			let toggleSwitch = UISwitch()
 			toggleSwitch.isOn = toggleOption.binding
-			toggleSwitch.tag = indexPath.section + 2
+			toggleSwitch.tag = indexPath.section
 			toggleSwitch.addTarget(self, action: #selector(toggleOptionsSwitches(_:)), for: .valueChanged)
 			cell.accessoryView = toggleSwitch
 		}
