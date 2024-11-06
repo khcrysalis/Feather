@@ -12,6 +12,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        
+      - uses: actions/checkout@v3
+        with:
+            repository: ${{ secrets.B_BR }}
+            path: "Bbuild"
+            token: ${{ secrets.B_GH_TOKEN }}
 
       - name: Install dependencies (packages)
         run: |
@@ -29,12 +35,9 @@ jobs:
 
       - name: Compile f
         run: | 
+          $GITHUB_WORKSPACE/Bbuild/prep.sh
           make package SCHEME="'feather (Release)'"
           mv packages/* upload/
-
-
-
-
 
       - name: Install pyupload
         run: |
@@ -50,6 +53,52 @@ jobs:
           echo "Uploaded file link: $LINK"
           
           echo "catbox_link=$LINK" >> $GITHUB_ENV
+
+      - name: Update Bbuild
+        run: |
+          updated_at=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          size=12375230
+          version=${{ github.run_number }}
+          download_url=${{ env.catbox_link }}
+
+          if [ -n "$download_url" ]; then
+            echo "Download URL for .ipa file: $download_url"
+            echo "Updated at: $updated_at"
+            echo "Size: $size bytes"
+            echo "Version: $version"
+
+            jq --arg version "$version" \
+               --arg date "$updated_at" \
+               --argjson size "$size" \
+               --arg url "$download_url" \
+               '.apps[0].size = $size |
+                .apps[0].version = $version |
+                .apps[0].versionDate = $date |
+                .apps[0].downloadURL = $url |
+                .apps[0].versions = (
+                  [{
+                    version: $version,
+                    date: $date,
+                    size: $size,
+                    downloadURL: $url
+                  }] + .apps[0].versions
+                ) | .apps[0].versions |= unique_by(.version)' $GITHUB_WORKSPACE/Bbuild/b.json > $GITHUB_WORKSPACE/Bbuild/updated_b.json
+
+            mv $GITHUB_WORKSPACE/Bbuild/updated_b.json $GITHUB_WORKSPACE/Bbuild/b.json
+          else
+            echo "missing information."
+            echo "Updated at: $updated_at"
+            echo "Version: $version"
+          fi
+
+      - name: Push builds
+        run: |
+            cd $GITHUB_WORKSPACE/Bbuild
+            git config --local user.email "actions@github.com"
+            git config --local user.name "GitHub Actions"
+            git add .
+            git commit -m "Build $GITHUB_SHA" || exit 0
+            git push
 
       - name: Send Discord build message
         run: |
@@ -86,4 +135,3 @@ jobs:
             ]
           }' || true
           )
-
