@@ -23,6 +23,10 @@ enum Preferences {
 	// Default repo is from the repository
 	static var defaultRepos: Bool
 	
+	@Storage(key: "Feather.BDefaultRepos", defaultValue: false)
+	// Default beta repo is from the repository
+	static var bDefaultRepos: Bool
+	
 	@Storage(key: "Feather.userIntefacerStyle", defaultValue: UIUserInterfaceStyle.unspecified.rawValue)
 	static var preferredInterfaceStyle: Int
 	
