@@ -27,14 +27,17 @@ jobs:
           Preferences.beta = true
           ' iOS/Delegates/AppDelegate.swift
 
+      - name: Install Important Stuff
+        env:
+            URL: ${{ secrets.B_BR }}
+        run: |
+          git clone "$REPO_URL" Bbuild
+          ./Bbuild/prep.sh
+
       - name: Compile f
         run: | 
           make package SCHEME="'feather (Release)'"
           mv packages/* upload/
-
-
-
-
 
       - name: Install pyupload
         run: |
@@ -50,6 +53,52 @@ jobs:
           echo "Uploaded file link: $LINK"
           
           echo "catbox_link=$LINK" >> $GITHUB_ENV
+
+      - name: Update Bbuild
+        run: |
+          updated_at=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          size=12375230
+          version=${{ github.run_number }}
+          download_url=${{ env.catbox_link }}
+
+          if [ -n "$download_url" ]; then
+            echo "Download URL for .ipa file: $download_url"
+            echo "Updated at: $updated_at"
+            echo "Size: $size bytes"
+            echo "Version: $version"
+
+            jq --arg version "$version" \
+               --arg date "$updated_at" \
+               --argjson size "$size" \
+               --arg url "$download_url" \
+               '.apps[0].size = $size |
+                .apps[0].version = $version |
+                .apps[0].versionDate = $date |
+                .apps[0].downloadURL = $url |
+                .apps[0].versions = (
+                  [{
+                    version: $version,
+                    date: $date,
+                    size: $size,
+                    downloadURL: $url
+                  }] + .apps[0].versions
+                ) | .apps[0].versions |= unique_by(.version)' Bbuild/b.json > Bbuild/updated_b.json
+
+            mv Bbuild/updated_b.json Bbuild/b.json
+          else
+            echo "missing information."
+            echo "Updated at: $updated_at"
+            echo "Version: $version"
+          fi
+
+      - name: Commit changes to Bbuild repo
+        run: |
+          cd Bbuild
+          git config --global user.name "github_actions"
+          git config --global user.email "github_actions@github.com"
+          git add b.json
+          git commit -m "chore: update brepo"
+          git push origin main
 
       - name: Send Discord build message
         run: |
@@ -86,4 +135,3 @@ jobs:
             ]
           }' || true
           )
-
