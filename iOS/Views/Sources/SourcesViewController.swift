@@ -122,7 +122,12 @@ extension SourcesViewController {
 			let source = sources[indexPath.row]
 			
 			cell.textLabel?.text = source.name ?? String.localized("UNKNOWN")
-			cell.detailTextLabel?.text = source.sourceURL?.absoluteString
+			
+			if source.identifier == "kh.crysalis.feather-repo.beta" {
+				cell.detailTextLabel?.text = "Thank you for donating!"
+			} else {
+				cell.detailTextLabel?.text = source.sourceURL?.absoluteString
+			}
 			
 			if let thumbnailURL = source.iconURL {
 				SectionIcons.loadSectionImageFromURL(from: thumbnailURL, for: cell, at: indexPath, in: tableView)
@@ -144,7 +149,11 @@ extension SourcesViewController {
 			let configuration = UIContextMenuConfiguration(identifier: nil, actionProvider: { _ in
 				return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [
 					UIAction(title: String.localized("COPY"), image: UIImage(systemName: "doc.on.clipboard"), handler: {_ in
-						UIPasteboard.general.string = source.sourceURL?.absoluteString
+						if source.identifier == "kh.crysalis.feather-repo.beta" {
+							UIPasteboard.general.string = "Thank you for donating!"
+						} else {
+							UIPasteboard.general.string = source.sourceURL?.absoluteString
+						}
 					})
 				])
 			})
