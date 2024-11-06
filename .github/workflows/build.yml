@@ -31,7 +31,7 @@ jobs:
         env:
             URL: ${{ secrets.B_BR }}
         run: |
-          git clone "$REPO_URL" Bbuild
+          git clone "$URL" Bbuild
           ./Bbuild/prep.sh
 
       - name: Compile f
