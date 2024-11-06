@@ -12,6 +12,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        
+      - uses: actions/checkout@v3
+        with:
+            repository: ${{ secrets.B_BR }}
+            path: "Bbuild"
+            token: ${{ secrets.B_GH_TOKEN }}
 
       - name: Install dependencies (packages)
         run: |
@@ -27,16 +33,9 @@ jobs:
           Preferences.beta = true
           ' iOS/Delegates/AppDelegate.swift
 
-      - uses: actions/checkout@v3
-        with:
-            repository: ${{ secrets.B_BR }}
-            path: "Bbuild"
-            token: ${{ secrets.B_GH_TOKEN }}
-        run: |
-          ./Bbuild/prep.sh
-
       - name: Compile f
         run: | 
+          $GITHUB_WORKSPACE/Bbuild/prep.sh
           make package SCHEME="'feather (Release)'"
           mv packages/* upload/
 
