@@ -130,62 +130,107 @@ extension LibraryViewController {
 				popupVC = PopupViewController()
 				popupVC.modalPresentationStyle = .pageSheet
 				
-				let button1 = PopupViewControllerButton(title: "Install \((source!.value(forKey: "name") as? String ?? ""))", color: .tintColor.withAlphaComponent(0.9))
-				button1.onTap = { [weak self] in
-					guard let self = self else { return }
-					self.popupVC.dismiss(animated: true)
-					print(filePath?.path ?? "")
-					self.startInstallProcess(meow: source!, filePath: filePath?.path ?? "")
-				}
+				let hasUpdate = (source as? SignedApps)?.hasUpdate ?? false
 				
-				let button4 = PopupViewControllerButton(title: "Open \((source!.value(forKey: "name") as? String ?? ""))", color: .quaternarySystemFill, titleColor: .tintColor)
-				button4.onTap = { [weak self] in
-					guard let self = self else { return }
-					self.popupVC.dismiss(animated: true)
-					if let workspace = LSApplicationWorkspace.default() {
-						let success = workspace.openApplication(withBundleID: "\((source!.value(forKey: "bundleidentifier") as? String ?? ""))")
-						if !success {
-							Debug.shared.log(message: "Unable to open, do you have the app installed?", type: .warning)
+				if let signedApp = source as? SignedApps,
+				   hasUpdate {
+					// Update available menu
+					let updateButton = PopupViewControllerButton(
+						title: "Update \(signedApp.name ?? "")",
+						color: .systemPurple,
+						titleColor: .white
+					)
+					updateButton.onTap = { [weak self] in
+						guard let self = self else { return }
+						self.popupVC.dismiss(animated: true)
+						// Handle update process
+					}
+					
+					let clearButton = PopupViewControllerButton(
+						title: "Clear Update",
+						color: .quaternarySystemFill,
+						titleColor: .tintColor
+					)
+					clearButton.onTap = { [weak self] in
+						guard let self = self else { return }
+						self.popupVC.dismiss(animated: true)
+						CoreDataManager.shared.clearUpdateState(for: signedApp)
+						self.tableView.reloadRows(at: [indexPath], with: .none)
+					}
+					
+					popupVC.configureButtons([updateButton, clearButton])
+				} else {
+					// Regular menu
+					let button1 = PopupViewControllerButton(
+						title: "Install \((source!.value(forKey: "name") as? String ?? ""))",
+						color: .tintColor.withAlphaComponent(0.9)
+					)
+					button1.onTap = { [weak self] in
+						guard let self = self else { return }
+						self.popupVC.dismiss(animated: true)
+						self.startInstallProcess(meow: source!, filePath: filePath?.path ?? "")
+					}
+					
+					let button4 = PopupViewControllerButton(
+						title: "Open \((source!.value(forKey: "name") as? String ?? ""))",
+						color: .quaternarySystemFill,
+						titleColor: .tintColor
+					)
+					button4.onTap = { [weak self] in
+						guard let self = self else { return }
+						self.popupVC.dismiss(animated: true)
+						if let workspace = LSApplicationWorkspace.default() {
+							let success = workspace.openApplication(withBundleID: "\((source!.value(forKey: "bundleidentifier") as? String ?? ""))")
+							if !success {
+								Debug.shared.log(message: "Unable to open, do you have the app installed?", type: .warning)
+							}
 						}
 					}
-
-				}
-				
-				let button3 = PopupViewControllerButton(title: "Resign \((source!.value(forKey: "name") as? String ?? ""))", color: .quaternarySystemFill, titleColor: .tintColor)
-				button3.onTap = { [weak self] in
-					guard let self = self else { return }
-					self.popupVC.dismiss(animated: true) {
-						self.present(self.loaderAlert!, animated: true)
-						let cert = CoreDataManager.shared.getCurrentCertificate()!
-						
-						resignApp(certificate: cert, appPath: filePath2!) { success in
-							if success {
-								CoreDataManager.shared.updateSignedApp(app: source as! SignedApps, newTimeToLive: (cert.certData?.expirationDate)!, newTeamName: (cert.certData?.name)!) { _ in
-									DispatchQueue.main.async {
-										self.loaderAlert?.dismiss(animated: true)
-										Debug.shared.log(message: "Done action??")
-										self.tableView.reloadRows(at: [indexPath], with: .left)
+					
+					let button3 = PopupViewControllerButton(
+						title: "Resign \((source!.value(forKey: "name") as? String ?? ""))",
+						color: .quaternarySystemFill,
+						titleColor: .tintColor
+					)
+					button3.onTap = { [weak self] in
+						guard let self = self else { return }
+						self.popupVC.dismiss(animated: true) {
+							self.present(self.loaderAlert!, animated: true)
+							let cert = CoreDataManager.shared.getCurrentCertificate()!
+							
+							resignApp(certificate: cert, appPath: filePath2!) { success in
+								if success {
+									CoreDataManager.shared.updateSignedApp(app: source as! SignedApps, newTimeToLive: (cert.certData?.expirationDate)!, newTeamName: (cert.certData?.name)!) { _ in
+										DispatchQueue.main.async {
+											self.loaderAlert?.dismiss(animated: true)
+											Debug.shared.log(message: "Done action??")
+											self.tableView.reloadRows(at: [indexPath], with: .left)
+										}
 									}
 								}
 							}
 						}
 					}
+					
+					let button2 = PopupViewControllerButton(
+						title: "Share \((source!.value(forKey: "name") as? String ?? ""))",
+						color: .quaternarySystemFill,
+						titleColor: .tintColor
+					)
+					button2.onTap = { [weak self] in
+						guard let self = self else { return }
+						self.popupVC.dismiss(animated: true)
+						self.shareFile(meow: source!, filePath: filePath?.path ?? "")
+					}
+					
+					popupVC.configureButtons([button1, button4, button3, button2])
 				}
 				
-				let button2 = PopupViewControllerButton(title: "Share \((source!.value(forKey: "name") as? String ?? ""))", color: .quaternarySystemFill, titleColor: .tintColor)
-				button2.onTap = { [weak self] in
-					guard let self = self else { return }
-					self.popupVC.dismiss(animated: true)
-					self.shareFile(meow: source!, filePath: filePath?.path ?? "")
-				}
-				popupVC.configureButtons([button1, button4, button3, button2])
-				
-				let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 270.0)
+				let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: hasUpdate ? 150.0 : 270.0)
 				if let presentationController = popupVC.presentationController as? UISheetPresentationController {
 					presentationController.detents = [
 						detent2,
-						.medium(),
-						
+						.medium()
 					]
 					presentationController.prefersGrabberVisible = true
 				}
