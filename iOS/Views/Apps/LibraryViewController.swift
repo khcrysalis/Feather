@@ -146,11 +146,24 @@ class LibraryViewController: UITableViewController {
 										let signingDataWrapper = SigningDataWrapper(signingOptions: UserDefaults.standard.signingOptions)
 										signingDataWrapper.signingOptions.installAfterSigned = true
 										
+										// Store the original signed app for deletion after update
+										let originalSignedApp = signedApp
+										
 										let ap = SigningsViewController(
 											signingDataWrapper: signingDataWrapper,
 											application: downloadedApp,
 											appsViewController: self
 										)
+										
+										// Add completion handler to delete the original app after successful signing
+										ap.signingCompletionHandler = { [weak self] success in
+											if success {
+												CoreDataManager.shared.deleteAllSignedAppContent(for: originalSignedApp)
+												self?.fetchSources()
+												self?.tableView.reloadData()
+											}
+										}
+										
 										let navigationController = UINavigationController(rootViewController: ap)
 										
 										if UIDevice.current.userInterfaceIdiom == .pad {

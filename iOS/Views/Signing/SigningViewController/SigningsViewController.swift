@@ -54,6 +54,7 @@ class SigningsViewController: UIViewController {
 	private var variableBlurView: UIVariableBlurView?
 	private var largeButton = ActivityIndicatorButton()
 	private var iconCell = IconImageViewCell()
+	var signingCompletionHandler: ((Bool) -> Void)?
 	
 	init(signingDataWrapper: SigningDataWrapper, application: NSManagedObject, appsViewController: LibraryViewController) {
 		self.signingDataWrapper = signingDataWrapper
@@ -199,10 +200,12 @@ class SigningsViewController: UIViewController {
 				Debug.shared.log(message: signedPath.path)
 				if self.signingDataWrapper.signingOptions.installAfterSigned {
 					self.appsViewController?.startInstallProcess(meow: signedApp, filePath: signedPath.path)
+					self.signingCompletionHandler?(true)
 				}
 
 			case .failure(let error):
 				Debug.shared.log(message: "Signing failed: \(error.localizedDescription)", type: .error)
+				self.signingCompletionHandler?(false)
 			}
 			
 			self.dismiss(animated: true)
