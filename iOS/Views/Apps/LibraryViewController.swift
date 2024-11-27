@@ -137,7 +137,7 @@ extension LibraryViewController {
 					// Update available menu
 					let updateButton = PopupViewControllerButton(
 						title: "Update \(signedApp.name ?? "")",
-						color: .systemPurple,
+						color: .tintColor.withAlphaComponent(0.9),
 						titleColor: .white
 					)
 					updateButton.onTap = { [weak self] in
