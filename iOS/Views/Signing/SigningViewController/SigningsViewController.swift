@@ -12,6 +12,7 @@ struct BundleOptions {
 	var name: String?
 	var bundleId: String?
 	var version: String?
+	var sourceURL: URL?
 }
 
 class SigningsViewController: UIViewController {
@@ -63,7 +64,14 @@ class SigningsViewController: UIViewController {
 		if let name = application.value(forKey: "name") as? String,
 			let bundleId = application.value(forKey: "bundleidentifier") as? String,
 			let version = application.value(forKey: "version") as? String {
-			self.bundle = BundleOptions(name: name, bundleId: bundleId, version: version)
+			let sourceLocation = application.value(forKey: "oSU") as? String
+			let sourceURL = sourceLocation != nil ? URL(string: sourceLocation!) : nil
+			self.bundle = BundleOptions(
+				name: name, 
+				bundleId: bundleId, 
+				version: version,
+				sourceURL: sourceURL
+			)
 		}
 		
 		if let hasGotCert = CoreDataManager.shared.getCurrentCertificate() { self.mainOptions.mainOptions.certificate = hasGotCert }
