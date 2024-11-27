@@ -3,7 +3,7 @@ import Foundation
 import UserNotifications
 
 @objc class SourceRefreshOperation: Operation, @unchecked Sendable {
-    private let queue = DispatchQueue(label: "kh.crysalis.feather.sourcerefresh", qos: .background)
+    private let queue = DispatchQueue(label: "kh.crysalis.feather.sourcerefresh", qos: .userInitiated)
     private let isDebugMode: Bool = {
         var isDebug = false
         assert({
@@ -64,47 +64,51 @@ import UserNotifications
     }
 
     private func checkForUpdates(with sourceData: [SourcesData]) {
-        let signedApps = CoreDataManager.shared.getDatedSignedApps()
-        var updatesFound = false
-        var updatedApps: [(name: String, oldVersion: String, newVersion: String)] = []
+        let coreDataQueue = DispatchQueue(label: "kh.crysalis.feather.coredata", qos: .userInitiated)
+        
+        coreDataQueue.sync {
+            let signedApps = CoreDataManager.shared.getDatedSignedApps()
+            var updatesFound = false
+            var updatedApps: [(name: String, oldVersion: String, newVersion: String)] = []
 
-        for signedApp in signedApps {
-            guard let bundleId = signedApp.bundleidentifier,
-                  let currentVersion = signedApp.version,
-                  let originalSourceURL = signedApp.originalSourceURL else { continue }
+            for signedApp in signedApps {
+                guard let bundleId = signedApp.bundleidentifier,
+                      let currentVersion = signedApp.version,
+                      let originalSourceURL = signedApp.originalSourceURL else { continue }
 
-            for source in sourceData {
-                if let availableApp = source.apps.first(where: { $0.bundleIdentifier == bundleId }),
-                   let latestVersion = availableApp.version,
-                   (!self.isDebugMode && source.sourceURL!.absoluteString == originalSourceURL.absoluteString) || self.isDebugMode,
-                   compareVersions(latestVersion, currentVersion) > 0
-                {
-                    updatesFound = true
-                    updatedApps.append((name: signedApp.name ?? bundleId,
-                                      oldVersion: currentVersion,
-                                      newVersion: latestVersion))
+                for source in sourceData {
+                    if let availableApp = source.apps.first(where: { $0.bundleIdentifier == bundleId }),
+                       let latestVersion = availableApp.version,
+                       (!self.isDebugMode && source.sourceURL!.absoluteString == originalSourceURL.absoluteString) || self.isDebugMode,
+                       compareVersions(latestVersion, currentVersion) > 0
+                    {
+                        updatesFound = true
+                        updatedApps.append((name: signedApp.name ?? bundleId,
+                                          oldVersion: currentVersion,
+                                          newVersion: latestVersion))
 
-                    CoreDataManager.shared.setUpdateAvailable(for: signedApp, newVersion: latestVersion)
+                        CoreDataManager.shared.setUpdateAvailable(for: signedApp, newVersion: latestVersion)
 
-                    Debug.shared.log(message: "Update found for signed app:", type: .info)
-                    Debug.shared.log(message: "Signed app object: \(signedApp)", type: .info)
-                    Debug.shared.log(message: "Source object: \(source)", type: .info)
-                    Debug.shared.log(message: "Available update app object: \(availableApp)", type: .info)
+                        Debug.shared.log(message: "Update found for signed app:", type: .info)
+                        Debug.shared.log(message: "Signed app object: \(signedApp)", type: .info)
+                        Debug.shared.log(message: "Source object: \(source)", type: .info)
+                        Debug.shared.log(message: "Available update app object: \(availableApp)", type: .info)
 
-                    DispatchQueue.main.async {
-                        NotificationCenter.default.post(name: Notification.Name("lfetch"), object: nil)
+                        DispatchQueue.main.async {
+                            NotificationCenter.default.post(name: Notification.Name("lfetch"), object: nil)
+                        }
                     }
                 }
             }
-        }
 
-        if updatesFound {
-            sendUpdateNotification(for: updatedApps)
-        } else {
-            Debug.shared.log(message: "No updates available for signed apps", type: .info)
+            if updatesFound {
+                DispatchQueue.main.async {
+                    self.sendUpdateNotification(for: updatedApps)
+                }
+            } else {
+                Debug.shared.log(message: "No updates available for signed apps", type: .info)
+            }
         }
-
-        Debug.shared.log(message: "Source refresh completed", type: .info)
     }
 
     private func sendUpdateNotification(for apps: [(name: String, oldVersion: String, newVersion: String)]) {
