@@ -73,13 +73,12 @@ import UserNotifications
 
             for signedApp in signedApps {
                 guard let bundleId = signedApp.bundleidentifier,
-                      let currentVersion = signedApp.version,
-                      let originalSourceURL = signedApp.originalSourceURL else { continue }
+                      let currentVersion = signedApp.version else { continue }
 
                 for source in sourceData {
                     if let availableApp = source.apps.first(where: { $0.bundleIdentifier == bundleId }),
                        let latestVersion = availableApp.version,
-                       (!self.isDebugMode && source.sourceURL!.absoluteString == originalSourceURL.absoluteString) || self.isDebugMode,
+                       let sourceURL = source.sourceURL,
                        compareVersions(latestVersion, currentVersion) > 0
                     {
                         updatesFound = true
@@ -87,6 +86,7 @@ import UserNotifications
                                           oldVersion: currentVersion,
                                           newVersion: latestVersion))
 
+                        signedApp.originalSourceURL = sourceURL
                         CoreDataManager.shared.setUpdateAvailable(for: signedApp, newVersion: latestVersion)
 
                         Debug.shared.log(message: "Update found for signed app:", type: .info)
@@ -181,8 +181,12 @@ import UserNotifications
                 completion(nil)
                 return
             }
-            guard let originalSourceURL = firstApp.originalSourceURL else {
-                Debug.shared.log(message: "Debug mode: Missing source URL", type: .error)
+            
+            // Get the actual source URL 
+            let sources = CoreDataManager.shared.getAZSources()
+            guard let source = sources.first,
+                  let sourceURL = source.sourceURL else {
+                Debug.shared.log(message: "Debug mode: No sources found", type: .error)
                 completion(nil)
                 return
             }
@@ -193,7 +197,7 @@ import UserNotifications
             {
                 "name": "Mock Source",
                 "identifier": "mock.source",
-                "sourceURL": "\(originalSourceURL.absoluteString)",
+                "sourceURL": "\(sourceURL.absoluteString)",
                 "apps": [{
                     "name": "\(firstApp.name ?? "Mock App")",
                     "bundleIdentifier": "\(bundleId)",

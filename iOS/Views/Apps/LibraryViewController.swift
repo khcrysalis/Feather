@@ -55,6 +55,140 @@ class LibraryViewController: UITableViewController {
 		self.navigationController?.navigationBar.prefersLargeTitles = true
 		self.title = String.localized("TAB_LIBRARY")
 	}
+	
+	private func handleAppUpdate(for signedApp: SignedApps) {
+		guard let sourceURL = signedApp.originalSourceURL,
+			  let updateVersion = signedApp.updateVersion else {
+			Debug.shared.log(message: "Missing source URL or update version", type: .error)
+			return
+		}
+		
+		Debug.shared.log(message: "Fetching update from source: \(sourceURL.absoluteString)", type: .info)
+		
+		present(loaderAlert!, animated: true)
+		
+		// Create mock source if in debug mode
+		if isDebugMode {
+			let mockSource = SourceRefreshOperation()
+			mockSource.createMockSource { mockSourceData in
+				if let sourceData = mockSourceData {
+					self.handleSourceData(sourceData, for: signedApp)
+				} else {
+					Debug.shared.log(message: "Failed to create mock source", type: .error)
+					DispatchQueue.main.async {
+						self.loaderAlert?.dismiss(animated: true)
+					}
+				}
+			}
+		} else {
+			// Normal source fetch
+			SourceGET().downloadURL(from: sourceURL) { [weak self] result in
+				guard let self = self else { return }
+				
+				switch result {
+				case .success((let data, _)):
+					if case .success(let sourceData) = SourceGET().parse(data: data) {
+						self.handleSourceData(sourceData, for: signedApp)
+					} else {
+						Debug.shared.log(message: "Failed to parse source data", type: .error)
+						DispatchQueue.main.async {
+							self.loaderAlert?.dismiss(animated: true)
+						}
+					}
+				case .failure(let error):
+					Debug.shared.log(message: "Failed to fetch source: \(error)", type: .error)
+					DispatchQueue.main.async {
+						self.loaderAlert?.dismiss(animated: true)
+					}
+				}
+			}
+		}
+	}
+	
+	private func handleSourceData(_ sourceData: SourcesData, for signedApp: SignedApps) {
+		guard let bundleId = signedApp.bundleidentifier,
+			  let updateVersion = signedApp.updateVersion,
+			  let app = sourceData.apps.first(where: { $0.bundleIdentifier == bundleId }),
+			  let versions = app.versions else {
+			Debug.shared.log(message: "Failed to find app in source", type: .error)
+			DispatchQueue.main.async {
+				self.loaderAlert?.dismiss(animated: true)
+			}
+			return
+		}
+		
+		// Look for the version that matches our update version
+		for version in versions {
+			if version.version == updateVersion {
+				// Found the matching version
+				Debug.shared.log(message: "Found matching version: \(version.version)", type: .info)
+				
+				let uuid = UUID().uuidString
+				let rootViewController = UIApplication.shared.keyWindow?.rootViewController
+				
+				DispatchQueue.global(qos: .background).async {
+					do {
+						let tempDirectory = FileManager.default.temporaryDirectory
+						let destinationURL = tempDirectory.appendingPathComponent("\(uuid).ipa")
+						
+						// Download the file
+						if let data = try? Data(contentsOf: version.downloadURL) {
+							try data.write(to: destinationURL)
+							
+							let dl = AppDownload()
+							try handleIPAFile(destinationURL: destinationURL, uuid: uuid, dl: dl)
+							
+							DispatchQueue.main.async {
+								self.loaderAlert?.dismiss(animated: true) {
+									// Force Sign & Install
+									let downloadedApps = CoreDataManager.shared.getDatedDownloadedApps()
+									if let downloadedApp = downloadedApps.first(where: { $0.uuid == uuid }) {
+										let signingDataWrapper = SigningDataWrapper(signingOptions: UserDefaults.standard.signingOptions)
+										signingDataWrapper.signingOptions.installAfterSigned = true
+										
+										let ap = SigningsViewController(
+											signingDataWrapper: signingDataWrapper,
+											application: downloadedApp,
+											appsViewController: self
+										)
+										let navigationController = UINavigationController(rootViewController: ap)
+										
+										if UIDevice.current.userInterfaceIdiom == .pad {
+											navigationController.modalPresentationStyle = .formSheet
+										} else {
+											navigationController.modalPresentationStyle = .fullScreen
+										}
+										
+										self.present(navigationController, animated: true)
+									}
+								}
+							}
+						}
+					} catch {
+						Debug.shared.log(message: "Failed to handle update: \(error)", type: .error)
+						DispatchQueue.main.async {
+							self.loaderAlert?.dismiss(animated: true)
+						}
+					}
+				}
+				return
+			}
+		}
+		
+		Debug.shared.log(message: "Could not find version \(updateVersion) in source", type: .error)
+		DispatchQueue.main.async {
+			self.loaderAlert?.dismiss(animated: true)
+		}
+	}
+	
+	private var isDebugMode: Bool {
+		var isDebug = false
+		assert({
+			isDebug = true
+			return true
+		}())
+		return isDebug
+	}
 }
 
 extension LibraryViewController {
@@ -130,7 +264,7 @@ extension LibraryViewController {
 				popupVC = PopupViewController()
 				popupVC.modalPresentationStyle = .pageSheet
 				
-				let hasUpdate = (source as? SignedApps)?.hasUpdate ?? false
+				let hasUpdate = (source as? SignedApps)?.value(forKey: "hasUpdate") as? Bool ?? false
 				
 				if let signedApp = source as? SignedApps,
 				   hasUpdate {
@@ -142,8 +276,9 @@ extension LibraryViewController {
 					)
 					updateButton.onTap = { [weak self] in
 						guard let self = self else { return }
-						self.popupVC.dismiss(animated: true)
-						// Handle update process
+						self.popupVC.dismiss(animated: true) {
+							self.handleAppUpdate(for: signedApp)
+						}
 					}
 					
 					let clearButton = PopupViewControllerButton(
