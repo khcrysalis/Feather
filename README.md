@@ -6,6 +6,9 @@
     Feather is a free on-device iOS application manager/installer, using certificates part of the Apple Developer Program.
 </p>
 
+> [!WARNING]
+> Local installation is not working currently due to revocation of the bundled ssl certificate used for the https server, there will be an update to fix this issue momentarily.
+
 ## Features
 
 - **Altstore repo support**. *Supporting Legacy and 2.0 repo structures*
