@@ -1,0 +1,406 @@
+/*
+  Localizable.strings
+  feather
+
+  Created by ZhangYiQiu on 30.11.2024.
+  
+*/
+
+// MARK: - Generic
+// Unknown, default string for applications
+"UNKNOWN" = "未知";
+// Default string
+"DEFAULT" = "默认";
+// Copy provided string in a menu
+"COPY" = "复制";
+// Delete item
+"DELETE" = "删除";
+// Cancel alert action
+"CANCEL" = "取消";
+// Done action
+"DONE" = "完成";
+// Dismiss action
+"DISMISS" = "隐藏";
+// Dismiss 2 action
+"LAME" = "明白了";
+// Save action
+"SAVE" = "保存";
+// Set action
+"SET" = "保存";
+// OK action
+"OK" = "好的";
+// Continue action
+"CONTINUE" = "继续";
+// Import Action
+"IMPORT" = "导入";
+// Add Action
+"ADD" = "添加";
+// Install Action
+"INSTALL" = "安装";
+
+// MARK: - Alerts
+// Alert titles
+"ALERT_SUCCESS" = "成功";
+"ALERT_TRACE" = "追踪";
+"ALERT_ERROR" = "错误";
+"ALERT_CRITICAL" = "严重";
+"ALERT_COPIED" = "已复制";
+
+// MARK: - Error messages
+// Installer Error Title
+"ERROR_INSTALLER" = "安装工具";
+// Installer Error Description
+"ERROR_INSTALLER_DESCRIPTION" = "加载 SSL 证书失败。";
+"ERROR_ZSIGN_FAILED" = "签名失败。";
+"ERROR_FAILED_TO_READ_MOBILEPROVISION" = "无法读取mobileprovision文件。";
+
+// MARK: - Success messages
+// Successfully signed an application
+"SUCCESS_SIGNED" = "成功签名 %@";
+// Successfully resigned an application
+"SUCCESS_RESIGN" = "重签名成功！";
+// Success message requiring user to restart app
+"SUCCESS_REQUIRES_RESTART" = "您必须关闭应用程序才能使更改生效。";
+
+// MARK: - Onboarding
+// Welcome to Feather!!!!!!!!
+"ONBOARDING_WELCOMETITLE_1" = "欢迎来到";
+// First feature inside of onboarding
+"ONBOARDING_CELL_1_TITLE" = "设备端侧载";
+"ONBOARDING_CELL_1_DESCRIPTION" = "无需计算机即可侧载应用程序，一切只需通过您的设备即可完成。";
+// Second feature inside of onboarding
+"ONBOARDING_CELL_2_TITLE" = "自定义应用程序";
+"ONBOARDING_CELL_2_DESCRIPTION" = "根据您的需要管理和定制您的应用程序。";
+// Third feature inside of onboarding
+"ONBOARDING_CELL_3_TITLE" = "更多";
+"ONBOARDING_CELL_3_DESCRIPTION" = "AltStore 存储库、导入 IPA、轻松切换证书等。";
+// "Developed by Samara. Made for users who are passionate for sideloading and freedom. Many features included inside. Learn more..."
+"ONBOARDING_FOOTER" = "由 Samara 开发，专为热爱侧载和自由的用户打造，具有多种功能。";
+"ONBOARDING_FOOTER_LINK" = "了解更多...";
+// Continue button to exit onboarding
+"ONBOARDING_CONTINUE_BUTTON" = "继续";
+
+// MARK: - Tab area
+// Sources tab
+"TAB_SOURCES" = "软件源";
+// Library tab
+"TAB_LIBRARY" = "IPA库";
+// Settings tab
+"TAB_SETTINGS" = "设置";
+
+// MARK: - TransferPreview
+// Packaging application to get ready for install
+"TRANSFER_PREVIEW_PACKAGING" = "打包中...";
+// Ready to install package
+"TRANSFER_PREVIEW_READY" = "可随时安装";
+// Opening manifest.plist for iOS
+"TRANSFER_PREVIEW_SENDING_MANIFEST" = "发送 Manifest...";
+// iOS is retrieving IPA file
+"TRANSFER_PREVIEW_SENDING_PAYLOAD" = "发送 Payload...";
+// Done transferring IPA file
+"TRANSFER_PREVIEW_DONE" = "完成";
+// Completed packaging so you can share
+"TRANSFER_PREVIEW_COMPLETED" = "已完成";
+
+// MARK: - SourcesViewController
+// Repositories title
+"SOURCES_VIEW_CONTROLLER_REPOSITORIES" = "软件源";
+// Add repo button
+"SOURCES_VIEW_CONTROLLER_ADD_SOURCES" = "新增源";
+// Number of sources, i.e. "100 Sources"
+"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES" = "%@ 个软件源";
+"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES_PLURAL" = "%@ 个软件源";
+// Search sources in search bar
+"SOURCES_VIEW_CONTROLLER_SEARCH_SOURCES" = "搜索";
+
+// MARK: - SourcesViewController - Add Sources
+"SOURCES_VIEW_ADD_SOURCES_ALERT_TITLE" = "新增软件源";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "输入软件源链接";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_IMPORT_REPO" = "导入软件源";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO" = "导出软件源";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO_ACTION_SUCCESS" = "将源复制到剪贴板";
+//Footer Validation
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTSTARTED" = "输入一个链接开始验证。";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTVALIDJSON" = "错误的JSON，请检查您的输入。";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_VALID" = "输入的JSON有效。";
+
+// MARK: - SourcesViewController -> SourcesAppViewController
+// Number of apps, i.e. "444 Apps"
+"SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS" = "%@ 个App";
+"SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS_PLURAL" = "%@ 个App";
+// Search apps in search bar
+"SOURCES_APP_VIEW_CONTROLLER_SEARCH_APPS" = "搜索App";
+
+// MARK: - SourcesViewController ... - Cells
+// Default subtitle string
+"SOURCES_CELLS_DEFAULT_SUBTITLE" = "一个应用程序。";
+// Default description string
+"SOURCES_CELLS_DEFAULT_DESCRIPTION" = "一个描述。";
+
+// MARK: - SourceAppViewController ... - Actions
+// Available Versions Alert Title
+"SOURCES_CELLS_ACTIONS_HOLD_AVAILABLE_VERSIONS" = "可用版本";
+//Filter Menu
+"SOURCES_CELLS_ACTIONS_FILTER_TITLE" = "筛选";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_DEFAULT" = "默认";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_NAME" = "名称";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_DATE" = "时间";
+
+// MARK: - AppsInformationViewController
+// Application Section
+"APPS_INFORMATION_SECTION_TITLE_NAME" = "程序";
+// Bundle Section
+"APPS_INFORMATION_SECTION_TITLE_NAME" = "包";
+
+//
+"APPS_INFORMATION_TITLE_DELETED_FILE" = "删除文件";
+"APPS_INFORMATION_TITLE_DELETED_FILE_TITLE" = "文件已删除。";
+"APPS_INFORMATION_TITLE_DELETED_FILE_DESCRIPTION" = "这是一个无用的条目，它没有文件，Feather 不允许您安装它，建议您删除它。";
+// Application Section
+"APPS_INFORMATION_TITLE_NAME" = "名称";
+"APPS_INFORMATION_TITLE_VERSION" = "版本";
+"APPS_INFORMATION_TITLE_IDENTIFIER" = "标识符";
+"APPS_INFORMATION_TITLE_SIZE" = "大小";
+//
+"APPS_INFORMATION_TITLE_DATE_ADDED" = "添加日期";
+// Bundle Section
+"APPS_INFORMATION_TITLE_BUNDLE_NAME" = "包名";
+"APPS_INFORMATION_TITLE_BUNDLE_PATH" = "路径";
+"APPS_INFORMATION_TITLE_ICON_FILE" = "图标";
+//
+"APPS_INFORMATION_TITLE_OPEN_IN_FILES" = "在文件App中打开";
+
+// MARK: - AppSigningViewController
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_CUSTOMIZATION" = "自定义";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_SIGNING" = "签名";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_ADVANCED" = "高级";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS" = "注入第三方库";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED" = "高级";
+"APP_SIGNING_VIEW_CONTROLLER_START_SIGNING" = "开始签名";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_MODIFY_DYLIBS" = "修改Dylibs";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_PROPERTIES" = "属性";
+
+// MARK: - AppSigningViewController - No Certificates Alert
+"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_TITLE" = "错误";
+"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_DESCRIPTION" = "您没有选择证书，请在设置里选择或上传证书。";
+
+// MARK: - AppSigningViewController -> AppSigningAdvancedViewController
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE" = "主题";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION" = "最低版本限制";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES" = "属性";
+
+// MARK: - AppSigningViewController -> AppSigningTweakViewController
+"APP_SIGNING_TWEAK_VIEW_CONTROLLER_TITLE" = "第三方库";
+
+// MARK: - SigningsOptionsViewController
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS" = "启用保护";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS_DESCRIPTION" = "启用保护后，每个捆绑标识符都会预先添加一个随机字符串，这是为了保护与证书相关的 Apple ID 不被 Apple 标记。不过，如果您不关心这个问题，可以忽略。";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS" = "捆绑标识符";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_NEW" = "新标识符";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID" = "标识符";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID_REPLACEMENT" = "替换";
+
+
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_INSTALLAFTERSIGNED" = "签名后安装";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_TITLE" = "签名设置";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "移除所有插件";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS_DESCRIPTION" = "移除应用程序内的 PlugIns 目录，该目录通常包含一些组件，以便应用程序正常运行。";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES" = "移除设备限制";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES_DESCRIPTION" = "移除应用程序的设备限制。";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME" = "移除 URLScheme";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME_DESCRIPTION" = "移除任何可能的 URL 方案（如 “feather://”）。";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS" = "允许浏览文件";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS_DESCRIPTION" = "允许其他应用程序打开和编辑文档目录中存储的文件。用户还可通过此选项在 “设置 ”中设置应用程序的默认保存位置。";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING" = "允许 iTunes 共享";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING_DESCRIPTION" = "强制应用程序共享其文档目录，允许在 iTunes 和 Finder 之间共享。";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION" = "强制启用 ProMotion";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION_DESCRIPTION" = "在应用程序中启用 ProMotion 功能，但在 15.x 的较低版本上可能还不够。";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "强制全屏";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN_DESCRIPTION" = "仅在 iPad 应用程序中启用全屏功能，不允许与其他应用程序共享屏幕。在外部屏幕上，启用此设置的应用程序窗口将保持画布大小。";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP" = "删除 Watch App";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP_DESCRIPTION" = "移除应用中不该出现的无用手表占位符。";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS" = "强制尝试本地化";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS_DESCRIPTION" = "在尝试更改应用程序名称时，通过修改应用程序中的每个可本地化的捆绑包来强制本地化。";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING" = "删除配置文件";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING_DESCRIPTION" = "签名后，移除应用程序中的 .mobileprovison。";
+
+// MARK: - LibraryViewController
+//Search Library placeholder
+"SETTINGS_VIEW_CONTROLLER_SEARCH_PLACEHOLDER" = "搜索IPA库";
+//Headers
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS" = "已签名的App";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL" = "%@ 个已签名App";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL_PLURAL" = "%@ 个已签名App";
+"LIBRARY_VIEW_CONTROLLER_SECTION_BUTTON_IMPORT" = "导入";
+"LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS" = "已下载的App";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_DOWNLOADED_APPS_TOTAL" = "%@ 个已下载App";
+//Import Action Sheet
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_FILE" = "从文件App导入";
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_URL" = "从链接导入";
+//Sign Action Sheet
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN" = "签名 %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN_INSTALL" = "签名并安装 %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_RESIGN" = "重签名 %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL" = "安装 %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SHARE" = "分享 %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN" = "打开 %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM" = "确认安装";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM_DESCRIPTION" = "尝试通过下载的应用程序选项卡进行安装可能不起作用，因为它们很可能未经签名！建议您在安装之前先对该应用程序进行签名。";
+
+// MARK: - SettingsViewController
+// Headers
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_GENERAL" = "一般设置";
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING" = "签名";
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING_SERVER" = "签名服务器";
+
+// Footers
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES" = "如果 Feather 出现任何问题，请通过 GitHub 存储库报告。提交问题时，请务必提交任何日志。";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS" = "由于条件限制，本地服务器证书需要定期重新更新，以保证 Feather 本地安装功能的正常运行，请点击此按钮获取最新文件。";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER" = "默认服务器为 %@";
+
+"SETTINGS_VIEW_CONTROLLER_TITLE" = "服务器设置";
+"SETTINGS_VIEW_CONTROLLER_TITLE_ONLINE" = "在线安装";
+"SETTINGS_VIEW_CONTROLLER_TITLE_LOCAL" = "本地安装";
+
+// Cell Titles
+// About Feather
+"SETTINGS_VIEW_CONTROLLER_CELL_ABOUT" = "关于 %@";
+"SETTINGS_VIEW_CONTROLLER_CELL_SUBMIT_FEEDBACK" = "提交反馈";
+"SETTINGS_VIEW_CONTROLLER_CELL_GITHUB" = "GitHub 存储库";
+"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY" = "显示设置";
+"SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON" = "App 图标";
+"SETTINGS_VIEW_CONTROLLER_CELL_LANGUAGE" = "语言";
+"SETTINGS_VIEW_CONTROLLER_CELL_CURRENT_CERTIFICATE_NOSELECTED" = "未选择证书";
+"SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES" = "证书管理";
+
+
+
+"SETTINGS_VIEW_CONTROLLER_CELL_SIGN_OPTIONS" = "签名设置";
+"SETTINGS_VIEW_CONTROLLER_CELL_SERVER_OPTIONS" = "服务器设置";
+"SETTINGS_VIEW_CONTROLLER_CELL_VIEW_LOGS" = "查看日志";
+"SETTINGS_VIEW_CONTROLLER_CELL_APPS_FOLDER" = "打开IPA目录";
+"SETTINGS_VIEW_CONTROLLER_CELL_CERTS_FOLDER" = "打开证书目录";
+
+
+"SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE" = "更新本地证书";
+"SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE_UPDATING" = "更新本地证书";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET" = "重置";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_ALL" = "重置所有";
+
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION" = "重置设置";
+"SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER" = "使用自定义服务器";
+
+"SETTINGS_VIEW_CONTROLLER_CELL_ONLINE_INSTALL_METHOD" = "通过服务器安装";
+
+
+"SETTINGS_VIEW_CONTROLLER_CELL_EXPORT_ID" = "导出随机标识符";
+"SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_ID" = "更改随机标识符";
+
+//
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_TITLE" = "PPQCheck 防护";
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_DESCRIPTION" = "此设置启用了 PPQCheck 保护，该保护旨在为您侧载的应用程序的每个捆绑包标识符添加一个随机字符串。\n\n这是为了避免苹果通过（尝试）使它们无法将您正在侧载的应用程序与来自 App Store 的应用程序关联起来而标记您的帐户。";
+
+"SETTINGS_VIEW_CONTROLLER_URL_ALERT_TITLE" = "更改下载链接";
+"SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_IDENTIFIER" = "更改随机标识符";
+
+// MARK: - SettingsViewController -> AboutViewController
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_CREDITS" = "致谢";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_SPONSORS" = "赞助商";
+
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_DEVICE" = "设备";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_ACKNOWLEDGEMENTS" = "致谢";
+
+
+"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_VERSION" = "设备版本";
+"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_ARCH" = "架构";
+"ABOUT_VIEW_CONTROLLER_CELL_APP_VERSION" = "程序版本";
+
+// MARK: - SettingsViewController -> DisplayViewController
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_TINT_COLOR" = "色调";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARENCE" = "主题";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_STORE" = "库";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE" = "默认";
+"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE_DESCRIPTION" = "Feather 的默认样式，隐藏本地化描述并仅包含副标题。";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE" = "显示描述";
+"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE_DESCRIPTION" = "用应用程序描述替换副标题。";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION" = "显示完整信息";
+"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION_DESCRIPTION" = "同时显示副标题和程序描述。";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME" = "使用团队名称";
+"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME_DESCRIPTION" = "将证书名称替换为您的团队名称，如果提供商恰好总是使用相同的 App ID 名称，则可以更好地区分证书。";
+
+// MARK: - SettingsViewController -> LanguageViewController.swift
+"LANGUAGE_VIEW_TITLE" = "语言";
+"LANGUAGE_VIEW_CELL_USE_SYSTEM_LANGUAGE" = "使用系统语言";
+
+// MARK: - SettingsViewController -> CertificatesViewController
+"CERTIFICATES_VIEW_CONTROLLER_TITLE" = "证书";
+
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_FOOTER" = "支持的文件格式：\n\n- P12 (.p12)\和- Mobileprovision (.mobileprovision)\和确保您的证书有效并能够侧载到您的设备！";
+
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD" = "添加证书";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_DESCRIPTION" = "点击添加一个证书";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> Delete Alert
+"CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_TITLE" = "你不会想这么做的！";
+"CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_DESCRIPTION" = "您正在尝试删除选定的证书，请稍后在手头有其他证书时重试。";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> Cell
+"CERTIFICATES_VIEW_CONTROLLER_CELL_EXPIRED" = "已过期";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_DAYS_LEFT" = "剩余 %@ 天";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> CertImportingViewController
+"CERT_IMPORTING_VIEWCONTROLLER_TITLE" = "导入";
+"CERT_IMPORTING_VIEWCONTROLLER_SECTION_PROVISIONING" = "";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> CertImportingViewController -> Password Alert
+
+"CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_TITLE" = "密码错误";
+"CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_DESCRIPTION" = "请检查密码并重试。";
+
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PROV" = "导入描述文件";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_CERT" = "导入证书文件";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_ENTER_PW" = "输入密码";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PW" = "密码";
+
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PROV" = "导入描述文件以便能够侧载到您的设备。";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_CERT" = "导入包含有效证书的文件。";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PASS" = "输入与证书关联的密码，如果不需要密码，则留空。";
+
+// MARK: - SettingsViewController -> ResetViewController
+"RESET_VIEW_CONTROLLER_CLEAR_CACHE" = "清除网络缓存";
+"RESET_VIEW_CONTROLLER_CLEAR_CACHE_ALERT_TITLE" = "此操作不可逆，缓存的网络请求和图片将被清除。";
+
+// MARK: - Donation
+"DONATION_TITLE" = "捐赠";
+"DONATION_DONATIONS" = "捐赠";
+
+"DONATION_CELL_1_TITLE" = "私密仓库";
+"DONATION_CELL_1_DESCRIPTION" = "通过捐赠获取我们秘密仓库的访问权，将为您提供 Feather 的测试版访问权限。";
+
+"DONATION_CELL_2_TITLE" = "表达您的支持";
+"DONATION_CELL_2_DESCRIPTION" = "通过捐赠来表达您的支持！如果您无法捐款，宣传 Feather 也很有用！";
+
+// MARK: - SettingsViewController -> LogsViewController.swift
+"LOGS_VIEW_SECTION_TITLE_ERROR" = "%@ 个严重错误。";
+"LOGS_VIEW_SECTION_TITLE_SHARE" = "分享日志";
+"LOGS_VIEW_SECTION_TITLE_COPY" = "复制日志";
+"LOGS_VIEW_SUCCESS_DESCRIPTION" = "日志内容已复制到剪贴板。";
+"LOGS_VIEW_FAIL_DESCRIPTION" = "无法复制日志内容。";

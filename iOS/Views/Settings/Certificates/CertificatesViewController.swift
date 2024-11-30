@@ -75,7 +75,7 @@ extension CertificatesViewController {
 		var title = ""
 		
 		switch section {
-		case 0: title = "Add Certificate"
+		case 0: title = String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES")
 		default: break
 		}
 		

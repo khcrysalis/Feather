@@ -28,10 +28,10 @@ class SigningsViewController: UIViewController {
 //			"Change Certificate",
 		],
 		[
-			"Add Tweaks",
-			"Modify Dylibs",
+			String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS"),
+			String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_MODIFY_DYLIBS"),
 		],
-		[ "Properties" ],
+		[ String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_PROPERTIES") ],
 	]
 
 	var sectionTitles = [
@@ -257,7 +257,7 @@ extension SigningsViewController: UITableViewDataSource, UITableViewDelegate  {
 				cell.textLabel?.textColor = .secondaryLabel
 				cell.selectionStyle = .none
 			}
-		case "Change Certificate", "Add Tweaks", "Modify Dylibs", "Properties":
+		case "Change Certificate", String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS"), String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_MODIFY_DYLIBS"), String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_PROPERTIES"):
 			cell.accessoryType = .disclosureIndicator
 		default:
 			break
@@ -281,13 +281,13 @@ extension SigningsViewController: UITableViewDataSource, UITableViewDelegate  {
 		case String.localized("APPS_INFORMATION_TITLE_VERSION"):
 			let l = SigningsInputViewController(v: self, initialValue: (mainOptions.mainOptions.version ?? bundle?.version)!, valueToSaveTo: indexPath.row)
 			navigationController?.pushViewController(l, animated: true)
-		case "Add Tweaks":
+		case String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS"):
 			let l = SigningsTweakViewController(signingDataWrapper: signingDataWrapper)
 			navigationController?.pushViewController(l, animated: true)
-		case "Modify Dylibs":
+		case String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_MODIFY_DYLIBS"):
 			let l = SigningsDylibViewController(mainOptions: mainOptions, app: getFilesForDownloadedApps(app: application as! DownloadedApps, getuuidonly: false))
 			navigationController?.pushViewController(l, animated: true)
-		case "Properties":
+		case String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_PROPERTIES"):
 			let l = SigningsAdvancedViewController(signingDataWrapper: signingDataWrapper, mainOptions: mainOptions)
 			navigationController?.pushViewController(l, animated: true)
 		default:

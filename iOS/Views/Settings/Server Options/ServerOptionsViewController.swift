@@ -24,8 +24,8 @@ class ServerOptionsViewController: UITableViewController {
 	
 	var sectionTitles = 
 	[
-		"Online",
-		"Local",
+        String.localized("SETTINGS_VIEW_CONTROLLER_TITLE_ONLINE"),
+        String.localized("SETTINGS_VIEW_CONTROLLER_TITLE_LOCAL"),
 	]
 	
 	init() { super.init(style: .insetGrouped) }
@@ -33,7 +33,7 @@ class ServerOptionsViewController: UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		title = "Server Options"
+        title = String.localized("SETTINGS_VIEW_CONTROLLER_TITLE")
 		self.navigationItem.largeTitleDisplayMode = .never
 		updateCells()
 	}

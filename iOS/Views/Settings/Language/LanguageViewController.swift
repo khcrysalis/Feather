@@ -38,7 +38,7 @@ class PreferredLanguageViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		title = String.localized("Language")
+		title = String.localized("LANGUAGE_VIEW_TITLE")
 		self.navigationItem.largeTitleDisplayMode = .never
 		tableView = UITableView(frame: tableView.frame, style: .insetGrouped)
 	}
@@ -63,7 +63,7 @@ class PreferredLanguageViewController: UITableViewController {
 		
 		if (indexPath.section, indexPath.row) == (0, 0) {
 			cell = UITableViewCell()
-			cell.textLabel?.text = String.localized("Use System Language")
+			cell.textLabel?.text = String.localized("LANGUAGE_VIEW_CELL_USE_SYSTEM_LANGUAGE")
 			let uiSwitch = UISwitch()
 			uiSwitch.isOn = Preferences.preferredLanguageCode == nil
 			uiSwitch.addTarget(self, action: #selector(useSystemLanguageToggled(sender:)), for: .valueChanged)
@@ -91,11 +91,15 @@ class PreferredLanguageViewController: UITableViewController {
 		tableView.reloadSections([1], with: .automatic)
 		
 		let alert = UIAlertController(
-			title: String.localized("Restart Application for changes to fully apply"),
+			title: String.localized("SUCCESS_REQUIRES_RESTART"),
 			message: nil,
 			preferredStyle: .alert
 		)
-		alert.addAction(.init(title: "OK", style: .default))
+        alert.addAction(.init(title: String.localized("OK"), style: .default){ _ in
+            CFPreferencesAppSynchronize(kCFPreferencesCurrentApplication)
+            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+            exit(0)
+        })
 		present(alert, animated: true)
 	}
 	
@@ -104,6 +108,18 @@ class PreferredLanguageViewController: UITableViewController {
 			UserDefaults.standard.set(nil, forKey: "UserPreferredLanguageCode")
 			Bundle.preferredLocalizationBundle = .makeLocalizationBundle()
 			tableView.deleteSections([1], with: .automatic)
+            
+            let alert = UIAlertController(
+                title: String.localized("SUCCESS_REQUIRES_RESTART"),
+                message: nil,
+                preferredStyle: .alert
+            )
+            alert.addAction(.init(title: String.localized("OK"), style: .default){ _ in
+                CFPreferencesAppSynchronize(kCFPreferencesCurrentApplication)
+                UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+                exit(0)
+            })
+            present(alert, animated: true)
 		} else {
 			Preferences.preferredLanguageCode = Locale.current.languageCode
 			tableView.insertSections([1], with: .automatic)

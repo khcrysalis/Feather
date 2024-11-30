@@ -35,6 +35,8 @@
 "IMPORT" = "Importieren";
 // Add Action
 "ADD" = "Hinzufügen";
+// Install Action
+"INSTALL" = "Install";
 
 // MARK: - Alerts
 // Alert titles
@@ -42,6 +44,7 @@
 "ALERT_TRACE" = "Alarm";
 "ALERT_ERROR" = "Fehler";
 "ALERT_CRITICAL" = "Kritischer Fehler";
+"ALERT_COPIED" = "Kopieren";
 
 // MARK: - Error messages
 // Installer Error Title
@@ -174,6 +177,8 @@
 "APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS" = "Tweaks Hinzufügen";
 "APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED" = "Erweitert";
 "APP_SIGNING_VIEW_CONTROLLER_START_SIGNING" = "Signierung Starten";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_MODIFY_DYLIBS" = "Modify Dylibs";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_PROPERTIES" = "Properties";
 
 // MARK: - AppSigningViewController - No Certificates Alert
 "APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_TITLE" = "Fehler";
@@ -242,9 +247,19 @@
 "LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL_PLURAL" = "%@ signiert";
 "LIBRARY_VIEW_CONTROLLER_SECTION_BUTTON_IMPORT" = "Importieren";
 "LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS" = "Heruntergeladene Apps";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_DOWNLOADED_APPS_TOTAL" = "%@ Heruntergeladene";
 //Import Action Sheet
 "LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_FILE" = "Von Dateien importieren";
 "LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_URL" = "Von URL importieren";
+//Sign Action Sheet
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN" = "Sign %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN_INSTALL" = "Sign & Install %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_RESIGN" = "ReSign %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL" = "Install %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SHARE" = "Share %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN" = "Open %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM" = "Confirm Installation";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM_DESCRIPTION" = "Trying to install via the downloaded apps tab may not work as they are most likely not signed! It's recommended you sign that application first before installing.";
 
 // MARK: - SettingsViewController
 // Headers
@@ -256,6 +271,10 @@
 "SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES" = "Sollten Probleme in Feather auftreten, melde dies bitte über die GitHub-Repository. Wenn du ein Problem einreichst, stelle sicher, dass du alle Logs einreichst.";
 "SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS" = "Leider müssen Serverzertifikate aufgrund von Einschränkungen jedes Jahr neu verlängert werden, damit die lokalen Funktionen von Feather ordnungsgemäß funktionieren. Tippe auf diese Schaltfläche, um die aktuellsten Dateien aus unseren Quellen abzurufen.";
 "SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER" = "Standard-Server führt zu %@";
+
+"SETTINGS_VIEW_CONTROLLER_TITLE" = "Server Options";
+"SETTINGS_VIEW_CONTROLLER_TITLE_ONLINE" = "Online";
+"SETTINGS_VIEW_CONTROLLER_TITLE_LOCAL" = "Local";
 
 // Cell Titles
 // About Feather
@@ -329,6 +348,10 @@
 "DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME" = "Use Team Name";
 "DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME_DESCRIPTION" = "Replaces the certificate name with your team name, could be for better to distinguish between certificates if providers happen to always use the same App ID name.";
 
+// MARK: - SettingsViewController -> LanguageViewController.swift
+"LANGUAGE_VIEW_TITLE" = "Language";
+"LANGUAGE_VIEW_CELL_USE_SYSTEM_LANGUAGE" = "Use System Language";
+
 // MARK: - SettingsViewController -> CertificatesViewController
 "CERTIFICATES_VIEW_CONTROLLER_TITLE" = "Zertifikate";
 
@@ -376,3 +399,10 @@
 
 "DONATION_CELL_2_TITLE" = "Zeige deine Unterstützung";
 "DONATION_CELL_2_DESCRIPTION" = "Zeige deine Unterstützung mit einer Spende! Sollest du nicht in der Lage sein, zu spenden, kannst du auch einfach deinen Freunden über Feather erzählen!";
+
+// MARK: - SettingsViewController -> LogsViewController.swift
+"LOGS_VIEW_SECTION_TITLE_ERROR" = "%@ Critical Errors.";
+"LOGS_VIEW_SECTION_TITLE_SHARE" = "Share Logs";
+"LOGS_VIEW_SECTION_TITLE_COPY" = "Copy Logs";
+"LOGS_VIEW_SUCCESS_DESCRIPTION" = "Log contents have been copied to clipboard.";
+"LOGS_VIEW_FAIL_DESCRIPTION" = "Failed to copy log contents.";

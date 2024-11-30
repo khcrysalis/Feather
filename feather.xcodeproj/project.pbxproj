@@ -262,6 +262,7 @@
 		33E5A5AB2CC88BF500532930 /* ResetAlertOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetAlertOptions.swift; sourceTree = "<group>"; };
 		33E5A5AD2CC8A41E00532930 /* LogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsViewController.swift; sourceTree = "<group>"; };
 		33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+DownloadedApps.swift"; sourceTree = "<group>"; };
+		5AF393042CFAE1B7001FAF86 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
 		88DE4CC52CA5A13200D68F1E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AA280D922C76A60700CAC838 /* LSApplicationWorkspace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSApplicationWorkspace.h; sourceTree = "<group>"; };
 		AA280D942C76AB7400CAC838 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -899,7 +900,6 @@
 			knownRegions = (
 				en,
 				Base,
-				"zh-HK",
 				cs,
 				de,
 				es,
@@ -908,6 +908,7 @@
 				ru,
 				fr,
 				tr,
+				zh,
 			);
 			mainGroup = 33BA37822BF8159F00FF530A;
 			packageReferences = (
@@ -1086,6 +1087,7 @@
 				33BF316A2C7C46650087F3D2 /* de */,
 				33BF316B2C7C466B0087F3D2 /* es */,
 				88DE4CC52CA5A13200D68F1E /* fr */,
+				5AF393042CFAE1B7001FAF86 /* zh */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1221,7 +1223,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1268,7 +1270,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
