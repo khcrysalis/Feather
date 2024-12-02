@@ -24,13 +24,13 @@ import UserNotifications
             Debug.shared.log(message: "Starting source refresh", type: .info)
 
             let dispatchGroup = DispatchGroup()
-            var allSourceData: [SourcesData] = []
+            var allSourceData: [(data: SourcesData, url: URL)] = []
 
             if self.isDebugMode {
                 dispatchGroup.enter()
                 self.createMockSource { mockSource in
                     if let mockSource {
-                        allSourceData.append(mockSource)
+                        allSourceData.append((data: mockSource, url: URL(string: "https://example.com")!))
                     }
                     dispatchGroup.leave()
                 }
@@ -48,7 +48,7 @@ import UserNotifications
                                 Debug.shared.log(message: "Raw source data: \(sourceString)", type: .info)
                             }
                             if case let .success(sourceData) = SourceGET().parse(data: data) {
-                                allSourceData.append(sourceData)
+                                allSourceData.append((data: sourceData, url: url))
                             }
                         case let .failure(error):
                             Debug.shared.log(message: "Source refresh error: \(error)", type: .error)
@@ -67,7 +67,7 @@ import UserNotifications
         _ = semaphore.wait(timeout: .now() + 30)
     }
 
-    private func checkForUpdates(with sourceData: [SourcesData]) {
+    private func checkForUpdates(with sourceData: [(data: SourcesData, url: URL)]) {
         let coreDataQueue = DispatchQueue(label: "kh.crysalis.feather.coredata", qos: .userInitiated)
         
         coreDataQueue.sync {
@@ -84,7 +84,7 @@ import UserNotifications
                 Debug.shared.log(message: "Checking app: \(bundleId) (current version: \(currentVersion))", type: .info)
 
                 for source in sourceData {
-                    if let availableApp = source.apps.first(where: { $0.bundleIdentifier == bundleId }) {
+                    if let availableApp = source.data.apps.first(where: { $0.bundleIdentifier == bundleId }) {
                         Debug.shared.log(message: "Found matching app in source: \(availableApp.bundleIdentifier)", type: .info)
                         
                         let versions = availableApp.versions ?? []
@@ -102,8 +102,12 @@ import UserNotifications
                                                   oldVersion: currentVersion,
                                                   newVersion: latestVersion))
 
+                                Debug.shared.log(message: "Setting source URL: \(source.url.absoluteString)", type: .info)
+                                signedApp.originalSourceURL = source.url
+                                CoreDataManager.shared.saveContext()
                                 CoreDataManager.shared.setUpdateAvailable(for: signedApp, newVersion: latestVersion)
-                                Debug.shared.log(message: "CoreData updated - Update marked as available for \(bundleId)", type: .info)
+                                Debug.shared.log(message: "CoreData updated - Update marked as available for \(bundleId) from source \(source.url.absoluteString)", type: .info)
+                                Debug.shared.log(message: "Verifying update data - URL: \(signedApp.originalSourceURL?.absoluteString ?? "nil"), Version: \(signedApp.updateVersion ?? "nil")", type: .info)
 
                                 DispatchQueue.main.async {
                                     Debug.shared.log(message: "Sending update notifications", type: .info)
