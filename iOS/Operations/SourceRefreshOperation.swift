@@ -86,31 +86,31 @@ import UserNotifications
                 for source in sourceData {
                     if let availableApp = source.apps.first(where: { $0.bundleIdentifier == bundleId }) {
                         Debug.shared.log(message: "Found matching app in source: \(availableApp.bundleIdentifier)", type: .info)
-                        let latestVersion = availableApp.versions?.first?.version ?? availableApp.version
+                        
+                        let versions = availableApp.versions ?? []
+                        let latestVersion = versions.map { $0.version }.sorted { compareVersions($0, $1) > 0 }.first ?? availableApp.version
+                        
                         if let latestVersion {
                             Debug.shared.log(message: "Comparing versions - Current: \(currentVersion) vs Latest: \(latestVersion)", type: .info)
                             let comparison = compareVersions(latestVersion, currentVersion)
                             Debug.shared.log(message: "Version comparison result: \(comparison)", type: .info)
                             
-                            if comparison > 0,
-                               let sourceURL = source.sourceURL
-                            {
+                            if comparison > 0 {
+                                Debug.shared.log(message: "Update available - \(bundleId) can be updated from \(currentVersion) to \(latestVersion)", type: .info)
                                 updatesFound = true
                                 updatedApps.append((name: signedApp.name ?? bundleId,
                                                   oldVersion: currentVersion,
                                                   newVersion: latestVersion))
 
-                                signedApp.originalSourceURL = sourceURL
                                 CoreDataManager.shared.setUpdateAvailable(for: signedApp, newVersion: latestVersion)
-
-                                Debug.shared.log(message: "Update found for signed app:", type: .info)
-                                Debug.shared.log(message: "Signed app object: \(signedApp)", type: .info)
-                                Debug.shared.log(message: "Source object: \(source)", type: .info)
-                                Debug.shared.log(message: "Available update app object: \(availableApp)", type: .info)
+                                Debug.shared.log(message: "CoreData updated - Update marked as available for \(bundleId)", type: .info)
 
                                 DispatchQueue.main.async {
+                                    Debug.shared.log(message: "Sending update notifications", type: .info)
                                     NotificationCenter.default.post(name: Notification.Name("lfetch"), object: nil)
+                                    self.sendUpdateNotification(for: [(name: signedApp.name ?? bundleId, oldVersion: currentVersion, newVersion: latestVersion)])
                                 }
+                                return
                             }
                         }
                     }
@@ -118,8 +118,9 @@ import UserNotifications
             }
 
             if updatesFound {
-                DispatchQueue.main.async {
-                    self.sendUpdateNotification(for: updatedApps)
+                Debug.shared.log(message: "Found \(updatedApps.count) update(s) available", type: .info)
+                for app in updatedApps {
+                    Debug.shared.log(message: "\(app.name): \(app.oldVersion) -> \(app.newVersion)", type: .info)
                 }
             } else {
                 Debug.shared.log(message: "No updates available for signed apps", type: .info)
