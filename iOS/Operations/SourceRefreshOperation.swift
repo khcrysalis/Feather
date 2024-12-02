@@ -43,6 +43,10 @@ import UserNotifications
                     SourceGET().downloadURL(from: url) { result in
                         switch result {
                         case let .success((data, _)):
+                            Debug.shared.log(message: "Received source data from URL: \(url)", type: .info)
+                            if let sourceString = String(data: data, encoding: .utf8) {
+                                Debug.shared.log(message: "Raw source data: \(sourceString)", type: .info)
+                            }
                             if case let .success(sourceData) = SourceGET().parse(data: data) {
                                 allSourceData.append(sourceData)
                             }
@@ -68,34 +72,46 @@ import UserNotifications
         
         coreDataQueue.sync {
             let signedApps = CoreDataManager.shared.getDatedSignedApps()
+            Debug.shared.log(message: "Found \(signedApps.count) signed apps to check", type: .info)
+            Debug.shared.log(message: "Checking against \(sourceData.count) sources", type: .info)
             var updatesFound = false
             var updatedApps: [(name: String, oldVersion: String, newVersion: String)] = []
 
             for signedApp in signedApps {
                 guard let bundleId = signedApp.bundleidentifier,
                       let currentVersion = signedApp.version else { continue }
+                
+                Debug.shared.log(message: "Checking app: \(bundleId) (current version: \(currentVersion))", type: .info)
 
                 for source in sourceData {
-                    if let availableApp = source.apps.first(where: { $0.bundleIdentifier == bundleId }),
-                       let latestVersion = availableApp.version,
-                       let sourceURL = source.sourceURL,
-                       compareVersions(latestVersion, currentVersion) > 0
-                    {
-                        updatesFound = true
-                        updatedApps.append((name: signedApp.name ?? bundleId,
-                                          oldVersion: currentVersion,
-                                          newVersion: latestVersion))
+                    if let availableApp = source.apps.first(where: { $0.bundleIdentifier == bundleId }) {
+                        Debug.shared.log(message: "Found matching app in source: \(availableApp.bundleIdentifier)", type: .info)
+                        let latestVersion = availableApp.versions?.first?.version ?? availableApp.version
+                        if let latestVersion {
+                            Debug.shared.log(message: "Comparing versions - Current: \(currentVersion) vs Latest: \(latestVersion)", type: .info)
+                            let comparison = compareVersions(latestVersion, currentVersion)
+                            Debug.shared.log(message: "Version comparison result: \(comparison)", type: .info)
+                            
+                            if comparison > 0,
+                               let sourceURL = source.sourceURL
+                            {
+                                updatesFound = true
+                                updatedApps.append((name: signedApp.name ?? bundleId,
+                                                  oldVersion: currentVersion,
+                                                  newVersion: latestVersion))
 
-                        signedApp.originalSourceURL = sourceURL
-                        CoreDataManager.shared.setUpdateAvailable(for: signedApp, newVersion: latestVersion)
+                                signedApp.originalSourceURL = sourceURL
+                                CoreDataManager.shared.setUpdateAvailable(for: signedApp, newVersion: latestVersion)
 
-                        Debug.shared.log(message: "Update found for signed app:", type: .info)
-                        Debug.shared.log(message: "Signed app object: \(signedApp)", type: .info)
-                        Debug.shared.log(message: "Source object: \(source)", type: .info)
-                        Debug.shared.log(message: "Available update app object: \(availableApp)", type: .info)
+                                Debug.shared.log(message: "Update found for signed app:", type: .info)
+                                Debug.shared.log(message: "Signed app object: \(signedApp)", type: .info)
+                                Debug.shared.log(message: "Source object: \(source)", type: .info)
+                                Debug.shared.log(message: "Available update app object: \(availableApp)", type: .info)
 
-                        DispatchQueue.main.async {
-                            NotificationCenter.default.post(name: Notification.Name("lfetch"), object: nil)
+                                DispatchQueue.main.async {
+                                    NotificationCenter.default.post(name: Notification.Name("lfetch"), object: nil)
+                                }
+                            }
                         }
                     }
                 }
