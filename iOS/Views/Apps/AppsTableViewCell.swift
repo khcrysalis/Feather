@@ -125,7 +125,7 @@ class AppsTableViewCell: UITableViewCell {
 			   let currentVersion = app.value(forKey: "version") as? String,
 			   let updateVersion = app.value(forKey: "updateVersion") as? String {
 				let updateText = "\(currentVersion) → \(updateVersion)"
-				let updatePill = PillView(text: updateText, backgroundColor: .systemPurple, iconName: "arrow.up")
+				let updatePill = PillView(text: updateText, backgroundColor: .systemPurple, iconName: "arrow.up.circle")
 				pillsStackView.addArrangedSubview(updatePill)
 			} else if let name: String = getValue(forKey: "teamName", from: app) {
 				let p = PillView(text: name, backgroundColor: .systemGray, iconName: "person")
