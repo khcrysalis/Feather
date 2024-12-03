@@ -110,57 +110,13 @@ import UserNotifications
                                 Debug.shared.log(message: "Verifying update data - URL: \(signedApp.originalSourceURL?.absoluteString ?? "nil"), Version: \(signedApp.updateVersion ?? "nil")", type: .info)
 
                                 DispatchQueue.main.async {
-                                    Debug.shared.log(message: "Sending update notifications", type: .info)
                                     NotificationCenter.default.post(name: Notification.Name("lfetch"), object: nil)
-                                    self.sendUpdateNotification(for: [(name: signedApp.name ?? bundleId, oldVersion: currentVersion, newVersion: latestVersion)])
                                 }
                                 return
                             }
                         }
                     }
                 }
-            }
-
-            if updatesFound {
-                Debug.shared.log(message: "Found \(updatedApps.count) update(s) available", type: .info)
-                for app in updatedApps {
-                    Debug.shared.log(message: "\(app.name): \(app.oldVersion) -> \(app.newVersion)", type: .info)
-                }
-            } else {
-                Debug.shared.log(message: "No updates available for signed apps", type: .info)
-            }
-        }
-    }
-
-    private func sendUpdateNotification(for apps: [(name: String, oldVersion: String, newVersion: String)]) {
-        let content = UNMutableNotificationContent()
-        content.title = apps.count == 1 ? "Update Available" : "Updates Available"
-
-        if apps.count == 1 {
-            let app = apps[0]
-            content.body = "\(app.name) can be updated from \(app.oldVersion) to \(app.newVersion)"
-            Debug.shared.log(message: "Sending notification for 1 update", type: .info)
-        } else {
-            content.body = "\(apps.count) app\(apps.count == 1 ? "" : "s") \(apps.count == 1 ? "has" : "have") \(apps.count == 1 ? "an update" : "updates") available"
-            Debug.shared.log(message: "Sending notification for \(apps.count) updates", type: .info)
-        }
-
-        content.sound = .default
-        let identifier = "feather.updates.\(UUID().uuidString)"
-
-        let request = UNNotificationRequest(
-            identifier: identifier,
-            content: content,
-            trigger: nil
-        )
-
-        Debug.shared.log(message: "Attempting to send notification with id: \(identifier)", type: .info)
-
-        UNUserNotificationCenter.current().add(request) { error in
-            if let error {
-                Debug.shared.log(message: "Error sending notification: \(error)", type: .error)
-            } else {
-                Debug.shared.log(message: "Successfully sent update notification", type: .info)
             }
         }
     }
