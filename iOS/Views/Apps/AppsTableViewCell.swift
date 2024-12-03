@@ -86,13 +86,11 @@ class AppsTableViewCell: UITableViewCell {
 	}
 	
 	func configure(with app: NSManagedObject, filePath: URL) {
-		
 		var appname = ""
 		if let name = app.value(forKey: "name") as? String {
 			appname += name
-			
 		}
-				
+		
 		var desc = ""
 		if let version = app.value(forKey: "version") as? String {
 			desc += version
@@ -104,7 +102,6 @@ class AppsTableViewCell: UITableViewCell {
 			if bundleIdentifier.hasSuffix("Beta") {
 				appname += " (Beta)"
 			}
-			
 		}
 		
 		pillsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
@@ -122,7 +119,15 @@ class AppsTableViewCell: UITableViewCell {
 				pillsStackView.addArrangedSubview(p1)
 			}
 			
-			if let name: String = getValue(forKey: "teamName", from: app) {
+			if app.entity.name == "SignedApps",
+			   let hasUpdate = app.value(forKey: "hasUpdate") as? Bool,
+			   hasUpdate,
+			   let currentVersion = app.value(forKey: "version") as? String,
+			   let updateVersion = app.value(forKey: "updateVersion") as? String {
+				let updateText = "\(currentVersion) → \(updateVersion)"
+				let updatePill = PillView(text: updateText, backgroundColor: .systemPurple, iconName: "arrow.up.circle")
+				pillsStackView.addArrangedSubview(updatePill)
+			} else if let name: String = getValue(forKey: "teamName", from: app) {
 				let p = PillView(text: name, backgroundColor: .systemGray, iconName: "person")
 				pillsStackView.addArrangedSubview(p)
 			}

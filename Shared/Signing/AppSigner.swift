@@ -79,7 +79,8 @@ func signInitialApp(bundle: BundleOptions, mainOptions: SigningMainDataWrapper, 
 					uuid: signedUUID,
 					appPath: appPath.lastPathComponent,
 					timeToLive: mainOptions.mainOptions.certificate?.certData?.expirationDate ?? Date(),
-					teamName: mainOptions.mainOptions.certificate?.certData?.name ?? ""
+					teamName: mainOptions.mainOptions.certificate?.certData?.name ?? "",
+					originalSourceURL: bundle.sourceURL
 				) { result in
 					
 

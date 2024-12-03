@@ -12,6 +12,7 @@ struct BundleOptions {
 	var name: String?
 	var bundleId: String?
 	var version: String?
+	var sourceURL: URL?
 }
 
 class SigningsViewController: UIViewController {
@@ -53,6 +54,7 @@ class SigningsViewController: UIViewController {
 	private var variableBlurView: UIVariableBlurView?
 	private var largeButton = ActivityIndicatorButton()
 	private var iconCell = IconImageViewCell()
+	var signingCompletionHandler: ((Bool) -> Void)?
 	
 	init(signingDataWrapper: SigningDataWrapper, application: NSManagedObject, appsViewController: LibraryViewController) {
 		self.signingDataWrapper = signingDataWrapper
@@ -63,7 +65,14 @@ class SigningsViewController: UIViewController {
 		if let name = application.value(forKey: "name") as? String,
 			let bundleId = application.value(forKey: "bundleidentifier") as? String,
 			let version = application.value(forKey: "version") as? String {
-			self.bundle = BundleOptions(name: name, bundleId: bundleId, version: version)
+			let sourceLocation = application.value(forKey: "oSU") as? String
+			let sourceURL = sourceLocation != nil ? URL(string: sourceLocation!) : nil
+			self.bundle = BundleOptions(
+				name: name, 
+				bundleId: bundleId, 
+				version: version,
+				sourceURL: sourceURL
+			)
 		}
 		
 		if let hasGotCert = CoreDataManager.shared.getCurrentCertificate() { self.mainOptions.mainOptions.certificate = hasGotCert }
@@ -191,10 +200,12 @@ class SigningsViewController: UIViewController {
 				Debug.shared.log(message: signedPath.path)
 				if self.signingDataWrapper.signingOptions.installAfterSigned {
 					self.appsViewController?.startInstallProcess(meow: signedApp, filePath: signedPath.path)
+					self.signingCompletionHandler?(true)
 				}
 
 			case .failure(let error):
 				Debug.shared.log(message: "Signing failed: \(error.localizedDescription)", type: .error)
+				self.signingCompletionHandler?(false)
 			}
 			
 			self.dismiss(animated: true)
