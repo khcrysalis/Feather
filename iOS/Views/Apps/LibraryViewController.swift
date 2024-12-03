@@ -283,7 +283,7 @@ extension LibraryViewController {
 				   hasUpdate {
 					// Update available menu
 					let updateButton = PopupViewControllerButton(
-						title: "Update \(signedApp.name ?? "")",
+						title: String.localized("LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_UPDATE", arguments: appName),
 						color: .tintColor.withAlphaComponent(0.9),
 						titleColor: .white
 					)
@@ -295,7 +295,7 @@ extension LibraryViewController {
 					}
 					
 					let clearButton = PopupViewControllerButton(
-						title: "Clear Update",
+						title: String.localized("LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_CLEAR_UPDATE"),
 						color: .quaternarySystemFill,
 						titleColor: .tintColor
 					)
@@ -469,7 +469,7 @@ extension LibraryViewController {
 	override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 		let source = getApplication(row: indexPath.row, section: indexPath.section)
 		
-		let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+		let deleteAction = UIContextualAction(style: .destructive, title: String.localized("DELETE")) { (action, view, completionHandler) in
 			switch indexPath.section {
 			case 0:
 				CoreDataManager.shared.deleteAllSignedAppContent(for: source! as! SignedApps)
@@ -498,7 +498,7 @@ extension LibraryViewController {
 		
 		let configuration = UIContextMenuConfiguration(identifier: nil, actionProvider: { _ in
 			return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [
-				UIAction(title: "View Details", image: UIImage(systemName: "info.circle"), handler: {_ in
+				UIAction(title: String.localized("LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_VIEW_DATEILS"), image: UIImage(systemName: "info.circle"), handler: {_ in
 										
 					let viewController = AppsInformationViewController()
 					viewController.source = source
@@ -516,7 +516,7 @@ extension LibraryViewController {
 
 				}),
 				
-				UIAction(title: "Open in Files", image: UIImage(systemName: "folder"), handler: {_ in
+				UIAction(title: String.localized("LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN_LN_FILES"), image: UIImage(systemName: "folder"), handler: {_ in
 					
 					let path = filePath?.deletingLastPathComponent()
 					let path2 = path?.absoluteString.replacingOccurrences(of: "file://", with: "shareddocuments://")

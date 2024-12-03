@@ -21,7 +21,7 @@ extension SettingsViewController {
 			preferredStyle: UIDevice.current.userInterfaceIdiom == .pad ? .alert : .actionSheet
 		)
 		
-		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		let cancelAction = UIAlertAction(title: String.localized("CANCEL"), style: .cancel, handler: nil)
 		alertView.addAction(cancelAction)
 		
 		for (actionTitle, actionStyle, handler) in actions {

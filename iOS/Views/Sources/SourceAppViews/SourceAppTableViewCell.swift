@@ -422,7 +422,7 @@ class SourceAppScreenshotViewController: UIViewController {
 		
 		imageView.image = image
 		
-		self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(closeSheet))
+		self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: String.localized("DONE"), style: .done, target: self, action: #selector(closeSheet))
 	}
 	
 	override func viewDidLayoutSubviews() {
