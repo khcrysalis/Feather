@@ -124,6 +124,7 @@
 		33E5A5AC2CC88BF500532930 /* ResetAlertOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5A5AB2CC88BF500532930 /* ResetAlertOptions.swift */; };
 		33E5A5AE2CC8A41E00532930 /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5A5AD2CC8A41E00532930 /* LogsViewController.swift */; };
 		33EEDAA42C5D9358009089DC /* CoreDataManager+DownloadedApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */; };
+		3AC770F12CF7250700D9B9E1 /* SourceRefreshOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC770EF2CF7250700D9B9E1 /* SourceRefreshOperation.swift */; };
 		AA280D952C76AB7400CAC838 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA280D942C76AB7400CAC838 /* MobileCoreServices.framework */; };
 		AA280D972C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA280D962C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift */; };
 		AF4D46EF2C432CCA003FA335 /* TweakLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */; };
@@ -263,6 +264,7 @@
 		33E5A5AD2CC8A41E00532930 /* LogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsViewController.swift; sourceTree = "<group>"; };
 		33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+DownloadedApps.swift"; sourceTree = "<group>"; };
 		5AF393042CFAE1B7001FAF86 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3AC770EF2CF7250700D9B9E1 /* SourceRefreshOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceRefreshOperation.swift; sourceTree = "<group>"; };
 		88DE4CC52CA5A13200D68F1E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AA280D922C76A60700CAC838 /* LSApplicationWorkspace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSApplicationWorkspace.h; sourceTree = "<group>"; };
 		AA280D942C76AB7400CAC838 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -664,6 +666,7 @@
 		33BA378D2BF8159F00FF530A /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				3AC770F02CF7250700D9B9E1 /* Operations */,
 				33BA37A42BF8165400FF530A /* Delegates */,
 				33BA37A62BF8167A00FF530A /* Views */,
 				33BA37AE2BF819D400FF530A /* Extensions */,
@@ -792,6 +795,14 @@
 				33570F662C34CCD5008CB560 /* AppsInformationViewController.swift */,
 			);
 			path = Information;
+			sourceTree = "<group>";
+		};
+		3AC770F02CF7250700D9B9E1 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				3AC770EF2CF7250700D9B9E1 /* SourceRefreshOperation.swift */,
+			);
+			path = Operations;
 			sourceTree = "<group>";
 		};
 		AFAC50932C48DC8E00EDEAB6 /* zsign */ = {
@@ -981,6 +992,7 @@
 				33BE877B2C7178180044D245 /* TweakHandler.swift in Sources */,
 				332476EA2C3E905D008C8EF0 /* AboutViewController.swift in Sources */,
 				33BA37B02BF819ED00FF530A /* UIColor+hex.swift in Sources */,
+				3AC770F12CF7250700D9B9E1 /* SourceRefreshOperation.swift in Sources */,
 				33BA37932BF8159F00FF530A /* SourcesViewController.swift in Sources */,
 				332476E62C3E8E25008C8EF0 /* SettingsCreditsTableCell.swift in Sources */,
 				33A305D52C3A858100D650BA /* UIButton+longpress.swift in Sources */,
