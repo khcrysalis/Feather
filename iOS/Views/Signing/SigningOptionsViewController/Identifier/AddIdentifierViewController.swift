@@ -26,8 +26,17 @@ class AddIdentifierViewController: UITableViewController {
 		return textField
 	}()
 	
-	init() {
+	init(mode: IdentifierMode) {
 		super.init(style: .insetGrouped)
+		
+		switch mode {
+		case .bundleId:
+			identifierTextField.placeholder = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID")
+			replacementTextField.placeholder = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID_REPLACEMENT")
+		case .displayName:
+			identifierTextField.placeholder = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES_ID")
+			replacementTextField.placeholder = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES_ID_REPLACEMENT")
+		}
 	}
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }

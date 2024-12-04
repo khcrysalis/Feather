@@ -27,6 +27,7 @@ struct SigningOptions: Codable {
 	var installAfterSigned: Bool = false
 	
 	var bundleIdConfig: [String: String] = [:]
+	var displayNameConfig: [String: String] = [:]
 	var toInject: [String] = []
 	
 	var removePlugins: Bool = false

@@ -7,15 +7,22 @@
 
 import UIKit
 
+enum IdentifierMode {
+	case bundleId
+	case displayName
+}
+
 class IdentifiersViewController: UITableViewController {
 	var signingDataWrapper: SigningDataWrapper
-	private var newIdentifier: String = ""
-	private var newReplacement: String = ""
+	private var mode: IdentifierMode
 	
-	init(signingDataWrapper: SigningDataWrapper) {
+	init(signingDataWrapper: SigningDataWrapper, mode: IdentifierMode) {
 		self.signingDataWrapper = signingDataWrapper
+		self.mode = mode
 		super.init(style: .insetGrouped)
-		title = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS")
+		title = mode == .bundleId ? 
+			String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS") :
+			String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES")
 	}
 	
 	required init?(coder: NSCoder) {
@@ -35,7 +42,12 @@ class IdentifiersViewController: UITableViewController {
 	}
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {
-		return signingDataWrapper.signingOptions.bundleIdConfig.keys.count
+		switch mode {
+		case .bundleId:
+			return signingDataWrapper.signingOptions.bundleIdConfig.keys.count
+		case .displayName:
+			return signingDataWrapper.signingOptions.displayNameConfig.keys.count
+		}
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,15 +55,28 @@ class IdentifiersViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		let sortedKeys = signingDataWrapper.signingOptions.bundleIdConfig.keys.sorted()
-		return sortedKeys[section]
+		switch mode {
+		case .bundleId:
+			let sortedKeys = signingDataWrapper.signingOptions.bundleIdConfig.keys.sorted()
+			return sortedKeys[section]
+		case .displayName:
+			let sortedKeys = signingDataWrapper.signingOptions.displayNameConfig.keys.sorted()
+			return sortedKeys[section]
+		}
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "IdentifierCell", for: indexPath)
 		
-		let key = signingDataWrapper.signingOptions.bundleIdConfig.keys.sorted()[indexPath.section]
-		cell.textLabel?.text = signingDataWrapper.signingOptions.bundleIdConfig[key]
+		switch mode {
+		case .bundleId:
+			let key = signingDataWrapper.signingOptions.bundleIdConfig.keys.sorted()[indexPath.section]
+			cell.textLabel?.text = signingDataWrapper.signingOptions.bundleIdConfig[key]
+		case .displayName:
+			let key = signingDataWrapper.signingOptions.displayNameConfig.keys.sorted()[indexPath.section]
+			cell.textLabel?.text = signingDataWrapper.signingOptions.displayNameConfig[key]
+		}
+		
 		cell.textLabel?.textColor = .secondaryLabel
 		cell.selectionStyle = .none
 		return cell
@@ -66,15 +91,28 @@ class IdentifiersViewController: UITableViewController {
 	}
 	
 	private func deleteIdentifier(at index: Int) {
-		let key = signingDataWrapper.signingOptions.bundleIdConfig.keys.sorted()[index]
-		signingDataWrapper.signingOptions.bundleIdConfig.removeValue(forKey: key)
+		switch mode {
+		case .bundleId:
+			let key = signingDataWrapper.signingOptions.bundleIdConfig.keys.sorted()[index]
+			signingDataWrapper.signingOptions.bundleIdConfig.removeValue(forKey: key)
+		case .displayName:
+			let key = signingDataWrapper.signingOptions.displayNameConfig.keys.sorted()[index]
+			signingDataWrapper.signingOptions.displayNameConfig.removeValue(forKey: key)
+		}
 		tableView.reloadData()
 	}
 	
 	@objc private func addIdentifierTapped() {
-		let addVC = AddIdentifierViewController()
+		let addVC = AddIdentifierViewController(mode: mode)
 		addVC.onAdd = { [weak self] identifier, replacement in
-			self?.signingDataWrapper.signingOptions.bundleIdConfig[identifier] = replacement
+			switch self?.mode {
+			case .bundleId:
+				self?.signingDataWrapper.signingOptions.bundleIdConfig[identifier] = replacement
+			case .displayName:
+				self?.signingDataWrapper.signingOptions.displayNameConfig[identifier] = replacement
+			case .none:
+				break
+			}
 			self?.tableView.reloadData()
 		}
 		navigationController?.pushViewController(addVC, animated: true)

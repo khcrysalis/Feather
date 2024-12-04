@@ -120,7 +120,7 @@ extension SigningsOptionViewController {
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		switch section {
 		case 0:  return 2
-		case 1:  return 3
+		case 1:  return 4
 		default: return 1
 		}
 	}
@@ -150,6 +150,9 @@ extension SigningsOptionViewController {
 			cell.textLabel?.text = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS")
 			cell.accessoryType = .disclosureIndicator
 		case [1,2]:
+			cell.textLabel?.text = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES")
+			cell.accessoryType = .disclosureIndicator
+		case [1,3]:
 			let toggleSwitch = UISwitch()
 			cell.textLabel?.text = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_INSTALLAFTERSIGNED")
 			toggleSwitch.isOn = signingDataWrapper.signingOptions.installAfterSigned
@@ -188,7 +191,10 @@ extension SigningsOptionViewController {
 			
 			present(activityViewController, animated: true, completion: nil)
 		case [1, 1]:
-			let l = IdentifiersViewController(signingDataWrapper: signingDataWrapper)
+			let l = IdentifiersViewController(signingDataWrapper: signingDataWrapper, mode: .bundleId)
+			navigationController?.pushViewController(l, animated: true)
+		case [1, 2]:
+			let l = IdentifiersViewController(signingDataWrapper: signingDataWrapper, mode: .displayName)
 			navigationController?.pushViewController(l, animated: true)
 		default:
 			break
