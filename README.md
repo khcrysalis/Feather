@@ -46,7 +46,7 @@ Feather allows you to import a `.p12` and a `.mobileprovision` pair to sign the 
 
 > What does Feather use for its server?
 
-It uses the [localhost.direct](https://github.com/Upinel/localhost.direct) certificate and [Vapor](https://github.com/vapor/vapor) to self host an HTTPS server on your device - all itms services really needs is a valid certificate and a valid HTTPS server. Which allows iOS to accept the request and install the application.
+It uses the [localhost.direct](https://github.com/Upinel/localhost.direct) certificate and [Vapor](https://github.com/vapor/vapor) to self host a HTTPS server on your device - all itms services really needs is a valid certificate and a valid HTTPS server. Which allows iOS to accept the request and install the application.
 
 > Does Feather bundle its own certificate for the server?
 
