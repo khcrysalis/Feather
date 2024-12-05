@@ -35,6 +35,8 @@
 "IMPORT" = "İçe Aktar";
 // Add Action
 "ADD" = "Ekle";
+// Install Action
+"INSTALL" = "Install";
 
 // MARK: - Alerts
 // Alert titles
@@ -42,6 +44,7 @@
 "ALERT_TRACE" = "İzle";
 "ALERT_ERROR" = "Hata";
 "ALERT_CRITICAL" = "Kritik";
+"ALERT_COPIED" = "Copied";
 
 // MARK: - Error messages
 // Installer Error Title
@@ -174,6 +177,8 @@
 "APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS" = "Tweak Ekle";
 "APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED" = "Gelişmiş";
 "APP_SIGNING_VIEW_CONTROLLER_START_SIGNING" = "İmzalamayı Başlat";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_MODIFY_DYLIBS" = "Modify Dylibs";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_PROPERTIES" = "Properties";
 
 // MARK: - AppSigningViewController - No Certificates Alert
 "APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_TITLE" = "Hata";
@@ -209,9 +214,24 @@
 "LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL_PLURAL" = "%@ İmzalı";
 "LIBRARY_VIEW_CONTROLLER_SECTION_BUTTON_IMPORT" = "İçe Aktar";
 "LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS" = "İndirilen Uygulamalar";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_DOWNLOADED_APPS_TOTAL" = "%@ Downloaded";
 //Import Action Sheet
 "LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_FILE" = "Dosyalar’dan İçe Aktar";
 "LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_URL" = "URL’den içe aktar";
+//Sign Action Sheet
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN" = "Sign %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN_INSTALL" = "Sign & Install %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_RESIGN" = "ReSign %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL" = "Install %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SHARE" = "Share %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN" = "Open %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_UPDATE" = "Update %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_CLEAR_UPDATE" = "Clear Update";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_VIEW_DATEILS" = "View Details";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN_LN_FILES" = "Open in Files";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM" = "Confirm Installation";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM_DESCRIPTION" = "Trying to install via the downloaded apps tab may not work as they are most likely not signed! It's recommended you sign that application first before installing.";
+
 
 // MARK: - SettingsViewController
 // Headers
@@ -223,6 +243,10 @@
 "SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES" = "Feather’da herhangi bir sorun oluşursa lütfen GitHub deposu üzerinden bildirin. Bir sorun gönderirken, tüm günlükleri gönderdiğinizden emin olun.";
 "SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS" = "Ne yazık ki kısıtlamalar nedeniyle Feather’ın yerel özelliklerinin düzgün çalışmasını sağlamak için sunucu sertifikalarının her yıl yenilenmesi gerekecektir. En güncel dosyaları depolarımızdan almak için bu düğmeye dokunun.";
 "SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER" = "Varsayılan sunucu: %@";
+
+"SETTINGS_VIEW_CONTROLLER_TITLE" = "Server Options";
+"SETTINGS_VIEW_CONTROLLER_TITLE_ONLINE" = "Online";
+"SETTINGS_VIEW_CONTROLLER_TITLE_LOCAL" = "Local";
 
 // Cell Titles
 // About Feather
@@ -277,6 +301,13 @@
 "DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION" = "Geniş Açıklama";
 "DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION_DESCRIPTION" = "Ekran görüntüleri bölümünü uygulama açıklamasıyla değiştirir.";
 
+"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME" = "Use Team Name";
+"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME_DESCRIPTION" = "Replaces the certificate name with your team name, could be for better to distinguish between certificates if providers happen to always use the same App ID name.";
+
+// MARK: - SettingsViewController -> LanguageViewController.swift
+"LANGUAGE_VIEW_TITLE" = "Language";
+"LANGUAGE_VIEW_CELL_USE_SYSTEM_LANGUAGE" = "Use System Language";
+
 // MARK: - SettingsViewController -> CertificatesViewController
 "CERTIFICATES_VIEW_CONTROLLER_TITLE" = "Sertifikalar";
 
@@ -324,3 +355,11 @@
 
 "DONATION_CELL_2_TITLE" = "Desteğinizi Gösterin";
 "DONATION_CELL_2_DESCRIPTION" = "Bağış yaparak desteğinizi gösterin! Bağış yapamıyorsanız, Feather’ın işe yaradığı hakkında bilgi yaymak da işe yarar!";
+
+
+// MARK: - SettingsViewController -> LogsViewController.swift
+"LOGS_VIEW_SECTION_TITLE_ERROR" = "%@ Critical Errors.";
+"LOGS_VIEW_SECTION_TITLE_SHARE" = "Share Logs";
+"LOGS_VIEW_SECTION_TITLE_COPY" = "Copy Logs";
+"LOGS_VIEW_SUCCESS_DESCRIPTION" = "Log contents have been copied to clipboard.";
+"LOGS_VIEW_FAIL_DESCRIPTION" = "Failed to copy log contents.";

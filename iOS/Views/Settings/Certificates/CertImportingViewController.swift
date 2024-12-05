@@ -52,7 +52,7 @@ class CertImportingViewController: UITableViewController {
 		self.title = String.localized("CERT_IMPORTING_VIEWCONTROLLER_TITLE")
 		saveButton.isEnabled = false
 		self.navigationItem.rightBarButtonItem = saveButton
-		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: String.localized("Dismiss"), style: .done, target: self, action: #selector(closeSheet))
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: String.localized("DISMISS"), style: .done, target: self, action: #selector(closeSheet))
 	}
 	
 	@objc func closeSheet() {
@@ -176,7 +176,7 @@ extension CertImportingViewController {
 		case "certs":
 			return String.localized("CERT_IMPORTING_VIEWCONTROLLER_FOOTER_CERT")
 		case "pass":
-			return String.localized("Enter the password associated with the private key, leave it blank if theres no password required.")
+			return String.localized("CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PASS")
 		default:
 			return nil
 		}

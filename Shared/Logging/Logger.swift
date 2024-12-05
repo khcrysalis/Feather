@@ -146,7 +146,7 @@ extension UIAlertController {
 	static func error(title: String, message: String, actions: [UIAlertAction]) -> UIAlertController {
 		let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 		
-		alertController.addAction(UIAlertAction(title: "OK", style: .cancel) { _ in
+		alertController.addAction(UIAlertAction(title: String.localized("OK"), style: .cancel) { _ in
 			alertController.dismiss(animated: true)
 		})
 

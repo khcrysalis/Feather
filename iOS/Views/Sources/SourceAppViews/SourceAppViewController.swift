@@ -72,9 +72,9 @@ class SourceAppViewController: UITableViewController {
 	}
 	
 	private func createSubSortMenu() -> [UIMenuElement] {
-		let sortByDAction = createSortAction(title: "Default", sortOption: .default)
-		let sortByNameAction = createSortAction(title: "Name", sortOption: .name)
-		let sortBySizeAction = createSortAction(title: "Date", sortOption: .date)
+		let sortByDAction = createSortAction(title: String.localized("SOURCES_CELLS_ACTIONS_FILTER_BY_DEFAULT"), sortOption: .default)
+		let sortByNameAction = createSortAction(title: String.localized("SOURCES_CELLS_ACTIONS_FILTER_BY_NAME"), sortOption: .name)
+		let sortBySizeAction = createSortAction(title: String.localized("SOURCES_CELLS_ACTIONS_FILTER_BY_DATE"), sortOption: .date)
 		
 		let meowMenu = UIMenu(title: "",
 							  image: nil,

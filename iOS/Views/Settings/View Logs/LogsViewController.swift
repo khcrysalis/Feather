@@ -187,17 +187,17 @@ extension LogsViewController: UITableViewDataSource, UITableViewDelegate {
 
 		switch (indexPath.section, indexPath.row) {
 		case (0, 0):
-			cell.textLabel?.text = "\(errCount) Critical Errors."
+            cell.textLabel?.text = String.localized("LOGS_VIEW_SECTION_TITLE_ERROR", arguments: "\(errCount)")
 			cell.textLabel?.textColor = .white
 			cell.textLabel?.font = .boldSystemFont(ofSize: 14)
 			cell.backgroundColor = .systemRed
 		case (1, 0):
-			cell.textLabel?.text = "Share Logs"
+			cell.textLabel?.text = String.localized("LOGS_VIEW_SECTION_TITLE_SHARE")
 			cell.textLabel?.textColor = .tintColor
 			cell.selectionStyle = .default
 			cell.setAccessoryIcon(with: "square.and.arrow.up")
 		case (1, 1):
-			cell.textLabel?.text = "Copy Logs"
+			cell.textLabel?.text = String.localized("LOGS_VIEW_SECTION_TITLE_COPY")
 			cell.textLabel?.textColor = .tintColor
 			cell.selectionStyle = .default
 			cell.setAccessoryIcon(with: "arrow.up.right")
@@ -226,12 +226,12 @@ extension LogsViewController: UITableViewDataSource, UITableViewDelegate {
 			do {
 				let logContents = try String(contentsOf: logFilePath, encoding: .utf8)
 				UIPasteboard.general.string = logContents
-				let alert = UIAlertController(title: "Copied", message: "Log contents have been copied to clipboard.", preferredStyle: .alert)
-				alert.addAction(UIAlertAction(title: "OK", style: .default))
+				let alert = UIAlertController(title: String.localized("ALERT_COPIED"), message: String.localized("LOGS_VIEW_SUCCESS_DESCRIPTION"), preferredStyle: .alert)
+				alert.addAction(UIAlertAction(title: String.localized("OK"), style: .default))
 				present(alert, animated: true)
 			} catch {
-				let alert = UIAlertController(title: "Error", message: "Failed to copy log contents.", preferredStyle: .alert)
-				alert.addAction(UIAlertAction(title: "OK", style: .default))
+				let alert = UIAlertController(title: String.localized("ALERT_ERROR"), message: String.localized("LOGS_VIEW_ERROR_DESCRIPTION"), preferredStyle: .alert)
+				alert.addAction(UIAlertAction(title: String.localized("OK"), style: .default))
 				present(alert, animated: true)
 			}
 		default:
