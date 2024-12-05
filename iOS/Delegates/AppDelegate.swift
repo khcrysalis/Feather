@@ -140,7 +140,81 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
                             NotificationCenter.default.post(name: Notification.Name("sfetch"), object: nil)
                         }
                     }
-
+                } else {
+                    Debug.shared.log(message: "Invalid or non-HTTPS URL", type: .error)
+                }
+            } else if let config = url.absoluteString.range(of: "/install/") {
+                let fullPath = String(url.absoluteString[config.upperBound...])
+                
+                if fullPath.starts(with: "https://") {
+                    guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                          let rootViewController = scene.windows.first?.rootViewController else {
+                        return false
+                    }
+                    
+                    DispatchQueue.main.async {
+                        rootViewController.present(self.loaderAlert, animated: true)
+                    }
+                    
+                    DispatchQueue.global(qos: .background).async {
+                        do {
+                            let tempDirectory = FileManager.default.temporaryDirectory
+                            let uuid = UUID().uuidString
+                            let destinationURL = tempDirectory.appendingPathComponent("\(uuid).ipa")
+                            
+                            // Download the file
+                            if let data = try? Data(contentsOf: URL(string: fullPath)!) {
+                                try data.write(to: destinationURL)
+                                
+                                let dl = AppDownload()
+                                try handleIPAFile(destinationURL: destinationURL, uuid: uuid, dl: dl)
+                                
+                                DispatchQueue.main.async {
+                                    self.loaderAlert.dismiss(animated: true) {
+                                        let downloadedApps = CoreDataManager.shared.getDatedDownloadedApps()
+                                        if let downloadedApp = downloadedApps.first(where: { $0.uuid == uuid }) {
+                                            let signingDataWrapper = SigningDataWrapper(signingOptions: UserDefaults.standard.signingOptions)
+                                            signingDataWrapper.signingOptions.installAfterSigned = true
+                                            
+                                            let libraryVC = LibraryViewController()
+                                            let ap = SigningsViewController(
+                                                signingDataWrapper: signingDataWrapper,
+                                                application: downloadedApp,
+                                                appsViewController: libraryVC
+                                            )
+                                            
+                                            ap.signingCompletionHandler = { success in
+                                                if success {
+                                                    if let workspace = LSApplicationWorkspace.default() {
+                                                        if let bundleId = downloadedApp.bundleidentifier {
+                                                            workspace.openApplication(withBundleID: bundleId)
+                                                        }
+                                                    }
+                                                    libraryVC.fetchSources()
+                                                    libraryVC.tableView.reloadData()
+                                                }
+                                            }
+                                            
+                                            let navigationController = UINavigationController(rootViewController: ap)
+                                            
+                                            if UIDevice.current.userInterfaceIdiom == .pad {
+                                                navigationController.modalPresentationStyle = .formSheet
+                                            } else {
+                                                navigationController.modalPresentationStyle = .fullScreen
+                                            }
+                                            
+                                            rootViewController.present(navigationController, animated: true)
+                                        }
+                                    }
+                                }
+                            }
+                        } catch {
+                            DispatchQueue.main.async {
+                                self.loaderAlert.dismiss(animated: true)
+                                Debug.shared.log(message: "Failed to handle IPA file: \(error)", type: .error)
+                            }
+                        }
+                    }
                 } else {
                     Debug.shared.log(message: "Invalid or non-HTTPS URL", type: .error)
                 }
@@ -150,7 +224,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
         }
         // bwah
         if url.pathExtension == "ipa" {
-            guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else {
+            guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                  let rootViewController = scene.windows.first?.rootViewController else {
                 return false
             }
 

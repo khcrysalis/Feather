@@ -343,19 +343,28 @@ extension LibraryViewController {
 					button3.onTap = { [weak self] in
 						guard let self = self else { return }
 						self.popupVC.dismiss(animated: true) {
-							self.present(self.loaderAlert!, animated: true)
-							let cert = CoreDataManager.shared.getCurrentCertificate()!
-							
-							resignApp(certificate: cert, appPath: filePath2!) { success in
-								if success {
-									CoreDataManager.shared.updateSignedApp(app: source as! SignedApps, newTimeToLive: (cert.certData?.expirationDate)!, newTeamName: (cert.certData?.name)!) { _ in
-										DispatchQueue.main.async {
-											self.loaderAlert?.dismiss(animated: true)
-											Debug.shared.log(message: "Done action??")
-											self.tableView.reloadRows(at: [indexPath], with: .left)
+							if let cert = CoreDataManager.shared.getCurrentCertificate() {
+								self.present(self.loaderAlert!, animated: true)
+								
+								resignApp(certificate: cert, appPath: filePath2!) { success in
+									if success {
+										CoreDataManager.shared.updateSignedApp(app: source as! SignedApps, newTimeToLive: (cert.certData?.expirationDate)!, newTeamName: (cert.certData?.name)!) { _ in
+											DispatchQueue.main.async {
+												self.loaderAlert?.dismiss(animated: true)
+												Debug.shared.log(message: "Done action??")
+												self.tableView.reloadRows(at: [indexPath], with: .left)
+											}
 										}
 									}
 								}
+							} else {
+								let alert = UIAlertController(
+									title: String.localized("APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_TITLE"),
+									message: String.localized("APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_DESCRIPTION"),
+									preferredStyle: .alert
+								)
+								alert.addAction(UIAlertAction(title: String.localized("LAME"), style: .default))
+								self.present(alert, animated: true)
 							}
 						}
 					}

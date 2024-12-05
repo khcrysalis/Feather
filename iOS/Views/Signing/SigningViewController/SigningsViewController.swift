@@ -87,6 +87,11 @@ class SigningsViewController: UIViewController {
 		   let newBundleId = signingDataWrapper.signingOptions.bundleIdConfig[currentBundleId] {
 			mainOptions.mainOptions.bundleId = newBundleId
 		}
+		
+		if let currentName = bundle?.name,
+		   let newName = signingDataWrapper.signingOptions.displayNameConfig[currentName] {
+			mainOptions.mainOptions.name = newName
+		}
 	}
 	
 	required init?(coder: NSCoder) {
