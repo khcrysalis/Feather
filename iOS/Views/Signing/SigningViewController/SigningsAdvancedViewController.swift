@@ -39,7 +39,7 @@ class SigningsAdvancedViewController: UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.title = "Properties"
+        self.title = String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES")
 		self.tableData[2] = toggleOptions.map { $0.title }
 	}
 }

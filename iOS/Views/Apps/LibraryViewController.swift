@@ -232,7 +232,7 @@ extension LibraryViewController {
 			
 			let headerWithButton = GroupedSectionHeader(
 				title: String.localized("LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS"),
-				subtitle: String.localized("%@ Downloaded", arguments: String(downloadedApps?.count ?? 0))
+				subtitle: String.localized("LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_DOWNLOADED_APPS_TOTAL", arguments: String(downloadedApps?.count ?? 0))
 			)
 			
 			return headerWithButton
@@ -270,7 +270,7 @@ extension LibraryViewController {
 		let source = getApplication(row: indexPath.row, section: indexPath.section)
 		let filePath = getApplicationFilePath(with: source!, row: indexPath.row, section: indexPath.section, getuuidonly: true)
 		let filePath2 = getApplicationFilePath(with: source!, row: indexPath.row, section: indexPath.section, getuuidonly: false)
-		
+		let appName = "\((source!.value(forKey: "name") as? String ?? ""))"
 		switch indexPath.section {
 		case 0:
 			if FileManager.default.fileExists(atPath: filePath2!.path) {
@@ -283,7 +283,7 @@ extension LibraryViewController {
 				   hasUpdate {
 					// Update available menu
 					let updateButton = PopupViewControllerButton(
-						title: "Update \(signedApp.name ?? "")",
+						title: String.localized("LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_UPDATE", arguments: appName),
 						color: .tintColor.withAlphaComponent(0.9),
 						titleColor: .white
 					)
@@ -295,7 +295,7 @@ extension LibraryViewController {
 					}
 					
 					let clearButton = PopupViewControllerButton(
-						title: "Clear Update",
+						title: String.localized("LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_CLEAR_UPDATE"),
 						color: .quaternarySystemFill,
 						titleColor: .tintColor
 					)
@@ -310,7 +310,7 @@ extension LibraryViewController {
 				} else {
 					// Regular menu
 					let button1 = PopupViewControllerButton(
-						title: "Install \((source!.value(forKey: "name") as? String ?? ""))",
+						title: String.localized("LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL", arguments: appName),
 						color: .tintColor.withAlphaComponent(0.9)
 					)
 					button1.onTap = { [weak self] in
@@ -320,7 +320,7 @@ extension LibraryViewController {
 					}
 					
 					let button4 = PopupViewControllerButton(
-						title: "Open \((source!.value(forKey: "name") as? String ?? ""))",
+						title: String.localized("LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN", arguments: appName),
 						color: .quaternarySystemFill,
 						titleColor: .tintColor
 					)
@@ -336,7 +336,7 @@ extension LibraryViewController {
 					}
 					
 					let button3 = PopupViewControllerButton(
-						title: "Resign \((source!.value(forKey: "name") as? String ?? ""))",
+						title: String.localized("LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_RESIGN", arguments: appName),
 						color: .quaternarySystemFill,
 						titleColor: .tintColor
 					)
@@ -370,7 +370,7 @@ extension LibraryViewController {
 					}
 					
 					let button2 = PopupViewControllerButton(
-						title: "Share \((source!.value(forKey: "name") as? String ?? ""))",
+						title: String.localized("LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SHARE", arguments: appName),
 						color: .quaternarySystemFill,
 						titleColor: .tintColor
 					)
@@ -382,7 +382,6 @@ extension LibraryViewController {
 					
 					popupVC.configureButtons([button1, button4, button3, button2])
 				}
-				
 				let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: hasUpdate ? 150.0 : 270.0)
 				if let presentationController = popupVC.presentationController as? UISheetPresentationController {
 					presentationController.detents = [
@@ -404,8 +403,8 @@ extension LibraryViewController {
 				let singingData = SigningDataWrapper(signingOptions: UserDefaults.standard.signingOptions)
 				let button1 = PopupViewControllerButton(
 					title: singingData.signingOptions.installAfterSigned
-					? "Sign & Install \((source!.value(forKey: "name") as? String ?? ""))"
-					: "Sign \((source!.value(forKey: "name") as? String ?? ""))",
+                    ? String.localized("LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN_INSTALL", arguments: appName)
+                    : String.localized("LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN", arguments: appName),
 					color: .tintColor.withAlphaComponent(0.9))
 				button1.onTap = { [weak self] in
 					guard let self = self else { return }
@@ -413,22 +412,22 @@ extension LibraryViewController {
 					self.startSigning(meow: source!)
 				}
 				
-				let button2 = PopupViewControllerButton(title: "Install \((source!.value(forKey: "name") as? String ?? ""))", color: .quaternarySystemFill, titleColor: .tintColor)
+				let button2 = PopupViewControllerButton(title: String.localized("LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL", arguments: appName), color: .quaternarySystemFill, titleColor: .tintColor)
 				button2.onTap = { [weak self] in
 					guard let self = self else { return }
 					self.popupVC.dismiss(animated: true) {
 						let alertController = UIAlertController(
-							title: "Confirm Installation",
-							message: "Trying to install via the downloaded apps tab may not work as they are most likely not signed! It's recommended you sign that application first before installing.",
+                            title: String.localized("LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM"),
+                            message: String.localized("LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM_DESCRIPTION"),
 							preferredStyle: .alert
 						)
 						
-						let confirmAction = UIAlertAction(title: "Install", style: .default) { _ in
+                        let confirmAction = UIAlertAction(title: String.localized("INSTALL"), style: .default) { _ in
 							self.startInstallProcess(meow: source!, filePath: filePath?.path ?? "")
 							
 						}
 						
-						let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                        let cancelAction = UIAlertAction(title: String.localized("CANCEL"), style: .cancel, handler: nil)
 						
 						alertController.addAction(confirmAction)
 						alertController.addAction(cancelAction)
@@ -479,7 +478,7 @@ extension LibraryViewController {
 	override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 		let source = getApplication(row: indexPath.row, section: indexPath.section)
 		
-		let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+		let deleteAction = UIContextualAction(style: .destructive, title: String.localized("DELETE")) { (action, view, completionHandler) in
 			switch indexPath.section {
 			case 0:
 				CoreDataManager.shared.deleteAllSignedAppContent(for: source! as! SignedApps)
@@ -508,7 +507,7 @@ extension LibraryViewController {
 		
 		let configuration = UIContextMenuConfiguration(identifier: nil, actionProvider: { _ in
 			return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [
-				UIAction(title: "View Details", image: UIImage(systemName: "info.circle"), handler: {_ in
+				UIAction(title: String.localized("LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_VIEW_DATEILS"), image: UIImage(systemName: "info.circle"), handler: {_ in
 										
 					let viewController = AppsInformationViewController()
 					viewController.source = source
@@ -526,7 +525,7 @@ extension LibraryViewController {
 
 				}),
 				
-				UIAction(title: "Open in Files", image: UIImage(systemName: "folder"), handler: {_ in
+				UIAction(title: String.localized("LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN_LN_FILES"), image: UIImage(systemName: "folder"), handler: {_ in
 					
 					let path = filePath?.deletingLastPathComponent()
 					let path2 = path?.absoluteString.replacingOccurrences(of: "file://", with: "shareddocuments://")

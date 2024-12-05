@@ -145,7 +145,7 @@ private func signAppWithZSign(tmpDirApp: URL, certPaths: (provisionPath: String,
 			 main?.mainOptions.bundleId ?? "",
 			 main?.mainOptions.name ?? "",
 			 main?.mainOptions.version ?? "",
-			 options?.signingOptions.removeProvisioningFile ?? false
+			 options?.signingOptions.removeProvisioningFile ?? true
 	) != 0 {
 		throw NSError(domain: "AppSigningErrorDomain", code: 1, userInfo: [NSLocalizedDescriptionKey: String.localized("ERROR_ZSIGN_FAILED")])
 	}
