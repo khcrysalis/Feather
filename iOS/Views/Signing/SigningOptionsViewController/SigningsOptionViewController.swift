@@ -102,12 +102,65 @@ class SigningsOptionViewController: UITableViewController {
 	fileprivate func setupNavigation() {
 		self.navigationItem.largeTitleDisplayMode = .never
 		self.title = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_TITLE")
-		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
 	}
 	
-	@objc func save() {
-		UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
-		self.navigationController?.popViewController(animated: true)
+	@objc func toggleOptionsSwitches(_ sender: UISwitch) {
+		switch sender.tag {
+		case 0:
+			signingDataWrapper.signingOptions.ppqCheckProtection = sender.isOn
+			if !sender.isOn {
+				signingDataWrapper.signingOptions.dynamicProtection = false
+			}
+			if let dynamicCell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)),
+			   let dynamicSwitch = dynamicCell.accessoryView as? UISwitch {
+				dynamicSwitch.isEnabled = sender.isOn
+				if !sender.isOn {
+					dynamicSwitch.isOn = false
+				}
+			}
+			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
+		case 1:
+			signingDataWrapper.signingOptions.dynamicProtection = sender.isOn
+			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
+		case 2:
+			signingDataWrapper.signingOptions.installAfterSigned = sender.isOn
+			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
+		case 3:
+			signingDataWrapper.signingOptions.immediatelyInstallFromSource = sender.isOn
+			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
+		case 4:
+			signingDataWrapper.signingOptions.removePlugins = sender.isOn
+			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
+		case 5:
+			signingDataWrapper.signingOptions.forceFileSharing = sender.isOn
+			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
+		case 6:
+			signingDataWrapper.signingOptions.removeSupportedDevices = sender.isOn
+			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
+		case 7:
+			signingDataWrapper.signingOptions.removeURLScheme = sender.isOn
+			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
+		case 8:
+			signingDataWrapper.signingOptions.forceProMotion = sender.isOn
+			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
+		case 9:
+			signingDataWrapper.signingOptions.forceForceFullScreen = sender.isOn
+			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
+		case 10:
+			signingDataWrapper.signingOptions.forceiTunesFileSharing = sender.isOn
+			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
+		case 11:
+			signingDataWrapper.signingOptions.forceTryToLocalize = sender.isOn
+			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
+		case 12:
+			signingDataWrapper.signingOptions.removeProvisioningFile = sender.isOn
+			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
+		case 13:
+			signingDataWrapper.signingOptions.removeWatchPlaceHolder = sender.isOn
+			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
+		default:
+			break
+		}
 	}
 }
 
@@ -221,57 +274,6 @@ extension SigningsOptionViewController {
 			break
 		}
 		
-	}
-	
-	@objc func toggleOptionsSwitches(_ sender: UISwitch) {
-		switch sender.tag {
-		case 0:
-			signingDataWrapper.signingOptions.ppqCheckProtection = sender.isOn
-			if !sender.isOn {
-				signingDataWrapper.signingOptions.dynamicProtection = false
-			}
-			if let dynamicCell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)),
-			   let dynamicSwitch = dynamicCell.accessoryView as? UISwitch {
-				dynamicSwitch.isEnabled = sender.isOn
-				if !sender.isOn {
-					dynamicSwitch.isOn = false
-				}
-			}
-		case 1:
-			signingDataWrapper.signingOptions.installAfterSigned = sender.isOn
-		case 2:
-			signingDataWrapper.signingOptions.immediatelyInstallFromSource = sender.isOn
-		case 12:
-			signingDataWrapper.signingOptions.dynamicProtection = sender.isOn
-		default:
-			let toggleIndex = sender.tag - 2
-			if toggleIndex >= 0 && toggleIndex < toggleOptions.count {
-				switch toggleIndex {
-				case 0:
-					signingDataWrapper.signingOptions.removePlugins = sender.isOn
-				case 1:
-					signingDataWrapper.signingOptions.forceFileSharing = sender.isOn
-				case 2:
-					signingDataWrapper.signingOptions.removeSupportedDevices = sender.isOn
-				case 3:
-					signingDataWrapper.signingOptions.removeURLScheme = sender.isOn
-				case 4:
-					signingDataWrapper.signingOptions.forceProMotion = sender.isOn
-				case 5:
-					signingDataWrapper.signingOptions.forceForceFullScreen = sender.isOn
-				case 6:
-					signingDataWrapper.signingOptions.forceiTunesFileSharing = sender.isOn
-				case 7:
-					signingDataWrapper.signingOptions.forceTryToLocalize = sender.isOn
-				case 8:
-					signingDataWrapper.signingOptions.removeProvisioningFile = sender.isOn
-				case 9:
-					signingDataWrapper.signingOptions.removeWatchPlaceHolder = sender.isOn
-				default:
-					break
-				}
-			}
-		}
 	}
 	
 	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
