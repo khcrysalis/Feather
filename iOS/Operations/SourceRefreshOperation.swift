@@ -204,7 +204,7 @@ import UserNotifications
                 completion(nil)
             }
         } else {
-            Debug.shared.log(message: "Debug mode: Could not find suitable app for mocking", type: .error)
+            Debug.shared.log(message: "Debug mode: Could not find suitable app for mocking", type: .info)
             completion(nil)
         }
     }
