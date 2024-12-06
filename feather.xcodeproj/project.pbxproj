@@ -134,13 +134,13 @@
 		AFAC50922C48DB1300EDEAB6 /* ActivityIndicatorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAC50912C48DB1200EDEAB6 /* ActivityIndicatorViewCell.swift */; };
 		AFAC50952C48DF9300EDEAB6 /* AppSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAC50942C48DF9300EDEAB6 /* AppSigner.swift */; };
 		D0651C112BFEE93C00D40829 /* zsign.mm in Sources */ = {isa = PBXBuildFile; fileRef = D0651C0F2BFEE93C00D40829 /* zsign.mm */; };
-		D0651C1A2BFEE97F00D40829 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C162BFEE97F00D40829 /* base64.cpp */; };
-		D0651C1B2BFEE97F00D40829 /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C172BFEE97F00D40829 /* common.cpp */; };
-		D0651C1C2BFEE97F00D40829 /* json.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C192BFEE97F00D40829 /* json.cpp */; };
-		D0651C332BFEEA4B00D40829 /* macho.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C202BFEEA4B00D40829 /* macho.cpp */; };
-		D0651C372BFEEA4B00D40829 /* openssl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C2C2BFEEA4B00D40829 /* openssl.cpp */; };
-		D0651C392BFEEA4B00D40829 /* signing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C2F2BFEEA4B00D40829 /* signing.cpp */; };
-		D0651C3A2BFEEA4B00D40829 /* archo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C302BFEEA4B00D40829 /* archo.cpp */; };
+		D0651C1A2BFEE97F00D40829 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C162BFEE97F00D40829 /* base64.cpp */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		D0651C1B2BFEE97F00D40829 /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C172BFEE97F00D40829 /* common.cpp */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		D0651C1C2BFEE97F00D40829 /* json.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C192BFEE97F00D40829 /* json.cpp */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		D0651C332BFEEA4B00D40829 /* macho.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C202BFEEA4B00D40829 /* macho.cpp */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		D0651C372BFEEA4B00D40829 /* openssl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C2C2BFEEA4B00D40829 /* openssl.cpp */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		D0651C392BFEEA4B00D40829 /* signing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C2F2BFEEA4B00D40829 /* signing.cpp */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		D0651C3A2BFEEA4B00D40829 /* archo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C302BFEEA4B00D40829 /* archo.cpp */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D0651C3B2BFEEA4B00D40829 /* bundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0651C312BFEEA4B00D40829 /* bundle.cpp */; };
 		D0AA9D542BFF02AF00A65D45 /* OpenSSL in Frameworks */ = {isa = PBXBuildFile; productRef = D0AA9D532BFF02AF00A65D45 /* OpenSSL */; };
 /* End PBXBuildFile section */
@@ -1245,7 +1245,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = L988J7YMK5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Feather (Debug)";
