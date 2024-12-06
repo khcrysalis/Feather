@@ -22,7 +22,7 @@ func addAddButtonToView(title: String? = "+",
 		addButton.setTitle(title, for: .normal)
 		addButton.setTitleColor(titleColor, for: .normal)
 		addButton.titleLabel?.font = font
-	} else if let image = image {
+    } else if image != nil {
 		addButton.setImage( UIImage(systemName: "folder.fill"), for: .normal)
 		addButton.tintColor =  Preferences.appTintColor.uiColor
 		

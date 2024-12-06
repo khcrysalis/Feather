@@ -50,7 +50,7 @@ extension SourceAppViewController {
 			downloadTaskManager.addTask(uuid: appUUID, cell: cell, dl: cell.appDownload!)
 			
 			cell.appDownload?.downloadFile(url: downloadURL, appuuid: appUUID) { [weak self] (uuid, filePath, error) in
-				guard let self = self else { return }
+                guard self != nil else { return }
 				if let error = error {
 					downloadTaskManager.updateTask(uuid: appUUID, state: .failed(error: error))
 					Debug.shared.log(message: error.localizedDescription, type: .error)

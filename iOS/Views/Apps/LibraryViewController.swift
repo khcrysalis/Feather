@@ -91,8 +91,7 @@ class LibraryViewController: UITableViewController {
 	}
 	
 	private func handleAppUpdate(for signedApp: SignedApps) {
-		guard let updateVersion = signedApp.updateVersion,
-			  let sourceURL = signedApp.originalSourceURL else {
+        guard let sourceURL = signedApp.originalSourceURL else {
 			Debug.shared.log(message: "Missing update version or source URL", type: .error)
 			return
 		}
@@ -158,7 +157,6 @@ class LibraryViewController: UITableViewController {
 				Debug.shared.log(message: "Found matching version: \(version.version)", type: .info)
 				
 				let uuid = UUID().uuidString
-				let rootViewController = UIApplication.shared.keyWindow?.rootViewController
 				
 				DispatchQueue.global(qos: .background).async {
 					do {

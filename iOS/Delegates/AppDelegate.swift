@@ -363,7 +363,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
            let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
         {
-            return "App Version: \(version)"
+            return "App Version: \(version) (\(build))"
         }
         return ""
     }
