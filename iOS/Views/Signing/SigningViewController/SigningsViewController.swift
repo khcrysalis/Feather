@@ -80,7 +80,10 @@ class SigningsViewController: UIViewController {
 		
 		if signingDataWrapper.signingOptions.ppqCheckProtection &&
 			mainOptions.mainOptions.certificate?.certData?.pPQCheck == true {
-			mainOptions.mainOptions.bundleId = (bundle?.bundleId)!+"."+Preferences.pPQCheckString
+			
+			if !signingDataWrapper.signingOptions.dynamicProtection {
+				mainOptions.mainOptions.bundleId = (bundle?.bundleId)!+"."+Preferences.pPQCheckString
+			}
 		}
 		
 		if let currentBundleId = bundle?.bundleId,
@@ -91,6 +94,25 @@ class SigningsViewController: UIViewController {
 		if let currentName = bundle?.name,
 		   let newName = signingDataWrapper.signingOptions.displayNameConfig[currentName] {
 			mainOptions.mainOptions.name = newName
+		}
+		
+		if signingDataWrapper.signingOptions.dynamicProtection {
+			Task {
+				await checkDynamicProtection()
+			}
+		}
+	}
+	
+	private func checkDynamicProtection() async {
+		guard signingDataWrapper.signingOptions.ppqCheckProtection,
+			  mainOptions.mainOptions.certificate?.certData?.pPQCheck == true,
+			  let bundleId = bundle?.bundleId else {
+			return
+		}
+		
+		let shouldModify = await BundleIdChecker.shouldModifyBundleId(originalBundleId: bundleId)
+		if shouldModify {
+			mainOptions.mainOptions.bundleId = bundleId+"."+Preferences.pPQCheckString
 		}
 	}
 	

@@ -120,7 +120,7 @@ extension SigningsOptionViewController {
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		switch section {
 		case 0:  return 2
-		case 1:  return 4
+		case 1:  return 5
 		default: return 1
 		}
 	}
@@ -146,13 +146,23 @@ extension SigningsOptionViewController {
 			toggleSwitch.tag = 0
 			toggleSwitch.addTarget(self, action: #selector(toggleOptionsSwitches(_:)), for: .valueChanged)
 			cell.accessoryView = toggleSwitch
+			cell.selectionStyle = .none
 		case [1,1]:
+			let toggleSwitch = UISwitch()
+			cell.textLabel?.text = "Dynamic Protection"
+			toggleSwitch.isOn = signingDataWrapper.signingOptions.dynamicProtection
+			toggleSwitch.isEnabled = signingDataWrapper.signingOptions.ppqCheckProtection
+			toggleSwitch.tag = 12
+			toggleSwitch.addTarget(self, action: #selector(toggleOptionsSwitches(_:)), for: .valueChanged)
+			cell.accessoryView = toggleSwitch
+			cell.selectionStyle = .none
+		case [1,2]:
 			cell.textLabel?.text = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS")
 			cell.accessoryType = .disclosureIndicator
-		case [1,2]:
+		case [1,3]:
 			cell.textLabel?.text = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES")
 			cell.accessoryType = .disclosureIndicator
-		case [1,3]:
+		case [1,4]:
 			let toggleSwitch = UISwitch()
 			cell.textLabel?.text = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_INSTALLAFTERSIGNED")
 			toggleSwitch.isOn = signingDataWrapper.signingOptions.installAfterSigned
@@ -206,6 +216,16 @@ extension SigningsOptionViewController {
 		switch sender.tag {
 		case 0:
 			signingDataWrapper.signingOptions.ppqCheckProtection = sender.isOn
+			if !sender.isOn {
+				signingDataWrapper.signingOptions.dynamicProtection = false
+			}
+			if let dynamicCell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)),
+			   let dynamicSwitch = dynamicCell.accessoryView as? UISwitch {
+				dynamicSwitch.isEnabled = sender.isOn
+				if !sender.isOn {
+					dynamicSwitch.isOn = false
+				}
+			}
 		case 1:
 			signingDataWrapper.signingOptions.installAfterSigned = sender.isOn
 		case 2:
@@ -228,6 +248,8 @@ extension SigningsOptionViewController {
 			signingDataWrapper.signingOptions.removeProvisioningFile = sender.isOn
 		case 11:
 			signingDataWrapper.signingOptions.removeWatchPlaceHolder = sender.isOn
+		case 12:
+			signingDataWrapper.signingOptions.dynamicProtection = sender.isOn
 		default:
 			break
 		}
@@ -235,7 +257,9 @@ extension SigningsOptionViewController {
 	
 	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
 		if section == 1 {
-			return String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS_DESCRIPTION")
+			let protectionDescription = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS_DESCRIPTION")
+			let dynamicDescription = "Dynamic protection will only apply PPQ protection if the bundle ID exists on the App Store. This requires an internet connection during signing."
+			return protectionDescription + "\n\n" + dynamicDescription
 		} else {
 			let toggleIndex = section - 2
 			if toggleIndex >= 0 && toggleIndex < toggleOptions.count {
