@@ -26,7 +26,6 @@ class SigningsViewController: UIViewController {
 		],
 		[ 
 			"Signing",
-//			"Change Certificate",
 		],
 		[
 			String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS"),
@@ -128,6 +127,38 @@ class SigningsViewController: UIViewController {
 		#if !targetEnvironment(simulator)
 		certAlert()
 		#endif
+		
+		let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+		swipeLeft.direction = .left
+		let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+		swipeRight.direction = .right
+		tableView.addGestureRecognizer(swipeLeft)
+		tableView.addGestureRecognizer(swipeRight)
+	}
+	
+	@objc func handleSwipe(_ gesture: UISwipeGestureRecognizer) {
+		let location = gesture.location(in: tableView)
+		if let indexPath = tableView.indexPathForRow(at: location),
+		   indexPath.section == 1 && indexPath.row == 0 {
+			let certificates = CoreDataManager.shared.getDatedCertificate()
+			guard certificates.count > 1 else { return }
+			
+			let currentIndex = certificates.firstIndex { $0 == mainOptions.mainOptions.certificate } ?? 0
+			var newIndex = currentIndex
+			
+			switch gesture.direction {
+			case .left:
+				newIndex = (currentIndex + 1) % certificates.count
+			case .right:
+				newIndex = (currentIndex - 1 + certificates.count) % certificates.count
+			default:
+				break
+			}
+			
+			Preferences.selectedCert = newIndex
+			mainOptions.mainOptions.certificate = certificates[newIndex]
+			tableView.reloadRows(at: [indexPath], with: gesture.direction == .left ? .left : .right)
+		}
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
