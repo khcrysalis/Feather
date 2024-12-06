@@ -149,7 +149,7 @@ extension SigningsOptionViewController {
 			cell.selectionStyle = .none
 		case [1,1]:
 			let toggleSwitch = UISwitch()
-			cell.textLabel?.text = "Dynamic Protection"
+			cell.textLabel?.text = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DYNAMIC_PROTECTION")
 			toggleSwitch.isOn = signingDataWrapper.signingOptions.dynamicProtection
 			toggleSwitch.isEnabled = signingDataWrapper.signingOptions.ppqCheckProtection
 			toggleSwitch.tag = 12
@@ -200,12 +200,12 @@ extension SigningsOptionViewController {
 			}
 			
 			present(activityViewController, animated: true, completion: nil)
-		case [1, 1]:
-			let l = IdentifiersViewController(signingDataWrapper: signingDataWrapper, mode: .bundleId)
-			navigationController?.pushViewController(l, animated: true)
 		case [1, 2]:
+			let l = IdentifiersViewController(signingDataWrapper: signingDataWrapper, mode: .bundleId)
+				navigationController?.pushViewController(l, animated: true)
+		case [1, 3]:
 			let l = IdentifiersViewController(signingDataWrapper: signingDataWrapper, mode: .displayName)
-			navigationController?.pushViewController(l, animated: true)
+				navigationController?.pushViewController(l, animated: true)
 		default:
 			break
 		}
@@ -258,7 +258,7 @@ extension SigningsOptionViewController {
 	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
 		if section == 1 {
 			let protectionDescription = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS_DESCRIPTION")
-			let dynamicDescription = "Dynamic protection will only apply PPQ protection if the bundle ID exists on the App Store. This requires an internet connection during signing."
+			let dynamicDescription = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DYNAMIC_PROTECTION_DESCRIPTION")
 			return protectionDescription + "\n\n" + dynamicDescription
 		} else {
 			let toggleIndex = section - 2
