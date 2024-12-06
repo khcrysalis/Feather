@@ -124,6 +124,8 @@
 		33E5A5AC2CC88BF500532930 /* ResetAlertOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5A5AB2CC88BF500532930 /* ResetAlertOptions.swift */; };
 		33E5A5AE2CC8A41E00532930 /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5A5AD2CC8A41E00532930 /* LogsViewController.swift */; };
 		33EEDAA42C5D9358009089DC /* CoreDataManager+DownloadedApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */; };
+		3A39AC782D030064002F54B0 /* BundleIdChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A39AC762D030064002F54B0 /* BundleIdChecker.swift */; };
+		3A39AC792D030064002F54B0 /* iTunesLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A39AC772D030064002F54B0 /* iTunesLookup.swift */; };
 		3AC770F12CF7250700D9B9E1 /* SourceRefreshOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC770EF2CF7250700D9B9E1 /* SourceRefreshOperation.swift */; };
 		AA280D952C76AB7400CAC838 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA280D942C76AB7400CAC838 /* MobileCoreServices.framework */; };
 		AA280D972C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA280D962C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift */; };
@@ -263,8 +265,10 @@
 		33E5A5AB2CC88BF500532930 /* ResetAlertOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetAlertOptions.swift; sourceTree = "<group>"; };
 		33E5A5AD2CC8A41E00532930 /* LogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsViewController.swift; sourceTree = "<group>"; };
 		33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+DownloadedApps.swift"; sourceTree = "<group>"; };
-		5AF393042CFAE1B7001FAF86 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3A39AC762D030064002F54B0 /* BundleIdChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleIdChecker.swift; sourceTree = "<group>"; };
+		3A39AC772D030064002F54B0 /* iTunesLookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesLookup.swift; sourceTree = "<group>"; };
 		3AC770EF2CF7250700D9B9E1 /* SourceRefreshOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceRefreshOperation.swift; sourceTree = "<group>"; };
+		5AF393042CFAE1B7001FAF86 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
 		88DE4CC52CA5A13200D68F1E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AA280D922C76A60700CAC838 /* LSApplicationWorkspace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSApplicationWorkspace.h; sourceTree = "<group>"; };
 		AA280D942C76AB7400CAC838 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -772,6 +776,8 @@
 		33C040992C30B47700243D90 /* Management */ = {
 			isa = PBXGroup;
 			children = (
+				3A39AC762D030064002F54B0 /* BundleIdChecker.swift */,
+				3A39AC772D030064002F54B0 /* iTunesLookup.swift */,
 				33163FEF2C3D224C0038E1EC /* DownloadTaskManager.swift */,
 				33C0409A2C30B4A100243D90 /* AppDownload.swift */,
 				33A305D62C3A85F300D650BA /* SourceDownload.swift */,
@@ -1014,6 +1020,8 @@
 				339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */,
 				338FFCE42C695118006C3BE0 /* IconsListViewController.swift in Sources */,
 				339FE33B2CCE01F000C297BA /* IdentifiersViewController.swift in Sources */,
+				3A39AC782D030064002F54B0 /* BundleIdChecker.swift in Sources */,
+				3A39AC792D030064002F54B0 /* iTunesLookup.swift in Sources */,
 				D0651C112BFEE93C00D40829 /* zsign.mm in Sources */,
 				332476DA2C3E4D35008C8EF0 /* SourceAppDownload.swift in Sources */,
 				33BE87632C6F17870044D245 /* SigningsInputViewController.swift in Sources */,
@@ -1235,12 +1243,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Feather;
+				INFOPLIST_KEY_CFBundleDisplayName = "Feather (Debug)";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright (c) 2024 Samara M (khcrysalis)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
@@ -1259,7 +1268,7 @@
 					"$(PROJECT_DIR)/Shared/Resources",
 				);
 				MARKETING_VERSION = 1.1.3;
-				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
+				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1282,12 +1291,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Feather;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright (c) 2024 Samara M (khcrysalis)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
