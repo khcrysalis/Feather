@@ -68,6 +68,20 @@ extension SourceAppViewController {
 								} else {
 									downloadTaskManager.updateTask(uuid: appUUID, state: .completed)
 									Debug.shared.log(message: String.localized("DONE"), type: .success)
+									
+									// Check if immediate install is enabled
+									if UserDefaults.standard.signingOptions.immediatelyInstallFromSource {
+										DispatchQueue.main.async {
+											let downloadedApps = CoreDataManager.shared.getDatedDownloadedApps()
+											if let downloadedApp = downloadedApps.first(where: { $0.uuid == uuid }) {
+												NotificationCenter.default.post(
+													name: Notification.Name("InstallDownloadedApp"),
+													object: nil,
+													userInfo: ["downloadedApp": downloadedApp]
+												)
+											}
+										}
+									}
 								}
 							}
 						}
@@ -85,4 +99,19 @@ extension SourceAppViewController {
 protocol DownloadDelegate: AnyObject {
 	func updateDownloadProgress(progress: Double, uuid: String)
 	func stopDownload(uuid: String)
+}
+
+extension UIViewController {
+	func topMostViewController() -> UIViewController {
+		if let presented = presentedViewController {
+			return presented.topMostViewController()
+		}
+		if let navigation = self as? UINavigationController {
+			return navigation.visibleViewController?.topMostViewController() ?? navigation
+		}
+		if let tab = self as? UITabBarController {
+			return tab.selectedViewController?.topMostViewController() ?? tab
+		}
+		return self
+	}
 }

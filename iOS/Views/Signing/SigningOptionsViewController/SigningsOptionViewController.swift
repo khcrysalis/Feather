@@ -65,7 +65,7 @@ func toggleOptions(signingDataWrapper: SigningDataWrapper) -> [TogglesOption] {
 			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP"),
 			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP_DESCRIPTION"),
 			binding: signingDataWrapper.signingOptions.removeWatchPlaceHolder
-		   )
+		   ),
 	   ]
 }
 
@@ -120,7 +120,7 @@ extension SigningsOptionViewController {
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		switch section {
 		case 0:  return 2
-		case 1:  return 5
+		case 1:  return 6
 		default: return 1
 		}
 	}
@@ -169,15 +169,26 @@ extension SigningsOptionViewController {
 			toggleSwitch.tag = 1
 			toggleSwitch.addTarget(self, action: #selector(toggleOptionsSwitches(_:)), for: .valueChanged)
 			cell.accessoryView = toggleSwitch
-		default:
-			let toggleOption = toggleOptions[indexPath.section - 2]
-			cell.textLabel?.text = toggleOption.title
-			
+		case [1,5]:
 			let toggleSwitch = UISwitch()
-			toggleSwitch.isOn = toggleOption.binding
-			toggleSwitch.tag = indexPath.section
+			cell.textLabel?.text = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IMMEDIATELY_INSTALL_FROM_SOURCE")
+			toggleSwitch.isOn = signingDataWrapper.signingOptions.immediatelyInstallFromSource
+			toggleSwitch.tag = 2
 			toggleSwitch.addTarget(self, action: #selector(toggleOptionsSwitches(_:)), for: .valueChanged)
 			cell.accessoryView = toggleSwitch
+			cell.selectionStyle = .none
+		default:
+			let toggleIndex = indexPath.section - 2
+			if toggleIndex >= 0 && toggleIndex < toggleOptions.count {
+				let toggleOption = toggleOptions[toggleIndex]
+				cell.textLabel?.text = toggleOption.title
+				
+				let toggleSwitch = UISwitch()
+				toggleSwitch.isOn = toggleOption.binding
+				toggleSwitch.tag = indexPath.section
+				toggleSwitch.addTarget(self, action: #selector(toggleOptionsSwitches(_:)), for: .valueChanged)
+				cell.accessoryView = toggleSwitch
+			}
 		}
 		
 		return cell
@@ -229,29 +240,37 @@ extension SigningsOptionViewController {
 		case 1:
 			signingDataWrapper.signingOptions.installAfterSigned = sender.isOn
 		case 2:
-			signingDataWrapper.signingOptions.removePlugins = sender.isOn
-		case 3:
-			signingDataWrapper.signingOptions.forceFileSharing = sender.isOn
-		case 4:
-			signingDataWrapper.signingOptions.removeSupportedDevices = sender.isOn
-		case 5:
-			signingDataWrapper.signingOptions.removeURLScheme = sender.isOn
-		case 6:
-			signingDataWrapper.signingOptions.forceProMotion = sender.isOn
-		case 7:
-			signingDataWrapper.signingOptions.forceForceFullScreen = sender.isOn
-		case 8:
-			signingDataWrapper.signingOptions.forceiTunesFileSharing = sender.isOn
-		case 9:
-			signingDataWrapper.signingOptions.forceTryToLocalize = sender.isOn
-		case 10:
-			signingDataWrapper.signingOptions.removeProvisioningFile = sender.isOn
-		case 11:
-			signingDataWrapper.signingOptions.removeWatchPlaceHolder = sender.isOn
+			signingDataWrapper.signingOptions.immediatelyInstallFromSource = sender.isOn
 		case 12:
 			signingDataWrapper.signingOptions.dynamicProtection = sender.isOn
 		default:
-			break
+			let toggleIndex = sender.tag - 2
+			if toggleIndex >= 0 && toggleIndex < toggleOptions.count {
+				switch toggleIndex {
+				case 0:
+					signingDataWrapper.signingOptions.removePlugins = sender.isOn
+				case 1:
+					signingDataWrapper.signingOptions.forceFileSharing = sender.isOn
+				case 2:
+					signingDataWrapper.signingOptions.removeSupportedDevices = sender.isOn
+				case 3:
+					signingDataWrapper.signingOptions.removeURLScheme = sender.isOn
+				case 4:
+					signingDataWrapper.signingOptions.forceProMotion = sender.isOn
+				case 5:
+					signingDataWrapper.signingOptions.forceForceFullScreen = sender.isOn
+				case 6:
+					signingDataWrapper.signingOptions.forceiTunesFileSharing = sender.isOn
+				case 7:
+					signingDataWrapper.signingOptions.forceTryToLocalize = sender.isOn
+				case 8:
+					signingDataWrapper.signingOptions.removeProvisioningFile = sender.isOn
+				case 9:
+					signingDataWrapper.signingOptions.removeWatchPlaceHolder = sender.isOn
+				default:
+					break
+				}
+			}
 		}
 	}
 	

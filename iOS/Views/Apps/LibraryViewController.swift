@@ -44,11 +44,45 @@ class LibraryViewController: UITableViewController {
 		self.tableView.delegate = self
 		tableView.register(AppsTableViewCell.self, forCellReuseIdentifier: "RoundedBackgroundCell")
 		NotificationCenter.default.addObserver(self, selector: #selector(afetch), name: Notification.Name("lfetch"), object: nil)
+		NotificationCenter.default.addObserver(
+			self,
+			selector: #selector(handleInstallNotification(_:)),
+			name: Notification.Name("InstallDownloadedApp"),
+			object: nil
+		)
+	}
+	
+	@objc private func handleInstallNotification(_ notification: Notification) {
+		guard let downloadedApp = notification.userInfo?["downloadedApp"] as? DownloadedApps else { return }
 		
+		let signingDataWrapper = SigningDataWrapper(signingOptions: UserDefaults.standard.signingOptions)
+		signingDataWrapper.signingOptions.installAfterSigned = true
+		
+		let ap = SigningsViewController(
+			signingDataWrapper: signingDataWrapper,
+			application: downloadedApp,
+			appsViewController: self
+		)
+		
+		ap.signingCompletionHandler = { success in
+			if success {
+				Debug.shared.log(message: "Signing completed successfully", type: .success)
+			}
+		}
+		
+		let navigationController = UINavigationController(rootViewController: ap)
+		if UIDevice.current.userInterfaceIdiom == .pad {
+			navigationController.modalPresentationStyle = .formSheet
+		} else {
+			navigationController.modalPresentationStyle = .fullScreen
+		}
+		
+		present(navigationController, animated: true)
 	}
 	
 	deinit {
 		NotificationCenter.default.removeObserver(self, name: Notification.Name("lfetch"), object: nil)
+		NotificationCenter.default.removeObserver(self, name: Notification.Name("InstallDownloadedApp"), object: nil)
 	}
 	
 	fileprivate func setupNavigation() {

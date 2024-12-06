@@ -26,6 +26,7 @@ struct SigningOptions: Codable {
 	var ppqCheckProtection: Bool = false
 	var dynamicProtection: Bool = false
 	var installAfterSigned: Bool = false
+	var immediatelyInstallFromSource: Bool = false
 	
 	var bundleIdConfig: [String: String] = [:]
 	var displayNameConfig: [String: String] = [:]
