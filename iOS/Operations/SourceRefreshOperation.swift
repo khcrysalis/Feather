@@ -1,6 +1,5 @@
 import CoreData
 import Foundation
-import UserNotifications
 
 @objc class SourceRefreshOperation: Operation, @unchecked Sendable {
     private let queue = DispatchQueue(label: "kh.crysalis.feather.sourcerefresh", qos: .userInitiated)

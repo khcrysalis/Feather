@@ -13,10 +13,9 @@ import Nuke
 import SwiftUI
 import UIKit
 import UIOnboarding
-import UserNotifications
 
 var downloadTaskManager = DownloadTaskManager.shared
-class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControllerDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControllerDelegate {
     static let isSideloaded = Bundle.main.bundleIdentifier != "kh.crysalis.feather"
     var window: UIWindow?
     var loaderAlert = presentLoader()
@@ -74,15 +73,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
         backgroundQueue.qualityOfService = .background
         let operation = SourceRefreshOperation()
         backgroundQueue.addOperation(operation)
-
-        UNUserNotificationCenter.current().delegate = self
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            if granted {
-                Debug.shared.log(message: "Notification permissions granted", type: .info)
-            } else if let error {
-                Debug.shared.log(message: "Notification permission error: \(error)", type: .error)
-            }
-        }
 
         return true
     }
@@ -366,10 +356,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
             return "App Version: \(version) (\(build))"
         }
         return ""
-    }
-
-    func userNotificationCenter(_: UNUserNotificationCenter, willPresent _: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.banner, .sound, .badge, .list])
     }
 }
 
