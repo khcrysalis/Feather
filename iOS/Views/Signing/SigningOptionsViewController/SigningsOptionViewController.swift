@@ -133,34 +133,34 @@ class SigningsOptionViewController: UITableViewController {
 		case 3:  // Dynamic protection
 			signingDataWrapper.signingOptions.dynamicProtection = sender.isOn
 			Debug.shared.log(message: "Dynamic protection set to: \(sender.isOn)")
-		case 4:  // Remove plugins (first in toggleOptions array)
+		case 4:  // Remove plugins 
 			signingDataWrapper.signingOptions.removePlugins = sender.isOn
 			Debug.shared.log(message: "Remove plugins (tag 4) set to: \(sender.isOn)")
-		case 5:  // Force file sharing (second in toggleOptions array)
+		case 5:  // Force file sharing 
 			signingDataWrapper.signingOptions.forceFileSharing = sender.isOn
 			Debug.shared.log(message: "Force file sharing (tag 5) set to: \(sender.isOn)")
-		case 6:  // Remove supported devices (third in toggleOptions array)
+		case 6:  // Remove supported devices 
 			signingDataWrapper.signingOptions.removeSupportedDevices = sender.isOn
 			Debug.shared.log(message: "Remove supported devices (tag 6) set to: \(sender.isOn)")
-		case 7:  // Remove URL scheme (fourth in toggleOptions array)
+		case 7:  // Remove URL scheme 
 			signingDataWrapper.signingOptions.removeURLScheme = sender.isOn
 			Debug.shared.log(message: "Remove URL scheme (tag 7) set to: \(sender.isOn)")
-		case 8:  // Force ProMotion (fifth in toggleOptions array)
+		case 8:  // Force ProMotion 
 			signingDataWrapper.signingOptions.forceProMotion = sender.isOn
 			Debug.shared.log(message: "Force ProMotion (tag 8) set to: \(sender.isOn)")
-		case 9:  // Force fullscreen (sixth in toggleOptions array)
+		case 9:  // Force fullscreen 
 			signingDataWrapper.signingOptions.forceForceFullScreen = sender.isOn
 			Debug.shared.log(message: "Force fullscreen (tag 9) set to: \(sender.isOn)")
-		case 10:  // Force iTunes file sharing (seventh in toggleOptions array)
+		case 10:  // Force iTunes file sharing
 			signingDataWrapper.signingOptions.forceiTunesFileSharing = sender.isOn
 			Debug.shared.log(message: "Force iTunes file sharing (tag 10) set to: \(sender.isOn)")
-		case 11:  // Force try to localize (eighth in toggleOptions array)
+		case 11:  // Force try to localize 
 			signingDataWrapper.signingOptions.forceTryToLocalize = sender.isOn
 			Debug.shared.log(message: "Force try to localize (tag 11) set to: \(sender.isOn)")
-		case 12:  // Remove provisioning file (ninth in toggleOptions array)
+		case 12:  // Remove provisioning file 
 			signingDataWrapper.signingOptions.removeProvisioningFile = sender.isOn
 			Debug.shared.log(message: "Remove provisioning file (tag 12) set to: \(sender.isOn)")
-		case 13:  // Remove watch placeholder (tenth in toggleOptions array)
+		case 13:  // Remove watch placeholder 
 			signingDataWrapper.signingOptions.removeWatchPlaceHolder = sender.isOn
 			Debug.shared.log(message: "Remove watch placeholder (tag 13) set to: \(sender.isOn)")
 		default:

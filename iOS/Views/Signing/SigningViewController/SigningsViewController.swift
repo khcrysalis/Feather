@@ -155,6 +155,10 @@ class SigningsViewController: UIViewController {
 				break
 			}
 			
+			let feedbackGenerator = UISelectionFeedbackGenerator()
+			feedbackGenerator.prepare()
+			feedbackGenerator.selectionChanged()
+			
 			Preferences.selectedCert = newIndex
 			mainOptions.mainOptions.certificate = certificates[newIndex]
 			tableView.reloadRows(at: [indexPath], with: gesture.direction == .left ? .left : .right)
