@@ -1,6 +1,5 @@
 import CoreData
 import Foundation
-import UserNotifications
 
 @objc class SourceRefreshOperation: Operation, @unchecked Sendable {
     private let queue = DispatchQueue(label: "kh.crysalis.feather.sourcerefresh", qos: .userInitiated)
@@ -74,7 +73,6 @@ import UserNotifications
             let signedApps = CoreDataManager.shared.getDatedSignedApps()
             Debug.shared.log(message: "Found \(signedApps.count) signed apps to check", type: .info)
             Debug.shared.log(message: "Checking against \(sourceData.count) sources", type: .info)
-            var updatesFound = false
             var updatedApps: [(name: String, oldVersion: String, newVersion: String)] = []
 
             for signedApp in signedApps {
@@ -97,7 +95,6 @@ import UserNotifications
                             
                             if comparison > 0 {
                                 Debug.shared.log(message: "Update available - \(bundleId) can be updated from \(currentVersion) to \(latestVersion)", type: .info)
-                                updatesFound = true
                                 updatedApps.append((name: signedApp.name ?? bundleId,
                                                   oldVersion: currentVersion,
                                                   newVersion: latestVersion))
@@ -204,7 +201,7 @@ import UserNotifications
                 completion(nil)
             }
         } else {
-            Debug.shared.log(message: "Debug mode: Could not find suitable app for mocking", type: .error)
+            Debug.shared.log(message: "Debug mode: Could not find suitable app for mocking", type: .info)
             completion(nil)
         }
     }

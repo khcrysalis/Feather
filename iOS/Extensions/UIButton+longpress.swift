@@ -15,10 +15,14 @@ extension UIButton {
 	
 	var longPressGestureRecognizer: UILongPressGestureRecognizer? {
 		get {
-			return objc_getAssociatedObject(self, &AssociatedKeys.longPressGestureRecognizer) as? UILongPressGestureRecognizer
+			withUnsafePointer(to: AssociatedKeys.longPressGestureRecognizer) {
+				return objc_getAssociatedObject(self, $0) as? UILongPressGestureRecognizer
+			}
 		}
 		set {
-			objc_setAssociatedObject(self, &AssociatedKeys.longPressGestureRecognizer, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+			withUnsafePointer(to: AssociatedKeys.longPressGestureRecognizer) {
+				objc_setAssociatedObject(self, $0, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+			}
 		}
 	}
 }

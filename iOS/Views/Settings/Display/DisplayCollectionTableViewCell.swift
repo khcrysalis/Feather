@@ -104,11 +104,10 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
 
 		_ = collectionData[indexPath.item]
 		
-		UIApplication.shared.windows.first?.tintColor = selectedUIColor
+        let keyWindow = UIApplication.shared.connectedScenes.compactMap { ($0 as? UIWindowScene)?.keyWindow }.last
+        keyWindow?.tintColor = selectedUIColor
 	}
 }
-
-
 
 class CollectionItemCell: UICollectionViewCell {
 	let stackView: UIStackView = {

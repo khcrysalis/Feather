@@ -62,7 +62,7 @@ extension ServerOptionsViewController {
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let reuseIdentifier = "Cell"
-		var cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
 		cell.accessoryType = .none
 		cell.selectionStyle = .none
 		

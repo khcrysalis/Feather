@@ -65,7 +65,8 @@ extension SourceAppViewController {
 			alertController.addAction(UIAlertAction(title: String.localized("CANCEL"), style: .cancel, handler: nil))
 			
 			DispatchQueue.main.async {
-				if let viewController = UIApplication.shared.windows.first?.rootViewController {
+                let keyWindow = UIApplication.shared.connectedScenes.compactMap { ($0 as? UIWindowScene)?.keyWindow }.last
+                if let viewController = keyWindow?.rootViewController {
 					viewController.present(alertController, animated: true, completion: nil)
 				}
 			}
