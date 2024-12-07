@@ -105,62 +105,69 @@ class SigningsOptionViewController: UITableViewController {
 	}
 	
 	@objc func toggleOptionsSwitches(_ sender: UISwitch) {
+		Debug.shared.log(message: "Toggle switch tag: \(sender.tag)")
+		
 		switch sender.tag {
-		case 0:
+		case 0:  // PPQ Protection
 			signingDataWrapper.signingOptions.ppqCheckProtection = sender.isOn
+			Debug.shared.log(message: "PPQ Protection set to: \(sender.isOn)")
 			if !sender.isOn {
 				signingDataWrapper.signingOptions.dynamicProtection = false
-			}
-			if let dynamicCell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)),
-			   let dynamicSwitch = dynamicCell.accessoryView as? UISwitch {
-				dynamicSwitch.isEnabled = sender.isOn
-				if !sender.isOn {
+				if let dynamicCell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)),
+				   let dynamicSwitch = dynamicCell.accessoryView as? UISwitch {
+					dynamicSwitch.isEnabled = false
 					dynamicSwitch.isOn = false
 				}
+			} else {
+				if let dynamicCell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)),
+				   let dynamicSwitch = dynamicCell.accessoryView as? UISwitch {
+					dynamicSwitch.isEnabled = true
+				}
 			}
-			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
-		case 1:
-			signingDataWrapper.signingOptions.dynamicProtection = sender.isOn
-			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
-		case 2:
+		case 1:  // Install after signed
 			signingDataWrapper.signingOptions.installAfterSigned = sender.isOn
-			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
-		case 3:
+			Debug.shared.log(message: "Install after signed set to: \(sender.isOn)")
+		case 2:  // Immediately install from source
 			signingDataWrapper.signingOptions.immediatelyInstallFromSource = sender.isOn
-			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
-		case 4:
+			Debug.shared.log(message: "Immediately install from source set to: \(sender.isOn)")
+		case 3:  // Dynamic protection
+			signingDataWrapper.signingOptions.dynamicProtection = sender.isOn
+			Debug.shared.log(message: "Dynamic protection set to: \(sender.isOn)")
+		case 4:  // Remove plugins (first in toggleOptions array)
 			signingDataWrapper.signingOptions.removePlugins = sender.isOn
-			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
-		case 5:
+			Debug.shared.log(message: "Remove plugins (tag 4) set to: \(sender.isOn)")
+		case 5:  // Force file sharing (second in toggleOptions array)
 			signingDataWrapper.signingOptions.forceFileSharing = sender.isOn
-			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
-		case 6:
+			Debug.shared.log(message: "Force file sharing (tag 5) set to: \(sender.isOn)")
+		case 6:  // Remove supported devices (third in toggleOptions array)
 			signingDataWrapper.signingOptions.removeSupportedDevices = sender.isOn
-			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
-		case 7:
+			Debug.shared.log(message: "Remove supported devices (tag 6) set to: \(sender.isOn)")
+		case 7:  // Remove URL scheme (fourth in toggleOptions array)
 			signingDataWrapper.signingOptions.removeURLScheme = sender.isOn
-			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
-		case 8:
+			Debug.shared.log(message: "Remove URL scheme (tag 7) set to: \(sender.isOn)")
+		case 8:  // Force ProMotion (fifth in toggleOptions array)
 			signingDataWrapper.signingOptions.forceProMotion = sender.isOn
-			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
-		case 9:
+			Debug.shared.log(message: "Force ProMotion (tag 8) set to: \(sender.isOn)")
+		case 9:  // Force fullscreen (sixth in toggleOptions array)
 			signingDataWrapper.signingOptions.forceForceFullScreen = sender.isOn
-			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
-		case 10:
+			Debug.shared.log(message: "Force fullscreen (tag 9) set to: \(sender.isOn)")
+		case 10:  // Force iTunes file sharing (seventh in toggleOptions array)
 			signingDataWrapper.signingOptions.forceiTunesFileSharing = sender.isOn
-			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
-		case 11:
+			Debug.shared.log(message: "Force iTunes file sharing (tag 10) set to: \(sender.isOn)")
+		case 11:  // Force try to localize (eighth in toggleOptions array)
 			signingDataWrapper.signingOptions.forceTryToLocalize = sender.isOn
-			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
-		case 12:
+			Debug.shared.log(message: "Force try to localize (tag 11) set to: \(sender.isOn)")
+		case 12:  // Remove provisioning file (ninth in toggleOptions array)
 			signingDataWrapper.signingOptions.removeProvisioningFile = sender.isOn
-			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
-		case 13:
+			Debug.shared.log(message: "Remove provisioning file (tag 12) set to: \(sender.isOn)")
+		case 13:  // Remove watch placeholder (tenth in toggleOptions array)
 			signingDataWrapper.signingOptions.removeWatchPlaceHolder = sender.isOn
-			UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
+			Debug.shared.log(message: "Remove watch placeholder (tag 13) set to: \(sender.isOn)")
 		default:
 			break
 		}
+		
+		UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
 	}
 }
 
@@ -183,6 +190,8 @@ extension SigningsOptionViewController {
 		cell.textLabel?.textColor = .label
 		cell.accessoryView = nil
 		
+		Debug.shared.log(message: "Setting up cell at section: \(indexPath.section), row: \(indexPath.row)")
+		
 		switch [indexPath.section, indexPath.row] {
 		case [0,0]:
 			cell.textLabel?.text = String.localized("SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_ID")
@@ -197,6 +206,7 @@ extension SigningsOptionViewController {
 			cell.textLabel?.text = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS")
 			toggleSwitch.isOn = signingDataWrapper.signingOptions.ppqCheckProtection
 			toggleSwitch.tag = 0
+			Debug.shared.log(message: "Setting PPQ protection switch tag: 0")
 			toggleSwitch.addTarget(self, action: #selector(toggleOptionsSwitches(_:)), for: .valueChanged)
 			cell.accessoryView = toggleSwitch
 			cell.selectionStyle = .none
@@ -205,7 +215,8 @@ extension SigningsOptionViewController {
 			cell.textLabel?.text = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DYNAMIC_PROTECTION")
 			toggleSwitch.isOn = signingDataWrapper.signingOptions.dynamicProtection
 			toggleSwitch.isEnabled = signingDataWrapper.signingOptions.ppqCheckProtection
-			toggleSwitch.tag = 12
+			toggleSwitch.tag = 3
+			Debug.shared.log(message: "Setting dynamic protection switch tag: 3")
 			toggleSwitch.addTarget(self, action: #selector(toggleOptionsSwitches(_:)), for: .valueChanged)
 			cell.accessoryView = toggleSwitch
 			cell.selectionStyle = .none
@@ -220,6 +231,7 @@ extension SigningsOptionViewController {
 			cell.textLabel?.text = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_INSTALLAFTERSIGNED")
 			toggleSwitch.isOn = signingDataWrapper.signingOptions.installAfterSigned
 			toggleSwitch.tag = 1
+			Debug.shared.log(message: "Setting install after signed switch tag: 1")
 			toggleSwitch.addTarget(self, action: #selector(toggleOptionsSwitches(_:)), for: .valueChanged)
 			cell.accessoryView = toggleSwitch
 		case [1,5]:
@@ -227,6 +239,7 @@ extension SigningsOptionViewController {
 			cell.textLabel?.text = String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IMMEDIATELY_INSTALL_FROM_SOURCE")
 			toggleSwitch.isOn = signingDataWrapper.signingOptions.immediatelyInstallFromSource
 			toggleSwitch.tag = 2
+			Debug.shared.log(message: "Setting immediately install switch tag: 2")
 			toggleSwitch.addTarget(self, action: #selector(toggleOptionsSwitches(_:)), for: .valueChanged)
 			cell.accessoryView = toggleSwitch
 			cell.selectionStyle = .none
@@ -238,9 +251,11 @@ extension SigningsOptionViewController {
 				
 				let toggleSwitch = UISwitch()
 				toggleSwitch.isOn = toggleOption.binding
-				toggleSwitch.tag = indexPath.section
+				toggleSwitch.tag = toggleIndex + 4  // Start at 4 for the first toggle option
+				Debug.shared.log(message: "Setting toggle option switch tag: \(toggleSwitch.tag) for option: \(toggleOption.title) at index: \(toggleIndex)")
 				toggleSwitch.addTarget(self, action: #selector(toggleOptionsSwitches(_:)), for: .valueChanged)
 				cell.accessoryView = toggleSwitch
+				cell.selectionStyle = .none
 			}
 		}
 		
