@@ -44,11 +44,41 @@ class LibraryViewController: UITableViewController {
 		self.tableView.delegate = self
 		tableView.register(AppsTableViewCell.self, forCellReuseIdentifier: "RoundedBackgroundCell")
 		NotificationCenter.default.addObserver(self, selector: #selector(afetch), name: Notification.Name("lfetch"), object: nil)
+		NotificationCenter.default.addObserver(
+			self,
+			selector: #selector(handleInstallNotification(_:)),
+			name: Notification.Name("InstallDownloadedApp"),
+			object: nil
+		)
+	}
+	
+	@objc private func handleInstallNotification(_ notification: Notification) {
+		guard let downloadedApp = notification.userInfo?["downloadedApp"] as? DownloadedApps else { return }
 		
+		let signingDataWrapper = SigningDataWrapper(signingOptions: UserDefaults.standard.signingOptions)
+		signingDataWrapper.signingOptions.installAfterSigned = true
+		
+		let ap = SigningsViewController(
+			signingDataWrapper: signingDataWrapper,
+			application: downloadedApp,
+			appsViewController: self
+		)
+		
+		ap.signingCompletionHandler = { success in
+			if success {
+				Debug.shared.log(message: "Signing completed successfully", type: .success)
+			}
+		}
+		
+		let navigationController = UINavigationController(rootViewController: ap)
+		navigationController.shouldPresentFullScreen()
+		
+		present(navigationController, animated: true)
 	}
 	
 	deinit {
 		NotificationCenter.default.removeObserver(self, name: Notification.Name("lfetch"), object: nil)
+		NotificationCenter.default.removeObserver(self, name: Notification.Name("InstallDownloadedApp"), object: nil)
 	}
 	
 	fileprivate func setupNavigation() {
@@ -57,8 +87,7 @@ class LibraryViewController: UITableViewController {
 	}
 	
 	private func handleAppUpdate(for signedApp: SignedApps) {
-		guard let updateVersion = signedApp.updateVersion,
-			  let sourceURL = signedApp.originalSourceURL else {
+        guard let sourceURL = signedApp.originalSourceURL else {
 			Debug.shared.log(message: "Missing update version or source URL", type: .error)
 			return
 		}
@@ -124,7 +153,6 @@ class LibraryViewController: UITableViewController {
 				Debug.shared.log(message: "Found matching version: \(version.version)", type: .info)
 				
 				let uuid = UUID().uuidString
-				let rootViewController = UIApplication.shared.keyWindow?.rootViewController
 				
 				DispatchQueue.global(qos: .background).async {
 					do {
@@ -166,11 +194,7 @@ class LibraryViewController: UITableViewController {
 										
 										let navigationController = UINavigationController(rootViewController: ap)
 										
-										if UIDevice.current.userInterfaceIdiom == .pad {
-											navigationController.modalPresentationStyle = .formSheet
-										} else {
-											navigationController.modalPresentationStyle = .fullScreen
-										}
+										navigationController.shouldPresentFullScreen()
 										
 										self.present(navigationController, animated: true)
 									}
@@ -464,11 +488,7 @@ extension LibraryViewController {
 			let signingDataWrapper = SigningDataWrapper(signingOptions: UserDefaults.standard.signingOptions)
 			let ap = SigningsViewController(signingDataWrapper: signingDataWrapper, application: meow, appsViewController: self)
 			let navigationController = UINavigationController(rootViewController: ap)
-			if UIDevice.current.userInterfaceIdiom == .pad {
-				navigationController.modalPresentationStyle = .formSheet
-			} else {
-				navigationController.modalPresentationStyle = .fullScreen
-			}
+			navigationController.shouldPresentFullScreen()
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
 				self.present(navigationController, animated: true, completion: nil)
 			}

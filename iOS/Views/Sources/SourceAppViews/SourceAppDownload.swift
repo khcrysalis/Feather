@@ -50,7 +50,7 @@ extension SourceAppViewController {
 			downloadTaskManager.addTask(uuid: appUUID, cell: cell, dl: cell.appDownload!)
 			
 			cell.appDownload?.downloadFile(url: downloadURL, appuuid: appUUID) { [weak self] (uuid, filePath, error) in
-				guard let self = self else { return }
+                guard self != nil else { return }
 				if let error = error {
 					downloadTaskManager.updateTask(uuid: appUUID, state: .failed(error: error))
 					Debug.shared.log(message: error.localizedDescription, type: .error)
@@ -68,6 +68,20 @@ extension SourceAppViewController {
 								} else {
 									downloadTaskManager.updateTask(uuid: appUUID, state: .completed)
 									Debug.shared.log(message: String.localized("DONE"), type: .success)
+									
+									// Check if immediate install is enabled
+									if UserDefaults.standard.signingOptions.immediatelyInstallFromSource {
+										DispatchQueue.main.async {
+											let downloadedApps = CoreDataManager.shared.getDatedDownloadedApps()
+											if let downloadedApp = downloadedApps.first(where: { $0.uuid == uuid }) {
+												NotificationCenter.default.post(
+													name: Notification.Name("InstallDownloadedApp"),
+													object: nil,
+													userInfo: ["downloadedApp": downloadedApp]
+												)
+											}
+										}
+									}
 								}
 							}
 						}
@@ -85,4 +99,19 @@ extension SourceAppViewController {
 protocol DownloadDelegate: AnyObject {
 	func updateDownloadProgress(progress: Double, uuid: String)
 	func stopDownload(uuid: String)
+}
+
+extension UIViewController {
+	func topMostViewController() -> UIViewController {
+		if let presented = presentedViewController {
+			return presented.topMostViewController()
+		}
+		if let navigation = self as? UINavigationController {
+			return navigation.visibleViewController?.topMostViewController() ?? navigation
+		}
+		if let tab = self as? UITabBarController {
+			return tab.selectedViewController?.topMostViewController() ?? tab
+		}
+		return self
+	}
 }

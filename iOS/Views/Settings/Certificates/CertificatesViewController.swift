@@ -93,7 +93,7 @@ extension CertificatesViewController {
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let reuseIdentifier = "Cell"
-		var cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
 		
 		switch indexPath.section {
 		case 0:

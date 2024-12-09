@@ -25,6 +25,7 @@
 		332476EE2C3E92BC008C8EF0 /* DisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332476EC2C3E92BC008C8EF0 /* DisplayViewController.swift */; };
 		33275B6C2CD0A598007ED278 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33275B6B2CD0A590007ED278 /* LicenseViewController.swift */; };
 		332AE3C02C097F180052F24A /* Feather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 332AE3BE2C097F180052F24A /* Feather.xcdatamodeld */; };
+		332EAD982D075BBB0045D276 /* UINavigationController+shouldPresentFullscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332EAD972D075BB40045D276 /* UINavigationController+shouldPresentFullscreen.swift */; };
 		333912A02BF9816B00E72360 /* CertificateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3339129F2BF9816B00E72360 /* CertificateModel.swift */; };
 		33570F612C32B80E008CB560 /* AppsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F602C32B80E008CB560 /* AppsTableViewCell.swift */; };
 		33570F672C34CCD5008CB560 /* AppsInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33570F662C34CCD5008CB560 /* AppsInformationViewController.swift */; };
@@ -124,6 +125,8 @@
 		33E5A5AC2CC88BF500532930 /* ResetAlertOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5A5AB2CC88BF500532930 /* ResetAlertOptions.swift */; };
 		33E5A5AE2CC8A41E00532930 /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5A5AD2CC8A41E00532930 /* LogsViewController.swift */; };
 		33EEDAA42C5D9358009089DC /* CoreDataManager+DownloadedApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */; };
+		3A39AC782D030064002F54B0 /* BundleIdChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A39AC762D030064002F54B0 /* BundleIdChecker.swift */; };
+		3A39AC792D030064002F54B0 /* iTunesLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A39AC772D030064002F54B0 /* iTunesLookup.swift */; };
 		3AC770F12CF7250700D9B9E1 /* SourceRefreshOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC770EF2CF7250700D9B9E1 /* SourceRefreshOperation.swift */; };
 		AA280D952C76AB7400CAC838 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA280D942C76AB7400CAC838 /* MobileCoreServices.framework */; };
 		AA280D972C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA280D962C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift */; };
@@ -162,6 +165,7 @@
 		332476EC2C3E92BC008C8EF0 /* DisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayViewController.swift; sourceTree = "<group>"; };
 		33275B6B2CD0A590007ED278 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		332AE3BF2C097F180052F24A /* Feather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Feather.xcdatamodel; sourceTree = "<group>"; };
+		332EAD972D075BB40045D276 /* UINavigationController+shouldPresentFullscreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+shouldPresentFullscreen.swift"; sourceTree = "<group>"; };
 		3339129F2BF9816B00E72360 /* CertificateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateModel.swift; sourceTree = "<group>"; };
 		33570F602C32B80E008CB560 /* AppsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsTableViewCell.swift; sourceTree = "<group>"; };
 		33570F662C34CCD5008CB560 /* AppsInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsInformationViewController.swift; sourceTree = "<group>"; };
@@ -263,8 +267,10 @@
 		33E5A5AB2CC88BF500532930 /* ResetAlertOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetAlertOptions.swift; sourceTree = "<group>"; };
 		33E5A5AD2CC8A41E00532930 /* LogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsViewController.swift; sourceTree = "<group>"; };
 		33EEDAA32C5D9358009089DC /* CoreDataManager+DownloadedApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+DownloadedApps.swift"; sourceTree = "<group>"; };
-		5AF393042CFAE1B7001FAF86 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3A39AC762D030064002F54B0 /* BundleIdChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleIdChecker.swift; sourceTree = "<group>"; };
+		3A39AC772D030064002F54B0 /* iTunesLookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesLookup.swift; sourceTree = "<group>"; };
 		3AC770EF2CF7250700D9B9E1 /* SourceRefreshOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceRefreshOperation.swift; sourceTree = "<group>"; };
+		5AF393042CFAE1B7001FAF86 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
 		88DE4CC52CA5A13200D68F1E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AA280D922C76A60700CAC838 /* LSApplicationWorkspace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSApplicationWorkspace.h; sourceTree = "<group>"; };
 		AA280D942C76AB7400CAC838 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -703,6 +709,7 @@
 		33BA37AE2BF819D400FF530A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				332EAD972D075BB40045D276 /* UINavigationController+shouldPresentFullscreen.swift */,
 				33E4D8392C66C5CF006A1C26 /* Private */,
 				33BA37AF2BF819ED00FF530A /* UIColor+hex.swift */,
 				AA280D962C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift */,
@@ -772,6 +779,8 @@
 		33C040992C30B47700243D90 /* Management */ = {
 			isa = PBXGroup;
 			children = (
+				3A39AC762D030064002F54B0 /* BundleIdChecker.swift */,
+				3A39AC772D030064002F54B0 /* iTunesLookup.swift */,
 				33163FEF2C3D224C0038E1EC /* DownloadTaskManager.swift */,
 				33C0409A2C30B4A100243D90 /* AppDownload.swift */,
 				33A305D62C3A85F300D650BA /* SourceDownload.swift */,
@@ -1014,6 +1023,8 @@
 				339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */,
 				338FFCE42C695118006C3BE0 /* IconsListViewController.swift in Sources */,
 				339FE33B2CCE01F000C297BA /* IdentifiersViewController.swift in Sources */,
+				3A39AC782D030064002F54B0 /* BundleIdChecker.swift in Sources */,
+				3A39AC792D030064002F54B0 /* iTunesLookup.swift in Sources */,
 				D0651C112BFEE93C00D40829 /* zsign.mm in Sources */,
 				332476DA2C3E4D35008C8EF0 /* SourceAppDownload.swift in Sources */,
 				33BE87632C6F17870044D245 /* SigningsInputViewController.swift in Sources */,
@@ -1030,6 +1041,7 @@
 				332476D82C3E4CF7008C8EF0 /* SourceAppActions.swift in Sources */,
 				33E5A5AA2CC88ABF00532930 /* ResetDataClass.swift in Sources */,
 				33E4D8362C6593F4006A1C26 /* CGSize+aspectFit.swift in Sources */,
+				332EAD982D075BBB0045D276 /* UINavigationController+shouldPresentFullscreen.swift in Sources */,
 				AF9B6B442C6346FF00735748 /* p12_password_check.mm in Sources */,
 				33BA37A82BF8168900FF530A /* TabbarController.swift in Sources */,
 				AFAC50952C48DF9300EDEAB6 /* AppSigner.swift in Sources */,
@@ -1235,12 +1247,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Feather;
+				INFOPLIST_KEY_CFBundleDisplayName = "Feather (Debug)";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright (c) 2024 Samara M (khcrysalis)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
@@ -1259,7 +1272,12 @@
 					"$(PROJECT_DIR)/Shared/Resources",
 				);
 				MARKETING_VERSION = 1.1.3;
-				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
+				"OTHER_CPLUSPLUSFLAGS[arch=*]" = (
+					"$(OTHER_CFLAGS)",
+					"-w",
+					"-Wno-everything",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1282,12 +1300,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Feather;
+				INFOPLIST_KEY_CFBundleDisplayName = "Feather (Debug)";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright (c) 2024 Samara M (khcrysalis)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
@@ -1306,6 +1325,11 @@
 					"$(PROJECT_DIR)/Shared/Resources",
 				);
 				MARKETING_VERSION = 1.1.3;
+				"OTHER_CPLUSPLUSFLAGS[arch=*]" = (
+					"$(OTHER_CFLAGS)",
+					"-w",
+					"-Wno-everything",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
