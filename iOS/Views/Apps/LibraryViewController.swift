@@ -71,11 +71,7 @@ class LibraryViewController: UITableViewController {
 		}
 		
 		let navigationController = UINavigationController(rootViewController: ap)
-		if UIDevice.current.userInterfaceIdiom == .pad {
-			navigationController.modalPresentationStyle = .formSheet
-		} else {
-			navigationController.modalPresentationStyle = .fullScreen
-		}
+		navigationController.shouldPresentFullScreen()
 		
 		present(navigationController, animated: true)
 	}
@@ -198,11 +194,7 @@ class LibraryViewController: UITableViewController {
 										
 										let navigationController = UINavigationController(rootViewController: ap)
 										
-										if UIDevice.current.userInterfaceIdiom == .pad {
-											navigationController.modalPresentationStyle = .formSheet
-										} else {
-											navigationController.modalPresentationStyle = .fullScreen
-										}
+										navigationController.shouldPresentFullScreen()
 										
 										self.present(navigationController, animated: true)
 									}
@@ -496,11 +488,7 @@ extension LibraryViewController {
 			let signingDataWrapper = SigningDataWrapper(signingOptions: UserDefaults.standard.signingOptions)
 			let ap = SigningsViewController(signingDataWrapper: signingDataWrapper, application: meow, appsViewController: self)
 			let navigationController = UINavigationController(rootViewController: ap)
-			if UIDevice.current.userInterfaceIdiom == .pad {
-				navigationController.modalPresentationStyle = .formSheet
-			} else {
-				navigationController.modalPresentationStyle = .fullScreen
-			}
+			navigationController.shouldPresentFullScreen()
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
 				self.present(navigationController, animated: true, completion: nil)
 			}

@@ -187,11 +187,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
                                             
                                             let navigationController = UINavigationController(rootViewController: ap)
                                             
-                                            if UIDevice.current.userInterfaceIdiom == .pad {
-                                                navigationController.modalPresentationStyle = .formSheet
-                                            } else {
-                                                navigationController.modalPresentationStyle = .fullScreen
-                                            }
+											navigationController.shouldPresentFullScreen()
                                             
                                             rootViewController.present(navigationController, animated: true)
                                         }
