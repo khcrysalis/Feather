@@ -1,0 +1,20 @@
+name: Create Bug Report
+description: Report a bug or something thats unintentional
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: What is version you're running?
+      placeholder: iOS 17.1
+    validations:
+      required: true
+  - type: textarea
+    id: detailed-description
+    attributes:
+      label: Start going into detail..
+      description:
+      placeholder: Feather doesn't .... properly, it just crashes. 
+    validations:
+      required: true
