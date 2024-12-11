@@ -5,6 +5,13 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '.github/ISSUE_TEMPLATE/**'
+      - 'README.md'
+      - 'LICENSE'
+      - '.gitignore'
+      - 'app-repo.json'
+      - 'Images/**'
 
 jobs:
   build:
