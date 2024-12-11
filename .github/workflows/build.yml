@@ -7,11 +7,11 @@ on:
       - main
     paths-ignore:
       - '.github/ISSUE_TEMPLATE/**'
-      - 'README.md'
       - 'LICENSE'
       - '.gitignore'
       - 'app-repo.json'
       - 'Images/**'
+      - '*.md'
 
 jobs:
   build:
