@@ -36,7 +36,7 @@
 // Add Action
 "ADD" = "Добавить";
 // Install Action
-"INSTALL" = "Install";
+"INSTALL" = "Установить";
 
 // MARK: - Alerts
 // Alert titles
@@ -195,7 +195,7 @@
 // MARK: - SigningsOptionsViewController
 
 "APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS" = "Включить защиту";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS_DESCRIPTION" = "Включение защиты добавит случайный строку к каждому идентификатору пакета, это сделано для защиты Apple ID, связанного с вашим сертификатом от флага Apple. Однако, если вы не заботитесь об этом, вы можете игнорировать это.";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS_DESCRIPTION" = "Включение защиты добавит случайную строку к каждому идентификатору пакета, это сделано для защиты Apple ID, связанного с вашим сертификатом от флага Apple. Однако, если вам все равно, вы можете проигнорировать это.";
 
 "APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DYNAMIC_PROTECTION" = "Динамическая защита";
 "APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DYNAMIC_PROTECTION_DESCRIPTION" = "Динамическая защита будет применять PPQ защиту только если идентификатор пакета приложения присутствует в App Store. Это требует интернет-соединения во время подписи.";
