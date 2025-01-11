@@ -8,391 +8,411 @@
 
 // MARK: - Generic
 // Unknown, default string for applications
-"UNKNOWN" = "Unknown";
+"UNKNOWN" = "不明";
 // Default string
-"DEFAULT" = "Default";
+"DEFAULT" = "デフォルト";
 // Copy provided string in a menu
-"COPY" = "Copy";
+"COPY" = "コピー";
 // Delete item
-"DELETE" = "Delete";
+"DELETE" = "削除";
 // Cancel alert action
-"CANCEL" = "Cancel";
+"CANCEL" = "キャンセル";
 // Done action
-"DONE" = "Done";
+"DONE" = "完了";
 // Dismiss action
-"DISMISS" = "Dismiss";
+"DISMISS" = "閉じる";
 // Dismiss 2 action
-"LAME" = "Lame";
+"LAME" = "了解";
 // Save action
-"SAVE" = "Save";
+"SAVE" = "保存";
 // Set action
-"SET" = "Save";
+"SET" = "セット";
 // OK action
 "OK" = "OK";
 // Continue action
-"CONTINUE" = "Continue";
+"CONTINUE" = "続ける";
 // Import Action
-"IMPORT" = "Import";
+"IMPORT" = "インポート";
 // Add Action
-"ADD" = "Add";
+"ADD" = "追加";
 // Install Action
-"INSTALL" = "Install";
+"INSTALL" = "インストール";
 
 // MARK: - Alerts
 // Alert titles
-"ALERT_SUCCESS" = "Success";
-"ALERT_TRACE" = "Trace";
-"ALERT_ERROR" = "Error";
-"ALERT_CRITICAL" = "Critical";
-"ALERT_COPIED" = "Copied";
+"ALERT_SUCCESS" = "成功";
+"ALERT_TRACE" = "トレース";
+"ALERT_ERROR" = "エラー";
+"ALERT_CRITICAL" = "重大";
+"ALERT_COPIED" = "コピーしました";
 
 // MARK: - Error messages
 // Installer Error Title
-"ERROR_INSTALLER" = "Installer";
+"ERROR_INSTALLER" = "インストーラー";
 // Installer Error Description
-"ERROR_INSTALLER_DESCRIPTION" = "Failed to load SSL certificates";
-"ERROR_ZSIGN_FAILED" = "Signing failed.";
-"ERROR_FAILED_TO_READ_MOBILEPROVISION" = "Failed to read mobileprovision file";
+"ERROR_INSTALLER_DESCRIPTION" = "SSL証明書の読み込みに失敗しました。";
+"ERROR_ZSIGN_FAILED" = "署名に失敗しました。";
+"ERROR_FAILED_TO_READ_MOBILEPROVISION" = "mobileprovisionファイルの読み込みに失敗しました";
 
 // MARK: - Success messages
 // Successfully signed an application
-"SUCCESS_SIGNED" = "Successfully signed %@";
+"SUCCESS_SIGNED" = "%@の署名に成功しました";
 // Successfully resigned an application
-"SUCCESS_RESIGN" = "Successfully resigned!";
+"SUCCESS_RESIGN" = "再署名に成功しました！";
 // Success message requiring user to restart app
-"SUCCESS_REQUIRES_RESTART" = "You must close the app for changes to take effect.";
+"SUCCESS_REQUIRES_RESTART" = "変更を反映させるにはアプリを再起動する必要があります";
 
 // MARK: - Onboarding
 // Welcome to Feather!!!!!!!!
-"ONBOARDING_WELCOMETITLE_1" = "Welcome to";
+"ONBOARDING_WELCOMETITLE_1" = "ようこそ";
 // First feature inside of onboarding
-"ONBOARDING_CELL_1_TITLE" = "Sideload On Device";
-"ONBOARDING_CELL_1_DESCRIPTION" = "Sideload apps without a computer, all done from your device.";
+"ONBOARDING_CELL_1_TITLE" = "デバイスだけでサイドロード";
+"ONBOARDING_CELL_1_DESCRIPTION" = "コンピューターなしでアプリをサイドロードします。デバイスだけで完結。";
 // Second feature inside of onboarding
-"ONBOARDING_CELL_2_TITLE" = "Customize Apps";
-"ONBOARDING_CELL_2_DESCRIPTION" = "Manage and customize your apps for your needs.";
+"ONBOARDING_CELL_2_TITLE" = "アプリのカスタマイズ";
+"ONBOARDING_CELL_2_DESCRIPTION" = "必要に応じてアプリの管理とカスタマイズができます。";
 // Third feature inside of onboarding
-"ONBOARDING_CELL_3_TITLE" = "And Much More!";
-"ONBOARDING_CELL_3_DESCRIPTION" = "AltStore repositories, import IPA's, easy certificate switching, and much more.";
+"ONBOARDING_CELL_3_TITLE" = "まだまだ色々あります！";
+"ONBOARDING_CELL_3_DESCRIPTION" = "AltStoreリポジトリ、ipaのインポート、簡単に証明書を切り替える、などなど。";
 // "Developed by Samara. Made for users who are passionate for sideloading and freedom. Many features included inside. Learn more..."
-"ONBOARDING_FOOTER" = "Developed by Samara. Made for users who are passionate for sideloading and freedom. Many features included inside.";
-"ONBOARDING_FOOTER_LINK" = "Learn more...";
+"ONBOARDING_FOOTER" = "Samaraによって開発。サイドローディングと自由を求めるユーザーのために作られました。たくさんの機能が詰め込まれています。";
+"ONBOARDING_FOOTER_LINK" = "詳しく知る";
 // Continue button to exit onboarding
-"ONBOARDING_CONTINUE_BUTTON" = "Continue";
+"ONBOARDING_CONTINUE_BUTTON" = "続ける";
 
 // MARK: - Tab area
 // Sources tab
-"TAB_SOURCES" = "Sources";
+"TAB_SOURCES" = "ソース";
 // Library tab
-"TAB_LIBRARY" = "Library";
+"TAB_LIBRARY" = "ライブラリ";
 // Settings tab
-"TAB_SETTINGS" = "Settings";
+"TAB_SETTINGS" = "設定";
 
 // MARK: - TransferPreview
 // Packaging application to get ready for install
-"TRANSFER_PREVIEW_PACKAGING" = "Packaging...";
+"TRANSFER_PREVIEW_PACKAGING" = "パッケージ化しています...";
 // Ready to install package
-"TRANSFER_PREVIEW_READY" = "Ready To Install";
+"TRANSFER_PREVIEW_READY" = "インストールの準備ができました";
 // Opening manifest.plist for iOS
-"TRANSFER_PREVIEW_SENDING_MANIFEST" = "Sending Manifest...";
+"TRANSFER_PREVIEW_SENDING_MANIFEST" = "マニフェストを送信中...";
 // iOS is retrieving IPA file
-"TRANSFER_PREVIEW_SENDING_PAYLOAD" = "Sending Payload...";
+"TRANSFER_PREVIEW_SENDING_PAYLOAD" = "ペイロードを送信中...";
 // Done transferring IPA file
-"TRANSFER_PREVIEW_DONE" = "Done";
+"TRANSFER_PREVIEW_DONE" = "完了";
 // Completed packaging so you can share
-"TRANSFER_PREVIEW_COMPLETED" = "Completed";
+"TRANSFER_PREVIEW_COMPLETED" = "完了";
 
 // MARK: - SourcesViewController
 // Repositories title
-"SOURCES_VIEW_CONTROLLER_REPOSITORIES" = "Repositories";
+"SOURCES_VIEW_CONTROLLER_REPOSITORIES" = "リポジトリ";
 // Add repo button
-"SOURCES_VIEW_CONTROLLER_ADD_SOURCES" = "Add Repo";
+"SOURCES_VIEW_CONTROLLER_ADD_SOURCES" = "リポジトリを追加";
 // Number of sources, i.e. "100 Sources"
-"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES" = "%@ Source";
-"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES_PLURAL" = "%@ Sources";
+"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES" = "%@個のソース";
+"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES_PLURAL" = "%@個のソース";
 // Search sources in search bar
-"SOURCES_VIEW_CONTROLLER_SEARCH_SOURCES" = "Search Sources";
+"SOURCES_VIEW_CONTROLLER_SEARCH_SOURCES" = "ソースを検索";
 
 // MARK: - SourcesViewController - Add Sources
-"SOURCES_VIEW_ADD_SOURCES_ALERT_TITLE" = "Add Source";
-"SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "Add Altstore Repo URL";
-"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_IMPORT_REPO" = "Import Repositories";
-"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO" = "Export Repositories";
-"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO_ACTION_SUCCESS" = "Copied Repositories to Clipboard";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_TITLE" = "ソースを追加";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "AltstoreリポジトリURLを追加";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_IMPORT_REPO" = "リポジトリをインポート";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO" = "リポジトリをエクスポート";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO_ACTION_SUCCESS" = "リポジトリをクリップボードにコピーしました";
 //Footer Validation
-"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTSTARTED" = "Enter a URL to start validation.";
-"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTVALIDJSON" = "Invalid JSON, please check your input.";
-"SOURCES_VIEW_ADD_SOURCES_FOOTER_VALID" = "Valid JSON entered.";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTSTARTED" = "検証を開始するURLを入力します。";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTVALIDJSON" = "無効なJSONです。 入力をもう一度確認してください。";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_VALID" = "有効なJSONが入力されました。";
 
 // MARK: - SourcesViewController -> SourcesAppViewController
 // Number of apps, i.e. "444 Apps"
-"SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS" = "%@ App";
-"SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS_PLURAL" = "%@ Apps";
+"SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS" = "%@個のアプリ";
+"SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS_PLURAL" = "%@個のアプリ";
 // Search apps in search bar
-"SOURCES_APP_VIEW_CONTROLLER_SEARCH_APPS" = "Search Apps";
+"SOURCES_APP_VIEW_CONTROLLER_SEARCH_APPS" = "アプリを検索";
 
 // MARK: - SourcesViewController ... - Cells
 // Default subtitle string
-"SOURCES_CELLS_DEFAULT_SUBTITLE" = "An awesome application.";
+"SOURCES_CELLS_DEFAULT_SUBTITLE" = "素晴らしいアプリ";
 // Default description string
-"SOURCES_CELLS_DEFAULT_DESCRIPTION" = "A cool description.";
+"SOURCES_CELLS_DEFAULT_DESCRIPTION" = "かっこいい説明文";
 
 // MARK: - SourceAppViewController ... - Actions
 // Available Versions Alert Title
-"SOURCES_CELLS_ACTIONS_HOLD_AVAILABLE_VERSIONS" = "Available Versions";
+"SOURCES_CELLS_ACTIONS_HOLD_AVAILABLE_VERSIONS" = "利用可能なバージョン";
 //Filter Menu
-"SOURCES_CELLS_ACTIONS_FILTER_TITLE" = "Filter by";
-"SOURCES_CELLS_ACTIONS_FILTER_BY_DEFAULT" = "Default";
-"SOURCES_CELLS_ACTIONS_FILTER_BY_NAME" = "Name";
-"SOURCES_CELLS_ACTIONS_FILTER_BY_DATE" = "Date";
+"SOURCES_CELLS_ACTIONS_FILTER_TITLE" = "フィルター";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_DEFAULT" = "デフォルト";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_NAME" = "名前";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_DATE" = "日時";
 
 // MARK: - AppsInformationViewController
 // Application Section
-"APPS_INFORMATION_SECTION_TITLE_NAME" = "Application";
+"APPS_INFORMATION_SECTION_TITLE_NAME" = "アプリケーション";
 // Bundle Section
-"APPS_INFORMATION_SECTION_TITLE_NAME" = "Bundle";
+"APPS_INFORMATION_SECTION_TITLE_NAME" = "バンドル";
 
 //
-"APPS_INFORMATION_TITLE_DELETED_FILE" = "Deleted File";
-"APPS_INFORMATION_TITLE_DELETED_FILE_TITLE" = "File has been deleted.";
-"APPS_INFORMATION_TITLE_DELETED_FILE_DESCRIPTION" = "This is a useless entry, it does not have a file and Feather will not allow you to install it. It's recommended you delete by swiping on the cell in the Apps tab.";
+"APPS_INFORMATION_TITLE_DELETED_FILE" = "削除されたファイル";
+"APPS_INFORMATION_TITLE_DELETED_FILE_TITLE" = "ファイルは削除されました。";
+"APPS_INFORMATION_TITLE_DELETED_FILE_DESCRIPTION" = "これは役に立たないエントリーです。ファイルを持っておらず、Featherはインストールを許可しません。Appsタブのセルをスワイプして削除することをおすすめします。";
 // Application Section
-"APPS_INFORMATION_TITLE_NAME" = "Name";
-"APPS_INFORMATION_TITLE_VERSION" = "Version";
-"APPS_INFORMATION_TITLE_IDENTIFIER" = "Identifier";
-"APPS_INFORMATION_TITLE_SIZE" = "Size";
+"APPS_INFORMATION_TITLE_NAME" = "名前";
+"APPS_INFORMATION_TITLE_VERSION" = "バージョン";
+"APPS_INFORMATION_TITLE_IDENTIFIER" = "識別子";
+"APPS_INFORMATION_TITLE_SIZE" = "サイズ";
 //
-"APPS_INFORMATION_TITLE_DATE_ADDED" = "Date Added";
+"APPS_INFORMATION_TITLE_DATE_ADDED" = "追加日時";
 // Bundle Section
-"APPS_INFORMATION_TITLE_BUNDLE_NAME" = "Bundle Name";
-"APPS_INFORMATION_TITLE_BUNDLE_PATH" = "Bundle Path";
-"APPS_INFORMATION_TITLE_ICON_FILE" = "Icon File";
+"APPS_INFORMATION_TITLE_BUNDLE_NAME" = "バンドル名";
+"APPS_INFORMATION_TITLE_BUNDLE_PATH" = "バンドルのパス";
+"APPS_INFORMATION_TITLE_ICON_FILE" = "アイコンファイル";
 //
-"APPS_INFORMATION_TITLE_OPEN_IN_FILES" = "Open in Files";
+"APPS_INFORMATION_TITLE_OPEN_IN_FILES" = "ファイルから開く";
 
 // MARK: - AppSigningViewController
-"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_CUSTOMIZATION" = "Customization";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_SIGNING" = "Signing";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_ADVANCED" = "Advanced";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS" = "Add Tweaks";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED" = "Advanced";
-"APP_SIGNING_VIEW_CONTROLLER_START_SIGNING" = "Start Signing";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_MODIFY_DYLIBS" = "Modify Dylibs";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_PROPERTIES" = "Properties";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_CUSTOMIZATION" = "カスタマイズ";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_SIGNING" = "署名";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_ADVANCED" = "高度なオプション";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS" = "Tweakを追加";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED" = "高度なオプション";
+"APP_SIGNING_VIEW_CONTROLLER_START_SIGNING" = "署名を開始";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_MODIFY_DYLIBS" = "Dylibを改変";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_PROPERTIES" = "プロパティ";
 
 // MARK: - AppSigningViewController - No Certificates Alert
-"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_TITLE" = "Error";
-"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_DESCRIPTION" = "You do not have a certificate selected, please select or upload one in the signing section of the settings tab.";
+"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_TITLE" = "エラー";
+"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_DESCRIPTION" = "証明書が選択されていません。設定タブの署名欄で証明書を選択するか、アップロードしてください。";
 
 // MARK: - AppSigningViewController -> AppSigningAdvancedViewController
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE" = "Appearence";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION" = "Minimum App Version";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES" = "Properties";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE" = "外観";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION" = "最低アプリバージョン";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES" = "プロパティ";
 
 // MARK: - AppSigningViewController -> AppSigningTweakViewController
 "APP_SIGNING_TWEAK_VIEW_CONTROLLER_TITLE" = "Tweaks";
 
 // MARK: - SigningsOptionsViewController
 
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS" = "Enable Protection";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS_DESCRIPTION" = "Enabling protections will pre-append every bundle identifier with a random string, this is to protect the Apple ID related to your certificate from being flagged by Apple. However, if you don't care about this you can ignore.";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS" = "保護機能を有効にする";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS_DESCRIPTION" = "保護を有効にすると、各バンドル識別子にランダムな文字列が追加されます。これは、あなたの証明書に紐づけられたApple IDがAppleによってフラグ付けされないように保護するためです。しかし、気にしないのであれば無視しても構いません。";
 
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS" = "Bundle Identifiers";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_NEW" = "New Identifier";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID" = "Identifier";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID_REPLACEMENT" = "Replacement";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DYNAMIC_PROTECTION" = "ダイナミック保護";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DYNAMIC_PROTECTION_DESCRIPTION" = "ダイナミック保護は、バンドル識別子がAppstoreに存在する場合のみPPQ保護を適用します。このため、署名時にはインターネット接続が必要です。";
 
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS" = "バンドル識別子";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_NEW" = "新しい識別子";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID" = "識別子";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID_REPLACEMENT" = "置き換え";
 
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES" = "表示名";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES_ID" = "オリジナルの表示名";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES_ID_REPLACEMENT" = "新しい表示名";
 
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_INSTALLAFTERSIGNED" = "Install after Signing";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IMMEDIATELY_INSTALL_FROM_SOURCE" = "ソースからすぐにインストール";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IMMEDIATELY_INSTALL_FROM_SOURCE_DESCRIPTION" = "有効にすると、ソースからダウンロードしたアプリは、ダウンロード後すぐに署名とインストールのプロンプトが表示されます。";
 
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_TITLE" = "Signing Options";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_INSTALLAFTERSIGNED" = "署名後にインストール";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "Remove all PlugIns";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS_DESCRIPTION" = "Removes the PlugIns directory inside of the app, which would usually have some components for the app to function properly.";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_TITLE" = "署名のオプション";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES" = "Remove UISupportedDevices";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES_DESCRIPTION" = "Removes device restrictions for the application.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "全てのプラグインを削除";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS_DESCRIPTION" = "アプリ内のPluginsディレクトリを削除します。通常、Pluginsディレクトリにはアプリが正しく機能するためのコンポーネントがあります。";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME" = "Remove URLScheme";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME_DESCRIPTION" = "Removes any possible URL schemes (i.e. 'feather://')";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES" = "UISupportedDevicesを削除";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES_DESCRIPTION" = "デバイスの制限を解除します。";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS" = "Allow Browsing Documents";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS_DESCRIPTION" = "Allows other apps to open and edit the files stored in the Documents folder. This option also lets users set the app’s default save location in Settings.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME" = "URLスキームを削除";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME_DESCRIPTION" = "URLスキームを削除する。(例:feather://)";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING" = "Allow iTunes Sharing";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING_DESCRIPTION" = "Forces the app to share their documents directory, allowing sharing between iTunes and Finder.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS" = "Documentsの閲覧を許可する";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS_DESCRIPTION" = "他のアプリがDocumentsフォルダに保存されたファイルを開いて編集できるようにします。このオプションはアプリのデフォルト保存場所を設定することもできます。";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION" = "Force ProMotion";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION_DESCRIPTION" = "Enables ProMotion capabilities within the app, however on lower versions of 15.x this may not be enough.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING" = "iTunes共有を許可する";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING_DESCRIPTION" = "iTunesやFinder間で共有できるようにするため、アプリがDocumentsディレクトリを共有するように強制します。";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "Force Fullscreen";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN_DESCRIPTION" = "Forces only fullscreen capabilities within iPad apps, disallowing sharing the screen with other apps. On an external screen, the window for an app with this setting maintains its canvas size.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION" = "ProMotionを強制する";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION_DESCRIPTION" = "アプリ内でPromotion機能を有効にしますが、15.x以下の低いバージョンでは使えないかもしれません。";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP" = "Delete Placeholder Watch App";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP_DESCRIPTION" = "Removes unwanted watch placeholder which isn't supposed to be there, present in apps such as YouTube music, etc.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "フルスクリーンを強制する";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN_DESCRIPTION" = "iPadのアプリ内でのみフルスクリーンを強制し、他のアプリとの画面共有を禁止します。 外部画面上では、この設定のアプリのウィンドウはキャンバスサイズを維持します。";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS" = "Force Try To Localize";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS_DESCRIPTION" = "Forces localization by modifying every localizable bundle within the app when trying to change a name of the app.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP" = "Watchアプリのプレースホルダを削除する";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP_DESCRIPTION" = "YouTube musicなどのアプリに存在する、不必要なWatchアプリのプレースホルダを削除します。";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING" = "Remove Provisioning File";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING_DESCRIPTION" = "Removes .mobileprovison from appearing in your app after signing.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS" = "ローカライズを強制する";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS_DESCRIPTION" = "ローカライズ可能なlocalizableバンドルを修正して、アプリ名の変更が反映されるようにします。";
 
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING" = "プロビジョニングファイルの削除";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING_DESCRIPTION" = "署名後に.mobileprovisionファイルがアプリ内に残らないようにします。";
 
 // MARK: - LibraryViewController
 //Search Library placeholder
-"SETTINGS_VIEW_CONTROLLER_SEARCH_PLACEHOLDER" = "Search Library";
+"SETTINGS_VIEW_CONTROLLER_SEARCH_PLACEHOLDER" = "ライブラリを検索";
 //Headers
-"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS" = "Signed Apps";
-"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL" = "%@ Signed";
-"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL_PLURAL" = "%@ Signed";
-"LIBRARY_VIEW_CONTROLLER_SECTION_BUTTON_IMPORT" = "Import";
-"LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS" = "Downloaded Apps";
-"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_DOWNLOADED_APPS_TOTAL" = "%@ Downloaded";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS" = "署名済みアプリ";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL" = "%@個署名済み";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL_PLURAL" = "%@個署名済み";
+"LIBRARY_VIEW_CONTROLLER_SECTION_BUTTON_IMPORT" = "インポート";
+"LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS" = "ダウンロード済みアプリ";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_DOWNLOADED_APPS_TOTAL" = "%@個ダウンロード済み";
 //Import Action Sheet
-"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_FILE" = "Import from Files";
-"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_URL" = "Import from URL";
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_FILE" = "ファイルからインポート";
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_URL" = "URLからインポート";
 //Sign Action Sheet
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN" = "Sign %@";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN_INSTALL" = "Sign & Install %@";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_RESIGN" = "ReSign %@";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL" = "Install %@";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SHARE" = "Share %@";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN" = "Open %@";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_UPDATE" = "Update %@";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_CLEAR_UPDATE" = "Clear Update";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_VIEW_DATEILS" = "View Details";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN_LN_FILES" = "Open in Files";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM" = "Confirm Installation";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM_DESCRIPTION" = "Trying to install via the downloaded apps tab may not work as they are most likely not signed! It's recommended you sign that application first before installing.";
-
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN" = "%@ を署名する";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN_INSTALL" = "%@ を署名後インストール";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_RESIGN" = "%@ を再署名";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL" = "%@ をインストール";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SHARE" = "%@ を共有";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN" = "%@ を開く";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_UPDATE" = "%@ をアップデート";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_CLEAR_UPDATE" = "アップデートを消去";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_VIEW_DATEILS" = "詳細を表示";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN_LN_FILES" = "ファイルから開く";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM" = "インストールを確認します";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM_DESCRIPTION" = "ダウンロード済みタブのアプリは署名されていない可能性が高いため、動作しないかもしれません！インストールする前に署名することをお勧めします。";
 
 // MARK: - SettingsViewController
 // Headers
-"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_GENERAL" = "General";
-"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING" = "Signing";
-"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING_SERVER" = "Signing Server";
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_GENERAL" = "一般";
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING" = "署名";
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING_SERVER" = "署名サーバー";
 
 // Footers
-"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES" = "If any issues occur within Feather please report it via the GitHub repository. When submitting an issue, be sure to submit any logs.";
-"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS" = "Sadly due to limitations server certificates will need to be re-renewed every year to keep Feathers local features working properly, tap this button to retrieve the most up-to-date files from our repositories.";
-"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER" = "Default server goes to %@";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES" = "Feather で問題が発生した場合は、GitHub リポジトリから報告してください。 その際、ログがあれば必ず提出してください。";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS" = "残念ながら、サーバー証明書の制限により、Feathersのローカル機能を正常に動作させるためには、サーバー証明書を毎年更新する必要があります。このボタンをタップすると、リポジトリから最新のファイルを取得できます。";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER" = "デフォルトのサーバーは %@ です。";
 
-"SETTINGS_VIEW_CONTROLLER_TITLE" = "Server Options";
-"SETTINGS_VIEW_CONTROLLER_TITLE_ONLINE" = "Online";
-"SETTINGS_VIEW_CONTROLLER_TITLE_LOCAL" = "Local";
+"SETTINGS_VIEW_CONTROLLER_TITLE" = "サーバーのオプション";
+"SETTINGS_VIEW_CONTROLLER_TITLE_ONLINE" = "オンライン";
+"SETTINGS_VIEW_CONTROLLER_TITLE_LOCAL" = "ローカル";
 
 // Cell Titles
 // About Feather
-"SETTINGS_VIEW_CONTROLLER_CELL_ABOUT" = "About %@";
-"SETTINGS_VIEW_CONTROLLER_CELL_SUBMIT_FEEDBACK" = "Submit Feedback";
-"SETTINGS_VIEW_CONTROLLER_CELL_GITHUB" = "GitHub Repository";
-"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY" = "Display";
-"SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON" = "App Icon";
-"SETTINGS_VIEW_CONTROLLER_CELL_CURRENT_CERTIFICATE_NOSELECTED" = "No certificates selected";
-"SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES" = "Add Certificate";
-"SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE" = "Update Local Certificate";
-"SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE_UPDATING" = "Update Local Certificate";
-"SETTINGS_VIEW_CONTROLLER_CELL_RESET" = "Reset";
-"SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION" = "Reset Configuration";
-"SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER" = "Use Custom Server";
-
-"SETTINGS_VIEW_CONTROLLER_CELL_ONLINE_INSTALL_METHOD" = "Online Install Method";
+"SETTINGS_VIEW_CONTROLLER_CELL_ABOUT" = "%@について";
+"SETTINGS_VIEW_CONTROLLER_CELL_SUBMIT_FEEDBACK" = "フィードバックを提出";
+"SETTINGS_VIEW_CONTROLLER_CELL_GITHUB" = "GitHubリポジトリ";
+"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY" = "ディスプレイ";
+"SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON" = "アプリアイコン";
+"SETTINGS_VIEW_CONTROLLER_CELL_LANGUAGE" = "言語";
+"SETTINGS_VIEW_CONTROLLER_CELL_CURRENT_CERTIFICATE_NOSELECTED" = "証明書が選択されていません";
+"SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES" = "証明書を追加";
 
 
-"SETTINGS_VIEW_CONTROLLER_CELL_EXPORT_ID" = "Export Random Identifier";
-"SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_ID" = "Change Random Identifier";
+
+"SETTINGS_VIEW_CONTROLLER_CELL_SIGN_OPTIONS" = "署名のオプション";
+"SETTINGS_VIEW_CONTROLLER_CELL_SERVER_OPTIONS" = "サーバーのオプション";
+"SETTINGS_VIEW_CONTROLLER_CELL_VIEW_LOGS" = "ログを表示";
+"SETTINGS_VIEW_CONTROLLER_CELL_APPS_FOLDER" = "アプリのフォルダを開く";
+"SETTINGS_VIEW_CONTROLLER_CELL_CERTS_FOLDER" = "証明書のフォルダを開く";
+
+
+"SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE" = "ローカル証明書をアップデート";
+"SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE_UPDATING" = "ローカル証明書をアップデート";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET" = "リセット";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_ALL" = "全てをリセット";
+
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION" = "構成をリセット";
+"SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER" = "カスタムサーバーを使用";
+
+"SETTINGS_VIEW_CONTROLLER_CELL_ONLINE_INSTALL_METHOD" = "オンラインインストール方式";
+
+
+"SETTINGS_VIEW_CONTROLLER_CELL_EXPORT_ID" = "ランダム識別子をエクスポート";
+"SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_ID" = "ランダム識別子を変更";
 
 //
-"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_TITLE" = "PPQCheck Protections";
-"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_DESCRIPTION" = "This setting enables the PPQCheck protections, which is designed to prepend each bundle identifier for the apps you sideload with a random string.\n\nThis is meant to avoid apple flagging your account by (trying) to make it so they're unable to associate the app your sideloading with one from the App Store.";
-"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_IDC" = "I don't care";
-"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_GTK" = "Good to know";
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_TITLE" = "PPQCheckから保護";
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_DESCRIPTION" = "この設定は、サイドロードするアプリの各バンドル識別子の前にランダムな文字列を付加するPPQCheck保護機能を有効化します。.\n\nこれは、Appleがあなたのアカウントにフラグ付けするのを防止するために、サイドロードしたアプリをAppstoreのアプリと関連付けされないようにするためのものです。";
 
-"SETTINGS_VIEW_CONTROLLER_URL_ALERT_TITLE" = "Change Download URL";
-"SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_IDENTIFIER" = "Change Random Identifier";
+"SETTINGS_VIEW_CONTROLLER_URL_ALERT_TITLE" = "ダウンロードURLを変更";
+"SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_IDENTIFIER" = "ランダム識別子を変更";
 
 // MARK: - SettingsViewController -> AboutViewController
-"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_CREDITS" = "Credits";
-"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_DEVICE" = "Device";
-"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_ACKNOWLEDGEMENTS" = "Acknowledgements";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_CREDITS" = "クレジット";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_SPONSORS" = "スポンサー";
+
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_DEVICE" = "デバイス";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_ACKNOWLEDGEMENTS" = "感謝";
 
 
-"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_VERSION" = "Device Version";
-"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_ARCH" = "Architecture";
-"ABOUT_VIEW_CONTROLLER_CELL_APP_VERSION" = "App Version";
+"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_VERSION" = "デバイスのバージョン";
+"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_ARCH" = "アーキテクチャ";
+"ABOUT_VIEW_CONTROLLER_CELL_APP_VERSION" = "アプリバージョン";
 
 // MARK: - SettingsViewController -> DisplayViewController
-"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_TINT_COLOR" = "Tint Color";
-"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARENCE" = "App Appearence";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_TINT_COLOR" = "色合い";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARENCE" = "アプリの外観";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_STORE" = "ストア";
 
-"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE" = "Default Subtitle";
-"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE_DESCRIPTION" = "Default style for feather, hides localized description and only includes subtitle.";
+"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE" = "デフォルトのサブタイトル";
+"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE_DESCRIPTION" = "featherのデフォルトスタイルです。ローカライズされた説明を隠してサブタイトルのみ含ませる。";
 
-"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE" = "Localized Subtitle";
-"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE_DESCRIPTION" = "Replaces subtitle with app description.";
+"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE" = "ローカライズされたサブタイトル";
+"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE_DESCRIPTION" = "サブタイトルをアプリの説明に置き換える。";
 
-"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION" = "Big Description";
-"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION_DESCRIPTION" = "Replaces screenshots with the app description.";
+"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION" = "大きな説明欄";
+"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION_DESCRIPTION" = "スクリーンショットとアプリの説明に置き換える。";
 
-"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME" = "Use Team Name";
-"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME_DESCRIPTION" = "Replaces the certificate name with your team name, could be for better to distinguish between certificates if providers happen to always use the same App ID name.";
+"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME" = "チーム名を使用";
+"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME_DESCRIPTION" = "証明書の名前をチーム名に置き換えます。プロバイダが常に同じApp IDを使用している場合、証明書を区別するのに便利です。";
 
 // MARK: - SettingsViewController -> LanguageViewController.swift
-"LANGUAGE_VIEW_TITLE" = "Language";
-"LANGUAGE_VIEW_CELL_USE_SYSTEM_LANGUAGE" = "Use System Language";
+"LANGUAGE_VIEW_TITLE" = "言語";
+"LANGUAGE_VIEW_CELL_USE_SYSTEM_LANGUAGE" = "システム言語を使用";
 
 // MARK: - SettingsViewController -> CertificatesViewController
-"CERTIFICATES_VIEW_CONTROLLER_TITLE" = "Certificates";
+"CERTIFICATES_VIEW_CONTROLLER_TITLE" = "証明書";
 
-"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_FOOTER" = "Supported file formats:\n\n- P12 (.p12)\n- Mobile Provision (.mobileprovision)\n\nMake sure your certificates are valid and are able to sideload to your device!";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_FOOTER" = "サポートされているファイルのフォーマット:\n\n- P12 (.p12)\n- Mobile Provision (.mobileprovision)\n\n証明書が有効で、デバイスにサイドロードできることを確認してください！";
 
-"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD" = "Add Certificates";
-"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_DESCRIPTION" = "Tap to add a certificate";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD" = "証明書を追加";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_DESCRIPTION" = "タップして証明書を追加する";
 
 // MARK: - SettingsViewController -> CertificatesViewController -> Delete Alert
-"CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_TITLE" = "You don't want to do this!";
-"CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_DESCRIPTION" = "You're trying to delete a selected certificate, try again later when you have another certificate on hand.";
+"CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_TITLE" = "こんなことはしたくないだろう！";
+"CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_DESCRIPTION" = "選択した証明書を削除しようとしています。別の証明書が手元にあるときに、もう一度やり直してください。";
 
 // MARK: - SettingsViewController -> CertificatesViewController -> Cell
-"CERTIFICATES_VIEW_CONTROLLER_CELL_EXPIRED" = "Expired";
-"CERTIFICATES_VIEW_CONTROLLER_CELL_DAYS_LEFT" = "%@ days left";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_EXPIRED" = "期限切れ";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_DAYS_LEFT" = "残り%@日";
 
 // MARK: - SettingsViewController -> CertificatesViewController -> CertImportingViewController
-"CERT_IMPORTING_VIEWCONTROLLER_TITLE" = "Import";
+"CERT_IMPORTING_VIEWCONTROLLER_TITLE" = "インポート";
 "CERT_IMPORTING_VIEWCONTROLLER_SECTION_PROVISIONING" = "";
 
 // MARK: - SettingsViewController -> CertificatesViewController -> CertImportingViewController -> Password Alert
 
-"CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_TITLE" = "Bad Password";
-"CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_DESCRIPTION" = "Please check the password and try again.";
+"CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_TITLE" = "パスワードが違います";
+"CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_DESCRIPTION" = "パスワードを確認してもう一度お試しください。";
 
-"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PROV" = "Import Provisioning File";
-"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_CERT" = "Import Certificate File";
-"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_ENTER_PW" = "Enter Password";
-"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PW" = "Password";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PROV" = "プロビジョニングファイルをインポート";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_CERT" = "証明書ファイルをインポート";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_ENTER_PW" = "パスワードを入力";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PW" = "パスワード";
 
-"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PROV" = "Import a provisioning file to be able to sideload to your device.";
-"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_CERT" = "Import a file containing a valid certificate.";
-"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PASS" = "Enter the password associated with the private key, leave it blank if theres no password required.";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PROV" = "プロビジョニングファイルをインポートして、デバイスにサイドロードできるようにします。";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_CERT" = "有効な証明書を含むファイルをインポートする。";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PASS" = "秘密鍵に関連付けられたパスワードを入力します。パスワードが必要ない場合空白のままにしてください。";
 
 // MARK: - SettingsViewController -> ResetViewController
-"RESET_VIEW_CONTROLLER_CLEAR_CACHE" = "Clear Network Cache";
-"RESET_VIEW_CONTROLLER_CLEAR_CACHE_ALERT_TITLE" = "This action is irreversible. Cached network requests and images will be cleared.";
+"RESET_VIEW_CONTROLLER_CLEAR_CACHE" = "ネットワークキャッシュをクリア";
+"RESET_VIEW_CONTROLLER_CLEAR_CACHE_ALERT_TITLE" = "このアクションは元に戻せません。 キャッシュされたネットワークリクエストと画像は消去されます。";
 
 // MARK: - Donation
-"DONATION_TITLE" = "Donate";
-"DONATION_DONATIONS" = "Donations";
+"DONATION_TITLE" = "寄付";
+"DONATION_DONATIONS" = "寄付について";
 
-"DONATION_CELL_1_TITLE" = "Secret Repo";
-"DONATION_CELL_1_DESCRIPTION" = "Get access to our secret repo by donating, will provide you with beta access to Feather.";
+"DONATION_CELL_1_TITLE" = "シークレットリポジトリ";
+"DONATION_CELL_1_DESCRIPTION" = "寄付をするとシークレットリポジトリにアクセスでき、beta版へのアクセスを得ることができます。";
 
-"DONATION_CELL_2_TITLE" = "Show Your Support";
-"DONATION_CELL_2_DESCRIPTION" = "Show your support by donating! If you're unable to donate, spreading the word about Feather works too!";
+"DONATION_CELL_2_TITLE" = "あなたのサポートを示す";
+"DONATION_CELL_2_DESCRIPTION" = "寄付をするとあなたのサポートを示せます！寄付ができない場合、Featherを周りの人に広めてください！";
 
 // MARK: - SettingsViewController -> LogsViewController.swift
-"LOGS_VIEW_SECTION_TITLE_ERROR" = "%@ Critical Errors.";
-"LOGS_VIEW_SECTION_TITLE_SHARE" = "Share Logs";
-"LOGS_VIEW_SECTION_TITLE_COPY" = "Copy Logs";
-"LOGS_VIEW_SUCCESS_DESCRIPTION" = "Log contents have been copied to clipboard.";
-"LOGS_VIEW_FAIL_DESCRIPTION" = "Failed to copy log contents.";
+"LOGS_VIEW_SECTION_TITLE_ERROR" = "%@ 重大なエラー";
+"LOGS_VIEW_SECTION_TITLE_SHARE" = "ログを共有する";
+"LOGS_VIEW_SECTION_TITLE_COPY" = "ログをコピーする";
+"LOGS_VIEW_SUCCESS_DESCRIPTION" = "ログ情報がクリップボードにコピーされました。";
+"LOGS_VIEW_FAIL_DESCRIPTION" = "ログ情報のコピーに失敗しました。";
