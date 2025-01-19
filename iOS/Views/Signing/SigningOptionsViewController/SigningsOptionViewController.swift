@@ -20,53 +20,58 @@ func toggleOptions(signingDataWrapper: SigningDataWrapper) -> [TogglesOption] {
 			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS"),
 			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS_DESCRIPTION"),
 			binding: signingDataWrapper.signingOptions.removePlugins
-		   ),
-		   TogglesOption(
+		),
+		TogglesOption(
 			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS"),
 			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS_DESCRIPTION"),
 			binding: signingDataWrapper.signingOptions.forceFileSharing
-		   ),
-		   TogglesOption(
+		),
+		TogglesOption(
 			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES"),
 			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES_DESCRIPTION"),
 			binding: signingDataWrapper.signingOptions.removeSupportedDevices
-		   ),
-		   TogglesOption(
+		),
+		TogglesOption(
 			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME"),
 			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME_DESCRIPTION"),
 			binding: signingDataWrapper.signingOptions.removeURLScheme
-		   ),
-		   TogglesOption(
+		),
+		TogglesOption(
 			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION"),
 			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION_DESCRIPTION"),
 			binding: signingDataWrapper.signingOptions.forceProMotion
-		   ),
-		   TogglesOption(
+		),
+		TogglesOption(
+			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_GAME_MODE"),
+			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION_DESCRIPTION"),
+			binding: signingDataWrapper.signingOptions.forceGameMode
+		),
+		TogglesOption(
 			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN"),
 			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN_DESCRIPTION"),
-				binding: signingDataWrapper.signingOptions.forceForceFullScreen
-		   ),
-		   TogglesOption(
+			binding: signingDataWrapper.signingOptions.forceForceFullScreen
+		),
+		TogglesOption(
 			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING"),
 			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING_DESCRIPTION"),
 			binding: signingDataWrapper.signingOptions.forceiTunesFileSharing
-		   ),
-		   TogglesOption(
+		),
+		TogglesOption(
 			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS"),
 			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS_DESCRIPTION"),
 			binding: signingDataWrapper.signingOptions.forceTryToLocalize
-		   ),
-		   TogglesOption(
+		),
+		TogglesOption(
 			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING"),
 			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING_DESCRIPTION"),
 			binding: signingDataWrapper.signingOptions.removeProvisioningFile
-		   ),
-		   TogglesOption(
+		),
+		TogglesOption(
 			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP"),
 			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP_DESCRIPTION"),
 			binding: signingDataWrapper.signingOptions.removeWatchPlaceHolder
-		   ),
-	   ]
+		),
+	]
 }
 
 class SigningsOptionViewController: UITableViewController {
@@ -148,21 +153,24 @@ class SigningsOptionViewController: UITableViewController {
 		case 8:  // Force ProMotion 
 			signingDataWrapper.signingOptions.forceProMotion = sender.isOn
 			Debug.shared.log(message: "Force ProMotion (tag 8) set to: \(sender.isOn)")
-		case 9:  // Force fullscreen 
+		case 9:  // Force GameMode
+			signingDataWrapper.signingOptions.forceGameMode = sender.isOn
+			Debug.shared.log(message: "Force ProMotion (tag 0) set to: \(sender.isOn)")
+		case 10:  // Force fullscreen
 			signingDataWrapper.signingOptions.forceForceFullScreen = sender.isOn
-			Debug.shared.log(message: "Force fullscreen (tag 9) set to: \(sender.isOn)")
-		case 10:  // Force iTunes file sharing
+			Debug.shared.log(message: "Force fullscreen (tag 10) set to: \(sender.isOn)")
+		case 11:  // Force iTunes file sharing
 			signingDataWrapper.signingOptions.forceiTunesFileSharing = sender.isOn
-			Debug.shared.log(message: "Force iTunes file sharing (tag 10) set to: \(sender.isOn)")
-		case 11:  // Force try to localize 
+			Debug.shared.log(message: "Force iTunes file sharing (tag 11) set to: \(sender.isOn)")
+		case 12:  // Force try to localize
 			signingDataWrapper.signingOptions.forceTryToLocalize = sender.isOn
-			Debug.shared.log(message: "Force try to localize (tag 11) set to: \(sender.isOn)")
-		case 12:  // Remove provisioning file 
+			Debug.shared.log(message: "Force try to localize (tag 12) set to: \(sender.isOn)")
+		case 13:  // Remove provisioning file
 			signingDataWrapper.signingOptions.removeProvisioningFile = sender.isOn
-			Debug.shared.log(message: "Remove provisioning file (tag 12) set to: \(sender.isOn)")
-		case 13:  // Remove watch placeholder 
+			Debug.shared.log(message: "Remove provisioning file (tag 13) set to: \(sender.isOn)")
+		case 14:  // Remove watch placeholder
 			signingDataWrapper.signingOptions.removeWatchPlaceHolder = sender.isOn
-			Debug.shared.log(message: "Remove watch placeholder (tag 13) set to: \(sender.isOn)")
+			Debug.shared.log(message: "Remove watch placeholder (tag 14) set to: \(sender.isOn)")
 		default:
 			break
 		}

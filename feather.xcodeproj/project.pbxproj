@@ -104,6 +104,7 @@
 		33C0409E2C30DD3E00243D90 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = 33C0409D2C30DD3E00243D90 /* AlertKit */; };
 		33C29F202C7BD73800EF7608 /* UIUserInterfaceStyle+allCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C29F1F2C7BD73800EF7608 /* UIUserInterfaceStyle+allCases.swift */; };
 		33CE81A92C4295F300C05327 /* CertImportingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CE81A82C4295F300C05327 /* CertImportingViewController.swift */; };
+		33DA8AC52D3CA2D7009357AD /* SettingsAltIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA8AC42D3CA2D7009357AD /* SettingsAltIconView.swift */; };
 		33DF8D7D2C0828CF00D6C05F /* Zsign.md in Resources */ = {isa = PBXBuildFile; fileRef = 33DF8D7C2C0828CF00D6C05F /* Zsign.md */; };
 		33DF8D7F2C0828FB00D6C05F /* Nuke.md in Resources */ = {isa = PBXBuildFile; fileRef = 33DF8D7E2C0828FB00D6C05F /* Nuke.md */; };
 		33DF8D812C08290F00D6C05F /* HttpSwift_RequestSwift_SocketSwift.md in Resources */ = {isa = PBXBuildFile; fileRef = 33DF8D802C08290F00D6C05F /* HttpSwift_RequestSwift_SocketSwift.md */; };
@@ -247,6 +248,7 @@
 		33C0409A2C30B4A100243D90 /* AppDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDownload.swift; sourceTree = "<group>"; };
 		33C29F1F2C7BD73800EF7608 /* UIUserInterfaceStyle+allCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIUserInterfaceStyle+allCases.swift"; sourceTree = "<group>"; };
 		33CE81A82C4295F300C05327 /* CertImportingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertImportingViewController.swift; sourceTree = "<group>"; };
+		33DA8AC42D3CA2D7009357AD /* SettingsAltIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAltIconView.swift; sourceTree = "<group>"; };
 		33DF8D7C2C0828CF00D6C05F /* Zsign.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Zsign.md; sourceTree = "<group>"; };
 		33DF8D7E2C0828FB00D6C05F /* Nuke.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Nuke.md; sourceTree = "<group>"; };
 		33DF8D802C08290F00D6C05F /* HttpSwift_RequestSwift_SocketSwift.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = HttpSwift_RequestSwift_SocketSwift.md; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 			children = (
 				339FE3352CCDE05A00C297BA /* SigningsViewController.swift */,
 				339FE3452CCE3CB100C297BA /* SigningsViewController+Import-AppIcon.swift */,
+				33DA8AC42D3CA2D7009357AD /* SettingsAltIconView.swift */,
 				33BE87622C6F17870044D245 /* SigningsInputViewController.swift */,
 				33E3B6712C8151ED0075E3A2 /* SigningsDylibViewController.swift */,
 				33BE87662C6F17DF0044D245 /* SigningsTweakViewController.swift */,
@@ -1060,6 +1063,7 @@
 				33951CFE2C37AFCF00802F78 /* FloatingActionButton.swift in Sources */,
 				33E4D8412C67E5C3006A1C26 /* DonationTableViewCell.swift in Sources */,
 				33E5A5992CC8586E00532930 /* LanguageViewController.swift in Sources */,
+				33DA8AC52D3CA2D7009357AD /* SettingsAltIconView.swift in Sources */,
 				33EEDAA42C5D9358009089DC /* CoreDataManager+DownloadedApps.swift in Sources */,
 				339FE3442CCE343C00C297BA /* SwitchViewCell.swift in Sources */,
 				33BE877D2C729A7D0044D245 /* DownloadCertificate.swift in Sources */,

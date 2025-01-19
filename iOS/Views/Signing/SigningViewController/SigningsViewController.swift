@@ -41,7 +41,7 @@ class SigningsViewController: UIViewController {
 		"",
 	]
 	
-	private var application: NSManagedObject?
+	public var application: NSManagedObject?
 	private var appsViewController: LibraryViewController?
 		
 	var signingDataWrapper: SigningDataWrapper
@@ -134,6 +134,11 @@ class SigningsViewController: UIViewController {
 		swipeRight.direction = .right
 		tableView.addGestureRecognizer(swipeLeft)
 		tableView.addGestureRecognizer(swipeRight)
+		NotificationCenter.default.addObserver(self, selector: #selector(fetch), name: Notification.Name("reloadSigningController"), object: nil)
+	}
+	
+	deinit {
+		NotificationCenter.default.removeObserver(self, name: Notification.Name("reloadSigningController"), object: nil)
 	}
 	
 	@objc func handleSwipe(_ gesture: UISwipeGestureRecognizer) {
@@ -244,6 +249,10 @@ class SigningsViewController: UIViewController {
 	
 	@objc func closeSheet() {
 		dismiss(animated: true, completion: nil)
+	}
+	
+	@objc func fetch() {
+		self.tableView.reloadData()
 	}
 	
 	@objc func startSign() {
@@ -375,7 +384,7 @@ extension SigningsViewController: UITableViewDataSource, UITableViewDelegate  {
 
 extension SigningsViewController {
 	
-	private func getFilesForDownloadedApps(app: DownloadedApps, getuuidonly: Bool) -> URL {
+	public func getFilesForDownloadedApps(app: DownloadedApps, getuuidonly: Bool) -> URL {
 		return CoreDataManager.shared.getFilesForDownloadedApps(for: app, getuuidonly: getuuidonly)
 	}
 	

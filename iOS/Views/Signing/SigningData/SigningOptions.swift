@@ -37,6 +37,7 @@ struct SigningOptions: Codable {
 	var removeSupportedDevices: Bool = true
 	var removeURLScheme: Bool = false
 	var forceProMotion: Bool = false
+	var forceGameMode: Bool = false
 	
 	var forceForceFullScreen: Bool = false
 	var forceiTunesFileSharing: Bool = true

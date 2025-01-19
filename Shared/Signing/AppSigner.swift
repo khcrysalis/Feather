@@ -287,6 +287,7 @@ func updateInfoPlist(infoDict: NSMutableDictionary, main: SigningMainDataWrapper
 	if options.signingOptions.removeSupportedDevices { infoDict.removeObject(forKey: "UISupportedDevices") }
 	if options.signingOptions.removeURLScheme { infoDict.removeObject(forKey: "CFBundleURLTypes") }
 	if options.signingOptions.forceProMotion { infoDict.setObject(true, forKey: "CADisableMinimumFrameDurationOnPhone" as NSCopying)}
+	if options.signingOptions.forceGameMode { infoDict.setObject(true, forKey: "GCSupportsGameMode" as NSCopying)}
 	if options.signingOptions.forceForceFullScreen { infoDict.setObject(true, forKey: "UIRequiresFullScreen" as NSCopying) }
 	if options.signingOptions.forceMinimumVersion != "Automatic" { infoDict.setObject(options.signingOptions.forceMinimumVersion, forKey: "MinimumOSVersion" as NSCopying) }
 	if options.signingOptions.forceLightDarkAppearence != "Automatic" { infoDict.setObject(options.signingOptions.forceLightDarkAppearence, forKey: "UIUserInterfaceStyle" as NSCopying)}

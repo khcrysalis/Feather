@@ -6,11 +6,24 @@
 //
 
 import UIKit
+import SwiftUI
 import UniformTypeIdentifiers
 
 extension SigningsViewController: UIDocumentPickerDelegate & UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 	func importAppIconFile() {
 		let actionSheet = UIAlertController(title: "Select App Icon", message: nil, preferredStyle: .actionSheet)
+		
+		let altIconAction = UIAlertAction(title: "Select Alt Icon", style: .default) { _ in
+			
+			let settingsAltIconView = SettingsAltIconView(mainOptions: self.mainOptions, app: self.getFilesForDownloadedApps(app: self.application as! DownloadedApps, getuuidonly: false))
+			let hostingcontroller = UIHostingController(rootView: settingsAltIconView)
+			
+			if let sheet = hostingcontroller.sheetPresentationController {
+				sheet.detents = [.medium()]
+			}
+			
+			self.present(hostingcontroller, animated: true, completion: nil)
+		}
 		
 		let documentPickerAction = UIAlertAction(title: "Choose from Files", style: .default) { [weak self] _ in
 			self?.presentDocumentPicker(fileExtension: [UTType.image])
@@ -22,6 +35,7 @@ extension SigningsViewController: UIDocumentPickerDelegate & UIImagePickerContro
 		
 		let cancelAction = UIAlertAction(title: String.localized("CANCEL"), style: .cancel, handler: nil)
 		
+		actionSheet.addAction(altIconAction)
 		actionSheet.addAction(documentPickerAction)
 		actionSheet.addAction(photoLibraryAction)
 		actionSheet.addAction(cancelAction)
