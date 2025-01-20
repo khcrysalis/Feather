@@ -91,9 +91,9 @@ extension ServerOptionsViewController {
 			cell.selectionStyle = .default
 			
 		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE"):
-			cell.textLabel?.textColor = .tintColor
+			cell.textLabel?.textColor = UIColor.systemGray
 			cell.setAccessoryIcon(with: "signature")
-			cell.selectionStyle = .default
+			cell.isUserInteractionEnabled = false
 		default:
 			break
 		}
@@ -108,21 +108,6 @@ extension ServerOptionsViewController {
 			showChangeDownloadURLAlert()
 		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION"):
 			resetConfigDefault()
-			
-		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE"):
-			generate_root_ca_pair("server")
-			var installer: Installer?
-			do {
-				installer = try Installer(
-					path: nil,
-					metadata: AppData(id: "", version: Int(1), name: "")
-				)
-								
-				UIApplication.shared.open(installer!.pongEndpoint)
-			} catch {
-				installer?.shutdownServer()
-				installer = nil
-			}
 			
 			
 		default:
