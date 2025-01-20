@@ -12,6 +12,7 @@ extern "C" {
 #endif
 bool p12_password_check(NSString *file, NSString *pass);
 void password_check_fix_WHAT_THE_FUCK(NSString *path);
+void generate_root_ca_pair(const char* basename);
 #ifdef __cplusplus
 }
 #endif

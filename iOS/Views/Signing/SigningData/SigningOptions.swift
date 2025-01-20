@@ -7,6 +7,13 @@
 
 import Foundation
 
+//enum Orientation {
+//	.top
+//	.bottom
+//	.left
+//	.right
+//}
+
 struct MainSigningOptions {
 	var name: String?
 	var version: String?

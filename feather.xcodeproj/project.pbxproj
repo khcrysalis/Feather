@@ -102,6 +102,8 @@
 		33BF31672C7C05840087F3D2 /* Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BF31662C7C05840087F3D2 /* Foundation.swift */; };
 		33C0409B2C30B4A100243D90 /* AppDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C0409A2C30B4A100243D90 /* AppDownload.swift */; };
 		33C0409E2C30DD3E00243D90 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = 33C0409D2C30DD3E00243D90 /* AlertKit */; };
+		33C0E6DA2D3E417900AF36E3 /* ESignRepoParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C0E6D92D3E416800AF36E3 /* ESignRepoParser.swift */; };
+		33C0E6E52D3E4C9200AF36E3 /* ESignRepoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C0E6E42D3E4C8A00AF36E3 /* ESignRepoKey.swift */; };
 		33C29F202C7BD73800EF7608 /* UIUserInterfaceStyle+allCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C29F1F2C7BD73800EF7608 /* UIUserInterfaceStyle+allCases.swift */; };
 		33CE81A92C4295F300C05327 /* CertImportingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CE81A82C4295F300C05327 /* CertImportingViewController.swift */; };
 		33DA8AC52D3CA2D7009357AD /* SettingsAltIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA8AC42D3CA2D7009357AD /* SettingsAltIconView.swift */; };
@@ -132,7 +134,7 @@
 		AA280D952C76AB7400CAC838 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA280D942C76AB7400CAC838 /* MobileCoreServices.framework */; };
 		AA280D972C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA280D962C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift */; };
 		AF4D46EF2C432CCA003FA335 /* TweakLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */; };
-		AF9B6B442C6346FF00735748 /* p12_password_check.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF9B6B432C6346E900735748 /* p12_password_check.mm */; };
+		AF9B6B442C6346FF00735748 /* openssl_tools.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF9B6B432C6346E900735748 /* openssl_tools.mm */; };
 		AFAC50922C48DB1300EDEAB6 /* ActivityIndicatorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAC50912C48DB1200EDEAB6 /* ActivityIndicatorViewCell.swift */; };
 		AFAC50952C48DF9300EDEAB6 /* AppSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAC50942C48DF9300EDEAB6 /* AppSigner.swift */; };
 		D0651C112BFEE93C00D40829 /* zsign.mm in Sources */ = {isa = PBXBuildFile; fileRef = D0651C0F2BFEE93C00D40829 /* zsign.mm */; };
@@ -246,6 +248,8 @@
 		33BF316A2C7C46650087F3D2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		33BF316B2C7C466B0087F3D2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		33C0409A2C30B4A100243D90 /* AppDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDownload.swift; sourceTree = "<group>"; };
+		33C0E6D92D3E416800AF36E3 /* ESignRepoParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESignRepoParser.swift; sourceTree = "<group>"; };
+		33C0E6E42D3E4C8A00AF36E3 /* ESignRepoKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESignRepoKey.swift; sourceTree = "<group>"; };
 		33C29F1F2C7BD73800EF7608 /* UIUserInterfaceStyle+allCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIUserInterfaceStyle+allCases.swift"; sourceTree = "<group>"; };
 		33CE81A82C4295F300C05327 /* CertImportingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertImportingViewController.swift; sourceTree = "<group>"; };
 		33DA8AC42D3CA2D7009357AD /* SettingsAltIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAltIconView.swift; sourceTree = "<group>"; };
@@ -279,8 +283,8 @@
 		AA280D942C76AB7400CAC838 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		AA280D962C76ABEF00CAC838 /* UIApplication+returnToHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+returnToHomeScreen.swift"; sourceTree = "<group>"; };
 		AF4D46EE2C432CCA003FA335 /* TweakLibraryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakLibraryViewCell.swift; sourceTree = "<group>"; };
-		AF9B6B432C6346E900735748 /* p12_password_check.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = p12_password_check.mm; sourceTree = "<group>"; };
-		AF9B6B452C634B0300735748 /* p12_password_check.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = p12_password_check.hpp; sourceTree = "<group>"; };
+		AF9B6B432C6346E900735748 /* openssl_tools.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = openssl_tools.mm; sourceTree = "<group>"; };
+		AF9B6B452C634B0300735748 /* openssl_tools.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = openssl_tools.hpp; sourceTree = "<group>"; };
 		AFAC50912C48DB1200EDEAB6 /* ActivityIndicatorViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorViewCell.swift; sourceTree = "<group>"; };
 		AFAC50942C48DF9300EDEAB6 /* AppSigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSigner.swift; sourceTree = "<group>"; };
 		D0651C0E2BFEE93B00D40829 /* feather-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "feather-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -471,7 +475,7 @@
 				339CE2822C58503E00B58502 /* Data */,
 				339CE2882C58535B00B58502 /* Logging */,
 				D0651C052BFEE1F600D40829 /* Server */,
-				339CE2812C584CE700B58502 /* Signing */,
+				339CE2812C584CE700B58502 /* Magic */,
 				33C040992C30B47700243D90 /* Management */,
 				33BDD09C2C76CFEF00AF6169 /* Resources */,
 				33BE87A62C72F5720044D245 /* SWCompression.md */,
@@ -486,18 +490,19 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		339CE2812C584CE700B58502 /* Signing */ = {
+		339CE2812C584CE700B58502 /* Magic */ = {
 			isa = PBXGroup;
 			children = (
 				AFAC50942C48DF9300EDEAB6 /* AppSigner.swift */,
-				33BE877E2C72D2720044D245 /* Decompression */,
-				D0651C0E2BFEE93B00D40829 /* feather-Bridging-Header.h */,
-				AF9B6B452C634B0300735748 /* p12_password_check.hpp */,
-				AF9B6B432C6346E900735748 /* p12_password_check.mm */,
 				33BE877A2C7178180044D245 /* TweakHandler.swift */,
+				D0651C0E2BFEE93B00D40829 /* feather-Bridging-Header.h */,
+				AF9B6B452C634B0300735748 /* openssl_tools.hpp */,
+				AF9B6B432C6346E900735748 /* openssl_tools.mm */,
+				33BE877E2C72D2720044D245 /* decompression */,
 				AFAC50932C48DC8E00EDEAB6 /* zsign */,
+				33C0E6E72D3E4CD100AF36E3 /* esign */,
 			);
-			path = Signing;
+			path = Magic;
 			sourceTree = "<group>";
 		};
 		339CE2822C58503E00B58502 /* Data */ = {
@@ -754,13 +759,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		33BE877E2C72D2720044D245 /* Decompression */ = {
+		33BE877E2C72D2720044D245 /* decompression */ = {
 			isa = PBXGroup;
 			children = (
 				33BE877F2C72D2840044D245 /* AR.swift */,
 				33BDD09A2C76BE3500AF6169 /* Decompression.swift */,
 			);
-			path = Decompression;
+			path = decompression;
 			sourceTree = "<group>";
 		};
 		33BE87902C72DAF90044D245 /* Frameworks */ = {
@@ -791,6 +796,15 @@
 				335F0C2F2C5E175B00A4F0AE /* CertData.swift */,
 			);
 			path = Management;
+			sourceTree = "<group>";
+		};
+		33C0E6E72D3E4CD100AF36E3 /* esign */ = {
+			isa = PBXGroup;
+			children = (
+				33C0E6D92D3E416800AF36E3 /* ESignRepoParser.swift */,
+				33C0E6E42D3E4C8A00AF36E3 /* ESignRepoKey.swift */,
+			);
+			path = esign;
 			sourceTree = "<group>";
 		};
 		33E4D8392C66C5CF006A1C26 /* Private */ = {
@@ -1046,7 +1060,8 @@
 				33E5A5AA2CC88ABF00532930 /* ResetDataClass.swift in Sources */,
 				33E4D8362C6593F4006A1C26 /* CGSize+aspectFit.swift in Sources */,
 				332EAD982D075BBB0045D276 /* UINavigationController+shouldPresentFullscreen.swift in Sources */,
-				AF9B6B442C6346FF00735748 /* p12_password_check.mm in Sources */,
+				AF9B6B442C6346FF00735748 /* openssl_tools.mm in Sources */,
+				33C0E6DA2D3E417900AF36E3 /* ESignRepoParser.swift in Sources */,
 				33BA37A82BF8168900FF530A /* TabbarController.swift in Sources */,
 				AFAC50952C48DF9300EDEAB6 /* AppSigner.swift in Sources */,
 				339FE33E2CCE06A100C297BA /* AddIdentifierViewController.swift in Sources */,
@@ -1063,6 +1078,7 @@
 				33951CFE2C37AFCF00802F78 /* FloatingActionButton.swift in Sources */,
 				33E4D8412C67E5C3006A1C26 /* DonationTableViewCell.swift in Sources */,
 				33E5A5992CC8586E00532930 /* LanguageViewController.swift in Sources */,
+				33C0E6E52D3E4C9200AF36E3 /* ESignRepoKey.swift in Sources */,
 				33DA8AC52D3CA2D7009357AD /* SettingsAltIconView.swift in Sources */,
 				33EEDAA42C5D9358009089DC /* CoreDataManager+DownloadedApps.swift in Sources */,
 				339FE3442CCE343C00C297BA /* SwitchViewCell.swift in Sources */,
@@ -1255,7 +1271,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DLSL362JHJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Feather (Debug)";
@@ -1274,7 +1290,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Shared/Signing",
+					"$(PROJECT_DIR)/Shared/Magic",
 					"$(PROJECT_DIR)/Shared/Resources",
 				);
 				MARKETING_VERSION = 1.1.3;
@@ -1283,7 +1299,7 @@
 					"-w",
 					"-Wno-everything",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.feather22;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1292,7 +1308,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				"SWIFT_ACTIVE_COMPILATION_CONDITIONS[arch=*]" = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Shared/Signing/feather-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Shared/Magic/feather-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1327,7 +1343,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Shared/Signing",
+					"$(PROJECT_DIR)/Shared/Magic",
 					"$(PROJECT_DIR)/Shared/Resources",
 				);
 				MARKETING_VERSION = 1.1.3;
@@ -1344,7 +1360,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Shared/Signing/feather-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Shared/Magic/feather-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

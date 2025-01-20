@@ -10,6 +10,16 @@
 import Foundation
 
 extension Installer {
+	
+	var pongEndpoint: URL {
+		var comps = URLComponents()
+		comps.scheme = Preferences.userSelectedServer ? "http" : "https"
+		comps.host = Self.sni
+		comps.path = "/ping"
+		comps.port = port
+		return comps.url!
+	}
+	
 	var plistEndpoint: URL {
 		var comps = URLComponents()
 		comps.scheme = Preferences.userSelectedServer ? "http" : "https"

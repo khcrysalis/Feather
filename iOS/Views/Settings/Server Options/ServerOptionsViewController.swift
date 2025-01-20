@@ -7,11 +7,10 @@
 //
 
 import UIKit
+import SwiftUI
 
 class ServerOptionsViewController: UITableViewController {
-	
-	var isDownloadingCertifcate = false
-	
+		
 	var tableData = [
 		[
 			"Use Server",
@@ -92,18 +91,9 @@ extension ServerOptionsViewController {
 			cell.selectionStyle = .default
 			
 		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE"):
-			if !isDownloadingCertifcate {
-				cell.textLabel?.textColor = .tintColor
-				cell.setAccessoryIcon(with: "signature")
-				cell.selectionStyle = .default
-			} else {
-				let cell = ActivityIndicatorViewCell()
-				cell.activityIndicator.startAnimating()
-				cell.selectionStyle = .none
-				cell.textLabel?.text = String.localized("SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE_UPDATING")
-				cell.textLabel?.textColor = .secondaryLabel
-				return cell
-			}
+			cell.textLabel?.textColor = .tintColor
+			cell.setAccessoryIcon(with: "signature")
+			cell.selectionStyle = .default
 		default:
 			break
 		}
@@ -120,32 +110,21 @@ extension ServerOptionsViewController {
 			resetConfigDefault()
 			
 		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE"):
-			if !isDownloadingCertifcate {
-				isDownloadingCertifcate = true
-				tableView.reloadRows(at: [indexPath], with: .automatic)
-				
-				downloadCertificatesOnline(from: [
-					"https://github.com/khcrysalis/localhost.direct-retriever/raw/main/localhost.direct.pem",
-					"https://github.com/khcrysalis/localhost.direct-retriever/raw/main/localhost.direct.crt"
-				]
-				) { result in
-					switch result {
-					case .success(_):
-						self.isDownloadingCertifcate = false
-						DispatchQueue.main.async {
-							Debug.shared.log(message: "File(s) successfully downloaded!", type: .success)
-							tableView.reloadRows(at: [indexPath], with: .automatic)
-						}
-					case .failure(let error):
-						self.isDownloadingCertifcate = false
-						DispatchQueue.main.async {
-							Debug.shared.log(message: "\(error)", type: .critical)
-							tableView.reloadRows(at: [indexPath], with: .automatic)
-						}
-					}
-				}
-				
+			generate_root_ca_pair("server")
+			var installer: Installer?
+			do {
+				installer = try Installer(
+					path: nil,
+					metadata: AppData(id: "", version: Int(1), name: "")
+				)
+								
+				UIApplication.shared.open(installer!.pongEndpoint)
+			} catch {
+				installer?.shutdownServer()
+				installer = nil
 			}
+			
+			
 		default:
 			break
 		}

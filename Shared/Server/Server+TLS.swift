@@ -48,23 +48,14 @@ func getLocalIPAddress() -> String? {
 
 
 extension Installer {
-	static let sni = Preferences.userSelectedServer ? (getLocalIPAddress() ?? "127.0.0.1") : "app.localhost.direct"
+	static let sni = Preferences.userSelectedServer ? (getLocalIPAddress() ?? "0.0.0.0") : "0.0.0.0"
 	
-	static let bundleKeyURL = Bundle.main.url(forResource: "localhost.direct", withExtension: "pem")
-	static let bundleCrtURL = Bundle.main.url(forResource: "localhost.direct", withExtension: "crt")
-	
-	static let documentsKeyURL = getDocumentsDirectory().appendingPathComponent("localhost.direct.pem")
-	static let documentsCrtURL = getDocumentsDirectory().appendingPathComponent("localhost.direct.crt")
+	static let documentsKeyURL = getDocumentsDirectory().appendingPathComponent("server.pem")
+	static let documentsCrtURL = getDocumentsDirectory().appendingPathComponent("server.crt")
 
 	static func setupTLS() throws -> TLSConfiguration {
-		let keyURL = FileManager.default.fileExists(atPath: documentsKeyURL.path) ? documentsKeyURL : bundleKeyURL
-		let crtURL = FileManager.default.fileExists(atPath: documentsCrtURL.path) ? documentsCrtURL : bundleCrtURL
-		
-		guard let crtURL, let keyURL else {
-			throw NSError(domain: "Installer", code: 0, userInfo: [
-				NSLocalizedDescriptionKey: "Failed to load SSL certificates",
-			])
-		}
+		let keyURL = documentsKeyURL
+		let crtURL = documentsCrtURL
 		
 		return try TLSConfiguration.makeServerConfiguration(
 			certificateChain: NIOSSLCertificate

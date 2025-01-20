@@ -73,6 +73,8 @@ struct RepoViewController: View {
 					}) {
 						Text(String.localized("SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO"))
 					}
+				} footer: {
+					Text("Supports importing from KravaSign and ESign")
 				}
 			}
 			.navigationTitle(String.localized("SOURCES_VIEW_ADD_SOURCES_ALERT_TITLE"))
@@ -166,15 +168,28 @@ extension RepoViewController {
 		let isBase64 = isValidBase64String(text)
 		let repoLinks: [String]
 		Debug.shared.log(message: "Trying to add repositories...")
-		if isBase64 {
+		
+		if text.hasPrefix("source[") {
+			let decryptor = EsignDecryptor(input: text)
+			
+			guard let decodedString = decryptor.decrypt(key: esign_key, keyLength: esign_key_len) else {
+				Debug.shared.log(message: "Failed to decode esign code", type: .error)
+				return
+			}
+			
+			repoLinks = decodedString
+		} else if isBase64 {
 			guard let decodedString = decodeBase64String(text) else {
 				Debug.shared.log(message: "Failed to decode base64 string", type: .error)
 				return
 			}
+			print(decodedString)
 			repoLinks = decodedString.components(separatedBy: "[M$]")
 		} else {
 			repoLinks = text.components(separatedBy: "\n")
 		}
+		
+		print(repoLinks)
 		
 		DispatchQueue(label: "import").async {
 			var success = 0
