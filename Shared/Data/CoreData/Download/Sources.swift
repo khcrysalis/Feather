@@ -52,6 +52,18 @@ class SourceGET {
 		}
 	}
 	
+	func parseCert(data: Data) -> Result<ServerPack, Error> {
+		do {
+			let decoder = JSONDecoder()
+			decoder.dateDecodingStrategy = .iso8601
+			let source = try decoder.decode(ServerPack.self, from: data)
+			return .success(source)
+		} catch {
+			Debug.shared.log(message: "Failed to parse JSON: \(error)", type: .error)
+			return .failure(error)
+		}
+	}
+	
 	func parsec(data: Data) -> Result<[CreditsPerson], Error> {
 		do {
 			let decoder = JSONDecoder()

@@ -10,6 +10,8 @@ import UIKit
 import SwiftUI
 
 class ServerOptionsViewController: UITableViewController {
+	
+	var isDownloadingCertifcate = false
 		
 	var tableData = [
 		[
@@ -91,9 +93,18 @@ extension ServerOptionsViewController {
 			cell.selectionStyle = .default
 			
 		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE"):
-			cell.textLabel?.textColor = UIColor.systemGray
-			cell.setAccessoryIcon(with: "signature")
-			cell.isUserInteractionEnabled = false
+			if !isDownloadingCertifcate {
+				cell.textLabel?.textColor = .tintColor
+				cell.setAccessoryIcon(with: "signature")
+				cell.selectionStyle = .default
+			} else {
+				let cell = ActivityIndicatorViewCell()
+				cell.activityIndicator.startAnimating()
+				cell.selectionStyle = .none
+				cell.textLabel?.text = String.localized("SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE_UPDATING")
+				cell.textLabel?.textColor = .secondaryLabel
+				return cell
+			}
 		default:
 			break
 		}
@@ -108,8 +119,14 @@ extension ServerOptionsViewController {
 			showChangeDownloadURLAlert()
 		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION"):
 			resetConfigDefault()
-			
-			
+		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE"):
+			if !isDownloadingCertifcate {
+				isDownloadingCertifcate = true
+				defer {
+					isDownloadingCertifcate = false
+				}
+				getCertificates()
+			}
 		default:
 			break
 		}

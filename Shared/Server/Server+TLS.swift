@@ -48,7 +48,15 @@ func getLocalIPAddress() -> String? {
 
 
 extension Installer {
-	static let sni = Preferences.userSelectedServer ? (getLocalIPAddress() ?? "0.0.0.0") : "0.0.0.0"
+	static let commonName = getDocumentsDirectory().appendingPathComponent("commonName.txt")
+	
+	static let sni: String = {
+		if Preferences.userSelectedServer {
+			return getLocalIPAddress() ?? "0.0.0.0"
+		} else {
+			return readCommonName() ?? "0.0.0.0"
+		}
+	}()
 	
 	static let documentsKeyURL = getDocumentsDirectory().appendingPathComponent("server.pem")
 	static let documentsCrtURL = getDocumentsDirectory().appendingPathComponent("server.crt")
@@ -62,5 +70,16 @@ extension Installer {
 				.fromPEMFile(crtURL.path)
 				.map { NIOSSLCertificateSource.certificate($0) },
             privateKey: .privateKey(try NIOSSLPrivateKey(file: keyURL.path, format: .pem)))
+	}
+}
+
+extension Installer {
+	static func readCommonName() -> String? {
+		do {
+			return try String(contentsOf: commonName, encoding: .utf8).trimmingCharacters(in: .whitespacesAndNewlines)
+		} catch {
+			Debug.shared.log(message: "Error reading commonName file: \(error.localizedDescription)")
+			return nil
+		}
 	}
 }

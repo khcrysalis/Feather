@@ -23,6 +23,9 @@ enum Preferences {
 	// Default repo is from the repository
 	static var defaultRepos: Bool
 	
+	@Storage(key: "Feather.gotSSLCerts", defaultValue: false)
+	static var gotSSLCerts: Bool
+	
 	@Storage(key: "Feather.BDefaultRepos", defaultValue: false)
 	// Default beta repo is from the repository
 	static var bDefaultRepos: Bool

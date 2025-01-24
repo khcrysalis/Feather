@@ -29,11 +29,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
             userDefaults.signingOptions = UserDefaults.defaultSigningData
         }
 
+		createSourcesDirectory()
         addDefaultRepos()
+		giveUserDefaultSSLCerts()
         imagePipline()
         setupLogFile()
         cleanTmp()
-        createSourcesDirectory()
 
         window = UIWindow(frame: UIScreen.main.bounds)
 
@@ -275,6 +276,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
             }
         }
     }
+	
+	fileprivate func giveUserDefaultSSLCerts() {
+		if !Preferences.gotSSLCerts {
+			getCertificates()
+			Preferences.gotSSLCerts = true
+		}
+	}
 
     fileprivate static func generateRandomString(length: Int = 8) -> String {
         let characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
