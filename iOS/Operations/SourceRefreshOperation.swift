@@ -43,9 +43,6 @@ import Foundation
                         switch result {
                         case let .success((data, _)):
                             Debug.shared.log(message: "Received source data from URL: \(url)", type: .info)
-                            if let sourceString = String(data: data, encoding: .utf8) {
-                                Debug.shared.log(message: "Raw source data: \(sourceString)", type: .info)
-                            }
                             if case let .success(sourceData) = SourceGET().parse(data: data) {
                                 allSourceData.append((data: sourceData, url: url))
                             }

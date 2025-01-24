@@ -1274,7 +1274,7 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Feather (Debug)";
+				INFOPLIST_KEY_CFBundleDisplayName = Feather;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright (c) 2024 Samara M (khcrysalis)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1327,7 +1327,7 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Feather (Debug)";
+				INFOPLIST_KEY_CFBundleDisplayName = Feather;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright (c) 2024 Samara M (khcrysalis)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
