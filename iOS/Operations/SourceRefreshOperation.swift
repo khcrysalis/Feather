@@ -117,10 +117,22 @@ import Foundation
             }
         }
     }
+	
+	private func cleanVersion(_ version: String) -> String {
+		// find first occurrence of version pattern X.Y.Z
+		let pattern = "\\d+(\\.\\d+)+"
+		if let range = version.range(of: pattern, options: .regularExpression) {
+			return String(version[range])
+		}
+		return version
+	}
 
     private func compareVersions(_ v1: String, _ v2: String) -> Int {
-        let v1Components = v1.split(separator: ".").compactMap { Int($0) }
-        let v2Components = v2.split(separator: ".").compactMap { Int($0) }
+		let cleanV1 = cleanVersion(v1)
+		let cleanV2 = cleanVersion(v2)
+		
+		let v1Components = cleanV1.split(separator: ".").compactMap { Int($0) }
+		let v2Components = cleanV2.split(separator: ".").compactMap { Int($0) }
 
         for i in 0 ..< max(v1Components.count, v2Components.count) {
             let v1Component = i < v1Components.count ? v1Components[i] : 0
