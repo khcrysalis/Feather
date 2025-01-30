@@ -235,7 +235,7 @@
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION_DESCRIPTION" = "Включает возможности ProMotion в приложении, однако на более низких версиях 15.x этого может быть недостаточно.";
 
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_GAME_MODE" = "Force Game Mode";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION_DESCRIPTION" = "Enables Game Mode within the app, minimizing background activity and prioritized performance for the app.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_GAME_MODE_DESCRIPTION" = "Enables Game Mode within the app, minimizing background activity and prioritized performance for the app.";
 
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "Принудить полноэкранный режим";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN_DESCRIPTION" = "Принудительно включает только полноэкранные возможности в приложениях для iPad, запрещая совместное использование экрана с другими приложениями. На внешнем экране окно приложения с этой настройкой сохраняет свой размер холста.";

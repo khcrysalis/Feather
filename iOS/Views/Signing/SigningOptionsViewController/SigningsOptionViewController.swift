@@ -43,7 +43,7 @@ func toggleOptions(signingDataWrapper: SigningDataWrapper) -> [TogglesOption] {
 		),
 		TogglesOption(
 			title: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_GAME_MODE"),
-			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION_DESCRIPTION"),
+			footer: String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_GAME_MODE_DESCRIPTION"),
 			binding: signingDataWrapper.signingOptions.forceGameMode
 		),
 		TogglesOption(
@@ -88,6 +88,20 @@ class SigningsOptionViewController: UITableViewController {
 		self.appsViewController = appsViewController
 		self.toggleOptions = feather.toggleOptions(signingDataWrapper: signingDataWrapper)
 		super.init(style: .insetGrouped)
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(save), name: Notification.Name("saveOptions"), object: nil)
+	}
+	
+	deinit {
+		NotificationCenter.default.removeObserver(self, name: Notification.Name("saveOptions"), object: nil)
+	}
+	
+	@objc func save() {
+		self.saveOptions()
+	}
+	
+	func saveOptions() {
+		UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
 	}
 	
 	required init?(coder: NSCoder) {
@@ -175,7 +189,7 @@ class SigningsOptionViewController: UITableViewController {
 			break
 		}
 		
-		UserDefaults.standard.signingOptions = signingDataWrapper.signingOptions
+		saveOptions()
 	}
 }
 

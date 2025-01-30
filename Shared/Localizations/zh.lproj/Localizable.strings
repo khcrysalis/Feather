@@ -232,7 +232,7 @@
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION_DESCRIPTION" = "在应用程序中启用 ProMotion 功能，但在 15.x 的较低版本上可能还不够。";
 
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_GAME_MODE" = "Force Game Mode";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION_DESCRIPTION" = "Enables Game Mode within the app, minimizing background activity and prioritized performance for the app.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_GAME_MODE_DESCRIPTION" = "Enables Game Mode within the app, minimizing background activity and prioritized performance for the app.";
 
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "强制全屏";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN_DESCRIPTION" = "仅在 iPad 应用程序中启用全屏功能，不允许与其他应用程序共享屏幕。在外部屏幕上，启用此设置的应用程序窗口将保持画布大小。";

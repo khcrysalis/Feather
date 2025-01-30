@@ -235,7 +235,7 @@
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION_DESCRIPTION" = "Enables ProMotion capabilities within the app, however on lower versions of 15.x this may not be enough.";
 
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_GAME_MODE" = "Force Game Mode";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION_DESCRIPTION" = "Enables Game Mode within the app, minimizing background activity and prioritized performance for the app.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_GAME_MODE_DESCRIPTION" = "Enables Game Mode within the app, minimizing background activity and prioritized performance for the app.";
 
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "Force Fullscreen";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN_DESCRIPTION" = "Forces only fullscreen capabilities within iPad apps, disallowing sharing the screen with other apps. On an external screen, the window for an app with this setting maintains its canvas size.";

@@ -99,6 +99,7 @@ class IdentifiersViewController: UITableViewController {
 			let key = signingDataWrapper.signingOptions.displayNameConfig.keys.sorted()[index]
 			signingDataWrapper.signingOptions.displayNameConfig.removeValue(forKey: key)
 		}
+		NotificationCenter.default.post(name: Notification.Name("saveOptions"), object: nil)
 		tableView.reloadData()
 	}
 	
@@ -113,6 +114,7 @@ class IdentifiersViewController: UITableViewController {
 			case .none:
 				break
 			}
+			NotificationCenter.default.post(name: Notification.Name("saveOptions"), object: nil)
 			self?.tableView.reloadData()
 		}
 		navigationController?.pushViewController(addVC, animated: true)
