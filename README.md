@@ -72,7 +72,8 @@ Using the makefile will automatically create an unsigned ipa inside the packages
 
 ## Acknowledgements
 
-- [localhost.direct](https://github.com/Upinel/localhost.direct) - localhost with public CA signed SSL certificate
+- ~~[localhost.direct](https://github.com/Upinel/localhost.direct) - localhost with public CA signed SSL certificate~~
+- [*.backloop.dev](https://backloop.dev/) - localhost with public CA signed SSL certificate
 - [Vapor](https://github.com/vapor/vapor) - A server-side Swift HTTP web framework.
 - [Zsign](https://github.com/zhlynn/zsign) - Allowing to sign on-device, reimplimented to work on other platforms such as iOS.
 - [Nuke](https://github.com/kean/Nuke) - Image caching.
