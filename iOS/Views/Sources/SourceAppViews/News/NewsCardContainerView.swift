@@ -40,8 +40,6 @@ extension View {
 						Label("Open URL", systemImage: "arrow.up.right")
 					}
 				}
-			} preview: {
-				CardContextMenuView(news: news)
 			}
 		} else {
 			return self
