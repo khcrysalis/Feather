@@ -200,6 +200,23 @@ class AppTableViewCell: UITableViewCell {
 
 		let appVersion = (app.versions?.first?.version ?? app.version) ?? "1.0"
 		var displayText = appVersion
+		
+		let appDate = (app.versions?.first?.date ?? app.versionDate) ?? ""
+		if appDate != "" {
+			let dateFormatter = DateFormatter()
+			dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+			
+			if let date = dateFormatter.date(from: appDate) {
+				let formattedDate = date.formatted(date: .numeric, time: .omitted)
+				displayText += " • " + formattedDate
+			} else {
+				dateFormatter.dateFormat = "yyyy-MM-dd"
+				if let date = dateFormatter.date(from: appDate) {
+					let formattedDate = date.formatted(date: .numeric, time: .omitted)
+					displayText += " • " + formattedDate
+				}
+			}
+		}
 		var descText = ""
 		
 		if Preferences.appDescriptionAppearence == 0 {

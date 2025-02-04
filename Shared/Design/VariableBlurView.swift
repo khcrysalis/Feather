@@ -57,6 +57,7 @@
 //  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import UIKit
+import SwiftUI
 
 class UIVariableBlurView: UIView {
 	// MARK: - Private Properties
@@ -126,6 +127,20 @@ class UIVariableBlurView: UIView {
 		
 		layer.filters = [variableBlur as! NSObject]
 	}
+}
+
+/// A variable blur view.
+struct VariableBlurView: UIViewRepresentable {
+	func makeUIView(context: Context) -> UIVariableBlurView {
+		var view = UIVariableBlurView()
+		
+		let gradientMask = VariableBlurViewConstants.defaultGradientMask
+		view = UIVariableBlurView(frame: .zero)
+		view.gradientMask = gradientMask
+		return view
+	}
+	
+	func updateUIView(_ uiView: UIVariableBlurView, context: Context) {}
 }
 
 public enum VariableBlurViewConstants {

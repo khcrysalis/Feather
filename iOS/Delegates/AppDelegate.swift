@@ -93,7 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
             try BGTaskScheduler.shared.submit(request)
             Debug.shared.log(message: "Background refresh scheduled successfully", type: .info)
         } catch {
-            Debug.shared.log(message: "Could not schedule app refresh: \(error.localizedDescription)", type: .error)
+            Debug.shared.log(message: "Could not schedule app refresh: \(error.localizedDescription)", type: .info)
         }
     }
 

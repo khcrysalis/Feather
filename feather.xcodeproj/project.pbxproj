@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33089A2A2D51F117006E1068 /* NewsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33089A292D51F117006E1068 /* NewsCardView.swift */; };
+		33089A2C2D51F2CE006E1068 /* NewsCardsScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33089A2B2D51F2CE006E1068 /* NewsCardsScrollView.swift */; };
 		331616912C786B9B00894427 /* TransferPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331616902C786B9B00894427 /* TransferPreview.swift */; };
 		331616952C78D55100894427 /* Asspp.md in Resources */ = {isa = PBXBuildFile; fileRef = 331616942C78D55100894427 /* Asspp.md */; };
 		33163FF02C3D224C0038E1EC /* DownloadTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33163FEF2C3D224C0038E1EC /* DownloadTaskManager.swift */; };
@@ -34,6 +36,7 @@
 		335F0C2E2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335F0C2D2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift */; };
 		335F0C302C5E175B00A4F0AE /* CertData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335F0C2F2C5E175B00A4F0AE /* CertData.swift */; };
 		336EEE812C32367C0011188D /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 336EEE802C32367C0011188D /* ZIPFoundation */; };
+		3386515B2D52343500A85670 /* CardContextMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3386515A2D52343500A85670 /* CardContextMenuView.swift */; };
 		338FFCD92C682469006C3BE0 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338FFCD82C682469006C3BE0 /* PopupViewController.swift */; };
 		338FFCDB2C6870E2006C3BE0 /* LibraryViewController+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338FFCDA2C6870E2006C3BE0 /* LibraryViewController+Import.swift */; };
 		338FFCE42C695118006C3BE0 /* IconsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338FFCE32C695118006C3BE0 /* IconsListViewController.swift */; };
@@ -148,6 +151,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		33089A292D51F117006E1068 /* NewsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCardView.swift; sourceTree = "<group>"; };
+		33089A2B2D51F2CE006E1068 /* NewsCardsScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCardsScrollView.swift; sourceTree = "<group>"; };
 		331616902C786B9B00894427 /* TransferPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferPreview.swift; sourceTree = "<group>"; };
 		331616942C78D55100894427 /* Asspp.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Asspp.md; sourceTree = "<group>"; };
 		33163FE82C3D09980038E1EC /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -175,6 +180,7 @@
 		335F0C2B2C5DC3AE00A4F0AE /* CoreDataManager+SignedApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+SignedApps.swift"; sourceTree = "<group>"; };
 		335F0C2D2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Certificates.swift"; sourceTree = "<group>"; };
 		335F0C2F2C5E175B00A4F0AE /* CertData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertData.swift; sourceTree = "<group>"; };
+		3386515A2D52343500A85670 /* CardContextMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContextMenuView.swift; sourceTree = "<group>"; };
 		338B0F0C2D0C0E8200C5EA11 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		338FFCD82C682469006C3BE0 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		338FFCDA2C6870E2006C3BE0 /* LibraryViewController+Import.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LibraryViewController+Import.swift"; sourceTree = "<group>"; };
@@ -328,9 +334,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33089A282D51F0F3006E1068 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				3386515A2D52343500A85670 /* CardContextMenuView.swift */,
+				33089A292D51F117006E1068 /* NewsCardView.swift */,
+				33089A2B2D51F2CE006E1068 /* NewsCardsScrollView.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
 		3322FF4A2BFEDAE8001768D8 /* SourceAppViews */ = {
 			isa = PBXGroup;
 			children = (
+				33089A282D51F0F3006E1068 /* News */,
 				3322FF482BFEC97F001768D8 /* SourceAppViewController.swift */,
 				3322FF4B2BFEDB01001768D8 /* SourceAppTableViewCell.swift */,
 				332476D72C3E4CF7008C8EF0 /* SourceAppActions.swift */,
@@ -1037,6 +1054,7 @@
 				3322FF4C2BFEDB01001768D8 /* SourceAppTableViewCell.swift in Sources */,
 				339CE2872C5850BA00B58502 /* CoreDataManager.swift in Sources */,
 				33BDD09B2C76BE3500AF6169 /* Decompression.swift in Sources */,
+				33089A2A2D51F117006E1068 /* NewsCardView.swift in Sources */,
 				332476ED2C3E92BC008C8EF0 /* DisplayCollectionTableViewCell.swift in Sources */,
 				339BDAE02BF953EE007009D9 /* BasicLayoutAnchorsHolding.swift in Sources */,
 				338FFCE42C695118006C3BE0 /* IconsListViewController.swift in Sources */,
@@ -1044,6 +1062,7 @@
 				3A39AC782D030064002F54B0 /* BundleIdChecker.swift in Sources */,
 				3A39AC792D030064002F54B0 /* iTunesLookup.swift in Sources */,
 				D0651C112BFEE93C00D40829 /* zsign.mm in Sources */,
+				33089A2C2D51F2CE006E1068 /* NewsCardsScrollView.swift in Sources */,
 				332476DA2C3E4D35008C8EF0 /* SourceAppDownload.swift in Sources */,
 				33BE87632C6F17870044D245 /* SigningsInputViewController.swift in Sources */,
 				3322FF492BFEC97F001768D8 /* SourceAppViewController.swift in Sources */,
@@ -1066,6 +1085,7 @@
 				AFAC50952C48DF9300EDEAB6 /* AppSigner.swift in Sources */,
 				339FE33E2CCE06A100C297BA /* AddIdentifierViewController.swift in Sources */,
 				33BA37AB2BF8196000FF530A /* Preferences.swift in Sources */,
+				3386515B2D52343500A85670 /* CardContextMenuView.swift in Sources */,
 				D0651C392BFEEA4B00D40829 /* signing.cpp in Sources */,
 				33C0409B2C30B4A100243D90 /* AppDownload.swift in Sources */,
 				33BA37BA2BF9426100FF530A /* Sources.swift in Sources */,

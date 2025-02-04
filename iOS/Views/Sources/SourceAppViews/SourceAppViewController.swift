@@ -10,6 +10,7 @@ import UIKit
 import Nuke
 import AlertKit
 import CoreData
+import SwiftUI
 
 enum SortOption: String, Codable {
 	case `default`
@@ -18,6 +19,7 @@ enum SortOption: String, Codable {
 }
 
 class SourceAppViewController: UITableViewController {
+	var newsData: [NewsData] = []
 	var apps: [StoreAppsData] = []
 	var oApps: [StoreAppsData] = []
 	var filteredApps: [StoreAppsData] = []
@@ -25,6 +27,7 @@ class SourceAppViewController: UITableViewController {
 	var name: String? { didSet { self.title = name } }
 
 	var uri: [URL]!
+	
 	
 	var highlightAppName: String?
 	var highlightBundleID: String?
@@ -62,6 +65,17 @@ class SourceAppViewController: UITableViewController {
 		self.tableView.register(AppTableViewCell.self, forCellReuseIdentifier: "AppTableViewCell")
 		self.navigationItem.titleView = activityIndicator
 		self.activityIndicator.startAnimating()
+	}
+	
+	private func setupHeader() {
+		if uri.count == 1 && newsData != [] {
+			let headerView = UIHostingController(rootView: NewsCardsScrollView(newsData: newsData))
+			headerView.view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 170)
+			tableView.tableHeaderView = headerView.view
+			
+			addChild(headerView)
+			headerView.didMove(toParent: self)
+		}
 	}
 	
 	private func updateFilterMenu() {
@@ -166,6 +180,9 @@ class SourceAppViewController: UITableViewController {
 		guard let urls = uri else { return }
 		let dispatchGroup = DispatchGroup()
 		var allApps: [StoreAppsData] = []
+		var newsData: [NewsData] = []
+		
+		var tintColor = ""
 		
 		for uri in urls {
 			dispatchGroup.enter()
@@ -175,6 +192,8 @@ class SourceAppViewController: UITableViewController {
 				case .success(let (data, _)):
 					if let parseResult = self?.sourceGET.parse(data: data), case .success(let sourceData) = parseResult {
 						allApps.append(contentsOf: sourceData.apps)
+						newsData.append(contentsOf: sourceData.news ?? [])
+						tintColor = sourceData.tintColor ?? ""
 					}
 				case .failure(let error):
 					Debug.shared.log(message: "Error fetching data from \(uri): \(error.localizedDescription)")
@@ -187,7 +206,14 @@ class SourceAppViewController: UITableViewController {
 		dispatchGroup.notify(queue: .main) { [weak self] in
 			self?.apps = allApps
 			self?.oApps = allApps
+			self?.newsData = newsData
 			
+			self?.setupHeader()
+			
+			if tintColor != "" {
+				self?.view.tintColor = UIColor(hex: tintColor)
+			}
+						
 			if let fil = self?.shouldFilter() {
 				self?.apps = [fil].compactMap { $0 }
 			} else {
@@ -260,6 +286,41 @@ extension SourceAppViewController {
 		cell.getButton.longPressGestureRecognizer = longPressGesture
 		return cell
 	}
+	
+	override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+		let app = isFiltering ? filteredApps[indexPath.row] : apps[indexPath.row]
+		
+		let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+			let versionActions = app.versions?.map { version in
+				UIAction(
+					title: "\(version.version)",
+					image: UIImage(systemName: "doc.on.clipboard")
+				) { _ in
+					UIPasteboard.general.string = version.downloadURL.absoluteString
+				}
+			} ?? []
+			
+			let versionsMenu = UIMenu(
+				title: "Other Download Links",
+				image: UIImage(systemName: "list.bullet"),
+				children: versionActions
+			)
+			
+			let latestAction = UIAction(
+				title: "Copy Latest Download Link",
+				image: UIImage(systemName: "doc.on.clipboard")
+			) { _ in
+				UIPasteboard.general.string =
+				app.downloadURL?.absoluteString
+				?? app.versions?[0].downloadURL.absoluteString
+			}
+			
+			return UIMenu(title: "", children: [latestAction, versionsMenu])
+		}
+		
+		return configuration
+	}
+
 	
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		if isFiltering || apps.isEmpty || (highlightAppName != nil) {

@@ -12,9 +12,11 @@ import Foundation
 public struct SourcesData: Codable, Hashable {
 	public var name: String?
 	public var identifier: String
+	public var tintColor: String?
 	
 	public var sourceURL: URL?
 	public var iconURL: URL?
+	public var news: [NewsData]?
 	public var apps: [StoreAppsData]
 	
 	public static func == (lhs: SourcesData, rhs: SourcesData) -> Bool {
@@ -26,6 +28,16 @@ public struct SourcesData: Codable, Hashable {
 	}
 }
 
+public struct NewsData: Codable, Hashable {
+	public let title: String
+	public let identifier: String
+	public let caption: String?
+	public let tintColor: String?
+	public let imageURL: String?
+	public let url: URL?
+	public let date: String
+	public let appID: String?
+}
 
 public struct StoreAppsData: Codable {
 	public var name: String

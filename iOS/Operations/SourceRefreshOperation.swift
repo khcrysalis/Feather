@@ -47,7 +47,7 @@ import Foundation
                                 allSourceData.append((data: sourceData, url: url))
                             }
                         case let .failure(error):
-                            Debug.shared.log(message: "Source refresh error: \(error)", type: .error)
+							Debug.shared.log(message: "Source refresh error: \(error)", type: .info)
                         }
                         dispatchGroup.leave()
                     }
@@ -155,7 +155,7 @@ import Foundation
             Debug.shared.log(message: "Source URL: \(firstApp.originalSourceURL?.absoluteString ?? "missing")", type: .info)
             
             guard let bundleId = firstApp.bundleidentifier else {
-                Debug.shared.log(message: "Debug mode: Missing bundle identifier", type: .error)
+                Debug.shared.log(message: "Debug mode: Missing bundle identifier", type: .info)
                 completion(nil)
                 return
             }
@@ -206,7 +206,7 @@ import Foundation
                 Debug.shared.log(message: "Debug mode: Successfully created mock source", type: .info)
                 completion(mockSource)
             } else {
-                Debug.shared.log(message: "Debug mode: Failed to create mock source", type: .error)
+                Debug.shared.log(message: "Debug mode: Failed to create mock source", type: .info)
                 completion(nil)
             }
         } else {
