@@ -29,7 +29,7 @@ public struct SourcesData: Codable, Hashable {
 }
 
 public struct NewsData: Codable, Hashable {
-	public let title: String
+	public let title: String?
 	public let identifier: String
 	public let caption: String?
 	public let tintColor: String?

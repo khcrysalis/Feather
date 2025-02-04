@@ -8,19 +8,26 @@
 import SwiftUI
 
 struct NewsCardView: View {
-	let news: NewsData
+	var news: NewsData
 	
 	var body: some View {
 		ZStack(alignment: .bottomLeading) {
 			if (news.imageURL != nil) {
-				AsyncImage(url: URL(string: news.imageURL!)) { image in
+				AsyncImage(url: URL(string: news.imageURL ?? "")) { image in
 					Color.clear.overlay(
 						image
 							.resizable()
 							.aspectRatio(contentMode: .fill)
 					)
+					.transition(.opacity.animation(.easeInOut(duration: 0.3)))
 				} placeholder: {
-					Color.black.opacity(0.2)
+					Color.black
+						.opacity(0.2)
+						.overlay(
+							ProgressView()
+								.progressViewStyle(.circular)
+								.tint(.white)
+						)
 				}
 				
 				LinearGradient(
@@ -37,11 +44,12 @@ struct NewsCardView: View {
 			
 			VStack {
 				Spacer()
-				Text(news.title)
+				Text(news.title ?? "")
 					.font(.headline)
 					.fontWeight(.bold)
 					.foregroundColor(.white)
 					.lineLimit(2)
+					.multilineTextAlignment(.leading)
 					.padding()
 			}
 		}
@@ -54,32 +62,5 @@ struct NewsCardView: View {
 			RoundedRectangle(cornerRadius: 12, style: .continuous)
 				.stroke(Color.white.opacity(0.15), lineWidth: 2)
 		)
-		.compactContentMenuPreview(news: news)
-	}
-}
-
-extension View {
-	func compactContentMenuPreview(news: NewsData) -> some View {
-		if #available(iOS 16.0, *) {
-			return self.contextMenu {
-				if (news.url != nil) {
-					Button(action: {
-						UIApplication.shared.open(news.url!)
-					}) {
-						Label("Open URL", systemImage: "arrow.up.right")
-					}
-				} else {
-					Button(action: {
-						UIApplication.shared.open(URL(string: "https://github.com/khcrysalis/feather")!)
-					}) {
-						Label("Give us a star!", systemImage: "star")
-					}
-				}
-			} preview: {
-				CardContextMenuView(news: news)
-			}
-		} else {
-			return self
-		}
 	}
 }

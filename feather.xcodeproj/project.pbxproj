@@ -37,6 +37,8 @@
 		335F0C302C5E175B00A4F0AE /* CertData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335F0C2F2C5E175B00A4F0AE /* CertData.swift */; };
 		336EEE812C32367C0011188D /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 336EEE802C32367C0011188D /* ZIPFoundation */; };
 		3386515B2D52343500A85670 /* CardContextMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3386515A2D52343500A85670 /* CardContextMenuView.swift */; };
+		3386515D2D52A51400A85670 /* NewsCardContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3386515C2D52A51400A85670 /* NewsCardContainerView.swift */; };
+		3386515F2D52A5DF00A85670 /* View+NavTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3386515E2D52A5DF00A85670 /* View+NavTransition.swift */; };
 		338FFCD92C682469006C3BE0 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338FFCD82C682469006C3BE0 /* PopupViewController.swift */; };
 		338FFCDB2C6870E2006C3BE0 /* LibraryViewController+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338FFCDA2C6870E2006C3BE0 /* LibraryViewController+Import.swift */; };
 		338FFCE42C695118006C3BE0 /* IconsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338FFCE32C695118006C3BE0 /* IconsListViewController.swift */; };
@@ -181,6 +183,8 @@
 		335F0C2D2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Certificates.swift"; sourceTree = "<group>"; };
 		335F0C2F2C5E175B00A4F0AE /* CertData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertData.swift; sourceTree = "<group>"; };
 		3386515A2D52343500A85670 /* CardContextMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContextMenuView.swift; sourceTree = "<group>"; };
+		3386515C2D52A51400A85670 /* NewsCardContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCardContainerView.swift; sourceTree = "<group>"; };
+		3386515E2D52A5DF00A85670 /* View+NavTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+NavTransition.swift"; sourceTree = "<group>"; };
 		338B0F0C2D0C0E8200C5EA11 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		338FFCD82C682469006C3BE0 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		338FFCDA2C6870E2006C3BE0 /* LibraryViewController+Import.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LibraryViewController+Import.swift"; sourceTree = "<group>"; };
@@ -339,6 +343,7 @@
 			children = (
 				3386515A2D52343500A85670 /* CardContextMenuView.swift */,
 				33089A292D51F117006E1068 /* NewsCardView.swift */,
+				3386515C2D52A51400A85670 /* NewsCardContainerView.swift */,
 				33089A2B2D51F2CE006E1068 /* NewsCardsScrollView.swift */,
 			);
 			path = News;
@@ -749,6 +754,7 @@
 				33E4D8352C6593F4006A1C26 /* CGSize+aspectFit.swift */,
 				33BE87602C6C37CE0044D245 /* UIImage+resize.swift */,
 				33C29F1F2C7BD73800EF7608 /* UIUserInterfaceStyle+allCases.swift */,
+				3386515E2D52A5DF00A85670 /* View+NavTransition.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1084,6 +1090,7 @@
 				33BA37A82BF8168900FF530A /* TabbarController.swift in Sources */,
 				AFAC50952C48DF9300EDEAB6 /* AppSigner.swift in Sources */,
 				339FE33E2CCE06A100C297BA /* AddIdentifierViewController.swift in Sources */,
+				3386515F2D52A5DF00A85670 /* View+NavTransition.swift in Sources */,
 				33BA37AB2BF8196000FF530A /* Preferences.swift in Sources */,
 				3386515B2D52343500A85670 /* CardContextMenuView.swift in Sources */,
 				D0651C392BFEEA4B00D40829 /* signing.cpp in Sources */,
@@ -1123,6 +1130,7 @@
 				33E5A5A22CC85CAA00532930 /* ServerOptionsViewController.swift in Sources */,
 				33AC87F32C3B7D24003D1175 /* CertificatesViewController.swift in Sources */,
 				338FFCF42C6971B2006C3BE0 /* IconsListTableViewCell.swift in Sources */,
+				3386515D2D52A51400A85670 /* NewsCardContainerView.swift in Sources */,
 				33BA37AD2BF8197200FF530A /* Storage.swift in Sources */,
 				33CE81A92C4295F300C05327 /* CertImportingViewController.swift in Sources */,
 				33570F612C32B80E008CB560 /* AppsTableViewCell.swift in Sources */,
