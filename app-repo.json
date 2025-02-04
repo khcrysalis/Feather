@@ -102,7 +102,7 @@
 			  "identifier": "feather-donate",
 			  "caption": "Feather is a free project and is not made possible without my sponsors! Feel free to donate, it helps keep me motivated in making new updates for this app, and thank you everyone.",
 			  "tintColor": "848ef9",
-			  "imageURL": "https://user-images.githubusercontent.com/705880/65603159-0676a400-df5a-11e9-882e-dc5566f4d50a.png",
+			  "imageURL": "https://github.com/khcrysalis/Feather/blob/main/Images/donate.png?raw=true,
 			  "date": "2025-02-04",
 			  "url": "https://github.com/sponsors/khcrysalis",
 			  "notify": false
@@ -117,7 +117,7 @@
 			  "date": "2025-02-03",
 			  "notify": true
 		  }
-	  ],
+	  ]
     }
   ],
   "news": []
