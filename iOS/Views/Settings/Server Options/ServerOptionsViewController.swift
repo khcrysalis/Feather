@@ -15,6 +15,9 @@ class ServerOptionsViewController: UITableViewController {
 		
 	var tableData = [
 		[
+			"App Updates"
+		],
+		[
 			"Use Server",
 			String.localized("SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER")
 		],
@@ -25,6 +28,7 @@ class ServerOptionsViewController: UITableViewController {
 	
 	var sectionTitles = 
 	[
+		"",
         String.localized("SETTINGS_VIEW_CONTROLLER_TITLE_ONLINE"),
         String.localized("SETTINGS_VIEW_CONTROLLER_TITLE_LOCAL"),
 	]
@@ -54,8 +58,9 @@ extension ServerOptionsViewController {
 	
 	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
 		switch section {
-		case 0: return String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER", arguments: Preferences.defaultInstallPath)
-		case 1: return String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS")
+		case 0: return "Whether updates should be checked, this is an experimental feature."
+		case 1: return String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER", arguments: Preferences.defaultInstallPath)
+		case 2: return String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS")
 		default:
 			return nil
 		}
@@ -71,6 +76,13 @@ extension ServerOptionsViewController {
 		cell.textLabel?.text = cellText
 		
 		switch cellText {
+		case "App Updates":
+			let useS = SwitchViewCell()
+			useS.textLabel?.text = "Check For Signed App Updates"
+			useS.switchControl.addTarget(self, action: #selector(appUpdates(_:)), for: .valueChanged)
+			useS.switchControl.isOn = Preferences.appUpdates
+			useS.selectionStyle = .none
+			return useS
 		case "Use Server":
 			let useS = SwitchViewCell()
 			useS.textLabel?.text = String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ONLINE_INSTALL_METHOD")
@@ -132,6 +144,10 @@ extension ServerOptionsViewController {
 		}
 		
 		tableView.deselectRow(at: indexPath, animated: true)
+	}
+	
+	@objc func appUpdates(_ sender: UISwitch) {
+		Preferences.appUpdates = sender.isOn
 	}
 	
 	@objc func onlinePathToggled(_ sender: UISwitch) {

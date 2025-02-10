@@ -23,6 +23,10 @@ enum Preferences {
 	// Default repo is from the repository
 	static var defaultRepos: Bool
 	
+	@Storage(key: "Feather.AppUpdates", defaultValue: false)
+	// Default repo is from the repository
+	static var appUpdates: Bool
+	
 	@Storage(key: "Feather.gotSSLCerts", defaultValue: false)
 	static var gotSSLCerts: Bool
 	

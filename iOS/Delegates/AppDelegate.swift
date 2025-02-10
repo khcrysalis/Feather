@@ -64,16 +64,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIOnboardingViewControlle
         Debug.shared.log(message: "Model: \(UIDevice.current.model)")
         Debug.shared.log(message: "Feather Version: \(logAppVersionInfo())\n")
 
-        // Register background task
-        BGTaskScheduler.shared.register(forTaskWithIdentifier: "kh.crysalis.feather.sourcerefresh", using: nil) { task in
-            self.handleAppRefresh(task: task as! BGAppRefreshTask)
-        }
-        scheduleAppRefresh()
-
-        let backgroundQueue = OperationQueue()
-        backgroundQueue.qualityOfService = .background
-        let operation = SourceRefreshOperation()
-        backgroundQueue.addOperation(operation)
+		if Preferences.appUpdates {
+			// Register background task
+			BGTaskScheduler.shared.register(forTaskWithIdentifier: "kh.crysalis.feather.sourcerefresh", using: nil) { task in
+				self.handleAppRefresh(task: task as! BGAppRefreshTask)
+			}
+			scheduleAppRefresh()
+			
+			let backgroundQueue = OperationQueue()
+			backgroundQueue.qualityOfService = .background
+			let operation = SourceRefreshOperation()
+			backgroundQueue.addOperation(operation)
+		}
 
         return true
     }
