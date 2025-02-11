@@ -176,7 +176,7 @@ extension AboutViewController {
 				return personCell
 			} else {
 				// Don't translate this
-				cell.textLabel?.text = "💙 This couldn't of been done without my sponsors!"
+				cell.textLabel?.text = "💙 This couldn't have been done without my sponsors!"
 				cell.textLabel?.textColor = .secondaryLabel
 				cell.textLabel?.numberOfLines = 0
 				return cell
