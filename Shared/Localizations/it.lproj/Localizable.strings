@@ -1,0 +1,473 @@
+
+Skip to content
+Navigation Menu
+
+    khcrysalis
+
+    Feather
+
+Code
+Issues 23
+Pull requests 1
+Actions
+Wiki
+Security
+
+    Insights
+
+Comparing changes
+Choose two branches to see what’s changed or to start a new pull request. If you need to, you can also
+or learn more about diff comparisons.
+...
+Able to merge. These branches can be automatically merged.
+Discuss and review the changes in this comparison with others. Learn about pull requests
+
+1 commit
+1 file changed
+
+    1 contributor
+
+Commits on Feb 28, 2025
+
+    Create Localizable.strings
+    @Checkm8ra1n
+    Checkm8ra1n authored Feb 28, 2025
+
+Showing
+with 421 additions and 0 deletions.
+421 changes: 421 additions & 0 deletions 421
+Shared/Localizations/it.lproj/Localizable.strings
+Original file line number 	Original file line 	Diff line number 	Diff line change
+@@ -0,0 +1,421 @@
+/* 
+  Localizable.strings
+  feather
+
+  Created by samara on 25.08.2024.
+
+*/
+
+// MARK: - Generic
+// Unknown, default string for applications
+"UNKNOWN" = "Sconosciuto";
+// Default string
+"DEFAULT" = "Default";
+// Copy provided string in a menu
+"COPY" = "Copia";
+// Delete item
+"DELETE" = "Elimina";
+// Cancel alert action
+"CANCEL" = "Cancella";
+// Done action
+"DONE" = "Fatto";
+// Dismiss action
+"DISMISS" = "Ignora";
+// Dismiss 2 action
+"LAME" = "Ignora";
+// Save action
+"SAVE" = "Salva";
+// Set action
+"SET" = "Salva";
+// OK action
+"OK" = "OK";
+// Continue action
+"CONTINUE" = "Continua";
+// Import Action
+"IMPORT" = "Importa";
+// Add Action
+"ADD" = "Aggiungi";
+// Install Action
+"INSTALL" = "Installa";
+
+// MARK: - Alerts
+// Alert titles
+"ALERT_SUCCESS" = "Successo";
+"ALERT_TRACE" = "Traccia";
+"ALERT_ERROR" = "Errore";
+"ALERT_CRITICAL" = "Critico";
+"ALERT_COPIED" = "Copiato";
+
+// MARK: - Error messages
+// Installer Error Title
+"ERROR_INSTALLER" = "Installer";
+// Installer Error Description
+"ERROR_INSTALLER_DESCRIPTION" = "Impossibile caricare i certificati SSL";
+"ERROR_ZSIGN_FAILED" = "Firma fallita.";
+"ERROR_FAILED_TO_READ_MOBILEPROVISION" = "Impossibile leggere il file mobileprovision";
+
+// MARK: - Success messages
+// Successfully signed an application
+"SUCCESS_SIGNED" = "%@ è stato firmato!";
+// Successfully resigned an application
+"SUCCESS_RESIGN" = "Firmato con successo!";
+// Success message requiring user to restart app
+"SUCCESS_REQUIRES_RESTART" = "Devi chiudere l'app per applicare le modifiche.";
+
+// MARK: - Onboarding
+// Welcome to Feather!!!!!!!!
+"ONBOARDING_WELCOMETITLE_1" = "Benvenuto/a su";
+// First feature inside of onboarding
+"ONBOARDING_CELL_1_TITLE" = "Sideload sul Dispositivo";
+"ONBOARDING_CELL_1_DESCRIPTION" = "Esegui il sideload delle app senza il computer, tutto fatto dal tuo dispositivo.";
+// Second feature inside of onboarding
+"ONBOARDING_CELL_2_TITLE" = "Personalizza App";
+"ONBOARDING_CELL_2_DESCRIPTION" = "Gestici e personalizza le tue app per i tuoi interessi.";
+// Third feature inside of onboarding
+"ONBOARDING_CELL_3_TITLE" = "E molto altro!";
+"ONBOARDING_CELL_3_DESCRIPTION" = "Repo di AltStore, importa gli IPA, gestione facile dei certificati e molto altro.";
+// "Sviluppato da Samara. Fatto per chi è appassionato del sideloading e della libertà. Molte funzionalità incluse all'interno. Scopri di più..."
+"ONBOARDING_FOOTER" = "Sviluppato da Samara. Fatto per chi è appassionato del sideloading e della libertà. Molte funzionalità incluse all'interno.";
+"ONBOARDING_FOOTER_LINK" = "Scopri di più...";
+// Continue button to exit onboarding
+"ONBOARDING_CONTINUE_BUTTON" = "Continua";
+
+// MARK: - Tab area
+// Sources tab
+"TAB_SOURCES" = "Sorgenti";
+// Library tab
+"TAB_LIBRARY" = "Libreria";
+// Settings tab
+"TAB_SETTINGS" = "Impostazioni";
+
+// MARK: - TransferPreview
+// Packaging application to get ready for install
+"TRANSFER_PREVIEW_PACKAGING" = "Preparo l'app";
+// Ready to install package
+"TRANSFER_PREVIEW_READY" = "Pronto per l'installazione";
+// Opening manifest.plist for iOS
+"TRANSFER_PREVIEW_SENDING_MANIFEST" = "Mando Manifesto...";
+// iOS is retrieving IPA file
+"TRANSFER_PREVIEW_SENDING_PAYLOAD" = "Mando Payload...";
+// Done transferring IPA file
+"TRANSFER_PREVIEW_DONE" = "Fatto";
+// Completed packaging so you can share
+"TRANSFER_PREVIEW_COMPLETED" = "Completato";
+
+// MARK: - SourcesViewController
+// Repositories title
+"SOURCES_VIEW_CONTROLLER_REPOSITORIES" = "Repo";
+// Add repo button
+"SOURCES_VIEW_CONTROLLER_ADD_SOURCES" = "Aggiungi Repo";
+// Number of sources, i.e. "100 Sorgenti"
+"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES" = "%@ Sorgente";
+"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES_PLURAL" = "%@ Sorgenti";
+// Search sources in search bar
+"SOURCES_VIEW_CONTROLLER_SEARCH_SOURCES" = "Cerca Sorgenti";
+
+// MARK: - SourcesViewController - Add Sources
+"SOURCES_VIEW_ADD_SOURCES_ALERT_TITLE" = "Aggiungi Sorgente";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "Aggiungi URL Repo di Altstore";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_IMPORT_REPO" = "Importa Repo";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO" = "Esporta Repo";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO_ACTION_SUCCESS" = "Copia Repo nella Clipboard";
+//Footer Validation
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTSTARTED" = "Digita un URL per cominciare la validazione.";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTVALIDJSON" = "JSON Invalido, controlla il tuo input.";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_VALID" = "JSON Valido.";
+
+// MARK: - SourcesViewController -> SourcesAppViewController
+// Number of apps, i.e. "444 App"
+"SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS" = "%@ App";
+"SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS_PLURAL" = "%@ App";
+// Search apps in search bar
+"SOURCES_APP_VIEW_CONTROLLER_SEARCH_APPS" = "Cerca Apps";
+
+// MARK: - SourcesViewController ... - Cells
+// Default subtitle string
+"SOURCES_CELLS_DEFAULT_SUBTITLE" = "Una fantastica applicazione.";
+// Default description string
+"SOURCES_CELLS_DEFAULT_DESCRIPTION" = "Una bella descrizione.";
+
+// MARK: - SourceAppViewController ... - Actions
+// Available Versions Alert Title
+"SOURCES_CELLS_ACTIONS_HOLD_AVAILABLE_VERSIONS" = "Versioni Disponibili";
+//Filter Menu
+"SOURCES_CELLS_ACTIONS_FILTER_TITLE" = "Filtra per";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_DEFAULT" = "Default";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_NAME" = "Nome";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_DATE" = "Data";
+
+// MARK: - AppsInformationViewController
+// Application Section
+"APPS_INFORMATION_SECTION_TITLE_NAME" = "Applicazione";
+// Bundle Section
+"APPS_INFORMATION_SECTION_TITLE_NAME" = "Bundle";
+
+//
+"APPS_INFORMATION_TITLE_DELETED_FILE" = "File Rimosso";
+"APPS_INFORMATION_TITLE_DELETED_FILE_TITLE" = "Il file è stato rimosso.";
+"APPS_INFORMATION_TITLE_DELETED_FILE_DESCRIPTION" = "Questa è un'entry inutile, non ha un file e Feather non ti permetterà di installarla.";
+// Application Section
+"APPS_INFORMATION_TITLE_NAME" = "Nome";
+"APPS_INFORMATION_TITLE_VERSION" = "Versione";
+"APPS_INFORMATION_TITLE_IDENTIFIER" = "Identificatore";
+"APPS_INFORMATION_TITLE_SIZE" = "Peso";
+//
+"APPS_INFORMATION_TITLE_DATE_ADDED" = "Data Aggiunta";
+// Bundle Section
+"APPS_INFORMATION_TITLE_BUNDLE_NAME" = "Nome Bundle";
+"APPS_INFORMATION_TITLE_BUNDLE_PATH" = "Percorso Bundle";
+"APPS_INFORMATION_TITLE_ICON_FILE" = "File Icona";
+//
+"APPS_INFORMATION_TITLE_OPEN_IN_FILES" = "Apri in File";
+
+// MARK: - AppSigningViewController
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_CUSTOMIZATION" = "Personalizzazione";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_SIGNING" = "Firmo";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_ADVANCED" = "Avanzato";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS" = "Aggiungi Tweak";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED" = "Avanzato";
+"APP_SIGNING_VIEW_CONTROLLER_START_SIGNING" = "Comincia Firma";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_MODIFY_DYLIBS" = "Modifica Dylib";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_PROPERTIES" = "Proprietà";
+
+// MARK: - AppSigningViewController - No Certificates Alert
+"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_TITLE" = "Errore";
+"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_DESCRIPTION" = "Non hai scelto un certificato, scegline o caricane uno nella sezione delle firme nelle impostazioni.";
+
+// MARK: - AppSigningViewController -> AppSigningAdvancedViewController
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE" = "Apparenza";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION" = "Versione Minima App";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES" = "Proprietà";
+
+// MARK: - AppSigningViewController -> AppSigningTweakViewController
+"APP_SIGNING_TWEAK_VIEW_CONTROLLER_TITLE" = "Tweak";
+
+// MARK: - SigningsOptionsViewController
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS" = "Abilita Protezione";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS_DESCRIPTION" = "Abilitando la protezione metterà una striga casuale ad ogni bundle identifier, questo protegge l'Apple ID relativo ai tuoi certificati dal venire bannati da Apple. Tuttavia, se non ti interessa, puoi ignorare questo messaggio.";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DYNAMIC_PROTECTION" = "Protezione Dinamica";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DYNAMIC_PROTECTION_DESCRIPTION" = "La protezione dinamica applicherà soltanto la protezione PPQ se il bundle identifier esiste nell'App Store. Questo richiede una connessione ad internet durante la firma.";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS" = "Bundle Identifier";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_NEW" = "Nuovo Identifier";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID" = "Identifier";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID_REPLACEMENT" = "Rimpiazzamento";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES" = "Mostra Nomi";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES_ID" = "Mostra Nomi Orginali";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES_ID_REPLACEMENT" = "Nuovo Mostra Nomi";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IMMEDIATELY_INSTALL_FROM_SOURCE" = "Installa immediatamente dalla sorgente";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IMMEDIATELY_INSTALL_FROM_SOURCE_DESCRIPTION" = "Quando abilitato, le app scaricate dalle srogenti ti chiederanno di essere firmate ed installate dopo il download.";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_INSTALLAFTERSIGNED" = "Install after Signing";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_TITLE" = "Signing Options";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "Remove all PlugIns";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS_DESCRIPTION" = "Removes the PlugIns directory inside of the app, which would usually have some components for the app to function properly.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES" = "Remove UISupportedDevices";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES_DESCRIPTION" = "Removes device restrictions for the application.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME" = "Remove URLScheme";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME_DESCRIPTION" = "Removes any possible URL schemes (i.e. 'feather://')";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS" = "Allow Browsing Documents";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS_DESCRIPTION" = "Allows other apps to open and edit the files stored in the Documents folder. This option also lets users set the app’s default save location in Settings.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING" = "Allow iTunes Sharing";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING_DESCRIPTION" = "Forces the app to share their documents directory, allowing sharing between iTunes and Finder.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION" = "Force ProMotion";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION_DESCRIPTION" = "Enables ProMotion capabilities within the app, however on lower versions of 15.x this may not be enough.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_GAME_MODE" = "Force Game Mode";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_GAME_MODE_DESCRIPTION" = "Enables Game Mode within the app, minimizing background activity and prioritized performance for the app.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "Force Fullscreen";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN_DESCRIPTION" = "Forces only fullscreen capabilities within iPad apps, disallowing sharing the screen with other apps. On an external screen, the window for an app with this setting maintains its canvas size.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP" = "Delete Placeholder Watch App";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP_DESCRIPTION" = "Removes unwanted watch placeholder which isn't supposed to be there, present in apps such as YouTube music, etc.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS" = "Force Try To Localize";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS_DESCRIPTION" = "Forces localization by modifying every localizable bundle within the app when trying to change a name of the app.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING" = "Remove Provisioning File";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING_DESCRIPTION" = "Removes .mobileprovison from appearing in your app after signing.";
+
+// MARK: - LibraryViewController
+//Search Library placeholder
+"SETTINGS_VIEW_CONTROLLER_SEARCH_PLACEHOLDER" = "Search Library";
+//Headers
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS" = "Signed Apps";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL" = "%@ Signed";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL_PLURAL" = "%@ Signed";
+"LIBRARY_VIEW_CONTROLLER_SECTION_BUTTON_IMPORT" = "Import";
+"LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS" = "Downloaded Apps";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_DOWNLOADED_APPS_TOTAL" = "%@ Downloaded";
+//Import Action Sheet
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_FILE" = "Import from Files";
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_URL" = "Import from URL";
+//Sign Action Sheet
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN" = "Sign %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN_INSTALL" = "Sign & Install %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_RESIGN" = "ReSign %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL" = "Install %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SHARE" = "Share %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN" = "Open %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_UPDATE" = "Update %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_CLEAR_UPDATE" = "Clear Update";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_VIEW_DATEILS" = "View Details";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN_LN_FILES" = "Open in Files";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM" = "Confirm Installation";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM_DESCRIPTION" = "Trying to install via the downloaded apps tab may not work as they are most likely not signed! It's recommended you sign that application first before installing.";
+
+// MARK: - SettingsViewController
+// Headers
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_GENERAL" = "General";
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING" = "Signing";
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING_SERVER" = "Signing Server";
+
+// Footers
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES" = "If any issues occur within Feather please report it via the GitHub repository. When submitting an issue, be sure to submit any logs.";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS" = "Sadly due to limitations server certificates will need to be re-renewed every year to keep Feathers local features working properly, tap this button to retrieve the most up-to-date files from our repositories.";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER" = "Default server goes to %@";
+
+"SETTINGS_VIEW_CONTROLLER_TITLE" = "Server Options";
+"SETTINGS_VIEW_CONTROLLER_TITLE_ONLINE" = "Online";
+"SETTINGS_VIEW_CONTROLLER_TITLE_LOCAL" = "Local";
+
+// Cell Titles
+// About Feather
+"SETTINGS_VIEW_CONTROLLER_CELL_ABOUT" = "About %@";
+"SETTINGS_VIEW_CONTROLLER_CELL_SUBMIT_FEEDBACK" = "Submit Feedback";
+"SETTINGS_VIEW_CONTROLLER_CELL_GITHUB" = "GitHub Repository";
+"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY" = "Display";
+"SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON" = "App Icon";
+"SETTINGS_VIEW_CONTROLLER_CELL_LANGUAGE" = "Language";
+"SETTINGS_VIEW_CONTROLLER_CELL_CURRENT_CERTIFICATE_NOSELECTED" = "No certificates selected";
+"SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES" = "Add Certificate";
+
+
+
+"SETTINGS_VIEW_CONTROLLER_CELL_SIGN_OPTIONS" = "Signing Options";
+"SETTINGS_VIEW_CONTROLLER_CELL_SERVER_OPTIONS" = "Server Options";
+"SETTINGS_VIEW_CONTROLLER_CELL_VIEW_LOGS" = "View Logs";
+"SETTINGS_VIEW_CONTROLLER_CELL_APPS_FOLDER" = "Open Apps Folder";
+"SETTINGS_VIEW_CONTROLLER_CELL_CERTS_FOLDER" = "Open Certificates Folder";
+
+
+"SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE" = "Update Local Certificate";
+"SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE_UPDATING" = "Update Local Certificate";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET" = "Reset";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_ALL" = "Reset All";
+
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION" = "Reset Configuration";
+"SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER" = "Use Custom Server";
+
+"SETTINGS_VIEW_CONTROLLER_CELL_ONLINE_INSTALL_METHOD" = "Online Install Method";
+
+
+"SETTINGS_VIEW_CONTROLLER_CELL_EXPORT_ID" = "Export Random Identifier";
+"SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_ID" = "Change Random Identifier";
+
+//
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_TITLE" = "PPQCheck Protections";
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_DESCRIPTION" = "This setting enables the PPQCheck protections, which is designed to prepend each bundle identifier for the apps you sideload with a random string.\n\nThis is meant to avoid apple flagging your account by (trying) to make it so they're unable to associate the app you're sideloading with one from the App Store.";
+
+"SETTINGS_VIEW_CONTROLLER_URL_ALERT_TITLE" = "Change Download URL";
+"SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_IDENTIFIER" = "Change Random Identifier";
+
+// MARK: - SettingsViewController -> AboutViewController
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_CREDITS" = "Credits";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_SPONSORS" = "Sponsors";
+
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_DEVICE" = "Device";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_ACKNOWLEDGEMENTS" = "Acknowledgements";
+
+
+"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_VERSION" = "Device Version";
+"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_ARCH" = "Architecture";
+"ABOUT_VIEW_CONTROLLER_CELL_APP_VERSION" = "App Version";
+
+// MARK: - SettingsViewController -> DisplayViewController
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_TINT_COLOR" = "Tint Color";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARENCE" = "App Appearence";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_STORE" = "Store";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE" = "Default Subtitle";
+"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE_DESCRIPTION" = "Default style for feather, hides localized description and only includes subtitle.";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE" = "Localized Subtitle";
+"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE_DESCRIPTION" = "Replaces subtitle with app description.";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION" = "Big Description";
+"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION_DESCRIPTION" = "Replaces screenshots with the app description.";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME" = "Use Team Name";
+"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME_DESCRIPTION" = "Replaces the certificate name with your team name, could be for better to distinguish between certificates if providers happen to always use the same App ID name.";
+
+// MARK: - SettingsViewController -> LanguageViewController.swift
+"LANGUAGE_VIEW_TITLE" = "Language";
+"LANGUAGE_VIEW_CELL_USE_SYSTEM_LANGUAGE" = "Use System Language";
+
+// MARK: - SettingsViewController -> CertificatesViewController
+"CERTIFICATES_VIEW_CONTROLLER_TITLE" = "Certificates";
+
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_FOOTER" = "Supported file formats:\n\n- P12 (.p12)\n- Mobile Provision (.mobileprovision)\n\nMake sure your certificates are valid and are able to sideload to your device!";
+
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD" = "Add Certificates";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_DESCRIPTION" = "Tap to add a certificate";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> Delete Alert
+"CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_TITLE" = "You don't want to do this!";
+"CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_DESCRIPTION" = "You're trying to delete a selected certificate, try again later when you have another certificate on hand.";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> Cell
+"CERTIFICATES_VIEW_CONTROLLER_CELL_EXPIRED" = "Expired";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_DAYS_LEFT" = "%@ days left";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> CertImportingViewController
+"CERT_IMPORTING_VIEWCONTROLLER_TITLE" = "Import";
+"CERT_IMPORTING_VIEWCONTROLLER_SECTION_PROVISIONING" = "";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> CertImportingViewController -> Password Alert
+
+"CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_TITLE" = "Bad Password";
+"CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_DESCRIPTION" = "Please check the password and try again.";
+
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PROV" = "Import Provisioning File";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_CERT" = "Import Certificate File";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_ENTER_PW" = "Enter Password";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PW" = "Password";
+
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PROV" = "Import a provisioning file to be able to sideload to your device.";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_CERT" = "Import a file containing a valid certificate.";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PASS" = "Enter the password associated with the private key, leave it blank if theres no password required.";
+
+// MARK: - SettingsViewController -> ResetViewController
+"RESET_VIEW_CONTROLLER_CLEAR_CACHE" = "Clear Network Cache";
+"RESET_VIEW_CONTROLLER_CLEAR_CACHE_ALERT_TITLE" = "This action is irreversible. Cached network requests and images will be cleared.";
+
+// MARK: - Donation
+"DONATION_TITLE" = "Donate";
+"DONATION_DONATIONS" = "Donations";
+
+"DONATION_CELL_1_TITLE" = "Secret Repo";
+"DONATION_CELL_1_DESCRIPTION" = "Get access to our secret repo by donating, will provide you with beta access to Feather.";
+
+"DONATION_CELL_2_TITLE" = "Show Your Support";
+"DONATION_CELL_2_DESCRIPTION" = "Show your support by donating! If you're unable to donate, spreading the word about Feather works too!";
+
+// MARK: - SettingsViewController -> LogsViewController.swift
+"LOGS_VIEW_SECTION_TITLE_ERROR" = "%@ Critical Errors.";
+"LOGS_VIEW_SECTION_TITLE_SHARE" = "Share Logs";
+"LOGS_VIEW_SECTION_TITLE_COPY" = "Copy Logs";
+"LOGS_VIEW_SUCCESS_DESCRIPTION" = "Log contents have been copied to clipboard.";
+"LOGS_VIEW_FAIL_DESCRIPTION" = "Failed to copy log contents.";
+Footer
+© 2025 GitHub, Inc.
+Footer navigation
+
+    Terms
+    Privacy
+    Security
+    Status
+    Docs
+    Contact
+
