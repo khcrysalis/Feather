@@ -1,5 +1,5 @@
 {
-  "originHash" : "3666195a93706ae84b13bc672ae296f059f829c580dda306192c4a2ce9cccb91",
+  "originHash" : "952bcf080d88b28444dab5da5e47ebd849d15866344bba244f57e500b7e09825",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -44,15 +44,6 @@
       "state" : {
         "revision" : "742f624a998cba2a9e653d9b1e91ad3f3a5dff6b",
         "version" : "4.15.2"
-      }
-    },
-    {
-      "identity" : "ios-icon-selector",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/jellybeansoup/ios-icon-selector",
-      "state" : {
-        "branch" : "main",
-        "revision" : "002f7cefa47c9f18716d7be54829d15dec954b1e"
       }
     },
     {

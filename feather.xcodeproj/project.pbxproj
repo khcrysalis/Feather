@@ -13,7 +13,6 @@
 		3322FF532BFEE5B9001768D8 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3322FF522BFEE5B9001768D8 /* NukeUI */; };
 		3322FF552BFEE5B9001768D8 /* NukeVideo in Frameworks */ = {isa = PBXBuildFile; productRef = 3322FF542BFEE5B9001768D8 /* NukeVideo */; };
 		336EEE812C32367C0011188D /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 336EEE802C32367C0011188D /* ZIPFoundation */; };
-		338FFCED2C695CA3006C3BE0 /* IconSelector in Frameworks */ = {isa = PBXBuildFile; productRef = 338FFCEC2C695CA3006C3BE0 /* IconSelector */; };
 		33BDD0A02C76D06900AF6169 /* UIOnboarding.md in Resources */ = {isa = PBXBuildFile; fileRef = 33BDD09F2C76D06900AF6169 /* UIOnboarding.md */; };
 		33BDD0A22C76D0FB00AF6169 /* Ellekit.md in Resources */ = {isa = PBXBuildFile; fileRef = 33BDD0A12C76D0FB00AF6169 /* Ellekit.md */; };
 		33BDD0A62C76EA4200AF6169 /* UIOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = 33BDD0A52C76EA4200AF6169 /* UIOnboarding */; };
@@ -97,7 +96,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				33BDD0C02C7866FE00AF6169 /* Vapor in Frameworks */,
-				338FFCED2C695CA3006C3BE0 /* IconSelector in Frameworks */,
 				3322FF4F2BFEE5B9001768D8 /* Nuke in Frameworks */,
 				33BE87A52C72E1220044D245 /* SWCompression in Frameworks */,
 				AA280D952C76AB7400CAC838 /* MobileCoreServices.framework in Frameworks */,
@@ -215,7 +213,6 @@
 				D0AA9D532BFF02AF00A65D45 /* OpenSSL */,
 				33C0409D2C30DD3E00243D90 /* AlertKit */,
 				336EEE802C32367C0011188D /* ZIPFoundation */,
-				338FFCEC2C695CA3006C3BE0 /* IconSelector */,
 				33BE87A42C72E1220044D245 /* SWCompression */,
 				33BDD0A52C76EA4200AF6169 /* UIOnboarding */,
 				33BDD0BF2C7866FE00AF6169 /* Vapor */,
@@ -262,7 +259,6 @@
 				D0AA9D522BFF02AF00A65D45 /* XCRemoteSwiftPackageReference "OpenSSL-Swift-Package" */,
 				33C0409C2C30DD3E00243D90 /* XCRemoteSwiftPackageReference "AlertKit" */,
 				336EEE7F2C32367C0011188D /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
-				338FFCEB2C695CA3006C3BE0 /* XCRemoteSwiftPackageReference "ios-icon-selector" */,
 				33BE87A32C72E1220044D245 /* XCRemoteSwiftPackageReference "SWCompression" */,
 				33BDD0A42C76EA4100AF6169 /* XCRemoteSwiftPackageReference "UIOnboarding-18" */,
 				33BDD0BE2C7866FE00AF6169 /* XCRemoteSwiftPackageReference "vapor" */,
@@ -590,14 +586,6 @@
 				minimumVersion = 0.9.19;
 			};
 		};
-		338FFCEB2C695CA3006C3BE0 /* XCRemoteSwiftPackageReference "ios-icon-selector" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jellybeansoup/ios-icon-selector";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		33BDD0A42C76EA4100AF6169 /* XCRemoteSwiftPackageReference "UIOnboarding-18" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/khcrysalis/UIOnboarding-18";
@@ -665,11 +653,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 336EEE7F2C32367C0011188D /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
 			productName = ZIPFoundation;
-		};
-		338FFCEC2C695CA3006C3BE0 /* IconSelector */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 338FFCEB2C695CA3006C3BE0 /* XCRemoteSwiftPackageReference "ios-icon-selector" */;
-			productName = IconSelector;
 		};
 		33BDD0A52C76EA4200AF6169 /* UIOnboarding */ = {
 			isa = XCSwiftPackageProductDependency;
