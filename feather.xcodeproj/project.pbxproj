@@ -36,6 +36,7 @@
 		335F0C2E2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335F0C2D2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift */; };
 		335F0C302C5E175B00A4F0AE /* CertData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335F0C2F2C5E175B00A4F0AE /* CertData.swift */; };
 		336EEE812C32367C0011188D /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 336EEE802C32367C0011188D /* ZIPFoundation */; };
+		338230E02D7A662900999AD3 /* FRSTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338230DF2D7A660E00999AD3 /* FRSTableViewController.swift */; };
 		3386515B2D52343500A85670 /* CardContextMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3386515A2D52343500A85670 /* CardContextMenuView.swift */; };
 		3386515D2D52A51400A85670 /* NewsCardContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3386515C2D52A51400A85670 /* NewsCardContainerView.swift */; };
 		3386515F2D52A5DF00A85670 /* View+NavTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3386515E2D52A5DF00A85670 /* View+NavTransition.swift */; };
@@ -121,7 +122,6 @@
 		33E4D8382C659FE9006A1C26 /* CertificateViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8372C659FE9006A1C26 /* CertificateViewTableViewCell.swift */; };
 		33E4D8412C67E5C3006A1C26 /* DonationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8402C67E5C3006A1C26 /* DonationTableViewCell.swift */; };
 		33E4D8432C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E4D8422C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift */; };
-		33E5A5992CC8586E00532930 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5A5982CC8586E00532930 /* LanguageViewController.swift */; };
 		33E5A59B2CC858FE00532930 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5A59A2CC858FE00532930 /* Language.swift */; };
 		33E5A59D2CC859E400532930 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 33BF31642C7C05330087F3D2 /* Localizable.strings */; };
 		33E5A5A02CC85C1B00532930 /* Antoine.md in Resources */ = {isa = PBXBuildFile; fileRef = 33E5A59F2CC85C1B00532930 /* Antoine.md */; };
@@ -182,6 +182,7 @@
 		335F0C2B2C5DC3AE00A4F0AE /* CoreDataManager+SignedApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+SignedApps.swift"; sourceTree = "<group>"; };
 		335F0C2D2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Certificates.swift"; sourceTree = "<group>"; };
 		335F0C2F2C5E175B00A4F0AE /* CertData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertData.swift; sourceTree = "<group>"; };
+		338230DF2D7A660E00999AD3 /* FRSTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRSTableViewController.swift; sourceTree = "<group>"; };
 		3386515A2D52343500A85670 /* CardContextMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContextMenuView.swift; sourceTree = "<group>"; };
 		3386515C2D52A51400A85670 /* NewsCardContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCardContainerView.swift; sourceTree = "<group>"; };
 		3386515E2D52A5DF00A85670 /* View+NavTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+NavTransition.swift"; sourceTree = "<group>"; };
@@ -271,7 +272,6 @@
 		33E4D83E2C66C692006A1C26 /* UISheetPresentationControllerDetent+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UISheetPresentationControllerDetent+Private.h"; sourceTree = "<group>"; };
 		33E4D8402C67E5C3006A1C26 /* DonationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationTableViewCell.swift; sourceTree = "<group>"; };
 		33E4D8422C6802BB006A1C26 /* SettingsHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderTableViewCell.swift; sourceTree = "<group>"; };
-		33E5A5982CC8586E00532930 /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		33E5A59A2CC858FE00532930 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		33E5A59F2CC85C1B00532930 /* Antoine.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Antoine.md; sourceTree = "<group>"; };
 		33E5A5A12CC85CAA00532930 /* ServerOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerOptionsViewController.swift; sourceTree = "<group>"; };
@@ -406,14 +406,6 @@
 			path = "View Logs";
 			sourceTree = "<group>";
 		};
-		33275B6A2CD0A4E4007ED278 /* Language */ = {
-			isa = PBXGroup;
-			children = (
-				33E5A5982CC8586E00532930 /* LanguageViewController.swift */,
-			);
-			path = Language;
-			sourceTree = "<group>";
-		};
 		336EEE822C324C9B0011188D /* Apps */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,6 +415,14 @@
 				33EEDAA82C5DA1C9009089DC /* Information */,
 			);
 			path = Apps;
+			sourceTree = "<group>";
+		};
+		338230DE2D7A65F900999AD3 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				338230DF2D7A660E00999AD3 /* FRSTableViewController.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		338FFCD72C682457006C3BE0 /* Extra */ = {
@@ -638,12 +638,12 @@
 		33AC87EF2C3B7C46003D1175 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				338230DE2D7A65F900999AD3 /* Common */,
 				33AC87F02C3B7CBE003D1175 /* SettingsViewController.swift */,
 				33E4D8402C67E5C3006A1C26 /* DonationTableViewCell.swift */,
 				332476E72C3E9044008C8EF0 /* About */,
 				332476E42C3E8778008C8EF0 /* Display */,
 				338FFCE22C6950FC006C3BE0 /* AppIcon */,
-				33275B6A2CD0A4E4007ED278 /* Language */,
 				33AC87EE2C3B7C3D003D1175 /* Certificates */,
 				33275B662CD0A4A6007ED278 /* Server Options */,
 				33275B692CD0A4D8007ED278 /* View Logs */,
@@ -1088,6 +1088,7 @@
 				AF9B6B442C6346FF00735748 /* openssl_tools.mm in Sources */,
 				33C0E6DA2D3E417900AF36E3 /* ESignRepoParser.swift in Sources */,
 				33BA37A82BF8168900FF530A /* TabbarController.swift in Sources */,
+				338230E02D7A662900999AD3 /* FRSTableViewController.swift in Sources */,
 				AFAC50952C48DF9300EDEAB6 /* AppSigner.swift in Sources */,
 				339FE33E2CCE06A100C297BA /* AddIdentifierViewController.swift in Sources */,
 				3386515F2D52A5DF00A85670 /* View+NavTransition.swift in Sources */,
@@ -1104,7 +1105,6 @@
 				33E4D8382C659FE9006A1C26 /* CertificateViewTableViewCell.swift in Sources */,
 				33951CFE2C37AFCF00802F78 /* FloatingActionButton.swift in Sources */,
 				33E4D8412C67E5C3006A1C26 /* DonationTableViewCell.swift in Sources */,
-				33E5A5992CC8586E00532930 /* LanguageViewController.swift in Sources */,
 				33C0E6E52D3E4C9200AF36E3 /* ESignRepoKey.swift in Sources */,
 				33DA8AC52D3CA2D7009357AD /* SettingsAltIconView.swift in Sources */,
 				33EEDAA42C5D9358009089DC /* CoreDataManager+DownloadedApps.swift in Sources */,

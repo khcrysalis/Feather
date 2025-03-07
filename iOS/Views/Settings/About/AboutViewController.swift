@@ -9,51 +9,36 @@
 import UIKit
 import MachO
 
-class AboutViewController: UITableViewController {
-	
-	
+class AboutViewController: FRSTableViewController {
 	var credits: [CreditsPerson] = []
 	var creditsSponsors: [CreditsPerson] = []
 	var fileNames: [String] = []
 	
 	private let sourceGET = SourceGET()
 	
-	var tableData = [
-		["Header"],
-		[],
-		["", "Thanks"], // Don't translate this
-		[]
-	]
-	
-	var sectionTitles = [
-		"",
-		String.localized("ABOUT_VIEW_CONTROLLER_SECTION_TITLE_CREDITS"),
-		String.localized("ABOUT_VIEW_CONTROLLER_SECTION_TITLE_SPONSORS"),
-		String.localized("ABOUT_VIEW_CONTROLLER_SECTION_TITLE_ACKNOWLEDGEMENTS")
-	]
-	
-	init() { super.init(style: .insetGrouped) }
-	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(false)
-	}
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		setupViews()
+		
+		tableData = [
+			["Header"],
+			[],
+			["", "Thanks"], // Don't translate this
+			[]
+		]
+		
+		sectionTitles = [
+			"",
+			String.localized("ABOUT_VIEW_CONTROLLER_SECTION_TITLE_CREDITS"),
+			String.localized("ABOUT_VIEW_CONTROLLER_SECTION_TITLE_SPONSORS"),
+			String.localized("ABOUT_VIEW_CONTROLLER_SECTION_TITLE_ACKNOWLEDGEMENTS")
+		]
+		
 		setupCreditsSection()
 		setupNavigation()
 	}
 	
-	fileprivate func setupViews() {
-		self.tableView.dataSource = self
-		self.tableView.delegate = self
-	}
-	
 	fileprivate func setupNavigation() {
 		self.title = "About"
-		self.navigationItem.largeTitleDisplayMode = .never
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButtonTapped))
 	}
 	
@@ -126,16 +111,6 @@ class AboutViewController: UITableViewController {
 }
 
 extension AboutViewController {
-	override func numberOfSections(in tableView: UITableView) -> Int { return sectionTitles.count }
-	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { return sectionTitles[section].isEmpty ? 0 : 40 }
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return tableData[section].count }
-	
-	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-		let title = sectionTitles[section]
-		let headerView = InsetGroupedSectionHeader(title: title)
-		return headerView
-	}
-	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let reuseIdentifier = "Cell"
 		let cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)

@@ -10,7 +10,7 @@ import UIKit
 import Nuke
 import SwiftUI
 
-class SettingsViewController: UITableViewController {
+class SettingsViewController: FRSTableViewController {
 	let aboutSection = [
 		String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ABOUT", arguments: "Feather"),
 		String.localized("SETTINGS_VIEW_CONTROLLER_CELL_SUBMIT_FEEDBACK"),
@@ -20,10 +20,6 @@ class SettingsViewController: UITableViewController {
 	let displaySection = [
 		String.localized("SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY"),
 		String.localized("SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON")
-	]
-
-	let languageSection = [
-		String.localized("SETTINGS_VIEW_CONTROLLER_CELL_LANGUAGE")
 	]
 
 	let certificateSection = [
@@ -46,43 +42,35 @@ class SettingsViewController: UITableViewController {
 		String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET"),
 		String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_ALL")
 	]
-
-	lazy var tableData: [[String]] = {
-		return [
-			aboutSection,
-			displaySection,
-			languageSection,
-			certificateSection,
-			logsSection,
-			foldersSection,
-			resetSection
-		]
-	}()
-
-
-	var sectionTitles =
-	[
-		"",
-		String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_GENERAL"),
-		"",
-		"",
-		"",
-		"",
-		"",
-	]
-		
-	init() { super.init(style: .insetGrouped) }
-	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(false)
-	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		setupViews()
+		
+		tableData = {
+			return [
+				aboutSection,
+				displaySection,
+				certificateSection,
+				logsSection,
+				foldersSection,
+				resetSection
+			]
+		}()
+		
+		
+		sectionTitles =
+		[
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+		]
+		ensureTableDataHasSections()
 		seeIfDonateShouldAppear()
-//		updateCells()
+		setupNavigation()
 	}
 	
 	fileprivate func seeIfDonateShouldAppear() {
@@ -95,34 +83,15 @@ class SettingsViewController: UITableViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		setupNavigation()
 		self.tableView.reloadData()
 	}
-	
-	fileprivate func setupViews() {
-		self.tableView.dataSource = self
-		self.tableView.delegate = self
-	}
-	
+
 	fileprivate func setupNavigation() {
-		self.navigationController?.navigationBar.prefersLargeTitles = true
 		self.title = String.localized("TAB_SETTINGS")
 	}
 }
 
 extension SettingsViewController {
-	override func numberOfSections(in tableView: UITableView) -> Int { return sectionTitles.count }
-	
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return tableData[section].count }
-	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { return sectionTitles[section] }
-	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { return sectionTitles[section].isEmpty ? 0 : 40 }
-	
-	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-		let title = sectionTitles[section]
-		let headerView = InsetGroupedSectionHeader(title: title)
-		return headerView
-	}
-	
 	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
 		if Preferences.beta && section == 0 {
 			return String.localized("SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES")
@@ -164,10 +133,6 @@ extension SettingsViewController {
 			cell.selectionStyle = .default
 		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON"):
 			cell.setAccessoryIcon(with: "app.dashed")
-			cell.selectionStyle = .default
-			
-		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_LANGUAGE"):
-			cell.setAccessoryIcon(with: "character.bubble")
 			cell.selectionStyle = .default
 			
 		case "Current Certificate":
@@ -238,10 +203,6 @@ extension SettingsViewController {
 			navigationController?.pushViewController(l, animated: true)
 		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON"):
 			let l = IconsListViewController()
-			navigationController?.pushViewController(l, animated: true)
-			
-		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_LANGUAGE"):
-			let l = PreferredLanguageViewController()
 			navigationController?.pushViewController(l, animated: true)
 			
 		case String.localized("SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES"):
