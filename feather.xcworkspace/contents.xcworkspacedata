@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:.github">
+   </FileRef>
+   <FileRef
+      location = "group:.gitignore">
+   </FileRef>
+   <FileRef
+      location = "group:app-repo.json">
+   </FileRef>
+   <FileRef
+      location = "group:Makefile">
+   </FileRef>
+   <FileRef
+      location = "group:LICENSE">
+   </FileRef>
+   <FileRef
+      location = "group:README.md">
+   </FileRef>
+   <FileRef
+      location = "group:CODE_OF_CONDUCT.md">
+   </FileRef>
+   <FileRef
+      location = "group:FAQ.md">
+   </FileRef>
+   <FileRef
+      location = "container:feather.xcodeproj">
+   </FileRef>
+</Workspace>
