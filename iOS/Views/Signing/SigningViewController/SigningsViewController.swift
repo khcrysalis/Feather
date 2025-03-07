@@ -355,23 +355,56 @@ extension SigningsViewController: UITableViewDataSource, UITableViewDelegate  {
 		case "AppIcon":
 			importAppIconFile()
 		case String.localized("APPS_INFORMATION_TITLE_NAME"):
-			let l = SigningsInputViewController(v: self, initialValue: (mainOptions.mainOptions.name ?? bundle?.name)!, valueToSaveTo: indexPath.row)
+			
+			let l = SigningsInputViewController(
+				parentView: self,
+				initialValue: (mainOptions.mainOptions.name ?? bundle?.name)!,
+				valueToSaveTo: indexPath.row
+			)
+			
 			navigationController?.pushViewController(l, animated: true)
 		case String.localized("APPS_INFORMATION_TITLE_IDENTIFIER"):
-			let l = SigningsInputViewController(v: self, initialValue: (mainOptions.mainOptions.bundleId ?? bundle?.bundleId)!, valueToSaveTo: indexPath.row)
+			
+			let l = SigningsInputViewController(
+				parentView: self,
+				initialValue: (mainOptions.mainOptions.bundleId ?? bundle?.bundleId)!,
+				valueToSaveTo: indexPath.row
+			)
+			
 			navigationController?.pushViewController(l, animated: true)
 		case String.localized("APPS_INFORMATION_TITLE_VERSION"):
-			let l = SigningsInputViewController(v: self, initialValue: (mainOptions.mainOptions.version ?? bundle?.version)!, valueToSaveTo: indexPath.row)
+			
+			let l = SigningsInputViewController(
+				parentView: self,
+				initialValue: (mainOptions.mainOptions.version ?? bundle?.version)!,
+				valueToSaveTo: indexPath.row
+			)
+			
 			navigationController?.pushViewController(l, animated: true)
 		case String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS"):
-			let l = SigningsTweakViewController(signingDataWrapper: signingDataWrapper)
+			
+			let l = SigningsTweakViewController(
+				signingDataWrapper: signingDataWrapper
+			)
+			
 			navigationController?.pushViewController(l, animated: true)
 		case String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_MODIFY_DYLIBS"):
-			let l = SigningsDylibViewController(mainOptions: mainOptions, app: getFilesForDownloadedApps(app: application as! DownloadedApps, getuuidonly: false))
+			
+			let l = SigningsDylibViewController(
+				mainOptions: mainOptions,
+				app: getFilesForDownloadedApps(app: application as! DownloadedApps, getuuidonly: false)
+			)
+			
 			navigationController?.pushViewController(l, animated: true)
 		case String.localized("APP_SIGNING_VIEW_CONTROLLER_CELL_PROPERTIES"):
-			let l = SigningsAdvancedViewController(signingDataWrapper: signingDataWrapper, mainOptions: mainOptions)
+			
+			let l = SigningsAdvancedViewController(
+				signingDataWrapper: signingDataWrapper,
+				mainOptions: mainOptions
+			)
+			
 			navigationController?.pushViewController(l, animated: true)
+			
 		default:
 			break
 		}

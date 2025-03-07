@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class SigningsInputViewController: UITableViewController {
-	var v: SigningsViewController
+	var parentView: SigningsViewController
 	var initialValue: String
 	var valueToSaveTo: Int
 	private var changedValue: String?
@@ -22,8 +22,8 @@ class SigningsInputViewController: UITableViewController {
 		return textField
 	}()
 
-	init(v: SigningsViewController, initialValue: String, valueToSaveTo: Int) {
-		self.v = v
+	init(parentView: SigningsViewController, initialValue: String, valueToSaveTo: Int) {
+		self.parentView = parentView
 		self.initialValue = initialValue
 		self.valueToSaveTo = valueToSaveTo
 		super.init(style: .insetGrouped)
@@ -46,11 +46,11 @@ class SigningsInputViewController: UITableViewController {
 	@objc func saveButton() {
 		switch valueToSaveTo {
 		case 1:
-			v.mainOptions.mainOptions.name = changedValue
+			parentView.mainOptions.mainOptions.name = changedValue
 		case 2:
-			v.mainOptions.mainOptions.bundleId = changedValue
+			parentView.mainOptions.mainOptions.bundleId = changedValue
 		case 3:
-			v.mainOptions.mainOptions.version = changedValue
+			parentView.mainOptions.mainOptions.version = changedValue
 		default:
 			break
 		}

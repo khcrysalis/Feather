@@ -37,6 +37,7 @@
 		335F0C302C5E175B00A4F0AE /* CertData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335F0C2F2C5E175B00A4F0AE /* CertData.swift */; };
 		336EEE812C32367C0011188D /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 336EEE802C32367C0011188D /* ZIPFoundation */; };
 		338230E02D7A662900999AD3 /* FRSTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338230DF2D7A660E00999AD3 /* FRSTableViewController.swift */; };
+		338230E22D7A701700999AD3 /* FRSITableViewCOntroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338230E12D7A700D00999AD3 /* FRSITableViewCOntroller.swift */; };
 		3386515B2D52343500A85670 /* CardContextMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3386515A2D52343500A85670 /* CardContextMenuView.swift */; };
 		3386515D2D52A51400A85670 /* NewsCardContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3386515C2D52A51400A85670 /* NewsCardContainerView.swift */; };
 		3386515F2D52A5DF00A85670 /* View+NavTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3386515E2D52A5DF00A85670 /* View+NavTransition.swift */; };
@@ -183,6 +184,7 @@
 		335F0C2D2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Certificates.swift"; sourceTree = "<group>"; };
 		335F0C2F2C5E175B00A4F0AE /* CertData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertData.swift; sourceTree = "<group>"; };
 		338230DF2D7A660E00999AD3 /* FRSTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRSTableViewController.swift; sourceTree = "<group>"; };
+		338230E12D7A700D00999AD3 /* FRSITableViewCOntroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRSITableViewCOntroller.swift; sourceTree = "<group>"; };
 		3386515A2D52343500A85670 /* CardContextMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContextMenuView.swift; sourceTree = "<group>"; };
 		3386515C2D52A51400A85670 /* NewsCardContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCardContainerView.swift; sourceTree = "<group>"; };
 		3386515E2D52A5DF00A85670 /* View+NavTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+NavTransition.swift"; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 			isa = PBXGroup;
 			children = (
 				338230DF2D7A660E00999AD3 /* FRSTableViewController.swift */,
+				338230E12D7A700D00999AD3 /* FRSITableViewCOntroller.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -638,7 +641,6 @@
 		33AC87EF2C3B7C46003D1175 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				338230DE2D7A65F900999AD3 /* Common */,
 				33AC87F02C3B7CBE003D1175 /* SettingsViewController.swift */,
 				33E4D8402C67E5C3006A1C26 /* DonationTableViewCell.swift */,
 				332476E72C3E9044008C8EF0 /* About */,
@@ -707,6 +709,7 @@
 		33BA378D2BF8159F00FF530A /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				338230DE2D7A65F900999AD3 /* Common */,
 				3AC770F02CF7250700D9B9E1 /* Operations */,
 				33BA37A42BF8165400FF530A /* Delegates */,
 				33BA37A62BF8167A00FF530A /* Views */,
@@ -1079,6 +1082,7 @@
 				335F0C2E2C5E0FFF00A4F0AE /* CoreDataManager+Certificates.swift in Sources */,
 				D0651C332BFEEA4B00D40829 /* macho.cpp in Sources */,
 				33A305D72C3A85F300D650BA /* SourceDownload.swift in Sources */,
+				338230E22D7A701700999AD3 /* FRSITableViewCOntroller.swift in Sources */,
 				33B7D06A2CCB8E5900BD9199 /* SigningOptions.swift in Sources */,
 				33570F672C34CCD5008CB560 /* AppsInformationViewController.swift in Sources */,
 				332476D82C3E4CF7008C8EF0 /* SourceAppActions.swift in Sources */,

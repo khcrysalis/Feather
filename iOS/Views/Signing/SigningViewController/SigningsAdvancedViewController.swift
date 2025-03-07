@@ -7,30 +7,12 @@
 
 import UIKit
 
-class SigningsAdvancedViewController: UITableViewController {
-	
-	var tableData = [
-		[ String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE") ],
-		[ String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION") ],
-		[],
-	]
-	
-	var sectionTitles = [
-		String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE"),
-		String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION"),
-		String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES"),
-	]
-	
-	var signingDataWrapper: SigningDataWrapper
-	var mainOptions: SigningMainDataWrapper
-	
+class SigningsAdvancedViewController: FRSITableViewCOntroller {
 	private var toggleOptions: [TogglesOption]
-
-	init(signingDataWrapper: SigningDataWrapper, mainOptions: SigningMainDataWrapper) {
-		self.signingDataWrapper = signingDataWrapper
-		self.mainOptions = mainOptions
+	
+	override init(signingDataWrapper: SigningDataWrapper, mainOptions: SigningMainDataWrapper) {
 		self.toggleOptions = feather.toggleOptions(signingDataWrapper: signingDataWrapper)
-		super.init(style: .insetGrouped)
+		super.init(signingDataWrapper: signingDataWrapper, mainOptions: mainOptions)
 	}
 	
 	required init?(coder: NSCoder) {
@@ -39,23 +21,25 @@ class SigningsAdvancedViewController: UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		tableData = [
+			[ String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE") ],
+			[ String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION") ],
+			[],
+		]
+		
+		sectionTitles = [
+			String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE"),
+			String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION"),
+			String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES"),
+		]
+		
         self.title = String.localized("APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES")
 		self.tableData[2] = toggleOptions.map { $0.title }
 	}
 }
 
 extension SigningsAdvancedViewController {
-	override func numberOfSections(in tableView: UITableView) -> Int { return sectionTitles.count }
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return tableData[section].count }
-	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { return sectionTitles[section] }
-	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { return sectionTitles[section].isEmpty ? 0 : 40 }
-	
-	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-		let title = sectionTitles[section]
-		let headerView = InsetGroupedSectionHeader(title: title)
-		return headerView
-	}
-	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let reuseIdentifier = "Cell"
         let cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
