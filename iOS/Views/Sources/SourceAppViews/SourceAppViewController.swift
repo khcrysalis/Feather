@@ -25,7 +25,6 @@ class SourceAppViewController: UITableViewController {
 	var filteredApps: [StoreAppsData] = []
 	
 	var name: String? { didSet { self.title = name } }
-
 	var uri: [URL]!
 	
 	
@@ -182,6 +181,7 @@ class SourceAppViewController: UITableViewController {
 		var allApps: [StoreAppsData] = []
 		var newsData: [NewsData] = []
 		
+		var website = ""
 		var tintColor = ""
 		
 		for uri in urls {
@@ -194,6 +194,7 @@ class SourceAppViewController: UITableViewController {
 						allApps.append(contentsOf: sourceData.apps)
 						newsData.append(contentsOf: sourceData.news ?? [])
 						tintColor = sourceData.tintColor ?? ""
+						website = sourceData.website ?? ""
 					}
 				case .failure(let error):
 					Debug.shared.log(message: "Error fetching data from \(uri): \(error.localizedDescription)")
@@ -220,8 +221,27 @@ class SourceAppViewController: UITableViewController {
 				self?.applyFilter()
 			}
 			
+			if self?.uri.count == 1 {
+				let children = [
+					UIAction(title: "Visit Website", image: UIImage(systemName: "globe")) { _ in
+						UIApplication.shared.open(URL(string: website)!, options: [:], completionHandler: nil)
+					}
+				]
+				
+				let menu = UIMenu(children: children)
+				
+				if #available(iOS 16.0, *) {
+					if (website != "") {
+						self?.navigationItem.titleMenuProvider = { _ in
+							menu
+						}
+					}
+				}
+			}
+						
 			UIView.transition(with: self!.tableView, duration: 0.3, options: .transitionCrossDissolve, animations: {
 				self!.activityIndicator.stopAnimating()
+				
 				self?.navigationItem.titleView = nil
 				if self?.highlightAppName == nil {
 					self?.updateFilterMenu()

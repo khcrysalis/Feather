@@ -1,4 +1,5 @@
 {
+  "originHash" : "952bcf080d88b28444dab5da5e47ebd849d15866344bba244f57e500b7e09825",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -43,15 +44,6 @@
       "state" : {
         "revision" : "78c0dd739df8cb9ee14a8bbbf770facc4fc3402a",
         "version" : "4.15.0"
-      }
-    },
-    {
-      "identity" : "ios-icon-selector",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/jellybeansoup/ios-icon-selector",
-      "state" : {
-        "branch" : "main",
-        "revision" : "002f7cefa47c9f18716d7be54829d15dec954b1e"
       }
     },
     {
@@ -262,5 +254,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

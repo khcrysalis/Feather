@@ -16,6 +16,7 @@ public struct SourcesData: Codable, Hashable {
 	
 	public var sourceURL: URL?
 	public var iconURL: URL?
+	public var website: String?
 	public var news: [NewsData]?
 	public var apps: [StoreAppsData]
 	
