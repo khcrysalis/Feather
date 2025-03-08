@@ -173,23 +173,29 @@ extension RepoViewController {
 			let decryptor = EsignDecryptor(input: text)
 			
 			guard let decodedString = decryptor.decrypt(key: esign_key, keyLength: esign_key_len) else {
-				Debug.shared.log(message: "Failed to decode esign code", type: .error)
+				Debug.shared.log(message: "Failed to decode esign code")
 				return
 			}
 			
 			repoLinks = decodedString
 		} else if isBase64 {
 			guard let decodedString = decodeBase64String(text) else {
-				Debug.shared.log(message: "Failed to decode base64 string", type: .error)
+				Debug.shared.log(message: "Failed to decode base64 string")
 				return
 			}
-			print(decodedString)
-			repoLinks = decodedString.components(separatedBy: "[M$]")
+			
+			if decodedString.contains("[K$]") {
+				repoLinks = decodedString.components(separatedBy: "[K$]")
+			} else if decodedString.contains("[M$]") {
+				repoLinks = decodedString.components(separatedBy: "[M$]")
+			} else {
+				Debug.shared.log(message: "Is this a valid Kravasign code?", type: .error)
+				return
+			}
 		} else {
 			repoLinks = text.components(separatedBy: "\n")
 		}
 		
-		print(repoLinks)
 		
 		DispatchQueue(label: "import").async {
 			var success = 0
