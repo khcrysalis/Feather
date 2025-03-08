@@ -158,7 +158,7 @@ extension ServerOptionsViewController {
 	
 	private func updateCells() {
 		if Preferences.onlinePath != Preferences.defaultInstallPath {
-			tableData[0].insert(String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION"), at: 2)
+			tableData[1].insert(String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION"), at: 2)
 		}
 		Preferences.installPathChangedCallback = { [weak self] newInstallPath in
 			self?.handleInstallPathChange(newInstallPath)
@@ -167,14 +167,14 @@ extension ServerOptionsViewController {
 	
 	private func handleInstallPathChange(_ newInstallPath: String?) {
 		if newInstallPath != Preferences.defaultInstallPath {
-			tableData[0].insert(String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION"), at: 2)
+			tableData[1].insert(String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION"), at: 2)
 		} else {
-			if let index = tableData[0].firstIndex(of: String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION")) {
-				tableData[0].remove(at: index)
+			if let index = tableData[1].firstIndex(of: String.localized("SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION")) {
+				tableData[1].remove(at: index)
 			}
 		}
 
-		tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+		tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
 	}
 }
 
