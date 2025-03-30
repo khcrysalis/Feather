@@ -1,0 +1,420 @@
+/* 
+  Localizable.strings
+  feather
+
+  Created by samara on 25.08.2024.
+  
+*/
+
+// MARK: - Generic
+// Unknown, default string for applications
+"UNKNOWN" = "مجهول";
+// Default string
+"DEFAULT" = "أساسي";
+// Copy provided string in a menu
+"COPY" = "نسخ";
+// Delete item
+"DELETE" = "حذف";
+// Cancel alert action
+"CANCEL" = "الغاء";
+// Done action
+"DONE" = "تم";
+// Dismiss action
+"DISMISS" = "تجاهل";
+// Dismiss 2 action
+"LAME" = "تجاهل";
+// Save action
+"SAVE" = "حفظ";
+// Set action
+"SET" = "حفظ";
+// OK action
+"OK" = "تم";
+// Continue action
+"CONTINUE" = "تابع";
+// Import Action
+"IMPORT" = "استيراد";
+// Add Action
+"ADD" = "اضافه";
+// Install Action
+"INSTALL" = "تثبيت";
+
+// MARK: - Alerts
+// Alert titles
+"ALERT_SUCCESS" = "بنجاح";
+"ALERT_TRACE" = "Trace";
+"ALERT_ERROR" = "خطأ";
+"ALERT_CRITICAL" = "فادح";
+"ALERT_COPIED" = "منسوخ";
+
+// MARK: - Error messages
+// Installer Error Title
+"ERROR_INSTALLER" = "مثبت";
+// Installer Error Description
+"ERROR_INSTALLER_DESCRIPTION" = "فشل في تحميل شهادات SSL";
+"ERROR_ZSIGN_FAILED" = "فشل التوقيع.";ِ
+"ERROR_FAILED_TO_READ_MOBILEPROVISION" = "فشل في قراءة ملف mobileprovision";
+
+// MARK: - Success messages
+// Successfully signed an application
+"SUCCESS_SIGNED" = "تم التوقيع بنجاح %@";
+// Successfully resigned an application
+"SUCCESS_RESIGN" = "تم اعاده التوقيع بنجاح!";
+// Success message requiring user to restart app
+"SUCCESS_REQUIRES_RESTART" = " يجب ان تقوم بإعاده تشغيل التطبيق لحفظ الاعدادات";
+
+// MARK: - Onboarding
+// Welcome to Feather!!!!!!!!
+"ONBOARDING_WELCOMETITLE_1" = "مرحبا بك في ";
+// First feature inside of onboarding
+"ONBOARDING_CELL_1_TITLE" = "التحميل الخارجي للجهاز";
+"ONBOARDING_CELL_1_DESCRIPTION" = " قم بتحميل البرامج بشكل خارجي دون الحاجه للكمبيوتر , فقط عن طريق جهازك."
+// Second feature inside of onboarding
+"ONBOARDING_CELL_2_TITLE" = "تخصيص التطبيقات";
+"ONBOARDING_CELL_2_DESCRIPTION" = "قم بادارة وتخصيص تطبيقاتك لأحتياجاتك.";
+// Third feature inside of onboarding
+"ONBOARDING_CELL_3_TITLE" = "والمزيد!";
+"ONBOARDING_CELL_3_DESCRIPTION" = "مستودعات AltStore، واستيراد IPA، وسهولة تبديل الشهادات، وأكثر من ذلك بكثير.";
+// "تم تطويره بواسطة Samara . صنع للمستخدمين المتحمسين للتحميل الخارجي والحرية. تم تضمين العديد من الميزات في الداخل. اعرف المزيد..."
+"ONBOARDING_FOOTER" = "تم تطويره بواسطة Samara . صنع للمستخدمين المتحمسين للتحميل الخارجي والحرية. تم تضمين العديد من الميزات في الداخل.";
+"ONBOARDING_FOOTER_LINK" = "اعرف المزيد...";
+// Continue button to exit onboarding
+"ONBOARDING_CONTINUE_BUTTON" = "الأستمرار";
+
+// MARK: - Tab area
+// Sources tab
+"TAB_SOURCES" = "المصادر";
+// Library tab
+"TAB_LIBRARY" = "المكتبة";
+// Settings tab
+"TAB_SETTINGS" = "الأعدادات";
+
+// MARK: - TransferPreview
+// Packaging application to get ready for install
+"TRANSFER_PREVIEW_PACKAGING" = "تجهيز…";
+// Ready to install package
+"TRANSFER_PREVIEW_READY" = "جاهز للتثبيت";
+// Opening manifest.plist for iOS
+"TRANSFER_PREVIEW_SENDING_MANIFEST" = "Sending Manifest...";
+// iOS is retrieving IPA file
+"TRANSFER_PREVIEW_SENDING_PAYLOAD" = "Sending Payload...";
+// Done transferring IPA file
+"TRANSFER_PREVIEW_DONE" = "تم";
+// Completed packaging so you can share
+"TRANSFER_PREVIEW_COMPLETED" = "مكتمل";
+
+// MARK: - SourcesViewController
+// Repositories title
+"SOURCES_VIEW_CONTROLLER_REPOSITORIES" = "المستودعات";
+// Add repo button
+"SOURCES_VIEW_CONTROLLER_ADD_SOURCES" = "إضافة مستودع";
+// Number of sources, i.e. "100 Sources"
+"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES" = "%@ مصدر";
+"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES_PLURAL" = "%@ مصادر";
+// Search sources in search bar
+"SOURCES_VIEW_CONTROLLER_SEARCH_SOURCES" = "البحث عن مصادر";
+
+// MARK: - SourcesViewController - Add Sources
+"SOURCES_VIEW_ADD_SOURCES_ALERT_TITLE" = "إضافة مصدر";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "إضافة رابط مستودع Altstore";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_IMPORT_REPO" = "استيراد المستودعات";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO" = "تصدير المستودعات";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO_ACTION_SUCCESS" = "تم نسخ المستودعات للحافظة";
+//Footer Validation
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTSTARTED" = "أدخل رابط URL للتأكد من الصحة.";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTVALIDJSON" = "JSON غير سليم ، يرجي التأكد من إدخالك";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_VALID" = "JSON سليم مدخل.";
+
+// MARK: - SourcesViewController -> SourcesAppViewController
+// Number of apps, i.e. "444 Apps"
+"SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS" = "%@ التطبيق";
+"SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS_PLURAL" = "%@ التطبيقات";
+// Search apps in search bar
+"SOURCES_APP_VIEW_CONTROLLER_SEARCH_APPS" = "البحث عن التطبيقات";
+
+// MARK: - SourcesViewController ... - Cells
+// Default subtitle string
+"SOURCES_CELLS_DEFAULT_SUBTITLE" = "تطبيقٌ رائع.";
+// Default description string
+"SOURCES_CELLS_DEFAULT_DESCRIPTION" = "وصفٌ مميز.";
+
+// MARK: - SourceAppViewController ... - Actions
+// Available Versions Alert Title
+"SOURCES_CELLS_ACTIONS_HOLD_AVAILABLE_VERSIONS" = "الأصدارات المتاحة";
+//Filter Menu
+"SOURCES_CELLS_ACTIONS_FILTER_TITLE" = "التصنيف";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_DEFAULT" = "الأساسي";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_NAME" = "الأسم";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_DATE" = "التاريخ";
+
+// MARK: - AppsInformationViewController
+// Application Section
+"APPS_INFORMATION_SECTION_TITLE_NAME" = "التطبيق";
+// Bundle Section
+"APPS_INFORMATION_SECTION_TITLE_NAME" = "الحزمة";
+
+//
+"APPS_INFORMATION_TITLE_DELETED_FILE" = "الملف محذوف";
+"APPS_INFORMATION_TITLE_DELETED_FILE_TITLE" = "لقد تم حذف الملف.";
+"APPS_INFORMATION_TITLE_DELETED_FILE_DESCRIPTION" = "هذا إدخال عديم الفائدة، لا يحتوي على ملف ولن يسمح لك Feather بتثبيته. يوصى بالحذف عن طريق التمرير على التطبيق في تبويب التطبيقات.";
+// Application Section
+"APPS_INFORMATION_TITLE_NAME" = "الأسم";
+"APPS_INFORMATION_TITLE_VERSION" = "الإصدار";
+"APPS_INFORMATION_TITLE_IDENTIFIER" = "المعرف";
+"APPS_INFORMATION_TITLE_SIZE" = "الحجم";
+//
+"APPS_INFORMATION_TITLE_DATE_ADDED" = "تاريخ الأضافة";
+// Bundle Section
+"APPS_INFORMATION_TITLE_BUNDLE_NAME" = "أسم الحزمة";
+"APPS_INFORMATION_TITLE_BUNDLE_PATH" = "مسار الحزمة";
+"APPS_INFORMATION_TITLE_ICON_FILE" = "أيقونة الملف";
+//
+"APPS_INFORMATION_TITLE_OPEN_IN_FILES" = "الفنح في الملفات";
+
+// MARK: - AppSigningViewController
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_CUSTOMIZATION" = "التخصيص";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_SIGNING" = "التوقيع";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_ADVANCED" = "متقدم";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS" = "إضافة أدوات";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED" = "متقدم";
+"APP_SIGNING_VIEW_CONTROLLER_START_SIGNING" = "بدء التوقيع";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_MODIFY_DYLIBS" = "تعديل Dylibs";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_PROPERTIES" = "الخصائص";
+
+// MARK: - AppSigningViewController - No Certificates Alert
+"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_TITLE" = "خطأ";
+"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_DESCRIPTION" = "انت ليس لديك شهادة محدده ، الرجاء إختيار أو رفع شهادة في قسم التوقيع في تبويب الأعدادات";
+
+// MARK: - AppSigningViewController -> AppSigningAdvancedViewController
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE" = "المظهر";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION" = "الحد الأدنى لأصدار التطبيق";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES" = "الخصائص";
+
+// MARK: - AppSigningViewController -> AppSigningTweakViewController
+"APP_SIGNING_TWEAK_VIEW_CONTROLLER_TITLE" = "الأدوات";
+
+// MARK: - SigningsOptionsViewController
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS" = "تفعيل الحماية";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS_DESCRIPTION" = "سيؤدي تمكين الحماية إلى إلحاق سلسلة عشوائية بكل معرف حزمة، وذلك لحماية معرف آبل المتعلق بشهادتك من وضع علامة عليه من قبل آبل . ومع ذلك، إذا كنت لا تهتم بهذا، يمكنك تجاهله.";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DYNAMIC_PROTECTION" = "الحماية الديناميكية";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DYNAMIC_PROTECTION_DESCRIPTION" = "الحماية الديناميكية ستطبق فقط حماية PPQ إذا كان معرف الحزمة موجودا على متجر التطبيقات. هذا يتطلب اتصالا بالإنترنت أثناء التوقيع.";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS" = "معارف الحزمة";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_NEW" = "معرف جديد";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID" = "المعرف";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID_REPLACEMENT" = "Replacement";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES" = "عرض الأسماء";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES_ID" = "إسم العرض الأصلي";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES_ID_REPLACEMENT" = "إسم العرض الجديد";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IMMEDIATELY_INSTALL_FROM_SOURCE" = "التثبيت من المصدر على الفور";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IMMEDIATELY_INSTALL_FROM_SOURCE_DESCRIPTION" = "عند التمكين، ستطالب التطبيقات التي تم تنزيلها من المصادر بالتوقيع والتثبيت بعد التنزيل.";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_INSTALLAFTERSIGNED" = "التثبيت بعد التوقيع";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_TITLE" = "إعدادات التوقيع";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "إزالة كل الإضافات";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS_DESCRIPTION" = "يزيل محتوى الإضافات داخل التطبيق ، والذي في معظم الأحيان يحتوي على بعض";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES" = "إزالة الواجهة الرسومية للأجهزة المدعومه";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES_DESCRIPTION" = "يزيل قيود الجهاز للتطبيق.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME" = "Remove URLScheme";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME_DESCRIPTION" = "Removes any possible URL schemes (i.e. 'feather://')";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS" = "السماح بتصفح المستندات";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS_DESCRIPTION" = "يسمح للتطبيقات الأخرى بفتح وتحرير الملفات المخزنة في مجلد المستندات. يتيح هذا الخيار أيضا للمستخدمين تعيين موقع الحفظ الافتراضي للتطبيق في الإعدادات.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING" = "السماح بمشاركة iTunes";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING_DESCRIPTION" = "يجبر التطبيق على مشاركة مسار المستندات الخاص به، مما يسمح بالمشاركة بين iTunes وFinder.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION" = "ProMotion تفعيل بشكل إجباري";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION_DESCRIPTION" = "يتيح تقنيات ProMotion داخل التطبيق، ولكن في الإصدارات الأقل من 15.x قد لا يكون هذا كافيا.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_GAME_MODE" = "تفعيل وضع اللعب بشكل إجباري";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_GAME_MODE_DESCRIPTION" = "تمكين وضع اللعبة داخل التطبيق، مما يقلل من نشاط الخلفية وتحديد أولويات الأداء للتطبيق.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "ملئ الشاشة بشكل إجباري";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN_DESCRIPTION" = "يفرض إمكانيات ملء الشاشة فقط داخل تطبيقات iPad، مما لا يسمح بمشاركة الشاشة مع التطبيقات الأخرى. على الشاشة الخارجية، تحافظ نافذة التطبيق مع هذا الإعداد على حجم قماشه.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP" = "إزالة التطبيق النائب للساعة";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP_DESCRIPTION" = "يزيل العنصر النائب للساعة غير المرغوب فيه الذي لا يفترض أن يكون موجودا، موجود في تطبيقات مثل موسيقى يوتيوب، وما إلى ذلك.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS" = "فرض محاولة التوطين";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS_DESCRIPTION" = "يفرض التوطين عن طريق تعديل كل حزمة قابلة للتوطين داخل التطبيق عند محاولة تغيير اسم التطبيق.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING" = "إزالة ملف Provisioning";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING_DESCRIPTION" = "يزيل .mobileprovison من الظهور في تطبيقك بعد التوقيع";
+
+// MARK: - LibraryViewController
+//Search Library placeholder
+"SETTINGS_VIEW_CONTROLLER_SEARCH_PLACEHOLDER" = "مكتبة البحث";
+//Headers
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS" = "التطبيقات المُوقعة";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL" = "%@ مُوقع";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL_PLURAL" = "%@ مُوقعين";
+"LIBRARY_VIEW_CONTROLLER_SECTION_BUTTON_IMPORT" = "استيراد";
+"LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS" = "التطبيقات المحملة";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_DOWNLOADED_APPS_TOTAL" = "%@ محمل";
+//Import Action Sheet
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_FILE" = "الأستيراد من الملفات";
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_URL" = "الأستيراد من رابط URL";
+//Sign Action Sheet
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN" = "Sign %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN_INSTALL" = "Sign & Install %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_RESIGN" = "اعاجة توقيع %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL" = "تثبيت %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SHARE" = "مشاركة %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN" = "فتح %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_UPDATE" = "نحديث %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_CLEAR_UPDATE" = "محو التحديث";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_VIEW_DATEILS" = "إظهار التفاصيل";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN_LN_FILES" = "الفتح في الملفات";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM" = "تأكيد التثبيت";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM_DESCRIPTION" = "قد لا تعمل محاولة التثبيت عبر تبويب التطبيقات التي تم تنزيلها لأنها على الأرجح غير موقعة! يوصى بالتوقيع على هذا التطبيق أولا قبل التثبيت.";
+
+// MARK: - SettingsViewController
+// Headers
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_GENERAL" = "عام";
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING" = "توقيع";
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING_SERVER" = "توقيع الخادم";
+
+// Footers
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES" = "إذا حدثت أي مشاكل داخل Feather، فيرجى الإبلاغ عنها عبر مستودع GitHub. عند إرسال مشكلة، تأكد من إرسال أي سجلات.";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS" = "للأسف، بسبب القيود، ستحتاج شهادات الخادم إلى إعادة تجديدها كل عام للحفاظ على ميزات Feathers المحلية تعمل بشكل صحيح، انقر فوق هذا الزر لاسترداد أحدث الملفات من مستودعاتنا.";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER" = "%@ الخادم الأساسي يذهب إلى";
+
+"SETTINGS_VIEW_CONTROLLER_TITLE" = "إعدادات الخادم";
+"SETTINGS_VIEW_CONTROLLER_TITLE_ONLINE" = "Online";
+"SETTINGS_VIEW_CONTROLLER_TITLE_LOCAL" = "محلي";
+
+// Cell Titles
+// About Feather
+"SETTINGS_VIEW_CONTROLLER_CELL_ABOUT" = "عن %@";
+"SETTINGS_VIEW_CONTROLLER_CELL_SUBMIT_FEEDBACK" = "إرسال ملاحظات";
+"SETTINGS_VIEW_CONTROLLER_CELL_GITHUB" = "GitHub مستودع";
+"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY" = "العرض";
+"SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON" = "أيقونة التطبيق";
+"SETTINGS_VIEW_CONTROLLER_CELL_LANGUAGE" = "اللغة";
+"SETTINGS_VIEW_CONTROLLER_CELL_CURRENT_CERTIFICATE_NOSELECTED" = "لم يتم تحديد أي شهادة";
+"SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES" = "إضافة شهادة";
+
+
+
+"SETTINGS_VIEW_CONTROLLER_CELL_SIGN_OPTIONS" = "خيارات التوقيع";
+"SETTINGS_VIEW_CONTROLLER_CELL_SERVER_OPTIONS" = "إعدادات الخادم";
+"SETTINGS_VIEW_CONTROLLER_CELL_VIEW_LOGS" = "أظهار السجلات";
+"SETTINGS_VIEW_CONTROLLER_CELL_APPS_FOLDER" = "فتح ملف التطيقات";
+"SETTINGS_VIEW_CONTROLLER_CELL_CERTS_FOLDER" = "فتح ملف الشهادات";
+
+
+"SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE" = "تحديث الشهادة المحلية";
+"SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE_UPDATING" = "تحديث الشهادة المحلية";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET" = "إعادة تعيين";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_ALL" = "إعادة تعيين الكل";
+
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION" = "Reset Configuration";
+"SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER" = "إساخدام خادم مخصص";
+
+"SETTINGS_VIEW_CONTROLLER_CELL_ONLINE_INSTALL_METHOD" = "طريقة التثبيت عبر الأنترنت";
+
+
+"SETTINGS_VIEW_CONTROLLER_CELL_EXPORT_ID" = "تصدير المعرف العشوائي";
+"SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_ID" = "تغير المعرف العشوائي";
+
+//
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_TITLE" = "PPQCheck حمايات";
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_DESCRIPTION" = "يتيح هذا الإعداد حمايات PPQCheck، والتي تم تصميمها لتسبق كل معرف حزمة للتطبيقات التي تقوم بتحميلها بسلسلة عشوائية.\n\nيهدف ذلك إلى تجنب وضع Apple علامة على حسابك عن طريق (محاولة) جعله غير قادر على ربط التطبيق الذي تقوم بتحميله بواحد من App Store.";
+
+"SETTINGS_VIEW_CONTROLLER_URL_ALERT_TITLE" = "تغير رابط التحميل";
+"SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_IDENTIFIER" = "تغير المعرف العشوائي";
+
+// MARK: - SettingsViewController -> AboutViewController
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_CREDITS" = "Credits";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_SPONSORS" = "الرعاة";
+
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_DEVICE" = "الجهاز";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_ACKNOWLEDGEMENTS" = "الإقرارات";
+
+
+"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_VERSION" = "اصدار الجهاز";
+"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_ARCH" = "البُنية";
+"ABOUT_VIEW_CONTROLLER_CELL_APP_VERSION" = "اصدار التطبيق";
+
+// MARK: - SettingsViewController -> DisplayViewController
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_TINT_COLOR" = "لون مظلل";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARENCE" = "مظهر التطبيق";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_STORE" = "المتجر";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE" = "العنوان الفرعي الأساسي";
+"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE_DESCRIPTION" = "النمط الافتراضي لFeather ، يخفي الوصف المترجم ويتضمن العنوان الفرعي فقط.";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE" = "العنوان الفرعي المترجم";
+"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE_DESCRIPTION" = "يستبدل العنوان الفرعي بوصف التطبيق.";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION" = "وصف كبير";
+"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION_DESCRIPTION" = "يستبدل لقطات الشاشة بوصفٍ للتطبيق.";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME" = "استخدام اسم الفريق";
+"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME_DESCRIPTION" = "يستبدل اسم الشهادة باسم فريقك، قد يكون من الأفضل التمييز بين الشهادات إذا كان مقدمو الخدمات يستخدمون دائما نفس اسم معرف التطبيق.";
+
+// MARK: - SettingsViewController -> LanguageViewController.swift
+"LANGUAGE_VIEW_TITLE" = "اللغة";
+"LANGUAGE_VIEW_CELL_USE_SYSTEM_LANGUAGE" = "إستخدام لغة النظام";
+
+// MARK: - SettingsViewController -> CertificatesViewController
+"CERTIFICATES_VIEW_CONTROLLER_TITLE" = "الشهادات";
+
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_FOOTER" = "تنسيقات الملفات المدعومة:\n\n- P12 (.p12)\n- Mobile Provision (.mobileprovision)\n\nتأكد من أن شهاداتك صالحة وقادرة على التحميل الخارجي على جهازك!";
+
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD" = "اضافة شهادات";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_DESCRIPTION" = "اضغط لأضافة شهادة";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> Delete Alert
+"CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_TITLE" = "أنت لا تريد فعل ذلك!";
+"CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_DESCRIPTION" = "أنت تقوم بمحاولة حذف شهادة تم التحديد عليها . قم بالمحاولة مرة أخرى عندما يكون لديك شهادة أخرى
+// MARK: - SettingsViewController -> CertificatesViewController -> Cell
+"CERTIFICATES_VIEW_CONTROLLER_CELL_EXPIRED" = "منتهي الصلاحية";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_DAYS_LEFT" = "%@ متبقي من الأيام";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> CertImportingViewController
+"CERT_IMPORTING_VIEWCONTROLLER_TITLE" = "استيراد";
+"CERT_IMPORTING_VIEWCONTROLLER_SECTION_PROVISIONING" = "";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> CertImportingViewController -> Password Alert
+
+"CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_TITLE" = "كلمة مرور سيئة";
+"CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_DESCRIPTION" = "يرجى التأكد من كلمة المرور والمحاولة مرة أخرى.";
+
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PROV" = "استيراد ملف Provisioning";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_CERT" = "استيراد ملف الشهادة";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_ENTER_PW" = "أدخل كلمة المرور";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PW" = "كلمة المرور";
+
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PROV" = "قم باستيراد ملف provision لتتمكن من التحميل بشكل خارجي على جهازك.";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_CERT" = "قم باستيراد ملف يحتوي على شهادة صالحة.";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PASS" = "أدخل كلمة المرور المرتبطة بالمفتاح الخاص، اتركها فارغة إذا لم تكن هناك كلمة مرور مطلوبة.";
+
+// MARK: - SettingsViewController -> ResetViewController
+"RESET_VIEW_CONTROLLER_CLEAR_CACHE" = "تنظيف الملفات المؤقتة للشبكة";
+"RESET_VIEW_CONTROLLER_CLEAR_CACHE_ALERT_TITLE" = "هذا الأجراء لا يمكن الرجوع فيه . سيتم حذف الملفات المؤقتة للشبكة";
+
+// MARK: - Donation
+"DONATION_TITLE" = "التبرع";
+"DONATION_DONATIONS" = "التبرعات";
+
+"DONATION_CELL_1_TITLE" = "المستودع السري";
+"DONATION_CELL_1_DESCRIPTION" = "يمكنك الوصول إلى المستودع السري الخاص بنا عن طريق التبرع، سيوفر لك إمكانية الوصول التجريبي إلى Feather.";
+
+"DONATION_CELL_2_TITLE" = "إظهر دعمك";
+"DONATION_CELL_2_DESCRIPTION" = "إظهر دعمك عن طريق التبرع! إن كنت غير قادر على التبرع . كلمتك عن Feather سياعد أيضاً!;
+
+// MARK: - SettingsViewController -> LogsViewController.swift
+"LOGS_VIEW_SECTION_TITLE_ERROR" = "%@ Critical Errors.";
+"LOGS_VIEW_SECTION_TITLE_SHARE" = "مشاركة السجلات";
+"LOGS_VIEW_SECTION_TITLE_COPY" = "نسخ السجلات";
+"LOGS_VIEW_SUCCESS_DESCRIPTION" = "تم نسخ جميع محتويات السجل للحافظة.";
+"LOGS_VIEW_FAIL_DESCRIPTION" = "فشل في نسخ محتويات السجل.";
