@@ -1,0 +1,421 @@
+/* 
+  Localizable.strings
+  feather
+
+  Created by Am1nCmd on 01.04.2025.
+  
+*/
+
+// MARK: - Generic
+// Unknown, default string for applications
+"UNKNOWN" = "Tidak diketahui";
+// Default string
+"DEFAULT" = "Default";
+// Copy provided string in a menu
+"COPY" = "Salin";
+// Delete item
+"DELETE" = "Hapus";
+// Cancel alert action
+"CANCEL" = "Batal";
+// Done action
+"DONE" = "Selesai";
+// Dismiss action
+"DISMISS" = "Tutup";
+// Dismiss 2 action
+"LAME" = "Payah";
+// Save action
+"SAVE" = "Simpan";
+// Set action
+"SET" = "Simpan";
+// OK action
+"OK" = "OK";
+// Continue action
+"CONTINUE" = "Lanjutkan";
+// Import Action
+"IMPORT" = "Impor";
+// Add Action
+"ADD" = "Tambah";
+// Install Action
+"INSTALL" = "Pasang";
+
+// MARK: - Alerts
+// Alert titles
+"ALERT_SUCCESS" = "Berhasil";
+"ALERT_TRACE" = "Jejak";
+"ALERT_ERROR" = "Kesalahan";
+"ALERT_CRITICAL" = "Kritis";
+"ALERT_COPIED" = "Disalin";
+
+// MARK: - Error messages
+// Installer Error Title
+"ERROR_INSTALLER" = "Pemasang";
+// Installer Error Description
+"ERROR_INSTALLER_DESCRIPTION" = "Gagal memuat sertifikat SSL";
+"ERROR_ZSIGN_FAILED" = "Penandatanganan gagal.";
+"ERROR_FAILED_TO_READ_MOBILEPROVISION" = "Gagal membaca file mobileprovision";
+
+// MARK: - Success messages
+// Successfully signed an application
+"SUCCESS_SIGNED" = "Berhasil menandatangani %@";
+// Successfully resigned an application
+"SUCCESS_RESIGN" = "Berhasil menandatangani ulang!";
+// Success message requiring user to restart app
+"SUCCESS_REQUIRES_RESTART" = "Anda harus menutup aplikasi agar perubahan diterapkan.";
+
+// MARK: - Onboarding
+// Welcome to Feather!!!!!!!!
+"ONBOARDING_WELCOMETITLE_1" = "Selamat datang di";
+// First feature inside of onboarding
+"ONBOARDING_CELL_1_TITLE" = "Sideload Di Perangkat";
+"ONBOARDING_CELL_1_DESCRIPTION" = "Sideload aplikasi tanpa komputer, semua dilakukan dari perangkat Anda.";
+// Second feature inside of onboarding
+"ONBOARDING_CELL_2_TITLE" = "Kustomisasi Aplikasi";
+"ONBOARDING_CELL_2_DESCRIPTION" = "Kelola dan sesuaikan aplikasi Anda sesuai kebutuhan.";
+// Third feature inside of onboarding
+"ONBOARDING_CELL_3_TITLE" = "Dan Masih Banyak Lagi!";
+"ONBOARDING_CELL_3_DESCRIPTION" = "Repositori AltStore, impor IPA, pengalihan sertifikat yang mudah, dan masih banyak lagi.";
+// "Developed by Samara. Made for users who are passionate for sideloading and freedom. Many features included inside. Learn more..."
+"ONBOARDING_FOOTER" = "Dikembangkan oleh Samara. Dibuat untuk pengguna yang bersemangat untuk sideloading dan kebebasan. Banyak fitur disertakan di dalamnya.";
+"ONBOARDING_FOOTER_LINK" = "Pelajari lebih lanjut...";
+// Continue button to exit onboarding
+"ONBOARDING_CONTINUE_BUTTON" = "Lanjutkan";
+
+// MARK: - Tab area
+// Sources tab
+"TAB_SOURCES" = "Sumber";
+// Library tab
+"TAB_LIBRARY" = "Pustaka";
+// Settings tab
+"TAB_SETTINGS" = "Pengaturan";
+
+// MARK: - TransferPreview
+// Packaging application to get ready for install
+"TRANSFER_PREVIEW_PACKAGING" = "Mengemas...";
+// Ready to install package
+"TRANSFER_PREVIEW_READY" = "Siap Dipasang";
+// Opening manifest.plist for iOS
+"TRANSFER_PREVIEW_SENDING_MANIFEST" = "Mengirim Manifes...";
+// iOS is retrieving IPA file
+"TRANSFER_PREVIEW_SENDING_PAYLOAD" = "Mengirim Payload...";
+// Done transferring IPA file
+"TRANSFER_PREVIEW_DONE" = "Selesai";
+// Completed packaging so you can share
+"TRANSFER_PREVIEW_COMPLETED" = "Selesai";
+
+// MARK: - SourcesViewController
+// Repositories title
+"SOURCES_VIEW_CONTROLLER_REPOSITORIES" = "Repositori";
+// Add repo button
+"SOURCES_VIEW_CONTROLLER_ADD_SOURCES" = "Tambah Repo";
+// Number of sources, i.e. "100 Sources"
+"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES" = "%@ Sumber";
+"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES_PLURAL" = "%@ Sumber";
+// Search sources in search bar
+"SOURCES_VIEW_CONTROLLER_SEARCH_SOURCES" = "Cari Sumber";
+
+// MARK: - SourcesViewController - Add Sources
+"SOURCES_VIEW_ADD_SOURCES_ALERT_TITLE" = "Tambah Sumber";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "Tambahkan URL Repo Altstore";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_IMPORT_REPO" = "Impor Repositori";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO" = "Ekspor Repositori";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO_ACTION_SUCCESS" = "Repositori Disalin ke Clipboard";
+//Footer Validation
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTSTARTED" = "Masukkan URL untuk memulai validasi.";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTVALIDJSON" = "JSON tidak valid, silakan periksa input Anda.";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_VALID" = "JSON valid dimasukkan.";
+
+// MARK: - SourcesViewController -> SourcesAppViewController
+// Number of apps, i.e. "444 Apps"
+"SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS" = "%@ Aplikasi";
+"SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS_PLURAL" = "%@ Aplikasi";
+// Search apps in search bar
+"SOURCES_APP_VIEW_CONTROLLER_SEARCH_APPS" = "Cari Aplikasi";
+
+// MARK: - SourcesViewController ... - Cells
+// Default subtitle string
+"SOURCES_CELLS_DEFAULT_SUBTITLE" = "Aplikasi yang luar biasa.";
+// Default description string
+"SOURCES_CELLS_DEFAULT_DESCRIPTION" = "Deskripsi yang keren.";
+
+// MARK: - SourceAppViewController ... - Actions
+// Available Versions Alert Title
+"SOURCES_CELLS_ACTIONS_HOLD_AVAILABLE_VERSIONS" = "Versi yang Tersedia";
+//Filter Menu
+"SOURCES_CELLS_ACTIONS_FILTER_TITLE" = "Filter berdasarkan";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_DEFAULT" = "Default";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_NAME" = "Nama";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_DATE" = "Tanggal";
+
+// MARK: - AppsInformationViewController
+// Application Section
+"APPS_INFORMATION_SECTION_TITLE_NAME" = "Aplikasi";
+// Bundle Section
+"APPS_INFORMATION_SECTION_TITLE_NAME" = "Bundle";
+
+//
+"APPS_INFORMATION_TITLE_DELETED_FILE" = "File Dihapus";
+"APPS_INFORMATION_TITLE_DELETED_FILE_TITLE" = "File telah dihapus.";
+"APPS_INFORMATION_TITLE_DELETED_FILE_DESCRIPTION" = "Ini adalah entri yang tidak berguna, tidak memiliki file dan Feather tidak akan mengizinkan Anda untuk memasangnya. Disarankan Anda menghapusnya dengan menggeser pada sel di tab Aplikasi.";
+// Application Section
+"APPS_INFORMATION_TITLE_NAME" = "Nama";
+"APPS_INFORMATION_TITLE_VERSION" = "Versi";
+"APPS_INFORMATION_TITLE_IDENTIFIER" = "Pengenal";
+"APPS_INFORMATION_TITLE_SIZE" = "Ukuran";
+//
+"APPS_INFORMATION_TITLE_DATE_ADDED" = "Tanggal Ditambahkan";
+// Bundle Section
+"APPS_INFORMATION_TITLE_BUNDLE_NAME" = "Nama Bundle";
+"APPS_INFORMATION_TITLE_BUNDLE_PATH" = "Jalur Bundle";
+"APPS_INFORMATION_TITLE_ICON_FILE" = "File Ikon";
+//
+"APPS_INFORMATION_TITLE_OPEN_IN_FILES" = "Buka di Files";
+
+// MARK: - AppSigningViewController
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_CUSTOMIZATION" = "Kustomisasi";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_SIGNING" = "Penandatanganan";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_ADVANCED" = "Lanjutan";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS" = "Tambah Tweaks";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED" = "Lanjutan";
+"APP_SIGNING_VIEW_CONTROLLER_START_SIGNING" = "Mulai Penandatanganan";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_MODIFY_DYLIBS" = "Modifikasi Dylibs";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_PROPERTIES" = "Properti";
+
+// MARK: - AppSigningViewController - No Certificates Alert
+"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_TITLE" = "Kesalahan";
+"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_DESCRIPTION" = "Anda tidak memiliki sertifikat yang dipilih, silakan pilih atau unggah satu di bagian penandatanganan tab pengaturan.";
+
+// MARK: - AppSigningViewController -> AppSigningAdvancedViewController
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE" = "Tampilan";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION" = "Versi Aplikasi Minimum";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES" = "Properti";
+
+// MARK: - AppSigningViewController -> AppSigningTweakViewController
+"APP_SIGNING_TWEAK_VIEW_CONTROLLER_TITLE" = "Tweaks";
+
+// MARK: - SigningsOptionsViewController
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS" = "Aktifkan Perlindungan";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS_DESCRIPTION" = "Mengaktifkan perlindungan akan menambahkan string acak ke setiap pengenal bundle, ini untuk melindungi Apple ID yang terkait dengan sertifikat Anda agar tidak ditandai oleh Apple. Namun, jika Anda tidak peduli tentang hal ini, Anda dapat mengabaikannya.";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DYNAMIC_PROTECTION" = "Perlindungan Dinamis";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DYNAMIC_PROTECTION_DESCRIPTION" = "Perlindungan dinamis hanya akan menerapkan perlindungan PPQ jika pengenal bundle ada di App Store. Ini memerlukan koneksi internet selama penandatanganan.";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS" = "Pengenal Bundle";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_NEW" = "Pengenal Baru";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID" = "Pengenal";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID_REPLACEMENT" = "Pengganti";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES" = "Nama Tampilan";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES_ID" = "Nama Tampilan Asli";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES_ID_REPLACEMENT" = "Nama Tampilan Baru";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IMMEDIATELY_INSTALL_FROM_SOURCE" = "Segera Pasang dari Sumber";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IMMEDIATELY_INSTALL_FROM_SOURCE_DESCRIPTION" = "Saat diaktifkan, aplikasi yang diunduh dari sumber akan meminta untuk menandatangani dan memasang setelah mengunduh.";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_INSTALLAFTERSIGNED" = "Pasang setelah Penandatanganan";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_TITLE" = "Opsi Penandatanganan";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "Hapus semua PlugIns";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS_DESCRIPTION" = "Menghapus direktori PlugIns di dalam aplikasi, yang biasanya memiliki beberapa komponen agar aplikasi berfungsi dengan baik.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES" = "Hapus UISupportedDevices";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES_DESCRIPTION" = "Menghapus batasan perangkat untuk aplikasi.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME" = "Hapus URLScheme";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME_DESCRIPTION" = "Menghapus kemungkinan skema URL (misalnya 'feather://')";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS" = "Izinkan Menjelajahi Dokumen";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS_DESCRIPTION" = "Memungkinkan aplikasi lain untuk membuka dan mengedit file yang disimpan di folder Dokumen. Opsi ini juga memungkinkan pengguna mengatur lokasi penyimpanan default aplikasi di Pengaturan.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING" = "Izinkan Berbagi iTunes";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING_DESCRIPTION" = "Memaksa aplikasi untuk berbagi direktori dokumen mereka, memungkinkan berbagi antara iTunes dan Finder.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION" = "Paksa ProMotion";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION_DESCRIPTION" = "Mengaktifkan kemampuan ProMotion dalam aplikasi, namun pada versi 15.x yang lebih rendah ini mungkin tidak cukup.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_GAME_MODE" = "Paksa Mode Game";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_GAME_MODE_DESCRIPTION" = "Mengaktifkan Mode Game dalam aplikasi, meminimalkan aktivitas latar belakang dan memprioritaskan kinerja untuk aplikasi.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "Paksa Layar Penuh";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN_DESCRIPTION" = "Memaksa kemampuan layar penuh saja dalam aplikasi iPad, tidak mengizinkan berbagi layar dengan aplikasi lain. Pada layar eksternal, jendela untuk aplikasi dengan pengaturan ini mempertahankan ukuran kanvasnya.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP" = "Hapus Aplikasi Watch Placeholder";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP_DESCRIPTION" = "Menghapus placeholder watch yang tidak diinginkan yang seharusnya tidak ada, ada di aplikasi seperti YouTube music, dll.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS" = "Paksa Coba Untuk Melokalisasi";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS_DESCRIPTION" = "Memaksa lokalisasi dengan memodifikasi setiap bundle yang dapat dilokalisasi dalam aplikasi ketika mencoba mengubah nama aplikasi.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING" = "Hapus File Provisioning";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING_DESCRIPTION" = "Menghapus .mobileprovison agar tidak muncul di aplikasi Anda setelah penandatanganan.";
+
+// MARK: - LibraryViewController
+//Search Library placeholder
+"SETTINGS_VIEW_CONTROLLER_SEARCH_PLACEHOLDER" = "Cari Pustaka";
+//Headers
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS" = "Aplikasi Tertandatangani";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL" = "%@ Tertandatangani";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL_PLURAL" = "%@ Tertandatangani";
+"LIBRARY_VIEW_CONTROLLER_SECTION_BUTTON_IMPORT" = "Impor";
+"LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS" = "Aplikasi Terunduh";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_DOWNLOADED_APPS_TOTAL" = "%@ Terunduh";
+//Import Action Sheet
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_FILE" = "Impor dari File";
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_URL" = "Impor dari URL";
+//Sign Action Sheet
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN" = "Tandatangani %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN_INSTALL" = "Tandatangani & Pasang %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_RESIGN" = "Tandatangani Ulang %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL" = "Pasang %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SHARE" = "Bagikan %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN" = "Buka %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_UPDATE" = "Perbarui %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_CLEAR_UPDATE" = "Hapus Pembaruan";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_VIEW_DATEILS" = "Lihat Detail";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN_LN_FILES" = "Buka di File";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM" = "Konfirmasi Pemasangan";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM_DESCRIPTION" = "Mencoba memasang melalui tab aplikasi terunduh mungkin tidak berfungsi karena kemungkinan besar belum ditandatangani! Disarankan untuk menandatangani aplikasi terlebih dahulu sebelum memasang.";
+
+// MARK: - SettingsViewController
+// Headers
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_GENERAL" = "Umum";
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING" = "Penandatanganan";
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING_SERVER" = "Server Penandatanganan";
+
+// Footers
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES" = "Jika terjadi masalah dalam Feather, harap laporkan melalui repositori GitHub. Saat mengirimkan masalah, pastikan untuk menyertakan log.";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS" = "Sayangnya karena keterbatasan, sertifikat server perlu diperbarui setiap tahun agar fitur lokal Feather tetap berfungsi dengan baik. Ketuk tombol ini untuk mengambil file terbaru dari repositori kami.";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER" = "Server default mengarah ke %@";
+
+"SETTINGS_VIEW_CONTROLLER_TITLE" = "Opsi Server";
+"SETTINGS_VIEW_CONTROLLER_TITLE_ONLINE" = "Daring";
+"SETTINGS_VIEW_CONTROLLER_TITLE_LOCAL" = "Lokal";
+
+// Cell Titles
+// About Feather
+"SETTINGS_VIEW_CONTROLLER_CELL_ABOUT" = "Tentang %@";
+"SETTINGS_VIEW_CONTROLLER_CELL_SUBMIT_FEEDBACK" = "Kirim Umpan Balik";
+"SETTINGS_VIEW_CONTROLLER_CELL_GITHUB" = "Repositori GitHub";
+"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY" = "Tampilan";
+"SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON" = "Ikon Aplikasi";
+"SETTINGS_VIEW_CONTROLLER_CELL_LANGUAGE" = "Bahasa";
+"SETTINGS_VIEW_CONTROLLER_CELL_CURRENT_CERTIFICATE_NOSELECTED" = "Tidak ada sertifikat yang dipilih";
+"SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES" = "Tambah Sertifikat";
+
+
+
+"SETTINGS_VIEW_CONTROLLER_CELL_SIGN_OPTIONS" = "Opsi Penandatanganan";
+"SETTINGS_VIEW_CONTROLLER_CELL_SERVER_OPTIONS" = "Opsi Server";
+"SETTINGS_VIEW_CONTROLLER_CELL_VIEW_LOGS" = "Lihat Log";
+"SETTINGS_VIEW_CONTROLLER_CELL_APPS_FOLDER" = "Buka Folder Aplikasi";
+"SETTINGS_VIEW_CONTROLLER_CELL_CERTS_FOLDER" = "Buka Folder Sertifikat";
+
+
+"SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE" = "Perbarui Sertifikat Lokal";
+"SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE_UPDATING" = "Memperbarui Sertifikat Lokal";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET" = "Atur Ulang";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_ALL" = "Atur Ulang Semua";
+
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION" = "Atur Ulang Konfigurasi";
+"SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER" = "Gunakan Server Kustom";
+
+"SETTINGS_VIEW_CONTROLLER_CELL_ONLINE_INSTALL_METHOD" = "Metode Pemasangan Daring";
+
+
+"SETTINGS_VIEW_CONTROLLER_CELL_EXPORT_ID" = "Ekspor Pengenal Acak";
+"SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_ID" = "Ubah Pengenal Acak";
+
+//
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_TITLE" = "Perlindungan PPQCheck";
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_DESCRIPTION" = "Pengaturan ini mengaktifkan perlindungan PPQCheck, yang dirancang untuk menambahkan string acak di awal setiap pengenal bundle untuk aplikasi yang Anda sideload.\n\nIni dimaksudkan untuk menghindari Apple menandai akun Anda dengan (mencoba) membuat mereka tidak dapat mengaitkan aplikasi yang Anda sideload dengan aplikasi dari App Store.";
+
+"SETTINGS_VIEW_CONTROLLER_URL_ALERT_TITLE" = "Ubah URL Unduhan";
+"SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_IDENTIFIER" = "Ubah Pengenal Acak";
+
+// MARK: - SettingsViewController -> AboutViewController
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_CREDITS" = "Kredit";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_SPONSORS" = "Sponsor";
+
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_DEVICE" = "Perangkat";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_ACKNOWLEDGEMENTS" = "Pengakuan";
+
+
+"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_VERSION" = "Versi Perangkat";
+"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_ARCH" = "Arsitektur";
+"ABOUT_VIEW_CONTROLLER_CELL_APP_VERSION" = "Versi Aplikasi";
+
+// MARK: - SettingsViewController -> DisplayViewController
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_TINT_COLOR" = "Warna Aksen";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARENCE" = "Tampilan Aplikasi";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_STORE" = "Toko";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE" = "Subjudul Default";
+"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE_DESCRIPTION" = "Gaya default untuk feather, menyembunyikan deskripsi terlokalisasi dan hanya menyertakan subjudul.";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE" = "Subjudul Terlokalisasi";
+"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE_DESCRIPTION" = "Mengganti subjudul dengan deskripsi aplikasi.";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION" = "Deskripsi Besar";
+"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION_DESCRIPTION" = "Mengganti tangkapan layar dengan deskripsi aplikasi.";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME" = "Gunakan Nama Tim";
+"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME_DESCRIPTION" = "Mengganti nama sertifikat dengan nama tim Anda, bisa lebih baik untuk membedakan antara sertifikat jika penyedia selalu menggunakan nama App ID yang sama.";
+
+// MARK: - SettingsViewController -> LanguageViewController.swift
+"LANGUAGE_VIEW_TITLE" = "Bahasa";
+"LANGUAGE_VIEW_CELL_USE_SYSTEM_LANGUAGE" = "Gunakan Bahasa Sistem";
+
+// MARK: - SettingsViewController -> CertificatesViewController
+"CERTIFICATES_VIEW_CONTROLLER_TITLE" = "Sertifikat";
+
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_FOOTER" = "Format file yang didukung:\n\n- P12 (.p12)\n- Mobile Provision (.mobileprovision)\n\nPastikan sertifikat Anda valid dan dapat digunakan untuk sideload ke perangkat Anda!";
+
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD" = "Tambah Sertifikat";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_DESCRIPTION" = "Ketuk untuk menambahkan sertifikat";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> Delete Alert
+"CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_TITLE" = "Anda tidak ingin melakukan ini!";
+"CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_DESCRIPTION" = "Anda mencoba menghapus sertifikat yang dipilih, coba lagi nanti ketika Anda memiliki sertifikat lain.";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> Cell
+"CERTIFICATES_VIEW_CONTROLLER_CELL_EXPIRED" = "Kedaluwarsa";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_DAYS_LEFT" = "%@ hari tersisa";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> CertImportingViewController
+"CERT_IMPORTING_VIEWCONTROLLER_TITLE" = "Impor";
+"CERT_IMPORTING_VIEWCONTROLLER_SECTION_PROVISIONING" = "";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> CertImportingViewController -> Password Alert
+
+"CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_TITLE" = "Kata Sandi Salah";
+"CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_DESCRIPTION" = "Silakan periksa kata sandi dan coba lagi.";
+
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PROV" = "Impor File Provisioning";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_CERT" = "Impor File Sertifikat";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_ENTER_PW" = "Masukkan Kata Sandi";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PW" = "Kata Sandi";
+
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PROV" = "Impor file provisioning untuk dapat melakukan sideload ke perangkat Anda.";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_CERT" = "Impor file yang berisi sertifikat yang valid.";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PASS" = "Masukkan kata sandi yang terkait dengan kunci pribadi, biarkan kosong jika tidak ada kata sandi yang diperlukan.";
+
+// MARK: - SettingsViewController -> ResetViewController
+"RESET_VIEW_CONTROLLER_CLEAR_CACHE" = "Hapus Cache Jaringan";
+"RESET_VIEW_CONTROLLER_CLEAR_CACHE_ALERT_TITLE" = "Tindakan ini tidak dapat dibatalkan. Cache permintaan jaringan dan gambar akan dihapus.";
+
+// MARK: - Donation
+"DONATION_TITLE" = "Donasi";
+"DONATION_DONATIONS" = "Donasi";
+
+"DONATION_CELL_1_TITLE" = "Repositori Rahasia";
+"DONATION_CELL_1_DESCRIPTION" = "Dapatkan akses ke repositori rahasia kami dengan berdonasi, akan memberi Anda akses beta ke Feather.";
+
+"DONATION_CELL_2_TITLE" = "Tunjukkan Dukungan Anda";
+"DONATION_CELL_2_DESCRIPTION" = "Tunjukkan dukungan Anda dengan berdonasi! Jika Anda tidak dapat berdonasi, menyebarkan informasi tentang Feather juga membantu!";
+
+// MARK: - SettingsViewController -> LogsViewController.swift
+"LOGS_VIEW_SECTION_TITLE_ERROR" = "%@ Kesalahan Kritis.";
+"LOGS_VIEW_SECTION_TITLE_SHARE" = "Bagikan Log";
+"LOGS_VIEW_SECTION_TITLE_COPY" = "Salin Log";
+"LOGS_VIEW_SUCCESS_DESCRIPTION" = "Konten log telah disalin ke clipboard.";
+"LOGS_VIEW_FAIL_DESCRIPTION" = "Gagal menyalin konten log.";
