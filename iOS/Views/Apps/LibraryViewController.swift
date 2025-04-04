@@ -96,8 +96,7 @@ class LibraryViewController: UITableViewController {
 		
 		present(loaderAlert!, animated: true)
 		
-		// Create mock source if in debug mode
-		if isDebugMode {
+		#if DEBUG
 			let mockSource = SourceRefreshOperation()
 			mockSource.createMockSource { mockSourceData in
 				if let sourceData = mockSourceData {
@@ -109,8 +108,7 @@ class LibraryViewController: UITableViewController {
 					}
 				}
 			}
-		} else {
-			// Normal source fetch
+		#else
 			SourceGET().downloadURL(from: sourceURL) { [weak self] result in
 				guard let self = self else { return }
 				
@@ -131,7 +129,7 @@ class LibraryViewController: UITableViewController {
 					}
 				}
 			}
-		}
+		#endif
 	}
 	
 	private func handleSourceData(_ sourceData: SourcesData, for signedApp: SignedApps) {
@@ -216,15 +214,6 @@ class LibraryViewController: UITableViewController {
 		DispatchQueue.main.async {
 			self.loaderAlert?.dismiss(animated: true)
 		}
-	}
-	
-	private var isDebugMode: Bool {
-		var isDebug = false
-		assert({
-			isDebug = true
-			return true
-		}())
-		return isDebug
 	}
 }
 
@@ -501,16 +490,25 @@ extension LibraryViewController {
 		let deleteAction = UIContextualAction(style: .destructive, title: String.localized("DELETE")) { (action, view, completionHandler) in
 			switch indexPath.section {
 			case 0:
+				if self.isFiltering {
+					self.filteredSignedApps.remove(at: indexPath.row)
+				} else {
+					self.signedApps?.remove(at: indexPath.row)
+				}
 				CoreDataManager.shared.deleteAllSignedAppContent(for: source! as! SignedApps)
-				self.signedApps?.remove(at: indexPath.row)
-				self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
 			case 1:
+				if self.isFiltering {
+					self.filteredDownloadedApps.remove(at: indexPath.row)
+				} else {
+					self.downloadedApps?.remove(at: indexPath.row)
+				}
 				CoreDataManager.shared.deleteAllDownloadedAppContent(for: source! as! DownloadedApps)
-				self.downloadedApps?.remove(at: indexPath.row)
-				self.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
 			default:
 				break
 			}
+			
+			self.fetchSources()
+			
 			completionHandler(true)
 		}
 		
