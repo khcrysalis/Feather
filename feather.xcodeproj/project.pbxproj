@@ -450,7 +450,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
@@ -473,7 +473,7 @@
 					"$(PROJECT_DIR)/Shared/Magic",
 					"$(PROJECT_DIR)/Shared/Resources",
 				);
-				MARKETING_VERSION = 1.4.0;
+				MARKETING_VERSION = 1.4.1;
 				"OTHER_CPLUSPLUSFLAGS[arch=*]" = (
 					"$(OTHER_CFLAGS)",
 					"-w",
@@ -503,7 +503,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
@@ -526,7 +526,7 @@
 					"$(PROJECT_DIR)/Shared/Magic",
 					"$(PROJECT_DIR)/Shared/Resources",
 				);
-				MARKETING_VERSION = 1.4.0;
+				MARKETING_VERSION = 1.4.1;
 				"OTHER_CPLUSPLUSFLAGS[arch=*]" = (
 					"$(OTHER_CFLAGS)",
 					"-w",
