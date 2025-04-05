@@ -30,6 +30,14 @@ class LibraryViewController: UITableViewController {
 	private var deleteBarButtonItem: UIBarButtonItem!
 	private var cancelBarButtonItem: UIBarButtonItem!
 	
+	// Tab selection
+	private var segmentedControl: UISegmentedControl!
+	private enum LibraryTab: Int {
+		case downloaded = 0
+		case signed = 1
+	}
+	private var selectedTab: LibraryTab = .downloaded
+	
 	init() { super.init(style: .grouped) }
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 	
@@ -37,6 +45,7 @@ class LibraryViewController: UITableViewController {
 		super.viewDidLoad()
 		setupViews()
 		setupSearchController()
+		setupSegmentedControl()
 		fetchSources()
 		loaderAlert = presentLoader()
 	}
@@ -57,6 +66,33 @@ class LibraryViewController: UITableViewController {
 			name: Notification.Name("InstallDownloadedApp"),
 			object: nil
 		)
+	}
+	
+	fileprivate func setupSegmentedControl() {
+		segmentedControl = UISegmentedControl(items: [
+			String.localized("LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS"),
+			String.localized("LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS")
+		])
+		segmentedControl.selectedSegmentIndex = selectedTab.rawValue
+		segmentedControl.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
+		
+		// Add the segmented control to a container view to add proper padding
+		let containerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 50))
+		segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+		containerView.addSubview(segmentedControl)
+		
+		NSLayoutConstraint.activate([
+			segmentedControl.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+			segmentedControl.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
+			segmentedControl.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
+		])
+		
+		tableView.tableHeaderView = containerView
+	}
+	
+	@objc private func segmentChanged(_ sender: UISegmentedControl) {
+		selectedTab = LibraryTab(rawValue: sender.selectedSegmentIndex) ?? .downloaded
+		tableView.reloadData()
 	}
 	
 	@objc private func handleInstallNotification(_ notification: Notification) {
@@ -246,62 +282,62 @@ class LibraryViewController: UITableViewController {
 }
 
 extension LibraryViewController {
-	override func numberOfSections(in tableView: UITableView) -> Int { return 2 }
+	override func numberOfSections(in tableView: UITableView) -> Int { return 1 }
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		switch section {
-		case 0:
+		switch selectedTab {
+		case .signed:
 			return isFiltering ? filteredSignedApps.count : signedApps?.count ?? 0
-		case 1:
+		case .downloaded:
 			return isFiltering ? filteredDownloadedApps.count : downloadedApps?.count ?? 0
-		default:
-			return 0
 		}
 	}
 	
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-		switch section {
-		case 0:
-			let headerWithButton = GroupedSectionHeader(
+		switch selectedTab {
+		case .signed:
+			let headerView = GroupedSectionHeader(
                 title: String.localized("LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS"),
-				subtitle: String.localized("LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL", arguments: String(signedApps?.count ?? 0)),
-                buttonTitle: String.localized("LIBRARY_VIEW_CONTROLLER_SECTION_BUTTON_IMPORT"),
-                buttonAction: {
-				self.startImporting()
-			})
-			return headerWithButton
-		case 1:
-			
+				subtitle: String.localized("LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL", arguments: String(signedApps?.count ?? 0))
+			)
+			return headerView
+		case .downloaded:
 			let headerWithButton = GroupedSectionHeader(
 				title: String.localized("LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS"),
-				subtitle: String.localized("LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_DOWNLOADED_APPS_TOTAL", arguments: String(downloadedApps?.count ?? 0))
+				subtitle: String.localized("LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_DOWNLOADED_APPS_TOTAL", arguments: String(downloadedApps?.count ?? 0)),
+                buttonTitle: String.localized("LIBRARY_VIEW_CONTROLLER_SECTION_BUTTON_IMPORT"),
+                buttonAction: {
+					self.startImporting()
+				}
 			)
-			
 			return headerWithButton
-		default:
-			return nil
 		}
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = AppsTableViewCell(style: .subtitle, reuseIdentifier: "RoundedBackgroundCell")
 		cell.selectionStyle = .default
-		cell.accessoryType = isEditingMode ? .none : .disclosureIndicator
+		cell.accessoryType = .none
 		cell.backgroundColor = .clear
 		
-		let source = getApplication(row: indexPath.row, section: indexPath.section)
-		let filePath = getApplicationFilePath(with: source!, row: indexPath.row, section: indexPath.section)
+		let source = getApplicationForTab(row: indexPath.row)
+		let section = selectedTab == .signed ? 0 : 1
+		let filePath = getApplicationFilePath(with: source!, row: indexPath.row, section: section)
 		
 		// Configure checkbox for editing mode
 		if isEditingMode {
-			if selectedItems.contains(indexPath) {
-				cell.accessoryView = UIImageView(image: UIImage(systemName: "checkmark.circle.fill"))
-				cell.accessoryView?.tintColor = .systemBlue
-			} else {
-				cell.accessoryView = UIImageView(image: UIImage(systemName: "circle"))
-				cell.accessoryView?.tintColor = .systemGray3
-			}
+			// Create an appropriate accessory view for edit mode
+			let actualIndexPath = IndexPath(row: indexPath.row, section: section)
+			let isSelected = selectedItems.contains(actualIndexPath)
+			let imageName = isSelected ? "checkmark.circle.fill" : "circle"
+			let accessoryImage = UIImage(systemName: imageName)
+			let accessoryImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 29, height: 29))
+			accessoryImageView.image = accessoryImage
+			accessoryImageView.tintColor = isSelected ? .systemBlue : .systemGray3
+			cell.accessoryView = accessoryImageView
 		} else {
+			// Reset to normal mode
 			cell.accessoryView = nil
+			cell.accessoryType = .disclosureIndicator
 		}
 		
 		if let iconURL = source!.value(forKey: "iconURL") as? String {
@@ -323,16 +359,21 @@ extension LibraryViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		// Handle selection for editing mode
 		if isEditingMode {
-			toggleItemSelection(at: indexPath)
+			// Convert to the actual indexPath for the selected items set
+			let section = selectedTab == .signed ? 0 : 1
+			let actualIndexPath = IndexPath(row: indexPath.row, section: section)
+			toggleItemSelection(at: actualIndexPath)
 			tableView.deselectRow(at: indexPath, animated: true)
 			return
 		}
 		
-		let source = getApplication(row: indexPath.row, section: indexPath.section)
-		let filePath = getApplicationFilePath(with: source!, row: indexPath.row, section: indexPath.section, getuuidonly: true)
-		let filePath2 = getApplicationFilePath(with: source!, row: indexPath.row, section: indexPath.section, getuuidonly: false)
+		let section = selectedTab == .signed ? 0 : 1
+		let source = getApplicationForTab(row: indexPath.row)
+		
+		let filePath = getApplicationFilePath(with: source!, row: indexPath.row, section: section, getuuidonly: true)
+		let filePath2 = getApplicationFilePath(with: source!, row: indexPath.row, section: section, getuuidonly: false)
 		let appName = "\((source!.value(forKey: "name") as? String ?? ""))"
-		switch indexPath.section {
+		switch section {
 		case 0:
 			if FileManager.default.fileExists(atPath: filePath2!.path) {
 				popupVC = PopupViewController()
@@ -538,18 +579,19 @@ extension LibraryViewController {
 			return nil
 		}
 		
-		let source = getApplication(row: indexPath.row, section: indexPath.section)
+		let section = selectedTab == .signed ? 0 : 1
+		let source = getApplicationForTab(row: indexPath.row)
 		
 		let deleteAction = UIContextualAction(style: .destructive, title: String.localized("DELETE")) { (action, view, completionHandler) in
-			switch indexPath.section {
+			switch section {
 			case 0:
 				CoreDataManager.shared.deleteAllSignedAppContent(for: source! as! SignedApps)
 				self.signedApps?.remove(at: indexPath.row)
-				self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+				self.tableView.reloadData()
 			case 1:
 				CoreDataManager.shared.deleteAllDownloadedAppContent(for: source! as! DownloadedApps)
 				self.downloadedApps?.remove(at: indexPath.row)
-				self.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
+				self.tableView.reloadData()
 			default:
 				break
 			}
@@ -564,8 +606,9 @@ extension LibraryViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-		let source = getApplication(row: indexPath.row, section: indexPath.section)
-		let filePath = getApplicationFilePath(with: source!, row: indexPath.row, section: indexPath.section)
+		let section = selectedTab == .signed ? 0 : 1
+		let source = getApplicationForTab(row: indexPath.row)
+		let filePath = getApplicationFilePath(with: source!, row: indexPath.row, section: section)
 		
 		let configuration = UIContextMenuConfiguration(identifier: nil, actionProvider: { _ in
 			return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [
@@ -606,7 +649,7 @@ extension LibraryViewController {
 		return configuration
 	}
 	
-	
+
 }
 
 extension LibraryViewController {
@@ -680,16 +723,8 @@ extension LibraryViewController {
 				}
 			}
 			
-			// Reload appropriate sections
-			var indexSet = IndexSet()
-			if deletedInSection0 {
-				indexSet.insert(0)
-			}
-			if deletedInSection1 {
-				indexSet.insert(1)
-			}
-			
-			self.tableView.reloadSections(indexSet, with: .automatic)
+			// Reload the table view for the current tab
+			self.tableView.reloadData()
 			
 			// Exit editing mode
 			self.toggleEditingMode()
@@ -711,7 +746,10 @@ extension LibraryViewController {
 		}
 		
 		deleteBarButtonItem.isEnabled = !selectedItems.isEmpty
-		tableView.reloadRows(at: [indexPath], with: .none)
+		
+		// Since we're using a single section in the table view now,
+		// we need to use section 0 for the reload
+		tableView.reloadRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .none)
 	}
 	
 	func getApplicationFilePath(with app: NSManagedObject, row: Int, section:Int, getuuidonly: Bool = false) -> URL? {
@@ -755,7 +793,25 @@ extension LibraryViewController {
 		}
 		return nil
 	}
-
+	
+	/// Gets the application based on the currently selected tab and row
+	func getApplicationForTab(row: Int) -> NSManagedObject? {
+		if isFiltering {
+			switch selectedTab {
+			case .signed:
+				return row < filteredSignedApps.count ? filteredSignedApps[row] : nil
+			case .downloaded:
+				return row < filteredDownloadedApps.count ? filteredDownloadedApps[row] : nil
+			}
+		} else {
+			switch selectedTab {
+			case .signed:
+				return row < signedApps?.count ?? 0 ? signedApps?[row] : nil
+			case .downloaded:
+				return row < downloadedApps?.count ?? 0 ? downloadedApps?[row] : nil
+			}
+		}
+	}
 }
 
 extension LibraryViewController: UISearchResultsUpdating {
