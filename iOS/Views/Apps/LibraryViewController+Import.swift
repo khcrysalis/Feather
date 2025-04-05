@@ -109,12 +109,12 @@ extension LibraryViewController: UIDocumentPickerDelegate {
 	func presentDocumentPicker(fileExtension: [UTType]) {
 		let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: fileExtension, asCopy: true)
 		documentPicker.delegate = self
-		documentPicker.allowsMultipleSelection = false
+		documentPicker.allowsMultipleSelection = true
 		present(documentPicker, animated: true, completion: nil)
 	}
 	
 	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-		guard let selectedFileURL = urls.first else { return }
+		guard !urls.isEmpty else { return }
 		
 		guard let loaderAlert = self.loaderAlert else {
 			Debug.shared.log(message: "Loader alert is not initialized.", type: .error)
@@ -125,23 +125,28 @@ extension LibraryViewController: UIDocumentPickerDelegate {
 			self.present(loaderAlert, animated: true)
 		}
 		
-		let dl = AppDownload()
-		let uuid = UUID().uuidString
+		let dispatchGroup = DispatchGroup()
 		
 		DispatchQueue.global(qos: .background).async {
-			do {
-				try handleIPAFile(destinationURL: selectedFileURL, uuid: uuid, dl: dl)
+			for selectedFileURL in urls {
+				dispatchGroup.enter()
 				
-				DispatchQueue.main.async {
-					self.loaderAlert?.dismiss(animated: true)
+				let dl = AppDownload()
+				let uuid = UUID().uuidString
+				
+				do {
+					try handleIPAFile(destinationURL: selectedFileURL, uuid: uuid, dl: dl)
+					Debug.shared.log(message: "Successfully imported: \(selectedFileURL.lastPathComponent)", type: .success)
+				} catch {
+					Debug.shared.log(message: "Failed to Import: \(selectedFileURL.lastPathComponent) - \(error)", type: .error)
 				}
 				
-			} catch {
-				Debug.shared.log(message: "Failed to Import: \(error)", type: .error)
-				
-				DispatchQueue.main.async {
-					self.loaderAlert?.dismiss(animated: true)
-				}
+				dispatchGroup.leave()
+			}
+			
+			dispatchGroup.notify(queue: .main) {
+				self.loaderAlert?.dismiss(animated: true)
+				self.fetchSources()
 			}
 		}
 	}
