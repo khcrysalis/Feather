@@ -12,7 +12,13 @@
 			"subtitle": "On-device signing application",
 			"tintColor": "848ef9",
 			"versions": [
-								{
+				{
+					"version": "1.4.1",
+					"date": "2025-04-05T18:35:10Z",
+					"size": 12375230,
+					"downloadURL": "https://github.com/khcrysalis/Feather/releases/download/v1.4.1/feather_v1.4.1.ipa"
+				},
+				{
 					"version": "1.4.0",
 					"date": "2025-03-08T18:35:10Z",
 					"size": 12375230,
@@ -104,9 +110,9 @@
 				}
 			],
 			"size": 12375230,
-			"version": "1.4.0",
-			"versionDate": "2025-02-10T18:35:10Z",
-			"downloadURL": "https://github.com/khcrysalis/Feather/releases/download/v1.4.0/feather_v1.4.0.ipa",
+			"version": "1.4.1",
+			"versionDate": "2025-04-05T18:35:10Z",
+			"downloadURL": "https://github.com/khcrysalis/Feather/releases/download/v1.4.1/feather_v1.4.1.ipa",
 			"appPermissions": {},
 			"screenshotURLs": [
 				"https://github.com/khcrysalis/Feather/blob/main/Images/Library.png?raw=true",
