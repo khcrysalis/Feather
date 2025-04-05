@@ -130,11 +130,12 @@ struct TransferPreview: View {
 			.padding()
 			Spacer()
 		}
-		.popover(isPresented: $showShareSheet, arrowEdge: .bottom) {
+		.popover(isPresented: $showShareSheet) {
 			if let shareURL = shareURL {
 				ActivityViewController(activityItems: [shareURL])
 			}
 		}
+
 		.animation(.spring, value: text)
 		.animation(.spring, value: icon)
 		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
