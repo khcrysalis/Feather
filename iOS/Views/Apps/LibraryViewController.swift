@@ -23,6 +23,13 @@ class LibraryViewController: UITableViewController {
 	var popupVC: PopupViewController!
 	var loaderAlert: UIAlertController?
 	
+	// Properties for multi-select deletion
+	private var isEditingMode = false
+	private var selectedItems: Set<IndexPath> = []
+	private var editBarButtonItem: UIBarButtonItem!
+	private var deleteBarButtonItem: UIBarButtonItem!
+	private var cancelBarButtonItem: UIBarButtonItem!
+	
 	init() { super.init(style: .grouped) }
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 	
@@ -84,6 +91,16 @@ class LibraryViewController: UITableViewController {
 	fileprivate func setupNavigation() {
 		self.navigationController?.navigationBar.prefersLargeTitles = true
 		self.title = String.localized("TAB_LIBRARY")
+		
+		// Initialize bar button items for editing mode
+		editBarButtonItem = UIBarButtonItem(title: String.localized("EDIT"), style: .plain, target: self, action: #selector(toggleEditingMode))
+		deleteBarButtonItem = UIBarButtonItem(title: String.localized("DELETE"), style: .plain, target: self, action: #selector(deleteSelectedItems))
+		deleteBarButtonItem.tintColor = .systemRed
+		deleteBarButtonItem.isEnabled = false
+		cancelBarButtonItem = UIBarButtonItem(title: String.localized("CANCEL"), style: .plain, target: self, action: #selector(toggleEditingMode))
+		
+		// Set the initial right bar button item
+		navigationItem.rightBarButtonItem = editBarButtonItem
 	}
 	
 	private func handleAppUpdate(for signedApp: SignedApps) {
@@ -268,11 +285,24 @@ extension LibraryViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = AppsTableViewCell(style: .subtitle, reuseIdentifier: "RoundedBackgroundCell")
 		cell.selectionStyle = .default
-		cell.accessoryType = .disclosureIndicator
+		cell.accessoryType = isEditingMode ? .none : .disclosureIndicator
 		cell.backgroundColor = .clear
+		
 		let source = getApplication(row: indexPath.row, section: indexPath.section)
 		let filePath = getApplicationFilePath(with: source!, row: indexPath.row, section: indexPath.section)
 		
+		// Configure checkbox for editing mode
+		if isEditingMode {
+			if selectedItems.contains(indexPath) {
+				cell.accessoryView = UIImageView(image: UIImage(systemName: "checkmark.circle.fill"))
+				cell.accessoryView?.tintColor = .systemBlue
+			} else {
+				cell.accessoryView = UIImageView(image: UIImage(systemName: "circle"))
+				cell.accessoryView?.tintColor = .systemGray3
+			}
+		} else {
+			cell.accessoryView = nil
+		}
 		
 		if let iconURL = source!.value(forKey: "iconURL") as? String {
 			let imagePath = filePath!.appendingPathComponent(iconURL)
@@ -291,6 +321,13 @@ extension LibraryViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		// Handle selection for editing mode
+		if isEditingMode {
+			toggleItemSelection(at: indexPath)
+			tableView.deselectRow(at: indexPath, animated: true)
+			return
+		}
+		
 		let source = getApplication(row: indexPath.row, section: indexPath.section)
 		let filePath = getApplicationFilePath(with: source!, row: indexPath.row, section: indexPath.section, getuuidonly: true)
 		let filePath2 = getApplicationFilePath(with: source!, row: indexPath.row, section: indexPath.section, getuuidonly: false)
@@ -496,6 +533,11 @@ extension LibraryViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+		// Disable swipe actions when in editing mode
+		if isEditingMode {
+			return nil
+		}
+		
 		let source = getApplication(row: indexPath.row, section: indexPath.section)
 		
 		let deleteAction = UIContextualAction(style: .destructive, title: String.localized("DELETE")) { (action, view, completionHandler) in
@@ -579,6 +621,97 @@ extension LibraryViewController {
 				self.tableView.reloadData()
 			}
 		}
+	}
+	
+	// MARK: - Multi-select Methods
+	
+	@objc private func toggleEditingMode() {
+		isEditingMode = !isEditingMode
+		selectedItems.removeAll()
+		
+		if isEditingMode {
+			navigationItem.rightBarButtonItems = [cancelBarButtonItem, deleteBarButtonItem]
+		} else {
+			navigationItem.rightBarButtonItem = editBarButtonItem
+		}
+		
+		deleteBarButtonItem.isEnabled = !selectedItems.isEmpty
+		tableView.reloadData()
+	}
+	
+	@objc private func deleteSelectedItems() {
+		guard !selectedItems.isEmpty else { return }
+		
+		let alert = UIAlertController(
+			title: String.localized("DELETE_SELECTED_ITEMS"),
+			message: String.localized("DELETE_SELECTED_ITEMS_CONFIRMATION", arguments: String(selectedItems.count)),
+			preferredStyle: .alert
+		)
+		
+		let confirmAction = UIAlertAction(title: String.localized("DELETE"), style: .destructive) { [weak self] _ in
+			guard let self = self else { return }
+			
+			// Sort by section and row in descending order to avoid index issues when removing items
+			let sortedIndexPaths = self.selectedItems.sorted { 
+				if $0.section == $1.section {
+					return $0.row > $1.row
+				}
+				return $0.section > $1.section
+			}
+			
+			// Process deletions by section
+			var deletedInSection0 = false
+			var deletedInSection1 = false
+			
+			for indexPath in sortedIndexPaths {
+				let source = self.getApplication(row: indexPath.row, section: indexPath.section)
+				
+				switch indexPath.section {
+				case 0:
+					CoreDataManager.shared.deleteAllSignedAppContent(for: source! as! SignedApps)
+					self.signedApps?.remove(at: indexPath.row)
+					deletedInSection0 = true
+				case 1:
+					CoreDataManager.shared.deleteAllDownloadedAppContent(for: source! as! DownloadedApps)
+					self.downloadedApps?.remove(at: indexPath.row)
+					deletedInSection1 = true
+				default:
+					break
+				}
+			}
+			
+			// Reload appropriate sections
+			var indexSet = IndexSet()
+			if deletedInSection0 {
+				indexSet.insert(0)
+			}
+			if deletedInSection1 {
+				indexSet.insert(1)
+			}
+			
+			self.tableView.reloadSections(indexSet, with: .automatic)
+			
+			// Exit editing mode
+			self.toggleEditingMode()
+		}
+		
+		let cancelAction = UIAlertAction(title: String.localized("CANCEL"), style: .cancel)
+		
+		alert.addAction(confirmAction)
+		alert.addAction(cancelAction)
+		
+		present(alert, animated: true)
+	}
+	
+	private func toggleItemSelection(at indexPath: IndexPath) {
+		if selectedItems.contains(indexPath) {
+			selectedItems.remove(indexPath)
+		} else {
+			selectedItems.insert(indexPath)
+		}
+		
+		deleteBarButtonItem.isEnabled = !selectedItems.isEmpty
+		tableView.reloadRows(at: [indexPath], with: .none)
 	}
 	
 	func getApplicationFilePath(with app: NSManagedObject, row: Int, section:Int, getuuidonly: Bool = false) -> URL? {
