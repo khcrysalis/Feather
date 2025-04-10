@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-public struct NavigationViewWrapper<Content>: View where Content: View {
+struct NavigationViewWrapper<Content>: View where Content: View {
 	private var _title: String
 	private var _mode: NavigationBarItem.TitleDisplayMode
 	private var _content: Content
 	
-	public init(
+	init(
 		_ title: String,
 		displayMode: NavigationBarItem.TitleDisplayMode = .automatic,
 		@ViewBuilder content: () -> Content
@@ -22,7 +22,7 @@ public struct NavigationViewWrapper<Content>: View where Content: View {
 		self._content = content()
 	}
 	
-	public var body: some View {
+	var body: some View {
 		NavigationStack {
 			_content
 				.navigationTitle(_title)

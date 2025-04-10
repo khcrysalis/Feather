@@ -5,6 +5,9 @@
       location = "group:README.md">
    </FileRef>
    <FileRef
+      location = "group:TODO.md">
+   </FileRef>
+   <FileRef
       location = "group:Feather.xcodeproj">
    </FileRef>
 </Workspace>
