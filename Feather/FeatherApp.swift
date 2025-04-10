@@ -9,12 +9,17 @@ import SwiftUI
 
 @main
 struct FeatherApp: App {
-    let storage = Storage.shared
+	let storage = Storage.shared
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, storage.context)
+			if #available(iOS 18, *) {
+				ExtendedTabbarView()
+					.environment(\.managedObjectContext, storage.context)
+			} else {
+				TabbarView()
+					.environment(\.managedObjectContext, storage.context)
+			}
         }
     }
 }

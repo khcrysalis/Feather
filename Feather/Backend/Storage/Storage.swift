@@ -6,12 +6,13 @@
 //
 
 import CoreData
+#warning("This storage will change, **a lot**, so use inmemory until its ready for production")
 
 final class Storage: ObservableObject {
 	static let shared = Storage()
 	let container: NSPersistentContainer
 	
-	init(inMemory: Bool = false) {
+	init(inMemory: Bool = true) {
 		container = NSPersistentContainer(name: "Feather")
 		
 		if inMemory {
