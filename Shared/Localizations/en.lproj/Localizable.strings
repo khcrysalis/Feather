@@ -226,7 +226,7 @@
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME_DESCRIPTION" = "Removes any possible URL schemes (i.e. 'feather://')";
 
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS" = "Allow Browsing Documents";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS_DESCRIPTION" = "Allows other apps to open and edit the files stored in the Documents folder. This option also lets users set the app’s default save location in Settings.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS_DESCRIPTION" = "Allows other apps to open and edit the files stored in the Documents folder. This option also lets users set the app's default save location in Settings.";
 
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING" = "Allow iTunes Sharing";
 "APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING_DESCRIPTION" = "Forces the app to share their documents directory, allowing sharing between iTunes and Finder.";
@@ -275,6 +275,11 @@
 "LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN_LN_FILES" = "Open in Files";
 "LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM" = "Confirm Installation";
 "LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM_DESCRIPTION" = "Trying to install via the downloaded apps tab may not work as they are most likely not signed! It's recommended you sign that application first before installing.";
+
+// MARK: - Multi-Select Deletion
+"EDIT" = "Edit";
+"DELETE_SELECTED_ITEMS" = "Delete Selected Items";
+"DELETE_SELECTED_ITEMS_CONFIRMATION" = "Are you sure you want to delete %@ selected items? This cannot be undone.";
 
 // MARK: - SettingsViewController
 // Headers
