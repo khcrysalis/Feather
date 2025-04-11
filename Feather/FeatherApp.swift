@@ -35,7 +35,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 	private func _createSourcesDirectory() {
 		let fileManager = FileManager.default
 		
-		let directories = ["Apps", "Certificates"].map {
+		let directories = ["Signed", "Unsigned", "Certificates"].map {
 			FileManager.default.documentsDirectory.appendingPathComponent($0)
 		}
 		
