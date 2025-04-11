@@ -11,6 +11,9 @@
       location = "group:Feather.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Esign">
+   </FileRef>
+   <FileRef
       location = "group:Zsign">
    </FileRef>
 </Workspace>

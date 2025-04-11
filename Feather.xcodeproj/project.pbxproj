@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3371F5172DA91FDC00281AC6 /* zsign in Frameworks */ = {isa = PBXBuildFile; productRef = 3371F5162DA91FDC00281AC6 /* zsign */; };
+		3371F6432DA9233C00281AC6 /* Esign in Frameworks */ = {isa = PBXBuildFile; productRef = 3371F6422DA9233C00281AC6 /* Esign */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3371F5172DA91FDC00281AC6 /* zsign in Frameworks */,
+				3371F6432DA9233C00281AC6 /* Esign in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +73,7 @@
 			name = Feather;
 			packageProductDependencies = (
 				3371F5162DA91FDC00281AC6 /* zsign */,
+				3371F6422DA9233C00281AC6 /* Esign */,
 			);
 			productName = Feather;
 			productReference = 3379C1B92DA869A1004372DA /* Feather.app */;
@@ -102,6 +105,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				3371F5152DA91FDC00281AC6 /* XCLocalSwiftPackageReference "Zsign" */,
+				3371F6412DA9233C00281AC6 /* XCLocalSwiftPackageReference "Esign" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3379C1BA2DA869A1004372DA /* Products */;
@@ -364,12 +368,20 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Zsign;
 		};
+		3371F6412DA9233C00281AC6 /* XCLocalSwiftPackageReference "Esign" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Esign;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		3371F5162DA91FDC00281AC6 /* zsign */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = zsign;
+		};
+		3371F6422DA9233C00281AC6 /* Esign */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Esign;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
