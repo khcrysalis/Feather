@@ -10,4 +10,7 @@
    <FileRef
       location = "group:Feather.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Zsign">
+   </FileRef>
 </Workspace>

@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		3371F5172DA91FDC00281AC6 /* zsign in Frameworks */ = {isa = PBXBuildFile; productRef = 3371F5162DA91FDC00281AC6 /* zsign */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		3379C1B92DA869A1004372DA /* Feather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Feather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3371F5172DA91FDC00281AC6 /* zsign in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = Feather;
 			packageProductDependencies = (
+				3371F5162DA91FDC00281AC6 /* zsign */,
 			);
 			productName = Feather;
 			productReference = 3379C1B92DA869A1004372DA /* Feather.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 3379C1B02DA869A1004372DA;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				3371F5152DA91FDC00281AC6 /* XCLocalSwiftPackageReference "Zsign" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3379C1BA2DA869A1004372DA /* Products */;
 			projectDirPath = "";
@@ -349,6 +358,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		3371F5152DA91FDC00281AC6 /* XCLocalSwiftPackageReference "Zsign" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Zsign;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3371F5162DA91FDC00281AC6 /* zsign */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = zsign;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3379C1B12DA869A1004372DA /* Project object */;
 }
