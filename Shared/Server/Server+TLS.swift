@@ -51,12 +51,19 @@ extension Installer {
 	static let commonName = getDocumentsDirectory().appendingPathComponent("commonName.txt")
 	
 	static let sni: String = {
-		if Preferences.userSelectedServer {
-			return getLocalIPAddress() ?? "0.0.0.0"
-		} else {
-			return readCommonName() ?? "0.0.0.0"
-		}
-	}()
+        // 判断是否用户选择了自定义服务器
+        if Preferences.userSelectedServer {
+            // 如果用户选择了自定义服务器，并且设备使用移动数据，设置为 127.0.0.1
+            if isUsingMobileData() {
+                return "127.0.0.1"
+            }
+            // 否则，获取本地 IP 地址
+            return getLocalIPAddress() ?? "0.0.0.0"
+        } else {
+            // 如果用户没有选择自定义服务器，调用 readCommonName() 读取常见名称（通常从文件或配置中读取），如果读取失败则返回 "0.0.0.0"
+            return readCommonName() ?? "0.0.0.0"
+        }
+    }()
 	
 	static let documentsKeyURL = getDocumentsDirectory().appendingPathComponent("server.pem")
 	static let documentsCrtURL = getDocumentsDirectory().appendingPathComponent("server.crt")
