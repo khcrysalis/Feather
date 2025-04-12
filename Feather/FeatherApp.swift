@@ -15,13 +15,9 @@ struct FeatherApp: App {
 
     var body: some Scene {
         WindowGroup {
-			if #available(iOS 18, *) {
-				ExtendedTabbarView()
-					.environment(\.managedObjectContext, storage.context)
-			} else {
-				TabbarView()
-					.environment(\.managedObjectContext, storage.context)
-			}
+			VariedTabbarView()
+				.environment(\.managedObjectContext, storage.context)
+				.tint(Color(uiColor: .softPeriwinklePink))
         }
     }
 }

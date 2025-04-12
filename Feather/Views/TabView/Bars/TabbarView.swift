@@ -8,14 +8,7 @@
 import SwiftUI
 
 struct TabbarView: View {
-	@State private var selectedTab: Tab = .explore
-	
-	enum Tab: String {
-		case explore
-		case sources
-		case library
-		case settings
-	}
+	@State private var selectedTab: TabEnum = .sources
 
 	var body: some View {
 		TabView(selection: $selectedTab) {
