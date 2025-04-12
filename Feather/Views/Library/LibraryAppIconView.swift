@@ -36,11 +36,21 @@ struct LibraryAppIconView: View {
 			Spacer()
 		}
 		.swipeActions {
-			Button("Delete", role: .destructive) {
-				Storage.shared.deleteImported(for: _app)
-			}
-			.tint(.red)
+			_contextActions(for: _app)
 		}
+		.contextMenu {
+			_contextActions(for: _app)
+		}
+	}
+	
+	@ViewBuilder
+	private func _contextActions(for app: Imported) -> some View {
+		Button(role: .destructive) {
+			Storage.shared.deleteImported(for: _app)
+		} label: {
+			Label("Delete", systemImage: "trash")
+		}
+		.tint(.red)
 	}
 	
 	@ViewBuilder

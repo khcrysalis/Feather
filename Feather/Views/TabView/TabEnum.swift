@@ -8,7 +8,6 @@
 import SwiftUI
 
 enum TabEnum: String, CaseIterable, Hashable {
-	case explore
 	case sources
 	case library
 	case settings
@@ -16,7 +15,6 @@ enum TabEnum: String, CaseIterable, Hashable {
 	
 	var title: String {
 		switch self {
-		case .explore:		return "Explore"
 		case .sources:     	return "Sources"
 		case .library: 		return "Library"
 		case .settings: 	return "Settings"
@@ -26,10 +24,9 @@ enum TabEnum: String, CaseIterable, Hashable {
 	
 	var icon: String {
 		switch self {
-		case .explore: return "doc.text.image"
-		case .sources: return "globe.desk"
-		case .library: return "square.grid.2x2"
-		case .settings: return "gearshape.2"
+		case .sources: 		return "globe.desk"
+		case .library: 		return "square.grid.2x2"
+		case .settings: 	return "gearshape.2"
 		case .certificates: return "person.text.rectangle"
 		}
 	}
@@ -37,7 +34,6 @@ enum TabEnum: String, CaseIterable, Hashable {
 	@ViewBuilder
 	static func view(for tab: TabEnum) -> some View {
 		switch tab {
-		case .explore: EmptyView()
 		case .sources: SourcesView()
 		case .library: LibraryView()
 		case .settings: SettingsView()
@@ -46,7 +42,7 @@ enum TabEnum: String, CaseIterable, Hashable {
 	}
 	
 	static var defaultTabs: [TabEnum] {
-		return [.explore, .sources, .library, .settings]
+		return [.sources, .library, .settings]
 	}
 	
 	static var customizableTabs: [TabEnum] {
