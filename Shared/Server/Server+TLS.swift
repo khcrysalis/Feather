@@ -32,12 +32,7 @@ func getLocalIPAddress() -> String? {
 					if getnameinfo(interface.ifa_addr, socklen_t(interface.ifa_addr.pointee.sa_len),
 								   &hostname, socklen_t(hostname.count),
 								   nil, socklen_t(0), NI_NUMERICHOST) == 0 {
-						switch name {
-                        case "pdp_ip0":
-                            address = "127.0.0.1"
-                        default:
-                            address = String(cString: hostname)
-                        }
+						address = String(cString: hostname)
 						Debug.shared.log(message: "Testing (\(name)): \(address!)")
 					}
 					
