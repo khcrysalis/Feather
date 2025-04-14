@@ -319,6 +319,9 @@
 "SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION" = "Reset Configuration";
 "SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER" = "Use Custom Server";
 
+"SETTINGS_VIEW_CONTROLLER_CELL_CHECK_SIGNED_APP_UPDATES" = "Check For Signed App Updates";
+"SETTINGS_VIEW_CONTROLLER_CELL_CHECK_SIGNED_APP_UPDATES_FOOTER" = "Whether updates should be checked, this is an experimental feature.";
+
 "SETTINGS_VIEW_CONTROLLER_CELL_ONLINE_INSTALL_METHOD" = "Online Install Method";
 
 
@@ -412,6 +415,9 @@
 
 "DONATION_CELL_2_TITLE" = "Show Your Support";
 "DONATION_CELL_2_DESCRIPTION" = "Show your support by donating! If you're unable to donate, spreading the word about Feather works too!";
+
+"DONATION_CELL_3_TITLE" = "Remove This Alert";
+"DONATION_CELL_3_DESCRIPTION" = "Remove annoying alerts like these after getting beta access!";
 
 // MARK: - SettingsViewController -> LogsViewController.swift
 "LOGS_VIEW_SECTION_TITLE_ERROR" = "%@ Critical Errors.";
