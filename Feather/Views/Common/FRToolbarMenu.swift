@@ -1,5 +1,5 @@
 //
-//  ToolbarButtonWrapper.swift
+//  ToolbarMenuWrapper.swift
 //  Stars
 //
 //  Created by samara on 7.04.2025.
@@ -7,41 +7,35 @@
 
 import SwiftUI
 
-public struct ToolbarButtonWrapper: ToolbarContent {
-	public enum ButtonStyle {
-		case icon
-		case text
-	}
-	
+public struct FRToolbarMenu<Content>: ToolbarContent where Content: View {
 	private var _title: String
 	private var _icon: String
-	private var _style: ButtonStyle
+	private var _style: FRToolbarMenuStyle
 	private var _placement: ToolbarItemPlacement
-	private var _isDisabled: Bool
-	private var _inlined: ToolbarAlignment
-	private var _action: () -> Void
+	private var _inlined: FRToolbarAlignment
+	private var _content: Content
 	
 	public init(
 		_ title: String,
 		systemImage: String,
-		style: ButtonStyle = .icon,
+		style: FRToolbarMenuStyle = .icon,
 		placement: ToolbarItemPlacement = .automatic,
-		isDisabled: Bool = false,
-		alignment: ToolbarAlignment = .none,
-		action: @escaping () -> Void
+		alignment: FRToolbarAlignment = .none,
+		@ViewBuilder content: () -> Content
 	) {
 		self._title = title
 		self._icon = systemImage
 		self._style = style
 		self._placement = placement
-		self._isDisabled = isDisabled
 		self._inlined = alignment
-		self._action = action
+		self._content = content()
 	}
 	
 	public var body: some ToolbarContent {
 		ToolbarItem(placement: _placement) {
-			Button(action: _action) {
+			Menu {
+				_content
+			} label: {
 				switch _style {
 				case .icon:
 					Image(systemName: _icon)
@@ -59,8 +53,8 @@ public struct ToolbarButtonWrapper: ToolbarContent {
 						.clipShape(Capsule())
 				}
 			}
-			.disabled(_isDisabled)
 			.alignment(for: _inlined)
+			
 		}
 	}
 }

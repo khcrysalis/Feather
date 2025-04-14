@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NavigationViewWrapper<Content>: View where Content: View {
+struct FRNavigationView<Content>: View where Content: View {
 	private var _title: String
 	private var _mode: NavigationBarItem.TitleDisplayMode
 	private var _content: Content

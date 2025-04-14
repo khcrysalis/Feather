@@ -1,52 +1,42 @@
 //
-//  ToolbarMenuWrapper.swift
+//  ToolbarButtonWrapper.swift
 //  Stars
 //
 //  Created by samara on 7.04.2025.
 //
 
 import SwiftUI
-#warning("move this somewhere else, but this is fine for now")
-public enum ToolbarAlignment {
-	case leading
-	case trailing
-	case none
-}
 
-public struct ToolbarMenuWrapper<Content>: ToolbarContent where Content: View {
-	public enum ToolbarMenuWrapperStyle {
-		case icon
-		case text
-	}
-	
+public struct FRToolbarButton: ToolbarContent {
 	private var _title: String
 	private var _icon: String
-	private var _style: ToolbarMenuWrapperStyle
+	private var _style: FRToolbarMenuStyle
 	private var _placement: ToolbarItemPlacement
-	private var _inlined: ToolbarAlignment
-	private var _content: Content
+	private var _isDisabled: Bool
+	private var _inlined: FRToolbarAlignment
+	private var _action: () -> Void
 	
 	public init(
 		_ title: String,
 		systemImage: String,
-		style: ToolbarMenuWrapperStyle = .icon,
+		style: FRToolbarMenuStyle = .icon,
 		placement: ToolbarItemPlacement = .automatic,
-		alignment: ToolbarAlignment = .none,
-		@ViewBuilder content: () -> Content
+		isDisabled: Bool = false,
+		alignment: FRToolbarAlignment = .none,
+		action: @escaping () -> Void
 	) {
 		self._title = title
 		self._icon = systemImage
 		self._style = style
 		self._placement = placement
+		self._isDisabled = isDisabled
 		self._inlined = alignment
-		self._content = content()
+		self._action = action
 	}
 	
 	public var body: some ToolbarContent {
 		ToolbarItem(placement: _placement) {
-			Menu {
-				_content
-			} label: {
+			Button(action: _action) {
 				switch _style {
 				case .icon:
 					Image(systemName: _icon)
@@ -64,22 +54,8 @@ public struct ToolbarMenuWrapper<Content>: ToolbarContent where Content: View {
 						.clipShape(Capsule())
 				}
 			}
+			.disabled(_isDisabled)
 			.alignment(for: _inlined)
-			
-		}
-	}
-}
-
-extension View {
-	@ViewBuilder
-	public func alignment(for alignment: ToolbarAlignment) -> some View {
-		switch alignment {
-		case .leading:
-			self.padding(.leading, -18)
-		case .trailing:
-			self.padding(.trailing, -18)
-		case .none:
-			self
 		}
 	}
 }

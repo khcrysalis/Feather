@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SectionProminentHeaderWrapper<Content>: View where Content: View {
+struct FRSection<Content>: View where Content: View {
 	private var headerText: String
 	private var headerImage: Image?
 	private var content: Content

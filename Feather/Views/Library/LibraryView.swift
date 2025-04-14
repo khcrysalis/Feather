@@ -31,9 +31,9 @@ struct LibraryView: View {
 	}
 
     var body: some View {
-		NavigationViewWrapper("Library") {
+		FRNavigationView("Library") {
 			List {
-				SectionProminentHeaderWrapper("Imported") {
+				FRSection("Imported") {
 					ForEach(filteredApps, id: \.uuid) { app in
 						LibraryAppIconView(app)
 					}
@@ -42,7 +42,7 @@ struct LibraryView: View {
 			.searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
 			.listStyle(.plain)
 			.toolbar {
-				ToolbarMenuWrapper(
+				FRToolbarMenu(
 					"Import",
 					systemImage: "plus",
 					style: .icon,

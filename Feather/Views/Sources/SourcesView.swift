@@ -17,7 +17,7 @@ struct SourcesView: View {
 	) private var sources: FetchedResults<AltSource>
 
     var body: some View {
-		NavigationViewWrapper("Sources") {
+		FRNavigationView("Sources") {
             List {
 				ForEach(sources, id: \.identifier) { source in
 					Text(source.name ?? "")

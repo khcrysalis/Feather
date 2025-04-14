@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-		NavigationViewWrapper("Settings") {
+		FRNavigationView("Settings") {
             List {
 				
             }
