@@ -38,6 +38,10 @@ func signInitialApp(bundle: BundleOptions, mainOptions: SigningMainDataWrapper, 
 				   let iconFileName = iconFiles.first {
 					iconURL = iconFileName
 				}
+				else if let iconFiles = info["CFBundleIconFiles"] as? [String],
+			            let iconFileName = iconFiles.first {
+			        	iconURL = iconFileName
+			    	}
 			}
 
 			let handler = TweakHandler(urls: signingOptions.signingOptions.toInject, app: tmpDirApp)
