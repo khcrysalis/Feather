@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3371F5172DA91FDC00281AC6 /* zsign in Frameworks */ = {isa = PBXBuildFile; productRef = 3371F5162DA91FDC00281AC6 /* zsign */; };
+		330E90A22DADF3DF0057D546 /* zsign in Frameworks */ = {isa = PBXBuildFile; productRef = 330E90A12DADF3DF0057D546 /* zsign */; };
 		3371F6432DA9233C00281AC6 /* Esign in Frameworks */ = {isa = PBXBuildFile; productRef = 3371F6422DA9233C00281AC6 /* Esign */; };
 		3371F7322DA9ECDD00281AC6 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 3371F7312DA9ECDD00281AC6 /* Zip */; };
 /* End PBXBuildFile section */
@@ -42,8 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				330E90A22DADF3DF0057D546 /* zsign in Frameworks */,
 				3371F7322DA9ECDD00281AC6 /* Zip in Frameworks */,
-				3371F5172DA91FDC00281AC6 /* zsign in Frameworks */,
 				3371F6432DA9233C00281AC6 /* Esign in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,9 +95,9 @@
 			);
 			name = Feather;
 			packageProductDependencies = (
-				3371F5162DA91FDC00281AC6 /* zsign */,
 				3371F6422DA9233C00281AC6 /* Esign */,
 				3371F7312DA9ECDD00281AC6 /* Zip */,
+				330E90A12DADF3DF0057D546 /* zsign */,
 			);
 			productName = Feather;
 			productReference = 3379C1B92DA869A1004372DA /* Feather.app */;
@@ -283,6 +283,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Feather/Supporting Files/Feather.entitlements";
 				CODE_SIGN_IDENTITY = "";
@@ -331,6 +332,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Feather/Supporting Files/Feather.entitlements";
 				CODE_SIGN_IDENTITY = "";
@@ -421,7 +423,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3371F5162DA91FDC00281AC6 /* zsign */ = {
+		330E90A12DADF3DF0057D546 /* zsign */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = zsign;
 		};
