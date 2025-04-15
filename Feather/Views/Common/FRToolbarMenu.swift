@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct FRToolbarMenu<Content>: ToolbarContent where Content: View {
+struct FRToolbarMenu<Content>: ToolbarContent where Content: View {
 	private var _title: String
 	private var _icon: String
 	private var _style: FRToolbarMenuStyle
@@ -15,7 +15,7 @@ public struct FRToolbarMenu<Content>: ToolbarContent where Content: View {
 	private var _inlined: FRToolbarAlignment
 	private var _content: Content
 	
-	public init(
+	init(
 		_ title: String,
 		systemImage: String,
 		style: FRToolbarMenuStyle = .icon,
@@ -31,7 +31,7 @@ public struct FRToolbarMenu<Content>: ToolbarContent where Content: View {
 		self._content = content()
 	}
 	
-	public var body: some ToolbarContent {
+	var body: some ToolbarContent {
 		ToolbarItem(placement: _placement) {
 			Menu {
 				_content

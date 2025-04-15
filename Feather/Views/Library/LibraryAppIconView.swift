@@ -8,45 +8,43 @@
 import SwiftUI
 
 struct LibraryAppIconView: View {
-	private var _app: Imported
-	
-	init(_ app: Imported) {
-		self._app = app
-	}
-	
+	var app: Imported
+	@Binding var selectedApp: Imported?
+
 	var body: some View {
 		HStack(spacing: 9) {
-			_appIconView(for: _app)
+			_appIconView(for: app)
 			
 			VStack(alignment: .leading, spacing: 2) {
-				Text(_app.name ?? "Unknown App")
+				Text(app.name ?? "Unknown App")
 					.font(.headline)
 				
-				if let version = _app.version, let id = _app.identifier {
-					Text("\(version) • \(id)")
-						.font(.caption)
-						.foregroundStyle(.secondary)
-				} else {
-					Text(_app.identifier ?? "No Identifier")
-						.font(.caption)
-						.foregroundStyle(.secondary)
+				Group {
+					if let version = app.version, let id = app.identifier {
+						Text("\(version) • \(id)")
+					} else {
+						Text(app.identifier ?? "No Identifier")
+					}
 				}
+				.font(.caption)
+				.foregroundStyle(.secondary)
 			}
-			
-			Spacer()
 		}
+		.frame(maxWidth: .infinity, alignment: .leading)
 		.swipeActions {
-			_contextActions(for: _app)
+			_actions(for: app)
 		}
 		.contextMenu {
-			_contextActions(for: _app)
+			_contextActions(for: app)
+			Divider()
+			_actions(for: app)
 		}
 	}
 	
 	@ViewBuilder
-	private func _contextActions(for app: Imported) -> some View {
+	private func _actions(for app: Imported) -> some View {
 		Button(role: .destructive) {
-			Storage.shared.deleteImported(for: _app)
+			Storage.shared.deleteImported(for: app)
 		} label: {
 			Label("Delete", systemImage: "trash")
 		}
@@ -54,10 +52,20 @@ struct LibraryAppIconView: View {
 	}
 	
 	@ViewBuilder
+	private func _contextActions(for app: Imported) -> some View {
+		Button {
+			selectedApp = app
+		} label: {
+			Label("Get Info", systemImage: "info.circle")
+		}
+	}
+	
+	@ViewBuilder
 	private func _appIconView(for app: Imported) -> some View {
-		if let iconFilePath = Storage.shared.getDirectory(for: app)?
-			.appendingPathComponent(app.icon ?? ""),
-		   let uiImage = UIImage(contentsOfFile: iconFilePath.path) {
+		if
+			let iconFilePath = Storage.shared.getDirectory(for: app)?.appendingPathComponent(app.icon ?? ""),
+			let uiImage = UIImage(contentsOfFile: iconFilePath.path)
+		{
 			Image(uiImage: uiImage)
 				.appIconStyle()
 		} else {

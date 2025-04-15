@@ -19,6 +19,8 @@ struct LibraryView: View {
 	@State private var isImportingFiles = false
 	@State private var searchText = ""
 	
+	@State private var selectedApp: Imported?
+	
 	var filteredApps: [Imported] {
 		if searchText.isEmpty {
 			return Array(importedApps)
@@ -35,9 +37,12 @@ struct LibraryView: View {
 			List {
 				FRSection("Imported") {
 					ForEach(filteredApps, id: \.uuid) { app in
-						LibraryAppIconView(app)
+						LibraryAppIconView(app: app, selectedApp: $selectedApp)
 					}
 				}
+			}
+			.sheet(item: $selectedApp) { app in
+				LibraryInfoView(app: app)
 			}
 			.searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
 			.listStyle(.plain)
@@ -69,15 +74,17 @@ struct LibraryView: View {
         }
     }
 	
-	#warning("importing 2 files at once may be a bad idea. will fix later?")
 	private func _import(file ipa: URL) {
 		Task.detached {
 			try? await Task.sleep(nanoseconds: 1_000)
 			let handler = ImportedFileHandler(file: ipa)
 			
+			defer {
+				ipa.stopAccessingSecurityScopedResource()
+			}
+			
 			do {
 				try await handler.copy()
-				ipa.stopAccessingSecurityScopedResource()
 				try await handler.extract()
 				try await handler.addToDatabase()
 			} catch {

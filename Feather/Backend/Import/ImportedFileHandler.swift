@@ -12,6 +12,7 @@ final class ImportedFileHandler: NSObject {
 	private let _fileManager = FileManager.default
 	private let _uuid = UUID().uuidString
 	private var _ipaDestination: URL? = nil
+	private let _uniqueWorkDir: URL
 	
 	private var _ipa: URL
 	private let _install: Bool
@@ -22,13 +23,19 @@ final class ImportedFileHandler: NSObject {
 	) {
 		self._ipa = ipa
 		self._install = install
+		self._uniqueWorkDir = _fileManager.temporaryDirectory
+			.appendingPathComponent("FeatherImport_\(_uuid)", isDirectory: true)
+		
 		super.init()
-		print(_ipa)
+		print("Import initiated for: \(_ipa.lastPathComponent) with ID: \(_uuid)")
 	}
 	
 	func copy() async throws {
-		let tmpURL = _fileManager.temporaryDirectory
-		let destinationURL = tmpURL.appendingPathComponent(_ipa.lastPathComponent)
+		if !_fileManager.fileExists(atPath: _uniqueWorkDir.path) {
+			try _fileManager.createDirectory(at: _uniqueWorkDir, withIntermediateDirectories: true)
+		}
+		
+		let destinationURL = _uniqueWorkDir.appendingPathComponent(_ipa.lastPathComponent)
 		
 		if _fileManager.fileExists(atPath: destinationURL.path) {
 			try _fileManager.removeItem(at: destinationURL)
@@ -36,20 +43,18 @@ final class ImportedFileHandler: NSObject {
 		
 		try _fileManager.copyItem(at: _ipa, to: destinationURL)
 		_ipa = destinationURL
-		print(_ipa)
+		print("File copied to: \(_ipa.path)")
 	}
 	
 	func extract() async throws {
-		let tmpURL = _fileManager.temporaryDirectory
-		
 		Zip.addCustomFileExtension("ipa")
 		Zip.addCustomFileExtension("tipa")
 		
-		try Zip.unzipFile(_ipa, destination: tmpURL, overwrite: true, password: nil, progress: { progress in
-			print("Unzip progress: \(progress)")
+		try Zip.unzipFile(_ipa, destination: _uniqueWorkDir, overwrite: true, password: nil, progress: { progress in
+			print("[\(self._uuid)] Unzip progress: \(progress)")
 		})
 		
-		let payloadURL = tmpURL.appendingPathComponent("Payload")
+		let payloadURL = _uniqueWorkDir.appendingPathComponent("Payload")
 		let destinationURL = try await _directory()
 		
 		guard _fileManager.fileExists(atPath: payloadURL.path) else {
@@ -58,12 +63,14 @@ final class ImportedFileHandler: NSObject {
 		
 		try _fileManager.moveItem(at: payloadURL, to: destinationURL)
 		self._ipaDestination = destinationURL
-		print("Moved Payload to: \(destinationURL.path)")
+		print("[\(_uuid)] Moved Payload to: \(destinationURL.path)")
+		
+		try? _fileManager.removeItem(at: _uniqueWorkDir)
 	}
 	
 	func addToDatabase() async throws {
 		Storage.shared.addImported(uuid: _uuid, url: _ipaDestination ?? nil) { _ in
-			print("done?")
+			print("[\(self._uuid)] Added to database")
 		}
 	}
 	

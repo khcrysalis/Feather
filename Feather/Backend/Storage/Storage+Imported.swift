@@ -35,7 +35,7 @@ extension Storage {
 	
 	func deleteImported(for app: Imported) {
 		do {
-			if let url = _getUuidDirectory(for: app) {
+			if let url = getUuidDirectory(for: app) {
 				try FileManager.default.removeItem(at: url)
 			}
 			context.delete(app)
@@ -46,14 +46,14 @@ extension Storage {
 	}
 	
 	func getDirectory(for app: Imported) -> URL? {
-		guard let url = _getUuidDirectory(for: app) else {
+		guard let url = getUuidDirectory(for: app) else {
 			return nil
 		}
 
 		return FileManager.default.appBundle(in: url)
 	}
 	
-	private func _getUuidDirectory(for app: Imported) -> URL? {
+	func getUuidDirectory(for app: Imported) -> URL? {
 		guard let uuid = app.uuid else {
 			return nil
 		}

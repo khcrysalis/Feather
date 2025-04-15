@@ -17,6 +17,10 @@ extension Bundle {
 		}
 		return object(forInfoDictionaryKey: "CFBundleExecutable") as? String ?? ""
 	}
+	
+	var exec: String {
+		return object(forInfoDictionaryKey: "CFBundleExecutable") as? String ?? ""
+	}
 
 	var version: String {
 		if let version = object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
