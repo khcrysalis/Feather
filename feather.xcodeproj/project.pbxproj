@@ -49,6 +49,7 @@
 		33E5A59F2CC85C1B00532930 /* Antoine.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Antoine.md; sourceTree = "<group>"; };
 		5AF393042CFAE1B7001FAF86 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
 		88DE4CC52CA5A13200D68F1E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		88DE4CC62CA5A13300D68F1E /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AA280D942C76AB7400CAC838 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -314,6 +315,7 @@
 				88DE4CC52CA5A13200D68F1E /* fr */,
 				5AF393042CFAE1B7001FAF86 /* zh */,
 				338B0F0C2D0C0E8200C5EA11 /* ru */,
+				88DE4CC62CA5A13300D68F1E /* vi */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
