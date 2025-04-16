@@ -31,11 +31,11 @@ extension FileManager {
 		unsigned.appendingPathComponent(uuid)
 	}
 	
-	func appBundle(in directory: URL) -> URL? {
-		guard let contents = try? contentsOfDirectory(at: directory, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles]) else {
-			return nil
-		}
-		
-		return contents.first(where: { $0.pathExtension == "app" })
+	var certificates: URL {
+		documentsDirectory.appendingPathComponent("Certificates")
+	}
+	
+	func certificates(_ uuid: String) -> URL {
+		certificates.appendingPathComponent(uuid)
 	}
 }

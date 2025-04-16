@@ -19,7 +19,7 @@ extension Storage {
 			completion(.none)
 		}
 		
-		var new = AltSource(context: context)
+		let new = AltSource(context: context)
 		
 		new.name = name
 		new.identifier = identifier

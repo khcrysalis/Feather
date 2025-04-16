@@ -13,7 +13,7 @@ struct ExtendedTabbarView: View {
 	@Environment(\.horizontalSizeClass)
 	private var horizontalSizeClass
 	
-	@AppStorage("tabCustomization")
+	@AppStorage("feather.tabCustomization")
 	private var customization = TabViewCustomization()
 		
 	var body: some View {

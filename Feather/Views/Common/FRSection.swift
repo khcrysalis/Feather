@@ -7,22 +7,39 @@
 
 import SwiftUI
 
-struct FRSection<Content>: View where Content: View {
+struct FRSection<Content, Footer>: View
+where 	Content: View,
+		Footer: View
+{
 	private var headerText: String
 	private var headerImage: Image?
 	private var content: Content
+	private var footer: Footer
 	
 	init(_ headerText: String,
 		 image: Image? = nil,
-		 @ViewBuilder content: () -> Content) {
+		 @ViewBuilder content: () -> Content,
+		 @ViewBuilder footer: () -> Footer
+	) {
 		self.headerText = headerText
 		self.headerImage = image
 		self.content = content()
+		self.footer = footer()
+	}
+	
+	init(_ headerText: String,
+		 image: Image? = nil,
+		 @ViewBuilder content: () -> Content
+	) where Footer == EmptyView {
+		self.headerText = headerText
+		self.headerImage = image
+		self.content = content()
+		self.footer = EmptyView()
 	}
 	
 	var body: some View {
-		Section(header:
-			HStack(spacing: 8) {
+		Section(
+			header: HStack(spacing: 8) {
 				if let imageName = headerImage {
 					imageName
 						.resizable()
@@ -33,9 +50,12 @@ struct FRSection<Content>: View where Content: View {
 					.fontWeight(.bold)
 					.font(.title2)
 					.foregroundStyle(.primary)
-			
+				
 				Spacer()
-			}
+			},
+			footer: footer
+				.font(.caption)
+				.foregroundColor(.secondary)
 		) {
 			content
 		}

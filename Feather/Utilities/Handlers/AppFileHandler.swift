@@ -8,7 +8,7 @@
 import Foundation
 import Zip
 
-final class ImportedFileHandler: NSObject {
+final class AppFileHandler: NSObject {
 	private let _fileManager = FileManager.default
 	private let _uuid = UUID().uuidString
 	private var _ipaDestination: URL? = nil

@@ -11,7 +11,10 @@ struct SettingsView: View {
     var body: some View {
 		FRNavigationView("Settings") {
             List {
-				
+				FRSection("Signing") {
+					NavigationLink("Certificates", destination: CertificatesView())
+					NavigationLink("Configuration", destination: SigningOptionsView())
+				}
             }
         }
     }

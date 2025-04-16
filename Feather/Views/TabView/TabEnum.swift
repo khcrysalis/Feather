@@ -12,6 +12,10 @@ enum TabEnum: String, CaseIterable, Hashable {
 	case library
 	case settings
 	case certificates
+	#if DEBUG
+	case debug
+	#endif
+	
 	
 	var title: String {
 		switch self {
@@ -19,6 +23,9 @@ enum TabEnum: String, CaseIterable, Hashable {
 		case .library: 		return "Library"
 		case .settings: 	return "Settings"
 		case .certificates:	return "Certificates"
+		#if DEBUG
+		case .debug:		return "Debug"
+		#endif
 		}
 	}
 	
@@ -28,6 +35,9 @@ enum TabEnum: String, CaseIterable, Hashable {
 		case .library: 		return "square.grid.2x2"
 		case .settings: 	return "gearshape.2"
 		case .certificates: return "person.text.rectangle"
+		#if DEBUG
+		case .debug:		return "hammer.fill"
+		#endif
 		}
 	}
 	
@@ -38,14 +48,29 @@ enum TabEnum: String, CaseIterable, Hashable {
 		case .library: LibraryView()
 		case .settings: SettingsView()
 		case .certificates: EmptyView()
+		#if DEBUG
+		case .debug:		DebugView()
+		#endif
 		}
 	}
 	
 	static var defaultTabs: [TabEnum] {
-		return [.sources, .library, .settings]
+		var tabs: [TabEnum] = [
+			.sources,
+			.library,
+			.settings
+		]
+		
+		#if DEBUG
+		tabs.append(.debug)
+		#endif
+		
+		return tabs
 	}
 	
 	static var customizableTabs: [TabEnum] {
-		return [.certificates]
+		return [
+			.certificates
+		]
 	}
 }

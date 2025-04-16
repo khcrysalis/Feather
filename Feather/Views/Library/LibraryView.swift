@@ -77,7 +77,7 @@ struct LibraryView: View {
 	private func _import(file ipa: URL) {
 		Task.detached {
 			try? await Task.sleep(nanoseconds: 1_000)
-			let handler = ImportedFileHandler(file: ipa)
+			let handler = AppFileHandler(file: ipa)
 			
 			defer {
 				ipa.stopAccessingSecurityScopedResource()

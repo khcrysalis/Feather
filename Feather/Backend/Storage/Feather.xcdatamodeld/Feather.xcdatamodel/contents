@@ -6,6 +6,13 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="sourceURL" optional="YES" attributeType="URI"/>
     </entity>
+    <entity name="CertificatePair" representedClassName="CertificatePair" syncable="YES" codeGenerationType="class">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="nickname" optional="YES" attributeType="String"/>
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="ppQCheck" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="uuid" attributeType="String"/>
+    </entity>
     <entity name="Imported" representedClassName="Imported" syncable="YES" codeGenerationType="class">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="icon" optional="YES" attributeType="String"/>
