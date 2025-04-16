@@ -82,8 +82,10 @@ class Installer: Identifiable, ObservableObject {
 		}
 		
 		app.get("i") { req -> Response in
-
-			let testurl = "itms-services://?action=download-manifest&url=" + ("\(Preferences.onlinePath ?? Preferences.defaultInstallPath)/genPlist?bundleid=\(metadata.id)&name=\(metadata.name)&version=\(metadata.name)&fetchurl=\(self.payloadEndpoint.absoluteString)").addingPercentEncoding(withAllowedCharacters: .alphanumerics)!
+			let baseUrl = "\(Preferences.onlinePath ?? Preferences.defaultInstallPath)/genPlist?bundleid=\(metadata.id)&name=\(metadata.name)&version=\(metadata.name)&fetchurl=\(self.payloadEndpoint.absoluteString)"
+			let encodedBaseUrl = baseUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+			let finalEncodedUrl = encodedBaseUrl.addingPercentEncoding(withAllowedCharacters: .alphanumerics)!
+			let testurl = "itms-services://?action=download-manifest&url=" + finalEncodedUrl
 
 			var html = ""
 			
