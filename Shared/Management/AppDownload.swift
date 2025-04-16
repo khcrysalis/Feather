@@ -93,11 +93,8 @@ class AppDownload: NSObject {
 			let startTime = Date()
 			
 			do {
-				// Optimize: Use performant unzip with reduced I/O overhead
-		try fileManager.unzipItem(at: fileURL, to: destinationURL, progress: progress)
-				
-				print("⏱️ Unzip duration: \(Date().timeIntervalSince(startTime))s")
-				
+				try fileManager.unzipItem(at: fileURL, to: destinationURL, progress: progress)
+
 				guard !progress.isCancelled else {
 					try? fileManager.removeItem(at: destinationURL)
 					self.cancelDownload()
@@ -107,7 +104,6 @@ class AppDownload: NSObject {
 					return
 				}
 				
-				// Optimize: Minimize file system operations
 				try fileManager.removeItem(at: fileURL)
 				
 				let payloadURL = destinationURL.appendingPathComponent("Payload")
@@ -144,8 +140,6 @@ class AppDownload: NSObject {
 			}
 		}
 	}
-
-
 
 	func addToApps(bundlePath: String, uuid: String, sourceLocation: String? = nil, completion: @escaping (Error?) -> Void) {
 		guard let bundle = Bundle(path: bundlePath) else {
