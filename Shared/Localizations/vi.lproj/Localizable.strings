@@ -1,0 +1,478 @@
+/* 
+  Localizable.strings
+  feather
+
+  Created by Bé Chou & arm64x on 28.03.2025.
+  
+*/
+
+// MARK: - Generic
+// Unknown, default string for applications
+"UNKNOWN" = "Không xác định";
+// Default string
+"DEFAULT" = "Mặc định";
+// Copy provided string in a menu
+"COPY" = "Sao chép";
+// Delete item
+"DELETE" = "Xóa";
+"DELETING" = "Đang xóa";
+// Cancel alert action
+"CANCEL" = "Hủy bỏ";
+// Done action
+"DONE" = "Xong";
+// Dismiss action
+"DISMISS" = "Bỏ qua";
+"CLOSE" = "Đóng";
+// Dismiss 2 action
+"LAME" = "OK";
+// Save action
+"SAVE" = "Lưu";
+// Set action
+"SET" = "Đặt";
+// OK action
+"OK" = "OK";
+// Continue action
+"CONTINUE" = "Tiếp tục";
+// Import Action
+"IMPORT" = "Nhập";
+// Add Action
+"ADD" = "Thêm";
+// Install Action
+"INSTALL" = "Cài đặt";
+
+// MARK: - Alerts
+// Alert titles
+"ALERT_SUCCESS" = "Thành công";
+"ALERT_TRACE" = "Theo dõi";
+"ALERT_ERROR" = "Lỗi";
+"ALERT_CRITICAL" = "Lỗi nghiêm trọng";
+"ALERT_COPIED" = "Đã sao chép";
+
+// MARK: - Error messages
+// Installer Error Title
+"ERROR_INSTALLER" = "Trình cài đặt";
+// Installer Error Description
+"ERROR_INSTALLER_DESCRIPTION" = "Không thể tải chứng chỉ SSL";
+"ERROR_ZSIGN_FAILED" = "Ký .ipa thất bại.";
+"ERROR_FAILED_TO_READ_MOBILEPROVISION" = "Không thể đọc tệp mobileprovision";
+
+// MARK: - Success messages
+// Successfully signed an application
+"SUCCESS_SIGNED" = "Đã ký thành công %@";
+// Successfully resigned an application
+"SUCCESS_RESIGN" = "Đã ký lại thành công!";
+// Success message requiring user to restart app
+"SUCCESS_REQUIRES_RESTART" = "Bạn phải đóng ứng dụng để các thay đổi có hiệu lực.";
+
+// MARK: - Onboarding
+// Welcome to Feather!!!!!!!!
+"ONBOARDING_WELCOMETITLE_1" = "Chào mừng đến với";
+// First feature inside of onboarding
+"ONBOARDING_CELL_1_TITLE" = "Cài đặt trực tiếp trên thiết bị";
+"ONBOARDING_CELL_1_DESCRIPTION" = "Cài đặt ứng dụng mà không cần máy tính, mọi thứ được thực hiện từ thiết bị của bạn.";
+// Second feature inside of onboarding
+"ONBOARDING_CELL_2_TITLE" = "Tùy chỉnh ứng dụng";
+"ONBOARDING_CELL_2_DESCRIPTION" = "Quản lý và tùy chỉnh các ứng dụng cho phù hợp với nhu cầu của bạn.";
+// Third feature inside of onboarding
+"ONBOARDING_CELL_3_TITLE" = "Và còn nhiều hơn nữa!";
+"ONBOARDING_CELL_3_DESCRIPTION" = "Kho AltStore, nhập IPA, chuyển đổi chứng chỉ dễ dàng và nhiều tính năng khác.";
+// "Developed by Samara. Made for users who are passionate for sideloading and freedom. Many features included inside. Learn more..."
+"ONBOARDING_FOOTER" = "Được phát triển bởi Samara. Dành cho những người đam mê sideloading và sự tự do. Rất nhiều tính năng được tích hợp bên trong.";
+"ONBOARDING_FOOTER_LINK" = "Tìm hiểu thêm...";
+// Continue button to exit onboarding
+"ONBOARDING_CONTINUE_BUTTON" = "Tiếp tục";
+
+// MARK: - Tab area
+// Sources tab
+"TAB_SOURCES" = "Nguồn";
+// Library tab
+"TAB_LIBRARY" = "Thư viện";
+// Settings tab
+"TAB_SETTINGS" = "Cài đặt";
+
+// MARK: - TransferPreview
+// Packaging application to get ready for install
+"TRANSFER_PREVIEW_PACKAGING" = "Đang đóng gói...";
+// Ready to install package
+"TRANSFER_PREVIEW_READY" = "Sẵn sàng để cài đặt";
+// Opening manifest.plist for iOS
+"TRANSFER_PREVIEW_SENDING_MANIFEST" = "Đang gửi Manifest...";
+// iOS is retrieving IPA file
+"TRANSFER_PREVIEW_SENDING_PAYLOAD" = "Đang gửi Payload...";
+// Done transferring IPA file
+"TRANSFER_PREVIEW_DONE" = "Hoàn tất";
+// Completed packaging so you can share
+"TRANSFER_PREVIEW_COMPLETED" = "Đã hoàn thành";
+
+// MARK: - SourcesViewController
+// Repositories title
+"SOURCES_VIEW_CONTROLLER_REPOSITORIES" = "Kho ứng dụng";
+"SOURCES_VIEW_CONTROLLER_REPOSITORIES_ALL" = "Tất cả nguồn";
+"SOURCES_VIEW_CONTROLLER_REPOSITORIES_SEE_ALL" = "Xem tất cả ứng dụng từ nguồn của bạn";
+// Add repo button
+"SOURCES_VIEW_CONTROLLER_ADD_SOURCES" = "Thêm nguồn";
+// Number of sources, i.e. "100 Sources"
+"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES" = "%@ Nguồn";
+"SOURCES_VIEW_CONTROLLER_NUMBER_OF_SOURCES_PLURAL" = "%@ Nguồn";
+// Search sources in search bar
+"SOURCES_VIEW_CONTROLLER_SEARCH_SOURCES" = "Tìm kiếm nguồn";
+
+// MARK: - SourcesViewController - Add Sources
+"SOURCES_VIEW_ADD_SOURCES_ALERT_TITLE" = "Thêm nguồn";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_DESCRIPTION" = "Thêm URL nguồn";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_IMPORT_REPO" = "Nhập nguồn";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO" = "Chia sẻ nguồn";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_BUTTON_EXPORT_REPO_ACTION_SUCCESS" = "Đã sao chép nguồn ứng dụng vào bộ nhớ tạm";
+"SOURCES_VIEW_ADD_SOURCES_ALERT_SUPPORT" = "Hỗ trợ nhập từ KravaSign và ESign";
+//Footer Validation
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTSTARTED" = "Nhập URL để bắt đầu kiểm tra tính hợp lệ.";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_NOTVALIDJSON" = "JSON không hợp lệ, vui lòng kiểm tra lại.";
+"SOURCES_VIEW_ADD_SOURCES_FOOTER_VALID" = "JSON hợp lệ.";
+
+// MARK: - SourcesViewController -> SourcesAppViewController
+// Number of apps, i.e. "444 Apps"
+"SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS" = "%@ Ứng dụng";
+"SOURCES_APP_VIEW_CONTROLLER_NUMBER_OF_APPS_PLURAL" = "%@ Ứng dụng";
+// Search apps in search bar
+"SOURCES_APP_VIEW_CONTROLLER_SEARCH_APPS" = "Tìm kiếm ứng dụng";
+
+// MARK: - SourcesViewController ... - Cells
+// Default subtitle string
+"SOURCES_CELLS_DEFAULT_SUBTITLE" = "Một ứng dụng tuyệt vời.";
+// Default description string
+"SOURCES_CELLS_DEFAULT_DESCRIPTION" = "Một mô tả hay.";
+
+// MARK: - SourceAppViewController ... - Actions
+// Available Versions Alert Title
+"SOURCES_CELLS_ACTIONS_HOLD_AVAILABLE_VERSIONS" = "Các phiên bản có sẵn";
+//Filter Menu
+"SOURCES_CELLS_ACTIONS_FILTER_TITLE" = "Lọc theo";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_DEFAULT" = "Mặc định";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_NAME" = "Tên";
+"SOURCES_CELLS_ACTIONS_FILTER_BY_DATE" = "Ngày";
+
+// MARK: - AppsInformationViewController
+// Application Section
+"APPS_INFORMATION_SECTION_TITLE_NAME" = "Ứng dụng";
+// Bundle Section
+"APPS_INFORMATION_SECTION_TITLE_NAME" = "Bundle";
+
+//
+"APPS_INFORMATION_TITLE_DELETED_FILE" = "Tệp đã bị xóa";
+"APPS_INFORMATION_TITLE_DELETED_FILE_TITLE" = "Tệp đã bị xóa.";
+"APPS_INFORMATION_TITLE_DELETED_FILE_DESCRIPTION" = "Đây là mục rỗng vì tệp ứng dụng đã bị xóa. Feather sẽ không cho phép cài đặt ứng dụng này. Bạn nên xóa mục này bằng cách vuốt trên ô ứng dụng trong mục Ứng dụng.";
+// Application Section
+"APPS_INFORMATION_TITLE" = "Thông tin ứng dụng";
+"APPS_INFORMATION_TITLE_NAME" = "Tên";
+"APPS_INFORMATION_TITLE_VERSION" = "Phiên bản";
+"APPS_INFORMATION_TITLE_IDENTIFIER" = "Định danh";
+"APPS_INFORMATION_TITLE_SIZE" = "Kích thước";
+//
+"APPS_INFORMATION_TITLE_DATE_ADDED" = "Ngày thêm";
+// Bundle Section
+"APPS_INFORMATION_TITLE_BUNDLE_NAME" = "Tên Bundle";
+"APPS_INFORMATION_TITLE_BUNDLE_PATH" = "Đường dẫn Bundle";
+"APPS_INFORMATION_TITLE_ICON_FILE" = "Tệp biểu tượng";
+//
+"APPS_INFORMATION_TITLE_OPEN_IN_FILES" = "Mở trong Tệp";
+
+// MARK: - AppSigningViewController
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_CUSTOMIZATION" = "Tùy chỉnh";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_SIGNING" = "Chứng chỉ";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_TITLE_ADVANCED" = "Nâng cao";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS" = "Thêm Tweaks";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED" = "Nâng cao";
+"APP_SIGNING_VIEW_CONTROLLER_START_SIGNING" = "Bắt đầu ký";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_MODIFY_DYLIBS" = "Sửa đổi Dylibs";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_PROPERTIES" = "Thuộc tính";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_OPTION_AUTOMATIC" = "Tự động";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_OPTION_LIGHT" = "Sáng";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_OPTION_DARK" = "Tối";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ALERT_ADVANCED_USERS_ONLY_TITLE" = "CHỈ DÀNH CHO NGƯỜI DÙNG NÂNG CAO";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ALERT_ADVANCED_USERS_ONLY_MESSAGE" = "Phần này có thể khiến các ứng dụng đã cài đặt KHÔNG SỬ DỤNG ĐƯỢC và có khả năng KHÔNG ỔN ĐỊNH. SỬ DỤNG PHẦN NÀY MỘT CÁCH THẬN TRỌNG, NẾU BẠN KHÔNG BIẾT MÌNH ĐANG LÀM GÌ, VUI LÒNG RỜI KHỎI.\n\nNẾU BẠN GẶP VẤN ĐỀ Ở ĐÂY, NÓ SẼ NGAY LẬP TỨC BỊ ĐÓNG VÀ BỎ QUA.";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_ALERT_ADVANCED_USERS_ONLY_WHO_CARES" = "Méo quan tâm";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_REMOVE_DYLIBS" = "Xóa Dylib";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SELECT_APP_ICON" = "Chọn icon ứng dụng";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SELECT_ALT_ICON" = "Chọn icon thay thế";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_CHOOSE_FROM_FILES" = "Chọn từ Tệp";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_CHOOSE_FROM_PHOTOS" = "Chọn từ Ảnh";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_NAV_TITLE_ALT_ICONS" = "Icon thay thế";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_NO_ALT_ICONS_AVAILABLE" = "Ứng dụng này không có icon thay thế";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_USE_FILE_OR_IMAGE" = "Vui lòng sử dụng chức năng Chọn từ Tệp hoặc Chọn từ Ảnh";
+
+// MARK: - AppSigningViewController - No Certificates Alert
+"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_TITLE" = "Lỗi";
+"APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_DESCRIPTION" = "Bạn chưa chọn chứng chỉ nào, vui lòng chọn hoặc tải lên một chứng chỉ trong phần thêm chứng chỉ của mục Cài đặt.";
+
+// MARK: - AppSigningViewController -> AppSigningAdvancedViewController
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_APPEARENCE" = "Giao diện";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_MINIMUM_APP_VERSION" = "Phiên bản ứng dụng tối thiểu";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_SECTION_TITLE_PROPERTIES" = "Thuộc tính";
+
+// MARK: - AppSigningViewController -> AppSigningTweakViewController
+"APP_SIGNING_TWEAK_VIEW_CONTROLLER_TITLE" = "Tweaks";
+
+// MARK: - SigningsOptionsViewController
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS" = "Bật bảo vệ";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS_DESCRIPTION" = "Bật bảo vệ sẽ thêm một chuỗi ngẫu nhiên vào mỗi bundle định danh, điều này là để bảo vệ ID Apple liên quan đến chứng chỉ của bạn khỏi bị Apple gắn cờ. Tuy nhiên, nếu bạn không quan tâm đến điều này, bạn có thể bỏ qua nó.";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DYNAMIC_PROTECTION" = "Bảo vệ chủ động";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DYNAMIC_PROTECTION_DESCRIPTION" = "Bảo vệ chủ động sẽ chỉ áp dụng bảo vệ PPQ nếu bundle định danh tồn tại trên App Store. Điều này yêu cầu kết nối internet trong quá trình ký.";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS" = "Bundle định danh";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_NEW" = "Bundle định danh mới";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID" = "Bundle định danh";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID_REPLACEMENT" = "Thay thế";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES" = "Tên hiển thị";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES_ID" = "Tên hiển thị gốc";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES_ID_REPLACEMENT" = "Tên hiển thị mới";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IMMEDIATELY_INSTALL_FROM_SOURCE" = "Cài đặt ngay lập tức từ nguồn";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IMMEDIATELY_INSTALL_FROM_SOURCE_DESCRIPTION" = "Khi được bật, các ứng dụng được tải xuống từ các nguồn sẽ ký và cài đặt sau khi tải xuống.";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_INSTALLAFTERSIGNED" = "Cài đặt sau khi ký";
+
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_TITLE" = "Tùy chọn ký .ipa";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "Xóa tất cả PlugIns";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS_DESCRIPTION" = "Xóa thư mục PlugIns bên trong ứng dụng, thư mục này thường có một số thành phần để ứng dụng hoạt động bình thường.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES" = "Xóa UISupportedDevices";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES_DESCRIPTION" = "Xóa các hạn chế thiết bị cho ứng dụng.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME" = "Xóa URL Scheme";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME_DESCRIPTION" = "Xóa mọi lược đồ URL có thể có (ví dụ: 'feather://')";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS" = "Cho phép duyệt tệp";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS_DESCRIPTION" = "Cho phép các ứng dụng khác mở và chỉnh sửa các tệp được lưu trữ trong thư mục ứng dụng Tệp. Nếu tắt, người dùng không thể đặt ứng dụng làm vị trí lưu mặc định trong Cài đặt.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING" = "Bật chia sẻ iTunes";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING_DESCRIPTION" = "Cho phép ứng dụng chia sẻ thư mục tài liệu của chúng với iTunes và Finder.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION" = "Bật ProMotion";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION_DESCRIPTION" = "Bật ProMotion trong ứng dụng. Tùy chọn này có thể không hoạt động với các phiên bản iOS 15.x trở xuống.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_GAME_MODE" = "Bật chế độ trò chơi";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_GAME_MODE_DESCRIPTION" = "Cho phép ứng dụng tự động bật chế độ trò chơi, cho phép hệ thống tự quản lý tài nguyên.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "Bật toàn màn hình";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN_DESCRIPTION" = "Cho phép các ứng dụng iPad chia sẻ màn hình với các ứng dụng khác, thay vì chỉ chạy ở chế độ toàn màn hình.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP" = "Xóa ứng dụng Watch";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP_DESCRIPTION" = "Xóa ứng dụng Watch không cần thiết thường thấy trong các ứng dụng như YouTube Music.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS" = "Bật bản địa hóa";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS_DESCRIPTION" = "Kích hoạt ứng dụng sử dụng các bản dịch ngôn ngữ cụ thể, ngay cả khi hệ thống không sử dụng ngôn ngữ đó.";
+
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING" = "Xóa tệp Provisioning";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING_DESCRIPTION" = "Xóa tệp .mobileprovision khỏi ứng dụng sau khi ký.";
+
+// MARK: - LibraryViewController
+//Search Library placeholder
+"SETTINGS_VIEW_CONTROLLER_SEARCH_PLACEHOLDER" = "Tìm kiếm thư viện";
+//Headers
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS" = "Ứng dụng đã ký";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL" = "%@ ứng dụng đã ký";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_SIGNED_APPS_TOTAL_PLURAL" = "%@ Đã ký";
+"LIBRARY_VIEW_CONTROLLER_SECTION_BUTTON_IMPORT" = "Nhập";
+"LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS" = "Ứng dụng đã nhập";
+"LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_DOWNLOADED_APPS_TOTAL" = "%@ ứng dụng đã nhập";
+//Import Action Sheet
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_FILE" = "Nhập từ Tệp";
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_URL" = "Nhập từ URL";
+"LIBRARY_VIEW_CONTROLLER_IMPORTED_FROM_FILE" = "Được nhập từ Tệp";
+"LIBRARY_VIEW_CONTROLLER_IMPORTED_FROM_URL" = "Được nhập từ URL";
+//Sign Action Sheet
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN" = "Ký %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN_INSTALL" = "Ký & Cài đặt %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_RESIGN" = "Ký lại %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL" = "Cài đặt %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SHARE" = "Chia sẻ %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN" = "Mở %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_UPDATE" = "Cập nhật %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_CLEAR_UPDATE" = "Xóa bản cập nhật";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_VIEW_DATEILS" = "Xem chi tiết";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN_LN_FILES" = "Mở trong Tệp";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM" = "Xác nhận cài đặt";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM_DESCRIPTION" = "Việc cài đặt từ mục Ứng dụng đã nhập có thể không thành công nếu ứng dụng chưa được ký. Bạn nên ký ứng dụng trước khi cài đặt.";
+
+// MARK: - SettingsViewController
+// Headers
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_GENERAL" = "Chung";
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING" = "Ký .ipa";
+"SETTINGS_VIEW_CONTROLLER_SECTION_TITLE_SIGNING_SERVER" = "Máy chủ ký .ipa";
+
+// Footers
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES" = "Nếu có bất kỳ sự cố nào xảy ra trong Feather, vui lòng báo cáo sự cố đó thông qua dự án Feather trên GitHub. Khi gửi sự cố, hãy nhớ gửi kèm nhật ký.";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS" = "Do giới hạn, chứng chỉ máy chủ cần được gia hạn hàng năm để các tính năng cục bộ của Feather hoạt động. Nhấn vào nút này để tải các tệp mới nhất từ kho lưu trữ của chúng tôi.";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER" = "Máy chủ mặc định là %@.\nBạn có thể sử dụng máy chủ Việt Nam: https://plist-server.codevn.net.";
+"SETTINGS_VIEW_CONTROLLER_SECTION_CHECK_SIGNED_APP_UPDATE" = "Kiểm tra cập nhật ứng dụng đã ký";
+"SETTINGS_VIEW_CONTROLLER_SECTION_CHECK_SIGNED_APP_UPDATE_DESCRIPTION" = "Cho dù có bật kiểm tra hay không thì đây vẫn là tính năng đang thử nghiệm.";
+
+"SETTINGS_VIEW_CONTROLLER_TITLE" = "Tùy chọn máy chủ";
+"SETTINGS_VIEW_CONTROLLER_TITLE_ONLINE" = "Trực tuyến";
+"SETTINGS_VIEW_CONTROLLER_TITLE_LOCAL" = "Cục bộ";
+
+// Cell Titles
+// About Feather
+"SETTINGS_VIEW_CONTROLLER_CELL_ABOUT" = "Về %@";
+"SETTINGS_VIEW_CONTROLLER_CELL_ABOUT_VERSION" = "Phiên bản %1$@ (Bản dựng %2$@)";
+"SETTINGS_VIEW_CONTROLLER_CELL_SUBMIT_FEEDBACK" = "Gửi phản hồi";
+"SETTINGS_VIEW_CONTROLLER_CELL_GITHUB" = "Dự án GitHub";
+"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY" = "Hiển thị";
+"SETTINGS_VIEW_CONTROLLER_CELL_APP_ICON" = "Biểu tượng ứng dụng";
+"SETTINGS_VIEW_CONTROLLER_CELL_LANGUAGE" = "Ngôn ngữ";
+"SETTINGS_VIEW_CONTROLLER_CELL_CURRENT_CERTIFICATE_NOSELECTED" = "Chưa chọn chứng chỉ nào";
+"SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES" = "Thêm chứng chỉ";
+"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY_COLOR_DEFAULT" = "Mặc định";
+"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY_COLOR_BERRY" = "Dâu rừng";
+"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY_COLOR_MINT" = "Bạc hà";
+"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY_COLOR_DR_PEPPER" = "Nâu đỏ";
+"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY_COLOR_COOL_BLUE" = "Xanh lạnh";
+"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY_COLOR_FUCHSIA" = "Hồng";
+"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY_COLOR_PURPLISH" = "Tím nhẹ";
+"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY_UI_MODE_SYSTEM" = "Hệ thống";
+"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY_UI_MODE_LIGHT" = "Sáng";
+"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY_UI_MODE_DARK" = "Tối";
+"SETTINGS_VIEW_CONTROLLER_CELL_DISPLAY_UI_MODE_UNKNOWN" = "Không xác định";
+
+
+
+"SETTINGS_VIEW_CONTROLLER_CELL_SIGN_OPTIONS" = "Tùy chọn ký .ipa";
+"SETTINGS_VIEW_CONTROLLER_CELL_SERVER_OPTIONS" = "Tùy chọn máy chủ";
+"SETTINGS_VIEW_CONTROLLER_CELL_VIEW_LOGS" = "Xem nhật ký";
+"SETTINGS_VIEW_CONTROLLER_CELL_APPS_FOLDER" = "Mở thư mục ứng dụng";
+"SETTINGS_VIEW_CONTROLLER_CELL_CERTS_FOLDER" = "Mở thư mục chứng chỉ";
+
+
+"SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE" = "Cập nhật chứng chỉ cục bộ";
+"SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE_UPDATING" = "Đang cập nhật chứng chỉ cục bộ";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET" = "Đặt lại";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_ALL" = "Đặt lại tất cả";
+
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_ALL_SETTINGS" = "Đặt lại tất cả cài đặt";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_ALL_SETTINGS_DESCRIPTION" = "Hành động này KHÔNG THỂ KHÔI PHỤC. Ứng dụng sẽ trở về trạng thái ban đầu.";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_ALL_SETTINGS_PROCEED" = "Thực hiện";
+
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_NETWORK_CACHE" = "Đặt lại bộ nhớ đệm (mạng)";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_SOURCES" = "Đặt lại nguồn";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_SIGNED_APPS" = "Đặt lại ứng dụng đã ký";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_DOWNLOADED_APPS" = "Đặt lại ứng dụng đã tải xuống";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_CERTIFICATES" = "Đặt lại chứng chỉ";
+
+
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_NETWORK_CACHE_SIZE" = "Bộ nhớ đệm (mạng): %@";
+"SETTINGS_VIEW_CONTROLLER_CELL_SOURCES_COUNT" = "Nguồn: %d";
+"SETTINGS_VIEW_CONTROLLER_CELL_DOWNLOADED_APPS_COUNT" = "Ứng dụng đã tải xuống: %d";
+"SETTINGS_VIEW_CONTROLLER_CELL_SIGNED_APPS_COUNT" = "Ứng dụng đã ký: %d";
+"SETTINGS_VIEW_CONTROLLER_CELL_CERTIFICATES_COUNT" = "Chứng chỉ: %d";
+
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION" = "Đặt lại cấu hình";
+"SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER" = "Sử dụng máy chủ tùy chỉnh";
+
+"SETTINGS_VIEW_CONTROLLER_CELL_ONLINE_INSTALL_METHOD" = "Phương pháp cài đặt trực tuyến";
+
+
+"SETTINGS_VIEW_CONTROLLER_CELL_EXPORT_ID" = "Xuất bundle định danh ngẫu nhiên";
+"SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_ID" = "Thay đổi bundle định danh ngẫu nhiên";
+
+//
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_TITLE" = "Bảo vệ PPQCheck";
+"SETTINGS_VIEW_CONTROLLER_PPQ_ALERT_DESCRIPTION" = "Tính năng này bật bảo vệ PPQCheck, thêm một chuỗi ngẫu nhiên vào mỗi bundle định danh gói để tránh Apple gắn cờ tài khoản của bạn bằng cách cố gắng ngăn họ liên kết ứng dụng bạn sideload với một ứng dụng từ App Store.";
+
+"SETTINGS_VIEW_CONTROLLER_URL_ALERT_TITLE" = "Thay đổi URL tải xuống";
+"SETTINGS_VIEW_CONTROLLER_CELL_CHANGE_IDENTIFIER" = "Thay đổi bundle định danh ngẫu nhiên";
+
+// MARK: - SettingsViewController -> AboutViewController
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_CREDITS" = "Đóng góp";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_SPONSORS" = "Nhà tài trợ";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_THANKS" = "💙 Điều này sẽ không thể thực hiện được nếu không có những nhà tài trợ của tôi!";
+
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_DEVICE" = "Thiết bị";
+"ABOUT_VIEW_CONTROLLER_SECTION_TITLE_ACKNOWLEDGEMENTS" = "Lời cảm ơn";
+
+
+"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_VERSION" = "Phiên bản thiết bị";
+"ABOUT_VIEW_CONTROLLER_CELL_DEVICE_ARCH" = "Kiến trúc";
+"ABOUT_VIEW_CONTROLLER_CELL_APP_VERSION" = "Phiên bản ứng dụng";
+
+// MARK: - SettingsViewController -> DisplayViewController
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_TINT_COLOR" = "Màu sắc chủ đạo";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_APP_APPEARENCE" = "Giao diện ứng dụng";
+"DISPLAY_VIEW_CONTROLLER_SECTION_TITLE_STORE" = "Cửa hàng";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE" = "Tiêu đề phụ mặc định";
+"DISPLAY_VIEW_CONTROLLER_CELL_DEFAULT_SUBTITLE_DESCRIPTION" = "Kiểu mặc định cho Feather, ẩn mô tả bản địa hóa và chỉ hiển thị tiêu đề phụ.";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE" = "Tiêu đề phụ bản địa hóa";
+"DISPLAY_VIEW_CONTROLLER_CELL_LOCALIZED_SUBTITLE_DESCRIPTION" = "Thay thế tiêu đề phụ bằng mô tả ứng dụng.";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION" = "Mô tả lớn";
+"DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION_DESCRIPTION" = "Thay thế ảnh chụp màn hình bằng mô tả ứng dụng.";
+
+"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME" = "Sử dụng tên nhóm";
+"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME_DESCRIPTION" = "Thay thế tên chứng chỉ bằng tên nhóm, giúp phân biệt các chứng chỉ dễ hơn nếu nhà cung cấp luôn sử dụng cùng một ID ứng dụng.";
+
+// MARK: - SettingsViewController -> LanguageViewController.swift
+"LANGUAGE_VIEW_TITLE" = "Ngôn ngữ";
+"LANGUAGE_VIEW_CELL_USE_SYSTEM_LANGUAGE" = "Sử dụng ngôn ngữ hệ thống";
+
+// MARK: - SettingsViewController -> CertificatesViewController
+"CERTIFICATES_VIEW_CONTROLLER_TITLE" = "Chứng chỉ";
+
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_FOOTER" = "Định dạng tệp được hỗ trợ:\n\n- P12 (.p12)\n- Mobile Provision (.mobileprovision)\n\nĐảm bảo chứng chỉ hợp lệ và có thể sideload vào thiết bị của bạn!";
+
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD" = "Thêm chứng chỉ";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_ADD_DESCRIPTION" = "Nhấn để thêm chứng chỉ";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> Delete Alert
+"CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_TITLE" = "Bạn không nên làm điều này!";
+"CERTIFICATES_VIEW_CONTROLLER_DELETE_ALERT_DESCRIPTION" = "Bạn đang cố xóa chứng chỉ đang chọn. Hãy thử lại khi bạn có chứng chỉ khác.";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> Cell
+"CERTIFICATES_VIEW_CONTROLLER_CELL_EXPIRED" = "Đã hết hạn";
+"CERTIFICATES_VIEW_CONTROLLER_CELL_DAYS_LEFT" = "Còn %@ ngày";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> CertImportingViewController
+"CERT_IMPORTING_VIEWCONTROLLER_TITLE" = "Nhập";
+"CERT_IMPORTING_VIEWCONTROLLER_SECTION_PROVISIONING" = "";
+
+// MARK: - SettingsViewController -> CertificatesViewController -> CertImportingViewController -> Password Alert
+
+"CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_TITLE" = "Mật khẩu không đúng";
+"CERT_IMPORTING_VIEWCONTROLLER_PW_ALERT_DESCRIPTION" = "Vui lòng kiểm tra mật khẩu và thử lại.";
+
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PROV" = "Nhập tệp Provisioning";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_CERT" = "Nhập tệp chứng chỉ";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_ENTER_PW" = "Nhập mật khẩu";
+"CERT_IMPORTING_VIEWCONTROLLER_CELL_IMPORT_PW" = "Mật khẩu";
+
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PROV" = "Nhập tệp provisioning để có thể sideload vào thiết bị của bạn.";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_CERT" = "Nhập tệp chứa chứng chỉ hợp lệ.";
+"CERT_IMPORTING_VIEWCONTROLLER_FOOTER_PASS" = "Nhập mật khẩu liên quan đến khóa riêng, để trống nếu không yêu cầu mật khẩu.";
+
+// MARK: - SettingsViewController -> ResetViewController
+"RESET_VIEW_CONTROLLER_CLEAR_CACHE" = "Xóa bộ nhớ cache mạng";
+"RESET_VIEW_CONTROLLER_CLEAR_CACHE_ALERT_TITLE" = "Hành động này không thể khôi phục. Các yêu cầu mạng và hình ảnh đã lưu sẽ bị xóa.";
+
+// MARK: - Donation
+"DONATION_TITLE" = "Quyên góp";
+"DONATION_DONATIONS" = "Quyên góp";
+
+"DONATION_REMOVE_ALERT" = "Xóa thông báo này";
+"DONATION_REMOVE_DESCRIPTION" = "Xóa những thông báo khó chịu như thế này sau khi có quyền truy cập bản beta!";
+
+"DONATION_CELL_1_TITLE" = "Kho bí mật";
+"DONATION_CELL_1_DESCRIPTION" = "Nhận quyền truy cập vào kho bí mật của chúng tôi bằng cách quyên góp, sẽ cung cấp cho bạn quyền truy cập beta vào Feather.";
+
+"DONATION_CELL_2_TITLE" = "Ủng hộ chúng tôi";
+"DONATION_CELL_2_DESCRIPTION" = "Thể hiện sự ủng hộ của bạn bằng cách quyên góp! Nếu bạn không thể quyên góp, thì việc lan truyền thông tin về Feather cũng có tác dụng!";
+
+// MARK: - SettingsViewController -> LogsViewController.swift
+"LOGS_VIEW_SECTION_TITLE_ERROR" = "%@ Lỗi nghiêm trọng.";
+"LOGS_VIEW_SECTION_TITLE_SHARE" = "Chia sẻ nhật ký";
+"LOGS_VIEW_SECTION_TITLE_COPY" = "Sao chép nhật ký";
+"LOGS_VIEW_SUCCESS_DESCRIPTION" = "Nội dung nhật ký đã được sao chép vào bộ nhớ tạm.";
+"LOGS_VIEW_FAIL_DESCRIPTION" = "Không thể sao chép nội dung nhật ký.";
