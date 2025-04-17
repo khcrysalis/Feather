@@ -76,12 +76,11 @@ struct LibraryView: View {
 	
 	private func _import(file ipa: URL) {
 		Task.detached {
-			try? await Task.sleep(nanoseconds: 1_000)
-			let handler = AppFileHandler(file: ipa)
-			
 			defer {
 				ipa.stopAccessingSecurityScopedResource()
 			}
+			
+			let handler = AppFileHandler(file: ipa)
 			
 			do {
 				try await handler.copy()

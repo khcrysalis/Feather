@@ -7,16 +7,17 @@
 
 import SwiftUI
 import UniformTypeIdentifiers
+import Zsign
 
 struct CertificatesAddView: View {
 	@Environment(\.managedObjectContext) private var managedObjectContext
 	@Environment(\.dismiss) private var dismiss
-	
 	@State private var p12URL: URL? = nil
 	@State private var provisionURL: URL? = nil
-	@State private var p12Password = ""
+	@State private var p12Password: String = ""
 	@State private var currentImport: ImportType = .none
 	@State private var isImporting = false
+	@State private var isPasswordAlertPresenting = false
 	
 	var saveButtonDisabled: Bool {
 		p12URL == nil || provisionURL == nil
@@ -70,6 +71,9 @@ struct CertificatesAddView: View {
 				}
 				currentImport = .none
 			}
+			.alert(isPresented: $isPasswordAlertPresenting) {
+				Alert(title: Text("Bad Password"), message: Text("Please check the password and try again."), dismissButton: .default(Text("OK")))
+			}
 		}
 	}
 	
@@ -104,21 +108,25 @@ struct CertificatesAddView: View {
 	}
 	
 	private func _saveCertificate() {
-		guard let p12URL = p12URL, let provisionURL = provisionURL else {
+		guard
+			let p12URL = p12URL,
+			let provisionURL = provisionURL,
+			_checkPassword(for: p12URL, with: p12Password, using: provisionURL)
+		else {
 			return
 		}
+		
 		Task.detached {
-			try? await Task.sleep(nanoseconds: 1_000)
+			defer {
+				p12URL.stopAccessingSecurityScopedResource()
+				provisionURL.stopAccessingSecurityScopedResource()
+			}
+			
 			let handler = await CertificateFileHandler(
 				key: p12URL,
 				provision: provisionURL,
 				password: p12Password
 			)
-			
-			defer {
-				p12URL.stopAccessingSecurityScopedResource()
-				provisionURL.stopAccessingSecurityScopedResource()
-			}
 			
 			do {
 				try await handler.copy()
@@ -129,6 +137,16 @@ struct CertificatesAddView: View {
 
 			await dismiss()
 		}
+	}
+	
+	private func _checkPassword(for key: URL, with password: String, using provision: URL) -> Bool {
+		password_check_fix_WHAT_THE_FUCK(provision.path)
+		if (!p12_password_check(key.path, password)) {
+			isPasswordAlertPresenting = true
+			return false
+		}
+		
+		return true
 	}
 }
 
