@@ -22,6 +22,7 @@ extension Storage {
 		let new = AltSource(context: context)
 		
 		new.name = name
+		new.date = Date()
 		new.identifier = identifier
 		new.sourceURL = url
 		new.iconURL = iconURL
