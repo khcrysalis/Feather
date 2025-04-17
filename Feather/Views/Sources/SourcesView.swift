@@ -11,9 +11,10 @@ import CoreData
 struct SourcesView: View {
     @Environment(\.managedObjectContext) private var viewContext
 	
-	@FetchRequest(entity: AltSource.entity(),
-				  sortDescriptors: [NSSortDescriptor(keyPath: \AltSource.name, ascending: false)],
-				  animation: .snappy
+	@FetchRequest(
+		entity: AltSource.entity(),
+		sortDescriptors: [NSSortDescriptor(keyPath: \AltSource.name, ascending: false)],
+		animation: .snappy
 	) private var sources: FetchedResults<AltSource>
 
     var body: some View {

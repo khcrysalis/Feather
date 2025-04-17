@@ -37,22 +37,7 @@ struct FRToolbarButton: ToolbarContent {
 	var body: some ToolbarContent {
 		ToolbarItem(placement: _placement) {
 			Button(action: _action) {
-				switch _style {
-				case .icon:
-					Image(systemName: _icon)
-						.font(.system(size: 12, weight: .bold))
-						.frame(width: 29, height: 29)
-						.background(Color(uiColor: .secondarySystemGroupedBackground))
-						.clipShape(Circle())
-					
-				case .text:
-					Text(_title)
-						.font(.system(size: 12, weight: .bold))
-						.padding(.horizontal, 12)
-						.frame(height: 29)
-						.background(Color(uiColor: .secondarySystemGroupedBackground))
-						.clipShape(Capsule())
-				}
+				FRButton(_title, systemImage: _icon, style: _style)
 			}
 			.disabled(_isDisabled)
 			.alignment(for: _inlined)
