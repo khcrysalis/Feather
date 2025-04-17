@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct LibraryCellView: View {
-	var app: Imported
-	@Binding var selectedApp: Imported?
+	var app: AppInfoPresentable
+	@Binding var selectedApp: AnyApp?
 
 	var body: some View {
 		HStack(spacing: 9) {
@@ -42,25 +42,25 @@ struct LibraryCellView: View {
 	}
 	
 	@ViewBuilder
-	private func _actions(for app: Imported) -> some View {
+	private func _actions(for app: AppInfoPresentable) -> some View {
 		Button(role: .destructive) {
-			Storage.shared.deleteImported(for: app)
+			Storage.shared.deleteApp(for: app)
 		} label: {
 			Label("Delete", systemImage: "trash")
 		}
 	}
 	
 	@ViewBuilder
-	private func _contextActions(for app: Imported) -> some View {
+	private func _contextActions(for app: AppInfoPresentable) -> some View {
 		Button {
-			selectedApp = app
+			selectedApp = AnyApp(base: app)
 		} label: {
 			Label("Get Info", systemImage: "info.circle")
 		}
 	}
 	
 	@ViewBuilder
-	private func _appIconView(for app: Imported) -> some View {
+	private func _appIconView(for app: AppInfoPresentable) -> some View {
 		if
 			let iconFilePath = Storage.shared.getAppDirectory(for: app)?.appendingPathComponent(app.icon ?? ""),
 			let uiImage = UIImage(contentsOfFile: iconFilePath.path)

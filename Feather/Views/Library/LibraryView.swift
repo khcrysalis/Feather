@@ -10,39 +10,50 @@ import CoreData
 
 struct LibraryView: View {
     @Environment(\.managedObjectContext) private var managedObjectContext
+	@State private var isImportingFiles = false
+	@State private var searchText = ""
+	@State private var selectedInfoApp: AnyApp?
+	@State private var selectedSigningApp: AnyApp?
+
+	@FetchRequest(
+		entity: Signed.entity(),
+		sortDescriptors: [NSSortDescriptor(keyPath: \Signed.date, ascending: false)],
+		animation: .snappy
+	) private var signedApps: FetchedResults<Signed>
 	
-	@FetchRequest(entity: Imported.entity(),
+	@FetchRequest(
+		entity: Imported.entity(),
 		sortDescriptors: [NSSortDescriptor(keyPath: \Imported.date, ascending: false)],
 		animation: .snappy
 	) private var importedApps: FetchedResults<Imported>
-	
-	@State private var isImportingFiles = false
-	@State private var searchText = ""
-	
-	@State private var selectedApp: Imported?
-	
-	var filteredApps: [Imported] {
-		if searchText.isEmpty {
-			return Array(importedApps)
-		} else {
-			return importedApps.filter {
-				($0.name ?? "").localizedCaseInsensitiveContains(searchText) ||
-				($0.identifier ?? "").localizedCaseInsensitiveContains(searchText)
-			}
-		}
-	}
 
     var body: some View {
 		FRNavigationView("Library") {
 			List {
+				FRSection("Signed") {
+					ForEach(signedApps, id: \.uuid) { app in
+						Button(action: {
+							selectedSigningApp = AnyApp(base: app)
+						}) {
+							LibraryCellView(app: app, selectedApp: $selectedInfoApp)
+						}
+					}
+				}
 				FRSection("Imported") {
-					ForEach(filteredApps, id: \.uuid) { app in
-						LibraryCellView(app: app, selectedApp: $selectedApp)
+					ForEach(importedApps, id: \.uuid) { app in
+						Button(action: {
+							selectedSigningApp = AnyApp(base: app)
+						}) {
+							LibraryCellView(app: app, selectedApp: $selectedInfoApp)
+						}
 					}
 				}
 			}
-			.sheet(item: $selectedApp) { app in
-				LibraryInfoView(app: app)
+			.sheet(item: $selectedInfoApp) { app in
+				LibraryInfoView(app: app.base)
+			}
+			.fullScreenCover(item: $selectedSigningApp) { app in
+				SigningView(app: app.base)
 			}
 			.searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
 			.listStyle(.plain)

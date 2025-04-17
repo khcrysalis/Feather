@@ -1,24 +1,24 @@
 //
-//  Storage+Imported.swift
+//  Storage+Signed.swift
 //  Feather
 //
-//  Created by samara on 11.04.2025.
+//  Created by samara on 17.04.2025.
 //
 
 import CoreData
 
 extension Storage {
-	func addImported(
+	func addSigned(
 		uuid: String,
 		source: URL? = nil,
 		completion: @escaping (Error?) -> Void
 	) {
-		var new = Imported(context: context)
+		var new = Signed(context: context)
 		
 		new.uuid = uuid
 		new.source = source
 		new.date = Date()
-		extractBundleInfo(for: &new, using: FileManager.default.unsigned(uuid))
+		extractBundleInfo(for: &new, using: FileManager.default.signed(uuid))
 		
 		do {
 			try context.save()

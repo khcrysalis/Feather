@@ -13,6 +13,7 @@
         <attribute name="password" optional="YES" attributeType="String"/>
         <attribute name="ppQCheck" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="uuid" attributeType="String"/>
+        <relationship name="signedApps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Signed" inverseName="certificate" inverseEntity="Signed"/>
     </entity>
     <entity name="Imported" representedClassName="Imported" syncable="YES" codeGenerationType="class">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
@@ -22,5 +23,15 @@
         <attribute name="source" optional="YES" attributeType="URI"/>
         <attribute name="uuid" attributeType="String"/>
         <attribute name="version" attributeType="String"/>
+    </entity>
+    <entity name="Signed" representedClassName="Signed" syncable="YES" codeGenerationType="class">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="icon" optional="YES" attributeType="String"/>
+        <attribute name="identifier" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="source" optional="YES" attributeType="URI"/>
+        <attribute name="uuid" attributeType="String"/>
+        <attribute name="version" attributeType="String"/>
+        <relationship name="certificate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CertificatePair" inverseName="signedApps" inverseEntity="CertificatePair"/>
     </entity>
 </model>

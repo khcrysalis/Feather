@@ -11,7 +11,7 @@ import Zsign
 struct LibraryInfoView: View {
 	@Environment(\.dismiss) var dismiss
 	
-	var app: Imported
+	var app: AppInfoPresentable
 	
 	@State private var dylibs: [String] = []
 	
@@ -47,7 +47,7 @@ struct LibraryInfoView: View {
     }
 	
 	@ViewBuilder
-	private func _infoSection(for app: Imported) -> some View {
+	private func _infoSection(for app: AppInfoPresentable) -> some View {
 		FRSection("Info") {
 			if let name = app.name {
 				_infoCell("Name", desc: name)
@@ -68,7 +68,7 @@ struct LibraryInfoView: View {
 	}
 	
 	@ViewBuilder
-	private func _appIconView(for app: Imported) -> some View {
+	private func _appIconView(for app: AppInfoPresentable) -> some View {
 		if
 			let iconFilePath = Storage.shared.getAppDirectory(for: app)?.appendingPathComponent(app.icon ?? ""),
 			let uiImage = UIImage(contentsOfFile: iconFilePath.path)
@@ -82,13 +82,13 @@ struct LibraryInfoView: View {
 	}
 	
 	@ViewBuilder
-	private func _bundleSection(for app: Imported) -> some View {
+	private func _bundleSection(for app: AppInfoPresentable) -> some View {
 		FRSection("Bundle") {
 		}
 	}
 	
 	@ViewBuilder
-	private func _executableSection(for app: Imported) -> some View {
+	private func _executableSection(for app: AppInfoPresentable) -> some View {
 		FRSection("Executable") {
 			NavigationLink("Dylibs") {
 				List(dylibs, id: \.self) { dylib in
