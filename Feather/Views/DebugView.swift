@@ -10,6 +10,8 @@ import SwiftUI
 
 struct DebugView: View {
 	@AppStorage("feather.selectedCert") private var selectedCert: Int = 0
+	@State private var isPresenting = false
+	
 	@FetchRequest(
 		entity: CertificatePair.entity(),
 		sortDescriptors: [NSSortDescriptor(keyPath: \CertificatePair.date, ascending: false)],
@@ -31,8 +33,26 @@ struct DebugView: View {
 					Text("No valid certificate selected.")
 				}
 				
+				Button("Test bottom sheet") {
+					isPresenting = true
+				}
+				
 				NavigationLink("Preview with Temporary Changes", destination: TemporarySettingsView())
 			}
+		}
+		.sheet(isPresented: $isPresenting) {
+			FRBottomSelectionView {
+				FRSheetButton("Sign") {
+					print("a")
+				}
+				
+				FRSheetButton("Install", role: .secondary) {
+					print("a")
+				}
+			}
+			.compatPresentationRadius(21)
+			.presentationDragIndicator(.visible)
+			.presentationDetents([.custom(FRBottomDetent.self)])
 		}
 	}
 }
