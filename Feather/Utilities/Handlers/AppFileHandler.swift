@@ -69,7 +69,7 @@ final class AppFileHandler: NSObject {
 	}
 	
 	func addToDatabase() async throws {
-		Storage.shared.addImported(uuid: _uuid, url: _ipaDestination ?? nil) { _ in
+		Storage.shared.addImported(uuid: _uuid) { _ in
 			print("[\(self._uuid)] Added to database")
 		}
 	}

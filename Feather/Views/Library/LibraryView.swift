@@ -37,7 +37,7 @@ struct LibraryView: View {
 			List {
 				FRSection("Imported") {
 					ForEach(filteredApps, id: \.uuid) { app in
-						LibraryAppIconView(app: app, selectedApp: $selectedApp)
+						LibraryCellView(app: app, selectedApp: $selectedApp)
 					}
 				}
 			}

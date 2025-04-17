@@ -17,7 +17,6 @@ struct FeatherApp: App {
         WindowGroup {
 			VariedTabbarView()
 				.environment(\.managedObjectContext, storage.context)
-				.tint(Color(uiColor: .softPeriwinklePink))
         }
     }
 }

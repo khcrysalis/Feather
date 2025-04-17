@@ -70,7 +70,7 @@ struct LibraryInfoView: View {
 	@ViewBuilder
 	private func _appIconView(for app: Imported) -> some View {
 		if
-			let iconFilePath = Storage.shared.getDirectory(for: app)?.appendingPathComponent(app.icon ?? ""),
+			let iconFilePath = Storage.shared.getAppDirectory(for: app)?.appendingPathComponent(app.icon ?? ""),
 			let uiImage = UIImage(contentsOfFile: iconFilePath.path)
 		{
 			Image(uiImage: uiImage)
@@ -103,7 +103,7 @@ struct LibraryInfoView: View {
 	}
 	
 	private func loadDylibs() {
-		guard let path = Storage.shared.getDirectory(for: app) else {
+		guard let path = Storage.shared.getAppDirectory(for: app) else {
 			return
 		}
 				

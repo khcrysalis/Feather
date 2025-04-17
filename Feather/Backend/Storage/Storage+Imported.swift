@@ -10,21 +10,15 @@ import CoreData
 extension Storage {
 	func addImported(
 		uuid: String,
-		url: URL?,
 		source: URL? = nil,
 		completion: @escaping (Error?) -> Void
 	) {
-		#warning("importing a url is not needed if we have a uuid")
-		guard let url = url else {
-			return
-		}
-		
 		var new = Imported(context: context)
 		
 		new.uuid = uuid
 		new.source = source
 		new.date = Date()
-		_extractBundleInfo(for: &new, using: url)
+		_extractBundleInfo(for: &new, using: FileManager.default.unsigned(uuid))
 		
 		do {
 			try context.save()
@@ -46,12 +40,12 @@ extension Storage {
 		}
 	}
 	
-	func getDirectory(for app: Imported) -> URL? {
+	func getAppDirectory(for app: Imported) -> URL? {
 		guard let url = getUuidDirectory(for: app) else {
 			return nil
 		}
 
-		return FileManager.default.appBundle(in: url)
+		return FileManager.default.getPath(in: url, for: "app")
 	}
 	
 	func getUuidDirectory(for app: Imported) -> URL? {
@@ -66,7 +60,7 @@ extension Storage {
 		for app: inout Imported,
 		using url: URL
 	) {
-		guard let appUrl = FileManager.default.appBundle(in: url) else {
+		guard let appUrl = FileManager.default.getPath(in: url, for: "app") else {
 			return
 		}
 		

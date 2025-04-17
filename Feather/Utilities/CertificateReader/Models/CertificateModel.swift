@@ -11,16 +11,18 @@ import Foundation
 // MARK: - Certificate (Mobileprovision file)
 struct Certificate: Codable {
 	var AppIDName: String
+	var ApplicationIdentifierPrefix: [String]?
 	var CreationDate: Date
 	var Platform: [String]
-	var IsXcodeManaged: Bool
+	var IsXcodeManaged: Bool?
 	var DeveloperCertificates: [Data]?
 	var derEncodedProfile: Data
 	var PPQCheck: Bool?
 //	var Entitlements: [String: Any]?
 	var ExpirationDate: Date
 	var Name: String
-	var ProvisionedDevices: [String]
+	var ProvisionsAllDevices: Bool?
+	var ProvisionedDevices: [String]?
 	var TeamIdentifier: [String]
 	var TeamName: String
 	var TimeToLive: Int

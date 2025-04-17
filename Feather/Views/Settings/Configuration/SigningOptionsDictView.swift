@@ -66,7 +66,6 @@ struct SigningOptionsDictView: View {
 		} label: {
 			Label("Delete", systemImage: "trash")
 		}
-		.tint(.red)
 	}
 	
 	@ViewBuilder

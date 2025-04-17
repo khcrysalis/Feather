@@ -21,8 +21,12 @@ extension CertificateReader {
 			
 			let xmlData = fileData.subdata(in: xmlRange.lowerBound..<fileData.endIndex)
 			
+			print(fileData)
+			print(xmlData)
+			
 			let decoder = PropertyListDecoder()
-			return try decoder.decode(Certificate.self, from: xmlData)
+			let data = try decoder.decode(Certificate.self, from: xmlData)
+			return data
 		} catch {
 			print("Error extracting certificate: \(error.localizedDescription)")
 			return nil

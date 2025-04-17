@@ -20,9 +20,15 @@ struct CertificatesView: View {
 	
     var body: some View {
 		List {
-			ForEach(certificates, id: \.uuid) { cert in
-				Text(cert.uuid!)
+			ForEach(Array(certificates.enumerated()), id: \.element.uuid) { index, cert in
+				Button {
+					selectedCert = index
+				} label: {
+					CertificatesCellView(cert: cert, isSelected: selectedCert == index)
+				}
+				.buttonStyle(.plain)
 			}
+
 		}
 		.navigationTitle("Certificates")
 		.navigationBarTitleDisplayMode(.inline)

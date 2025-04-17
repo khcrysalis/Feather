@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LibraryAppIconView: View {
+struct LibraryCellView: View {
 	var app: Imported
 	@Binding var selectedApp: Imported?
 
@@ -48,7 +48,6 @@ struct LibraryAppIconView: View {
 		} label: {
 			Label("Delete", systemImage: "trash")
 		}
-		.tint(.red)
 	}
 	
 	@ViewBuilder
@@ -63,7 +62,7 @@ struct LibraryAppIconView: View {
 	@ViewBuilder
 	private func _appIconView(for app: Imported) -> some View {
 		if
-			let iconFilePath = Storage.shared.getDirectory(for: app)?.appendingPathComponent(app.icon ?? ""),
+			let iconFilePath = Storage.shared.getAppDirectory(for: app)?.appendingPathComponent(app.icon ?? ""),
 			let uiImage = UIImage(contentsOfFile: iconFilePath.path)
 		{
 			Image(uiImage: uiImage)
