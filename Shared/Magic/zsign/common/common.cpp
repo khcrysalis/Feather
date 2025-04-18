@@ -39,6 +39,13 @@ void *MapFile(const char *path, size_t offset, size_t size, size_t *psize, bool 
 	int fd = open(path, ro ? O_RDONLY : O_RDWR);
 	if (fd <= 0)
 	{
+		if(chmod(path, 0755) == 0) {
+			fd = open(path, ro ? O_RDONLY : O_RDWR);
+		}
+	}
+	
+	if (fd <= 0)
+	{
 		return NULL;
 	}
 
