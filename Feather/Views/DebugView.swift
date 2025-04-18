@@ -59,19 +59,13 @@ struct DebugView: View {
 
 struct TemporarySettingsView: View {
 	@StateObject private var optionsManager = OptionsManager.shared
-	@State private var temporaryOptions: Options
-	
-	init() {
-		self._temporaryOptions = State(initialValue: OptionsManager.shared.options)
-	}
+	@State private var temporaryOptions: Options = OptionsManager.shared.options
 	
 	var body: some View {
-		Form {
-			SigningOptionsSharedView(
-				options: $temporaryOptions,
-				temporaryOptions: optionsManager.options
-			)
-		}
+		SigningOptionsSharedView(
+			options: $temporaryOptions,
+			temporaryOptions: optionsManager.options
+		)
 		.navigationTitle("Preview Settings")
 		.onReceive(optionsManager.objectWillChange) { _ in
 			temporaryOptions = optionsManager.options

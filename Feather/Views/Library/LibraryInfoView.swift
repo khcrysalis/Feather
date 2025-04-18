@@ -77,7 +77,7 @@ struct LibraryInfoView: View {
 				.appIconStyle(size: 87, cornerRadius: 20)
 		} else {
 			Image(systemName: "app.fill")
-				.appIconStyle()
+				.appIconStyle(size: 87)
 		}
 	}
 	
@@ -108,15 +108,11 @@ struct LibraryInfoView: View {
 		}
 				
 		let bundle = Bundle(url: path)
-		let new_path = path.appendingPathComponent(bundle?.exec ?? "").relativePath
+		let execPath = path.appendingPathComponent(bundle?.exec ?? "").relativePath
 		
-		if let nsArray = ListDylibs(new_path) {
-			dylibs = nsArray
-				.map { $0 as String }
-				.filter { $0.hasPrefix("@rpath") || $0.hasPrefix("@executable_path") }
-		} else {
-			print("Failed to load dylibs.")
-		}
+		dylibs = Zsign.listDylibs(appExecutable: execPath)
+			.map { $0 as String }
+			.filter { $0.hasPrefix("@rpath") || $0.hasPrefix("@executable_path") }
 	}
 	
 	@ViewBuilder

@@ -59,6 +59,7 @@ struct LibraryCellView: View {
 		}
 	}
 	
+	#warning("move this to its own view with an init")
 	@ViewBuilder
 	private func _appIconView(for app: AppInfoPresentable) -> some View {
 		if
