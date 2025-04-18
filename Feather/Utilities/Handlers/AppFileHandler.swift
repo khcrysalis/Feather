@@ -12,6 +12,7 @@ final class AppFileHandler: NSObject {
 	private let _fileManager = FileManager.default
 	private let _uuid = UUID().uuidString
 	private let _uniqueWorkDir: URL
+	var uniqueWorkDirPayload: URL?
 	//
 	//
 	private var _ipa: URL
@@ -53,8 +54,14 @@ final class AppFileHandler: NSObject {
 		try Zip.unzipFile(_ipa, destination: _uniqueWorkDir, overwrite: true, password: nil, progress: { progress in
 			print("[\(self._uuid)] Unzip progress: \(progress)")
 		})
+		uniqueWorkDirPayload = _uniqueWorkDir.appendingPathComponent("Payload")
+	}
+	
+	func move() async throws {
+		guard let payloadURL = uniqueWorkDirPayload else {
+			throw ImportedFileHandlerError.payloadNotFound
+		}
 		
-		let payloadURL = _uniqueWorkDir.appendingPathComponent("Payload")
 		let destinationURL = try await _directory()
 		
 		guard _fileManager.fileExists(atPath: payloadURL.path) else {

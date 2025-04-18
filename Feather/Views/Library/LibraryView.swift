@@ -96,6 +96,7 @@ struct LibraryView: View {
 			do {
 				try await handler.copy()
 				try await handler.extract()
+				try await handler.move()
 				try await handler.addToDatabase()
 			} catch {
 				print(error)
