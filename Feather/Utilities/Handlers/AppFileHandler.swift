@@ -11,9 +11,9 @@ import Zip
 final class AppFileHandler: NSObject {
 	private let _fileManager = FileManager.default
 	private let _uuid = UUID().uuidString
-	private var _ipaDestination: URL? = nil
 	private let _uniqueWorkDir: URL
-	
+	//
+	//
 	private var _ipa: URL
 	private let _install: Bool
 	
@@ -43,7 +43,7 @@ final class AppFileHandler: NSObject {
 		
 		try _fileManager.copyItem(at: _ipa, to: destinationURL)
 		_ipa = destinationURL
-		print("File copied to: \(_ipa.path)")
+		print("[\(_uuid)] File copied to: \(_ipa.path)")
 	}
 	
 	func extract() async throws {
@@ -62,7 +62,6 @@ final class AppFileHandler: NSObject {
 		}
 		
 		try _fileManager.moveItem(at: payloadURL, to: destinationURL)
-		self._ipaDestination = destinationURL
 		print("[\(_uuid)] Moved Payload to: \(destinationURL.path)")
 		
 		try? _fileManager.removeItem(at: _uniqueWorkDir)
