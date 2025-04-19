@@ -19,7 +19,7 @@ struct LibraryInfoView: View {
 		FRNavigationView(app.name ?? "", displayMode: .inline) {
 			List {
 				Section {} header: {
-					_appIconView(for: app)
+					FRAppIconView(app: app)
 						.frame(maxWidth: .infinity, alignment: .center)
 				}
 				_infoSection(for: app)
@@ -64,20 +64,6 @@ struct LibraryInfoView: View {
 			if let date = app.date {
 				_infoCell("Date Added", desc: date.formatted())
 			}
-		}
-	}
-	
-	@ViewBuilder
-	private func _appIconView(for app: AppInfoPresentable) -> some View {
-		if
-			let iconFilePath = Storage.shared.getAppDirectory(for: app)?.appendingPathComponent(app.icon ?? ""),
-			let uiImage = UIImage(contentsOfFile: iconFilePath.path)
-		{
-			Image(uiImage: uiImage)
-				.appIconStyle(size: 87, cornerRadius: 20)
-		} else {
-			Image(systemName: "app.fill")
-				.appIconStyle(size: 87)
 		}
 	}
 	

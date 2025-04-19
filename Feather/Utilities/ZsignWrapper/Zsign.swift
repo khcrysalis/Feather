@@ -8,6 +8,14 @@
 import Zsign
 
 final class Zsign {
+	static func injectDyLib(appExecutable: String, with path: String, weak: Bool = true) -> Bool {
+		InjectDyLib(appExecutable, path, weak)
+	}
+	
+	static func removeDylibs(appExecutable: String) -> Bool  {
+		UninstallDylibs(appExecutable, [])
+	}
+	
 	static func listDylibs(appExecutable: String) -> [String] {
 		ListDylibs(appExecutable)
 	}
@@ -17,15 +25,13 @@ final class Zsign {
 	}
 	
 	static func sign(
-		appPath: String,
-		provisionPath: String,
-		p12Path: String,
-		p12Password: String,
+		appPath: String = "",
+		provisionPath: String = "",
+		p12Path: String = "",
+		p12Password: String = "",
 		customIdentifier: String = "",
 		customName: String = "",
 		customVersion: String = "",
-		injectWith: [String] = [],
-		disinjectWith: [String] = [],
 		removeProvision: Bool = true
 	) -> Bool {
 		if zsign(
@@ -36,8 +42,6 @@ final class Zsign {
 			customIdentifier,
 			customName,
 			customVersion,
-			injectWith,
-			disinjectWith,
 			removeProvision
 		) != 0 {
 			return false

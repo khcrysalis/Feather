@@ -13,7 +13,7 @@ struct LibraryCellView: View {
 
 	var body: some View {
 		HStack(spacing: 9) {
-			_appIconView(for: app)
+			FRAppIconView(app: app, size: 54, cornerRadius: 13)
 			
 			VStack(alignment: .leading, spacing: 2) {
 				Text(app.name ?? "Unknown App")
@@ -56,21 +56,6 @@ struct LibraryCellView: View {
 			selectedApp = AnyApp(base: app)
 		} label: {
 			Label("Get Info", systemImage: "info.circle")
-		}
-	}
-	
-	#warning("move this to its own view with an init")
-	@ViewBuilder
-	private func _appIconView(for app: AppInfoPresentable) -> some View {
-		if
-			let iconFilePath = Storage.shared.getAppDirectory(for: app)?.appendingPathComponent(app.icon ?? ""),
-			let uiImage = UIImage(contentsOfFile: iconFilePath.path)
-		{
-			Image(uiImage: uiImage)
-				.appIconStyle()
-		} else {
-			Image(systemName: "app.fill")
-				.appIconStyle()
 		}
 	}
 }

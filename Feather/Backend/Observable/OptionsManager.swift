@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class OptionsManager: ObservableObject {
 	@Published var options: Options
@@ -60,6 +61,8 @@ struct Options: Codable, Equatable {
 	var removeWatchPlaceholder: Bool
 	
 	var changeLanguageFilesForCustomDisplayName: Bool
+	// advanced
+	var doAdhocSigning: Bool
 	
 	// default
 	static let defaultOptions = Options(
@@ -82,6 +85,8 @@ struct Options: Codable, Equatable {
 		removeProvisioning: false,
 		removeWatchPlaceholder: false,
 		
-		changeLanguageFilesForCustomDisplayName: false
+		changeLanguageFilesForCustomDisplayName: false,
+		// advanced
+		doAdhocSigning: false
 	)
 }

@@ -31,7 +31,7 @@ final class CertificateFileHandler: NSObject {
 	}
 	
 	func addToDatabase() async throws {
-		Storage.shared.addCertificate(uuid: _uuid) { _ in
+		Storage.shared.addCertificate(uuid: _uuid, password: _keyPassword) { _ in
 			print("[\(self._uuid)] Added to database")
 		}
 	}

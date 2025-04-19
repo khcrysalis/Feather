@@ -6,11 +6,17 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct SigningView: View {
 	@Environment(\.dismiss) var dismiss
-	@AppStorage("feather.selectedCert") private var selectedCert: Int = 0
 	@StateObject private var optionsManager = OptionsManager.shared
+	@State private var temporaryOptions: Options = OptionsManager.shared.options
+	@State private var temporaryCertificate: Int
+	@State private var isAltPickerPresented = false
+	@State private var isFilePickerPresented = false
+	@State private var isImagePickerPresented = false
+	@State private var selectedPhoto: PhotosPickerItem? = nil
 	//
 	//
 	//
@@ -22,9 +28,15 @@ struct SigningView: View {
 	//
 	//
 	//
-	@State private var temporaryOptions: Options = OptionsManager.shared.options
 	var app: AppInfoPresentable
-	var appCert: CertificatePair?
+	@State var appCert: CertificatePair?
+	@State var appIcon: UIImage?
+	
+	init(app: AppInfoPresentable) {
+		self.app = app
+		let storedCert = UserDefaults.standard.integer(forKey: "feather.selectedCert")
+		_temporaryCertificate = State(initialValue: storedCert)
+	}
 		
     var body: some View {
 		FRNavigationView(app.name ?? "Unknown", displayMode: .inline) {
@@ -34,7 +46,7 @@ struct SigningView: View {
 				}
 				
 				FRSection("Signing") {
-					_cert(certs: certificates)
+					_cert()
 				}
 				
 				FRSection("Advanced") {
@@ -70,21 +82,44 @@ struct SigningView: View {
 					placement: .topBarTrailing
 				) {
 					temporaryOptions = OptionsManager.shared.options
+					appIcon = nil
 				}
 			}
-		}
-		.onChange(of: temporaryOptions) { newValue in
-			dump(temporaryOptions)
+			// Image shit
+			.sheet(isPresented: $isAltPickerPresented) { SigningAppAlternativeIconView(app: app, appIcon: $appIcon) }
+			.fileImporter(isPresented: $isFilePickerPresented, allowedContentTypes: [.image]) { result in
+				if case .success(let url) = result {
+					self.appIcon = UIImage.fromFile(url)?.resizeToSquare()
+				}
+			}
+			.photosPicker(isPresented: $isImagePickerPresented, selection: $selectedPhoto)
+			.onChange(of: selectedPhoto) { newValue in
+				guard let newValue else { return }
+				
+				Task {
+					if let data = try? await newValue.loadTransferable(type: Data.self),
+					   let image = UIImage(data: data)?.resizeToSquare() {
+						appIcon = image
+					}
+				}
+			}
 		}
     }
 	
 	@ViewBuilder
 	private func _customizationOptions(for app: AppInfoPresentable) -> some View {
-		Button(action: {
-			print("icon")
-		}, label: {
-			_appIconView(for: app)
-		})
+		Menu {
+			Button("Select Alternative Icon") { isAltPickerPresented = true }
+			Button("Choose from Files") { isFilePickerPresented = true }
+			Button("Choose from Photos") { isImagePickerPresented = true }
+		} label: {
+			if let icon = appIcon {
+				Image(uiImage: icon)
+					.appIconStyle(size: 45, cornerRadius: 12)
+			} else {
+				FRAppIconView(app: app, size: 45, cornerRadius: 12)
+			}
+		}
 		
 		_infoCell("Name", desc: temporaryOptions.appName ?? app.name) {
 			SigningAppPropertiesView(
@@ -121,33 +156,36 @@ struct SigningView: View {
 	}
 	
 	@ViewBuilder
-	private func _cert(certs: FetchedResults<CertificatePair>) -> some View {
-		if certs.indices.contains(selectedCert) {
-			CertificatesCellView(cert: certs[selectedCert], isSelected: false)
+	private func _cert() -> some View {
+		if let cert = _selectedCert() {
+			NavigationLink {
+				CertificatesView(selectedCert: $temporaryCertificate)
+			} label: {
+				CertificatesCellView(cert: cert, isSelected: false)
+			}
 		} else {
 			Text("No valid certificate selected.")
 				.foregroundStyle(Color(uiColor: .disabled(.tintColor)))
 		}
 	}
 	
-	#warning("move this to its own view with an init")
-	@ViewBuilder
-	private func _appIconView(for app: AppInfoPresentable) -> some View {
-		if
-			let iconFilePath = Storage.shared.getAppDirectory(for: app)?.appendingPathComponent(app.icon ?? ""),
-			let uiImage = UIImage(contentsOfFile: iconFilePath.path)
-		{
-			Image(uiImage: uiImage)
-				.appIconStyle(size: 45, cornerRadius: 10)
-		} else {
-			Image(systemName: "app.fill")
-				.appIconStyle(size: 45, cornerRadius: 10)
-		}
+	private func _selectedCert() -> CertificatePair? {
+		guard certificates.indices.contains(temporaryCertificate) else { return nil }
+		return certificates[temporaryCertificate]
 	}
 	
 	private func _start() {
+		#if !DEBUG
+		guard _selectedCert() != nil || temporaryOptions.doAdhocSigning else {
+			print("somethings not right")
+			return
+		}
+		#endif
+		
 		Task.detached {
 			let handler = await SigningHandler(app: app, options: temporaryOptions)
+			handler.appCertificate = await _selectedCert()
+			handler.appIcon = await appIcon
 			
 			do {
 				try await handler.copy()

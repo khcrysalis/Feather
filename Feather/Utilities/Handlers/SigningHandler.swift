@@ -7,6 +7,7 @@
 
 import Foundation
 import Zsign
+import UIKit
 
 final class SigningHandler: NSObject {
 	private let _fileManager = FileManager.default
@@ -18,6 +19,14 @@ final class SigningHandler: NSObject {
 	private var _app: AppInfoPresentable
 	private var _options: Options
 	private let _uniqueWorkDir: URL
+	// the options struct is not gonna decode these so
+	// we're just going to do this. If appicon is not
+	// specified, we're not going to modify the app
+	// icon. If the cert pair is not there, fallback
+	// to adhoc signing (if the option is on, otherwise
+	// throw an error
+	var appIcon: UIImage?
+	var appCertificate: CertificatePair?
 	
 	init(app: AppInfoPresentable, options: Options = OptionsManager.shared.options) {
 		self._app = app
@@ -61,6 +70,10 @@ final class SigningHandler: NSObject {
 		
 		try await _modifyDict(using: infoDictionary, with: _options, to: movedAppPath)
 		
+		if let icon = appIcon {
+			try await _modifyDict(using: infoDictionary, for: icon, to: movedAppPath)
+		}
+		
 		if let name = _options.appName {
 			try await _modifyLocalesForName(name, for: movedAppPath)
 		}
@@ -70,6 +83,16 @@ final class SigningHandler: NSObject {
 		}
 		
 		try await _removeProvisioning(for: movedAppPath)
+		
+		let handler = ZsignHandler(appUrl: movedAppPath, options: _options, cert: appCertificate)
+
+		if _options.doAdhocSigning {
+			try await handler.adhocSign()
+		} else if (appCertificate != nil) {
+			try await handler.sign()
+		} else {
+			throw SigningFileHandlerError.missingCertifcate
+		}
 	}
 	
 	func move() async throws {
@@ -111,6 +134,44 @@ extension SigningHandler {
 		if options.ipadFullscreen { infoDictionary.setObject(true, forKey: "UIRequiresFullScreen" as NSCopying) }
 		if options.removeSupportedDevices { infoDictionary.removeObject(forKey: "UISupportedDevices") }
 		if options.removeURLScheme { infoDictionary.removeObject(forKey: "CFBundleURLTypes") }
+		try infoDictionary.write(to: app.appendingPathComponent("Info.plist"))
+	}
+	
+	private func _modifyDict(using infoDictionary: NSMutableDictionary, for image: UIImage, to app: URL) async throws {
+		let imageSizes = [
+			(width: 120, height: 120, name: "FRIcon60x60@2x.png"),
+			(width: 152, height: 152, name: "FRIcon76x76@2x~ipad.png")
+		]
+		
+		for imageSize in imageSizes {
+			let resizedImage = image.resize(imageSize.width, imageSize.height)
+			let imageData = resizedImage.pngData()
+			let fileURL = app.appendingPathComponent(imageSize.name)
+			
+			do {
+				try imageData?.write(to: fileURL)
+			} catch {
+				throw error
+			}
+		}
+		
+		let cfBundleIcons: [String: Any] = [
+			"CFBundlePrimaryIcon": [
+				"CFBundleIconFiles": ["FRIcon60x60"],
+				"CFBundleIconName": "FRIcon"
+			]
+		]
+		
+		let cfBundleIconsIpad: [String: Any] = [
+			"CFBundlePrimaryIcon": [
+				"CFBundleIconFiles": ["FRIcon60x60", "FRIcon76x76"],
+				"CFBundleIconName": "FRIcon"
+			]
+		]
+		
+		infoDictionary["CFBundleIcons"] = cfBundleIcons
+		infoDictionary["CFBundleIcons~ipad"] = cfBundleIconsIpad
+		
 		try infoDictionary.write(to: app.appendingPathComponent("Info.plist"))
 	}
 	
@@ -161,4 +222,5 @@ extension SigningHandler {
 private enum SigningFileHandlerError: Error {
 	case appNotFound
 	case infoPlistNotFound
+	case missingCertifcate
 }
