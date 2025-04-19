@@ -99,6 +99,7 @@ struct LibraryView: View {
 				try await handler.move()
 				try await handler.addToDatabase()
 			} catch {
+				try await handler.clean()
 				print(error)
 			}
 		}

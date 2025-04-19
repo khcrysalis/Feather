@@ -192,7 +192,9 @@ struct SigningView: View {
 				try await handler.modify()
 				try await handler.move()
 				try await handler.addToDatabase()
+				await dismiss()
 			} catch {
+				try await handler.clean()
 				print(error)
 			}
 		}

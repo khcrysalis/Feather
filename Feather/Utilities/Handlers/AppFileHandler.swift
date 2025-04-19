@@ -84,6 +84,12 @@ final class AppFileHandler: NSObject {
 		// Documents/Feather/Unsigned/\(UUID)
 		_fileManager.unsigned(_uuid)
 	}
+	
+	func clean() async throws {
+		if _fileManager.fileExists(atPath: _uniqueWorkDir.path()) {
+			try _fileManager.removeItem(at: _uniqueWorkDir)
+		}
+	}
 }
 
 private enum ImportedFileHandlerError: Error {

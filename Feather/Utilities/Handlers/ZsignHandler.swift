@@ -24,23 +24,16 @@ final class ZsignHandler {
 	
 	func sign() async throws {
 		guard let cert = _certificate else {
-			return
-			#warning("throw")
+			throw SigningFileHandlerError.missingCertifcate
 		}
 		
-		print(Storage.shared.getProvisionFile(for: cert)?.path ?? "")
-		print(Storage.shared.getKeyFile(for: cert)?.path ?? "")
-		print(cert.password ?? "")
-		
-		if Zsign.sign(
+		if !Zsign.sign(
 			appPath: _appUrl.relativePath,
 			provisionPath: Storage.shared.getProvisionFile(for: cert)?.path ?? "",
 			p12Path: Storage.shared.getKeyFile(for: cert)?.path ?? "",
 			p12Password: cert.password ?? ""
 		) {
-			print("aaaa")
-		} else {
-			print("aaaa2")
+			throw SigningFileHandlerError.signFailed
 		}
 	}
 	

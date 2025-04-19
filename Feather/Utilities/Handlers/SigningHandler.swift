@@ -123,6 +123,12 @@ final class SigningHandler: NSObject {
 		// Documents/Feather/Signed/\(UUID)
 		_fileManager.signed(_uuid)
 	}
+	
+	func clean() async throws {
+		if _fileManager.fileExists(atPath: _uniqueWorkDir.path()) {
+			try _fileManager.removeItem(at: _uniqueWorkDir)
+		}
+	}
 }
 
 extension SigningHandler {
@@ -219,8 +225,9 @@ extension SigningHandler {
 
 }
 
-private enum SigningFileHandlerError: Error {
+enum SigningFileHandlerError: Error {
 	case appNotFound
 	case infoPlistNotFound
 	case missingCertifcate
+	case signFailed
 }
