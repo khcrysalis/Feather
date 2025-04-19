@@ -38,27 +38,22 @@ extension Storage {
 			print(error)
 		}
 	}
-	
-	#warning("this can be simplified into one function")
-	func getKeyFile(for cert: CertificatePair) -> URL? {
-		guard let url = getUuidDirectory(for: cert) else {
-			return nil
-		}
 		
-		return FileManager.default.getPath(in: url, for: "p12")
+	enum FileRequest: String {
+		case certificate = "p12"
+		case provision = "mobileprovision"
 	}
 	
-	#warning("this can be simplified into one function")
-	func getProvisionFile(for cert: CertificatePair) -> URL? {
+	func getFile(_ type: FileRequest, from cert: CertificatePair) -> URL? {
 		guard let url = getUuidDirectory(for: cert) else {
 			return nil
 		}
 		
-		return FileManager.default.getPath(in: url, for: "mobileprovision")
+		return FileManager.default.getPath(in: url, for: type.rawValue)
 	}
 	
 	func getProvisionFileDecoded(for cert: CertificatePair) -> Certificate? {
-		guard let url = getProvisionFile(for: cert) else {
+		guard let url = getFile(.provision, from: cert) else {
 			return nil
 		}
 		

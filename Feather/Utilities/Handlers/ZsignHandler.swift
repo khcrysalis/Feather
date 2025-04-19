@@ -29,8 +29,8 @@ final class ZsignHandler {
 		
 		if !Zsign.sign(
 			appPath: _appUrl.relativePath,
-			provisionPath: Storage.shared.getProvisionFile(for: cert)?.path ?? "",
-			p12Path: Storage.shared.getKeyFile(for: cert)?.path ?? "",
+			provisionPath: Storage.shared.getFile(.provision, from: cert)?.path ?? "",
+			p12Path: Storage.shared.getFile(.certificate, from: cert)?.path ?? "",
 			p12Password: cert.password ?? "",
 			customIdentifier: _options.appIdentifier ?? "",
 			customName: _options.appName ?? "",
