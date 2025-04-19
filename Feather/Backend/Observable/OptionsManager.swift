@@ -20,6 +20,7 @@ class OptionsManager: ObservableObject {
 			self.options = savedOptions
 		} else {
 			self.options = Options.defaultOptions
+			self.saveOptions()
 		}
 	}
 	
@@ -40,6 +41,8 @@ struct Options: Codable, Equatable {
 	var appName: String?
 	var appVersion: String?
 	var appIdentifier: String?
+	
+	var ppqString: String
 	
 	var ppqProtection: Bool
 	var dynamicProtection: Bool
@@ -66,6 +69,8 @@ struct Options: Codable, Equatable {
 	
 	// default
 	static let defaultOptions = Options(
+		ppqString: randomString(),
+		
 		ppqProtection: false,
 		dynamicProtection: false,
 		
@@ -89,4 +94,9 @@ struct Options: Codable, Equatable {
 		// advanced
 		doAdhocSigning: false
 	)
+	
+	static func randomString(length: Int = 6) -> String {
+		let letters = "abcdefghijklmnopqrstuvwxyz"
+		return String((0..<length).compactMap { _ in letters.randomElement() })
+	}
 }

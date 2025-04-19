@@ -32,7 +32,8 @@ final class Zsign {
 		customIdentifier: String = "",
 		customName: String = "",
 		customVersion: String = "",
-		removeProvision: Bool = true
+		adhoc: Bool = false,
+		removeProvision: Bool = false
 	) -> Bool {
 		if zsign(
 			appPath,
@@ -42,6 +43,7 @@ final class Zsign {
 			customIdentifier,
 			customName,
 			customVersion,
+			adhoc,
 			removeProvision
 		) != 0 {
 			return false

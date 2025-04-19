@@ -21,9 +21,6 @@ extension CertificateReader {
 			
 			let xmlData = fileData.subdata(in: xmlRange.lowerBound..<fileData.endIndex)
 			
-			print(fileData)
-			print(xmlData)
-			
 			let decoder = PropertyListDecoder()
 			let data = try decoder.decode(Certificate.self, from: xmlData)
 			return data

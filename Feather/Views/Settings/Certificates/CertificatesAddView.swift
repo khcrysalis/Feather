@@ -116,6 +116,8 @@ struct CertificatesAddView: View {
 			return
 		}
 		
+		let ppq = CertificateReader(provisionURL).decoded?.PPQCheck ?? false
+		
 		Task.detached {
 			defer {
 				p12URL.stopAccessingSecurityScopedResource()
@@ -125,7 +127,8 @@ struct CertificatesAddView: View {
 			let handler = await CertificateFileHandler(
 				key: p12URL,
 				provision: provisionURL,
-				password: p12Password
+				password: p12Password,
+				ppq: ppq
 			)
 			
 			do {

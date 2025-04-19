@@ -222,7 +222,6 @@ extension SigningHandler {
 			try _fileManager.removeItem(at: provisioningFilePath)
 		}
 	}
-
 }
 
 enum SigningFileHandlerError: Error {

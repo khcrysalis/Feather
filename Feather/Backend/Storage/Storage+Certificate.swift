@@ -11,13 +11,14 @@ extension Storage {
 	func addCertificate(
 		uuid: String,
 		password: String? = nil,
+		ppq: Bool = false,
 		completion: @escaping (Error?) -> Void
 	) {
 		let new = CertificatePair(context: context)
 		new.uuid = uuid
 		new.date = Date()
 		new.password = password
-		
+		new.ppQCheck = ppq
 		do {
 			try context.save()
 			completion(nil)

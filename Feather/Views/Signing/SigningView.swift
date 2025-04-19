@@ -29,7 +29,6 @@ struct SigningView: View {
 	//
 	//
 	var app: AppInfoPresentable
-	@State var appCert: CertificatePair?
 	@State var appIcon: UIImage?
 	
 	init(app: AppInfoPresentable) {
@@ -104,6 +103,17 @@ struct SigningView: View {
 				}
 			}
 		}
+		.onAppear {
+			// ppq protection
+			if
+				optionsManager.options.ppqProtection,
+				let identifier = app.identifier,
+				let cert = _selectedCert(),
+				cert.ppQCheck
+			{
+				temporaryOptions.appIdentifier = "\(identifier).\(optionsManager.options.ppqString)"
+			}
+		}
     }
 	
 	@ViewBuilder
@@ -128,14 +138,14 @@ struct SigningView: View {
 				bindingValue: $temporaryOptions.appName
 			)
 		}
-		_infoCell("Identifier", desc: app.identifier) {
+		_infoCell("Identifier", desc: temporaryOptions.appIdentifier ?? app.identifier) {
 			SigningAppPropertiesView(
 				title: "Identifier",
 				initialValue: temporaryOptions.appIdentifier ?? (app.identifier ?? ""),
 				bindingValue: $temporaryOptions.appIdentifier
 			)
 		}
-		_infoCell("Version", desc: app.version) {
+		_infoCell("Version", desc: temporaryOptions.appVersion ?? app.version) {
 			SigningAppPropertiesView(
 				title: "Version",
 				initialValue: temporaryOptions.appVersion ?? (app.version ?? ""),

@@ -15,6 +15,7 @@ final class AppFileHandler: NSObject {
 	var uniqueWorkDirPayload: URL?
 	//
 	//
+	//
 	private var _ipa: URL
 	private let _install: Bool
 	

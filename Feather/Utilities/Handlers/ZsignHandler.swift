@@ -31,13 +31,26 @@ final class ZsignHandler {
 			appPath: _appUrl.relativePath,
 			provisionPath: Storage.shared.getProvisionFile(for: cert)?.path ?? "",
 			p12Path: Storage.shared.getKeyFile(for: cert)?.path ?? "",
-			p12Password: cert.password ?? ""
+			p12Password: cert.password ?? "",
+			customIdentifier: _options.appIdentifier ?? "",
+			customName: _options.appName ?? "",
+			customVersion: _options.appVersion ?? "",
+			removeProvision: !_options.removeProvisioning
 		) {
 			throw SigningFileHandlerError.signFailed
 		}
 	}
 	
 	func adhocSign() async throws {
-		
+		if !Zsign.sign(
+			appPath: _appUrl.relativePath,
+			customIdentifier: _options.appIdentifier ?? "",
+			customName: _options.appName ?? "",
+			customVersion: _options.appVersion ?? "",
+			adhoc: true,
+			removeProvision: !_options.removeProvisioning
+		) {
+			throw SigningFileHandlerError.signFailed
+		}
 	}
 }

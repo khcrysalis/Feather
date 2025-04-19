@@ -26,6 +26,7 @@ struct SigningOptionsSharedView: View {
 							isOn: $options.dynamicProtection,
 							temporaryValue: temporaryOptions?.dynamicProtection
 					)
+					.disabled(!options.ppqProtection)
 				} footer: {
 					Text(
 					  """
@@ -100,6 +101,14 @@ struct SigningOptionsSharedView: View {
 						systemImage: "character.bubble",
 						isOn: $options.changeLanguageFilesForCustomDisplayName,
 						temporaryValue: temporaryOptions?.changeLanguageFilesForCustomDisplayName
+				)
+			}
+			
+			FRSection("Advanced") {
+				_toggle("Adhoc Signing",
+						systemImage: "signature",
+						isOn: $options.doAdhocSigning,
+						temporaryValue: temporaryOptions?.doAdhocSigning
 				)
 			}
 		}

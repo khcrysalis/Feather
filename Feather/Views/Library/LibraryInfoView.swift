@@ -98,7 +98,6 @@ struct LibraryInfoView: View {
 		
 		dylibs = Zsign.listDylibs(appExecutable: execPath)
 			.map { $0 as String }
-			.filter { $0.hasPrefix("@rpath") || $0.hasPrefix("@executable_path") }
 	}
 	
 	@ViewBuilder
