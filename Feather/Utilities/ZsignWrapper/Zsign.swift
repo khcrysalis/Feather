@@ -12,8 +12,8 @@ final class Zsign {
 		InjectDyLib(appExecutable, path, weak)
 	}
 	
-	static func removeDylibs(appExecutable: String) -> Bool  {
-		UninstallDylibs(appExecutable, [])
+	static func removeDylibs(appExecutable: String, using dylibs: [String]) -> Bool  {
+		UninstallDylibs(appExecutable, dylibs)
 	}
 	
 	static func listDylibs(appExecutable: String) -> [String] {

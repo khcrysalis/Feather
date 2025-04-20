@@ -12,9 +12,7 @@ struct LibraryInfoView: View {
 	@Environment(\.dismiss) var dismiss
 	
 	var app: AppInfoPresentable
-	
-	@State private var dylibs: [String] = []
-	
+		
     var body: some View {
 		FRNavigationView(app.name ?? "", displayMode: .inline) {
 			List {
@@ -77,27 +75,9 @@ struct LibraryInfoView: View {
 	private func _executableSection(for app: AppInfoPresentable) -> some View {
 		FRSection("Executable") {
 			NavigationLink("Dylibs") {
-				List(dylibs, id: \.self) { dylib in
-					Text(dylib)
-				}
-				.navigationTitle("Dylibs")
-				.onAppear {
-					loadDylibs()
-				}
+				SigningOptionsDylibSharedView(app: app, options: .constant(nil))
 			}
 		}
-	}
-	
-	private func loadDylibs() {
-		guard let path = Storage.shared.getAppDirectory(for: app) else {
-			return
-		}
-				
-		let bundle = Bundle(url: path)
-		let execPath = path.appendingPathComponent(bundle?.exec ?? "").relativePath
-		
-		dylibs = Zsign.listDylibs(appExecutable: execPath)
-			.map { $0 as String }
 	}
 	
 	@ViewBuilder

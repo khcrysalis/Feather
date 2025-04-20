@@ -85,7 +85,8 @@ final class SigningHandler: NSObject {
 		try await _removeProvisioning(for: movedAppPath)
 		
 		let handler = ZsignHandler(appUrl: movedAppPath, options: _options, cert: appCertificate)
-
+		try await handler.disinject()
+		
 		if _options.doAdhocSigning {
 			try await handler.adhocSign()
 		} else if (appCertificate != nil) {
@@ -228,5 +229,6 @@ enum SigningFileHandlerError: Error {
 	case appNotFound
 	case infoPlistNotFound
 	case missingCertifcate
+	case disinjectFailed
 	case signFailed
 }

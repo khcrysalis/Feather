@@ -49,13 +49,7 @@ struct SigningView: View {
 				}
 				
 				FRSection("Advanced") {
-					NavigationLink("Properties") {
-						Form { SigningOptionsSharedView(
-							options: $temporaryOptions,
-							temporaryOptions: optionsManager.options
-						)}
-						.navigationTitle("Properties")
-					}
+					_customizationProperties(for: app)
 				}
 			}
 			.safeAreaInset(edge: .bottom) {
@@ -101,6 +95,9 @@ struct SigningView: View {
 						appIcon = image
 					}
 				}
+			}
+			.onAppear() {
+				dump(temporaryOptions)
 			}
 		}
 		.onAppear {
@@ -155,27 +152,19 @@ struct SigningView: View {
 	}
 	
 	@ViewBuilder
-	private func _infoCell<V: View>(_ title: String, desc: String?, @ViewBuilder destination: () -> V) -> some View {
-		NavigationLink {
-			destination()
-		} label: {
-			LabeledContent(title) {
-				Text(desc ?? "Unknown")
-			}
+	private func _customizationProperties(for app: AppInfoPresentable) -> some View {
+		NavigationLink("Dylibs") {
+			SigningOptionsDylibSharedView(
+				app: app,
+				options: $temporaryOptions.optional()
+			)
 		}
-	}
-	
-	@ViewBuilder
-	private func _cert() -> some View {
-		if let cert = _selectedCert() {
-			NavigationLink {
-				CertificatesView(selectedCert: $temporaryCertificate)
-			} label: {
-				CertificatesCellView(cert: cert, isSelected: false)
-			}
-		} else {
-			Text("No valid certificate selected.")
-				.foregroundStyle(Color(uiColor: .disabled(.tintColor)))
+		NavigationLink("Properties") {
+			Form { SigningOptionsSharedView(
+				options: $temporaryOptions,
+				temporaryOptions: optionsManager.options
+			)}
+			.navigationTitle("Properties")
 		}
 	}
 	
@@ -207,6 +196,33 @@ struct SigningView: View {
 				try await handler.clean()
 				print(error)
 			}
+		}
+	}
+}
+
+extension SigningView {
+	@ViewBuilder
+	private func _infoCell<V: View>(_ title: String, desc: String?, @ViewBuilder destination: () -> V) -> some View {
+		NavigationLink {
+			destination()
+		} label: {
+			LabeledContent(title) {
+				Text(desc ?? "Unknown")
+			}
+		}
+	}
+	
+	@ViewBuilder
+	private func _cert() -> some View {
+		if let cert = _selectedCert() {
+			NavigationLink {
+				CertificatesView(selectedCert: $temporaryCertificate)
+			} label: {
+				CertificatesCellView(cert: cert, isSelected: false)
+			}
+		} else {
+			Text("No valid certificate selected.")
+				.foregroundStyle(Color(uiColor: .disabled(.tintColor)))
 		}
 	}
 }
