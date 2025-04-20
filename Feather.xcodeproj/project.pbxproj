@@ -10,6 +10,7 @@
 		330E90A22DADF3DF0057D546 /* zsign in Frameworks */ = {isa = PBXBuildFile; productRef = 330E90A12DADF3DF0057D546 /* zsign */; };
 		3371F6432DA9233C00281AC6 /* Esign in Frameworks */ = {isa = PBXBuildFile; productRef = 3371F6422DA9233C00281AC6 /* Esign */; };
 		3371F7322DA9ECDD00281AC6 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 3371F7312DA9ECDD00281AC6 /* Zip */; };
+		33CF13392DB5ACFB0021D4C5 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 33CF13382DB5ACFB0021D4C5 /* SWCompression */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,17 +32,29 @@
 		3371F6492DA92A1800281AC6 /* Exceptions for "Feather" folder in "Feather" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Resources/ellekit.deb,
 				Resources/Info.plist,
 			);
 			target = 3379C1B82DA869A1004372DA /* Feather */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		33CF134C2DB5B9BC0021D4C5 /* Exceptions for "Feather" folder in "Copy Bundle Resources" phase from "Feather" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 3379C1B72DA869A1004372DA /* Resources */;
+			membershipExceptions = (
+				Resources/ellekit.deb,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3379C1BB2DA869A1004372DA /* Feather */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				3371F6492DA92A1800281AC6 /* Exceptions for "Feather" folder in "Feather" target */,
+				33CF134C2DB5B9BC0021D4C5 /* Exceptions for "Feather" folder in "Copy Bundle Resources" phase from "Feather" target */,
 			);
 			path = Feather;
 			sourceTree = "<group>";
@@ -59,6 +72,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				330E90A22DADF3DF0057D546 /* zsign in Frameworks */,
+				33CF13392DB5ACFB0021D4C5 /* SWCompression in Frameworks */,
 				3371F7322DA9ECDD00281AC6 /* Zip in Frameworks */,
 				3371F6432DA9233C00281AC6 /* Esign in Frameworks */,
 			);
@@ -123,6 +137,7 @@
 				3371F6422DA9233C00281AC6 /* Esign */,
 				3371F7312DA9ECDD00281AC6 /* Zip */,
 				330E90A12DADF3DF0057D546 /* zsign */,
+				33CF13382DB5ACFB0021D4C5 /* SWCompression */,
 			);
 			productName = Feather;
 			productReference = 3379C1B92DA869A1004372DA /* Feather.app */;
@@ -184,6 +199,7 @@
 				3371F5152DA91FDC00281AC6 /* XCLocalSwiftPackageReference "Zsign" */,
 				3371F6412DA9233C00281AC6 /* XCLocalSwiftPackageReference "Esign" */,
 				3371F6F52DA9EBA500281AC6 /* XCRemoteSwiftPackageReference "Zip" */,
+				33CF13372DB5ACFB0021D4C5 /* XCRemoteSwiftPackageReference "SWCompression" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3379C1BA2DA869A1004372DA /* Products */;
@@ -386,6 +402,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Feather/Resources",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = thewonderofyou.Feather;
@@ -438,6 +458,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Feather/Resources",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = thewonderofyou.Feather;
@@ -553,6 +577,14 @@
 				minimumVersion = 2.1.2;
 			};
 		};
+		33CF13372DB5ACFB0021D4C5 /* XCRemoteSwiftPackageReference "SWCompression" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tsolomko/SWCompression";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.8.6;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -568,6 +600,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3371F6F52DA9EBA500281AC6 /* XCRemoteSwiftPackageReference "Zip" */;
 			productName = Zip;
+		};
+		33CF13382DB5ACFB0021D4C5 /* SWCompression */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33CF13372DB5ACFB0021D4C5 /* XCRemoteSwiftPackageReference "SWCompression" */;
+			productName = SWCompression;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

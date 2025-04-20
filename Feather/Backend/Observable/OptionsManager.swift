@@ -52,7 +52,7 @@ struct Options: Codable, Equatable {
 	
 	var identifiers: [String: String]
 	var displayNames: [String: String]
-	var injectionFiles: [String]
+	var injectionFiles: [URL]
 	var disInjectionFiles: [String]
 	var removeFiles: [String]
 	

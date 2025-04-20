@@ -88,6 +88,10 @@ final class SigningHandler: NSObject {
 		
 		try await _removeProvisioning(for: movedAppPath)
 		
+		if !_options.injectionFiles.isEmpty {
+			try await _inject(for: movedAppPath, with: _options.injectionFiles)
+		}
+		
 		let handler = ZsignHandler(appUrl: movedAppPath, options: _options, cert: appCertificate)
 		try await handler.disinject()
 		
@@ -237,6 +241,11 @@ extension SigningHandler {
 		if _fileManager.fileExists(atPath: provisioningFilePath.path) {
 			try _fileManager.removeItem(at: provisioningFilePath)
 		}
+	}
+	
+	private func _inject(for app: URL, with tweaks: [URL]) async throws {
+		let handler = TweakHandler(app: app, with: tweaks)
+		try await handler.getInputFiles()
 	}
 }
 

@@ -166,6 +166,12 @@ struct SigningView: View {
 			)
 		}
 		
+		NavigationLink("Add Tweaks") {
+			SigningTweaksView(
+				options: $temporaryOptions
+			)
+		}
+		
 		NavigationLink("Properties") {
 			Form { SigningOptionsView(
 				options: $temporaryOptions,

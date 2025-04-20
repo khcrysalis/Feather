@@ -8,12 +8,12 @@
 import UniformTypeIdentifiers
 
 extension UTType {
-	static var ipa: UTType {
-		UTType(filenameExtension: "ipa")!
+	static var dylib: UTType {
+		UTType(filenameExtension: "dylib")!
 	}
 	
-	static var tipa: UTType {
-		UTType(filenameExtension: "tipa")!
+	static var deb: UTType {
+		UTType(filenameExtension: "deb")!
 	}
 }
 
