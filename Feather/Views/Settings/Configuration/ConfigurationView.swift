@@ -7,23 +7,23 @@
 
 import SwiftUI
 
-struct SigningOptionsView: View {
+struct ConfigurationView: View {
 	@StateObject private var optionsManager = OptionsManager.shared
 	
     var body: some View {
 		List {
-			NavigationLink("Display Names", destination: SigningOptionsDictView(
+			NavigationLink("Display Names", destination: ConfigurationDictView(
 					title: "Display Names",
 					dataDict: $optionsManager.options.displayNames
 				)
 			)
-			NavigationLink("Identifers", destination: SigningOptionsDictView(
+			NavigationLink("Identifers", destination: ConfigurationDictView(
 					title: "Identifers",
 					dataDict: $optionsManager.options.identifiers
 				)
 			)
 			
-			SigningOptionsSharedView(options: $optionsManager.options)
+			SigningOptionsView(options: $optionsManager.options)
 		}
 		.navigationTitle("Configuration")
 		.navigationBarTitleDisplayMode(.inline)

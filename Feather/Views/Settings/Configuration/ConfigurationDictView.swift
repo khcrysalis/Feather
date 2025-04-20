@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SigningOptionsDictView: View {
+struct ConfigurationDictView: View {
 	var title: String
 	@Binding var dataDict: [String: String]
 	

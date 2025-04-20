@@ -13,7 +13,7 @@ struct SettingsView: View {
             List {
 				FRSection("Signing") {
 					NavigationLink("Certificates", destination: CertificatesView())
-					NavigationLink("Configuration", destination: SigningOptionsView())
+					NavigationLink("Configuration", destination: ConfigurationView())
 				}
             }
         }

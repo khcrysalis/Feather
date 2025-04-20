@@ -82,6 +82,10 @@ final class SigningHandler: NSObject {
 			try await _removePlaceholderWatch(for: movedAppPath)
 		}
 		
+		if !_options.removeFiles.isEmpty {
+			try await _removeFiles(for: movedAppPath, from: _options.removeFiles)
+		}
+		
 		try await _removeProvisioning(for: movedAppPath)
 		
 		let handler = ZsignHandler(appUrl: movedAppPath, options: _options, cert: appCertificate)
@@ -198,11 +202,13 @@ extension SigningHandler {
 		}
 	}
 	
-	#warning("add support for this")
-	private func _removePlugIns(for app: URL) async throws {
-		let path = app.appendingPathComponent("PlugIns")
-		if _fileManager.fileExists(atPath: path.path) {
-			try _fileManager.removeItem(at: path)
+	private func _removeFiles(for app: URL, from appendingComponent: [String]) async throws {
+		let filesToRemove = appendingComponent.map {
+			app.appendingPathComponent($0)
+		}
+		
+		for url in filesToRemove where _fileManager.fileExists(atPath: url.path) {
+			try _fileManager.removeItem(at: url)
 		}
 	}
 	

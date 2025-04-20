@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SigningOptionsSharedView: View {
+struct SigningOptionsView: View {
 	@Binding var options: Options
 	var temporaryOptions: Options?
 	
@@ -167,5 +167,6 @@ struct SigningOptionsSharedView: View {
 				Image(systemName: systemImage)
 			}
 		}
+		.tint(.accentColor)
 	}
 }

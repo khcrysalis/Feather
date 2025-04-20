@@ -62,7 +62,7 @@ struct TemporarySettingsView: View {
 	@State private var temporaryOptions: Options = OptionsManager.shared.options
 	
 	var body: some View {
-		SigningOptionsSharedView(
+		SigningOptionsView(
 			options: $temporaryOptions,
 			temporaryOptions: optionsManager.options
 		)

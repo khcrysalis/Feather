@@ -21,6 +21,7 @@ struct LibraryInfoView: View {
 						.frame(maxWidth: .infinity, alignment: .center)
 				}
 				_infoSection(for: app)
+				_bundleSection(for: app)
 				_executableSection(for: app)
 				
 				Section {
@@ -68,6 +69,12 @@ struct LibraryInfoView: View {
 	@ViewBuilder
 	private func _bundleSection(for app: AppInfoPresentable) -> some View {
 		FRSection("Bundle") {
+			NavigationLink("Alternative Icons") {
+				SigningAlternativeIconView(app: app, appIcon: .constant(nil), isModifing: .constant(false))
+			}
+			NavigationLink("Frameworks & Plugins") {
+				SigningFrameworksView(app: app, options: .constant(nil))
+			}
 		}
 	}
 	
@@ -75,7 +82,7 @@ struct LibraryInfoView: View {
 	private func _executableSection(for app: AppInfoPresentable) -> some View {
 		FRSection("Executable") {
 			NavigationLink("Dylibs") {
-				SigningOptionsDylibSharedView(app: app, options: .constant(nil))
+				SigningDylibView(app: app, options: .constant(nil))
 			}
 		}
 	}

@@ -54,6 +54,7 @@ struct Options: Codable, Equatable {
 	var displayNames: [String: String]
 	var injectionFiles: [String]
 	var disInjectionFiles: [String]
+	var removeFiles: [String]
 	
 	var fileSharing: Bool
 	var itunesFileSharing: Bool
@@ -84,6 +85,7 @@ struct Options: Codable, Equatable {
 		displayNames: [:],
 		injectionFiles: [],
 		disInjectionFiles: [],
+		removeFiles: [],
 		
 		fileSharing: false,
 		itunesFileSharing: false,
@@ -101,6 +103,7 @@ struct Options: Codable, Equatable {
 		doAdhocSigning: false
 	)
 	
+	// duplicate values are not recommended!
 	static let appAppearanceValues = ["Default", "Light", "Dark"]
 	static let appMinimumAppRequirementValues = ["Default", "16.0", "15.0", "14.0", "13.0", "12.0"]
 	static func randomString(length: Int = 6) -> String {

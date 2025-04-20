@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SigningOptionsDylibSharedView: View {
+struct SigningDylibView: View {
 	@State private var dylibs: [String] = []
 	@State private var hiddenDylibCount: Int = 0
 	
@@ -18,16 +18,11 @@ struct SigningOptionsDylibSharedView: View {
 		List {
 			Section {
 				ForEach(dylibs, id: \.self) { dylib in
-					Text(dylib)
-						.foregroundColor(options?.disInjectionFiles.contains(dylib) == true ? .red : .primary)
-						.swipeActions(edge: .trailing, allowsFullSwipe: false) {
-							if options != nil {
-								Button("Delete") {
-									_addDylib(dylib)
-								}
-								.tint(.red)
-							}
-						}
+					SigningToggleCellView(
+						title: dylib,
+						options: $options,
+						arrayKeyPath: \.disInjectionFiles
+					)
 				}
 			}
 			
@@ -37,6 +32,7 @@ struct SigningOptionsDylibSharedView: View {
 					.foregroundColor(Color(uiColor: .disabled(.tintColor)))
 			}
 		}
+		.disabled(options == nil)
 		.navigationTitle("Dylibs")
 		.onAppear(perform: _loadDylibs)
 	}
@@ -52,11 +48,5 @@ struct SigningOptionsDylibSharedView: View {
 		dylibs = allDylibs.filter { $0.hasPrefix("@rpath") || $0.hasPrefix("@executable_path") }
 		hiddenDylibCount = allDylibs.count - dylibs.count
 	}
-	
-	private func _addDylib(_ dylib: String) {
-		guard options != nil else { return }
-		if !options!.disInjectionFiles.contains(dylib) {
-			options!.disInjectionFiles.append(dylib)
-		}
-	}
 }
+

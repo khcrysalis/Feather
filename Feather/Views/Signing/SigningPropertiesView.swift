@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SigningAppPropertiesView: View {
+struct SigningPropertiesView: View {
 	@Environment(\.dismiss) var dismiss
 	
 	var title: String

@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-struct SigningAppAlternativeIconView: View {
+struct SigningAlternativeIconView: View {
 	@Environment(\.dismiss) var dismiss
 	@State private var alternateIcons: [(name: String, path: String)] = []
 	
 	var app: AppInfoPresentable
 	@Binding var appIcon: UIImage?
+	@Binding var isModifing: Bool
 	
 	var body: some View {
 		FRNavigationView("Alternative Icons", displayMode: .inline) {
@@ -24,14 +25,17 @@ struct SigningAppAlternativeIconView: View {
 					_icon(icon)
 				}
 			}
+			.disabled(!isModifing)
 			.onAppear(perform: _loadAlternateIcons)
 			.toolbar {
-				FRToolbarButton(
-					"Close",
-					systemImage: "xmark",
-					placement: .topBarTrailing
-				) {
-					dismiss()
+				if isModifing {
+					FRToolbarButton(
+						"Close",
+						systemImage: "xmark",
+						placement: .topBarTrailing
+					) {
+						dismiss()
+					}
 				}
 			}
 		}
@@ -64,9 +68,11 @@ struct SigningAppAlternativeIconView: View {
 		guard let appDirectory = Storage.shared.getAppDirectory(for: app) else { return }
 		
 		let infoPlistPath = appDirectory.appendingPathComponent("Info.plist")
-		guard let infoPlist = NSDictionary(contentsOf: infoPlistPath),
-			  let iconDict = infoPlist["CFBundleIcons"] as? [String: Any],
-			  let alternateIconsDict = iconDict["CFBundleAlternateIcons"] as? [String: [String: Any]] else {
+		guard
+			let infoPlist = NSDictionary(contentsOf: infoPlistPath),
+			let iconDict = infoPlist["CFBundleIcons"] as? [String: Any],
+			let alternateIconsDict = iconDict["CFBundleAlternateIcons"] as? [String: [String: Any]]
+		else {
 			return
 		}
 		

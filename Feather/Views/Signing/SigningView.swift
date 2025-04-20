@@ -79,7 +79,7 @@ struct SigningView: View {
 				}
 			}
 			// Image shit
-			.sheet(isPresented: $isAltPickerPresented) { SigningAppAlternativeIconView(app: app, appIcon: $appIcon) }
+			.sheet(isPresented: $isAltPickerPresented) { SigningAlternativeIconView(app: app, appIcon: $appIcon, isModifing: .constant(true)) }
 			.fileImporter(isPresented: $isFilePickerPresented, allowedContentTypes: [.image]) { result in
 				if case .success(let url) = result {
 					self.appIcon = UIImage.fromFile(url)?.resizeToSquare()
@@ -129,21 +129,21 @@ struct SigningView: View {
 		}
 		
 		_infoCell("Name", desc: temporaryOptions.appName ?? app.name) {
-			SigningAppPropertiesView(
+			SigningPropertiesView(
 				title: "Name",
 				initialValue: temporaryOptions.appName ?? (app.name ?? ""),
 				bindingValue: $temporaryOptions.appName
 			)
 		}
 		_infoCell("Identifier", desc: temporaryOptions.appIdentifier ?? app.identifier) {
-			SigningAppPropertiesView(
+			SigningPropertiesView(
 				title: "Identifier",
 				initialValue: temporaryOptions.appIdentifier ?? (app.identifier ?? ""),
 				bindingValue: $temporaryOptions.appIdentifier
 			)
 		}
 		_infoCell("Version", desc: temporaryOptions.appVersion ?? app.version) {
-			SigningAppPropertiesView(
+			SigningPropertiesView(
 				title: "Version",
 				initialValue: temporaryOptions.appVersion ?? (app.version ?? ""),
 				bindingValue: $temporaryOptions.appVersion
@@ -153,14 +153,21 @@ struct SigningView: View {
 	
 	@ViewBuilder
 	private func _customizationProperties(for app: AppInfoPresentable) -> some View {
-		NavigationLink("Dylibs") {
-			SigningOptionsDylibSharedView(
+		NavigationLink("Modify Dylibs") {
+			SigningDylibView(
 				app: app,
 				options: $temporaryOptions.optional()
 			)
 		}
+		NavigationLink("Modify Frameworks") {
+			SigningFrameworksView(
+				app: app,
+				options: $temporaryOptions.optional()
+			)
+		}
+		
 		NavigationLink("Properties") {
-			Form { SigningOptionsSharedView(
+			Form { SigningOptionsView(
 				options: $temporaryOptions,
 				temporaryOptions: optionsManager.options
 			)}
