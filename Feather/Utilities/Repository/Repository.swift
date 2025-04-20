@@ -14,7 +14,7 @@ import SwiftUI
 
 // MARK: - Repository
 
-struct Repository: Decodable, Hashable, Identifiable {
+struct Repository: Sendable, Decodable, Hashable, Identifiable {
 	// Core data
 	var id: String
 	var name: String
@@ -23,6 +23,10 @@ struct Repository: Decodable, Hashable, Identifiable {
 	var subtitle: String?
 	var description: String?
 	var website: URL?
+
+	var iconURL: URL?
+	var headerURL: URL?
+	var tintColor: Color?
 
 	// special fields
 	var patreonURL: URL?
@@ -48,6 +52,16 @@ struct Repository: Decodable, Hashable, Identifiable {
 			forKey: .description
 		)
 		self.website = try container.decodeIfPresent(URL.self, forKey: .website)
+		self.iconURL = try container.decodeIfPresent(
+			URL.self,
+			forKey: .iconURL
+		)
+		self.headerURL = try container.decodeIfPresent(
+			URL.self,
+			forKey: .headerURL
+		)
+		self.tintColor =
+			try container.decodeIfPresent(Color.self, forKey: .tintColor)
 
 		self.patreonURL = try container.decodeIfPresent(
 			URL.self,
@@ -66,7 +80,8 @@ struct Repository: Decodable, Hashable, Identifiable {
 
 	enum CodingKeys: String, CodingKey {
 		case id = "identifier"
-		case name, subtitle, description, website, patreonURL, userInfo
+		case name, subtitle, description, website, patreonURL, userInfo,
+			iconURL, headerURL, tintColor
 		case apps, featuredApps, news
 	}
 
@@ -91,7 +106,7 @@ struct Repository: Decodable, Hashable, Identifiable {
 // MARK: - App
 
 extension Repository {
-	struct App: Decodable, Hashable, Identifiable {
+	struct App: Sendable, Decodable, Hashable, Identifiable {
 		var id: String
 		var name: String
 
@@ -346,7 +361,7 @@ extension Repository {
 // MARK: - News
 
 extension Repository {
-	struct News: Decodable, Hashable, Identifiable {
+	struct News: Sendable, Decodable, Hashable, Identifiable {
 		var id: String
 		var title: String
 		var caption: String
