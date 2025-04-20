@@ -42,6 +42,9 @@ struct Options: Codable, Equatable {
 	var appVersion: String?
 	var appIdentifier: String?
 	
+	var appAppearance: String
+	var minimumAppRequirement: String
+	
 	var ppqString: String
 	
 	var ppqProtection: Bool
@@ -69,6 +72,9 @@ struct Options: Codable, Equatable {
 	
 	// default
 	static let defaultOptions = Options(
+		appAppearance: "Default",
+		minimumAppRequirement: "Default",
+		
 		ppqString: randomString(),
 		
 		ppqProtection: false,
@@ -95,6 +101,8 @@ struct Options: Codable, Equatable {
 		doAdhocSigning: false
 	)
 	
+	static let appAppearanceValues = ["Default", "Light", "Dark"]
+	static let appMinimumAppRequirementValues = ["Default", "16.0", "15.0", "14.0", "13.0", "12.0"]
 	static func randomString(length: Int = 6) -> String {
 		let letters = "abcdefghijklmnopqrstuvwxyz"
 		return String((0..<length).compactMap { _ in letters.randomElement() })

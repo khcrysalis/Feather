@@ -36,6 +36,24 @@ struct SigningOptionsSharedView: View {
 					  """
 					)
 				}
+			} else {
+				FRSection("General") {
+					_picker(
+						"Appearance",
+						systemImage: "paintpalette",
+						selection: $options.appAppearance,
+						values: Options.appAppearanceValues,
+						id: \.description
+					)
+					
+					_picker(
+						"Minimum Requirement",
+						systemImage: "ruler",
+						selection: $options.minimumAppRequirement,
+						values: Options.appMinimumAppRequirementValues,
+						id: \.description
+					)
+				}
 			}
 			
 			FRSection("App Features") {
@@ -111,6 +129,23 @@ struct SigningOptionsSharedView: View {
 						temporaryValue: temporaryOptions?.doAdhocSigning
 				)
 			}
+		}
+	}
+	
+	@ViewBuilder
+	private func _picker<SelectionValue, T>(
+		_ title: String,
+		systemImage: String,
+		selection: Binding<SelectionValue>,
+		values: [T],
+		id: KeyPath<T, SelectionValue>
+	) -> some View where SelectionValue: Hashable {
+		Picker(selection: selection) {
+			ForEach(values, id: id) { value in
+				Text(String(describing: value))
+			}
+		} label: {
+			Label(title, systemImage: systemImage)
 		}
 	}
 	
