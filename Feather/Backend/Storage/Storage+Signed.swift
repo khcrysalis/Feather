@@ -7,6 +7,7 @@
 
 import CoreData
 
+// MARK: - Class extension: Signed Apps
 extension Storage {
 	func addSigned(
 		uuid: String,

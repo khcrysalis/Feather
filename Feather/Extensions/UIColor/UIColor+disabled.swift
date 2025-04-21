@@ -9,6 +9,9 @@ import UIKit.UIColor
 
 // https://x.com/SebJVidal/status/1771564199753220609/photo/1
 extension UIColor {
+	/// Disabled color
+	/// - Parameter color: Color
+	/// - Returns: Disabled version of specified color
 	static func disabled(_ color: UIColor) -> UIColor {
 		let propertyBase64 = "X2Rpc2FibGVkQ29sb3JGb3JDb2xvcjo="
 		guard let data = Data(base64Encoded: propertyBase64),

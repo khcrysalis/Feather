@@ -8,6 +8,7 @@
 import CoreData
 #warning("This storage will change, **a lot**, so use inmemory until its ready for production")
 
+// MARK: - Class
 final class Storage: ObservableObject {
 	static let shared = Storage()
 	let container: NSPersistentContainer

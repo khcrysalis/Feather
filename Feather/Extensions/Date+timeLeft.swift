@@ -15,6 +15,9 @@ extension Date {
 		let icon: String
 	}
 	
+	/// Gathers data for `ExpirationInfo`
+	/// - Parameter now: Date
+	/// - Returns: `ExpirationInfo`
 	func expirationInfo(from now: Date = .now) -> ExpirationInfo {
 		let timeLeft = self.timeIntervalSince(now)
 		
@@ -29,7 +32,7 @@ extension Date {
 		let daysLeft = Int(timeLeft / 86400)
 		let color = Color.expiration(days: daysLeft)
 		
-		let formatter = Date.expirationFormatter(for: timeLeft)
+		let formatter = Date._expirationFormatter(for: timeLeft)
 		let timeString = formatter.string(from: timeLeft) ?? "\(daysLeft) days"
 		
 		return ExpirationInfo(
@@ -39,7 +42,7 @@ extension Date {
 		)
 	}
 	
-	private static func expirationFormatter(for interval: TimeInterval) -> DateComponentsFormatter {
+	private static func _expirationFormatter(for interval: TimeInterval) -> DateComponentsFormatter {
 		let formatter = DateComponentsFormatter()
 		formatter.allowedUnits = interval < 3600
 		? [.minute]

@@ -8,6 +8,7 @@
 import Foundation.NSURL
 
 extension URL {
+	/// Convert normal url to one that can be opened with files app
 	func toSharedDocumentsURL() -> URL? {
 		let urlString = self.absoluteString
 		

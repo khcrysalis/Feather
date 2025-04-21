@@ -8,6 +8,7 @@
 import Foundation.NSBundle
 
 extension Bundle {
+	/// Get the name of the app
 	var name: String {
 		if let displayName = object(forInfoDictionaryKey: "CFBundleDisplayName") as? String {
 			return displayName
@@ -18,10 +19,12 @@ extension Bundle {
 		return object(forInfoDictionaryKey: "CFBundleExecutable") as? String ?? ""
 	}
 	
+	/// Get the executable name of the app
 	var exec: String {
 		return object(forInfoDictionaryKey: "CFBundleExecutable") as? String ?? ""
 	}
-
+	
+	/// Get the "short" version of the app
 	var version: String {
 		if let version = object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
 			return version
@@ -30,6 +33,7 @@ extension Bundle {
 		return object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? ""
 	}
 	
+	/// Get the icon of the app
 	var iconFileName: String? {
 		if let icons = object(forInfoDictionaryKey: "CFBundleIcons") as? [String: Any],
 		   let primary = icons["CFBundlePrimaryIcon"] as? [String: Any],

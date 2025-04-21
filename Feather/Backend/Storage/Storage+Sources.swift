@@ -7,6 +7,7 @@
 
 import CoreData
 
+// MARK: - Class extension: Sources
 extension Storage {
 	func addSource(
 		_ url: URL,

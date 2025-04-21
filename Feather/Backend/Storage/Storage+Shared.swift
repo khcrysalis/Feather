@@ -7,42 +7,7 @@
 
 import CoreData
 
-struct AnyApp: Identifiable {
-	let base: AppInfoPresentable
-	
-	var id: String {
-		base.uuid ?? UUID().uuidString
-	}
-}
-
-protocol AppInfoPresentable {
-	var name: String? { get }
-	var version: String? { get }
-	var identifier: String? { get }
-	var date: Date? { get }
-	var icon: String? { get }
-	var uuid: String? { get }
-	var isSigned: Bool { get }
-}
-
-protocol BundleInfoAssignableData {
-	var identifier: String? { get set }
-	var name: String? { get set }
-	var icon: String? { get set }
-	var version: String? { get set }
-}
-
-extension Signed: AppInfoPresentable {
-	var isSigned: Bool { true }
-}
-
-extension Imported: AppInfoPresentable {
-	var isSigned: Bool { false }
-}
-
-extension Imported: BundleInfoAssignableData {}
-extension Signed: BundleInfoAssignableData {}
-
+// MARK: - Class extension: Apps (Shared)
 extension Storage {
 	func extractBundleInfo<T: BundleInfoAssignableData>(
 		for app: inout T,
@@ -85,3 +50,40 @@ extension Storage {
 		}
 	}
 }
+
+// MARK: - Helpers
+struct AnyApp: Identifiable {
+	let base: AppInfoPresentable
+	
+	var id: String {
+		base.uuid ?? UUID().uuidString
+	}
+}
+
+protocol AppInfoPresentable {
+	var name: String? { get }
+	var version: String? { get }
+	var identifier: String? { get }
+	var date: Date? { get }
+	var icon: String? { get }
+	var uuid: String? { get }
+	var isSigned: Bool { get }
+}
+
+protocol BundleInfoAssignableData {
+	var identifier: String? { get set }
+	var name: String? { get set }
+	var icon: String? { get set }
+	var version: String? { get set }
+}
+
+extension Signed: AppInfoPresentable {
+	var isSigned: Bool { true }
+}
+
+extension Imported: AppInfoPresentable {
+	var isSigned: Bool { false }
+}
+
+extension Imported: BundleInfoAssignableData {}
+extension Signed: BundleInfoAssignableData {}

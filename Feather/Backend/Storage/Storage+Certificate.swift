@@ -7,6 +7,7 @@
 
 import CoreData
 
+// MARK: - Class extension: certificate
 extension Storage {
 	func addCertificate(
 		uuid: String,

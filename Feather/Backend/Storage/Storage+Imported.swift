@@ -7,6 +7,7 @@
 
 import CoreData
 
+// MARK: - Class extension: Imported Apps
 extension Storage {
 	func addImported(
 		uuid: String,
