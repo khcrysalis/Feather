@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ConfigurationView: View {
 	@StateObject private var optionsManager = OptionsManager.shared
+	@State var isRandomAlertPresenting = false
+	@State var randomString = ""
 	
     var body: some View {
 		List {
@@ -29,23 +31,43 @@ struct ConfigurationView: View {
 		.navigationBarTitleDisplayMode(.inline)
 		.toolbar {
 			FRToolbarMenu(
-				"Random String",
+				optionsManager.options.ppqString,
 				systemImage: "character.textbox",
 				style: .icon,
 				placement: .topBarTrailing
 			) {
-				Section("Random String") {
-					Button("Change") {
-						
-					}
-					Button("Export") {
-						
-					}
-				}
+				_randomMenuItem()
 			}
+		}
+		.alert(optionsManager.options.ppqString, isPresented: $isRandomAlertPresenting) {
+			_randomMenuAlert()
 		}
 		.onChange(of: optionsManager.options) { _ in
 			optionsManager.saveOptions()
 		}
     }
+	
+	@ViewBuilder
+	private func _randomMenuItem() -> some View {
+		Section(optionsManager.options.ppqString) {
+			Button("Change") {
+				isRandomAlertPresenting = true
+			}
+			Button("Copy") {
+				UIPasteboard.general.string = optionsManager.options.ppqString
+			}
+		}
+	}
+	
+	@ViewBuilder
+	private func _randomMenuAlert() -> some View {
+		TextField("String", text: $randomString)
+		Button("Save") {
+			if !randomString.isEmpty {
+				optionsManager.options.ppqString = randomString
+			}
+		}
+		
+		Button("Cancel", role: .cancel) {}
+	}
 }
