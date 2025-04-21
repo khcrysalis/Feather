@@ -41,6 +41,7 @@ struct Options: Codable, Equatable {
 	var appName: String?
 	var appVersion: String?
 	var appIdentifier: String?
+	var appEntitlementsFile: URL?
 	
 	var appAppearance: String
 	var minimumAppRequirement: String

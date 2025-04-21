@@ -16,4 +16,3 @@ extension UTType {
 		UTType(filenameExtension: "deb")!
 	}
 }
-

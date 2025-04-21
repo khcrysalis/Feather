@@ -61,12 +61,11 @@ struct SigningTweaksView: View {
 		}
 		
 		do {
-			try FileManager.default.removeItem(at: url)
-		} catch {
-			print("Error deleting file: \(error.localizedDescription)")
+			try? FileManager.default.removeItem(at: url)
 		}
 	}
 	
+	#warning("this can be improved")
 	private func _moveTweak(_ url: URL) {
 		guard url.startAccessingSecurityScopedResource() else {
 			return
@@ -76,6 +75,7 @@ struct SigningTweaksView: View {
 		let tempDir = fileManager.temporaryDirectory
 			.appendingPathComponent("FeatherTweak_\(UUID().uuidString)", isDirectory: true)
 		let destinationUrl = tempDir.appendingPathComponent(url.lastPathComponent)
+		
 		Task {
 			defer {
 				url.stopAccessingSecurityScopedResource()
@@ -89,8 +89,6 @@ struct SigningTweaksView: View {
 				try fileManager.copyItem(at: url, to: destinationUrl)
 				
 				options.injectionFiles.append(destinationUrl)
-			} catch {
-				print(error)
 			}
 		}
 	}

@@ -153,23 +153,32 @@ struct SigningView: View {
 	
 	@ViewBuilder
 	private func _customizationProperties(for app: AppInfoPresentable) -> some View {
-		NavigationLink("Modify Dylibs") {
-			SigningDylibView(
-				app: app,
-				options: $temporaryOptions.optional()
-			)
-		}
-		NavigationLink("Modify Frameworks") {
-			SigningFrameworksView(
-				app: app,
-				options: $temporaryOptions.optional()
-			)
-		}
-		
-		NavigationLink("Add Tweaks") {
-			SigningTweaksView(
-				options: $temporaryOptions
-			)
+		DisclosureGroup("Modify") {
+			NavigationLink("Existing Dylibs") {
+				SigningDylibView(
+					app: app,
+					options: $temporaryOptions.optional()
+				)
+			}
+			
+			NavigationLink("Frameworks & PlugIns") {
+				SigningFrameworksView(
+					app: app,
+					options: $temporaryOptions.optional()
+				)
+			}
+			
+			NavigationLink("Entitlements") {
+				SigningEntitlementsView(
+					bindingValue: $temporaryOptions.appEntitlementsFile
+				)
+			}
+			
+			NavigationLink("Tweaks") {
+				SigningTweaksView(
+					options: $temporaryOptions
+				)
+			}
 		}
 		
 		NavigationLink("Properties") {

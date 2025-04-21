@@ -45,6 +45,7 @@ final class ZsignHandler {
 			provisionPath: Storage.shared.getFile(.provision, from: cert)?.path ?? "",
 			p12Path: Storage.shared.getFile(.certificate, from: cert)?.path ?? "",
 			p12Password: cert.password ?? "",
+			entitlementsPath: _options.appEntitlementsFile?.path ?? "",
 			customIdentifier: _options.appIdentifier ?? "",
 			customName: _options.appName ?? "",
 			customVersion: _options.appVersion ?? "",
@@ -57,6 +58,7 @@ final class ZsignHandler {
 	func adhocSign() async throws {
 		if !Zsign.sign(
 			appPath: _appUrl.relativePath,
+			entitlementsPath: _options.appEntitlementsFile?.path ?? "",
 			customIdentifier: _options.appIdentifier ?? "",
 			customName: _options.appName ?? "",
 			customVersion: _options.appVersion ?? "",
