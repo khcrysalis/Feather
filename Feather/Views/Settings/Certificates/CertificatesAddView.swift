@@ -17,6 +17,8 @@ struct CertificatesAddView: View {
 	@State private var p12URL: URL? = nil
 	@State private var provisionURL: URL? = nil
 	@State private var p12Password: String = ""
+	@State private var certificateName: String = ""
+	
 	@State private var currentImport: ImportType = .none
 	@State private var isImporting = false
 	@State private var isPasswordAlertPresenting = false
@@ -37,6 +39,10 @@ struct CertificatesAddView: View {
 					SecureField("Enter Password", text: $p12Password)
 				} footer: {
 					Text("Enter the password associated with the private key. Leave it blank if theres no password required.")
+				}
+				
+				Section {
+					TextField("Nickname (Optional)", text: $certificateName)
 				}
 			}
 			.navigationBarTitleDisplayMode(.inline)
@@ -124,6 +130,7 @@ extension CertificatesAddView {
 				key: p12URL,
 				provision: provisionURL,
 				password: p12Password,
+				nickname: certificateName.isEmpty ? nil : certificateName,
 				ppq: ppq
 			)
 			

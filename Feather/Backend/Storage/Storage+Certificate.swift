@@ -12,6 +12,7 @@ extension Storage {
 	func addCertificate(
 		uuid: String,
 		password: String? = nil,
+		nickname: String? = nil,
 		ppq: Bool = false,
 		completion: @escaping (Error?) -> Void
 	) {
@@ -20,6 +21,7 @@ extension Storage {
 		new.date = Date()
 		new.password = password
 		new.ppQCheck = ppq
+		new.nickname = nickname
 		do {
 			try context.save()
 			completion(nil)

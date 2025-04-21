@@ -14,17 +14,20 @@ final class CertificateFileHandler: NSObject {
 	private let _key: URL
 	private let _provision: URL
 	private let _keyPassword: String?
+	private let _certNickname: String?
 	private let _ppq: Bool
 	
 	init(
 		key: URL,
 		provision: URL,
 		password: String? = nil,
+		nickname: String? = nil,
 		ppq: Bool = false
 	) {
 		self._key = key
 		self._provision = provision
 		self._keyPassword = password
+		self._certNickname = nickname
 		self._ppq = ppq
 		super.init()
 	}
@@ -38,7 +41,12 @@ final class CertificateFileHandler: NSObject {
 	}
 	
 	func addToDatabase() async throws {
-		Storage.shared.addCertificate(uuid: _uuid, password: _keyPassword, ppq: _ppq) { _ in
+		Storage.shared.addCertificate(
+			uuid: _uuid,
+			password: _keyPassword,
+			nickname: _certNickname,
+			ppq: _ppq
+		) { _ in
 			print("[\(self._uuid)] Added to database")
 		}
 	}

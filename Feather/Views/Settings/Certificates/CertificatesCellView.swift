@@ -19,19 +19,19 @@ struct CertificatesCellView: View {
 	// MARK: Body
 	var body: some View {
 		VStack(spacing: 6) {
-			if let cert = data {
+			if let data = data {
 				VStack(alignment: .leading) {
-					Text(cert.Name)
+					Text(cert.nickname ?? data.Name)
 						.font(.headline)
 						.bold()
-					Text(cert.AppIDName)
+					Text(data.AppIDName)
 						.font(.caption)
 						.foregroundStyle(.secondary)
 				}
 				.lineLimit(0)
 				.frame(maxWidth: .infinity, alignment: .leading)
 				
-				_certInfoPill(data: cert)
+				_certInfoPill(data: data)
 			}
 		}
 		.overlay(

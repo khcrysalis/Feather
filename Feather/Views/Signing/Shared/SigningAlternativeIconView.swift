@@ -32,7 +32,7 @@ struct SigningAlternativeIconView: View {
 			.onAppear(perform: _loadAlternateIcons)
 			.toolbar {
 				if isModifing {
-					FRToolbarButton(role: .cancel)
+					FRToolbarButton(role: .close)
 				}
 			}
 		}
