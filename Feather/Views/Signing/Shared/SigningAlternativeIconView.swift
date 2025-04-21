@@ -32,13 +32,7 @@ struct SigningAlternativeIconView: View {
 			.onAppear(perform: _loadAlternateIcons)
 			.toolbar {
 				if isModifing {
-					FRToolbarButton(
-						"Close",
-						systemImage: "xmark",
-						placement: .topBarTrailing
-					) {
-						dismiss()
-					}
+					FRToolbarButton(role: .cancel)
 				}
 			}
 		}

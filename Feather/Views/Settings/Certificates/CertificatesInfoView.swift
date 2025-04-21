@@ -60,13 +60,7 @@ struct CertificatesInfoView: View {
 				}
 			}
 			.toolbar {
-				FRToolbarButton(
-					"Close",
-					systemImage: "xmark",
-					placement: .topBarTrailing
-				) {
-					dismiss()
-				}
+				FRToolbarButton(role: .close)
 			}
 		}
 		.onAppear {

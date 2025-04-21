@@ -19,8 +19,7 @@ struct ConfigurationDictView: View {
 		List {
 			ForEach(dataDict.sorted(by: { $0.key < $1.key }), id: \.key) { key, value in
 				Section(key) {
-					Text(value)
-					.swipeActions(edge: .trailing) {
+					Text(value).swipeActions(edge: .trailing) {
 						_actions(key: key)
 					}
 				}
@@ -37,9 +36,8 @@ struct ConfigurationDictView: View {
 				isAddingValue = true
 			}
 		}
-		.sheet(isPresented: $isAddingValue) {
+		.navigationDestination(isPresented: $isAddingValue) {
 			ConfigurationDictAddView(dataDict: $dataDict)
-				.presentationDetents([.medium])
 		}
 	}
 }

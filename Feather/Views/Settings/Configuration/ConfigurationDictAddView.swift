@@ -32,15 +32,6 @@ struct ConfigurationDictAddView: View {
 		}
 		.toolbar {
 			FRToolbarButton(
-				"Cancel",
-				systemImage: "xmark",
-				style: .text,
-				placement: .cancellationAction
-			) {
-				_clearAndDismiss()
-			}
-			
-			FRToolbarButton(
 				"Save",
 				systemImage: "plus",
 				style: .text,

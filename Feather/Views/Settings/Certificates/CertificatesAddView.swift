@@ -41,14 +41,7 @@ struct CertificatesAddView: View {
 			}
 			.navigationBarTitleDisplayMode(.inline)
 			.toolbar {
-				FRToolbarButton(
-					"Cancel",
-					systemImage: "xmark",
-					style: .text,
-					placement: .cancellationAction
-				) {
-					dismiss()
-				}
+				FRToolbarButton(role: .cancel)
 				
 				FRToolbarButton(
 					"Save",

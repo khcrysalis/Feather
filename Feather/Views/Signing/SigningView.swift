@@ -59,13 +59,7 @@ struct SigningView: View {
 				.padding()
 			}
 			.toolbar {
-				FRToolbarButton(
-					"Dismiss",
-					systemImage: "chevron.left",
-					placement: .topBarLeading
-				) {
-					dismiss()
-				}
+				FRToolbarButton(role: .dismiss)
 				
 				FRToolbarButton(
 					"Reset",
