@@ -13,7 +13,7 @@ final class Storage: ObservableObject {
 	static let shared = Storage()
 	let container: NSPersistentContainer
 	
-	init(inMemory: Bool = true) {
+	init(inMemory: Bool = false) {
 		container = NSPersistentContainer(name: "Feather")
 		
 		if inMemory {
@@ -25,6 +25,7 @@ final class Storage: ObservableObject {
 				fatalError("Unresolved error \(error), \(error.userInfo)")
 			}
 		})
+		container.viewContext.automaticallyMergesChangesFromParent = true
 	}
 	
 	var context: NSManagedObjectContext {
