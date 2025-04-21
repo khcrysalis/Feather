@@ -9,9 +9,11 @@ import SwiftUI
 import UniformTypeIdentifiers
 import Zsign
 
+// MARK: - View
 struct CertificatesAddView: View {
 	@Environment(\.managedObjectContext) private var managedObjectContext
 	@Environment(\.dismiss) private var dismiss
+	
 	@State private var p12URL: URL? = nil
 	@State private var provisionURL: URL? = nil
 	@State private var p12Password: String = ""
@@ -23,6 +25,7 @@ struct CertificatesAddView: View {
 		p12URL == nil || provisionURL == nil
 	}
 	
+	// MARK: Body
 	var body: some View {
 		FRNavigationView("New Certificate") {
 			Form {
@@ -59,16 +62,18 @@ struct CertificatesAddView: View {
 			}
 			.fileImporter(
 				isPresented: $isImporting,
-				allowedContentTypes: currentImport == .p12 ? [.p12] : [.mobileProvision],
-				allowsMultipleSelection: false
+				allowedContentTypes: currentImport == .p12 ? [.p12] : [.mobileProvision]
 			) { result in
-				_handleFileImport(result) { url in
-					if currentImport == .p12 {
-						self.p12URL = url
-					} else {
-						self.provisionURL = url
+				if case .success(let file) = result {
+					if file.startAccessingSecurityScopedResource() {
+						if currentImport == .p12 {
+							self.p12URL = file
+						} else {
+							self.provisionURL = file
+						}
 					}
 				}
+
 				currentImport = .none
 			}
 			.alert(isPresented: $isPasswordAlertPresenting) {
@@ -76,7 +81,10 @@ struct CertificatesAddView: View {
 			}
 		}
 	}
-	
+}
+
+// MARK: - Extension: View
+extension CertificatesAddView {
 	@ViewBuilder
 	private func _importButton(_ title: String, type: ImportType, file: URL?) -> some View {
 		Button(title) {
@@ -88,23 +96,18 @@ struct CertificatesAddView: View {
 		.animation(.easeInOut(duration: 0.3), value: file != nil)
 		.contentTransition(.opacity)
 	}
-	
-	private func _handleFileImport(_ result: Result<[URL], Error>, completion: @escaping (URL) -> Void) {
-		do {
-			let selectedFiles = try result.get()
-			if let selectedFile = selectedFiles.first {
-				guard selectedFile.startAccessingSecurityScopedResource() else {
-					print("Failed to access the file")
-					return
-				}
-				
-				print(selectedFile)
-				
-				completion(selectedFile)
-			}
-		} catch {
-			print("Error selecting file: \(error.localizedDescription)")
+}
+
+// MARK: - Extension: View (import)
+extension CertificatesAddView {
+	private func _checkPassword(for key: URL, with password: String, using provision: URL) -> Bool {
+		password_check_fix_WHAT_THE_FUCK(provision.path)
+		if (!p12_password_check(key.path, password)) {
+			isPasswordAlertPresenting = true
+			return false
 		}
+		
+		return true
 	}
 	
 	private func _saveCertificate() {
@@ -137,22 +140,13 @@ struct CertificatesAddView: View {
 			} catch {
 				print(error)
 			}
-
+			
 			await dismiss()
 		}
 	}
-	
-	private func _checkPassword(for key: URL, with password: String, using provision: URL) -> Bool {
-		password_check_fix_WHAT_THE_FUCK(provision.path)
-		if (!p12_password_check(key.path, password)) {
-			isPasswordAlertPresenting = true
-			return false
-		}
-		
-		return true
-	}
 }
 
+// MARK: - View Enum
 enum ImportType {
 	case p12, mobileprovision, none
 }

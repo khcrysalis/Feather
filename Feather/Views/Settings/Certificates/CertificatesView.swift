@@ -7,22 +7,21 @@
 
 import SwiftUI
 
+// MARK: - View
 struct CertificatesView: View {
 	@Environment(\.managedObjectContext) private var managedObjectContext
 	@AppStorage("feather.selectedCert") private var storedSelectedCert: Int = 0
+	
 	@State private var isAddingCert = false
 	@State private var selectedInfoCert: CertificatePair?
-	//
-	//
-	//
+
+	// MARK: Fetch
 	@FetchRequest(
 		entity: CertificatePair.entity(),
 		sortDescriptors: [NSSortDescriptor(keyPath: \CertificatePair.date, ascending: false)],
 		animation: .snappy
 	) private var certificates: FetchedResults<CertificatePair>
 	
-	//
-	//
 	//
 	private var bindingSelectedCert: Binding<Int>?
 	private var selectedCertBinding: Binding<Int> {
@@ -33,6 +32,7 @@ struct CertificatesView: View {
 		self.bindingSelectedCert = selectedCert
 	}
 	
+	// MARK: Body
 	var body: some View {
 		List(Array(certificates.enumerated()), id: \.element.uuid) { index, cert in
 			Button {

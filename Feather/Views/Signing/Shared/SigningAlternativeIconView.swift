@@ -7,14 +7,17 @@
 
 import SwiftUI
 
+// MARK: - View
 struct SigningAlternativeIconView: View {
 	@Environment(\.dismiss) var dismiss
+	
 	@State private var alternateIcons: [(name: String, path: String)] = []
 	
 	var app: AppInfoPresentable
 	@Binding var appIcon: UIImage?
 	@Binding var isModifing: Bool
 	
+	// MARK: Body
 	var body: some View {
 		FRNavigationView("Alternative Icons", displayMode: .inline) {
 			List(alternateIcons, id: \.name) { icon in
@@ -40,7 +43,10 @@ struct SigningAlternativeIconView: View {
 			}
 		}
 	}
-	
+}
+
+// MARK: - Extension: View
+extension SigningAlternativeIconView {
 	@ViewBuilder
 	private func _icon(_ icon: (name: String, path: String)) -> some View {
 		HStack(spacing: 12) {
@@ -55,7 +61,7 @@ struct SigningAlternativeIconView: View {
 		}
 		.padding(.vertical, 4)
 	}
-
+	
 	
 	private func _iconUrl(_ path: String) -> UIImage? {
 		guard let app = Storage.shared.getAppDirectory(for: app) else {

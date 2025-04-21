@@ -7,10 +7,13 @@
 
 import SwiftUI
 
+// MARK: - View
 struct SigningTweaksView: View {
 	@State private var isAddingTweak = false
+	
 	@Binding var options: Options
 	
+	// MARK: Body
 	var body: some View {
 		List(options.injectionFiles, id: \.absoluteString) { tweak in
 			_file(tweak: tweak)
@@ -38,33 +41,6 @@ struct SigningTweaksView: View {
 		.navigationTitle("Tweaks")
 	}
 	
-	@ViewBuilder
-	private func _file(tweak: URL) -> some View {
-		HStack(spacing: 12) {
-			FRThumbnailImageView(url: tweak)
-			Text(tweak.lastPathComponent)
-				.lineLimit(2)
-		}
-		.frame(maxWidth: .infinity, alignment: .leading)
-		.swipeActions(edge: .trailing, allowsFullSwipe: true) {
-			Button(role: .destructive) {
-				_deleteFile(at: tweak)
-			} label: {
-				Label("Delete", systemImage: "trash")
-			}
-		}
-	}
-	
-	private func _deleteFile(at url: URL) {
-		if let index = options.injectionFiles.firstIndex(where: { $0 == url }) {
-			options.injectionFiles.remove(at: index)
-		}
-		
-		do {
-			try? FileManager.default.removeItem(at: url)
-		}
-	}
-	
 	#warning("this can be improved")
 	private func _moveTweak(_ url: URL) {
 		guard url.startAccessingSecurityScopedResource() else {
@@ -90,6 +66,36 @@ struct SigningTweaksView: View {
 				
 				options.injectionFiles.append(destinationUrl)
 			}
+		}
+	}
+}
+
+// MARK: - Extension: View
+extension SigningTweaksView {
+	@ViewBuilder
+	private func _file(tweak: URL) -> some View {
+		HStack(spacing: 12) {
+			FRThumbnailImageView(url: tweak)
+			Text(tweak.lastPathComponent)
+				.lineLimit(2)
+		}
+		.frame(maxWidth: .infinity, alignment: .leading)
+		.swipeActions(edge: .trailing, allowsFullSwipe: true) {
+			Button(role: .destructive) {
+				_deleteFile(at: tweak)
+			} label: {
+				Label("Delete", systemImage: "trash")
+			}
+		}
+	}
+	
+	private func _deleteFile(at url: URL) {
+		if let index = options.injectionFiles.firstIndex(where: { $0 == url }) {
+			options.injectionFiles.remove(at: index)
+		}
+		
+		do {
+			try? FileManager.default.removeItem(at: url)
 		}
 	}
 }

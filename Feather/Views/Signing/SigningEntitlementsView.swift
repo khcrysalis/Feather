@@ -7,10 +7,13 @@
 
 import SwiftUI
 
+// MARK: - View
 struct SigningEntitlementsView: View {
 	@State private var isAddingEnt = false
+	
 	@Binding var bindingValue: URL?
 	
+	// MARK: Body
 	var body: some View {
 		Form {
 			if let ent = bindingValue {
@@ -36,7 +39,10 @@ struct SigningEntitlementsView: View {
 			}
 		}
 	}
-	
+}
+
+// MARK: - Extension: View
+extension SigningEntitlementsView {
 	private func _deleteFile(at url: URL) {
 		bindingValue = nil
 		
@@ -44,8 +50,11 @@ struct SigningEntitlementsView: View {
 			try? FileManager.default.removeItem(at: url)
 		}
 	}
-	
-	#warning("this can be improved")
+}
+
+// MARK: - Extension: View (import)
+extension SigningEntitlementsView {
+#warning("this can be improved")
 	private func _moveEnt(_ url: URL) {
 		guard url.startAccessingSecurityScopedResource() else {
 			return

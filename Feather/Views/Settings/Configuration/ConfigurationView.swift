@@ -7,11 +7,13 @@
 
 import SwiftUI
 
+// MARK: - View
 struct ConfigurationView: View {
 	@StateObject private var optionsManager = OptionsManager.shared
 	@State var isRandomAlertPresenting = false
 	@State var randomString = ""
 	
+	// MARK: Body
     var body: some View {
 		List {
 			NavigationLink("Display Names", destination: ConfigurationDictView(
@@ -46,7 +48,10 @@ struct ConfigurationView: View {
 			optionsManager.saveOptions()
 		}
     }
-	
+}
+
+// MARK: - Extension: View
+extension ConfigurationView {
 	@ViewBuilder
 	private func _randomMenuItem() -> some View {
 		Section(optionsManager.options.ppqString) {

@@ -7,10 +7,12 @@
 
 import SwiftUI
 
+// MARK: - View
 struct LibraryCellView: View {
 	var app: AppInfoPresentable
 	@Binding var selectedApp: AnyApp?
-
+	
+	// MARK: Body
 	var body: some View {
 		HStack(spacing: 9) {
 			FRAppIconView(app: app, size: 54, cornerRadius: 13)
@@ -22,8 +24,6 @@ struct LibraryCellView: View {
 				Group {
 					if let version = app.version, let id = app.identifier {
 						Text("\(version) • \(id)")
-					} else {
-						Text(app.identifier ?? "No Identifier")
 					}
 				}
 				.font(.caption)
@@ -40,7 +40,10 @@ struct LibraryCellView: View {
 			_actions(for: app)
 		}
 	}
-	
+}
+
+// MARK: - Extension: View
+extension LibraryCellView {
 	@ViewBuilder
 	private func _actions(for app: AppInfoPresentable) -> some View {
 		Button(role: .destructive) {

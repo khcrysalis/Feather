@@ -7,13 +7,16 @@
 
 import SwiftUI
 
+// MARK: - View
 struct CertificatesCellView: View {
+	@State var data: Certificate?
+	
 	var cert: CertificatePair
 	var isSelected: Bool
 	var shouldDisplayInfo: Bool = true
-	@State var data: Certificate?
 	@Binding var selectedInfoCert: CertificatePair?
 	
+	// MARK: Body
 	var body: some View {
 		VStack(spacing: 6) {
 			if let cert = data {
@@ -32,8 +35,8 @@ struct CertificatesCellView: View {
 			}
 		}
 		.overlay(
-			isSelected ? Image(systemName: "checkmark.circle.fill")
-				.foregroundStyle(.accent)
+			isSelected
+			? Image(systemName: "checkmark.circle.fill").foregroundStyle(.accent)
 			: nil,
 			alignment: .topTrailing
 		)
@@ -55,7 +58,10 @@ struct CertificatesCellView: View {
 			data = Storage.shared.getProvisionFileDecoded(for: cert)
 		}
 	}
-	
+}
+
+// MARK: - Extension: View
+extension CertificatesCellView {
 	@ViewBuilder
 	private func _actions(for cert: CertificatePair) -> some View {
 		Button(role: .destructive) {

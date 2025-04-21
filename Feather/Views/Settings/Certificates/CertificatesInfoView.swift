@@ -7,12 +7,14 @@
 
 import SwiftUI
 
+// MARK: - View
 struct CertificatesInfoView: View {
 	@Environment(\.dismiss) var dismiss
 	@State var data: Certificate?
 	
 	var cert: CertificatePair
 	
+	// MARK: Body
     var body: some View {
 		FRNavigationView(cert.nickname ?? "", displayMode: .inline) {
 			Form {
@@ -71,7 +73,10 @@ struct CertificatesInfoView: View {
 			data = Storage.shared.getProvisionFileDecoded(for: cert)
 		}
     }
-	
+}
+
+// MARK: - Extension: View
+extension CertificatesInfoView {
 	@ViewBuilder
 	private func _info(_ title: String, description: String) -> some View {
 		LabeledContent(title) {
@@ -89,4 +94,3 @@ struct CertificatesInfoView: View {
 		}
 	}
 }
-

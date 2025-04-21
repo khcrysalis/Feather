@@ -8,35 +8,34 @@
 import SwiftUI
 import PhotosUI
 
+// MARK: - View
 struct SigningView: View {
 	@Environment(\.dismiss) var dismiss
 	@StateObject private var optionsManager = OptionsManager.shared
+	
 	@State private var temporaryOptions: Options = OptionsManager.shared.options
 	@State private var temporaryCertificate: Int
 	@State private var isAltPickerPresented = false
 	@State private var isFilePickerPresented = false
 	@State private var isImagePickerPresented = false
 	@State private var selectedPhoto: PhotosPickerItem? = nil
-	//
-	//
-	//
+	@State var appIcon: UIImage?
+	
+	// MARK: Fetch
 	@FetchRequest(
 		entity: CertificatePair.entity(),
 		sortDescriptors: [NSSortDescriptor(keyPath: \CertificatePair.date, ascending: false)],
 		animation: .snappy
 	) private var certificates: FetchedResults<CertificatePair>
-	//
-	//
-	//
-	var app: AppInfoPresentable
-	@State var appIcon: UIImage?
 	
+	var app: AppInfoPresentable
 	init(app: AppInfoPresentable) {
 		self.app = app
 		let storedCert = UserDefaults.standard.integer(forKey: "feather.selectedCert")
 		_temporaryCertificate = State(initialValue: storedCert)
 	}
-		
+	
+	// MARK: Body
     var body: some View {
 		FRNavigationView(app.name ?? "Unknown", displayMode: .inline) {
 			Form {
@@ -113,6 +112,14 @@ struct SigningView: View {
 		}
     }
 	
+	private func _selectedCert() -> CertificatePair? {
+		guard certificates.indices.contains(temporaryCertificate) else { return nil }
+		return certificates[temporaryCertificate]
+	}
+}
+
+// MARK: - Extension: View
+extension SigningView {
 	@ViewBuilder
 	private func _customizationOptions(for app: AppInfoPresentable) -> some View {
 		Menu {
@@ -190,39 +197,6 @@ struct SigningView: View {
 		}
 	}
 	
-	private func _selectedCert() -> CertificatePair? {
-		guard certificates.indices.contains(temporaryCertificate) else { return nil }
-		return certificates[temporaryCertificate]
-	}
-	
-	private func _start() {
-		#if !DEBUG
-		guard _selectedCert() != nil || temporaryOptions.doAdhocSigning else {
-			print("somethings not right")
-			return
-		}
-		#endif
-		
-		Task.detached {
-			let handler = await SigningHandler(app: app, options: temporaryOptions)
-			handler.appCertificate = await _selectedCert()
-			handler.appIcon = await appIcon
-			
-			do {
-				try await handler.copy()
-				try await handler.modify()
-				try await handler.move()
-				try await handler.addToDatabase()
-				await dismiss()
-			} catch {
-				try await handler.clean()
-				print(error)
-			}
-		}
-	}
-}
-
-extension SigningView {
 	@ViewBuilder
 	private func _infoCell<V: View>(_ title: String, desc: String?, @ViewBuilder destination: () -> V) -> some View {
 		NavigationLink {
@@ -250,6 +224,35 @@ extension SigningView {
 		} else {
 			Text("No valid certificate selected.")
 				.foregroundStyle(Color(uiColor: .disabled(.tintColor)))
+		}
+	}
+}
+
+// MARK: - Extension: View (import)
+extension SigningView {
+	private func _start() {
+		#if !DEBUG
+		guard _selectedCert() != nil || temporaryOptions.doAdhocSigning else {
+			print("somethings not right")
+			return
+		}
+		#endif
+		
+		Task.detached {
+			let handler = await SigningHandler(app: app, options: temporaryOptions)
+			handler.appCertificate = await _selectedCert()
+			handler.appIcon = await appIcon
+			
+			do {
+				try await handler.copy()
+				try await handler.modify()
+				try await handler.move()
+				try await handler.addToDatabase()
+				await dismiss()
+			} catch {
+				try await handler.clean()
+				print(error)
+			}
 		}
 	}
 }

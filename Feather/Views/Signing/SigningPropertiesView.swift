@@ -7,15 +7,17 @@
 
 import SwiftUI
 
+// MARK: - View
 struct SigningPropertiesView: View {
 	@Environment(\.dismiss) var dismiss
+	
+	@State private var text: String = ""
 	
 	var title: String
 	var initialValue: String 
 	@Binding var bindingValue: String?
 	
-	@State private var text: String = ""
-	
+	// MARK: Body
 	var body: some View {
 		Form {
 			TextField(initialValue, text: $text)

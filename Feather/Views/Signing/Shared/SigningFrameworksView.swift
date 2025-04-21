@@ -7,16 +7,18 @@
 
 import SwiftUI
 
+// MARK: - View
 struct SigningFrameworksView: View {
-	var app: AppInfoPresentable
-	@Binding var options: Options?
-	
 	@State private var frameworks: [String] = []
 	@State private var plugins: [String] = []
 	
 	private let _frameworksPath = "Frameworks"
 	private let _pluginsPath = "PlugIns"
 	
+	var app: AppInfoPresentable
+	@Binding var options: Options?
+	
+	// MARK: Body
 	var body: some View {
 		List {
 			if !frameworks.isEmpty {
@@ -47,7 +49,10 @@ struct SigningFrameworksView: View {
 		.navigationTitle("Frameworks & PlugIns")
 		.onAppear(perform: _listFrameworksAndPlugins)
 	}
-	
+}
+
+// MARK: - Extension: View
+extension SigningFrameworksView {
 	private func _listFrameworksAndPlugins() {
 		guard let path = Storage.shared.getAppDirectory(for: app) else { return }
 		

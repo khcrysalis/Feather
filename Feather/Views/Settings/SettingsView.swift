@@ -7,7 +7,10 @@
 
 import SwiftUI
 
+// MARK: - View
 struct SettingsView: View {
+	
+	// MARK: Body
     var body: some View {
 		FRNavigationView("Settings") {
             List {

@@ -8,11 +8,12 @@
 import SwiftUI
 import Zsign
 
+// MARK: - View
 struct LibraryInfoView: View {
 	@Environment(\.dismiss) var dismiss
-	
 	var app: AppInfoPresentable
-		
+	
+	// MARK: Body
     var body: some View {
 		FRNavigationView(app.name ?? "", displayMode: .inline) {
 			List {
@@ -44,7 +45,10 @@ struct LibraryInfoView: View {
 			}
 		}
     }
-	
+}
+
+// MARK: - Extension: View
+extension LibraryInfoView {
 	@ViewBuilder
 	private func _infoSection(for app: AppInfoPresentable) -> some View {
 		FRSection("Info") {

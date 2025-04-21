@@ -7,10 +7,12 @@
 
 import SwiftUI
 
+// MARK: - View
 struct SigningOptionsView: View {
 	@Binding var options: Options
 	var temporaryOptions: Options?
 	
+	// MARK: Body
 	var body: some View {
 		Group {
 			if (temporaryOptions == nil) {

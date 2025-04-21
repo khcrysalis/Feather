@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// MARK: - View
 struct SigningDylibView: View {
 	@State private var dylibs: [String] = []
 	@State private var hiddenDylibCount: Int = 0
@@ -36,7 +37,10 @@ struct SigningDylibView: View {
 		.navigationTitle("Dylibs")
 		.onAppear(perform: _loadDylibs)
 	}
-	
+}
+
+// MARK: - Extension: View
+extension SigningDylibView {
 	private func _loadDylibs() {
 		guard let path = Storage.shared.getAppDirectory(for: app) else { return }
 		
@@ -49,4 +53,3 @@ struct SigningDylibView: View {
 		hiddenDylibCount = allDylibs.count - dylibs.count
 	}
 }
-
