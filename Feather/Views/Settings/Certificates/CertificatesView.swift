@@ -11,6 +11,7 @@ struct CertificatesView: View {
 	@Environment(\.managedObjectContext) private var managedObjectContext
 	@AppStorage("feather.selectedCert") private var storedSelectedCert: Int = 0
 	@State private var isAddingCert = false
+	@State private var selectedInfoCert: CertificatePair?
 	//
 	//
 	//
@@ -19,6 +20,7 @@ struct CertificatesView: View {
 		sortDescriptors: [NSSortDescriptor(keyPath: \CertificatePair.date, ascending: false)],
 		animation: .snappy
 	) private var certificates: FetchedResults<CertificatePair>
+	
 	//
 	//
 	//
@@ -32,15 +34,13 @@ struct CertificatesView: View {
 	}
 	
 	var body: some View {
-		List {
-			ForEach(Array(certificates.enumerated()), id: \.element.uuid) { index, cert in
-				Button {
-					selectedCertBinding.wrappedValue = index
-				} label: {
-					CertificatesCellView(cert: cert, isSelected: selectedCertBinding.wrappedValue == index)
-				}
-				.buttonStyle(.plain)
+		List(Array(certificates.enumerated()), id: \.element.uuid) { index, cert in
+			Button {
+				selectedCertBinding.wrappedValue = index
+			} label: {
+				CertificatesCellView(cert: cert, isSelected: selectedCertBinding.wrappedValue == index, selectedInfoCert: $selectedInfoCert)
 			}
+			.buttonStyle(.plain)
 		}
 		.navigationTitle("Certificates")
 		.navigationBarTitleDisplayMode(.inline)
@@ -55,6 +55,9 @@ struct CertificatesView: View {
 					isAddingCert = true
 				}
 			}
+		}
+		.sheet(item: $selectedInfoCert) { cert in
+			CertificatesInfoView(cert: cert)
 		}
 		.sheet(isPresented: $isAddingCert) {
 			CertificatesAddView()

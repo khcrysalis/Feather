@@ -28,7 +28,7 @@ struct DebugView: View {
 				
 				if certificates.indices.contains(selectedCert) {
 					let selectedCertificate = certificates[selectedCert]
-					CertificatesCellView(cert: selectedCertificate, isSelected: false)
+					CertificatesCellView(cert: selectedCertificate, isSelected: false, selectedInfoCert: .constant(.none))
 				} else {
 					Text("No valid certificate selected.")
 				}

@@ -10,7 +10,9 @@ import SwiftUI
 struct CertificatesCellView: View {
 	var cert: CertificatePair
 	var isSelected: Bool
+	var shouldDisplayInfo: Bool = true
 	@State var data: Certificate?
+	@Binding var selectedInfoCert: CertificatePair?
 	
 	var body: some View {
 		VStack(spacing: 6) {
@@ -43,8 +45,10 @@ struct CertificatesCellView: View {
 			_actions(for: cert)
 		}
 		.contextMenu {
-			_contextActions(for: cert)
-			Divider()
+			if shouldDisplayInfo {
+				_contextActions(for: cert)
+				Divider()
+			}
 			_actions(for: cert)
 		}
 		.onAppear {
@@ -64,6 +68,7 @@ struct CertificatesCellView: View {
 	@ViewBuilder
 	private func _contextActions(for cert: CertificatePair) -> some View {
 		Button {
+			selectedInfoCert = cert
 		} label: {
 			Label("Get Info", systemImage: "info.circle")
 		}

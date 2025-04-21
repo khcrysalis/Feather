@@ -231,7 +231,12 @@ extension SigningView {
 			NavigationLink {
 				CertificatesView(selectedCert: $temporaryCertificate)
 			} label: {
-				CertificatesCellView(cert: cert, isSelected: false)
+				CertificatesCellView(
+					cert: cert,
+					isSelected: false,
+					shouldDisplayInfo: false,
+					selectedInfoCert: .constant(.none)
+				)
 			}
 		} else {
 			Text("No valid certificate selected.")

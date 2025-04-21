@@ -31,14 +31,39 @@ extension Bundle {
 	}
 	
 	var iconFileName: String? {
-		guard
-			let icons = object(forInfoDictionaryKey: "CFBundleIcons") as? [String: Any],
-			let primary = icons["CFBundlePrimaryIcon"] as? [String: Any],
-			let files = primary["CFBundleIconFiles"] as? [String],
-			let name = files.last
-		else {
-			return nil
+		if let icons = object(forInfoDictionaryKey: "CFBundleIcons") as? [String: Any],
+		   let primary = icons["CFBundlePrimaryIcon"] as? [String: Any],
+		   let files = primary["CFBundleIconFiles"] as? [String],
+		   let name = files.last {
+			return name
 		}
-		return name
+		
+		if let iPadIcons = object(forInfoDictionaryKey: "CFBundleIcons~ipad") as? [String: Any],
+		   let primary = iPadIcons["CFBundlePrimaryIcon"] as? [String: Any],
+		   let files = primary["CFBundleIconFiles"] as? [String],
+		   let name = files.last {
+			return name
+		}
+		
+		if let iconFiles = object(forInfoDictionaryKey: "CFBundleIconFiles") as? [String],
+		   let name = iconFiles.last ?? iconFiles.first {
+			return name
+		}
+		
+		if let iPhoneIconFiles = object(forInfoDictionaryKey: "CFBundleIconFiles~iphone") as? [String],
+		   let name = iPhoneIconFiles.last ?? iPhoneIconFiles.first {
+			return name
+		}
+		
+		if let iPadIconFiles = object(forInfoDictionaryKey: "CFBundleIconFiles~ipad") as? [String],
+		   let name = iPadIconFiles.last ?? iPadIconFiles.first {
+			return name
+		}
+		
+		if let iconFile = object(forInfoDictionaryKey: "CFBundleIconFile") as? String {
+			return iconFile
+		}
+		
+		return nil
 	}
 }
