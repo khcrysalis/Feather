@@ -120,12 +120,10 @@ extension LibraryCellView {
 	
 	@ViewBuilder
 	private func _buttonLabel(_ title: String) -> some View {
-		FRButton(
+		LRActionButton(
 			title,
 			systemImage: "",
-			style: .text,
-			horizontalPadding: 22
+			style: .text
 		)
-		.foregroundStyle(.accent)
 	}
 }

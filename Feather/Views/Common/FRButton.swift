@@ -29,14 +29,14 @@ struct FRButton: View {
 		switch _style {
 		case .icon:
 			Image(systemName: _icon)
-				.font(.system(size: 12, weight: .bold))
+				.font(.caption).bold()
 				.frame(width: 29, height: 29)
 				.background(Color(uiColor: .secondarySystemGroupedBackground))
 				.clipShape(Circle())
 			
 		case .text:
 			Text(_title)
-				.font(.system(size: 12, weight: .bold))
+				.font(.footnote).bold()
 				.padding(.horizontal, _horizontalPadding)
 				.frame(height: 29)
 				.background(Color(uiColor: .secondarySystemGroupedBackground))
