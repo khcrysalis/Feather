@@ -103,4 +103,9 @@ final class BackgroundController {
             self?.end()
         }
     }
+    // MARK: - Ping to Reset Idle Timer
+    /// Call this to reset the idle timer, e.g. when there is activity to prevent idle timeout.
+    func ping() {
+        resetIdleTimer()
+    }
 }
