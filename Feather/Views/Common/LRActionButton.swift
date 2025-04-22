@@ -34,8 +34,7 @@ struct LRActionButton: View {
 					.font(.footnote).bold()
 			}
 		}
-		.frame(width: 66)
-		.padding(.vertical, 6)
+		.frame(width: 66, height: 29)
 		.background(Color(uiColor: .secondarySystemGroupedBackground))
 		.clipShape(Capsule())
 	}
