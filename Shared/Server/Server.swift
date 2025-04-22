@@ -8,6 +8,7 @@
 //
 
 import Foundation
+import AVFoundation
 import Vapor
 import NIOSSL
 import NIOTLS
@@ -69,13 +70,17 @@ class Installer: Identifiable, ObservableObject {
 				return Response(status: .ok, version: req.version, headers: [
 					"Content-Type": "image/png",
 				], body: .init(data: displayImageLargeData))
-			case payloadEndpoint.path:
-				DispatchQueue.main.async { self.status = .sendingPayload }
-				return req.fileio.streamFile(
-					at: self.package.path
-				) { result in
-					DispatchQueue.main.async { self.status = .completed(result) }
-				}
+            case payloadEndpoint.path:
+                DispatchQueue.main.async {
+                    self.status = .sendingPayload
+                    FeatherBackgroundManager.shared.begin()
+                }
+                return req.fileio.streamFile(at: self.package.path) { result in
+                    DispatchQueue.main.async {
+                        self.status = .completed(result)
+                        FeatherBackgroundManager.shared.end()
+                    }
+                }
 			default:
 				return Response(status: .notFound)
 			}

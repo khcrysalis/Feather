@@ -157,55 +157,58 @@ extension LibraryViewController: UIDocumentPickerDelegate {
 
 extension LibraryViewController {
 	static var appDownload: AppDownload?
-	func startDownloadIfNeeded(downloadURL: URL?, sourceLocation: String) {
-		guard let downloadURL = downloadURL else {
-			return
-		}
-		
-		DispatchQueue.main.async {
-			self.present(self.loaderAlert!, animated: true)
-		}
+    func startDownloadIfNeeded(downloadURL: URL?, sourceLocation: String) {
+        guard let downloadURL = downloadURL else {
+            return
+        }
 
-		if LibraryViewController.appDownload == nil {
-			LibraryViewController.appDownload = AppDownload()
-		}
-		DispatchQueue(label: "DL").async {
-			
-			LibraryViewController.appDownload?.downloadFile(url: downloadURL, appuuid: UUID().uuidString) { [weak self] (uuid, filePath, error) in
-				guard let self = self else { return }
-				if let error = error {
-					DispatchQueue.main.async {
-						self.loaderAlert?.dismiss(animated: true)
-					}
-					Debug.shared.log(message: "Failed to Import: \(error)", type: .error)
-				} else if let uuid = uuid, let filePath = filePath {
-					LibraryViewController.appDownload?.extractCompressedBundle(packageURL: filePath) { (targetBundle, error) in
-						
-						if let error = error {
-							DispatchQueue.main.async {
-								self.loaderAlert?.dismiss(animated: true)
-							}
-							Debug.shared.log(message: "Failed to Import: \(error)", type: .error)
-						} else if let targetBundle = targetBundle {
-							LibraryViewController.appDownload?.addToApps(bundlePath: targetBundle, uuid: uuid, sourceLocation: sourceLocation) { error in
-								if let error = error {
-									DispatchQueue.main.async {
-										self.loaderAlert?.dismiss(animated: true)
-									}
-									Debug.shared.log(message: "Failed to Import: \(error)", type: .error)
-								} else {
-									DispatchQueue.main.async {
-										self.loaderAlert?.dismiss(animated: true)
-									}
-									Debug.shared.log(message: String.localized("DONE"), type: .success)
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+        DispatchQueue.main.async {
+            self.present(self.loaderAlert!, animated: true)
+        }
+
+        FeatherBackgroundManager.shared.begin()
+
+        if LibraryViewController.appDownload == nil {
+            LibraryViewController.appDownload = AppDownload()
+        }
+        DispatchQueue(label: "DL").async {
+            LibraryViewController.appDownload?.downloadFile(url: downloadURL, appuuid: UUID().uuidString) { [weak self] (uuid, filePath, error) in
+                guard let self = self else { return }
+
+                defer {
+                    FeatherBackgroundManager.shared.end()
+                }
+
+                if let error = error {
+                    DispatchQueue.main.async {
+                        self.loaderAlert?.dismiss(animated: true)
+                    }
+                    Debug.shared.log(message: "Failed to Import: \(error)", type: .error)
+                } else if let uuid = uuid, let filePath = filePath {
+                    LibraryViewController.appDownload?.extractCompressedBundle(packageURL: filePath) { (targetBundle, error) in
+
+                        if let error = error {
+                            DispatchQueue.main.async {
+                                self.loaderAlert?.dismiss(animated: true)
+                            }
+                            Debug.shared.log(message: "Failed to Import: \(error)", type: .error)
+                        } else if let targetBundle = targetBundle {
+                            LibraryViewController.appDownload?.addToApps(bundlePath: targetBundle, uuid: uuid, sourceLocation: sourceLocation) { error in
+                                DispatchQueue.main.async {
+                                    self.loaderAlert?.dismiss(animated: true)
+                                }
+                                if let error = error {
+                                    Debug.shared.log(message: "Failed to Import: \(error)", type: .error)
+                                } else {
+                                    Debug.shared.log(message: String.localized("DONE"), type: .success)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 
