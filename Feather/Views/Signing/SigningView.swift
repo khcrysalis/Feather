@@ -240,22 +240,13 @@ extension SigningView {
 		generator.impactOccurred()
 		isSigning = true
 		
-		Task.detached {
-			let handler = await SigningHandler(app: app, options: temporaryOptions)
-			handler.appCertificate = await _selectedCert()
-			handler.appIcon = await appIcon
-			
-			do {
-				try await handler.copy()
-				try await handler.modify()
-				try await handler.move()
-				try await handler.addToDatabase()
-				
-				await MainActor.run { dismiss() }
-			} catch {
-				try await handler.clean()
-				await MainActor.run { dismiss() }
-			}
+		FR.signPackageFile(
+			app,
+			using: temporaryOptions,
+			icon: appIcon,
+			certificate: _selectedCert()
+		) { _ in
+			dismiss()
 		}
 	}
 }

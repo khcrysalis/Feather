@@ -123,28 +123,13 @@ extension CertificatesAddView {
 		
 		let ppq = CertificateReader(provisionURL).decoded?.PPQCheck ?? false
 		
-		Task.detached {
-			defer {
-				p12URL.stopAccessingSecurityScopedResource()
-				provisionURL.stopAccessingSecurityScopedResource()
-			}
-			
-			let handler = await CertificateFileHandler(
-				key: p12URL,
-				provision: provisionURL,
-				password: p12Password,
-				nickname: certificateName.isEmpty ? nil : certificateName,
-				ppq: ppq
-			)
-			
-			do {
-				try await handler.copy()
-				try await handler.addToDatabase()
-			} catch {
-				print(error)
-			}
-			
-			await dismiss()
+		FR.handleCertificateFiles(
+			p12URL: p12URL,
+			provisionURL: provisionURL,
+			p12Password: p12Password,
+			certificateName: certificateName
+		) { _ in
+			dismiss()
 		}
 	}
 }

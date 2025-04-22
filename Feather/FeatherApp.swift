@@ -21,27 +21,10 @@ struct FeatherApp: App {
 		}
 	}
 	
-	#warning("this could be turned in its own static function, in an enum")
 	private func _handleURL(_ url: URL) {
 		if url.pathExtension == "ipa" {
 			if url.startAccessingSecurityScopedResource() {
-				Task.detached {
-					defer {
-						url.stopAccessingSecurityScopedResource()
-					}
-					
-					let handler = AppFileHandler(file: url)
-					
-					do {
-						try await handler.copy()
-						try await handler.extract()
-						try await handler.move()
-						try await handler.addToDatabase()
-					} catch {
-						try await handler.clean()
-						print(error)
-					}
-				}
+				FR.handlePackageFile(url) { _ in }
 			}
 		}
 	}

@@ -74,33 +74,10 @@ struct LibraryView: View {
 			) { result in
 				if case .success(let file) = result {
 					if file.startAccessingSecurityScopedResource() {
-						self._import(file: file)
+						FR.handlePackageFile(file) { _ in }
 					}
 				}
 			}
         }
     }
-}
-
-// MARK: - Extension: View
-extension LibraryView {
-	private func _import(file ipa: URL) {
-		Task.detached {
-			defer {
-				ipa.stopAccessingSecurityScopedResource()
-			}
-			
-			let handler = AppFileHandler(file: ipa)
-			
-			do {
-				try await handler.copy()
-				try await handler.extract()
-				try await handler.move()
-				try await handler.addToDatabase()
-			} catch {
-				try await handler.clean()
-				print(error)
-			}
-		}
-	}
 }
