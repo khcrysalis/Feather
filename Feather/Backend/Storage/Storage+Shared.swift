@@ -45,8 +45,6 @@ extension Storage {
 				context.delete(object)
 			}
 			saveContext()
-		} catch {
-			print(error)
 		}
 	}
 }
