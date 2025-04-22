@@ -145,7 +145,7 @@ struct TransferPreview: View {
 	
     func archivePayload(at filePath: String, with fileName: String, completion: @escaping (URL?) -> Void) {
         DispatchQueue.global(qos: .userInitiated).async {
-            FeatherBackgroundManager.shared.begin() //
+            BackgroundController.shared.begin() //
 
             let uuid = UUID().uuidString
             let tempDirectory = FileManager.default.temporaryDirectory.appendingPathComponent(uuid)
@@ -169,7 +169,7 @@ struct TransferPreview: View {
                 }
             }
 
-            FeatherBackgroundManager.shared.end()
+            BackgroundController.shared.end()
         }
     }
 

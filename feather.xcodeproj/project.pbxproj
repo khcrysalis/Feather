@@ -88,7 +88,6 @@
 		338231DB2D7A77E700999AD3 /* Server */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Server; sourceTree = "<group>"; };
 		338232032D7A77E700999AD3 /* Magic */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Magic; sourceTree = "<group>"; };
 		338232162D7A77E700999AD3 /* Logging */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Logging; sourceTree = "<group>"; };
-		D0BBA39C2DB759C60026A8BB /* Utility */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Utility; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +115,6 @@
 		339CE2802C584C7C00B58502 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				D0BBA39C2DB759C60026A8BB /* Utility */,
 				33BF31542C7C033C0087F3D2 /* Localizations */,
 				338231CC2D7A77E700999AD3 /* Design */,
 				338231AE2D7A77E700999AD3 /* Data */,
@@ -205,7 +203,6 @@
 				338231DB2D7A77E700999AD3 /* Server */,
 				338232032D7A77E700999AD3 /* Magic */,
 				338232162D7A77E700999AD3 /* Logging */,
-				D0BBA39C2DB759C60026A8BB /* Utility */,
 			);
 			name = feather;
 			packageProductDependencies = (

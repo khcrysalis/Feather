@@ -166,7 +166,7 @@ extension LibraryViewController {
             self.present(self.loaderAlert!, animated: true)
         }
 
-        FeatherBackgroundManager.shared.begin()
+        BackgroundController.shared.begin()
 
         if LibraryViewController.appDownload == nil {
             LibraryViewController.appDownload = AppDownload()
@@ -176,7 +176,7 @@ extension LibraryViewController {
                 guard let self = self else { return }
 
                 defer {
-                    FeatherBackgroundManager.shared.end()
+                    BackgroundController.shared.end()
                 }
 
                 if let error = error {

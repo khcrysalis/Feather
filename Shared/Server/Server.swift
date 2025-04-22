@@ -8,7 +8,6 @@
 //
 
 import Foundation
-import AVFoundation
 import Vapor
 import NIOSSL
 import NIOTLS
@@ -73,12 +72,12 @@ class Installer: Identifiable, ObservableObject {
             case payloadEndpoint.path:
                 DispatchQueue.main.async {
                     self.status = .sendingPayload
-                    FeatherBackgroundManager.shared.begin()
+                    BackgroundController.shared.begin()
                 }
                 return req.fileio.streamFile(at: self.package.path) { result in
                     DispatchQueue.main.async {
                         self.status = .completed(result)
-                        FeatherBackgroundManager.shared.end()
+                        BackgroundController.shared.end()
                     }
                 }
 			default:

@@ -47,20 +47,15 @@ extension SourceAppViewController {
             cell.appDownload?.dldelegate = self
         }
 
-        FeatherBackgroundManager.shared.begin()
+        BackgroundController.shared.begin()
 
         DispatchQueue(label: "DL").async {
             downloadTaskManager.addTask(uuid: appUUID, cell: cell, dl: cell.appDownload!)
 
             cell.appDownload?.downloadFile(url: downloadURL, appuuid: appUUID) { [weak self] (uuid, filePath, error) in
-                guard let self = self else {
-                    FeatherBackgroundManager.shared.end()
-                    return
-                }
+                guard let self = self else { return }
 
-                defer {
-                    FeatherBackgroundManager.shared.end()
-                }
+                defer { BackgroundController.shared.end() }
 
                 if let error = error {
                     downloadTaskManager.updateTask(uuid: appUUID, state: .failed(error: error))
