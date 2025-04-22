@@ -63,13 +63,7 @@ struct CertificatesAddView: View {
 				allowedContentTypes: currentImport == .p12 ? [.p12] : [.mobileProvision]
 			) { result in
 				if case .success(let file) = result {
-					if file.startAccessingSecurityScopedResource() {
-						if currentImport == .p12 {
-							self.p12URL = file
-						} else {
-							self.provisionURL = file
-						}
-					}
+					{ currentImport == .p12 ? (self.p12URL = file) : (self.provisionURL = file) }()
 				}
 
 				currentImport = .none
@@ -120,8 +114,6 @@ extension CertificatesAddView {
 		else {
 			return
 		}
-		
-		let ppq = CertificateReader(provisionURL).decoded?.PPQCheck ?? false
 		
 		FR.handleCertificateFiles(
 			p12URL: p12URL,

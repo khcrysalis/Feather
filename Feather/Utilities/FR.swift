@@ -73,13 +73,13 @@ enum FR {
 		provisionURL: URL,
 		p12Password: String,
 		certificateName: String,
-		ppq: Bool = false,
 		completion: @escaping (Error?) -> Void
 	) {
 		if
 			p12URL.startAccessingSecurityScopedResource(),
 			provisionURL.startAccessingSecurityScopedResource()
 		{
+			
 			Task.detached {
 				defer {
 					p12URL.stopAccessingSecurityScopedResource()
@@ -90,8 +90,7 @@ enum FR {
 					key: p12URL,
 					provision: provisionURL,
 					password: p12Password,
-					nickname: certificateName.isEmpty ? nil : certificateName,
-					ppq: ppq
+					nickname: certificateName.isEmpty ? nil : certificateName
 				)
 				
 				do {

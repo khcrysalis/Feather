@@ -15,24 +15,32 @@ final class CertificateFileHandler: NSObject {
 	private let _provision: URL
 	private let _keyPassword: String?
 	private let _certNickname: String?
-	private let _ppq: Bool
+	
+	private var _certPair: Certificate?
 	
 	init(
 		key: URL,
 		provision: URL,
 		password: String? = nil,
-		nickname: String? = nil,
-		ppq: Bool = false
+		nickname: String? = nil
 	) {
 		self._key = key
 		self._provision = provision
 		self._keyPassword = password
 		self._certNickname = nickname
-		self._ppq = ppq
+		
+		_certPair = CertificateReader(provision).decoded
+		
 		super.init()
 	}
 	
 	func copy() async throws {
+		guard
+			(_certPair != nil)
+		else  {
+			throw CertificateFileHandlerError.certNotValid
+		}
+		
 		let destinationURL = try await _directory()
 
 		try _fileManager.createDirectory(at: destinationURL, withIntermediateDirectories: true)
@@ -41,11 +49,13 @@ final class CertificateFileHandler: NSObject {
 	}
 	
 	func addToDatabase() async throws {
+		
 		Storage.shared.addCertificate(
 			uuid: _uuid,
 			password: _keyPassword,
 			nickname: _certNickname,
-			ppq: _ppq
+			ppq: _certPair?.PPQCheck ?? false,
+			expiration: _certPair?.ExpirationDate ?? Date()
 		) { _ in
 			print("[\(self._uuid)] Added to database")
 		}
@@ -55,4 +65,8 @@ final class CertificateFileHandler: NSObject {
 		// Documents/Feather/Certificates/\(UUID)
 		_fileManager.certificates(_uuid)
 	}
+}
+
+private enum CertificateFileHandlerError: Error {
+	case certNotValid
 }

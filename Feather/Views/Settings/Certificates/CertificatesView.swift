@@ -18,7 +18,6 @@ struct CertificatesView: View {
 		GridItem(.adaptive(minimum: 300))
 	]
 
-
 	// MARK: Fetch
 	@FetchRequest(
 		entity: CertificatePair.entity(),

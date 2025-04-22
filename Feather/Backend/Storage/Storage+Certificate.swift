@@ -15,6 +15,7 @@ extension Storage {
 		password: String? = nil,
 		nickname: String? = nil,
 		ppq: Bool = false,
+		expiration: Date,
 		completion: @escaping (Error?) -> Void
 	) {
 		let generator = UIImpactFeedbackGenerator(style: .light)
@@ -24,6 +25,7 @@ extension Storage {
 		new.date = Date()
 		new.password = password
 		new.ppQCheck = ppq
+		new.expiration = expiration
 		new.nickname = nickname
 		
 		do {
