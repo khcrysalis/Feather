@@ -237,7 +237,8 @@ extension SigningView {
 			return
 		}
 		#endif
-		
+		let generator = UIImpactFeedbackGenerator(style: .light)
+		generator.impactOccurred()
 		isSigning = true
 		
 		Task.detached {

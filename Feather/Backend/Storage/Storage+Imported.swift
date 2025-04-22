@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import UIKit.UIImpactFeedbackGenerator
 
 // MARK: - Class extension: Imported Apps
 extension Storage {
@@ -14,6 +15,8 @@ extension Storage {
 		source: URL? = nil,
 		completion: @escaping (Error?) -> Void
 	) {
+		let generator = UIImpactFeedbackGenerator(style: .light)
+		
 		var new = Imported(context: context)
 		
 		new.uuid = uuid
@@ -23,6 +26,7 @@ extension Storage {
 		
 		do {
 			try context.save()
+			generator.impactOccurred()
 			completion(nil)
 		} catch {
 			completion(error)

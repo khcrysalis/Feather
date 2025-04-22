@@ -17,6 +17,31 @@ struct FeatherApp: App {
 		WindowGroup {
 			VariedTabbarView()
 				.environment(\.managedObjectContext, storage.context)
+				.onOpenURL(perform: _handleURL)
+		}
+	}
+	
+	private func _handleURL(_ url: URL) {
+		if url.pathExtension == "ipa" {
+			if url.startAccessingSecurityScopedResource() {
+				Task.detached {
+					defer {
+						url.stopAccessingSecurityScopedResource()
+					}
+					
+					let handler = AppFileHandler(file: url)
+					
+					do {
+						try await handler.copy()
+						try await handler.extract()
+						try await handler.move()
+						try await handler.addToDatabase()
+					} catch {
+						try await handler.clean()
+						print(error)
+					}
+				}
+			}
 		}
 	}
 }

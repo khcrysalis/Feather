@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import UIKit.UIImpactFeedbackGenerator
 
 // MARK: - Class extension: certificate
 extension Storage {
@@ -16,14 +17,18 @@ extension Storage {
 		ppq: Bool = false,
 		completion: @escaping (Error?) -> Void
 	) {
+		let generator = UIImpactFeedbackGenerator(style: .light)
+		
 		let new = CertificatePair(context: context)
 		new.uuid = uuid
 		new.date = Date()
 		new.password = password
 		new.ppQCheck = ppq
 		new.nickname = nickname
+		
 		do {
 			try context.save()
+			generator.impactOccurred()
 			completion(nil)
 		} catch {
 			completion(error)
