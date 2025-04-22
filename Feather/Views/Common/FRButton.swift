@@ -11,15 +11,18 @@ struct FRButton: View {
 	private var _title: String
 	private var _icon: String
 	private var _style: FRToolbarMenuStyle
+	private var _horizontalPadding: CGFloat
 	
 	init(
 		_ title: String,
 		systemImage: String,
-		style: FRToolbarMenuStyle = .icon
+		style: FRToolbarMenuStyle = .icon,
+		horizontalPadding: CGFloat = 12
 	) {
 		self._title = title
 		self._icon = systemImage
 		self._style = style
+		self._horizontalPadding = horizontalPadding
 	}
 	
     var body: some View {
@@ -34,7 +37,7 @@ struct FRButton: View {
 		case .text:
 			Text(_title)
 				.font(.system(size: 12, weight: .bold))
-				.padding(.horizontal, 12)
+				.padding(.horizontal, _horizontalPadding)
 				.frame(height: 29)
 				.background(Color(uiColor: .secondarySystemGroupedBackground))
 				.clipShape(Capsule())

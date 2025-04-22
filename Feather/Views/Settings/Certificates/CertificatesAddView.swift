@@ -11,7 +11,6 @@ import Zsign
 
 // MARK: - View
 struct CertificatesAddView: View {
-	@Environment(\.managedObjectContext) private var managedObjectContext
 	@Environment(\.dismiss) private var dismiss
 	
 	@State private var p12URL: URL? = nil

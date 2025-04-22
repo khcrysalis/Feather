@@ -10,13 +10,11 @@ import CoreData
 
 // MARK: - View
 struct LibraryView: View {
-    @Environment(\.managedObjectContext) private var managedObjectContext
-	
 	@State private var isImportingFiles = false
 	@State private var searchText = ""
 	@State private var selectedInfoApp: AnyApp?
 	@State private var selectedSigningApp: AnyApp?
-	
+		
 	// MARK: Fetch
 	@FetchRequest(
 		entity: Signed.entity(),
@@ -36,31 +34,17 @@ struct LibraryView: View {
 			List {
 				FRSection("Signed") {
 					ForEach(signedApps, id: \.uuid) { app in
-						Button(action: {
-							selectedSigningApp = AnyApp(base: app)
-						}) {
-							LibraryCellView(app: app, selectedApp: $selectedInfoApp)
-						}
+						LibraryCellView(app: app, selectedInfoApp: $selectedInfoApp, selectedSigningApp: $selectedSigningApp)
 					}
 				}
 				FRSection("Imported") {
 					ForEach(importedApps, id: \.uuid) { app in
-						Button(action: {
-							selectedSigningApp = AnyApp(base: app)
-						}) {
-							LibraryCellView(app: app, selectedApp: $selectedInfoApp)
-						}
+						LibraryCellView(app: app, selectedInfoApp: $selectedInfoApp, selectedSigningApp: $selectedSigningApp)
 					}
 				}
 			}
-			.sheet(item: $selectedInfoApp) { app in
-				LibraryInfoView(app: app.base)
-			}
-			.fullScreenCover(item: $selectedSigningApp) { app in
-				SigningView(app: app.base)
-			}
-			.searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
 			.listStyle(.plain)
+			.searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
 			.toolbar {
 				FRToolbarMenu(
 					"Import",
@@ -72,6 +56,12 @@ struct LibraryView: View {
 						isImportingFiles = true
 					}
 				}
+			}
+			.sheet(item: $selectedInfoApp) { app in
+				LibraryInfoView(app: app.base)
+			}
+			.fullScreenCover(item: $selectedSigningApp) { app in
+				SigningView(app: app.base)
 			}
 			.fileImporter(
 				isPresented: $isImportingFiles,

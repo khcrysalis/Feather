@@ -9,7 +9,6 @@ import SwiftUI
 
 // MARK: - View
 struct CertificatesView: View {
-	@Environment(\.managedObjectContext) private var managedObjectContext
 	@AppStorage("feather.selectedCert") private var storedSelectedCert: Int = 0
 	
 	@State private var isAddingCert = false
