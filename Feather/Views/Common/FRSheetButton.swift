@@ -8,9 +8,7 @@
 
 import SwiftUI
 
-struct FRSheetButton: View {
-	@Environment(\.dismiss) private var dismiss
-	
+struct FRSheetButton: View {	
 	private var _title: String
 	private var _role: FRSheetButtonRole
 	private var _action: () -> Void
@@ -28,7 +26,6 @@ struct FRSheetButton: View {
 	var body: some View {
 		Button(action: {
 			_action()
-			dismiss()
 		}) {
 			Text(_title)
 				.frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -18,6 +18,7 @@ struct SigningView: View {
 	@State private var isAltPickerPresented = false
 	@State private var isFilePickerPresented = false
 	@State private var isImagePickerPresented = false
+	@State private var isSigning = false
 	@State private var selectedPhoto: PhotosPickerItem? = nil
 	@State var appIcon: UIImage?
 	
@@ -55,9 +56,11 @@ struct SigningView: View {
 				FRSheetButton("Start Signing") {
 					_start()
 				}
+				.animation(.smooth, value: isSigning)
 				.frame(height: 50)
 				.padding()
 			}
+			.animation(.smooth, value: isSigning)
 			.toolbar {
 				FRToolbarButton(role: .dismiss)
 				
@@ -89,9 +92,12 @@ struct SigningView: View {
 					}
 				}
 			}
+			.disabled(isSigning)
+			#if DEBUG
 			.onAppear() {
 				dump(temporaryOptions)
 			}
+			#endif
 		}
 		.onAppear {
 			// ppq protection
@@ -232,6 +238,8 @@ extension SigningView {
 		}
 		#endif
 		
+		isSigning = true
+		
 		Task.detached {
 			let handler = await SigningHandler(app: app, options: temporaryOptions)
 			handler.appCertificate = await _selectedCert()
@@ -242,10 +250,11 @@ extension SigningView {
 				try await handler.modify()
 				try await handler.move()
 				try await handler.addToDatabase()
-				await dismiss()
+				
+				await MainActor.run { dismiss() }
 			} catch {
 				try await handler.clean()
-				print(error)
+				await MainActor.run { dismiss() }
 			}
 		}
 	}
