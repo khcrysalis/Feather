@@ -89,7 +89,7 @@ extension CertificatesAddView {
 			currentImport = type
 			isImporting = true
 		}
-		.foregroundColor(file == nil ? .accentColor : Color(uiColor: .disabled(.tintColor)))
+		.foregroundColor(file == nil ? .accentColor : .disabled(.accentColor))
 		.disabled(file != nil)
 		.animation(.easeInOut(duration: 0.3), value: file != nil)
 		.contentTransition(.opacity)

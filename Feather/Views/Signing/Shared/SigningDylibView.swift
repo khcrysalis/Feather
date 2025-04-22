@@ -30,7 +30,7 @@ struct SigningDylibView: View {
 			FRSection("Hidden") {
 				Text("\(hiddenDylibCount) required system dylibs not shown")
 					.font(.footnote)
-					.foregroundColor(Color(uiColor: .disabled(.tintColor)))
+					.foregroundColor(.disabled(.accentColor))
 			}
 		}
 		.disabled(options == nil)

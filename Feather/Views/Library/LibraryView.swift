@@ -15,6 +15,8 @@ struct LibraryView: View {
 	@State private var selectedInfoApp: AnyApp?
 	@State private var selectedSigningApp: AnyApp?
 		
+	@Namespace private var namespace
+	
 	// MARK: Fetch
 	@FetchRequest(
 		entity: Signed.entity(),
@@ -35,11 +37,13 @@ struct LibraryView: View {
 				FRSection("Signed") {
 					ForEach(signedApps, id: \.uuid) { app in
 						LibraryCellView(app: app, selectedInfoApp: $selectedInfoApp, selectedSigningApp: $selectedSigningApp)
+							.compatMatchedTransitionSource(id: app.uuid!, ns: namespace)
 					}
 				}
 				FRSection("Imported") {
 					ForEach(importedApps, id: \.uuid) { app in
 						LibraryCellView(app: app, selectedInfoApp: $selectedInfoApp, selectedSigningApp: $selectedSigningApp)
+							.compatMatchedTransitionSource(id: app.uuid!, ns: namespace)
 					}
 				}
 			}
@@ -62,6 +66,7 @@ struct LibraryView: View {
 			}
 			.fullScreenCover(item: $selectedSigningApp) { app in
 				SigningView(app: app.base)
+					.compatNavigationTransition(id: app.base.uuid!, ns: namespace)
 			}
 			.fileImporter(
 				isPresented: $isImportingFiles,

@@ -217,7 +217,7 @@ extension SigningView {
 			}
 		} else {
 			Text("No valid certificate selected.")
-				.foregroundStyle(Color(uiColor: .disabled(.tintColor)))
+				.foregroundStyle(Color.disabled(.accentColor))
 		}
 	}
 }
