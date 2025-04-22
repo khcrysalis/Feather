@@ -21,6 +21,7 @@ struct FeatherApp: App {
 		}
 	}
 	
+	#warning("this could be turned in its own static function, in an enum")
 	private func _handleURL(_ url: URL) {
 		if url.pathExtension == "ipa" {
 			if url.startAccessingSecurityScopedResource() {

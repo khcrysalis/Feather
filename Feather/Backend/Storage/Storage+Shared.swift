@@ -47,6 +47,13 @@ extension Storage {
 			saveContext()
 		}
 	}
+	
+	func getCertificate(from app: AppInfoPresentable) -> CertificatePair? {
+		if let signed = app as? Signed {
+			return signed.certificate
+		}
+		return nil
+	}
 }
 
 // MARK: - Helpers
@@ -66,6 +73,7 @@ protocol AppInfoPresentable {
 	var icon: String? { get }
 	var uuid: String? { get }
 	var isSigned: Bool { get }
+	
 }
 
 protocol BundleInfoAssignableData {

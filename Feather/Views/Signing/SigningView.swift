@@ -216,7 +216,6 @@ extension SigningView {
 			} label: {
 				CertificatesCellView(
 					cert: cert,
-					isSelected: false,
 					shouldDisplayInfo: false,
 					selectedInfoCert: .constant(.none)
 				)

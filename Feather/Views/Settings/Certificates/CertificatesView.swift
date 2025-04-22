@@ -13,6 +13,11 @@ struct CertificatesView: View {
 	
 	@State private var isAddingCert = false
 	@State private var selectedInfoCert: CertificatePair?
+	
+	let columns: [GridItem] = [
+		GridItem(.adaptive(minimum: 300))
+	]
+
 
 	// MARK: Fetch
 	@FetchRequest(
@@ -33,13 +38,13 @@ struct CertificatesView: View {
 	
 	// MARK: Body
 	var body: some View {
-		List(Array(certificates.enumerated()), id: \.element.uuid) { index, cert in
-			Button {
-				selectedCertBinding.wrappedValue = index
-			} label: {
-				CertificatesCellView(cert: cert, isSelected: selectedCertBinding.wrappedValue == index, selectedInfoCert: $selectedInfoCert)
+		ScrollView {
+			LazyVGrid(columns: columns, spacing: 16) {
+				ForEach(Array(certificates.enumerated()), id: \.element.uuid) { index, cert in
+					_cellButton(for: cert, at: index)
+				}
 			}
-			.buttonStyle(.plain)
+			.padding()
 		}
 		.navigationTitle("Certificates")
 		.navigationBarTitleDisplayMode(.inline)
@@ -61,6 +66,58 @@ struct CertificatesView: View {
 		.sheet(isPresented: $isAddingCert) {
 			CertificatesAddView()
 				.presentationDetents([.medium])
+		}
+	}
+}
+
+extension CertificatesView {
+	@ViewBuilder
+	private func _cellButton(for cert: CertificatePair, at index: Int) -> some View {
+		Button {
+			selectedCertBinding.wrappedValue = index
+		} label: {
+			CertificatesCellView(
+				cert: cert,
+				selectedInfoCert: $selectedInfoCert
+			)
+			.padding()
+			.frame(maxWidth: .infinity)
+			.background(
+				RoundedRectangle(cornerRadius: 17)
+					.fill(Color(uiColor: .quaternarySystemFill))
+			)
+			.overlay(
+				RoundedRectangle(cornerRadius: 17)
+					.strokeBorder(
+						selectedCertBinding.wrappedValue == index ? Color.accentColor : Color.clear,
+						lineWidth: 2
+					)
+			)
+			.contextMenu {
+				_contextActions(for: cert)
+				Divider()
+				_actions(for: cert)
+			}
+			.animation(.smooth, value: selectedCertBinding.wrappedValue)
+		}
+		.buttonStyle(.plain)
+	}
+	
+	@ViewBuilder
+	private func _actions(for cert: CertificatePair) -> some View {
+		Button(role: .destructive) {
+			Storage.shared.deleteCertificate(for: cert)
+		} label: {
+			Label("Delete", systemImage: "trash")
+		}
+	}
+	
+	@ViewBuilder
+	private func _contextActions(for cert: CertificatePair) -> some View {
+		Button {
+			selectedInfoCert = cert
+		} label: {
+			Label("Get Info", systemImage: "info.circle")
 		}
 	}
 }

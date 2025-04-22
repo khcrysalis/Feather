@@ -123,7 +123,7 @@ final class SigningHandler: NSObject {
 	}
 	
 	func addToDatabase() async throws {
-		Storage.shared.addSigned(uuid: _uuid) { _ in
+		Storage.shared.addSigned(uuid: _uuid, certificate: appCertificate) { _ in
 			print("[\(self._uuid)] Added to database")
 		}
 	}

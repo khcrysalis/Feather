@@ -17,7 +17,7 @@ enum FRSheetButtonRole {
 		case .primary:
 			return Color.accentColor
 		case .secondary:
-			return Color(uiColor: .secondarySystemGroupedBackground)
+			return Color(uiColor: .quaternarySystemFill)
 		}
 	}
 	

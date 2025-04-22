@@ -18,7 +18,7 @@ struct LibraryCellView: View {
 	// MARK: Body
 	var body: some View {
 		HStack(spacing: 9) {
-			FRAppIconView(app: app, size: 54, cornerRadius: 13)
+			FRAppIconView(app: app, size: 57, cornerRadius: 14)
 			
 			VStack(alignment: .leading, spacing: 2) {
 				Text(app.name ?? "Unknown App")
@@ -29,7 +29,7 @@ struct LibraryCellView: View {
 						Text("\(version) • \(id)")
 					}
 				}
-				.font(.caption)
+				.font(.subheadline)
 				.foregroundStyle(.secondary)
 			}
 			.frame(maxWidth: .infinity, alignment: .leading)

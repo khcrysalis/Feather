@@ -12,7 +12,6 @@ struct CertificatesCellView: View {
 	@State var data: Certificate?
 	
 	var cert: CertificatePair
-	var isSelected: Bool
 	var shouldDisplayInfo: Bool = true
 	@Binding var selectedInfoCert: CertificatePair?
 	
@@ -34,52 +33,19 @@ struct CertificatesCellView: View {
 				_certInfoPill(data: data)
 			}
 		}
-		.overlay(
-			isSelected
-			? Image(systemName: "checkmark.circle.fill").foregroundStyle(.accent)
-			: nil,
-			alignment: .topTrailing
-		)
-		.animation(.easeInOut, value: isSelected)
 		.frame(height: 80)
 		.contentTransition(.opacity)
 		.frame(maxWidth: .infinity, alignment: .leading)
-		.swipeActions {
-			_actions(for: cert)
-		}
-		.contextMenu {
-			if shouldDisplayInfo {
-				_contextActions(for: cert)
-				Divider()
-			}
-			_actions(for: cert)
-		}
 		.onAppear {
-			data = Storage.shared.getProvisionFileDecoded(for: cert)
+			withAnimation {
+				data = Storage.shared.getProvisionFileDecoded(for: cert)
+			}
 		}
 	}
 }
 
 // MARK: - Extension: View
 extension CertificatesCellView {
-	@ViewBuilder
-	private func _actions(for cert: CertificatePair) -> some View {
-		Button(role: .destructive) {
-			Storage.shared.deleteCertificate(for: cert)
-		} label: {
-			Label("Delete", systemImage: "trash")
-		}
-	}
-	
-	@ViewBuilder
-	private func _contextActions(for cert: CertificatePair) -> some View {
-		Button {
-			selectedInfoCert = cert
-		} label: {
-			Label("Get Info", systemImage: "info.circle")
-		}
-	}
-	
 	@ViewBuilder
 	private func _certInfoPill(data: Certificate) -> some View {
 		let pillItems = _buildPills(from: data)

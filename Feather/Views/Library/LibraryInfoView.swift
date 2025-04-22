@@ -21,7 +21,9 @@ struct LibraryInfoView: View {
 					FRAppIconView(app: app)
 						.frame(maxWidth: .infinity, alignment: .center)
 				}
+				
 				_infoSection(for: app)
+				_certSection(for: app)
 				_bundleSection(for: app)
 				_executableSection(for: app)
 				
@@ -60,6 +62,19 @@ extension LibraryInfoView {
 			
 			if let date = app.date {
 				_infoCell("Date Added", desc: date.formatted())
+			}
+		}
+	}
+	
+	@ViewBuilder
+	private func _certSection(for app: AppInfoPresentable) -> some View {
+		if let cert = Storage.shared.getCertificate(from: app) {
+			FRSection("Certificate") {
+				CertificatesCellView(
+					cert: cert,
+					shouldDisplayInfo: false,
+					selectedInfoCert: .constant(.none)
+				)
 			}
 		}
 	}

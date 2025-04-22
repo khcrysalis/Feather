@@ -31,7 +31,7 @@ struct FRButton: View {
 			Image(systemName: _icon)
 				.font(.caption).bold()
 				.frame(width: 29, height: 29)
-				.background(Color(uiColor: .secondarySystemGroupedBackground))
+				.background(Color(uiColor: .quaternarySystemFill))
 				.clipShape(Circle())
 			
 		case .text:
@@ -39,7 +39,7 @@ struct FRButton: View {
 				.font(.footnote).bold()
 				.padding(.horizontal, _horizontalPadding)
 				.frame(height: 29)
-				.background(Color(uiColor: .secondarySystemGroupedBackground))
+				.background(Color(uiColor: .quaternarySystemFill))
 				.clipShape(Capsule())
 		}
     }

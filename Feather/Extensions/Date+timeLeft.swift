@@ -36,7 +36,7 @@ extension Date {
 		let timeString = formatter.string(from: timeLeft) ?? "\(daysLeft) days"
 		
 		return ExpirationInfo(
-			formatted: "\(timeString) left",
+			formatted: timeString,
 			color: color,
 			icon: "clock"
 		)

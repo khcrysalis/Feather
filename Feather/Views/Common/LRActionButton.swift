@@ -35,7 +35,7 @@ struct LRActionButton: View {
 			}
 		}
 		.frame(width: 66, height: 29)
-		.background(Color(uiColor: .secondarySystemGroupedBackground))
+		.background(Color(uiColor: .quaternarySystemFill))
 		.clipShape(Capsule())
 	}
 }

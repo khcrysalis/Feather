@@ -13,6 +13,7 @@ extension Storage {
 	func addSigned(
 		uuid: String,
 		source: URL? = nil,
+		certificate: CertificatePair? = nil,
 		completion: @escaping (Error?) -> Void
 	) {
 		let generator = UIImpactFeedbackGenerator(style: .light)
@@ -22,6 +23,9 @@ extension Storage {
 		new.uuid = uuid
 		new.source = source
 		new.date = Date()
+		// if nil, we assume adhoc or certificate was deleted afterwards
+		new.certificate = certificate
+		
 		extractBundleInfo(for: &new, using: FileManager.default.signed(uuid))
 		
 		do {
