@@ -113,6 +113,20 @@ struct SigningView: View {
 			{
 				temporaryOptions.appIdentifier = "\(identifier).\(optionsManager.options.ppqString)"
 			}
+			
+			if
+				let currentBundleId = app.identifier,
+				let newBundleId = temporaryOptions.identifiers[currentBundleId]
+			{
+				temporaryOptions.appIdentifier = newBundleId
+			}
+			
+			if
+				let currentName = app.name,
+				let newName = temporaryOptions.displayNames[currentName]
+			{
+				   temporaryOptions.appName = newName
+			}
 		}
     }
 	
