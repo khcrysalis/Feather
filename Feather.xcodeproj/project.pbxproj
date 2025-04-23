@@ -54,6 +54,8 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Resources/ellekit.deb,
+				Resources/idevice/libidevice_ffi.a,
+				"Resources/idevice/libplist-2.0.a",
 				Resources/Info.plist,
 			);
 			target = 3379C1B82DA869A1004372DA /* Feather */;
@@ -383,6 +385,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Feather/Resources",
+					"$(PROJECT_DIR)/Feather/Resources/idevice",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 2.0;
@@ -441,6 +444,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Feather/Resources",
+					"$(PROJECT_DIR)/Feather/Resources/idevice",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 2.0;
@@ -616,6 +620,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Feather/Resources",
+					"$(PROJECT_DIR)/Feather/Resources/idevice",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 2.0;
@@ -674,6 +679,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Feather/Resources",
+					"$(PROJECT_DIR)/Feather/Resources/idevice",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 2.0;
