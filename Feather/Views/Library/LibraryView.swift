@@ -43,7 +43,7 @@ struct LibraryView: View {
 				FRSection("Imported") {
 					ForEach(importedApps, id: \.uuid) { app in
 						LibraryCellView(app: app, selectedInfoApp: $selectedInfoApp, selectedSigningApp: $selectedSigningApp)
-							.compatMatchedTransitionSource(id: app.uuid!, ns: namespace)
+							.compatMatchedTransitionSource(id: app.uuid ?? "", ns: namespace)
 					}
 				}
 			}
