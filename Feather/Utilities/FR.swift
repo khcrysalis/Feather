@@ -7,6 +7,7 @@
 
 import Foundation.NSURL
 import UIKit.UIImage
+import Zsign
 
 enum FR {
 	static func handlePackageFile(
@@ -106,5 +107,29 @@ enum FR {
 				}
 			}
 		}
+	}
+	
+	static func checkPasswordForCertificate(
+		for key: URL,
+		with password: String,
+		using provision: URL
+	) -> Bool {
+		defer {
+			password_check_fix_WHAT_THE_FUCK_free(provision.path)
+			key.stopAccessingSecurityScopedResource()
+			provision.stopAccessingSecurityScopedResource()
+		}
+		if
+			key.startAccessingSecurityScopedResource(),
+			provision.startAccessingSecurityScopedResource()
+		{
+			password_check_fix_WHAT_THE_FUCK(provision.path)
+			
+			if (!p12_password_check(key.path, password)) {
+				return false
+			}
+		}
+		
+		return true
 	}
 }

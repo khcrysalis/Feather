@@ -7,7 +7,6 @@
 
 import SwiftUI
 import UniformTypeIdentifiers
-import Zsign
 
 // MARK: - View
 struct CertificatesAddView: View {
@@ -92,37 +91,13 @@ extension CertificatesAddView {
 
 // MARK: - Extension: View (import)
 extension CertificatesAddView {
-	private func _checkPassword(
-		for key: URL,
-		with password: String,
-		using provision: URL
-	) -> Bool {
-		defer {
-			password_check_fix_WHAT_THE_FUCK_free(provision.path)
-			key.stopAccessingSecurityScopedResource()
-			provision.stopAccessingSecurityScopedResource()
-		}
-		if
-			key.startAccessingSecurityScopedResource(),
-			provision.startAccessingSecurityScopedResource()
-		{
-			password_check_fix_WHAT_THE_FUCK(provision.path)
-			
-			if (!p12_password_check(key.path, password)) {
-				isPasswordAlertPresenting = true
-				return false
-			}
-		}
-		
-		return true
-	}
-	
 	private func _saveCertificate() {
 		guard
 			let p12URL = p12URL,
 			let provisionURL = provisionURL,
-			_checkPassword(for: p12URL, with: p12Password, using: provisionURL)
+			FR.checkPasswordForCertificate(for: p12URL, with: p12Password, using: provisionURL)
 		else {
+			isPasswordAlertPresenting = true
 			return
 		}
 		
