@@ -118,15 +118,6 @@
       }
     },
     {
-      "identity" : "swift-distributed-tracing",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-distributed-tracing.git",
-      "state" : {
-        "revision" : "a64a0abc2530f767af15dd88dda7f64d5f1ff9de",
-        "version" : "1.2.0"
-      }
-    },
-    {
       "identity" : "swift-http-structured-headers",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-http-structured-headers.git",
@@ -217,15 +208,6 @@
       }
     },
     {
-      "identity" : "swift-service-context",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-service-context.git",
-      "state" : {
-        "revision" : "8946c930cae601452149e45d31d8ddfac973c3c7",
-        "version" : "1.2.0"
-      }
-    },
-    {
       "identity" : "swift-system",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-system.git",
@@ -239,8 +221,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/vapor/vapor",
       "state" : {
-        "revision" : "87b0edd2633c35de543cb7573efe5fbf456181bc",
-        "version" : "4.114.1"
+        "revision" : "236025b6a213f372f81b732ff792f95789c089d4",
+        "version" : "4.104.0"
       }
     },
     {

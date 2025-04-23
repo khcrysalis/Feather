@@ -14,6 +14,7 @@ struct LibraryView: View {
 	@State private var searchText = ""
 	@State private var selectedInfoApp: AnyApp?
 	@State private var selectedSigningApp: AnyApp?
+	@State private var selectedInstallApp: AnyApp?
 		
 	@Namespace private var namespace
 	
@@ -36,14 +37,24 @@ struct LibraryView: View {
 			List {
 				FRSection("Signed") {
 					ForEach(signedApps, id: \.uuid) { app in
-						LibraryCellView(app: app, selectedInfoApp: $selectedInfoApp, selectedSigningApp: $selectedSigningApp)
-							.compatMatchedTransitionSource(id: app.uuid ?? "", ns: namespace)
+						LibraryCellView(
+							app: app,
+							selectedInfoApp: $selectedInfoApp,
+							selectedSigningApp: $selectedSigningApp,
+							selectedInstallApp: $selectedInstallApp
+						)
+						.compatMatchedTransitionSource(id: app.uuid ?? "", ns: namespace)
 					}
 				}
 				FRSection("Imported") {
 					ForEach(importedApps, id: \.uuid) { app in
-						LibraryCellView(app: app, selectedInfoApp: $selectedInfoApp, selectedSigningApp: $selectedSigningApp)
-							.compatMatchedTransitionSource(id: app.uuid ?? "", ns: namespace)
+						LibraryCellView(
+							app: app,
+							selectedInfoApp: $selectedInfoApp,
+							selectedSigningApp: $selectedSigningApp,
+							selectedInstallApp: $selectedInstallApp
+						)
+						.compatMatchedTransitionSource(id: app.uuid ?? "", ns: namespace)
 					}
 				}
 			}
@@ -63,6 +74,12 @@ struct LibraryView: View {
 			}
 			.sheet(item: $selectedInfoApp) { app in
 				LibraryInfoView(app: app.base)
+			}
+			.sheet(item: $selectedInstallApp) { app in
+				InstallPreview(app: app.base, isSharing: app.archive)
+					.presentationDetents([.height(200)])
+					.presentationDragIndicator(.visible)
+					.compatPresentationRadius(21)
 			}
 			.fullScreenCover(item: $selectedSigningApp) { app in
 				SigningView(app: app.base)

@@ -14,6 +14,7 @@ struct LibraryCellView: View {
 	var app: AppInfoPresentable
 	@Binding var selectedInfoApp: AnyApp?
 	@Binding var selectedSigningApp: AnyApp?
+	@Binding var selectedInstallApp: AnyApp?
 	
 	// MARK: Body
 	var body: some View {
@@ -86,12 +87,13 @@ extension LibraryCellView {
 				Label("Resign", systemImage: "signature")
 			}
 			Button {
+				selectedInstallApp = AnyApp(base: app, archive: true)
 			} label: {
 				Label("Export", systemImage: "square.and.arrow.up")
 			}
 		} else {
 			Button {
-
+				selectedInstallApp = AnyApp(base: app)
 			} label: {
 				Label("Install", systemImage: "square.and.arrow.down")
 			}
@@ -103,7 +105,7 @@ extension LibraryCellView {
 		Group {
 			if app.isSigned {
 				Button {
-					
+					selectedInstallApp = AnyApp(base: app)
 				} label: {
 					_buttonLabel("Install")
 				}

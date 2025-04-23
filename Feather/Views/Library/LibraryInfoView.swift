@@ -10,7 +10,6 @@ import Zsign
 
 // MARK: - View
 struct LibraryInfoView: View {
-	@Environment(\.dismiss) var dismiss
 	var app: AppInfoPresentable
 	
 	// MARK: Body

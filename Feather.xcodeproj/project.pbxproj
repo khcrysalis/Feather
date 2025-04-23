@@ -41,6 +41,10 @@
 		3305BB4F2DB893A500660D45 /* Exceptions for "Feather" folder in "Feather (idevice)" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Backend/Server/Models/AppDataModel.swift,
+				Backend/Server/Server.swift,
+				"Backend/Server/Server+Compute.swift",
+				"Backend/Server/Server+TLS.swift",
 				Resources/ellekit.deb,
 				Resources/Info.plist,
 			);
@@ -808,8 +812,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/vapor/vapor";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.114.1;
+				kind = exactVersion;
+				version = 4.104.0;
 			};
 		};
 		3371F6F52DA9EBA500281AC6 /* XCRemoteSwiftPackageReference "Zip" */ = {
