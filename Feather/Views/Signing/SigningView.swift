@@ -18,6 +18,7 @@ struct SigningView: View {
 	@State private var isAltPickerPresented = false
 	@State private var isFilePickerPresented = false
 	@State private var isImagePickerPresented = false
+	@State private var isAlertPresenting = false
 	@State private var isSigning = false
 	@State private var selectedPhoto: PhotosPickerItem? = nil
 	@State var appIcon: UIImage?
@@ -60,7 +61,6 @@ struct SigningView: View {
 				.frame(height: 50)
 				.padding()
 			}
-			.animation(.smooth, value: isSigning)
 			.toolbar {
 				FRToolbarButton(role: .dismiss)
 				
@@ -73,6 +73,9 @@ struct SigningView: View {
 					temporaryOptions = OptionsManager.shared.options
 					appIcon = nil
 				}
+			}
+			.alert(isPresented: $isAlertPresenting) {
+				Alert(title: Text("No Certificate"), message: Text("Please go to settings and import a valid certificate"), dismissButton: .default(Text("OK")))
 			}
 			// Image shit
 			.sheet(isPresented: $isAltPickerPresented) { SigningAlternativeIconView(app: app, appIcon: $appIcon, isModifing: .constant(true)) }
@@ -93,6 +96,7 @@ struct SigningView: View {
 				}
 			}
 			.disabled(isSigning)
+			.animation(.smooth, value: isSigning)
 			#if DEBUG
 			.onAppear() {
 				dump(temporaryOptions)
@@ -230,12 +234,11 @@ extension SigningView {
 // MARK: - Extension: View (import)
 extension SigningView {
 	private func _start() {
-		#if !DEBUG
 		guard _selectedCert() != nil || temporaryOptions.doAdhocSigning else {
-			print("somethings not right")
+			isAlertPresenting = true
 			return
 		}
-		#endif
+
 		let generator = UIImpactFeedbackGenerator(style: .light)
 		generator.impactOccurred()
 		isSigning = true

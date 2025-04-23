@@ -6,25 +6,36 @@
 //
 
 import CoreData
-#warning("This storage will change, **a lot**, so use inmemory until its ready for production")
 
 // MARK: - Class
 final class Storage: ObservableObject {
 	static let shared = Storage()
 	let container: NSPersistentContainer
 	
+	private let _name: String = "Feather"
+	
 	init(inMemory: Bool = false) {
-		container = NSPersistentContainer(name: "Feather")
+		container = NSPersistentContainer(name: _name)
 		
 		if inMemory {
-			container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+			container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
+		} else {
+			if
+				let appGroupURL = FileManager.default
+					.containerURL(forSecurityApplicationGroupIdentifier: "group.thewonderofyou.Feather")
+			{
+				let storeURL = appGroupURL.appendingPathComponent("\(_name).sqlite")
+				let description = NSPersistentStoreDescription(url: storeURL)
+				container.persistentStoreDescriptions = [description]
+			}
 		}
 		
-		container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+		container.loadPersistentStores { (storeDescription, error) in
 			if let error = error as NSError? {
 				fatalError("Unresolved error \(error), \(error.userInfo)")
 			}
-		})
+		}
+		
 		container.viewContext.automaticallyMergesChangesFromParent = true
 	}
 	
@@ -45,7 +56,7 @@ final class Storage: ObservableObject {
 	func clearContext<T: NSManagedObject>(request: NSFetchRequest<T>) {
 		let deleteRequest = NSBatchDeleteRequest(fetchRequest: (request as? NSFetchRequest<NSFetchRequestResult>)!)
 		do {
-			_ = try self.context.execute(deleteRequest)
+			_ = try context.execute(deleteRequest)
 		} catch {
 			print("clear: \(error.localizedDescription)")
 		}
