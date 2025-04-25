@@ -21,8 +21,7 @@ final class Storage: ObservableObject {
 			container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
 		} else {
 			if
-				let appGroupURL = FileManager.default
-					.containerURL(forSecurityApplicationGroupIdentifier: "group.thewonderofyou.Feather")
+				let appGroupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.thewonderofyou.Feather")
 			{
 				let storeURL = appGroupURL.appendingPathComponent("\(_name).sqlite")
 				let description = NSPersistentStoreDescription(url: storeURL)

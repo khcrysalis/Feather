@@ -1,25 +1,37 @@
 // Jackson Coxson
 // Bindings to idevice - https://github.com/jkcoxson/idevice
 
-
-#ifndef IDEVICE_H
-#define IDEVICE_H
-
 #include <stdarg.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <sys/socket.h>
-#include "plist.h"
+#include "plist/plist.h"
 
 #define LOCKDOWN_PORT 62078
 
+typedef enum AfcFopenMode {
+  AfcRdOnly = 1,
+  AfcRw = 2,
+  AfcWrOnly = 3,
+  AfcWr = 4,
+  AfcAppend = 5,
+  AfcRdAppend = 6,
+} AfcFopenMode;
+
+/**
+ * Link type for creating hard or symbolic links
+ */
+typedef enum AfcLinkType {
+  Hard = 1,
+  Symbolic = 2,
+} AfcLinkType;
 
 typedef enum IdeviceErrorCode {
   IdeviceSuccess = 0,
   Socket = -1,
-  Ssl = -2,
-  SslSetup = -3,
+  Tls = -2,
+  TlsBuilderFailed = -3,
   Plist = -4,
   Utf8 = -5,
   UnexpectedResponse = -6,
@@ -79,6 +91,15 @@ typedef enum IdeviceLoggerError {
 
 typedef struct AdapterHandle AdapterHandle;
 
+typedef struct AfcClientHandle AfcClientHandle;
+
+/**
+ * Handle for an open file on the device
+ */
+typedef struct AfcFileHandle AfcFileHandle;
+
+typedef struct AmfiClientHandle AmfiClientHandle;
+
 typedef struct CoreDeviceProxyHandle CoreDeviceProxyHandle;
 
 /**
@@ -103,6 +124,11 @@ typedef struct IdeviceSocketHandle IdeviceSocketHandle;
 typedef struct ImageMounterHandle ImageMounterHandle;
 
 typedef struct InstallationProxyClientHandle InstallationProxyClientHandle;
+
+/**
+ * Opaque handle to a ProcessControlClient
+ */
+typedef struct LocationSimulationAdapterHandle LocationSimulationAdapterHandle;
 
 typedef struct LockdowndClientHandle LockdowndClientHandle;
 
@@ -132,6 +158,29 @@ typedef struct UsbmuxdProviderHandle UsbmuxdProviderHandle;
 typedef struct XPCDeviceAdapterHandle XPCDeviceAdapterHandle;
 
 typedef struct sockaddr sockaddr;
+
+/**
+ * File information structure for C bindings
+ */
+typedef struct AfcFileInfo {
+  size_t size;
+  size_t blocks;
+  int64_t creation;
+  int64_t modified;
+  char *st_nlink;
+  char *st_ifmt;
+  char *st_link_target;
+} AfcFileInfo;
+
+/**
+ * Device information structure for C bindings
+ */
+typedef struct AfcDeviceInfo {
+  char *model;
+  size_t total_bytes;
+  size_t free_bytes;
+  size_t block_size;
+} AfcDeviceInfo;
 
 /**
  * Represents a debugserver command
@@ -352,6 +401,409 @@ enum IdeviceErrorCode adapter_recv(struct AdapterHandle *handle,
                                    uint8_t *data,
                                    uintptr_t *length,
                                    uintptr_t max_length);
+
+/**
+ * Connects to the AFC service using a TCP provider
+ *
+ * # Arguments
+ * * [`provider`] - A TcpProvider
+ * * [`client`] - On success, will be set to point to a newly allocated AfcClient handle
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `provider` must be a valid pointer to a handle allocated by this library
+ * `client` must be a valid, non-null pointer to a location where the handle will be stored
+ */
+enum IdeviceErrorCode afc_client_connect_tcp(struct TcpProviderHandle *provider,
+                                             struct AfcClientHandle **client);
+
+/**
+ * Connects to the AFC service using a Usbmuxd provider
+ *
+ * # Arguments
+ * * [`provider`] - A UsbmuxdProvider
+ * * [`client`] - On success, will be set to point to a newly allocated AfcClient handle
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `provider` must be a valid pointer to a handle allocated by this library
+ * `client` must be a valid, non-null pointer to a location where the handle will be stored
+ */
+enum IdeviceErrorCode afc_client_connect_usbmuxd(struct UsbmuxdProviderHandle *provider,
+                                                 struct AfcClientHandle **client);
+
+/**
+ * Creates a new AfcClient from an existing Idevice connection
+ *
+ * # Arguments
+ * * [`socket`] - An IdeviceSocket handle
+ * * [`client`] - On success, will be set to point to a newly allocated AfcClient handle
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `socket` must be a valid pointer to a handle allocated by this library
+ * `client` must be a valid, non-null pointer to a location where the handle will be stored
+ */
+enum IdeviceErrorCode afc_client_new(struct IdeviceHandle *socket, struct AfcClientHandle **client);
+
+/**
+ * Frees an AfcClient handle
+ *
+ * # Arguments
+ * * [`handle`] - The handle to free
+ *
+ * # Safety
+ * `handle` must be a valid pointer to the handle that was allocated by this library,
+ * or NULL (in which case this function does nothing)
+ */
+void afc_client_free(struct AfcClientHandle *handle);
+
+/**
+ * Lists the contents of a directory on the device
+ *
+ * # Arguments
+ * * [`client`] - A valid AfcClient handle
+ * * [`path`] - Path to the directory to list (UTF-8 null-terminated)
+ * * [`entries`] - Will be set to point to an array of directory entries
+ * * [`count`] - Will be set to the number of entries
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * All pointers must be valid and non-null
+ * `path` must be a valid null-terminated C string
+ */
+enum IdeviceErrorCode afc_list_directory(struct AfcClientHandle *client,
+                                         const char *path,
+                                         char ***entries,
+                                         size_t *count);
+
+/**
+ * Creates a new directory on the device
+ *
+ * # Arguments
+ * * [`client`] - A valid AfcClient handle
+ * * [`path`] - Path of the directory to create (UTF-8 null-terminated)
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `client` must be a valid pointer to a handle allocated by this library
+ * `path` must be a valid null-terminated C string
+ */
+enum IdeviceErrorCode afc_make_directory(struct AfcClientHandle *client, const char *path);
+
+/**
+ * Retrieves information about a file or directory
+ *
+ * # Arguments
+ * * [`client`] - A valid AfcClient handle
+ * * [`path`] - Path to the file or directory (UTF-8 null-terminated)
+ * * [`info`] - Will be populated with file information
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `client` and `path` must be valid pointers
+ * `info` must be a valid pointer to an AfcFileInfo struct
+ */
+enum IdeviceErrorCode afc_get_file_info(struct AfcClientHandle *client,
+                                        const char *path,
+                                        struct AfcFileInfo *info);
+
+/**
+ * Frees memory allocated by afc_get_file_info
+ *
+ * # Arguments
+ * * [`info`] - Pointer to AfcFileInfo struct to free
+ *
+ * # Safety
+ * `info` must be a valid pointer to an AfcFileInfo struct previously returned by afc_get_file_info
+ */
+void afc_file_info_free(struct AfcFileInfo *info);
+
+/**
+ * Retrieves information about the device's filesystem
+ *
+ * # Arguments
+ * * [`client`] - A valid AfcClient handle
+ * * [`info`] - Will be populated with device information
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `client` and `info` must be valid pointers
+ */
+enum IdeviceErrorCode afc_get_device_info(struct AfcClientHandle *client,
+                                          struct AfcDeviceInfo *info);
+
+/**
+ * Frees memory allocated by afc_get_device_info
+ *
+ * # Arguments
+ * * [`info`] - Pointer to AfcDeviceInfo struct to free
+ *
+ * # Safety
+ * `info` must be a valid pointer to an AfcDeviceInfo struct previously returned by afc_get_device_info
+ */
+void afc_device_info_free(struct AfcDeviceInfo *info);
+
+/**
+ * Removes a file or directory
+ *
+ * # Arguments
+ * * [`client`] - A valid AfcClient handle
+ * * [`path`] - Path to the file or directory to remove (UTF-8 null-terminated)
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `client` must be a valid pointer to a handle allocated by this library
+ * `path` must be a valid null-terminated C string
+ */
+enum IdeviceErrorCode afc_remove_path(struct AfcClientHandle *client, const char *path);
+
+/**
+ * Recursively removes a directory and all its contents
+ *
+ * # Arguments
+ * * [`client`] - A valid AfcClient handle
+ * * [`path`] - Path to the directory to remove (UTF-8 null-terminated)
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `client` must be a valid pointer to a handle allocated by this library
+ * `path` must be a valid null-terminated C string
+ */
+enum IdeviceErrorCode afc_remove_path_and_contents(struct AfcClientHandle *client,
+                                                   const char *path);
+
+/**
+ * Opens a file on the device
+ *
+ * # Arguments
+ * * [`client`] - A valid AfcClient handle
+ * * [`path`] - Path to the file to open (UTF-8 null-terminated)
+ * * [`mode`] - File open mode
+ * * [`handle`] - Will be set to a new file handle on success
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * All pointers must be valid and non-null
+ * `path` must be a valid null-terminated C string
+ */
+enum IdeviceErrorCode afc_file_open(struct AfcClientHandle *client,
+                                    const char *path,
+                                    enum AfcFopenMode mode,
+                                    struct AfcFileHandle **handle);
+
+/**
+ * Closes a file handle
+ *
+ * # Arguments
+ * * [`handle`] - File handle to close
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `handle` must be a valid pointer to a handle allocated by this library
+ */
+enum IdeviceErrorCode afc_file_close(struct AfcFileHandle *handle);
+
+/**
+ * Reads data from an open file
+ *
+ * # Arguments
+ * * [`handle`] - File handle to read from
+ * * [`data`] - Will be set to point to the read data
+ * * [`length`] - Will be set to the length of the read data
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * All pointers must be valid and non-null
+ */
+enum IdeviceErrorCode afc_file_read(struct AfcFileHandle *handle, uint8_t **data, size_t *length);
+
+/**
+ * Writes data to an open file
+ *
+ * # Arguments
+ * * [`handle`] - File handle to write to
+ * * [`data`] - Data to write
+ * * [`length`] - Length of data to write
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * All pointers must be valid and non-null
+ * `data` must point to at least `length` bytes
+ */
+enum IdeviceErrorCode afc_file_write(struct AfcFileHandle *handle,
+                                     const uint8_t *data,
+                                     size_t length);
+
+/**
+ * Creates a hard or symbolic link
+ *
+ * # Arguments
+ * * [`client`] - A valid AfcClient handle
+ * * [`target`] - Target path of the link (UTF-8 null-terminated)
+ * * [`source`] - Path where the link should be created (UTF-8 null-terminated)
+ * * [`link_type`] - Type of link to create
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * All pointers must be valid and non-null
+ * `target` and `source` must be valid null-terminated C strings
+ */
+enum IdeviceErrorCode afc_make_link(struct AfcClientHandle *client,
+                                    const char *target,
+                                    const char *source,
+                                    enum AfcLinkType link_type);
+
+/**
+ * Renames a file or directory
+ *
+ * # Arguments
+ * * [`client`] - A valid AfcClient handle
+ * * [`source`] - Current path of the file/directory (UTF-8 null-terminated)
+ * * [`target`] - New path for the file/directory (UTF-8 null-terminated)
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * All pointers must be valid and non-null
+ * `source` and `target` must be valid null-terminated C strings
+ */
+enum IdeviceErrorCode afc_rename_path(struct AfcClientHandle *client,
+                                      const char *source,
+                                      const char *target);
+
+/**
+ * Automatically creates and connects to AMFI service, returning a client handle
+ *
+ * # Arguments
+ * * [`provider`] - A TcpProvider
+ * * [`client`] - On success, will be set to point to a newly allocated AmfiClient handle
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `provider` must be a valid pointer to a handle allocated by this library
+ * `client` must be a valid, non-null pointer to a location where the handle will be stored
+ */
+enum IdeviceErrorCode amfi_connect_tcp(struct TcpProviderHandle *provider,
+                                       struct AmfiClientHandle **client);
+
+/**
+ * Automatically creates and connects to AMFI service, returning a client handle
+ *
+ * # Arguments
+ * * [`provider`] - A UsbmuxdProvider
+ * * [`client`] - On success, will be set to point to a newly allocated AmfiClient handle
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `provider` must be a valid pointer to a handle allocated by this library
+ * `client` must be a valid, non-null pointer to a location where the handle will be stored
+ */
+enum IdeviceErrorCode amfi_connect_usbmuxd(struct UsbmuxdProviderHandle *provider,
+                                           struct AmfiClientHandle **client);
+
+/**
+ * Automatically creates and connects to AMFI service, returning a client handle
+ *
+ * # Arguments
+ * * [`socket`] - An IdeviceSocket handle
+ * * [`client`] - On success, will be set to point to a newly allocated AmfiClient handle
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `socket` must be a valid pointer to a handle allocated by this library
+ * `client` must be a valid, non-null pointer to a location where the handle will be stored
+ */
+enum IdeviceErrorCode amfi_new(struct IdeviceHandle *socket, struct AmfiClientHandle **client);
+
+/**
+ * Shows the option in the settings UI
+ *
+ * # Arguments
+ * * `client` - A valid AmfiClient handle
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `client` must be a valid pointer to a handle allocated by this library
+ */
+enum IdeviceErrorCode amfi_reveal_developer_mode_option_in_ui(struct AmfiClientHandle *client);
+
+/**
+ * Enables developer mode on the device
+ *
+ * # Arguments
+ * * `client` - A valid AmfiClient handle
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `client` must be a valid pointer to a handle allocated by this library
+ */
+enum IdeviceErrorCode amfi_enable_developer_mode(struct AmfiClientHandle *client);
+
+/**
+ * Accepts developer mode on the device
+ *
+ * # Arguments
+ * * `client` - A valid AmfiClient handle
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `client` must be a valid pointer to a handle allocated by this library
+ */
+enum IdeviceErrorCode amfi_accept_developer_mode(struct AmfiClientHandle *client);
+
+/**
+ * Frees a handle
+ *
+ * # Arguments
+ * * [`handle`] - The handle to free
+ *
+ * # Safety
+ * `handle` must be a valid pointer to the handle that was allocated by this library,
+ * or NULL (in which case this function does nothing)
+ */
+void amfi_client_free(struct AmfiClientHandle *handle);
 
 /**
  * Automatically creates and connects to Core Device Proxy, returning a client handle
@@ -890,10 +1342,10 @@ enum IdeviceErrorCode installation_proxy_new(struct IdeviceHandle *socket,
  * Gets installed apps on the device
  *
  * # Arguments
- * * `client` - A valid InstallationProxyClient handle
- * * `application_type` - The application type to filter by (optional, NULL for "Any")
- * * `bundle_identifiers` - The identifiers to filter by (optional, NULL for all apps)
- * * `out_result` - On success, will be set to point to a newly allocated array of PlistRef
+ * * [`client`] - A valid InstallationProxyClient handle
+ * * [`application_type`] - The application type to filter by (optional, NULL for "Any")
+ * * [`bundle_identifiers`] - The identifiers to filter by (optional, NULL for all apps)
+ * * [`out_result`] - On success, will be set to point to a newly allocated array of PlistRef
  *
  * # Returns
  * An error code indicating success or failure
@@ -920,6 +1372,249 @@ enum IdeviceErrorCode installation_proxy_get_apps(struct InstallationProxyClient
  * or NULL (in which case this function does nothing)
  */
 void installation_proxy_client_free(struct InstallationProxyClientHandle *handle);
+
+/**
+ * Installs an application package on the device
+ *
+ * # Arguments
+ * * [`client`] - A valid InstallationProxyClient handle
+ * * [`package_path`] - Path to the .ipa package in the AFC jail
+ * * [`options`] - Optional installation options as a plist dictionary (can be NULL)
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `client` must be a valid pointer to a handle allocated by this library
+ * `package_path` must be a valid C string
+ * `options` must be a valid plist dictionary or NULL
+ */
+enum IdeviceErrorCode installation_proxy_install(struct InstallationProxyClientHandle *client,
+                                                 const char *package_path,
+                                                 void *options);
+
+/**
+ * Installs an application package on the device
+ *
+ * # Arguments
+ * * [`client`] - A valid InstallationProxyClient handle
+ * * [`package_path`] - Path to the .ipa package in the AFC jail
+ * * [`options`] - Optional installation options as a plist dictionary (can be NULL)
+ * * [`callback`] - Progress callback function
+ * * [`context`] - User context to pass to callback
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `client` must be a valid pointer to a handle allocated by this library
+ * `package_path` must be a valid C string
+ * `options` must be a valid plist dictionary or NULL
+ */
+enum IdeviceErrorCode installation_proxy_install_with_callback(struct InstallationProxyClientHandle *client,
+                                                               const char *package_path,
+                                                               void *options,
+                                                               void (*callback)(uint64_t progress,
+                                                                                void *context),
+                                                               void *context);
+
+/**
+ * Upgrades an existing application on the device
+ *
+ * # Arguments
+ * * [`client`] - A valid InstallationProxyClient handle
+ * * [`package_path`] - Path to the .ipa package in the AFC jail
+ * * [`options`] - Optional upgrade options as a plist dictionary (can be NULL)
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `client` must be a valid pointer to a handle allocated by this library
+ * `package_path` must be a valid C string
+ * `options` must be a valid plist dictionary or NULL
+ */
+enum IdeviceErrorCode installation_proxy_upgrade(struct InstallationProxyClientHandle *client,
+                                                 const char *package_path,
+                                                 void *options);
+
+/**
+ * Upgrades an existing application on the device
+ *
+ * # Arguments
+ * * [`client`] - A valid InstallationProxyClient handle
+ * * [`package_path`] - Path to the .ipa package in the AFC jail
+ * * [`options`] - Optional upgrade options as a plist dictionary (can be NULL)
+ * * [`callback`] - Progress callback function
+ * * [`context`] - User context to pass to callback
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `client` must be a valid pointer to a handle allocated by this library
+ * `package_path` must be a valid C string
+ * `options` must be a valid plist dictionary or NULL
+ */
+enum IdeviceErrorCode installation_proxy_upgrade_with_callback(struct InstallationProxyClientHandle *client,
+                                                               const char *package_path,
+                                                               void *options,
+                                                               void (*callback)(uint64_t progress,
+                                                                                void *context),
+                                                               void *context);
+
+/**
+ * Uninstalls an application from the device
+ *
+ * # Arguments
+ * * [`client`] - A valid InstallationProxyClient handle
+ * * [`bundle_id`] - Bundle identifier of the application to uninstall
+ * * [`options`] - Optional uninstall options as a plist dictionary (can be NULL)
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `client` must be a valid pointer to a handle allocated by this library
+ * `bundle_id` must be a valid C string
+ * `options` must be a valid plist dictionary or NULL
+ */
+enum IdeviceErrorCode installation_proxy_uninstall(struct InstallationProxyClientHandle *client,
+                                                   const char *bundle_id,
+                                                   void *options);
+
+/**
+ * Uninstalls an application from the device
+ *
+ * # Arguments
+ * * [`client`] - A valid InstallationProxyClient handle
+ * * [`bundle_id`] - Bundle identifier of the application to uninstall
+ * * [`options`] - Optional uninstall options as a plist dictionary (can be NULL)
+ * * [`callback`] - Progress callback function
+ * * [`context`] - User context to pass to callback
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `client` must be a valid pointer to a handle allocated by this library
+ * `bundle_id` must be a valid C string
+ * `options` must be a valid plist dictionary or NULL
+ */
+enum IdeviceErrorCode installation_proxy_uninstall_with_callback(struct InstallationProxyClientHandle *client,
+                                                                 const char *bundle_id,
+                                                                 void *options,
+                                                                 void (*callback)(uint64_t progress,
+                                                                                  void *context),
+                                                                 void *context);
+
+/**
+ * Checks if the device capabilities match the required capabilities
+ *
+ * # Arguments
+ * * [`client`] - A valid InstallationProxyClient handle
+ * * [`capabilities`] - Array of plist values representing required capabilities
+ * * [`capabilities_len`] - Length of the capabilities array
+ * * [`options`] - Optional check options as a plist dictionary (can be NULL)
+ * * [`out_result`] - Will be set to true if all capabilities are supported, false otherwise
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `client` must be a valid pointer to a handle allocated by this library
+ * `capabilities` must be a valid array of plist values or NULL
+ * `options` must be a valid plist dictionary or NULL
+ * `out_result` must be a valid pointer to a bool
+ */
+enum IdeviceErrorCode installation_proxy_check_capabilities_match(struct InstallationProxyClientHandle *client,
+                                                                  void *const *capabilities,
+                                                                  size_t capabilities_len,
+                                                                  void *options,
+                                                                  bool *out_result);
+
+/**
+ * Browses installed applications on the device
+ *
+ * # Arguments
+ * * [`client`] - A valid InstallationProxyClient handle
+ * * [`options`] - Optional browse options as a plist dictionary (can be NULL)
+ * * [`out_result`] - On success, will be set to point to a newly allocated array of PlistRef
+ * * [`out_result_len`] - Will be set to the length of the result array
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `client` must be a valid pointer to a handle allocated by this library
+ * `options` must be a valid plist dictionary or NULL
+ * `out_result` must be a valid, non-null pointer to a location where the result will be stored
+ * `out_result_len` must be a valid, non-null pointer to a location where the length will be stored
+ */
+enum IdeviceErrorCode installation_proxy_browse(struct InstallationProxyClientHandle *client,
+                                                void *options,
+                                                void **out_result,
+                                                size_t *out_result_len);
+
+/**
+ * Creates a new ProcessControlClient from a RemoteServerClient
+ *
+ * # Arguments
+ * * [`server`] - The RemoteServerClient to use
+ * * [`handle`] - Pointer to store the newly created ProcessControlClient handle
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `server` must be a valid pointer to a handle allocated by this library
+ * `handle` must be a valid pointer to a location where the handle will be stored
+ */
+enum IdeviceErrorCode location_simulation_new(struct RemoteServerAdapterHandle *server,
+                                              struct LocationSimulationAdapterHandle **handle);
+
+/**
+ * Frees a ProcessControlClient handle
+ *
+ * # Arguments
+ * * [`handle`] - The handle to free
+ *
+ * # Safety
+ * `handle` must be a valid pointer to a handle allocated by this library or NULL
+ */
+void location_simulation_free(struct LocationSimulationAdapterHandle *handle);
+
+/**
+ * Clears the location set
+ *
+ * # Arguments
+ * * [`handle`] - The LocationSimulation handle
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * All pointers must be valid or NULL where appropriate
+ */
+enum IdeviceErrorCode location_simulation_clear(struct LocationSimulationAdapterHandle *handle);
+
+/**
+ * Sets the location
+ *
+ * # Arguments
+ * * [`handle`] - The LocationSimulation handle
+ * * [`latitude`] - The latitude to set
+ * * [`longitude`] - The longitude to set
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * All pointers must be valid or NULL where appropriate
+ */
+enum IdeviceErrorCode location_simulation_set(struct LocationSimulationAdapterHandle *handle,
+                                              double latitude,
+                                              double longitude);
 
 /**
  * Connects to lockdownd service using TCP provider
@@ -1016,7 +1711,8 @@ enum IdeviceErrorCode lockdownd_start_service(struct LockdowndClientHandle *clie
  *
  * # Arguments
  * * `client` - A valid LockdowndClient handle
- * * `value` - The value to get (null-terminated string)
+ * * `key` - The value to get (null-terminated string)
+ * * `domain` - The value to get (null-terminated string)
  * * `out_plist` - Pointer to store the returned plist value
  *
  * # Returns
@@ -1028,7 +1724,8 @@ enum IdeviceErrorCode lockdownd_start_service(struct LockdowndClientHandle *clie
  * `out_plist` must be a valid pointer to store the plist
  */
 enum IdeviceErrorCode lockdownd_get_value(struct LockdowndClientHandle *client,
-                                          const char *value,
+                                          const char *key,
+                                          const char *domain,
                                           void **out_plist);
 
 /**
@@ -1912,6 +2609,89 @@ enum IdeviceErrorCode xpc_device_get_service_names(struct XPCDeviceAdapterHandle
 void xpc_device_free_service_names(char **names, uintptr_t count);
 
 /**
+ * Connects to the Springboard service using a TCP provider
+ *
+ * # Arguments
+ * * [`provider`] - A TcpProvider
+ * * [`client`] - On success, will be set to point to a newly allocated SpringBoardServicesClient handle
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `provider` must be a valid pointer to a handle allocated by this library
+ * `client` must be a valid, non-null pointer to a location where the handle will be stored
+ */
+enum IdeviceErrorCode springboard_services_connect_tcp(struct TcpProviderHandle *provider,
+                                                       struct SpringBoardServicesClientHandle **client);
+
+/**
+ * Connects to the Springboard service using a usbmuxd provider
+ *
+ * # Arguments
+ * * [`provider`] - A UsbmuxdProvider
+ * * [`client`] - On success, will be set to point to a newly allocated SpringBoardServicesClient handle
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `provider` must be a valid pointer to a handle allocated by this library
+ * `client` must be a valid, non-null pointer to a location where the handle will be stored
+ */
+enum IdeviceErrorCode springboard_services_connect_usbmuxd(struct UsbmuxdProviderHandle *provider,
+                                                           struct SpringBoardServicesClientHandle **client);
+
+/**
+ * Creates a new SpringBoardServices client from an existing Idevice connection
+ *
+ * # Arguments
+ * * [`socket`] - An IdeviceSocket handle
+ * * [`client`] - On success, will be set to point to a newly allocated SpringBoardServicesClient handle
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `socket` must be a valid pointer to a handle allocated by this library
+ * `client` must be a valid, non-null pointer to a location where the handle will be stored
+ */
+enum IdeviceErrorCode springboard_services_new(struct IdeviceHandle *socket,
+                                               struct SpringBoardServicesClientHandle **client);
+
+/**
+ * Gets the icon of the specified app by bundle identifier
+ *
+ * # Arguments
+ * * `client` - A valid SpringBoardServicesClient handle
+ * * `bundle_identifier` - The identifiers of the app to get icon
+ * * `out_result` - On success, will be set to point to a newly allocated png data
+ *
+ * # Returns
+ * An error code indicating success or failure
+ *
+ * # Safety
+ * `client` must be a valid pointer to a handle allocated by this library
+ * `out_result` must be a valid, non-null pointer to a location where the result will be stored
+ */
+enum IdeviceErrorCode springboard_services_get_icon(struct SpringBoardServicesClientHandle *client,
+                                                    const char *bundle_identifier,
+                                                    void **out_result,
+                                                    size_t *out_result_len);
+
+/**
+ * Frees an SpringBoardServicesClient handle
+ *
+ * # Arguments
+ * * [`handle`] - The handle to free
+ *
+ * # Safety
+ * `handle` must be a valid pointer to the handle that was allocated by this library,
+ * or NULL (in which case this function does nothing)
+ */
+void springboard_services_free(struct SpringBoardServicesClientHandle *handle);
+
+/**
  * Connects to a usbmuxd instance over TCP
  *
  * # Arguments
@@ -2010,36 +2790,3 @@ enum IdeviceErrorCode idevice_usbmuxd_unix_addr_new(const char *addr,
  * or NULL (in which case this function does nothing)
  */
 void idevice_usbmuxd_addr_free(struct UsbmuxdAddrHandle *usbmuxd_addr);
-
-enum IdeviceErrorCode springboard_services_connect_tcp(struct TcpProviderHandle *provider,
-                                                             struct SpringBoardServicesClientHandle **client);
-
-enum IdeviceErrorCode springboard_services_connect_usbmuxd(struct UsbmuxdProviderHandle *provider,
-                                                                 struct SpringBoardServicesClientHandle **client);
-
-enum IdeviceErrorCode springboard_services_new(struct IdeviceHandle *socket,
-                                                     struct SpringBoardServicesClientHandle **client);
-
-/**
- * Gets the icon of the specified app by bundle identifier
- *
- * # Arguments
- * * `client` - A valid SpringBoardServicesClient handle
- * * `bundle_identifier` - The identifiers of the app to get icon
- * * `out_result` - On success, will be set to point to a newly allocated png data
- *
- * # Returns
- * An error code indicating success or failure
- *
- * # Safety
- * `client` must be a valid pointer to a handle allocated by this library
- * `out_result` must be a valid, non-null pointer to a location where the result will be stored
- */
-enum IdeviceErrorCode springboard_services_get_icon(struct SpringBoardServicesClientHandle *client,
-                                                          const char *bundle_identifier,
-                                                          void **out_result,
-                                                          size_t *out_result_len);
-
-void springboard_services_free(struct SpringBoardServicesClientHandle *handle);
-
-#endif

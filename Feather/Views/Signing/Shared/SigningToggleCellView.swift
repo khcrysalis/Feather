@@ -27,7 +27,6 @@ struct SigningToggleCellView<T>: View {
 				}
 			}
 		))
-		.tint(.accentColor)
 	}
 	
 	private func _removeItem() {

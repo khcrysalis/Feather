@@ -13,11 +13,6 @@ extension UIImage {
 			return nil
 		}
 		
-		guard url.startAccessingSecurityScopedResource() else {
-			return nil
-		}
-		defer { url.stopAccessingSecurityScopedResource() }
-		
 		return UIImage(contentsOfFile: url.path)
 	}
 }

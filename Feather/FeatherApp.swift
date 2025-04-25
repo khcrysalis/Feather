@@ -10,7 +10,9 @@ import SwiftUI
 @main
 struct FeatherApp: App {
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-
+	#if IDEVICE
+	let heartbeat = HeartbeatManager.shared
+	#endif
 	let storage = Storage.shared
 
 	var body: some Scene {
@@ -18,6 +20,11 @@ struct FeatherApp: App {
 			VariedTabbarView()
 				.environment(\.managedObjectContext, storage.context)
 				.onOpenURL(perform: _handleURL)
+				#if IDEVICE
+				.onAppear {
+					heartbeat.start()
+				}
+				#endif
 		}
 	}
 	
@@ -44,9 +51,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 		let fileManager = FileManager.default
 
 		let directories = ["Signed", "Unsigned", "Certificates", "Archives"].map {
-			FileManager.default.documentsDirectory.appendingPathComponent($0)
+			URL.documentsDirectory.appendingPathComponent($0)
 		}
-
+		
 		for url in directories where !fileManager.fileExists(atPath: url.path) {
 			try? fileManager.createDirectory(
 				at: url,

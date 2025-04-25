@@ -11,7 +11,7 @@ extension Color {
 	/// Disabled color
 	/// - Parameter color: Color
 	/// - Returns: "Disabled" version of specified color
-	static func disabled(_ color: Color) -> Color {
-		color.opacity(0.5)
+	static func disabled() -> Color {
+		.secondary.opacity(0.8)
 	}
 }

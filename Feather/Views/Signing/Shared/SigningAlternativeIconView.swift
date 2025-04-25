@@ -11,7 +11,7 @@ import SwiftUI
 struct SigningAlternativeIconView: View {
 	@Environment(\.dismiss) var dismiss
 	
-	@State private var alternateIcons: [(name: String, path: String)] = []
+	@State private var _alternateIcons: [(name: String, path: String)] = []
 	
 	var app: AppInfoPresentable
 	@Binding var appIcon: UIImage?
@@ -20,7 +20,7 @@ struct SigningAlternativeIconView: View {
 	// MARK: Body
 	var body: some View {
 		FRNavigationView("Alternative Icons", displayMode: .inline) {
-			List(alternateIcons, id: \.name) { icon in
+			List(_alternateIcons, id: \.name) { icon in
 				Button {
 					appIcon = _iconUrl(icon.path)
 					dismiss()
@@ -76,7 +76,7 @@ extension SigningAlternativeIconView {
 			return
 		}
 		
-		alternateIcons = alternateIconsDict.compactMap { (name, details) in
+		_alternateIcons = alternateIconsDict.compactMap { (name, details) in
 			if let files = details["CFBundleIconFiles"] as? [String], let path = files.first {
 				return (name, path)
 			}

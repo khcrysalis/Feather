@@ -9,8 +9,8 @@ import SwiftUI
 
 // MARK: - View
 struct SigningDylibView: View {
-	@State private var dylibs: [String] = []
-	@State private var hiddenDylibCount: Int = 0
+	@State private var _dylibs: [String] = []
+	@State private var _hiddenDylibCount: Int = 0
 	
 	var app: AppInfoPresentable
 	@Binding var options: Options?
@@ -18,7 +18,7 @@ struct SigningDylibView: View {
 	var body: some View {
 		List {
 			Section {
-				ForEach(dylibs, id: \.self) { dylib in
+				ForEach(_dylibs, id: \.self) { dylib in
 					SigningToggleCellView(
 						title: dylib,
 						options: $options,
@@ -28,9 +28,9 @@ struct SigningDylibView: View {
 			}
 			
 			FRSection("Hidden") {
-				Text("\(hiddenDylibCount) required system dylibs not shown")
+				Text("\(_hiddenDylibCount) required system dylibs not shown")
 					.font(.footnote)
-					.foregroundColor(.disabled(.accentColor))
+					.foregroundColor(.disabled())
 			}
 		}
 		.disabled(options == nil)
@@ -49,7 +49,7 @@ extension SigningDylibView {
 		
 		let allDylibs = Zsign.listDylibs(appExecutable: execPath).map { $0 as String }
 		
-		dylibs = allDylibs.filter { $0.hasPrefix("@rpath") || $0.hasPrefix("@executable_path") }
-		hiddenDylibCount = allDylibs.count - dylibs.count
+		_dylibs = allDylibs.filter { $0.hasPrefix("@rpath") || $0.hasPrefix("@executable_path") }
+		_hiddenDylibCount = allDylibs.count - _dylibs.count
 	}
 }

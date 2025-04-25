@@ -14,9 +14,9 @@ struct SettingsView: View {
 	#if SERVER
 	@AppStorage("Feather.serverMethod") private var _serverMethod = 0
 	private let _serverMethods = ["Fully Local", "Semi Local"]
-	#endif
 	
-	@State private var isRestartAlertPresenting = false
+	@State private var _isRestartAlertPresenting = false
+	#endif
 	
 	// MARK: Body
     var body: some View {
@@ -47,14 +47,14 @@ struct SettingsView: View {
             }
 			#if SERVER
 			.onChange(of: _serverMethod) { _ in
-				isRestartAlertPresenting = true
+				_isRestartAlertPresenting = true
 			}
-			.alert(isPresented: $isRestartAlertPresenting) {
+			.alert(isPresented: $_isRestartAlertPresenting) {
 				Alert(
 					title: Text("Restart Required"),
 					message: Text("These changes require a restart of the app"),
 					dismissButton: .default(Text("OK")) {
-						fatalError("App restart required due to changes.")
+						UIApplication.shared.suspend()
 					}
 				)
 			}

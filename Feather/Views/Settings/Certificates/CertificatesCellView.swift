@@ -13,7 +13,7 @@ struct CertificatesCellView: View {
 	
 	var cert: CertificatePair
 	var shouldDisplayInfo: Bool = true
-	@Binding var selectedInfoCert: CertificatePair?
+	@Binding var isSelectedInfoPresenting: CertificatePair?
 	
 	// MARK: Body
 	var body: some View {

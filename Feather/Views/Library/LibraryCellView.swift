@@ -9,12 +9,10 @@ import SwiftUI
 
 // MARK: - View
 struct LibraryCellView: View {
-	@State var showActionSheet = false
-	
 	var app: AppInfoPresentable
-	@Binding var selectedInfoApp: AnyApp?
-	@Binding var selectedSigningApp: AnyApp?
-	@Binding var selectedInstallApp: AnyApp?
+	@Binding var selectedInfoAppPresenting: AnyApp?
+	@Binding var selectedSigningAppPresenting: AnyApp?
+	@Binding var selectedInstallAppPresenting: AnyApp?
 	
 	// MARK: Body
 	var body: some View {
@@ -65,7 +63,7 @@ extension LibraryCellView {
 	@ViewBuilder
 	private func _contextActions(for app: AppInfoPresentable) -> some View {
 		Button {
-			selectedInfoApp = AnyApp(base: app)
+			selectedInfoAppPresenting = AnyApp(base: app)
 		} label: {
 			Label("Get Info", systemImage: "info.circle")
 		}
@@ -82,18 +80,18 @@ extension LibraryCellView {
 				}
 			}
 			Button {
-				selectedSigningApp = AnyApp(base: app)
+				selectedSigningAppPresenting = AnyApp(base: app)
 			} label: {
 				Label("Resign", systemImage: "signature")
 			}
 			Button {
-				selectedInstallApp = AnyApp(base: app, archive: true)
+				selectedInstallAppPresenting = AnyApp(base: app, archive: true)
 			} label: {
 				Label("Export", systemImage: "square.and.arrow.up")
 			}
 		} else {
 			Button {
-				selectedInstallApp = AnyApp(base: app)
+				selectedInstallAppPresenting = AnyApp(base: app)
 			} label: {
 				Label("Install", systemImage: "square.and.arrow.down")
 			}
@@ -105,13 +103,13 @@ extension LibraryCellView {
 		Group {
 			if app.isSigned {
 				Button {
-					selectedInstallApp = AnyApp(base: app)
+					selectedInstallAppPresenting = AnyApp(base: app)
 				} label: {
 					_buttonLabel("Install")
 				}
 			} else {
 				Button {
-					selectedSigningApp = AnyApp(base: app)
+					selectedSigningAppPresenting = AnyApp(base: app)
 				} label: {
 					_buttonLabel("Sign")
 				}
@@ -122,10 +120,12 @@ extension LibraryCellView {
 	
 	@ViewBuilder
 	private func _buttonLabel(_ title: String) -> some View {
-		LRActionButton(
-			title,
-			systemImage: "",
-			style: .text
-		)
+		Group {
+			Text(title)
+				.font(.footnote).bold()
+		}
+		.frame(width: 66, height: 29)
+		.background(Color(uiColor: .quaternarySystemFill))
+		.clipShape(Capsule())
 	}
 }

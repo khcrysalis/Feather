@@ -97,31 +97,24 @@ struct Options: Codable, Equatable {
 	static let defaultOptions = Options(
 		appAppearance: "Default",
 		minimumAppRequirement: "Default",
-	
 		ppqString: randomString(),
-		
 		ppqProtection: false,
 		dynamicProtection: false,
-		
 		identifiers: [:],
 		displayNames: [:],
 		injectionFiles: [],
 		disInjectionFiles: [],
 		removeFiles: [],
-		
 		fileSharing: false,
 		itunesFileSharing: false,
 		proMotion: false,
 		gameMode: false,
 		ipadFullscreen: false,
-		
 		removeSupportedDevices: false,
 		removeURLScheme: false,
 		removeProvisioning: false,
 		removeWatchPlaceholder: false,
-		
 		changeLanguageFilesForCustomDisplayName: false,
-
 		doAdhocSigning: false
 	)
 	
@@ -131,8 +124,8 @@ struct Options: Codable, Equatable {
 	/// Default values for `minimumAppRequirement`
 	static let appMinimumAppRequirementValues = ["Default", "16.0", "15.0", "14.0", "13.0", "12.0"]
 	/// Default random value for `ppqString`
-	static func randomString(length: Int = 6) -> String {
-		let letters = "abcdefghijklmnopqrstuvwxyz"
-		return String((0..<length).compactMap { _ in letters.randomElement() })
+	static func randomString() -> String {
+		let letters = UUID().uuidString
+		return String((0..<6).compactMap { _ in letters.randomElement() })
 	}
 }

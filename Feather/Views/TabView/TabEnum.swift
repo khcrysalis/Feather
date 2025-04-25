@@ -13,7 +13,6 @@ enum TabEnum: String, CaseIterable, Hashable {
 	case settings
 	case certificates
 	
-	
 	var title: String {
 		switch self {
 		case .sources:     	return "Sources"

@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - View
 struct ConfigurationView: View {
-	@StateObject private var optionsManager = OptionsManager.shared
+	@StateObject private var _optionsManager = OptionsManager.shared
 	@State var isRandomAlertPresenting = false
 	@State var randomString = ""
 	
@@ -18,22 +18,22 @@ struct ConfigurationView: View {
 		List {
 			NavigationLink("Display Names", destination: ConfigurationDictView(
 					title: "Display Names",
-					dataDict: $optionsManager.options.displayNames
+					dataDict: $_optionsManager.options.displayNames
 				)
 			)
 			NavigationLink("Identifers", destination: ConfigurationDictView(
 					title: "Identifers",
-					dataDict: $optionsManager.options.identifiers
+					dataDict: $_optionsManager.options.identifiers
 				)
 			)
 			
-			SigningOptionsView(options: $optionsManager.options)
+			SigningOptionsView(options: $_optionsManager.options)
 		}
 		.navigationTitle("Configuration")
 		.navigationBarTitleDisplayMode(.inline)
 		.toolbar {
 			FRToolbarMenu(
-				optionsManager.options.ppqString,
+				_optionsManager.options.ppqString,
 				systemImage: "character.textbox",
 				style: .icon,
 				placement: .topBarTrailing
@@ -41,11 +41,11 @@ struct ConfigurationView: View {
 				_randomMenuItem()
 			}
 		}
-		.alert(optionsManager.options.ppqString, isPresented: $isRandomAlertPresenting) {
+		.alert(_optionsManager.options.ppqString, isPresented: $isRandomAlertPresenting) {
 			_randomMenuAlert()
 		}
-		.onChange(of: optionsManager.options) { _ in
-			optionsManager.saveOptions()
+		.onChange(of: _optionsManager.options) { _ in
+			_optionsManager.saveOptions()
 		}
     }
 }
@@ -54,12 +54,12 @@ struct ConfigurationView: View {
 extension ConfigurationView {
 	@ViewBuilder
 	private func _randomMenuItem() -> some View {
-		Section(optionsManager.options.ppqString) {
+		Section(_optionsManager.options.ppqString) {
 			Button("Change") {
 				isRandomAlertPresenting = true
 			}
 			Button("Copy") {
-				UIPasteboard.general.string = optionsManager.options.ppqString
+				UIPasteboard.general.string = _optionsManager.options.ppqString
 			}
 		}
 	}
@@ -69,7 +69,7 @@ extension ConfigurationView {
 		TextField("String", text: $randomString)
 		Button("Save") {
 			if !randomString.isEmpty {
-				optionsManager.options.ppqString = randomString
+				_optionsManager.options.ppqString = randomString
 			}
 		}
 		

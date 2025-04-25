@@ -72,7 +72,7 @@ extension LibraryInfoView {
 				CertificatesCellView(
 					cert: cert,
 					shouldDisplayInfo: false,
-					selectedInfoCert: .constant(.none)
+					isSelectedInfoPresenting: .constant(.none)
 				)
 			}
 		}

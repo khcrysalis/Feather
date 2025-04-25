@@ -11,12 +11,12 @@ import SwiftUI
 struct ConfigurationDictAddView: View {
 	@Environment(\.dismiss) var dismiss
 	
-	@State private var newKey = ""
-	@State private var newValue = ""
-	@State private var showOverrideAlert = false
+	@State private var _newKey = ""
+	@State private var _newValue = ""
+	@State private var _showOverrideAlert = false
 	
 	var saveButtonDisabled: Bool {
-		newKey.isEmpty || newValue.isEmpty
+		_newKey.isEmpty || _newValue.isEmpty
 	}
 	
 	@Binding var dataDict: [String: String]
@@ -25,8 +25,8 @@ struct ConfigurationDictAddView: View {
     var body: some View {
 		Form {
 			FRSection("New") {
-				TextField("Identifier", text: $newKey)
-				TextField("Replacement", text: $newValue)
+				TextField("Identifier", text: $_newKey)
+				TextField("Replacement", text: $_newValue)
 			}
 			.autocapitalization(.none)
 		}
@@ -38,18 +38,9 @@ struct ConfigurationDictAddView: View {
 				placement: .confirmationAction,
 				isDisabled: saveButtonDisabled
 			) {
-				dataDict[newKey] = newValue
-				_clearAndDismiss()
+				dataDict[_newKey] = _newValue
+				dismiss()
 			}
 		}
     }
-}
-
-// MARK: - Extension: View
-extension ConfigurationDictAddView {
-	private func _clearAndDismiss() {
-		newKey = ""
-		newValue = ""
-		dismiss()
-	}
 }

@@ -8,17 +8,20 @@
 import Foundation
 import UIKit.UIApplication
 import Zip
+import SwiftUICore
 
 final class ArchiveHandler: NSObject {
+	@ObservedObject var viewModel: StatusViewModel
+	
 	private let _fileManager = FileManager.default
 	private let _uuid = UUID().uuidString
 	private var _payloadUrl: URL?
-	private var _ipaUrl: URL?
 	
 	private var _app: AppInfoPresentable
 	private let _uniqueWorkDir: URL
 	
-	init(app: AppInfoPresentable) {
+	init(app: AppInfoPresentable, viewModel: StatusViewModel) {
+		self.viewModel = viewModel
 		self._app = app
 		self._uniqueWorkDir = _fileManager.temporaryDirectory
 			.appendingPathComponent("FeatherInstall_\(_uuid)", isDirectory: true)
@@ -46,25 +49,30 @@ final class ArchiveHandler: NSObject {
 	}
 	
 	func archive() async throws -> URL {
-		guard let payloadUrl = _payloadUrl else {
-			throw SigningFileHandlerError.appNotFound
-		}
-		
-		let zipUrl = _uniqueWorkDir.appendingPathComponent("Archive.zip")
-		let ipaUrl = _uniqueWorkDir.appendingPathComponent("Archive.ipa")
-		
-		try Zip.zipFiles(
-			paths: [payloadUrl],
-			zipFilePath: zipUrl,
-			password: nil,
-			compression: ZipCompression.allCases[ArchiveHandler.getCompressionLevel()],
-		progress: { progress in
-			print("[\(self._uuid)] Zip progress: \(progress)")
-		})
-		
-		try _fileManager.moveItem(at: zipUrl, to: ipaUrl)
-		_ipaUrl = ipaUrl
-		return ipaUrl
+		return try await Task.detached(priority: .background) { [self] in
+			guard let payloadUrl = await self._payloadUrl else {
+				throw SigningFileHandlerError.appNotFound
+			}
+			
+			let zipUrl = self._uniqueWorkDir.appendingPathComponent("Archive.zip")
+			let ipaUrl = self._uniqueWorkDir.appendingPathComponent("Archive.ipa")
+			
+			try await Zip.zipFiles(
+				paths: [payloadUrl],
+				zipFilePath: zipUrl,
+				password: nil,
+				compression: ZipCompression.allCases[ArchiveHandler.getCompressionLevel()],
+				progress: { progress in
+					print("[\(self._uuid)] Zip progress: \(progress)")
+					
+					Task { @MainActor in
+						self.viewModel.packageProgress = progress
+					}
+				})
+			
+			try FileManager.default.moveItem(at: zipUrl, to: ipaUrl)
+			return ipaUrl
+		}.value
 	}
 	
 	func moveToArchiveAndOpen(_ package: URL) async throws {

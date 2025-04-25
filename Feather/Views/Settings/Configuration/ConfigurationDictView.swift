@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - View
 struct ConfigurationDictView: View {
-	@State private var isAddingValue = false
+	@State private var _isAddingPresenting = false
 	
 	var title: String
 	@Binding var dataDict: [String: String]
@@ -33,10 +33,10 @@ struct ConfigurationDictView: View {
 				style: .icon,
 				placement: .topBarTrailing
 			) {
-				isAddingValue = true
+				_isAddingPresenting = true
 			}
 		}
-		.navigationDestination(isPresented: $isAddingValue) {
+		.navigationDestination(isPresented: $_isAddingPresenting) {
 			ConfigurationDictAddView(dataDict: $dataDict)
 		}
 	}

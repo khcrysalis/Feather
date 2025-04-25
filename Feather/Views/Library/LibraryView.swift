@@ -10,56 +10,82 @@ import CoreData
 
 // MARK: - View
 struct LibraryView: View {
-	@State private var isImportingFiles = false
-	@State private var searchText = ""
-	@State private var selectedInfoApp: AnyApp?
-	@State private var selectedSigningApp: AnyApp?
-	@State private var selectedInstallApp: AnyApp?
-		
-	@Namespace private var namespace
+	@State private var _selectedInfoAppPresenting: AnyApp?
+	@State private var _selectedSigningAppPresenting: AnyApp?
+	@State private var _selectedInstallAppPresenting: AnyApp?
+	@State private var _isImportingPresenting = false
+	
+	@State private var _searchText = ""
+	@State private var _selectedScope: Scope = .all
+	
+	@Namespace private var _namespace
+	
+	private var _filteredSignedApps: [Signed] {
+		_signedApps.filter { _searchText.isEmpty || ($0.name?.localizedCaseInsensitiveContains(_searchText) ?? false) }
+	}
+	
+	private var _filteredImportedApps: [Imported] {
+		_importedApps.filter { _searchText.isEmpty || ($0.name?.localizedCaseInsensitiveContains(_searchText) ?? false) }
+	}
 	
 	// MARK: Fetch
 	@FetchRequest(
 		entity: Signed.entity(),
 		sortDescriptors: [NSSortDescriptor(keyPath: \Signed.date, ascending: false)],
 		animation: .snappy
-	) private var signedApps: FetchedResults<Signed>
+	) private var _signedApps: FetchedResults<Signed>
 	
 	@FetchRequest(
 		entity: Imported.entity(),
 		sortDescriptors: [NSSortDescriptor(keyPath: \Imported.date, ascending: false)],
 		animation: .snappy
-	) private var importedApps: FetchedResults<Imported>
+	) private var _importedApps: FetchedResults<Imported>
 	
 	// MARK: Body
     var body: some View {
 		FRNavigationView("Library") {
 			List {
-				FRSection("Signed") {
-					ForEach(signedApps, id: \.uuid) { app in
-						LibraryCellView(
-							app: app,
-							selectedInfoApp: $selectedInfoApp,
-							selectedSigningApp: $selectedSigningApp,
-							selectedInstallApp: $selectedInstallApp
-						)
-						.compatMatchedTransitionSource(id: app.uuid ?? "", ns: namespace)
+				if
+					_selectedScope == .all ||
+					_selectedScope == .signed
+				{
+					FRSection("Signed") {
+						ForEach(_filteredSignedApps, id: \.uuid) { app in
+							LibraryCellView(
+								app: app,
+								selectedInfoAppPresenting: $_selectedInfoAppPresenting,
+								selectedSigningAppPresenting: $_selectedSigningAppPresenting,
+								selectedInstallAppPresenting: $_selectedInstallAppPresenting
+							)
+							.compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
+						}
 					}
 				}
-				FRSection("Imported") {
-					ForEach(importedApps, id: \.uuid) { app in
-						LibraryCellView(
-							app: app,
-							selectedInfoApp: $selectedInfoApp,
-							selectedSigningApp: $selectedSigningApp,
-							selectedInstallApp: $selectedInstallApp
-						)
-						.compatMatchedTransitionSource(id: app.uuid ?? "", ns: namespace)
+				
+				if
+					_selectedScope == .all ||
+					_selectedScope == .imported
+				{
+					FRSection("Imported") {
+						ForEach(_filteredImportedApps, id: \.uuid) { app in
+							LibraryCellView(
+								app: app,
+								selectedInfoAppPresenting: $_selectedInfoAppPresenting,
+								selectedSigningAppPresenting: $_selectedSigningAppPresenting,
+								selectedInstallAppPresenting: $_selectedInstallAppPresenting
+							)
+							.compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
+						}
 					}
 				}
 			}
 			.listStyle(.plain)
-			.searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+			.searchable(text: $_searchText, placement: .navigationBarDrawer(displayMode: .always))
+			.searchScopes($_selectedScope) {
+				ForEach(Scope.allCases) { scope in
+					Text(scope.rawValue).tag(scope)
+				}
+			}
 			.toolbar {
 				FRToolbarMenu(
 					"Import",
@@ -68,33 +94,39 @@ struct LibraryView: View {
 					placement: .topBarTrailing
 				) {
 					Button("Import from Files") {
-						isImportingFiles = true
+						_isImportingPresenting = true
 					}
 				}
 			}
-			.sheet(item: $selectedInfoApp) { app in
+			.sheet(item: $_selectedInfoAppPresenting) { app in
 				LibraryInfoView(app: app.base)
 			}
-			.sheet(item: $selectedInstallApp) { app in
-				InstallPreview(app: app.base, isSharing: app.archive)
+			.sheet(item: $_selectedInstallAppPresenting) { app in
+				InstallPreviewView(app: app.base, isSharing: app.archive)
 					.presentationDetents([.height(200)])
 					.presentationDragIndicator(.visible)
 					.compatPresentationRadius(21)
 			}
-			.fullScreenCover(item: $selectedSigningApp) { app in
+			.fullScreenCover(item: $_selectedSigningAppPresenting) { app in
 				SigningView(app: app.base)
-					.compatNavigationTransition(id: app.base.uuid ?? "", ns: namespace)
+					.compatNavigationTransition(id: app.base.uuid ?? "", ns: _namespace)
 			}
-			.fileImporter(
-				isPresented: $isImportingFiles,
-				allowedContentTypes: [.ipa, .tipa]
-			) { result in
-				if case .success(let file) = result {
-					if file.startAccessingSecurityScopedResource() {
-						FR.handlePackageFile(file) { _ in }
+			.sheet(isPresented: $_isImportingPresenting) {
+				FileImporterRepresentableView(
+					allowedContentTypes:  [.ipa, .tipa],
+					onDocumentsPicked: { urls in
+						guard let selectedFileURL = urls.first else { return }
+						FR.handlePackageFile(selectedFileURL) { _ in }
 					}
-				}
+				)
 			}
         }
     }
+}
+
+enum Scope: String, CaseIterable, Identifiable {
+	case all = "All"
+	case signed = "Signed"
+	case imported = "Imported"
+	var id: String { rawValue }
 }

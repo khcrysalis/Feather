@@ -12,17 +12,17 @@ import UniformTypeIdentifiers
 struct CertificatesAddView: View {
 	@Environment(\.dismiss) private var dismiss
 	
-	@State private var p12URL: URL? = nil
-	@State private var provisionURL: URL? = nil
-	@State private var p12Password: String = ""
-	@State private var certificateName: String = ""
+	@State private var _p12URL: URL? = nil
+	@State private var _provisionURL: URL? = nil
+	@State private var _p12Password: String = ""
+	@State private var _certificateName: String = ""
 	
-	@State private var currentImport: ImportType = .none
-	@State private var isImporting = false
-	@State private var isPasswordAlertPresenting = false
+	@State private var _isImportingP12Presenting = false
+	@State private var _isImportingMobileProvisionPresenting = false
+	@State private var _isPasswordAlertPresenting = false
 	
 	var saveButtonDisabled: Bool {
-		p12URL == nil || provisionURL == nil
+		_p12URL == nil || _provisionURL == nil
 	}
 	
 	// MARK: Body
@@ -30,17 +30,21 @@ struct CertificatesAddView: View {
 		FRNavigationView("New Certificate") {
 			Form {
 				FRSection("Files") {
-					_importButton("Import Certificate File", type: .p12, file: p12URL)
-					_importButton("Import Provisioning File", type: .mobileprovision, file: provisionURL)
+					_importButton("Import Certificate File", file: _p12URL) {
+						_isImportingP12Presenting = true
+					}
+					_importButton("Import Provisioning File", file: _provisionURL) {
+						_isImportingMobileProvisionPresenting = true
+					}
 				}
 				FRSection("Password") {
-					SecureField("Enter Password", text: $p12Password)
+					SecureField("Enter Password", text: $_p12Password)
 				} footer: {
 					Text("Enter the password associated with the private key. Leave it blank if theres no password required.")
 				}
 				
 				Section {
-					TextField("Nickname (Optional)", text: $certificateName)
+					TextField("Nickname (Optional)", text: $_certificateName)
 				}
 			}
 			.navigationBarTitleDisplayMode(.inline)
@@ -57,17 +61,25 @@ struct CertificatesAddView: View {
 					_saveCertificate()
 				}
 			}
-			.fileImporter(
-				isPresented: $isImporting,
-				allowedContentTypes: currentImport == .p12 ? [.p12] : [.mobileProvision]
-			) { result in
-				if case .success(let file) = result {
-					{ currentImport == .p12 ? (self.p12URL = file) : (self.provisionURL = file) }()
-				}
-
-				currentImport = .none
+			.sheet(isPresented: $_isImportingP12Presenting) {
+				FileImporterRepresentableView(
+					allowedContentTypes: [.p12],
+					onDocumentsPicked: { urls in
+						guard let selectedFileURL = urls.first else { return }
+						self._p12URL = selectedFileURL
+					}
+				)
 			}
-			.alert(isPresented: $isPasswordAlertPresenting) {
+			.sheet(isPresented: $_isImportingMobileProvisionPresenting) {
+				FileImporterRepresentableView(
+					allowedContentTypes: [.mobileProvision],
+					onDocumentsPicked: { urls in
+						guard let selectedFileURL = urls.first else { return }
+						self._provisionURL = selectedFileURL
+					}
+				)
+			}
+			.alert(isPresented: $_isPasswordAlertPresenting) {
 				Alert(title: Text("Bad Password"), message: Text("Please check the password and try again."), dismissButton: .default(Text("OK")))
 			}
 		}
@@ -77,15 +89,17 @@ struct CertificatesAddView: View {
 // MARK: - Extension: View
 extension CertificatesAddView {
 	@ViewBuilder
-	private func _importButton(_ title: String, type: ImportType, file: URL?) -> some View {
+	private func _importButton(
+		_ title: String,
+		file: URL?,
+		action: @escaping () -> Void
+	) -> some View {
 		Button(title) {
-			currentImport = type
-			isImporting = true
+			action()
 		}
-		.foregroundColor(file == nil ? .accentColor : .disabled(.accentColor))
+		.foregroundColor(file == nil ? .accentColor : .disabled())
 		.disabled(file != nil)
 		.animation(.easeInOut(duration: 0.3), value: file != nil)
-		.contentTransition(.opacity)
 	}
 }
 
@@ -93,26 +107,22 @@ extension CertificatesAddView {
 extension CertificatesAddView {
 	private func _saveCertificate() {
 		guard
-			let p12URL = p12URL,
-			let provisionURL = provisionURL,
-			FR.checkPasswordForCertificate(for: p12URL, with: p12Password, using: provisionURL)
+			let p12URL = _p12URL,
+			let provisionURL = _provisionURL,
+			FR.checkPasswordForCertificate(for: p12URL, with: _p12Password, using: provisionURL)
 		else {
-			isPasswordAlertPresenting = true
+			_isPasswordAlertPresenting = true
 			return
 		}
 		
 		FR.handleCertificateFiles(
 			p12URL: p12URL,
 			provisionURL: provisionURL,
-			p12Password: p12Password,
-			certificateName: certificateName
+			p12Password: _p12Password,
+			certificateName: _certificateName
 		) { _ in
 			dismiss()
 		}
 	}
 }
 
-// MARK: - View Enum
-enum ImportType {
-	case p12, mobileprovision, none
-}

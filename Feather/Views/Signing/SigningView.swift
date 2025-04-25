@@ -11,16 +11,16 @@ import PhotosUI
 // MARK: - View
 struct SigningView: View {
 	@Environment(\.dismiss) var dismiss
-	@StateObject private var optionsManager = OptionsManager.shared
+	@StateObject private var _optionsManager = OptionsManager.shared
 	
-	@State private var temporaryOptions: Options = OptionsManager.shared.options
-	@State private var temporaryCertificate: Int
-	@State private var isAltPickerPresented = false
-	@State private var isFilePickerPresented = false
-	@State private var isImagePickerPresented = false
-	@State private var isAlertPresenting = false
-	@State private var isSigning = false
-	@State private var selectedPhoto: PhotosPickerItem? = nil
+	@State private var _temporaryOptions: Options = OptionsManager.shared.options
+	@State private var _temporaryCertificate: Int
+	@State private var _isAltPickerPresenting = false
+	@State private var _isFilePickerPresenting = false
+	@State private var _isImagePickerPresenting = false
+	@State private var _isAlertPresenting = false
+	@State private var _isSigning = false
+	@State private var _selectedPhoto: PhotosPickerItem? = nil
 	@State var appIcon: UIImage?
 	
 	// MARK: Fetch
@@ -30,11 +30,17 @@ struct SigningView: View {
 		animation: .snappy
 	) private var certificates: FetchedResults<CertificatePair>
 	
+	private func _selectedCert() -> CertificatePair? {
+		guard certificates.indices.contains(_temporaryCertificate) else { return nil }
+		return certificates[_temporaryCertificate]
+	}
+	
 	var app: AppInfoPresentable
+	
 	init(app: AppInfoPresentable) {
 		self.app = app
 		let storedCert = UserDefaults.standard.integer(forKey: "feather.selectedCert")
-		_temporaryCertificate = State(initialValue: storedCert)
+		__temporaryCertificate = State(initialValue: storedCert)
 	}
 	
 	// MARK: Body
@@ -54,10 +60,12 @@ struct SigningView: View {
 				}
 			}
 			.safeAreaInset(edge: .bottom) {
-				FRSheetButton("Start Signing") {
+				Button() {
 					_start()
+				} label: {
+					_sheetButton("Start Signing")
 				}
-				.animation(.smooth, value: isSigning)
+				.animation(.smooth, value: _isSigning)
 				.frame(height: 50)
 				.padding()
 			}
@@ -70,22 +78,26 @@ struct SigningView: View {
 					style: .text,
 					placement: .topBarTrailing
 				) {
-					temporaryOptions = OptionsManager.shared.options
+					_temporaryOptions = OptionsManager.shared.options
 					appIcon = nil
 				}
 			}
-			.alert(isPresented: $isAlertPresenting) {
+			.alert(isPresented: $_isAlertPresenting) {
 				Alert(title: Text("No Certificate"), message: Text("Please go to settings and import a valid certificate"), dismissButton: .default(Text("OK")))
 			}
 			// Image shit
-			.sheet(isPresented: $isAltPickerPresented) { SigningAlternativeIconView(app: app, appIcon: $appIcon, isModifing: .constant(true)) }
-			.fileImporter(isPresented: $isFilePickerPresented, allowedContentTypes: [.image]) { result in
-				if case .success(let url) = result {
-					self.appIcon = UIImage.fromFile(url)?.resizeToSquare()
-				}
+			.sheet(isPresented: $_isAltPickerPresenting) { SigningAlternativeIconView(app: app, appIcon: $appIcon, isModifing: .constant(true)) }
+			.sheet(isPresented: $_isFilePickerPresenting) {
+				FileImporterRepresentableView(
+					allowedContentTypes:  [.image],
+					onDocumentsPicked: { urls in
+						guard let selectedFileURL = urls.first else { return }
+						self.appIcon = UIImage.fromFile(selectedFileURL)?.resizeToSquare()
+					}
+				)
 			}
-			.photosPicker(isPresented: $isImagePickerPresented, selection: $selectedPhoto)
-			.onChange(of: selectedPhoto) { newValue in
+			.photosPicker(isPresented: $_isImagePickerPresenting, selection: $_selectedPhoto)
+			.onChange(of: _selectedPhoto) { newValue in
 				guard let newValue else { return }
 				
 				Task {
@@ -95,45 +107,40 @@ struct SigningView: View {
 					}
 				}
 			}
-			.disabled(isSigning)
-			.animation(.smooth, value: isSigning)
+			.disabled(_isSigning)
+			.animation(.smooth, value: _isSigning)
 			#if DEBUG
 			.onAppear() {
-				dump(temporaryOptions)
+				dump(_temporaryOptions)
 			}
 			#endif
 		}
 		.onAppear {
 			// ppq protection
 			if
-				optionsManager.options.ppqProtection,
+				_optionsManager.options.ppqProtection,
 				let identifier = app.identifier,
 				let cert = _selectedCert(),
 				cert.ppQCheck
 			{
-				temporaryOptions.appIdentifier = "\(identifier).\(optionsManager.options.ppqString)"
+				_temporaryOptions.appIdentifier = "\(identifier).\(_optionsManager.options.ppqString)"
 			}
 			
 			if
 				let currentBundleId = app.identifier,
-				let newBundleId = temporaryOptions.identifiers[currentBundleId]
+				let newBundleId = _temporaryOptions.identifiers[currentBundleId]
 			{
-				temporaryOptions.appIdentifier = newBundleId
+				_temporaryOptions.appIdentifier = newBundleId
 			}
 			
 			if
 				let currentName = app.name,
-				let newName = temporaryOptions.displayNames[currentName]
+				let newName = _temporaryOptions.displayNames[currentName]
 			{
-				   temporaryOptions.appName = newName
+				   _temporaryOptions.appName = newName
 			}
 		}
     }
-	
-	private func _selectedCert() -> CertificatePair? {
-		guard certificates.indices.contains(temporaryCertificate) else { return nil }
-		return certificates[temporaryCertificate]
-	}
 }
 
 // MARK: - Extension: View
@@ -141,9 +148,9 @@ extension SigningView {
 	@ViewBuilder
 	private func _customizationOptions(for app: AppInfoPresentable) -> some View {
 		Menu {
-			Button("Select Alternative Icon") { isAltPickerPresented = true }
-			Button("Choose from Files") { isFilePickerPresented = true }
-			Button("Choose from Photos") { isImagePickerPresented = true }
+			Button("Select Alternative Icon") { _isAltPickerPresenting = true }
+			Button("Choose from Files") { _isFilePickerPresenting = true }
+			Button("Choose from Photos") { _isImagePickerPresenting = true }
 		} label: {
 			if let icon = appIcon {
 				Image(uiImage: icon)
@@ -153,25 +160,25 @@ extension SigningView {
 			}
 		}
 		
-		_infoCell("Name", desc: temporaryOptions.appName ?? app.name) {
+		_infoCell("Name", desc: _temporaryOptions.appName ?? app.name) {
 			SigningPropertiesView(
 				title: "Name",
-				initialValue: temporaryOptions.appName ?? (app.name ?? ""),
-				bindingValue: $temporaryOptions.appName
+				initialValue: _temporaryOptions.appName ?? (app.name ?? ""),
+				bindingValue: $_temporaryOptions.appName
 			)
 		}
-		_infoCell("Identifier", desc: temporaryOptions.appIdentifier ?? app.identifier) {
+		_infoCell("Identifier", desc: _temporaryOptions.appIdentifier ?? app.identifier) {
 			SigningPropertiesView(
 				title: "Identifier",
-				initialValue: temporaryOptions.appIdentifier ?? (app.identifier ?? ""),
-				bindingValue: $temporaryOptions.appIdentifier
+				initialValue: _temporaryOptions.appIdentifier ?? (app.identifier ?? ""),
+				bindingValue: $_temporaryOptions.appIdentifier
 			)
 		}
-		_infoCell("Version", desc: temporaryOptions.appVersion ?? app.version) {
+		_infoCell("Version", desc: _temporaryOptions.appVersion ?? app.version) {
 			SigningPropertiesView(
 				title: "Version",
-				initialValue: temporaryOptions.appVersion ?? (app.version ?? ""),
-				bindingValue: $temporaryOptions.appVersion
+				initialValue: _temporaryOptions.appVersion ?? (app.version ?? ""),
+				bindingValue: $_temporaryOptions.appVersion
 			)
 		}
 	}
@@ -182,34 +189,34 @@ extension SigningView {
 			NavigationLink("Existing Dylibs") {
 				SigningDylibView(
 					app: app,
-					options: $temporaryOptions.optional()
+					options: $_temporaryOptions.optional()
 				)
 			}
 			
 			NavigationLink("Frameworks & PlugIns") {
 				SigningFrameworksView(
 					app: app,
-					options: $temporaryOptions.optional()
+					options: $_temporaryOptions.optional()
 				)
 			}
 			
 			NavigationLink("Entitlements") {
 				SigningEntitlementsView(
-					bindingValue: $temporaryOptions.appEntitlementsFile
+					bindingValue: $_temporaryOptions.appEntitlementsFile
 				)
 			}
 			
 			NavigationLink("Tweaks") {
 				SigningTweaksView(
-					options: $temporaryOptions
+					options: $_temporaryOptions
 				)
 			}
 		}
 		
 		NavigationLink("Properties") {
 			Form { SigningOptionsView(
-				options: $temporaryOptions,
-				temporaryOptions: optionsManager.options
+				options: $_temporaryOptions,
+				temporaryOptions: _optionsManager.options
 			)}
 			.navigationTitle("Properties")
 		}
@@ -230,36 +237,48 @@ extension SigningView {
 	private func _cert() -> some View {
 		if let cert = _selectedCert() {
 			NavigationLink {
-				CertificatesView(selectedCert: $temporaryCertificate)
+				CertificatesView(selectedCert: $_temporaryCertificate)
 			} label: {
 				CertificatesCellView(
 					cert: cert,
 					shouldDisplayInfo: false,
-					selectedInfoCert: .constant(.none)
+					isSelectedInfoPresenting: .constant(.none)
 				)
 			}
 		} else {
 			Text("No valid certificate selected.")
-				.foregroundStyle(Color.disabled(.accentColor))
+				.foregroundStyle(Color.disabled())
 		}
+	}
+	
+	@ViewBuilder
+	private func _sheetButton(_ title: String) -> some View {
+		Text(title)
+			.frame(maxWidth: .infinity, maxHeight: .infinity)
+			.background(Color.accentColor)
+			.foregroundColor(.white)
+			.clipShape(
+				RoundedRectangle(cornerRadius: 12, style: .continuous)
+			)
+			.bold()
 	}
 }
 
 // MARK: - Extension: View (import)
 extension SigningView {
 	private func _start() {
-		guard _selectedCert() != nil || temporaryOptions.doAdhocSigning else {
-			isAlertPresenting = true
+		guard _selectedCert() != nil || _temporaryOptions.doAdhocSigning else {
+			_isAlertPresenting = true
 			return
 		}
 
 		let generator = UIImpactFeedbackGenerator(style: .light)
 		generator.impactOccurred()
-		isSigning = true
+		_isSigning = true
 		
 		FR.signPackageFile(
 			app,
-			using: temporaryOptions,
+			using: _temporaryOptions,
 			icon: appIcon,
 			certificate: _selectedCert()
 		) { _ in

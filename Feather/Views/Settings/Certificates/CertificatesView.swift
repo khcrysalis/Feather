@@ -9,10 +9,10 @@ import SwiftUI
 
 // MARK: - View
 struct CertificatesView: View {
-	@AppStorage("feather.selectedCert") private var storedSelectedCert: Int = 0
+	@AppStorage("feather.selectedCert") private var _storedSelectedCert: Int = 0
 	
-	@State private var isAddingCert = false
-	@State private var selectedInfoCert: CertificatePair?
+	@State private var _isAddingPresenting = false
+	@State private var _isSelectedInfoPresenting: CertificatePair?
 	
 	let columns: [GridItem] = [
 		GridItem(.adaptive(minimum: 300))
@@ -28,7 +28,7 @@ struct CertificatesView: View {
 	//
 	private var bindingSelectedCert: Binding<Int>?
 	private var selectedCertBinding: Binding<Int> {
-		bindingSelectedCert ?? $storedSelectedCert
+		bindingSelectedCert ?? $_storedSelectedCert
 	}
 	
 	init(selectedCert: Binding<Int>? = nil) {
@@ -55,14 +55,14 @@ struct CertificatesView: View {
 					style: .icon,
 					placement: .topBarTrailing
 				) {
-					isAddingCert = true
+					_isAddingPresenting = true
 				}
 			}
 		}
-		.sheet(item: $selectedInfoCert) { cert in
+		.sheet(item: $_isSelectedInfoPresenting) { cert in
 			CertificatesInfoView(cert: cert)
 		}
-		.sheet(isPresented: $isAddingCert) {
+		.sheet(isPresented: $_isAddingPresenting) {
 			CertificatesAddView()
 				.presentationDetents([.medium])
 		}
@@ -77,7 +77,7 @@ extension CertificatesView {
 		} label: {
 			CertificatesCellView(
 				cert: cert,
-				selectedInfoCert: $selectedInfoCert
+				isSelectedInfoPresenting: $_isSelectedInfoPresenting
 			)
 			.padding()
 			.frame(maxWidth: .infinity)
@@ -114,7 +114,7 @@ extension CertificatesView {
 	@ViewBuilder
 	private func _contextActions(for cert: CertificatePair) -> some View {
 		Button {
-			selectedInfoCert = cert
+			_isSelectedInfoPresenting = cert
 		} label: {
 			Label("Get Info", systemImage: "info.circle")
 		}

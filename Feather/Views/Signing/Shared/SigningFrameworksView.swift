@@ -9,8 +9,8 @@ import SwiftUI
 
 // MARK: - View
 struct SigningFrameworksView: View {
-	@State private var frameworks: [String] = []
-	@State private var plugins: [String] = []
+	@State private var _frameworks: [String] = []
+	@State private var _plugins: [String] = []
 	
 	private let _frameworksPath = "Frameworks"
 	private let _pluginsPath = "PlugIns"
@@ -21,9 +21,9 @@ struct SigningFrameworksView: View {
 	// MARK: Body
 	var body: some View {
 		List {
-			if !frameworks.isEmpty {
+			if !_frameworks.isEmpty {
 				FRSection(_frameworksPath) {
-					ForEach(frameworks, id: \.self) { framework in
+					ForEach(_frameworks, id: \.self) { framework in
 						SigningToggleCellView(
 							title: "\(self._frameworksPath)/\(framework)",
 							options: $options,
@@ -33,9 +33,9 @@ struct SigningFrameworksView: View {
 				}
 			}
 			
-			if !plugins.isEmpty {
+			if !_plugins.isEmpty {
 				FRSection(_pluginsPath) {
-					ForEach(plugins, id: \.self) { plugin in
+					ForEach(_plugins, id: \.self) { plugin in
 						SigningToggleCellView(
 							title: "\(self._pluginsPath)/\(plugin)",
 							options: $options,
@@ -56,8 +56,8 @@ extension SigningFrameworksView {
 	private func _listFrameworksAndPlugins() {
 		guard let path = Storage.shared.getAppDirectory(for: app) else { return }
 		
-		frameworks = _listFiles(at: path.appendingPathComponent(_frameworksPath))
-		plugins = _listFiles(at: path.appendingPathComponent(_pluginsPath))
+		_frameworks = _listFiles(at: path.appendingPathComponent(_frameworksPath))
+		_plugins = _listFiles(at: path.appendingPathComponent(_pluginsPath))
 	}
 	
 	private func _listFiles(at path: URL) -> [String] {

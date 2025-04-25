@@ -15,10 +15,6 @@ enum FR {
 		completion: @escaping (Error?) -> Void
 	) {
 		Task.detached {
-			defer {
-				ipa.stopAccessingSecurityScopedResource()
-			}
-			
 			let handler = AppFileHandler(file: ipa)
 			
 			do {
@@ -76,34 +72,23 @@ enum FR {
 		certificateName: String,
 		completion: @escaping (Error?) -> Void
 	) {
-		if
-			p12URL.startAccessingSecurityScopedResource(),
-			provisionURL.startAccessingSecurityScopedResource()
-		{
+		Task.detached {
+			let handler = CertificateFileHandler(
+				key: p12URL,
+				provision: provisionURL,
+				password: p12Password,
+				nickname: certificateName.isEmpty ? nil : certificateName
+			)
 			
-			Task.detached {
-				defer {
-					p12URL.stopAccessingSecurityScopedResource()
-					provisionURL.stopAccessingSecurityScopedResource()
+			do {
+				try await handler.copy()
+				try await handler.addToDatabase()
+				await MainActor.run {
+					completion(nil)
 				}
-				
-				let handler = CertificateFileHandler(
-					key: p12URL,
-					provision: provisionURL,
-					password: p12Password,
-					nickname: certificateName.isEmpty ? nil : certificateName
-				)
-				
-				do {
-					try await handler.copy()
-					try await handler.addToDatabase()
-					await MainActor.run {
-						completion(nil)
-					}
-				} catch {
-					await MainActor.run {
-						completion(error)
-					}
+			} catch {
+				await MainActor.run {
+					completion(error)
 				}
 			}
 		}
@@ -116,18 +101,12 @@ enum FR {
 	) -> Bool {
 		defer {
 			password_check_fix_WHAT_THE_FUCK_free(provision.path)
-			key.stopAccessingSecurityScopedResource()
-			provision.stopAccessingSecurityScopedResource()
 		}
-		if
-			key.startAccessingSecurityScopedResource(),
-			provision.startAccessingSecurityScopedResource()
-		{
-			password_check_fix_WHAT_THE_FUCK(provision.path)
-			
-			if (!p12_password_check(key.path, password)) {
-				return false
-			}
+		
+		password_check_fix_WHAT_THE_FUCK(provision.path)
+		
+		if (!p12_password_check(key.path, password)) {
+			return false
 		}
 		
 		return true
