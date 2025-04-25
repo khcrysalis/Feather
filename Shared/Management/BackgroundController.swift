@@ -114,8 +114,8 @@ final class BackgroundController {
     hardTimeoutTimer = Timer.scheduledTimer(withTimeInterval: 300, repeats: false) { [weak self] _ in
         print("Hard timeout reached. Ending background task.")
         self?.end(force: true)
+        }
     }
-}
     
     // MARK: - Ping to Reset Idle Timer
     /// Call this to reset the idle timer, e.g. when there is activity to prevent idle timeout.

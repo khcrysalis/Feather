@@ -175,10 +175,6 @@ extension LibraryViewController {
             LibraryViewController.appDownload?.downloadFile(url: downloadURL, appuuid: UUID().uuidString) { [weak self] (uuid, filePath, error) in
                 guard let self = self else { return }
 
-                defer {
-                    BackgroundController.shared.end()
-                }
-
                 if let error = error {
                     DispatchQueue.main.async {
                         self.loaderAlert?.dismiss(animated: true)
@@ -186,7 +182,8 @@ extension LibraryViewController {
                     Debug.shared.log(message: "Failed to Import: \(error)", type: .error)
                 } else if let uuid = uuid, let filePath = filePath {
                     LibraryViewController.appDownload?.extractCompressedBundle(packageURL: filePath) { (targetBundle, error) in
-
+                        defer { BackgroundController.shared.end() }
+                        
                         if let error = error {
                             DispatchQueue.main.async {
                                 self.loaderAlert?.dismiss(animated: true)
