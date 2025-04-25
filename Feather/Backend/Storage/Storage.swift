@@ -18,22 +18,14 @@ final class Storage: ObservableObject {
 		container = NSPersistentContainer(name: _name)
 		
 		if inMemory {
-			container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
-		} else {
-			if
-				let appGroupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.thewonderofyou.Feather")
-			{
-				let storeURL = appGroupURL.appendingPathComponent("\(_name).sqlite")
-				let description = NSPersistentStoreDescription(url: storeURL)
-				container.persistentStoreDescriptions = [description]
-			}
+			container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
 		}
 		
-		container.loadPersistentStores { (storeDescription, error) in
+		container.loadPersistentStores(completionHandler: { (storeDescription, error) in
 			if let error = error as NSError? {
 				fatalError("Unresolved error \(error), \(error.userInfo)")
 			}
-		}
+		})
 		
 		container.viewContext.automaticallyMergesChangesFromParent = true
 	}

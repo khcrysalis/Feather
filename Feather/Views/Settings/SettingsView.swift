@@ -29,7 +29,7 @@ struct SettingsView: View {
 				
 				#if SERVER
 				FRSection("Server") {
-					Picker("Installation Method", selection: $_serverMethod) {
+					Picker("Installation Type", selection: $_serverMethod) {
 						ForEach(_serverMethods.indices, id: \.self) { index in
 							Text(_serverMethods[index]).tag(index)
 						}
