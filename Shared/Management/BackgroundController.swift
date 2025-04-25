@@ -14,6 +14,7 @@ final class BackgroundController {
     private var backgroundTaskID: UIBackgroundTaskIdentifier = .invalid
     private var engine: AVAudioEngine?
     private var idleTimer: Timer?
+    private var hardTimeoutTimer: Timer?
     private var activeCount = 0
 
     private init() {}
@@ -26,6 +27,7 @@ final class BackgroundController {
             }
 
             startSilentAudioEngine()
+            startHardTimeout()
         }
         activeCount += 1
         resetIdleTimer()
@@ -47,6 +49,8 @@ final class BackgroundController {
         stopSilentAudioEngine()
         idleTimer?.invalidate()
         idleTimer = nil
+        hardTimeoutTimer?.invalidate()
+        hardTimeoutTimer = nil
 
         if backgroundTaskID != .invalid {
             UIApplication.shared.endBackgroundTask(backgroundTaskID)
@@ -103,9 +107,23 @@ final class BackgroundController {
             self?.end()
         }
     }
+    
+    // MARK: - Engine Hard Stop
+    private func startHardTimeout() {
+    hardTimeoutTimer?.invalidate()
+    hardTimeoutTimer = Timer.scheduledTimer(withTimeInterval: 300, repeats: false) { [weak self] _ in
+        print("Hard timeout reached. Ending background task.")
+        self?.end(force: true)
+    }
+}
+    
     // MARK: - Ping to Reset Idle Timer
     /// Call this to reset the idle timer, e.g. when there is activity to prevent idle timeout.
     func ping() {
+        guard activeCount > 0 else {
+            print("Ignored ping: no active task")
+            return
+        }
         resetIdleTimer()
     }
 }
