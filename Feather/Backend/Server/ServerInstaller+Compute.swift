@@ -95,7 +95,9 @@ extension ServerInstaller {
 
 	var html: String {
 		"""
+		<html style="background-color: black;">
 		<script type="text/javascript">window.location="\(iTunesLinkExternal)"</script>
+		</html>
 		"""
 	}
 
