@@ -15,6 +15,7 @@ import SwiftUICore
 
 // MARK: - Class
 class ServerInstaller: Identifiable, ObservableObject {
+	let id = UUID()
 	let port = Int.random(in: 4000...8000)
 	private var _needsShutdown = false
 	
@@ -92,5 +93,9 @@ class ServerInstaller: Identifiable, ObservableObject {
 		
 	static func getServerMethod() -> Int {
 		UserDefaults.standard.integer(forKey: "Feather.serverMethod")
+	}
+	
+	static func getIPFix() -> Bool {
+		UserDefaults.standard.bool(forKey: "Feather.ipFix")
 	}
 }

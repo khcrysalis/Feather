@@ -39,17 +39,11 @@ extension ServerInstaller {
 	}
 	
 	var externalServerLink: String {
-		var components = URLComponents()
-		components.scheme = "https"
-		components.host = "api.palera.in"
-		components.path = "/genPlist"
-		components.queryItems = [
-			URLQueryItem(name: "bundleid", value: app.identifier),
-			URLQueryItem(name: "name", value: app.name),
-			URLQueryItem(name: "version", value: app.version),
-			URLQueryItem(name: "fetchurl", value: plistEndpoint.absoluteString)
-		]
-		return components.url?.absoluteString ?? ""
+		let baseUrl = "https://api.palera.in/genPlist?bundleid=\(app.identifier!)&name=\(app.name!)&version=\(app.version!)&fetchurl=\(self.payloadEndpoint.absoluteString)"
+		let encodedBaseUrl = baseUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+		let finalEncodedUrl = encodedBaseUrl.addingPercentEncoding(withAllowedCharacters: .alphanumerics)!
+		
+		return finalEncodedUrl
 	}
 
 	var iTunesLink: String {

@@ -14,7 +14,7 @@ import SafariServices
 struct InstallPreviewView: View {
 	@Environment(\.dismiss) var dismiss
 	#if SERVER
-	@AppStorage("Feather.serverMethod") private var _serverMethod = 0
+	@AppStorage("Feather.serverMethod") private var _serverMethod: Int = 0
 	@State private var _isWebviewPresenting = false
 	#endif
 	
@@ -50,16 +50,20 @@ struct InstallPreviewView: View {
 			SafariWebView(url: installer.pageEndpoint)
 				.ignoresSafeArea()
 		}
-		#endif
-		#if SERVER
 		.onReceive(viewModel.$status) { newStatus in
+			#if DEBUG
 			print(newStatus)
+			#endif
 			if case .ready = newStatus {
 				if _serverMethod == 0 {
 					UIApplication.shared.open(URL(string: installer.iTunesLink)!)
 				} else if _serverMethod == 1 {
 					_isWebviewPresenting = true
 				}
+			}
+			
+			if case .sendingPayload = newStatus, _serverMethod == 1 {
+				_isWebviewPresenting = false
 			}
 		}
 		#endif
@@ -94,8 +98,8 @@ struct InstallPreviewView: View {
 				
 				if await !isSharing {
 					#if SERVER
-					installer.packageUrl = packageUrl
 					await MainActor.run {
+						installer.packageUrl = packageUrl
 						viewModel.status = .ready
 					}
 					#elseif IDEVICE
