@@ -132,9 +132,3 @@ extension ServerInstaller {
 		)) ?? .init()
 	}
 }
-
-extension String {
-	func percentEncoded() -> String {
-		self.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? self
-	}
-}
