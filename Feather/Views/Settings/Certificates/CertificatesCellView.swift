@@ -18,20 +18,16 @@ struct CertificatesCellView: View {
 	// MARK: Body
 	var body: some View {
 		VStack(spacing: 6) {
-			if let data = data {
-				VStack(alignment: .leading) {
-					Text(cert.nickname ?? data.Name)
-						.font(.headline)
-						.bold()
-					Text(data.AppIDName)
-						.font(.caption)
-						.foregroundStyle(.secondary)
-				}
-				.lineLimit(0)
-				.frame(maxWidth: .infinity, alignment: .leading)
-				
-				_certInfoPill(data: data)
+			VStack(alignment: .leading, spacing: 2) {
+				Text(cert.nickname ?? data?.Name ?? "Unknown")
+					.font(.headline.weight(.bold))
+				Text(data?.AppIDName ?? "Unknown")
+					.font(.caption)
+					.foregroundStyle(.secondary)
 			}
+			.frame(maxWidth: .infinity, alignment: .leading)
+			
+			_certInfoPill(data: cert)
 		}
 		.frame(height: 80)
 		.contentTransition(.opacity)
@@ -47,7 +43,7 @@ struct CertificatesCellView: View {
 // MARK: - Extension: View
 extension CertificatesCellView {
 	@ViewBuilder
-	private func _certInfoPill(data: Certificate) -> some View {
+	private func _certInfoPill(data: CertificatePair) -> some View {
 		let pillItems = _buildPills(from: data)
 		HStack(spacing: 6) {
 			ForEach(pillItems.indices, id: \.hashValue) { index in
@@ -63,19 +59,20 @@ extension CertificatesCellView {
 		}
 	}
 	
-	private func _buildPills(from cert: Certificate) -> [FRPillItem] {
+	private func _buildPills(from cert: CertificatePair) -> [FRPillItem] {
 		var pills: [FRPillItem] = []
 		
-		if cert.PPQCheck == true {
+		if cert.ppQCheck == true {
 			pills.append(FRPillItem(title: "PPQCheck", icon: "checkmark.shield", color: .red))
 		}
 		
-		let expirationInfo = cert.ExpirationDate.expirationInfo()
-		pills.append(FRPillItem(
-			title: expirationInfo.formatted,
-			icon: expirationInfo.icon,
-			color: expirationInfo.color
-		))
+		if let info = cert.expiration?.expirationInfo() {
+			pills.append(FRPillItem(
+				title: info.formatted,
+				icon: info.icon,
+				color: info.color
+			))
+		}
 		
 		return pills
 	}

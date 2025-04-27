@@ -78,8 +78,4 @@ extension Storage {
 		
 		return FileManager.default.certificates(uuid)
 	}
-	
-	private func _extractCertificateInfo(
-		for app: inout CertificatePair
-	) {}
 }
