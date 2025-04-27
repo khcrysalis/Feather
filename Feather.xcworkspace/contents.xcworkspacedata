@@ -5,6 +5,9 @@
       location = "group:README.md">
    </FileRef>
    <FileRef
+      location = "group:LICENSE">
+   </FileRef>
+   <FileRef
       location = "group:TODO.md">
    </FileRef>
    <FileRef
