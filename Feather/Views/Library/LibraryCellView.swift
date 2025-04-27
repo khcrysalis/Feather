@@ -20,14 +20,20 @@ struct LibraryCellView: View {
 			FRAppIconView(app: app, size: 57, cornerRadius: 14)
 			
 			VStack(alignment: .leading, spacing: 2) {
-				Text(app.name ?? "Unknown App")
+				Text(app.name ?? "Unknown")
 					.font(.headline)
 				
 				Group {
-					if let version = app.version, let id = app.identifier {
+					if
+						let version = app.version,
+						let id = app.identifier
+					{
 						Text("\(version) • \(id)")
+					} else {
+						Text("Unknown")
 					}
 				}
+				.lineLimit(0)
 				.font(.subheadline)
 				.foregroundStyle(.secondary)
 			}

@@ -23,7 +23,7 @@ class HeartbeatManager {
 	
 	func start() {
 		_heartbeatThread = Thread {
-			self.establishHeartbeat { error in
+			self._establishHeartbeat { error in
 				if let error = error {
 					print("Heartbeat error: \(error)")
 					self.retry()
@@ -44,7 +44,7 @@ class HeartbeatManager {
 		}
 	}
 	
-	private func establishHeartbeat(completion: @escaping (IdeviceErrorCode?) -> Void) {
+	private func _establishHeartbeat(completion: @escaping (IdeviceErrorCode?) -> Void) {
 		var addr = sockaddr_in()
 		memset(&addr, 0, MemoryLayout.size(ofValue: addr))
 		addr.sin_family = sa_family_t(AF_INET)
