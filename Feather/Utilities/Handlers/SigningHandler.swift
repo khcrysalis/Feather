@@ -123,7 +123,22 @@ final class SigningHandler: NSObject {
 	}
 	
 	func addToDatabase() async throws {
-		Storage.shared.addSigned(uuid: _uuid, certificate: appCertificate) { _ in
+		let app = try await _directory()
+		
+		guard let appUrl = _fileManager.getPath(in: app, for: "app") else {
+			return
+		}
+		
+		let bundle = Bundle(url: appUrl)
+		
+		Storage.shared.addSigned(
+			uuid: _uuid,
+			certificate: appCertificate,
+			appName: bundle?.name,
+			appIdentifier: bundle?.bundleIdentifier,
+			appVersion: bundle?.version,
+			appIcon: bundle?.iconFileName
+		) { _ in
 			print("[\(self._uuid)] Added to database")
 		}
 	}

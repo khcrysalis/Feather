@@ -9,21 +9,6 @@ import CoreData
 
 // MARK: - Class extension: Apps (Shared)
 extension Storage {
-	func extractBundleInfo<T: BundleInfoAssignableData>(
-		for app: inout T,
-		using url: URL
-	) {
-		guard let appUrl = FileManager.default.getPath(in: url, for: "app") else {
-			return
-		}
-		
-		let bundle = Bundle(url: appUrl)
-		app.identifier = bundle?.bundleIdentifier
-		app.name = bundle?.name
-		app.icon = bundle?.iconFileName
-		app.version = bundle?.version
-	}
-	
 	func getUuidDirectory(for app: AppInfoPresentable) -> URL? {
 		guard let uuid = app.uuid else { return nil }
 		return app.isSigned
@@ -77,13 +62,6 @@ protocol AppInfoPresentable {
 	
 }
 
-protocol BundleInfoAssignableData {
-	var identifier: String? { get set }
-	var name: String? { get set }
-	var icon: String? { get set }
-	var version: String? { get set }
-}
-
 extension Signed: AppInfoPresentable {
 	var isSigned: Bool { true }
 }
@@ -91,6 +69,3 @@ extension Signed: AppInfoPresentable {
 extension Imported: AppInfoPresentable {
 	var isSigned: Bool { false }
 }
-
-extension Imported: BundleInfoAssignableData {}
-extension Signed: BundleInfoAssignableData {}

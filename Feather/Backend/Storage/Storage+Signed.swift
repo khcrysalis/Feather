@@ -14,6 +14,12 @@ extension Storage {
 		uuid: String,
 		source: URL? = nil,
 		certificate: CertificatePair? = nil,
+		
+		appName: String? = nil,
+		appIdentifier: String? = nil,
+		appVersion: String? = nil,
+		appIcon: String? = nil,
+		
 		completion: @escaping (Error?) -> Void
 	) {
 		let generator = UIImpactFeedbackGenerator(style: .light)
@@ -25,8 +31,11 @@ extension Storage {
 		new.date = Date()
 		// if nil, we assume adhoc or certificate was deleted afterwards
 		new.certificate = certificate
-		
-		extractBundleInfo(for: &new, using: FileManager.default.signed(uuid))
+		// could possibly be nil, but thats fine.
+		new.identifier = appIdentifier
+		new.name = appName
+		new.icon = appIcon
+		new.version = appVersion
 		
 		do {
 			try context.save()
