@@ -7,9 +7,11 @@
 
 import SwiftUI
 
+// MARK: - View
 struct CertificatesInfoEntitlementView: View {
 	let entitlements: [String: AnyCodable]
 	
+	// MARK: Body
 	var body: some View {
 		List {
 			ForEach(entitlements.keys.sorted(), id: \.self) { key in

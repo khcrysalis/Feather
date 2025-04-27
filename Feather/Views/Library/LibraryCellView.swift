@@ -59,19 +59,15 @@ struct LibraryCellView: View {
 extension LibraryCellView {
 	@ViewBuilder
 	private func _actions(for app: AppInfoPresentable) -> some View {
-		Button(role: .destructive) {
+		Button("Delete", systemImage: "trash", role: .destructive) {
 			Storage.shared.deleteApp(for: app)
-		} label: {
-			Label("Delete", systemImage: "trash")
 		}
 	}
 	
 	@ViewBuilder
 	private func _contextActions(for app: AppInfoPresentable) -> some View {
-		Button {
+		Button("Get Info", systemImage: "info.circle") {
 			selectedInfoAppPresenting = AnyApp(base: app)
-		} label: {
-			Label("Get Info", systemImage: "info.circle")
 		}
 	}
 	
@@ -79,27 +75,22 @@ extension LibraryCellView {
 	private func _contextActionsExtra(for app: AppInfoPresentable) -> some View {
 		if app.isSigned {
 			if let id = app.identifier {
-				Button {
+				Button("Open", systemImage: "app.badge.checkmark") {
 					UIApplication.openApp(with: id)
-				} label: {
-					Label("Open", systemImage: "app.badge.checkmark")
 				}
 			}
-			Button {
-				selectedSigningAppPresenting = AnyApp(base: app)
-			} label: {
-				Label("Resign", systemImage: "signature")
+			Button("Install", systemImage: "square.and.arrow.down") {
+				selectedInstallAppPresenting = AnyApp(base: app)
 			}
-			Button {
+			Button("Re-sign", systemImage: "signature") {
+				selectedSigningAppPresenting = AnyApp(base: app)
+			}
+			Button("Export", systemImage: "square.and.arrow.up") {
 				selectedInstallAppPresenting = AnyApp(base: app, archive: true)
-			} label: {
-				Label("Export", systemImage: "square.and.arrow.up")
 			}
 		} else {
-			Button {
+			Button("Install", systemImage: "square.and.arrow.down") {
 				selectedInstallAppPresenting = AnyApp(base: app)
-			} label: {
-				Label("Install", systemImage: "square.and.arrow.down")
 			}
 		}
 	}

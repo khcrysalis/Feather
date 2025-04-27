@@ -39,7 +39,7 @@ struct InstallProgressView: View {
 					ZStack {
 						Circle().strokeBorder(Color.white, lineWidth: 4.5)
 						PieShape(progress: viewModel.overallProgress)
-							.scaleEffect(viewModel.isCompleted ? 2 : 1)
+							.scaleEffect(viewModel.isCompleted ? 2.2 : 1)
 							.animation(.smooth, value: viewModel.isCompleted)
 					}
 				)

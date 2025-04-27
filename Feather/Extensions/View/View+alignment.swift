@@ -12,9 +12,9 @@ extension View {
 	public func alignment(for alignment: FRToolbarAlignment) -> some View {
 		switch alignment {
 		case .leading:
-			self.padding(.leading, -18)
+			self.padding(.leading, -9)
 		case .trailing:
-			self.padding(.trailing, -18)
+			self.padding(.trailing, -9)
 		case .none:
 			self
 		}
