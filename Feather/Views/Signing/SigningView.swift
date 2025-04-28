@@ -19,7 +19,6 @@ struct SigningView: View {
 	@State private var _isAltPickerPresenting = false
 	@State private var _isFilePickerPresenting = false
 	@State private var _isImagePickerPresenting = false
-	@State private var _isAlertPresenting = false
 	@State private var _isSigning = false
 	@State private var _selectedPhoto: PhotosPickerItem? = nil
 	@State var appIcon: UIImage?
@@ -83,9 +82,6 @@ struct SigningView: View {
 					appIcon = nil
 				}
 			}
-			.alert(isPresented: $_isAlertPresenting) {
-				Alert(title: Text("No Certificate"), message: Text("Please go to settings and import a valid certificate"), dismissButton: .default(Text("OK")))
-			}
 			// Image shit
 			.sheet(isPresented: $_isAltPickerPresenting) { SigningAlternativeIconView(app: app, appIcon: $appIcon, isModifing: .constant(true)) }
 			.sheet(isPresented: $_isFilePickerPresenting) {
@@ -110,11 +106,6 @@ struct SigningView: View {
 			}
 			.disabled(_isSigning)
 			.animation(.smooth, value: _isSigning)
-			#if DEBUG
-			.onAppear() {
-				dump(_temporaryOptions)
-			}
-			#endif
 		}
 		.onAppear {
 			// ppq protection
@@ -138,7 +129,7 @@ struct SigningView: View {
 				let currentName = app.name,
 				let newName = _temporaryOptions.displayNames[currentName]
 			{
-				   _temporaryOptions.appName = newName
+				_temporaryOptions.appName = newName
 			}
 		}
     }
@@ -269,7 +260,11 @@ extension SigningView {
 extension SigningView {
 	private func _start() {
 		guard _selectedCert() != nil || _temporaryOptions.doAdhocSigning else {
-			_isAlertPresenting = true
+			UIAlertController.showAlertWithOk(
+				title: "No Certificate",
+				message: "Please go to settings and import a valid certificate",
+				isCancel: true
+			)
 			return
 		}
 
@@ -282,8 +277,20 @@ extension SigningView {
 			using: _temporaryOptions,
 			icon: appIcon,
 			certificate: _selectedCert()
-		) { _ in
-			dismiss()
+		) { error in
+			if let error {
+				let ok = UIAlertAction(title: "Dismiss", style: .cancel) { _ in
+					dismiss()
+				}
+				
+				UIAlertController.showAlert(
+					title: "err",
+					message: error.localizedDescription,
+					actions: [ok]
+				)
+			} else {
+				dismiss()
+			}
 		}
 	}
 }

@@ -133,7 +133,7 @@ final class SigningHandler: NSObject {
 		
 		Storage.shared.addSigned(
 			uuid: _uuid,
-			certificate: appCertificate,
+			certificate: _options.doAdhocSigning ? nil : appCertificate,
 			appName: bundle?.name,
 			appIdentifier: bundle?.bundleIdentifier,
 			appVersion: bundle?.version,
@@ -264,10 +264,25 @@ extension SigningHandler {
 	}
 }
 
-enum SigningFileHandlerError: Error {
+enum SigningFileHandlerError: Error, LocalizedError {
 	case appNotFound
 	case infoPlistNotFound
 	case missingCertifcate
 	case disinjectFailed
 	case signFailed
+	
+	var errorDescription: String? {
+		switch self {
+		case .appNotFound:
+			return "Unable to locate bundle path."
+		case .infoPlistNotFound:
+			return "Unable to locate info.plist path."
+		case .missingCertifcate:
+			return "No certificate was specified."
+		case .disinjectFailed:
+			return "Removing mach-O load paths failed."
+		case .signFailed:
+			return "Signing failed."
+		}
+	}
 }

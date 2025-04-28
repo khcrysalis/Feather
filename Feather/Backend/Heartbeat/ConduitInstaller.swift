@@ -136,10 +136,25 @@ class ConduitInstaller: Identifiable, ObservableObject {
 	}
 }
 
-private enum ConduitInstallerError: Error {
+private enum ConduitInstallerError: Error, LocalizedError {
 	case cannotConnectToAFC
 	case unableToCreateStaging
 	case writeErrorAFC
 	case missingFileHandle
 	case unableToInstall
+	
+	var errorDescription: String? {
+		switch self {
+		case .cannotConnectToAFC:
+			return "Cannot connect to AFC (Apple File Conduit)."
+		case .unableToCreateStaging:
+			return "Unable to create the staging directory."
+		case .writeErrorAFC:
+			return "Error writing to AFC."
+		case .missingFileHandle:
+			return "Missing file handle for AFC operation."
+		case .unableToInstall:
+			return "Installation failed."
+		}
+	}
 }

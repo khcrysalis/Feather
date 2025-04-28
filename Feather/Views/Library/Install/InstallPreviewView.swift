@@ -113,7 +113,13 @@ struct InstallPreviewView: View {
 					}
 				}
 			} catch {
-				print(error)
+				await MainActor.run {
+					UIAlertController.showAlertWithOk(
+						title: "err",
+						message: error.localizedDescription,
+						isCancel: true
+					)
+				}
 			}
 		}
 	}
