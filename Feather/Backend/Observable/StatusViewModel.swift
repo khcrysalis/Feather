@@ -13,10 +13,11 @@ final class StatusViewModel: ObservableObject {
 	
 	@Published var uploadProgress: Double = 0.0
 	@Published var packageProgress: Double = 0.0
+	@Published var installProgress: Double = 0.0
 	
 	var overallProgress: Double {
 		#if IDEVICE
-		(uploadProgress * 0.6) + (packageProgress * 0.4)
+		(installProgress + uploadProgress + packageProgress) / 3.0
 		#elseif SERVER
 		packageProgress
 		#endif

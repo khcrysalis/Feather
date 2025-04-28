@@ -72,7 +72,7 @@ class ConduitInstaller: Identifiable, ObservableObject {
 				totalBytesWritten += bytesToWrite
 				
 				let progress = Double(totalBytesWritten) / Double(totalSize)
-				try await self._updateProgress(with: progress)
+				try await self._updateUploadProgress(with: progress)
 			}
 			
 			guard afc_file_close(fileHandle) == IdeviceSuccess else {
@@ -85,14 +85,23 @@ class ConduitInstaller: Identifiable, ObservableObject {
 				throw ConduitInstallerError.unableToCreateStaging
 			}
 			
-			let installError = remoteDir.withCString { cString in
-				installation_proxy_install(installproxy, cString, nil)
+			let installError: IdeviceErrorCode = remoteDir.withCString { cString in
+				let context = Unmanaged.passUnretained(self).toOpaque()
+				
+				return installation_proxy_install_with_callback(
+					installproxy,
+					cString,
+					nil, // options
+					Self._installationProgressCallback,
+					context
+				)
 			}
 			
 			guard installError == IdeviceSuccess else {
 				throw ConduitInstallerError.unableToInstall
 			}
 			
+			try await Task.sleep(nanoseconds: 350_000_000)
 			try await self._updateStatus(with: .completed(.success(())))
 		}.value
 	}
@@ -103,9 +112,26 @@ class ConduitInstaller: Identifiable, ObservableObject {
 		}
 	}
 	
-	private func _updateProgress(with status: Double) async throws {
+	private func _updateUploadProgress(with status: Double) async throws {
 		await MainActor.run {
 			self.viewModel.uploadProgress = status
+		}
+	}
+	
+	nonisolated static private let _installationProgressCallback: @convention(c) (
+		UInt64,
+		UnsafeMutableRawPointer?
+	) -> Void = { progress, context in
+		guard let context = context else { return }
+		let installer = Unmanaged<ConduitInstaller>.fromOpaque(context).takeUnretainedValue()
+		Task {
+			try? await installer._updateInstallProgress(with: Double(progress) / 100.0)
+		}
+	}
+	
+	private func _updateInstallProgress(with status: Double) async throws {
+		await MainActor.run {
+			self.viewModel.installProgress = status
 		}
 	}
 }
