@@ -17,7 +17,7 @@ struct CertificatesInfoView: View {
 	
 	// MARK: Body
     var body: some View {
-		FRNavigationView(cert.nickname ?? "", displayMode: .inline) {
+		NBNavigationView(cert.nickname ?? "", displayMode: .inline) {
 			Form {
 				Section {} header: {
 					Image("Cert")
@@ -27,7 +27,7 @@ struct CertificatesInfoView: View {
 						.frame(maxWidth: .infinity, alignment: .center)
 				}
 				if let data {
-					FRSection("Info") {
+					NBSection("Info") {
 						_info("Name", description: data.Name)
 						_info("AppID Name", description: data.AppIDName)
 						_info("Team Name", description: data.TeamName)
@@ -43,7 +43,7 @@ struct CertificatesInfoView: View {
 					
 					_entitlements(data: data)
 					
-					FRSection("Misc") {
+					NBSection("Misc") {
 						_disclosure("Platform", keys: data.Platform)
 						
 						if let all = data.ProvisionsAllDevices {

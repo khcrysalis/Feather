@@ -28,9 +28,9 @@ struct CertificatesAddView: View {
 	
 	// MARK: Body
 	var body: some View {
-		FRNavigationView("New Certificate") {
+		NBNavigationView("New Certificate") {
 			Form {
-				FRSection("Files") {
+				NBSection("Files") {
 					_importButton("Import Certificate File", file: _p12URL) {
 						_isImportingP12Presenting = true
 					}
@@ -38,7 +38,7 @@ struct CertificatesAddView: View {
 						_isImportingMobileProvisionPresenting = true
 					}
 				}
-				FRSection("Password") {
+				NBSection("Password") {
 					SecureField("Enter Password", text: $_p12Password)
 				} footer: {
 					Text("Enter the password associated with the private key. Leave it blank if theres no password required.")

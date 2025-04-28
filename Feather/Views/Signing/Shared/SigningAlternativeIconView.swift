@@ -20,7 +20,7 @@ struct SigningAlternativeIconView: View {
 	
 	// MARK: Body
 	var body: some View {
-		FRNavigationView("Alternative Icons", displayMode: .inline) {
+		NBNavigationView("Alternative Icons", displayMode: .inline) {
 			List(_alternateIcons, id: \.name) { icon in
 				Button {
 					appIcon = _iconUrl(icon.path)

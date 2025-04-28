@@ -46,17 +46,17 @@ struct SigningView: View {
 	
 	// MARK: Body
     var body: some View {
-		FRNavigationView(app.name ?? "Unknown", displayMode: .inline) {
+		NBNavigationView(app.name ?? "Unknown", displayMode: .inline) {
 			Form {
-				FRSection("Customization") {
+				NBSection("Customization") {
 					_customizationOptions(for: app)
 				}
 				
-				FRSection("Signing") {
+				NBSection("Signing") {
 					_cert()
 				}
 				
-				FRSection("Advanced") {
+				NBSection("Advanced") {
 					_customizationProperties(for: app)
 				}
 			}
