@@ -17,6 +17,9 @@ struct SettingsView: View {
 	@AppStorage("Feather.serverMethod") private var _serverMethod: Int = 0
 	private let _serverMethods = ["Fully Local", "Semi Local"]
 	#endif
+	#if IDEVICE
+	@State private var _isImportingPairingPresenting = false
+	#endif
 	
 	// MARK: Body
     var body: some View {
@@ -39,6 +42,14 @@ struct SettingsView: View {
 				}
 				#endif
 				
+				#if IDEVICE
+				NBSection("Pairing") {
+					Button("Import Pairing File") {
+						_isImportingPairingPresenting = true
+					}
+				}
+				#endif
+				
 				NBSection("Archive") {
 					Picker("Compression Level", selection: $_compressionLevel) {
 						ForEach(ZipCompression.allCases, id: \.rawValue) { level in
@@ -47,6 +58,17 @@ struct SettingsView: View {
 					}
 				}
             }
+			#if IDEVICE
+			.sheet(isPresented: $_isImportingPairingPresenting) {
+				FileImporterRepresentableView(
+					allowedContentTypes:  [.xmlPropertyList, .plist, .mobiledevicepairing],
+					onDocumentsPicked: { urls in
+						guard let selectedFileURL = urls.first else { return }
+						FR.movePairing(selectedFileURL)
+					}
+				)
+			}
+			#endif
 			#if SERVER
 			.onChange(of: _serverMethod) { _ in
 				_isRestartAlertPresenting = true

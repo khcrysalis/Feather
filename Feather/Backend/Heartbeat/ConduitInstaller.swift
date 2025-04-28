@@ -28,7 +28,7 @@ class ConduitInstaller: Identifiable, ObservableObject {
 		var installproxy: InstallationProxyClientHandle?
 		
 		try await Task.detached(priority: .userInitiated) {
-			guard let provider = await self._heartbeat.provider else {
+			guard await (self._heartbeat.provider != nil) else {
 				throw ConduitInstallerError.cannotConnectToAFC
 			}
 			
