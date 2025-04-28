@@ -50,7 +50,7 @@ struct SettingsView: View {
 			#if SERVER
 			.onChange(of: _serverMethod) { _ in
 				_isRestartAlertPresenting = true
-				UIAlertController(
+				UIAlertController.showAlertWithRestart(
 					title: "Restart Required",
 					message: "These changes require a restart of the app"
 				)
