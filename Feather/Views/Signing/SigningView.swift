@@ -7,6 +7,7 @@
 
 import SwiftUI
 import PhotosUI
+import NimbleViews
 
 // MARK: - View
 struct SigningView: View {
@@ -70,9 +71,9 @@ struct SigningView: View {
 				.padding()
 			}
 			.toolbar {
-				FRToolbarButton(role: .dismiss)
+				NBToolbarButton(role: .dismiss)
 				
-				FRToolbarButton(
+				NBToolbarButton(
 					"Reset",
 					systemImage: "checkmark",
 					style: .text,

@@ -19,4 +19,7 @@
    <FileRef
       location = "group:Zsign">
    </FileRef>
+   <FileRef
+      location = "group:NimbleKit">
+   </FileRef>
 </Workspace>

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleViews
 
 // MARK: - View
 struct ConfigurationView: View {
@@ -32,7 +33,7 @@ struct ConfigurationView: View {
 		.navigationTitle("Configuration")
 		.navigationBarTitleDisplayMode(.inline)
 		.toolbar {
-			FRToolbarMenu(
+			NBToolbarMenu(
 				_optionsManager.options.ppqString,
 				systemImage: "character.textbox",
 				style: .icon,

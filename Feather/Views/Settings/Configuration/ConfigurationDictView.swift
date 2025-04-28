@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleViews
 
 // MARK: - View
 struct ConfigurationDictView: View {
@@ -27,7 +28,7 @@ struct ConfigurationDictView: View {
 		}
 		.navigationTitle(title)
 		.toolbar {
-			FRToolbarButton(
+			NBToolbarButton(
 				"Add",
 				systemImage: "plus",
 				style: .icon,

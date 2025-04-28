@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleViews
 
 enum TabEnum: String, CaseIterable, Hashable {
 	case sources
@@ -37,7 +38,7 @@ enum TabEnum: String, CaseIterable, Hashable {
 		case .sources: SourcesView()
 		case .library: LibraryView()
 		case .settings: SettingsView()
-		case .certificates: FRNavigationView("Certificates") { CertificatesView() }
+		case .certificates: NBNavigationView("Certificates") { CertificatesView() }
 		}
 	}
 	

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleExtensions
 
 // MARK: - View
 struct LibraryCellView: View {

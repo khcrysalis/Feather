@@ -111,4 +111,18 @@ enum FR {
 		
 		return true
 	}
+	
+	#if IDEVICE
+	static func movePairing(_ url: URL) {
+		let fileManager = FileManager.default
+		let dest = URL.documentsDirectory.appendingPathComponent("pairingFile.plist")
+		
+		// we can ignore errors, who cares
+		if fileManager.fileExists(atPath: dest.path) {
+			try? fileManager.removeItem(at: dest)
+		}
+		
+		try? fileManager.copyItem(at: url, to: dest)
+	}
+	#endif
 }

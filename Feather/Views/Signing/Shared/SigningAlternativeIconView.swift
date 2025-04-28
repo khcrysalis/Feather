@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleViews
 
 // MARK: - View
 struct SigningAlternativeIconView: View {
@@ -32,7 +33,7 @@ struct SigningAlternativeIconView: View {
 			.onAppear(perform: _loadAlternateIcons)
 			.toolbar {
 				if isModifing {
-					FRToolbarButton(role: .close)
+					NBToolbarButton(role: .close)
 				}
 			}
 		}

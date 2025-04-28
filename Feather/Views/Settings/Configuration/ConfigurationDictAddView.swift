@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleViews
 
 // MARK: - View
 struct ConfigurationDictAddView: View {
@@ -24,14 +25,14 @@ struct ConfigurationDictAddView: View {
 	// MARK: Body
     var body: some View {
 		Form {
-			FRSection("New") {
+			NBSection("New") {
 				TextField("Identifier", text: $_newKey)
 				TextField("Replacement", text: $_newValue)
 			}
 			.autocapitalization(.none)
 		}
 		.toolbar {
-			FRToolbarButton(
+			NBToolbarButton(
 				"Save",
 				systemImage: "plus",
 				style: .text,

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleViews
 import UniformTypeIdentifiers
 
 // MARK: - View
@@ -49,9 +50,9 @@ struct CertificatesAddView: View {
 			}
 			.navigationBarTitleDisplayMode(.inline)
 			.toolbar {
-				FRToolbarButton(role: .cancel)
+				NBToolbarButton(role: .cancel)
 				
-				FRToolbarButton(
+				NBToolbarButton(
 					"Save",
 					systemImage: "checkmark",
 					style: .text,

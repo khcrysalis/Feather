@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleViews
 
 // MARK: - View
 struct SigningDylibView: View {
@@ -27,7 +28,7 @@ struct SigningDylibView: View {
 				}
 			}
 			
-			FRSection("Hidden") {
+			NBSection("Hidden") {
 				Text("\(_hiddenDylibCount) required system dylibs not shown")
 					.font(.footnote)
 					.foregroundColor(.disabled())

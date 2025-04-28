@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleViews
 import Zsign
 
 // MARK: - View
@@ -14,7 +15,7 @@ struct LibraryInfoView: View {
 	
 	// MARK: Body
     var body: some View {
-		FRNavigationView(app.name ?? "", displayMode: .inline) {
+		NBNavigationView(app.name ?? "", displayMode: .inline) {
 			List {
 				Section {} header: {
 					FRAppIconView(app: app)
@@ -36,7 +37,7 @@ struct LibraryInfoView: View {
 				}
 			}
 			.toolbar {
-				FRToolbarButton(role: .close)
+				NBToolbarButton(role: .close)
 			}
 		}
     }
@@ -46,7 +47,7 @@ struct LibraryInfoView: View {
 extension LibraryInfoView {
 	@ViewBuilder
 	private func _infoSection(for app: AppInfoPresentable) -> some View {
-		FRSection("Info") {
+		NBSection("Info") {
 			if let name = app.name {
 				_infoCell("Name", desc: name)
 			}
@@ -68,7 +69,7 @@ extension LibraryInfoView {
 	@ViewBuilder
 	private func _certSection(for app: AppInfoPresentable) -> some View {
 		if let cert = Storage.shared.getCertificate(from: app) {
-			FRSection("Certificate") {
+			NBSection("Certificate") {
 				CertificatesCellView(
 					cert: cert,
 					shouldDisplayInfo: false,
@@ -80,7 +81,7 @@ extension LibraryInfoView {
 	
 	@ViewBuilder
 	private func _bundleSection(for app: AppInfoPresentable) -> some View {
-		FRSection("Bundle") {
+		NBSection("Bundle") {
 			NavigationLink("Alternative Icons") {
 				SigningAlternativeIconView(app: app, appIcon: .constant(nil), isModifing: .constant(false))
 			}
@@ -92,7 +93,7 @@ extension LibraryInfoView {
 	
 	@ViewBuilder
 	private func _executableSection(for app: AppInfoPresentable) -> some View {
-		FRSection("Executable") {
+		NBSection("Executable") {
 			NavigationLink("Dylibs") {
 				SigningDylibView(app: app, options: .constant(nil))
 			}

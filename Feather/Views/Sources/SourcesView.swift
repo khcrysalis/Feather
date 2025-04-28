@@ -7,6 +7,7 @@
 
 import CoreData
 import SwiftUI
+import NimbleViews
 
 struct SourcesView: View {
 	@Environment(\.managedObjectContext) private var viewContext
@@ -26,7 +27,7 @@ struct SourcesView: View {
 	@State private var sourceURL = ""
 	@State private var addingSourceError: Error?
 	var body: some View {
-		FRNavigationView("Sources") {
+		NBNavigationView("Sources") {
 			List {
 				ForEach(sources) { source in
 					let repo = vm.sources[source]  // if it exists

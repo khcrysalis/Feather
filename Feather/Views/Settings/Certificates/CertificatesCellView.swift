@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleViews
 
 // MARK: - View
 struct CertificatesCellView: View {
@@ -48,7 +49,7 @@ extension CertificatesCellView {
 		HStack(spacing: 6) {
 			ForEach(pillItems.indices, id: \.hashValue) { index in
 				let pill = pillItems[index]
-				FRPillView(
+				NBPillView(
 					title: pill.title,
 					icon: pill.icon,
 					color: pill.color,
@@ -59,15 +60,15 @@ extension CertificatesCellView {
 		}
 	}
 	
-	private func _buildPills(from cert: CertificatePair) -> [FRPillItem] {
-		var pills: [FRPillItem] = []
+	private func _buildPills(from cert: CertificatePair) -> [NBPillItem] {
+		var pills: [NBPillItem] = []
 		
 		if cert.ppQCheck == true {
-			pills.append(FRPillItem(title: "PPQCheck", icon: "checkmark.shield", color: .red))
+			pills.append(NBPillItem(title: "PPQCheck", icon: "checkmark.shield", color: .red))
 		}
 		
 		if let info = cert.expiration?.expirationInfo() {
-			pills.append(FRPillItem(
+			pills.append(NBPillItem(
 				title: info.formatted,
 				icon: info.icon,
 				color: info.color

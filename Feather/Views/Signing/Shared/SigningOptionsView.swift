@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleViews
 
 // MARK: - View
 struct SigningOptionsView: View {
@@ -15,7 +16,7 @@ struct SigningOptionsView: View {
 	// MARK: Body
 	var body: some View {
 		if (temporaryOptions == nil) {
-			FRSection("Protection") {
+			NBSection("Protection") {
 				_toggle("PPQ Protection",
 						systemImage: "shield.fill",
 						isOn: $options.ppqProtection,
@@ -39,7 +40,7 @@ struct SigningOptionsView: View {
 				)
 			}
 		} else {
-			FRSection("General") {
+			NBSection("General") {
 				_picker("Appearance",
 						systemImage: "paintpalette",
 						selection: $options.appAppearance,
@@ -56,7 +57,7 @@ struct SigningOptionsView: View {
 			}
 		}
 		
-		FRSection("App Features") {
+		NBSection("App Features") {
 			_toggle("File Sharing",
 					systemImage: "folder.badge.person.crop",
 					isOn: $options.fileSharing,
@@ -88,7 +89,7 @@ struct SigningOptionsView: View {
 			)
 		}
 		
-		FRSection("Removal") {
+		NBSection("Removal") {
 			_toggle("Remove Supported Devices",
 					systemImage: "iphone.slash",
 					isOn: $options.removeSupportedDevices,
@@ -114,7 +115,7 @@ struct SigningOptionsView: View {
 			)
 		}
 		
-		FRSection("Display Options") {
+		NBSection("Display Options") {
 			_toggle("Force Localize",
 					systemImage: "character.bubble",
 					isOn: $options.changeLanguageFilesForCustomDisplayName,
@@ -122,7 +123,7 @@ struct SigningOptionsView: View {
 			)
 		}
 		
-		FRSection("Advanced") {
+		NBSection("Advanced") {
 			_toggle("Adhoc Signing",
 					systemImage: "signature",
 					isOn: $options.doAdhocSigning,

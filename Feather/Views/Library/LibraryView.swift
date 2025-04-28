@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import NimbleViews
 
 // MARK: - View
 struct LibraryView: View {
@@ -67,13 +68,13 @@ struct LibraryView: View {
 	
 	// MARK: Body
     var body: some View {
-		FRNavigationView("Library") {
+		NBNavigationView("Library") {
 			List {
 				if
 					_selectedScope == .all ||
 					_selectedScope == .signed
 				{
-					FRSection(
+					NBSection(
 						"Signed",
 						secondary: _filteredSignedApps.count.description
 					) {
@@ -93,7 +94,7 @@ struct LibraryView: View {
 					_selectedScope == .all ||
 					_selectedScope == .imported
 				{
-					FRSection(
+					NBSection(
 						"Imported",
 						secondary: _filteredImportedApps.count.description
 					) {
@@ -117,7 +118,7 @@ struct LibraryView: View {
 				}
 			}
 			.toolbar {
-				FRToolbarMenu(
+				NBToolbarMenu(
 					"Filter",
 					systemImage: "line.3.horizontal.decrease",
 					style: .icon,
@@ -127,7 +128,7 @@ struct LibraryView: View {
 					_sortActions()
 				}
 				
-				FRToolbarMenu(
+				NBToolbarMenu(
 					"Import",
 					systemImage: "plus",
 					style: .icon,

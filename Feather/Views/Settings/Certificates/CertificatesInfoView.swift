@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleViews
 
 // MARK: - View
 struct CertificatesInfoView: View {
@@ -62,7 +63,7 @@ struct CertificatesInfoView: View {
 				}
 			}
 			.toolbar {
-				FRToolbarButton(role: .close)
+				NBToolbarButton(role: .close)
 			}
 		}
 		.onAppear {
@@ -73,7 +74,7 @@ struct CertificatesInfoView: View {
 	@ViewBuilder
 	private func _entitlements(data: Certificate) -> some View {
 		if let entitlements = data.Entitlements {
-			FRSection("Entitlements") {
+			NBSection("Entitlements") {
 				NavigationLink("View Entitlements") {
 					CertificatesInfoEntitlementView(entitlements: entitlements)
 				}

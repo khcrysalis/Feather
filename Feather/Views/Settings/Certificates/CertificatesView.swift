@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleViews
 
 // MARK: - View
 struct CertificatesView: View {
@@ -49,7 +50,7 @@ struct CertificatesView: View {
 		.navigationBarTitleDisplayMode(.inline)
 		.toolbar {
 			if bindingSelectedCert == nil {
-				FRToolbarButton(
+				NBToolbarButton(
 					"Add",
 					systemImage: "plus",
 					style: .icon,

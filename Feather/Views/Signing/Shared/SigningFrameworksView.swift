@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleViews
 
 // MARK: - View
 struct SigningFrameworksView: View {
@@ -22,7 +23,7 @@ struct SigningFrameworksView: View {
 	var body: some View {
 		List {
 			if !_frameworks.isEmpty {
-				FRSection(_frameworksPath) {
+				NBSection(_frameworksPath) {
 					ForEach(_frameworks, id: \.self) { framework in
 						SigningToggleCellView(
 							title: "\(self._frameworksPath)/\(framework)",
@@ -34,7 +35,7 @@ struct SigningFrameworksView: View {
 			}
 			
 			if !_plugins.isEmpty {
-				FRSection(_pluginsPath) {
+				NBSection(_pluginsPath) {
 					ForEach(_plugins, id: \.self) { plugin in
 						SigningToggleCellView(
 							title: "\(self._pluginsPath)/\(plugin)",

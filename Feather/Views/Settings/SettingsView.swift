@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleViews
 import Zip
 
 // MARK: - View
@@ -21,15 +22,15 @@ struct SettingsView: View {
 	
 	// MARK: Body
     var body: some View {
-		FRNavigationView("Settings") {
+		NBNavigationView("Settings") {
             List {
-				FRSection("Signing") {
+				NBSection("Signing") {
 					NavigationLink("Certificates", destination: CertificatesView())
 					NavigationLink("Configuration", destination: ConfigurationView())
 				}
 				
 				#if SERVER
-				FRSection("Server") {
+				NBSection("Server") {
 					Picker("Installation Type", selection: $_serverMethod) {
 						ForEach(_serverMethods.indices, id: \.self) { index in
 							Text(_serverMethods[index]).tag(index)
@@ -40,7 +41,7 @@ struct SettingsView: View {
 				}
 				#endif
 				
-				FRSection("Archive") {
+				NBSection("Archive") {
 					Picker("Compression Level", selection: $_compressionLevel) {
 						ForEach(ZipCompression.allCases, id: \.rawValue) { level in
 							Text(level.label).tag(level)

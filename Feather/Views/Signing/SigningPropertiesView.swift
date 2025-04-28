@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleViews
 
 // MARK: - View
 struct SigningPropertiesView: View {
@@ -25,7 +26,7 @@ struct SigningPropertiesView: View {
 		}
 		.navigationTitle(title)
 		.toolbar {
-			FRToolbarButton(
+			NBToolbarButton(
 				"Save",
 				systemImage: "checkmark",
 				style: .text,

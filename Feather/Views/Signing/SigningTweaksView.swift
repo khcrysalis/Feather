@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleViews
 
 // MARK: - View
 struct SigningTweaksView: View {
@@ -21,7 +22,7 @@ struct SigningTweaksView: View {
 		.animation(.smooth, value: options.injectionFiles)
 		.listStyle(.plain)
 		.toolbar {
-			FRToolbarButton(
+			NBToolbarButton(
 				"Add",
 				systemImage: "plus",
 				style: .icon,
