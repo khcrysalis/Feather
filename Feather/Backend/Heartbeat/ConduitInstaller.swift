@@ -36,6 +36,10 @@ class ConduitInstaller: Identifiable, ObservableObject {
 				throw ConduitInstallerError.cannotConnectToAFC
 			}
 			
+			guard let afcClient else {
+				throw ConduitInstallerError.cannotConnectToAFC
+			}
+			
 			let stagingDir = "PublicStaging"
 			
 			guard afc_make_directory(afcClient, stagingDir) == IdeviceSuccess else {
