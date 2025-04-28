@@ -14,14 +14,16 @@
 		3305BB492DB893A500660D45 /* Esign in Frameworks */ = {isa = PBXBuildFile; productRef = 3305BB3D2DB893A500660D45 /* Esign */; };
 		3305BBAC2DB8944200660D45 /* Vapor in Frameworks */ = {isa = PBXBuildFile; productRef = 3305BBAB2DB8944200660D45 /* Vapor */; };
 		330E90A22DADF3DF0057D546 /* zsign in Frameworks */ = {isa = PBXBuildFile; productRef = 330E90A12DADF3DF0057D546 /* zsign */; };
-		330F68FA2DBF795900D8C35D /* NimbleViews in Frameworks */ = {isa = PBXBuildFile; productRef = 330F68F92DBF795900D8C35D /* NimbleViews */; };
 		330F68FC2DBF7C8600D8C35D /* NimbleExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 330F68FB2DBF7C8600D8C35D /* NimbleExtensions */; };
 		330F68FE2DBF7C8600D8C35D /* NimbleViews in Frameworks */ = {isa = PBXBuildFile; productRef = 330F68FD2DBF7C8600D8C35D /* NimbleViews */; };
+		330F69012DC03DF500D8C35D /* NimbleExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 330F69002DC03DF500D8C35D /* NimbleExtensions */; };
+		330F69032DC03DF500D8C35D /* NimbleViews in Frameworks */ = {isa = PBXBuildFile; productRef = 330F69022DC03DF500D8C35D /* NimbleViews */; };
+		330F69052DC03E0400D8C35D /* NimbleExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 330F69042DC03E0400D8C35D /* NimbleExtensions */; };
+		330F69072DC03E0700D8C35D /* NimbleViews in Frameworks */ = {isa = PBXBuildFile; productRef = 330F69062DC03E0700D8C35D /* NimbleViews */; };
 		336D43982DB7454A00206400 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336D43972DB7454A00206400 /* MobileCoreServices.framework */; };
 		3371F6432DA9233C00281AC6 /* Esign in Frameworks */ = {isa = PBXBuildFile; productRef = 3371F6422DA9233C00281AC6 /* Esign */; };
 		3371F7322DA9ECDD00281AC6 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 3371F7312DA9ECDD00281AC6 /* Zip */; };
 		33CF13392DB5ACFB0021D4C5 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 33CF13382DB5ACFB0021D4C5 /* SWCompression */; };
-		33D8DC8E2DBF76B70074A2EC /* NimbleExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 33D8DC8D2DBF76B70074A2EC /* NimbleExtensions */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,13 +111,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				330F68FA2DBF795900D8C35D /* NimbleViews in Frameworks */,
+				330F69072DC03E0700D8C35D /* NimbleViews in Frameworks */,
 				3305BB452DB893A500660D45 /* zsign in Frameworks */,
 				3305BB462DB893A500660D45 /* SWCompression in Frameworks */,
 				3305BB472DB893A500660D45 /* Zip in Frameworks */,
 				3305BB482DB893A500660D45 /* MobileCoreServices.framework in Frameworks */,
 				3305BB492DB893A500660D45 /* Esign in Frameworks */,
-				33D8DC8E2DBF76B70074A2EC /* NimbleExtensions in Frameworks */,
+				330F69052DC03E0400D8C35D /* NimbleExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,8 +128,10 @@
 				330F68FE2DBF7C8600D8C35D /* NimbleViews in Frameworks */,
 				330E90A22DADF3DF0057D546 /* zsign in Frameworks */,
 				330F68FC2DBF7C8600D8C35D /* NimbleExtensions in Frameworks */,
+				330F69012DC03DF500D8C35D /* NimbleExtensions in Frameworks */,
 				33CF13392DB5ACFB0021D4C5 /* SWCompression in Frameworks */,
 				3371F7322DA9ECDD00281AC6 /* Zip in Frameworks */,
+				330F69032DC03DF500D8C35D /* NimbleViews in Frameworks */,
 				3305BBAC2DB8944200660D45 /* Vapor in Frameworks */,
 				336D43982DB7454A00206400 /* MobileCoreServices.framework in Frameworks */,
 				3371F6432DA9233C00281AC6 /* Esign in Frameworks */,
@@ -196,8 +200,8 @@
 				3305BB3E2DB893A500660D45 /* Zip */,
 				3305BB402DB893A500660D45 /* zsign */,
 				3305BB412DB893A500660D45 /* SWCompression */,
-				33D8DC8D2DBF76B70074A2EC /* NimbleExtensions */,
-				330F68F92DBF795900D8C35D /* NimbleViews */,
+				330F69042DC03E0400D8C35D /* NimbleExtensions */,
+				330F69062DC03E0700D8C35D /* NimbleViews */,
 			);
 			productName = Feather;
 			productReference = 3305BB4E2DB893A500660D45 /* Feather (idevice).app */;
@@ -227,6 +231,8 @@
 				3305BBAB2DB8944200660D45 /* Vapor */,
 				330F68FB2DBF7C8600D8C35D /* NimbleExtensions */,
 				330F68FD2DBF7C8600D8C35D /* NimbleViews */,
+				330F69002DC03DF500D8C35D /* NimbleExtensions */,
+				330F69022DC03DF500D8C35D /* NimbleViews */,
 			);
 			productName = Feather;
 			productReference = 3379C1B92DA869A1004372DA /* Feather.app */;
@@ -290,6 +296,7 @@
 				3371F6F52DA9EBA500281AC6 /* XCRemoteSwiftPackageReference "Zip" */,
 				33CF13372DB5ACFB0021D4C5 /* XCRemoteSwiftPackageReference "SWCompression" */,
 				3305BBAA2DB8944200660D45 /* XCRemoteSwiftPackageReference "vapor" */,
+				330F68FF2DC03DF400D8C35D /* XCLocalSwiftPackageReference "NimbleKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3379C1BA2DA869A1004372DA /* Products */;
@@ -720,7 +727,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_ENTITLEMENTS = "Feather/Supporting Files/Feather.entitlements";
 				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -728,6 +735,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = thewonderofyou.FeatherTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -742,7 +750,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_ENTITLEMENTS = "Feather/Supporting Files/Feather.entitlements";
 				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -750,6 +758,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = thewonderofyou.FeatherTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -801,6 +810,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
+		330F68FF2DC03DF400D8C35D /* XCLocalSwiftPackageReference "NimbleKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = NimbleKit;
+		};
 		3371F5152DA91FDC00281AC6 /* XCLocalSwiftPackageReference "Zsign" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Zsign;
@@ -882,15 +895,27 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = zsign;
 		};
-		330F68F92DBF795900D8C35D /* NimbleViews */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = NimbleViews;
-		};
 		330F68FB2DBF7C8600D8C35D /* NimbleExtensions */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = NimbleExtensions;
 		};
 		330F68FD2DBF7C8600D8C35D /* NimbleViews */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NimbleViews;
+		};
+		330F69002DC03DF500D8C35D /* NimbleExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NimbleExtensions;
+		};
+		330F69022DC03DF500D8C35D /* NimbleViews */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NimbleViews;
+		};
+		330F69042DC03E0400D8C35D /* NimbleExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NimbleExtensions;
+		};
+		330F69062DC03E0700D8C35D /* NimbleViews */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = NimbleViews;
 		};
@@ -907,10 +932,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 33CF13372DB5ACFB0021D4C5 /* XCRemoteSwiftPackageReference "SWCompression" */;
 			productName = SWCompression;
-		};
-		33D8DC8D2DBF76B70074A2EC /* NimbleExtensions */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = NimbleExtensions;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
