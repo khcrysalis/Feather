@@ -136,7 +136,7 @@ class LibraryViewController: UITableViewController {
 		cancelBarButtonItem = UIBarButtonItem(title: String.localized("CANCEL"), style: .plain, target: self, action: #selector(toggleEditingMode))
 		
 		// Set the initial right bar button item
-		navigationItem.rightBarButtonItem = editBarButtonItem
+		navigationItem.rightBarButtonItems = [editBarButtonItem]
 	}
 	
 	private func handleAppUpdate(for signedApp: SignedApps) {
@@ -675,7 +675,7 @@ extension LibraryViewController {
 		if isEditingMode {
 			navigationItem.rightBarButtonItems = [cancelBarButtonItem, deleteBarButtonItem]
 		} else {
-			navigationItem.rightBarButtonItem = editBarButtonItem
+			navigationItem.rightBarButtonItems = [editBarButtonItem]
 		}
 		
 		deleteBarButtonItem.isEnabled = !selectedItems.isEmpty
