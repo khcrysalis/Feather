@@ -3,6 +3,7 @@
   feather
 
   Created by corentios on 03.10.2024.
+  Updated by ababoude on 29.04.2025.
   
 */
 
@@ -36,7 +37,7 @@
 // Add Action
 "ADD" = "Ajouter";
 // Install Action
-"INSTALL" = "Install";
+"INSTALL" = "Installer";
 
 // MARK: - Error messages
 // Installer Error Title
@@ -44,7 +45,7 @@
 "ALERT_TRACE" = "Trace";
 "ALERT_ERROR" = "Erreur";
 "ALERT_CRITICAL" = "Critique";
-"ALERT_COPIED" = "Kopieren";
+"ALERT_COPIED" = "Copie";
 
 // MARK: - Error messages
 // Installer Error Title
@@ -58,9 +59,9 @@
 // Successfully signed an application
 "SUCCESS_SIGNED" = "%@ signé avec succès";
 // Successfully resigned an application
-"SUCCESS_RESIGN" = "Réinscription réussie !";
+"SUCCESS_RESIGN" = "Re-signature réussie !";
 // Success message requiring user to restart app
-"SUCCESS_REQUIRES_RESTART" = "You must close the app for changes to take effect.";
+"SUCCESS_REQUIRES_RESTART" = "Vous devez fermer l’application pour que les modifications prennent effet.";
 
 // MARK: - Onboarding
 // Welcome to Feather!!!!!!!!
@@ -177,8 +178,8 @@
 "APP_SIGNING_VIEW_CONTROLLER_CELL_ADD_TWEAKS" = "Ajouter des tweaks";
 "APP_SIGNING_VIEW_CONTROLLER_CELL_ADVANCED" = "Avancé";
 "APP_SIGNING_VIEW_CONTROLLER_START_SIGNING" = "Commencer la signature";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_MODIFY_DYLIBS" = "Modify Dylibs";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_PROPERTIES" = "Properties";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_MODIFY_DYLIBS" = "Modifier les Dylibs";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_PROPERTIES" = "Propriétés";
 
 // MARK: - AppSigningViewController - No Certificates Alert
 "APP_SIGNING_VIEW_CONTROLLER_NO_CERTS_ALERT_TITLE" = "Erreur";
@@ -194,57 +195,57 @@
 
 // MARK: - SigningsOptionsViewController
 
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS" = "Enable Protection";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS_DESCRIPTION" = "Enabling protections will pre-append every bundle identifier with a random string, this is to protect the Apple ID related to your certificate from being flagged by Apple. However, if you don't care about this you can ignore.";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS" = "Activer les protections";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_PROTECTIONS_DESCRIPTION" = "L’activation des protections ajoutera une chaîne aléatoire au début de chaque identifiant de bundle. Cela vise à protéger l’identifiant Apple lié à votre certificat contre un éventuel signalement par Apple. Cependant, si cela ne vous importe pas, vous pouvez ignorer cette option.";
 
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DYNAMIC_PROTECTION" = "Dynamic Protection";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DYNAMIC_PROTECTION_DESCRIPTION" = "Dynamic protection will only apply PPQ protection if the bundle identifier exists on the App Store. This requires an internet connection during signing.";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DYNAMIC_PROTECTION" = "Protection dynamique";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DYNAMIC_PROTECTION_DESCRIPTION" = "La protection dynamique n’appliquera la protection PPQ que si l’identifiant de bundle existe sur l’App Store. Cela nécessite une connexion Internet lors de la signature.";
 
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS" = "Bundle Identifiers";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_NEW" = "New Identifier";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID" = "Identifier";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID_REPLACEMENT" = "Replacement";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS" = "Identifiant du bundle";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_NEW" = "Nouvel identifiant";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID" = "Idantifiant";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_IDENTIFIERS_ID_REPLACEMENT" = "Remplacement";
 
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES" = "Display Names";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES_ID" = "Original Display Name";
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES_ID_REPLACEMENT" = "New Display Name";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES" = "Nom d'affichage";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES_ID" = "Nom d'affichage original";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_DISPLAYNAMES_ID_REPLACEMENT" = "Nouveau nom d'affichage";
 
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_INSTALLAFTERSIGNED" = "Install after Signing";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_INSTALLAFTERSIGNED" = "Installer après avoir signé";
 
-"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_TITLE" = "Signing Options";
+"APP_SIGNING_VIEW_CONTROLLER_CELL_SIGNING_OPTIONS_TITLE" = "Option de signature";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "Remove all PlugIns";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS_DESCRIPTION" = "Removes the PlugIns directory inside of the app, which would usually have some components for the app to function properly.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS" = "Supprimer les PlugIns";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PLUGINS_DESCRIPTION" = "Supprime le répertoire PlugIns à l’intérieur de l’application, qui contient généralement certains composants nécessaires au bon fonctionnement de l’application.";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES" = "Remove UISupportedDevices";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES_DESCRIPTION" = "Removes device restrictions for the application.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES" = "Supprimer UISupportedDevices";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_UISUPPORTEDDEVICES_DESCRIPTION" = "Supprime les restrictions liées à l’appareil pour l’application.";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME" = "Remove URLScheme";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME_DESCRIPTION" = "Removes any possible URL schemes (i.e. 'feather://')";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME" = "Supprimer les schémas d'URL";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_URLSCHEME_DESCRIPTION" = "Supprime tous les schémas d’URL possibles (par exemple, 'feather://').";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS" = "Allow Browsing Documents";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS_DESCRIPTION" = "Allows other apps to open and edit the files stored in the Documents folder. This option also lets users set the app’s default save location in Settings.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS" = "Autoriser la consultation des documents";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_BROWSING_DOCUMENTS_DESCRIPTION" = "Permet à d’autres applications d’ouvrir et de modifier les fichiers stockés dans le dossier Documents. Cette option permet également aux utilisateurs de définir l’emplacement de sauvegarde par défaut de l’application dans les Paramètres.";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING" = "Allow iTunes Sharing";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING_DESCRIPTION" = "Forces the app to share their documents directory, allowing sharing between iTunes and Finder.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING" = "Autoriser le partage iTunes";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_ALLOW_ITUNES_SHARING_DESCRIPTION" = "Force l’application à partager son répertoire de documents, permettant le partage entre iTunes et Finder.";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION" = "Force ProMotion";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION_DESCRIPTION" = "Enables ProMotion capabilities within the app, however on lower versions of 15.x this may not be enough.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION" = "Forcer ProMotion";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_PRO_MOTION_DESCRIPTION" = "Active les capacités ProMotion dans l’application, cependant, sur les versions inférieures à 15.x, cela peut ne pas suffire.";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_GAME_MODE" = "Force Game Mode";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_GAME_MODE_DESCRIPTION" = "Enables Game Mode within the app, minimizing background activity and prioritized performance for the app.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_GAME_MODE" = "Forcer le mode Jeu";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_GAME_MODE_DESCRIPTION" = "Active le mode Jeu dans l’application, réduisant l’activité en arrière-plan et priorisant la performance de l’application.";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "Force Fullscreen";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN_DESCRIPTION" = "Forces only fullscreen capabilities within iPad apps, disallowing sharing the screen with other apps. On an external screen, the window for an app with this setting maintains its canvas size.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN" = "Forcer le plein écran";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_FORCE_FULLSCREEN_DESCRIPTION" = "Force l'utilisation exclusive du mode plein écran dans les applications iPad, interdisant le partage de l'écran avec d’autres applications. Sur un écran externe, la fenêtre de l’application avec ce paramètre conserve sa taille de canevas.";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP" = "Delete Placeholder Watch App";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP_DESCRIPTION" = "Removes unwanted watch placeholder which isn't supposed to be there, present in apps such as YouTube music, etc.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP" = "Supprimer le placeholder Watch";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_DELETE_PLACEHOLDER_WATCH_APP_DESCRIPTION" = "Supprime le placeholder watch indésirable qui ne devrait pas être là, présent dans des applications comme YouTube Music, etc.";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS" = "Force Try To Localize";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS_DESCRIPTION" = "Forces localization by modifying every localizable bundle within the app when trying to change a name of the app.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS" = "Forcer la localisation";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_FORCELOCALIZATIONS_DESCRIPTION" = "Force la localisation en modifiant chaque bundle localisable dans l’application lors du changement du nom de l’application.";
 
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING" = "Remove Provisioning File";
-"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING_DESCRIPTION" = "Removes .mobileprovison from appearing in your app after signing.";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING" = "Supprimer le fichier de provisioning";
+"APP_SIGNING_INPUT_VIEW_CONTROLLER_REMOVE_PROVISIONING_DESCRIPTION" = "Supprime le fichier .mobileprovision de l’apparition dans votre application après la signature.";
 
 
 // MARK: - LibraryViewController
@@ -258,21 +259,21 @@
 "LIBRARY_VIEW_CONTROLLER_SECTION_DOWNLOADED_APPS" = "Apps téléchargées";
 "LIBRARY_VIEW_CONTROLLER_SECTION_TITLE_DOWNLOADED_APPS_TOTAL" = "%@ téléchargées";
 //Import Action Sheet
-"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_FILE" = "Importer depuis Fichiers";
+"LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_FILE" = "Importer depuis mes fichiers";
 "LIBRARY_VIEW_CONTROLLER_IMPORT_ACTION_SHEET_URL" = "Importer depuis une URL";
 //Sign Action Sheet
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN" = "Sign %@";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN_INSTALL" = "Sign & Install %@";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_RESIGN" = "ReSign %@";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL" = "Install %@";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SHARE" = "Share %@";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN" = "Open %@";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_UPDATE" = "Update %@";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_CLEAR_UPDATE" = "Clear Update";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_VIEW_DATEILS" = "View Details";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN_LN_FILES" = "Open in Files";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM" = "Confirm Installation";
-"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM_DESCRIPTION" = "Trying to install via the downloaded apps tab may not work as they are most likely not signed! It's recommended you sign that application first before installing.";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN" = "Signer %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SIGN_INSTALL" = "Signer & Installer %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_RESIGN" = "Re-Signer %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL" = "Installer %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_SHARE" = "Partager %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN" = "Ouvrir %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_UPDATE" = "Mettre à jour %@";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_CLEAR_UPDATE" = "effacer la mise à jour";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_VIEW_DATEILS" = "Afficher les détails";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_OPEN_LN_FILES" = "Ouvrir dans Fichiers";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM" = "Confirmer l'installation";
+"LIBRARY_VIEW_CONTROLLER_SIGN_ACTION_INSTALL_CONFIRM_DESCRIPTION" = "Essayer d'installer via l'onglet des applications téléchargées peut ne pas fonctionner car elles ne sont probablement pas signées ! Il est recommandé de signer l'application d'abord avant de l'installer.";
 
 
 // MARK: - SettingsViewController
@@ -284,10 +285,10 @@
 // Footers
 "SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_ISSUES" = "Si des problèmes surviennent dans Feather, veuillez les signaler via le dépôt GitHub. Lors de la soumission d'un problème, assurez-vous d'inclure tous les journaux.";
 "SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_SERVER_LIMITATIONS" = "Malheureusement, en raison de limitations, les certificats du serveur devront être renouvelés chaque année pour que les fonctionnalités locales de Feather continuent de fonctionner correctement. Appuyez sur ce bouton pour récupérer les fichiers les plus à jour depuis nos dépôts.";
-"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER" = "Default server goes to %@";
+"SETTINGS_VIEW_CONTROLLER_SECTION_FOOTER_DEFAULT_SERVER" = "Le serveur par défaut est %@";
 
-"SETTINGS_VIEW_CONTROLLER_TITLE" = "Server Options";
-"SETTINGS_VIEW_CONTROLLER_TITLE_ONLINE" = "Online";
+"SETTINGS_VIEW_CONTROLLER_TITLE" = "Options du serveur";
+"SETTINGS_VIEW_CONTROLLER_TITLE_ONLINE" = "En ligne";
 "SETTINGS_VIEW_CONTROLLER_TITLE_LOCAL" = "Local";
 
 // Cell Titles
@@ -302,17 +303,17 @@
 "SETTINGS_VIEW_CONTROLLER_CELL_ADD_CERTIFICATES" = "Ajouter un certificat";
 
 
-"SETTINGS_VIEW_CONTROLLER_CELL_SIGN_OPTIONS" = "Signing Options";
-"SETTINGS_VIEW_CONTROLLER_CELL_SERVER_OPTIONS" = "Server Options";
-"SETTINGS_VIEW_CONTROLLER_CELL_VIEW_LOGS" = "View Logs";
-"SETTINGS_VIEW_CONTROLLER_CELL_APPS_FOLDER" = "Open Apps Folder";
-"SETTINGS_VIEW_CONTROLLER_CELL_CERTS_FOLDER" = "Open Certificates Folder";
+"SETTINGS_VIEW_CONTROLLER_CELL_SIGN_OPTIONS" = "Options de signature";
+"SETTINGS_VIEW_CONTROLLER_CELL_SERVER_OPTIONS" = "Options du serveur";
+"SETTINGS_VIEW_CONTROLLER_CELL_VIEW_LOGS" = "Voir les journaux";
+"SETTINGS_VIEW_CONTROLLER_CELL_APPS_FOLDER" = "Ouvrir le dossier des applications";
+"SETTINGS_VIEW_CONTROLLER_CELL_CERTS_FOLDER" = "Ouvrir le dossier des certificats";
 
 
 "SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE" = "Mettre à jour le certificat local";
 "SETTINGS_VIEW_CONTROLLER_CELL_UPDATE_LOCAL_CERTIFICATE_UPDATING" = "Mise à jour du certificat local";
 "SETTINGS_VIEW_CONTROLLER_CELL_RESET" = "Réinitialiser";
-"SETTINGS_VIEW_CONTROLLER_CELL_RESET_ALL" = "Reset All";
+"SETTINGS_VIEW_CONTROLLER_CELL_RESET_ALL" = "Réinitialiser tout";
 "SETTINGS_VIEW_CONTROLLER_CELL_RESET_CONFIGURATION" = "Réinitialiser la configuration";
 "SETTINGS_VIEW_CONTROLLER_CELL_USE_CUSTOM_SERVER" = "Utiliser un serveur personnalisé";
 
@@ -354,12 +355,12 @@
 "DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION" = "Grande description";
 "DISPLAY_VIEW_CONTROLLER_CELL_BIG_DESCRIPTION_DESCRIPTION" = "Remplace les captures d'écran par la description de l'application.";
 
-"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME" = "Use Team Name";
-"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME_DESCRIPTION" = "Replaces the certificate name with your team name, could be for better to distinguish between certificates if providers happen to always use the same App ID name.";
+"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME" = "Utiliser le nom de la team";
+"DISPLAY_VIEW_CONTROLLER_CELL_TEAM_NAME_DESCRIPTION" = "Remplace le nom du certificat par le nom de votre team, ce qui peut être utile pour mieux distinguer les certificats si les fournisseurs utilisent toujours le même nom d'ID d'application.";
 
 // MARK: - SettingsViewController -> LanguageViewController.swift
-"LANGUAGE_VIEW_TITLE" = "Language";
-"LANGUAGE_VIEW_CELL_USE_SYSTEM_LANGUAGE" = "Use System Language";
+"LANGUAGE_VIEW_TITLE" = "Langue";
+"LANGUAGE_VIEW_CELL_USE_SYSTEM_LANGUAGE" = "Utiliser la langue du système";
 
 // MARK: - SettingsViewController -> CertificatesViewController
 "CERTIFICATES_VIEW_CONTROLLER_TITLE" = "Certificats";
@@ -409,8 +410,9 @@
 "DONATION_CELL_2_DESCRIPTION" = "Montrez votre soutien en faisant un don ! Si vous ne pouvez pas faire un don, faire connaître Feather est tout aussi utile !";
 
 // MARK: - SettingsViewController -> LogsViewController.swift
-"LOGS_VIEW_SECTION_TITLE_ERROR" = "%@ Critical Errors.";
-"LOGS_VIEW_SECTION_TITLE_SHARE" = "Share Logs";
-"LOGS_VIEW_SECTION_TITLE_COPY" = "Copy Logs";
-"LOGS_VIEW_SUCCESS_DESCRIPTION" = "Log contents have been copied to clipboard.";
-"LOGS_VIEW_FAIL_DESCRIPTION" = "Failed to copy log contents.";
+"LOGS_VIEW_SECTION_TITLE_ERROR" = "%@ Erreurs critiques.";
+"LOGS_VIEW_SECTION_TITLE_SHARE" = "Partager les journaux";
+"LOGS_VIEW_SECTION_TITLE_COPY" = "Copier les journaux";
+"LOGS_VIEW_SUCCESS_DESCRIPTION" = "Le contenu des journaux a été copié dans le presse-papiers.";
+"LOGS_VIEW_FAIL_DESCRIPTION" = "Échec de la copie du contenu des journaux.";
+
