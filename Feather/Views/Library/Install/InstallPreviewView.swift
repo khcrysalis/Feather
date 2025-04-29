@@ -117,7 +117,10 @@ struct InstallPreviewView: View {
 					UIAlertController.showAlertWithOk(
 						title: "err",
 						message: error.localizedDescription,
-						isCancel: true
+						action: {
+							HeartbeatManager.shared.start(true)
+							dismiss()
+						}
 					)
 				}
 			}

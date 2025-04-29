@@ -16,9 +16,9 @@ struct SettingsView: View {
 	@AppStorage("Feather.ipFix") private var _ipFix: Bool = false
 	@AppStorage("Feather.serverMethod") private var _serverMethod: Int = 0
 	private let _serverMethods = ["Fully Local", "Semi Local"]
-	#endif
-	#if IDEVICE
+	#elseif IDEVICE
 	@State private var _isImportingPairingPresenting = false
+	@State private var pulseID = UUID()
 	#endif
 	
 	// MARK: Body
@@ -28,6 +28,14 @@ struct SettingsView: View {
 				NBSection("Signing") {
 					NavigationLink("Certificates", destination: CertificatesView())
 					NavigationLink("Configuration", destination: ConfigurationView())
+				}
+
+				NBSection("Archive") {
+					Picker("Compression Level", selection: $_compressionLevel) {
+						ForEach(ZipCompression.allCases, id: \.rawValue) { level in
+							Text(level.label).tag(level)
+						}
+					}
 				}
 				
 				#if SERVER
@@ -40,23 +48,18 @@ struct SettingsView: View {
 					Toggle("Only use localhost address", isOn: $_ipFix)
 						.disabled(_serverMethod != 1)
 				}
-				#endif
-				
-				#if IDEVICE
+				#elseif IDEVICE
 				NBSection("Pairing") {
+					_heartbeat()
+					Button("Restart heartbeat") {
+						HeartbeatManager.shared.start(true)
+					}
 					Button("Import Pairing File") {
 						_isImportingPairingPresenting = true
 					}
 				}
 				#endif
 				
-				NBSection("Archive") {
-					Picker("Compression Level", selection: $_compressionLevel) {
-						ForEach(ZipCompression.allCases, id: \.rawValue) { level in
-							Text(level.label).tag(level)
-						}
-					}
-				}
             }
 			#if IDEVICE
 			.sheet(isPresented: $_isImportingPairingPresenting) {
@@ -68,8 +71,7 @@ struct SettingsView: View {
 					}
 				)
 			}
-			#endif
-			#if SERVER
+			#elseif SERVER
 			.onChange(of: _serverMethod) { _ in
 				UIAlertController.showAlertWithRestart(
 					title: "Restart Required",
@@ -79,4 +81,46 @@ struct SettingsView: View {
 			#endif
         }
     }
+	
+	#if IDEVICE
+	@ViewBuilder
+	private func _heartbeat() -> some View {
+		HStack {
+			Text("Status")
+			Spacer()
+			ZStack {
+				Circle()
+					.fill(.blue)
+					.frame(width: 10, height: 10)
+				
+				PulseRing(id: pulseID)
+			}
+		}
+		.onReceive(NotificationCenter.default.publisher(for: .heartbeat)) { _ in
+			pulseID = UUID()
+		}
+	}
+
+	#endif
 }
+#if IDEVICE
+struct PulseRing: View {
+	let id: UUID
+	@State private var animate = false
+	
+	var body: some View {
+		Circle()
+			.stroke(.blue, lineWidth: 2)
+			.frame(width: 10, height: 10)
+			.scaleEffect(animate ? 2.5 : 1)
+			.opacity(animate ? 0 : 0.8)
+			.onAppear {
+				animate = false
+				withAnimation(.easeOut(duration: 1)) {
+					animate = true
+				}
+			}
+			.id(id)
+	}
+}
+#endif

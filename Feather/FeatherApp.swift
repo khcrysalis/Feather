@@ -20,11 +20,6 @@ struct FeatherApp: App {
 			VariedTabbarView()
 				.environment(\.managedObjectContext, storage.context)
 				.onOpenURL(perform: _handleURL)
-				#if IDEVICE
-				.onAppear {
-					heartbeat.start()
-				}
-				#endif
 		}
 	}
 	

@@ -28,15 +28,21 @@ class ConduitInstaller: Identifiable, ObservableObject {
 		var installproxy: InstallationProxyClientHandle?
 		
 		try await Task.detached(priority: .userInitiated) {
-			guard await (self._heartbeat.provider != nil) else {
+			guard await self._heartbeat.checkSocketConnection().isConnected else {
+				throw ConduitInstallerError.missingPairing
+			}
+			
+			defer {
+				afc_client_free(afcClient)
+				installation_proxy_client_free(installproxy)
+			}
+			
+			let heartbeat = await self._heartbeat
+			guard let provider = heartbeat.provider else {
 				throw ConduitInstallerError.cannotConnectToAFC
 			}
 			
-			guard await afc_client_connect_tcp(self._heartbeat.provider, &afcClient) == IdeviceSuccess else {
-				throw ConduitInstallerError.cannotConnectToAFC
-			}
-			
-			guard let afcClient else {
+			guard afc_client_connect_tcp(provider, &afcClient) == IdeviceSuccess else {
 				throw ConduitInstallerError.cannotConnectToAFC
 			}
 			
@@ -89,7 +95,7 @@ class ConduitInstaller: Identifiable, ObservableObject {
 			
 			try await self._updateStatus(with: .installing)
 			
-			guard await installation_proxy_connect_tcp(self._heartbeat.provider, &installproxy) == IdeviceSuccess else {
+			guard installation_proxy_connect_tcp(provider, &installproxy) == IdeviceSuccess else {
 				throw ConduitInstallerError.unableToCreateStaging
 			}
 			
@@ -126,7 +132,8 @@ class ConduitInstaller: Identifiable, ObservableObject {
 		}
 	}
 	
-	nonisolated static private let _installationProgressCallback: @convention(c) (
+	nonisolated
+	static private let _installationProgressCallback: @convention(c) (
 		UInt64,
 		UnsafeMutableRawPointer?
 	) -> Void = { progress, context in
@@ -145,6 +152,7 @@ class ConduitInstaller: Identifiable, ObservableObject {
 }
 
 private enum ConduitInstallerError: Error, LocalizedError {
+	case missingPairing
 	case cannotConnectToAFC
 	case unableToCreateStaging
 	case writeErrorAFC
@@ -153,6 +161,8 @@ private enum ConduitInstallerError: Error, LocalizedError {
 	
 	var errorDescription: String? {
 		switch self {
+		case .missingPairing:
+			return "Unable to connect to TCP. Make sure you're connected to WiFi or Airplane Mode."
 		case .cannotConnectToAFC:
 			return "Cannot connect to AFC (Apple File Conduit)."
 		case .unableToCreateStaging:
