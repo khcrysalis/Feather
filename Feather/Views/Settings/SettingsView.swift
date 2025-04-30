@@ -12,6 +12,7 @@ import Zip
 // MARK: - View
 struct SettingsView: View {
 	@AppStorage("Feather.compressionLevel") private var _compressionLevel: Int = ZipCompression.DefaultCompression.rawValue
+	@AppStorage("Feather.useShareSheetForArchiving") private var _useShareSheet: Bool = false
 	#if SERVER
 	@AppStorage("Feather.ipFix") private var _ipFix: Bool = false
 	@AppStorage("Feather.serverMethod") private var _serverMethod: Int = 0
@@ -38,6 +39,9 @@ struct SettingsView: View {
 							Text(level.label).tag(level)
 						}
 					}
+					Toggle("Show Sheet when Sharing", isOn: $_useShareSheet)
+				} footer: {
+					Text("Toggling show sheet will present a share sheet instead of saving to files.")
 				}
 				
 				#if SERVER
@@ -75,14 +79,14 @@ struct SettingsView: View {
 	@ViewBuilder
 	private func _directories() -> some View {
 		Section {
-			Button("Open Documents") {
-				_open(URL.documentsDirectory.toSharedDocumentsURL()!)
+			Button("Open Documents", systemImage: "folder") {
+				UIApplication.open(URL.documentsDirectory.toSharedDocumentsURL()!)
 			}
-			Button("Open Archives") {
-				_open(FileManager.default.archives.toSharedDocumentsURL()!)
+			Button("Open Archives", systemImage: "folder") {
+				UIApplication.open(FileManager.default.archives.toSharedDocumentsURL()!)
 			}
-			Button("Open Certificates") {
-				_open(FileManager.default.certificates.toSharedDocumentsURL()!)
+			Button("Open Certificates", systemImage: "folder") {
+				UIApplication.open(FileManager.default.certificates.toSharedDocumentsURL()!)
 			}
 		} footer: {
 			Text("All of Feathers files are contained in the documents directory, here are some quick links to these.")
@@ -113,25 +117,17 @@ struct SettingsView: View {
 			}
 			.padding(.vertical, 4)
 			
-			Button("Github") {
-				_open(_kGithub)
+			Button("Github", systemImage: "arrow.up.right") {
+				UIApplication.open(_kGithub)
 			}
 			
-			Button("Donate") {
-				_open(_kDonations)
+			Button("Donate", systemImage: "arrow.up.right") {
+				UIApplication.open(_kDonations)
 			}
 			
-			Button("Twitter") {
-				_open(_kTwitter)
+			Button("Twitter", systemImage: "arrow.up.right") {
+				UIApplication.open(_kTwitter)
 			}
 		}
-	}
-	
-	private func _open(_ url: URL) {
-		UIApplication.shared.open(url, options: [:])
-	}
-	
-	private func _open(_ urlString: String) {
-		UIApplication.shared.open(URL(string: urlString)!, options: [:])
 	}
 }

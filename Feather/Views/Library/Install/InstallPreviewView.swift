@@ -6,13 +6,16 @@
 //
 
 import SwiftUI
-#if SERVER
-import SafariServices
-#endif
+import NimbleViews
 
 // MARK: - View
 struct InstallPreviewView: View {
 	@Environment(\.dismiss) var dismiss
+	
+	// Sharing
+	@AppStorage("Feather.useShareSheetForArchiving") private var _useShareSheet: Bool = false
+	
+	// Methods
 	#if SERVER
 	@AppStorage("Feather.serverMethod") private var _serverMethod: Int = 0
 	@State private var _isWebviewPresenting = false
@@ -47,8 +50,7 @@ struct InstallPreviewView: View {
 		.padding()
 		#if SERVER
 		.sheet(isPresented: $_isWebviewPresenting) {
-			SafariWebView(url: installer.pageEndpoint)
-				.ignoresSafeArea()
+			SafariRepresentableView(url: installer.pageEndpoint).ignoresSafeArea()
 		}
 		.onReceive(viewModel.$status) { newStatus in
 			#if DEBUG
@@ -69,15 +71,6 @@ struct InstallPreviewView: View {
 		#endif
 		.onAppear(perform: _install)
 	}
-	
-	#if SERVER
-	struct SafariWebView: UIViewControllerRepresentable {
-		let url: URL
-		func makeUIViewController(context: Context) -> SFSafariViewController { return SFSafariViewController(url: url) }
-		func updateUIViewController(_ uiViewController: SFSafariViewController, context: Context) {}
-	}
-	#endif
-	
 	
 	@ViewBuilder
 	private func _status() -> some View {
@@ -107,9 +100,18 @@ struct InstallPreviewView: View {
 					try await handler.install(at: packageUrl)
 					#endif
 				} else {
-					try await handler.moveToArchiveAndOpen(packageUrl)
-					await MainActor.run {
-						dismiss()
+					let package = try await handler.moveToArchive(packageUrl)
+					
+					if await !_useShareSheet {
+						await MainActor.run {
+							dismiss()
+						}
+					} else {
+						if let package {
+							await MainActor.run {
+								UIActivityViewController.show(activityItems: [package])
+							}
+						}
 					}
 				}
 			} catch {

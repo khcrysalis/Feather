@@ -28,7 +28,7 @@ struct LibraryInfoView: View {
 				_executableSection(for: app)
 				
 				Section {
-					Button("Open in Files") {
+					Button("Open in Files", systemImage: "folder") {
 						UIApplication.shared.open(
 							Storage.shared.getUuidDirectory(for: app)!.toSharedDocumentsURL()!,
 							options: [:]

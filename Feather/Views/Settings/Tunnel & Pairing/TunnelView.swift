@@ -27,17 +27,17 @@ struct TunnelView: View {
 			}
 			
 			Section {
-				Button("Import Pairing File") {
+				Button("Import Pairing File", systemImage: "square.and.arrow.down") {
 					_isImportingPairingPresenting = true
 				}
-				Button("Restart Heartbeat") {
+				Button("Restart Heartbeat", systemImage: "arrow.counterclockwise") {
 					HeartbeatManager.shared.start(true)
 				}
 			}
 			
 			NBSection("Help") {
 				Button("Pairing File Guide", systemImage: "questionmark.circle") {
-					UIApplication.shared.open(URL(string: "https://github.com/StephenDev0/StikDebug-Guide/blob/main/pairing_file.md")!, options: [:])
+					UIApplication.open("https://github.com/StephenDev0/StikDebug-Guide/blob/main/pairing_file.md")
 				}
 			}
 		}
@@ -57,7 +57,7 @@ struct TunnelView: View {
 	@ViewBuilder
 	private func _tunnelInfo() -> some View {
 		HStack {
-			VStack(alignment: .leading) {
+			VStack(alignment: .leading, spacing: 6) {
 				Text("Heartbeat")
 					.font(.headline)
 					.bold()

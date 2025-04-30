@@ -75,7 +75,7 @@ final class ArchiveHandler: NSObject {
 		}.value
 	}
 	
-	func moveToArchiveAndOpen(_ package: URL) async throws {
+	func moveToArchive(_ package: URL, shouldOpen: Bool = false) async throws -> URL? {
 		let appendingString = "\(_app.name!)_\(_app.version!)_\(Int(Date().timeIntervalSince1970)).ipa"
 		let dest = _fileManager.archives.appendingPathComponent(appendingString)
 		
@@ -84,12 +84,13 @@ final class ArchiveHandler: NSObject {
 			to: dest
 		)
 		
-		await MainActor.run {
-			UIApplication.shared.open(
-				FileManager.default.archives.toSharedDocumentsURL()!,
-				options: [:]
-			)
+		if shouldOpen {
+			await MainActor.run {
+				UIApplication.open(FileManager.default.archives.toSharedDocumentsURL()!)
+			}
 		}
+		
+		return dest
 	}
 	
 	static func getCompressionLevel() -> Int {

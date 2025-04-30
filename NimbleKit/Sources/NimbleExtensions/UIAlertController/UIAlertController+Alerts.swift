@@ -93,12 +93,14 @@ extension UIAlertController {
 		style: UIAlertController.Style = .alert,
 		actions: [UIAlertAction]
 	) {
-		let alert = UIAlertController(title: title, message: message, preferredStyle: style)
+		let alert = Self(title: title, message: message, preferredStyle: style)
 		actions.forEach { alert.addAction($0) }
 		
-		if style == .actionSheet,
+		if
+			style == .actionSheet,
 			let popover = alert.popoverPresentationController,
-		   let view = popoverFromView {
+			let view = popoverFromView
+		{
 			popover.sourceView = view
 			popover.sourceRect = view.bounds
 			popover.permittedArrowDirections = .any

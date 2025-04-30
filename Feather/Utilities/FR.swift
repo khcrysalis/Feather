@@ -123,6 +123,8 @@ enum FR {
 		}
 		
 		try? fileManager.copyItem(at: url, to: dest)
+		
+		HeartbeatManager.shared.start(true)
 	}
 	#endif
 }
