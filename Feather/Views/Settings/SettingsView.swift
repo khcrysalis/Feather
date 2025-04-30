@@ -16,10 +16,12 @@ struct SettingsView: View {
 	@AppStorage("Feather.ipFix") private var _ipFix: Bool = false
 	@AppStorage("Feather.serverMethod") private var _serverMethod: Int = 0
 	private let _serverMethods = ["Fully Local", "Semi Local"]
-	#elseif IDEVICE
-	@State private var _isImportingPairingPresenting = false
-	@State private var pulseID = UUID()
 	#endif
+	
+	private let _kGithub = "https://github.com/khcrysalis"
+	private let _kDonations = "https://github.com/sponsors/khcrysalis"
+	private let _kTwitter = "https://twitter.com/khcrysalis"
+	private let _kWebsite = "https://khcrysalis.dev"
 	
 	// MARK: Body
     var body: some View {
@@ -27,7 +29,7 @@ struct SettingsView: View {
             List {
 				NBSection("Signing") {
 					NavigationLink("Certificates", destination: CertificatesView())
-					NavigationLink("Configuration", destination: ConfigurationView())
+					NavigationLink("Global Configuration", destination: ConfigurationView())
 				}
 
 				NBSection("Archive") {
@@ -50,28 +52,16 @@ struct SettingsView: View {
 				}
 				#elseif IDEVICE
 				NBSection("Pairing") {
-					_heartbeat()
-					Button("Restart heartbeat") {
-						HeartbeatManager.shared.start(true)
-					}
-					Button("Import Pairing File") {
-						_isImportingPairingPresenting = true
-					}
+					NavigationLink("Tunnel & Pairing", destination: TunnelView())
+
 				}
 				#endif
 				
+				_directories()
+				
+				_kprofile()
             }
-			#if IDEVICE
-			.sheet(isPresented: $_isImportingPairingPresenting) {
-				FileImporterRepresentableView(
-					allowedContentTypes:  [.xmlPropertyList, .plist, .mobiledevicepairing],
-					onDocumentsPicked: { urls in
-						guard let selectedFileURL = urls.first else { return }
-						FR.movePairing(selectedFileURL)
-					}
-				)
-			}
-			#elseif SERVER
+			#if SERVER
 			.onChange(of: _serverMethod) { _ in
 				UIAlertController.showAlertWithRestart(
 					title: "Restart Required",
@@ -82,45 +72,66 @@ struct SettingsView: View {
         }
     }
 	
-	#if IDEVICE
 	@ViewBuilder
-	private func _heartbeat() -> some View {
-		HStack {
-			Text("Status")
-			Spacer()
-			ZStack {
-				Circle()
-					.fill(.blue)
-					.frame(width: 10, height: 10)
-				
-				PulseRing(id: pulseID)
+	private func _directories() -> some View {
+		Section {
+			Button("Open Documents") {
+				_open(URL.documentsDirectory.toSharedDocumentsURL()!)
 			}
-		}
-		.onReceive(NotificationCenter.default.publisher(for: .heartbeat)) { _ in
-			pulseID = UUID()
+			Button("Open Archives") {
+				_open(FileManager.default.archives.toSharedDocumentsURL()!)
+			}
+			Button("Open Certificates") {
+				_open(FileManager.default.certificates.toSharedDocumentsURL()!)
+			}
+		} footer: {
+			Text("All of Feathers files are contained in the documents directory, here are some quick links to these.")
 		}
 	}
-
-	#endif
-}
-#if IDEVICE
-struct PulseRing: View {
-	let id: UUID
-	@State private var animate = false
 	
-	var body: some View {
-		Circle()
-			.stroke(.blue, lineWidth: 2)
-			.frame(width: 10, height: 10)
-			.scaleEffect(animate ? 2.5 : 1)
-			.opacity(animate ? 0 : 0.8)
-			.onAppear {
-				animate = false
-				withAnimation(.easeOut(duration: 1)) {
-					animate = true
+	@ViewBuilder
+	private func _kprofile() -> some View {
+		NBSection("Socials") {
+			HStack(spacing: 12) {
+				AsyncImage(url: URL(string: "\(_kGithub).png")) { image in
+					image
+						.resizable()
+						.aspectRatio(contentMode: .fill)
+				} placeholder: {
+					Color.gray.opacity(0.3)
+				}
+				.frame(width: 48, height: 48)
+				.clipShape(Circle())
+				
+				VStack(alignment: .leading, spacing: 2) {
+					Text("samsam")
+						.font(.headline)
+					Text("@khcrysalis")
+						.font(.subheadline)
+						.foregroundColor(.secondary)
 				}
 			}
-			.id(id)
+			.padding(.vertical, 4)
+			
+			Button("Github") {
+				_open(_kGithub)
+			}
+			
+			Button("Donate") {
+				_open(_kDonations)
+			}
+			
+			Button("Twitter") {
+				_open(_kTwitter)
+			}
+		}
+	}
+	
+	private func _open(_ url: URL) {
+		UIApplication.shared.open(url, options: [:])
+	}
+	
+	private func _open(_ urlString: String) {
+		UIApplication.shared.open(URL(string: urlString)!, options: [:])
 	}
 }
-#endif
