@@ -23,11 +23,27 @@ struct SettingsView: View {
 	private let _kDonations = "https://github.com/sponsors/khcrysalis"
 	private let _kTwitter = "https://twitter.com/khcrysalis"
 	private let _kWebsite = "https://khcrysalis.dev"
+	private let _fGithub = "https://github.com/khcrysalis/Feather"
 	
 	// MARK: Body
     var body: some View {
 		NBNavigationView("Settings") {
             List {
+				#if !NIGHTLY
+				Section {
+					SettingsDonationCellView()
+				}
+				#endif
+				
+				Section {
+					Button("Submit Feedback", systemImage: "safari") {
+						UIApplication.open("\(_fGithub)/issues")
+					}
+					Button("GitHub Repository", systemImage: "safari") {
+						UIApplication.open(_fGithub)
+					}
+				}
+				
 				NBSection("Signing") {
 					NavigationLink("Certificates", destination: CertificatesView())
 					NavigationLink("Global Configuration", destination: ConfigurationView())
@@ -39,9 +55,9 @@ struct SettingsView: View {
 							Text(level.label).tag(level)
 						}
 					}
-					Toggle("Show Sheet when Sharing", isOn: $_useShareSheet)
+					Toggle("Show Sheet when Exporting", isOn: $_useShareSheet)
 				} footer: {
-					Text("Toggling show sheet will present a share sheet instead of saving to files.")
+					Text("Toggling show sheet will present a share sheet after exporting to your files.")
 				}
 				
 				#if SERVER
@@ -57,13 +73,10 @@ struct SettingsView: View {
 				#elseif IDEVICE
 				NBSection("Pairing") {
 					NavigationLink("Tunnel & Pairing", destination: TunnelView())
-
 				}
 				#endif
 				
 				_directories()
-				
-				_kprofile()
             }
 			#if SERVER
 			.onChange(of: _serverMethod) { _ in

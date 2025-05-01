@@ -1,0 +1,92 @@
+//
+//  SettingsDonationCellView.swift
+//  Feather
+//
+//  Created by samara on 30.04.2025.
+//
+
+#if !NIGHTLY
+import SwiftUI
+
+struct SettingsDonationCellView: View {
+	var body: some View {
+		VStack(spacing: 14) {
+			_title()
+			
+			_benefit(
+				"Discord",
+				"Get access to our secret Discord by donating, where we talk about future updates, betas, and potential ways to make your experience better.",
+				systemName: "lock.fill"
+			)
+			_benefit(
+				"Remove this Alert",
+				"Remove annoying alerts like these after getting beta access!",
+				systemName: "heart.text.square.fill"
+			)
+			_benefit(
+				"Show Your Support",
+				"Show your support by donating! If you're unable to donate, spreading the word works too!",
+				systemName: "heart.fill"
+			)
+			
+			Button() {
+				UIApplication.open("https://github.com/sponsors/khcrysalis")
+			} label: {
+				_sheetButton("Donate")
+			}
+			.frame(height: 45)
+		}
+		.padding(.vertical, 12)
+	}
+	
+	@ViewBuilder
+	private func _title() -> some View {
+		VStack(alignment: .center, spacing: 12) {
+			Image(systemName: "heart")
+				.font(.system(size: 38, weight: .bold))
+				.foregroundStyle(.pink)
+			
+			Text("Donations")
+				.font(.title)
+				.bold()
+		}
+		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+	}
+	
+	@ViewBuilder
+	private func _benefit(
+		_ title: String,
+		_ desc: String,
+		systemName: String
+	) -> some View {
+		HStack(alignment: .center, spacing: 14) {
+			Image(systemName: systemName)
+				.font(.system(size: 32))
+				.foregroundStyle(.tint)
+				.frame(width: 39, alignment: .center)
+			
+			VStack(alignment: .leading, spacing: 2) {
+				Text(title)
+					.font(.headline)
+				Text(desc)
+					.font(.subheadline)
+					.foregroundStyle(.secondary)
+			}
+			.frame(maxWidth: .infinity, alignment: .leading)
+		}
+	}
+	
+	@ViewBuilder
+	private func _sheetButton(_ title: String) -> some View {
+		Text(title)
+			.frame(maxWidth: .infinity, maxHeight: .infinity)
+			.background(Color.accentColor)
+			.foregroundColor(.white)
+			.clipShape(
+				RoundedRectangle(cornerRadius: 12, style: .continuous)
+			)
+			.bold()
+	}
+}
+
+#endif

@@ -60,7 +60,6 @@ struct TunnelView: View {
 			VStack(alignment: .leading, spacing: 6) {
 				Text("Heartbeat")
 					.font(.headline)
-					.bold()
 				Text("The heartbeat is activated in the background, it will restart when the app is re-opened or prompted. If the status below is pulsing, that means its healthy.")
 					.font(.subheadline)
 					.foregroundStyle(.secondary)
