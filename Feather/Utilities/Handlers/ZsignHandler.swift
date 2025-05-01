@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ZsignSwift
 
 final class ZsignHandler {
 	private var _appUrl: URL

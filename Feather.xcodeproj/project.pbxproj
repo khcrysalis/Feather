@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3305BB452DB893A500660D45 /* zsign in Frameworks */ = {isa = PBXBuildFile; productRef = 3305BB402DB893A500660D45 /* zsign */; };
 		3305BB462DB893A500660D45 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 3305BB412DB893A500660D45 /* SWCompression */; };
 		3305BB472DB893A500660D45 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 3305BB3E2DB893A500660D45 /* Zip */; };
 		3305BB482DB893A500660D45 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336D43972DB7454A00206400 /* MobileCoreServices.framework */; };
 		3305BB492DB893A500660D45 /* Esign in Frameworks */ = {isa = PBXBuildFile; productRef = 3305BB3D2DB893A500660D45 /* Esign */; };
 		3305BBAC2DB8944200660D45 /* Vapor in Frameworks */ = {isa = PBXBuildFile; productRef = 3305BBAB2DB8944200660D45 /* Vapor */; };
-		330E90A22DADF3DF0057D546 /* zsign in Frameworks */ = {isa = PBXBuildFile; productRef = 330E90A12DADF3DF0057D546 /* zsign */; };
 		330F68FC2DBF7C8600D8C35D /* NimbleExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 330F68FB2DBF7C8600D8C35D /* NimbleExtensions */; };
 		330F68FE2DBF7C8600D8C35D /* NimbleViews in Frameworks */ = {isa = PBXBuildFile; productRef = 330F68FD2DBF7C8600D8C35D /* NimbleViews */; };
 		330F69012DC03DF500D8C35D /* NimbleExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 330F69002DC03DF500D8C35D /* NimbleExtensions */; };
 		330F69032DC03DF500D8C35D /* NimbleViews in Frameworks */ = {isa = PBXBuildFile; productRef = 330F69022DC03DF500D8C35D /* NimbleViews */; };
 		330F69052DC03E0400D8C35D /* NimbleExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 330F69042DC03E0400D8C35D /* NimbleExtensions */; };
 		330F69072DC03E0700D8C35D /* NimbleViews in Frameworks */ = {isa = PBXBuildFile; productRef = 330F69062DC03E0700D8C35D /* NimbleViews */; };
+		3346F5C02DC3299D00C7D508 /* ZsignSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3346F5BF2DC3299D00C7D508 /* ZsignSwift */; };
+		3346F5C22DC329A200C7D508 /* ZsignSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3346F5C12DC329A200C7D508 /* ZsignSwift */; };
 		336D43982DB7454A00206400 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336D43972DB7454A00206400 /* MobileCoreServices.framework */; };
 		3371F6432DA9233C00281AC6 /* Esign in Frameworks */ = {isa = PBXBuildFile; productRef = 3371F6422DA9233C00281AC6 /* Esign */; };
 		3371F7322DA9ECDD00281AC6 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 3371F7312DA9ECDD00281AC6 /* Zip */; };
@@ -115,8 +115,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3346F5C02DC3299D00C7D508 /* ZsignSwift in Frameworks */,
 				330F69072DC03E0700D8C35D /* NimbleViews in Frameworks */,
-				3305BB452DB893A500660D45 /* zsign in Frameworks */,
 				3305BB462DB893A500660D45 /* SWCompression in Frameworks */,
 				3305BB472DB893A500660D45 /* Zip in Frameworks */,
 				3305BB482DB893A500660D45 /* MobileCoreServices.framework in Frameworks */,
@@ -130,8 +130,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				330F68FE2DBF7C8600D8C35D /* NimbleViews in Frameworks */,
-				330E90A22DADF3DF0057D546 /* zsign in Frameworks */,
 				330F68FC2DBF7C8600D8C35D /* NimbleExtensions in Frameworks */,
+				3346F5C22DC329A200C7D508 /* ZsignSwift in Frameworks */,
 				330F69012DC03DF500D8C35D /* NimbleExtensions in Frameworks */,
 				33CF13392DB5ACFB0021D4C5 /* SWCompression in Frameworks */,
 				3371F7322DA9ECDD00281AC6 /* Zip in Frameworks */,
@@ -202,10 +202,10 @@
 			packageProductDependencies = (
 				3305BB3D2DB893A500660D45 /* Esign */,
 				3305BB3E2DB893A500660D45 /* Zip */,
-				3305BB402DB893A500660D45 /* zsign */,
 				3305BB412DB893A500660D45 /* SWCompression */,
 				330F69042DC03E0400D8C35D /* NimbleExtensions */,
 				330F69062DC03E0700D8C35D /* NimbleViews */,
+				3346F5BF2DC3299D00C7D508 /* ZsignSwift */,
 			);
 			productName = Feather;
 			productReference = 3305BB4E2DB893A500660D45 /* Feather (idevice).app */;
@@ -230,13 +230,13 @@
 			packageProductDependencies = (
 				3371F6422DA9233C00281AC6 /* Esign */,
 				3371F7312DA9ECDD00281AC6 /* Zip */,
-				330E90A12DADF3DF0057D546 /* zsign */,
 				33CF13382DB5ACFB0021D4C5 /* SWCompression */,
 				3305BBAB2DB8944200660D45 /* Vapor */,
 				330F68FB2DBF7C8600D8C35D /* NimbleExtensions */,
 				330F68FD2DBF7C8600D8C35D /* NimbleViews */,
 				330F69002DC03DF500D8C35D /* NimbleExtensions */,
 				330F69022DC03DF500D8C35D /* NimbleViews */,
+				3346F5C12DC329A200C7D508 /* ZsignSwift */,
 			);
 			productName = Feather;
 			productReference = 3379C1B92DA869A1004372DA /* Feather.app */;
@@ -881,10 +881,6 @@
 			package = 3305BB3F2DB893A500660D45 /* XCRemoteSwiftPackageReference "Zip" */;
 			productName = Zip;
 		};
-		3305BB402DB893A500660D45 /* zsign */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = zsign;
-		};
 		3305BB412DB893A500660D45 /* SWCompression */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3305BB422DB893A500660D45 /* XCRemoteSwiftPackageReference "SWCompression" */;
@@ -894,10 +890,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3305BBAA2DB8944200660D45 /* XCRemoteSwiftPackageReference "vapor" */;
 			productName = Vapor;
-		};
-		330E90A12DADF3DF0057D546 /* zsign */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = zsign;
 		};
 		330F68FB2DBF7C8600D8C35D /* NimbleExtensions */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -922,6 +914,14 @@
 		330F69062DC03E0700D8C35D /* NimbleViews */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = NimbleViews;
+		};
+		3346F5BF2DC3299D00C7D508 /* ZsignSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ZsignSwift;
+		};
+		3346F5C12DC329A200C7D508 /* ZsignSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ZsignSwift;
 		};
 		3371F6422DA9233C00281AC6 /* Esign */ = {
 			isa = XCSwiftPackageProductDependency;

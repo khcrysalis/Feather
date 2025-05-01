@@ -19,10 +19,7 @@ struct SettingsView: View {
 	private let _serverMethods = ["Fully Local", "Semi Local"]
 	#endif
 	
-	private let _kGithub = "https://github.com/khcrysalis"
 	private let _kDonations = "https://github.com/sponsors/khcrysalis"
-	private let _kTwitter = "https://twitter.com/khcrysalis"
-	private let _kWebsite = "https://khcrysalis.dev"
 	private let _fGithub = "https://github.com/khcrysalis/Feather"
 	
 	// MARK: Body
@@ -30,19 +27,10 @@ struct SettingsView: View {
 		NBNavigationView("Settings") {
             List {
 				#if !NIGHTLY
-				Section {
-					SettingsDonationCellView()
-				}
+				SettingsDonationCellView(site: _kDonations)
 				#endif
 				
-				Section {
-					Button("Submit Feedback", systemImage: "safari") {
-						UIApplication.open("\(_fGithub)/issues")
-					}
-					Button("GitHub Repository", systemImage: "safari") {
-						UIApplication.open(_fGithub)
-					}
-				}
+				_feedback()
 				
 				NBSection("Signing") {
 					NavigationLink("Certificates", destination: CertificatesView())
@@ -88,6 +76,22 @@ struct SettingsView: View {
 			#endif
         }
     }
+}
+
+// MARK: - View extension
+extension SettingsView {
+	@ViewBuilder
+	private func _feedback() -> some View {
+		Section {
+			NavigationLink("About Feather", destination: AboutView())
+			Button("Submit Feedback", systemImage: "safari") {
+				UIApplication.open("\(_fGithub)/issues")
+			}
+			Button("GitHub Repository", systemImage: "safari") {
+				UIApplication.open(_fGithub)
+			}
+		}
+	}
 	
 	@ViewBuilder
 	private func _directories() -> some View {
@@ -103,44 +107,6 @@ struct SettingsView: View {
 			}
 		} footer: {
 			Text("All of Feathers files are contained in the documents directory, here are some quick links to these.")
-		}
-	}
-	
-	@ViewBuilder
-	private func _kprofile() -> some View {
-		NBSection("Socials") {
-			HStack(spacing: 12) {
-				AsyncImage(url: URL(string: "\(_kGithub).png")) { image in
-					image
-						.resizable()
-						.aspectRatio(contentMode: .fill)
-				} placeholder: {
-					Color.gray.opacity(0.3)
-				}
-				.frame(width: 48, height: 48)
-				.clipShape(Circle())
-				
-				VStack(alignment: .leading, spacing: 2) {
-					Text("samsam")
-						.font(.headline)
-					Text("@khcrysalis")
-						.font(.subheadline)
-						.foregroundColor(.secondary)
-				}
-			}
-			.padding(.vertical, 4)
-			
-			Button("Github", systemImage: "arrow.up.right") {
-				UIApplication.open(_kGithub)
-			}
-			
-			Button("Donate", systemImage: "arrow.up.right") {
-				UIApplication.open(_kDonations)
-			}
-			
-			Button("Twitter", systemImage: "arrow.up.right") {
-				UIApplication.open(_kTwitter)
-			}
 		}
 	}
 }

@@ -9,34 +9,38 @@
 import SwiftUI
 
 struct SettingsDonationCellView: View {
+	var site: String
+	
 	var body: some View {
-		VStack(spacing: 14) {
-			_title()
-			
-			_benefit(
-				"Discord",
-				"Get access to our secret Discord by donating, where we talk about future updates, betas, and potential ways to make your experience better.",
-				systemName: "lock.fill"
-			)
-			_benefit(
-				"Remove this Alert",
-				"Remove annoying alerts like these after getting beta access!",
-				systemName: "heart.text.square.fill"
-			)
-			_benefit(
-				"Show Your Support",
-				"Show your support by donating! If you're unable to donate, spreading the word works too!",
-				systemName: "heart.fill"
-			)
-			
-			Button() {
-				UIApplication.open("https://github.com/sponsors/khcrysalis")
-			} label: {
-				_sheetButton("Donate")
+		Section {
+			VStack(spacing: 14) {
+				_title()
+				
+				_benefit(
+					"Discord",
+					"Get access to our secret Discord by donating, where we talk about future updates, betas, and potential ways to make your experience better.",
+					systemName: "lock.fill"
+				)
+				_benefit(
+					"Remove this Alert",
+					"Remove annoying alerts like these after getting beta access!",
+					systemName: "heart.text.square.fill"
+				)
+				_benefit(
+					"Show Your Support",
+					"Show your support by donating! If you're unable to donate, spreading the word works too!",
+					systemName: "heart.fill"
+				)
+				
+				Button() {
+					UIApplication.open(site)
+				} label: {
+					_sheetButton("Donate")
+				}
+				.frame(height: 45)
 			}
-			.frame(height: 45)
+			.padding(.vertical, 12)
 		}
-		.padding(.vertical, 12)
 	}
 	
 	@ViewBuilder

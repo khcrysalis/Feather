@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ZsignSwift
 
 class TweakHandler {
 	private let _fileManager = FileManager.default
@@ -101,7 +102,6 @@ class TweakHandler {
 			for: "/Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate",
 			with: "@rpath/CydiaSubstrate.framework/CydiaSubstrate"
 		)
-		
 		// inject if there's a valid app main executable
 		_ = Zsign.injectDyLib(
 			appExecutable: appexe.path,
@@ -124,7 +124,7 @@ class TweakHandler {
 			for: "/Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate",
 			with: "@rpath/CydiaSubstrate.framework/CydiaSubstrate"
 		)
-		
+		// inject if there's a valid app main executable
 		_ = Zsign.injectDyLib(
 			appExecutable: appexe.path,
 			with: "@executable_path/Frameworks/\(framework.lastPathComponent)/\(fexe.lastPathComponent)"
