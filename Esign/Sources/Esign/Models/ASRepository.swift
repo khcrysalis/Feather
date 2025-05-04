@@ -14,34 +14,32 @@ import SwiftUI
 
 // MARK: - Repository
 
-struct Repository: Sendable, Decodable, Hashable, Identifiable {
+public struct ASRepository: Sendable, Decodable, Hashable, Identifiable {
 	// Core data
-	var id: String
-	var name: String
+	public var id: String?
+	public var name: String?
 
 	// descriptive fields
-	var subtitle: String?
-	var description: String?
-	var website: URL?
-
-	var iconURL: URL?
-	var headerURL: URL?
-	var tintColor: Color?
+	public var subtitle: String?
+	public var description: String?
+	public var website: URL?
+	public var iconURL: URL?
+	public var headerURL: URL?
+	public var tintColor: Color?
 
 	// special fields
-	var patreonURL: URL?
-	var userInfo: UserInfo?
+	public var patreonURL: URL?
+	public var userInfo: UserInfo?
 
 	// apps, news etc.
+	public var apps: [App]
+	public var featuredApps: [App.ID]?
+	public var news: [News]?
 
-	var apps: [App]
-	var featuredApps: [App.ID]
-	var news: [News]
-
-	init(from decoder: any Decoder) throws {
+	public init(from decoder: any Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
-		self.id = try container.decode(String.self, forKey: .id)
-		self.name = try container.decode(String.self, forKey: .name)
+		self.id = try container.decodeIfPresent(String.self, forKey: .id)
+		self.name = try container.decodeIfPresent(String.self, forKey: .name)
 
 		self.subtitle = try container.decodeIfPresent(
 			String.self,
@@ -78,11 +76,24 @@ struct Repository: Sendable, Decodable, Hashable, Identifiable {
 		self.news = try container.decodeIfPresent([News].self, forKey: .news) ?? []
 	}
 
-	enum CodingKeys: String, CodingKey {
+	public enum CodingKeys: String, CodingKey {
 		case id = "identifier"
-		case name, subtitle, description, website, patreonURL, userInfo,
-			iconURL, headerURL, tintColor
-		case apps, featuredApps, news
+		case name,
+			 subtitle,
+			 description,
+			 website,
+			 patreonURL,
+			 userInfo,
+			 iconURL,
+			 headerURL,
+			 tintColor,
+			 apps,
+			 featuredApps,
+			 news
+	}
+	
+	public var currentIconURL: URL? {
+		iconURL ?? apps.first?.iconURL
 	}
 
 	//	func encode(to encoder: any Encoder) throws {
@@ -105,51 +116,53 @@ struct Repository: Sendable, Decodable, Hashable, Identifiable {
 
 // MARK: - App
 
-extension Repository {
-	struct App: Sendable, Decodable, Hashable, Identifiable {
-		var id: String
-		var name: String
+extension ASRepository {
+	public struct App: Sendable, Decodable, Hashable, Identifiable {
+		public var uuid = UUID()
+		
+		public var id: String
+		public var name: String?
 
-		var subtitle: String?
-		var description: String?
+		public var subtitle: String?
+		public var description: String?
 
-		var developer: String
+		public var developer: String?
 
-		var versions: [Version]?
+		public var versions: [Version]?
 
-		var version: String?
+		public var version: String?
 
-		var versionDate: DateParsed?
+		public var versionDate: DateParsed?
 
-		var versionDescription: String?
+		public var versionDescription: String?
 
-		var downloadURL: URL
+		public var downloadURL: URL?
 
-		var localizedDescription: String?
+		public var localizedDescription: String?
 
-		var iconURL: URL
+		public var iconURL: URL?
 
-		var tintColor: Color?
+		public var tintColor: Color?
 
-		var size: UInt?
+		public var size: UInt?
 
-		var category: String?
+		public var category: String?
 
-		var beta: Bool
+		public var beta: Bool?
 
-		var permissions: [Permission]?
+		public var permissions: [Permission]?
 
-		var appPermissions: AppPermissions?
+		public var appPermissions: AppPermissions?
 
-		var screenshots: Screenshots?
+		public var screenshots: Screenshots?
 
-		var screenshotURLs: [URL]?
+		public var screenshotURLs: [URL]?
 
-		struct Screenshots: Decodable, Hashable {
-			var iPhone: [URL]?
-			var iPad: [URL]?
+		public struct Screenshots: Decodable, Hashable, Sendable {
+			public var iPhone: [URL]?
+			public var iPad: [URL]?
 
-			init(from decoder: any Decoder) throws {
+			public init(from decoder: any Decoder) throws {
 				// theres a bunch of ways this shit can be formatted
 				// 1. an array of urls (strings)
 				// 2. an array of dictionaries that contain url, width, height.
@@ -162,18 +175,17 @@ extension Repository {
 				self.iPhone = []
 			}
 
-			enum CodingKeys: String, CodingKey {
+			public enum CodingKeys: String, CodingKey {
 				case iPhone = "iphone"
 				case iPad = "ipad"
-
 				case url
 			}
 		}
 
-		init(from decoder: any Decoder) throws {
+		public init(from decoder: any Decoder) throws {
 			let container = try decoder.container(keyedBy: CodingKeys.self)
 			self.id = try container.decode(String.self, forKey: .id)
-			self.name = try container.decode(String.self, forKey: .name)
+			self.name = try container.decodeIfPresent(String.self, forKey: .name)
 
 			self.subtitle = try container.decodeIfPresent(
 				String.self,
@@ -184,7 +196,7 @@ extension Repository {
 				forKey: .description
 			)
 
-			self.developer = try container.decode(String.self, forKey: .developer)
+			self.developer = try container.decodeIfPresent(String.self, forKey: .developer)
 
 			self.versions = try container.decodeIfPresent(
 				[Version].self,
@@ -206,7 +218,7 @@ extension Repository {
 				forKey: .versionDescription
 			)
 
-			self.downloadURL = try container.decode(URL.self, forKey: .downloadURL)
+			self.downloadURL = try container.decodeIfPresent(URL.self, forKey: .downloadURL)
 
 			self.localizedDescription =
 				try container.decodeIfPresent(
@@ -289,12 +301,7 @@ extension Repository {
 		//			try container.encode(screenshots, forKey: .screenshots)
 		//		}
 
-		var currentVersion: Version? {
-			versions?.first { $0.version == version }
-				?? versions?.sorted(path: \.version).last  // sort by version, and get last
-		}
-
-		enum CodingKeys: String, CodingKey {
+		public enum CodingKeys: String, CodingKey {
 			case id = "bundleIdentifier"
 			case name, subtitle, description
 			case developer = "developerName"
@@ -303,18 +310,39 @@ extension Repository {
 			case permissions, appPermissions
 			case screenshots, screenshotURLs
 		}
+		
+		public var currentAppVersion: Version? {
+			versions?.sorted(path: \.version).last
+		}
+		
+		public var currentName: String {
+			var name = name ?? "Unknown"
+			if id.hasSuffix("Beta") {
+				name += " (BETA)"
+			}
+			
+			return name
+		}
+		
+		public var currentVersion: String? {
+			currentAppVersion?.version ?? version
+		}
+		
+		public var currentDownloadUrl: URL? {
+			currentAppVersion?.downloadURL ?? downloadURL
+		}
 
-		struct Version: Decodable, Hashable, Identifiable, Comparable {
-			var id: String { version + (build ?? "") }
-			var version: String
-			var build: String?
-			var date: DateParsed?
-			var localizedDescription: String?
-			var downloadURL: URL?
-			var size: UInt?
-			var minOSVersion: OSVersion?
+		public struct Version: Decodable, Hashable, Identifiable, Comparable, Sendable {
+			public var id: String { version + (build ?? "") }
+			public var version: String
+			public var build: String?
+			public var date: DateParsed?
+			public var localizedDescription: String?
+			public var downloadURL: URL?
+			public var size: UInt?
+			public var minOSVersion: OSVersion?
 
-			init(from decoder: any Decoder) throws {
+			public init(from decoder: any Decoder) throws {
 				let container = try decoder.container(keyedBy: CodingKeys.self)
 				self.version = try container.decode(String.self, forKey: .version)
 				self.build = try container.decodeIfPresent(
@@ -344,12 +372,12 @@ extension Repository {
 				)
 			}
 
-			static func < (lhs: Self, rhs: Self) -> Bool {
+			static public func < (lhs: Self, rhs: Self) -> Bool {
 				// compare id
 				lhs.id < rhs.id
 			}
 
-			enum CodingKeys: String, CodingKey {
+			public enum CodingKeys: String, CodingKey {
 				case version
 				case build = "buildVersion"
 				case date, localizedDescription, downloadURL, size, minOSVersion
@@ -360,18 +388,18 @@ extension Repository {
 
 // MARK: - News
 
-extension Repository {
-	struct News: Sendable, Decodable, Hashable, Identifiable {
-		var id: String
-		var title: String
-		var caption: String
-		var tintColor: Color?
-		var imageURL: URL?
-		var appID: App.ID?
-		var date: DateParsed?
-		var notify: Bool
+extension ASRepository {
+	public struct News: Sendable, Decodable, Hashable, Identifiable {
+		public var id: String
+		public var title: String
+		public var caption: String
+		public var tintColor: Color?
+		public var imageURL: URL?
+		public var appID: App.ID?
+		public var date: DateParsed?
+		public var notify: Bool
 
-		init(from decoder: any Decoder) throws {
+		public init(from decoder: any Decoder) throws {
 			let container = try decoder.container(keyedBy: CodingKeys.self)
 			self.id = try container.decode(String.self, forKey: .id)
 			self.title = try container.decode(String.self, forKey: .title)
@@ -387,40 +415,40 @@ extension Repository {
 				try container.decodeIfPresent(Bool.self, forKey: .notify) ?? false
 		}
 
-		enum CodingKeys: String, CodingKey {
+		public enum CodingKeys: String, CodingKey {
 			case id = "identifier"
 			case title, caption, tintColor, imageURL, appID, date, notify
 		}
 	}
 }
 
-extension Repository {
-	struct Permission: Decodable, Hashable {
-		var type: String
-		var usageDescription: String
+extension ASRepository {
+	public struct Permission: Decodable, Hashable, Sendable {
+		public var type: String
+		public var usageDescription: String
 	}
 }
 
-extension Repository {
-	struct AppPermissions: Decodable, Hashable {
-		var entitlements: [Entitlement]?
-		var privacy: [Privacy]?
+extension ASRepository {
+	public struct AppPermissions: Decodable, Hashable, Sendable {
+		public var entitlements: [Entitlement]?
+		public var privacy: [Privacy]?
 
-		struct Entitlement: Decodable, Hashable {
-			var name: String
+		public struct Entitlement: Decodable, Hashable, Sendable {
+			public var name: String
 
-			init(from decoder: any Decoder) throws {
+			public init(from decoder: any Decoder) throws {
 				let container = try decoder.singleValueContainer()
 				self.name = try container.decode(String.self)
 			}
 		}
 
-		struct Privacy: Decodable, Hashable {
+		public struct Privacy: Decodable, Hashable, Sendable {
 			var name: String
 			var usageDescription: String
 		}
 
-		init(from decoder: any Decoder) throws {
+		public init(from decoder: any Decoder) throws {
 			let container = try decoder.container(keyedBy: CodingKeys.self)
 			self.entitlements = try? container.decodeIfPresent(
 				[Entitlement].self,
@@ -433,16 +461,16 @@ extension Repository {
 			)
 		}
 
-		enum CodingKeys: String, CodingKey {
+		public enum CodingKeys: String, CodingKey {
 			case entitlements
 			case privacy
 		}
 	}
 }
 
-extension Repository {
-	struct UserInfo: Decodable, Hashable {
-		var patreonAccessToken: String?
+extension ASRepository {
+	public struct UserInfo: Decodable, Hashable, Sendable {
+		public var patreonAccessToken: String?
 	}
 }
 
@@ -451,11 +479,11 @@ extension Repository {
 // everyone keeps using different formats for dates, even altstore
 
 // taken from meret
-public struct DateParsed: Codable, Equatable, Hashable, Comparable {
+public struct DateParsed: Codable, Equatable, Hashable, Comparable, Sendable {
 	public let date: Date
 	public let rawDate: RawDate
 
-	public enum RawDate: Decodable {
+	public enum RawDate: Decodable, Sendable {
 		case number(Double)
 		case string(String)
 	}
@@ -571,16 +599,16 @@ public struct DateParsed: Codable, Equatable, Hashable, Comparable {
 	}
 }
 
-struct OSVersion: Decodable, Hashable, CustomStringConvertible {
-	var description: String {
+public struct OSVersion: Decodable, Hashable, CustomStringConvertible, Sendable {
+	public var description: String {
 		return "\(majorVersion).\(minorVersion).\(patchVersion)"
 	}
 
-	var majorVersion: UInt
-	var minorVersion: UInt
-	var patchVersion: UInt
+	public var majorVersion: UInt
+	public var minorVersion: UInt
+	public var patchVersion: UInt
 
-	init(from decoder: any Decoder) throws {
+	public init(from decoder: any Decoder) throws {
 		let container = try decoder.singleValueContainer()
 		let versionString = try container.decode(String.self)
 

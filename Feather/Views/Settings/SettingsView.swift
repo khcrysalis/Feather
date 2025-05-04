@@ -75,6 +75,7 @@ struct SettingsView: View {
 			}
 			#endif
         }
+		
     }
 }
 
@@ -83,7 +84,7 @@ extension SettingsView {
 	@ViewBuilder
 	private func _feedback() -> some View {
 		Section {
-			NavigationLink("About Feather", destination: AboutView())
+			NavigationLink("About", destination: AboutView())
 			Button("Submit Feedback", systemImage: "safari") {
 				UIApplication.open("\(_fGithub)/issues")
 			}

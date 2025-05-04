@@ -19,14 +19,11 @@ struct CertificatesCellView: View {
 	// MARK: Body
 	var body: some View {
 		VStack(spacing: 6) {
-			VStack(alignment: .leading, spacing: 2) {
-				Text(cert.nickname ?? data?.Name ?? "Unknown")
-					.font(.headline.weight(.bold))
-				Text(data?.AppIDName ?? "Unknown")
-					.font(.caption)
-					.foregroundStyle(.secondary)
-			}
-			.frame(maxWidth: .infinity, alignment: .leading)
+			
+			NBTitleWithSubtitleView(
+				title: cert.nickname ?? data?.Name ?? "Unknown",
+				subtitle: data?.AppIDName ?? "Unknown"
+			)
 			
 			_certInfoPill(data: cert)
 		}

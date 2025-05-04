@@ -5,6 +5,11 @@ import PackageDescription
 
 let package = Package(
     name: "Esign",
+	platforms: [
+		.iOS(.v14),
+		.tvOS(.v14),
+		.custom("xros", versionString: "1.3")
+	],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(

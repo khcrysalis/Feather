@@ -7,29 +7,25 @@
 
 import Foundation
 
-public class eRepoDecrypt {
-	private let input: String
+public class ASDecrypt {
+	private let _input: String
 	
 	public init(input: String) {
-		self.input = input
+		self._input = input
 	}
 	
 	public func extractBase64() -> Data? {
 		let pattern = #"source\[(.*?)\]"#
 		
 		if let regex = try? NSRegularExpression(pattern: pattern),
-		   let match = regex.firstMatch(in: input, range: NSRange(input.startIndex..., in: input)),
-		   let range = Range(match.range(at: 1), in: input) {
+		   let match = regex.firstMatch(in: _input, range: NSRange(_input.startIndex..., in: _input)),
+		   let range = Range(match.range(at: 1), in: _input) {
 			
-			let base64String = String(input[range])
+			let base64String = String(_input[range])
 			
 			if let decodedData = Data(base64Encoded: base64String) {
 				return decodedData
-			} else {
-				print("Esign: Failed to decode base64 string.")
 			}
-		} else {
-			print("Esign: Base64 string not found.")
 		}
 		
 		return nil
@@ -41,7 +37,6 @@ public class eRepoDecrypt {
 	
 	public func decrypt(key: [UInt8], keyLength: Int) -> [String]? {
 		guard let data = extractBase64() else {
-			print("Esign: Not valid data?")
 			return nil
 		}
 		

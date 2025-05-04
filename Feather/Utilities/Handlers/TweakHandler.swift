@@ -111,7 +111,10 @@ class TweakHandler {
 	
 	// Inject imported framework dir
 	private func _handleDylib(framework: URL) async throws {
-		guard let fexe = try TweakHandler.findExecutable(at: framework), let appexe = try TweakHandler.findExecutable(at: _app) else {
+		guard
+			let fexe = try TweakHandler.findExecutable(at: framework),
+			let appexe = try TweakHandler.findExecutable(at: _app)
+		else {
 			return
 		}
 		

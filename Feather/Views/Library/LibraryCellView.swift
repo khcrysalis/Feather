@@ -7,6 +7,7 @@
 
 import SwiftUI
 import NimbleExtensions
+import NimbleViews
 
 // MARK: - View
 struct LibraryCellView: View {
@@ -20,25 +21,11 @@ struct LibraryCellView: View {
 		HStack(spacing: 9) {
 			FRAppIconView(app: app, size: 57, cornerRadius: 14)
 			
-			VStack(alignment: .leading, spacing: 2) {
-				Text(app.name ?? "Unknown")
-					.font(.headline)
-				
-				Group {
-					if
-						let version = app.version,
-						let id = app.identifier
-					{
-						Text("\(version) • \(id)")
-					} else {
-						Text("Unknown")
-					}
-				}
-				.lineLimit(0)
-				.font(.subheadline)
-				.foregroundStyle(.secondary)
-			}
-			.frame(maxWidth: .infinity, alignment: .leading)
+			NBTitleWithSubtitleView(
+				title: app.name ?? "Unknown",
+				subtitle: _desc,
+				linelimit: 0
+			)
 			
 			_buttonActions(for: app)
 		}
@@ -52,6 +39,17 @@ struct LibraryCellView: View {
 			_contextActionsExtra(for: app)
 			Divider()
 			_actions(for: app)
+		}
+	}
+	
+	private var _desc: String {
+		if
+			let version = app.version,
+			let id = app.identifier
+		{
+			return "\(version) • \(id)"
+		} else {
+			return "Unknown"
 		}
 	}
 }

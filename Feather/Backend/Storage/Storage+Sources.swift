@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import Esign
 
 // MARK: - Class extension: Sources
 extension Storage {
@@ -14,46 +15,22 @@ extension Storage {
 		name: String? = "Unknown",
 		identifier: String,
 		iconURL: URL? = nil,
+		deferSave: Bool = false,
 		completion: @escaping (Error?) -> Void
 	) {
 		if _sourceExists(identifier) {
-			completion(.none)
+			completion(nil)
+			print("ignoring \(identifier)")
+			return
 		}
-
+		
 		let new = AltSource(context: context)
-
 		new.name = name
 		new.date = Date()
 		new.identifier = identifier
 		new.sourceURL = url
 		new.iconURL = iconURL
-
-		do {
-			try context.save()
-			completion(nil)
-		} catch {
-			completion(error)
-		}
-	}
-
-	func addSource(
-		_ url: URL,
-		repository: Repository,
-		deferSave: Bool = false,
-		completion: @escaping (Error?) -> Void
-	) {
-		if _sourceExists(repository.id) {
-			completion(.none)
-		}
-
-		let new = AltSource(context: context)
-
-		new.name = repository.name
-		new.date = Date()
-		new.identifier = repository.id
-		new.sourceURL = url
-		new.iconURL = repository.iconURL
-
+		
 		do {
 			if !deferSave {
 				try context.save()
@@ -63,19 +40,40 @@ extension Storage {
 			completion(error)
 		}
 	}
+	
+	func addSource(
+		_ url: URL,
+		repository: ASRepository,
+		deferSave: Bool = false,
+		completion: @escaping (Error?) -> Void
+	) {
+		addSource(
+			url,
+			name: repository.name,
+			identifier: repository.id ?? url.absoluteString,
+			iconURL: repository.currentIconURL,
+			deferSave: deferSave,
+			completion: completion
+		)
+	}
 
 	func addSources(
-		repos: [URL: Repository],
+		repos: [URL: ASRepository],
 		completion: @escaping (Error?) -> Void
 	) {
 		for (url, repo) in repos {
-			addSource(url, repository: repo, deferSave: true) { error in
-				if let error = error {
-					completion(error)
+			addSource(
+				url,
+				repository: repo,
+				deferSave: true,
+				completion: { error in
+					if let error {
+						completion(error)
+					}
 				}
-			}
+			)
 		}
-
+		
 		do {
 			try context.save()
 			completion(nil)

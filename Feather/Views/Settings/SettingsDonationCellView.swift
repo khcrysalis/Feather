@@ -7,6 +7,7 @@
 
 #if !NIGHTLY
 import SwiftUI
+import NimbleViews
 
 struct SettingsDonationCellView: View {
 	var site: String
@@ -40,6 +41,7 @@ struct SettingsDonationCellView: View {
 				.frame(height: 45)
 			}
 			.padding(.vertical, 12)
+			.buttonStyle(.plain)
 		}
 	}
 	
@@ -69,14 +71,10 @@ struct SettingsDonationCellView: View {
 				.foregroundStyle(.tint)
 				.frame(width: 39, alignment: .center)
 			
-			VStack(alignment: .leading, spacing: 2) {
-				Text(title)
-					.font(.headline)
-				Text(desc)
-					.font(.subheadline)
-					.foregroundStyle(.secondary)
-			}
-			.frame(maxWidth: .infinity, alignment: .leading)
+			NBTitleWithSubtitleView(
+				title: title,
+				subtitle: desc
+			)
 		}
 	}
 	

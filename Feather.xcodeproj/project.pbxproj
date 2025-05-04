@@ -20,6 +20,10 @@
 		330F69072DC03E0700D8C35D /* NimbleViews in Frameworks */ = {isa = PBXBuildFile; productRef = 330F69062DC03E0700D8C35D /* NimbleViews */; };
 		3346F5C02DC3299D00C7D508 /* ZsignSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3346F5BF2DC3299D00C7D508 /* ZsignSwift */; };
 		3346F5C22DC329A200C7D508 /* ZsignSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3346F5C12DC329A200C7D508 /* ZsignSwift */; };
+		3346F8392DC6C6C800C7D508 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3346F8382DC6C6C800C7D508 /* NukeUI */; };
+		3346F83B2DC6C6D100C7D508 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3346F83A2DC6C6D100C7D508 /* NukeUI */; };
+		3346F8472DC6D64400C7D508 /* NimbleJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 3346F8462DC6D64400C7D508 /* NimbleJSON */; };
+		3346F8492DC6D64800C7D508 /* NimbleJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 3346F8482DC6D64800C7D508 /* NimbleJSON */; };
 		336D43982DB7454A00206400 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336D43972DB7454A00206400 /* MobileCoreServices.framework */; };
 		3371F6432DA9233C00281AC6 /* Esign in Frameworks */ = {isa = PBXBuildFile; productRef = 3371F6422DA9233C00281AC6 /* Esign */; };
 		3371F7322DA9ECDD00281AC6 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 3371F7312DA9ECDD00281AC6 /* Zip */; };
@@ -115,11 +119,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3346F8472DC6D64400C7D508 /* NimbleJSON in Frameworks */,
 				3346F5C02DC3299D00C7D508 /* ZsignSwift in Frameworks */,
 				330F69072DC03E0700D8C35D /* NimbleViews in Frameworks */,
 				3305BB462DB893A500660D45 /* SWCompression in Frameworks */,
 				3305BB472DB893A500660D45 /* Zip in Frameworks */,
 				3305BB482DB893A500660D45 /* MobileCoreServices.framework in Frameworks */,
+				3346F8392DC6C6C800C7D508 /* NukeUI in Frameworks */,
 				3305BB492DB893A500660D45 /* Esign in Frameworks */,
 				330F69052DC03E0400D8C35D /* NimbleExtensions in Frameworks */,
 			);
@@ -132,11 +138,13 @@
 				330F68FE2DBF7C8600D8C35D /* NimbleViews in Frameworks */,
 				330F68FC2DBF7C8600D8C35D /* NimbleExtensions in Frameworks */,
 				3346F5C22DC329A200C7D508 /* ZsignSwift in Frameworks */,
+				3346F8492DC6D64800C7D508 /* NimbleJSON in Frameworks */,
 				330F69012DC03DF500D8C35D /* NimbleExtensions in Frameworks */,
 				33CF13392DB5ACFB0021D4C5 /* SWCompression in Frameworks */,
 				3371F7322DA9ECDD00281AC6 /* Zip in Frameworks */,
 				330F69032DC03DF500D8C35D /* NimbleViews in Frameworks */,
 				3305BBAC2DB8944200660D45 /* Vapor in Frameworks */,
+				3346F83B2DC6C6D100C7D508 /* NukeUI in Frameworks */,
 				336D43982DB7454A00206400 /* MobileCoreServices.framework in Frameworks */,
 				3371F6432DA9233C00281AC6 /* Esign in Frameworks */,
 			);
@@ -206,6 +214,8 @@
 				330F69042DC03E0400D8C35D /* NimbleExtensions */,
 				330F69062DC03E0700D8C35D /* NimbleViews */,
 				3346F5BF2DC3299D00C7D508 /* ZsignSwift */,
+				3346F8382DC6C6C800C7D508 /* NukeUI */,
+				3346F8462DC6D64400C7D508 /* NimbleJSON */,
 			);
 			productName = Feather;
 			productReference = 3305BB4E2DB893A500660D45 /* Feather (idevice).app */;
@@ -237,6 +247,8 @@
 				330F69002DC03DF500D8C35D /* NimbleExtensions */,
 				330F69022DC03DF500D8C35D /* NimbleViews */,
 				3346F5C12DC329A200C7D508 /* ZsignSwift */,
+				3346F83A2DC6C6D100C7D508 /* NukeUI */,
+				3346F8482DC6D64800C7D508 /* NimbleJSON */,
 			);
 			productName = Feather;
 			productReference = 3379C1B92DA869A1004372DA /* Feather.app */;
@@ -301,6 +313,7 @@
 				33CF13372DB5ACFB0021D4C5 /* XCRemoteSwiftPackageReference "SWCompression" */,
 				3305BBAA2DB8944200660D45 /* XCRemoteSwiftPackageReference "vapor" */,
 				330F68FF2DC03DF400D8C35D /* XCLocalSwiftPackageReference "NimbleKit" */,
+				3346F8372DC6C68300C7D508 /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3379C1BA2DA869A1004372DA /* Products */;
@@ -379,11 +392,11 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Feather/Supporting Files/Feather.entitlements";
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DLSL362JHJ;
 				ENABLE_PREVIEWS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"IDEVICE=1",
@@ -440,13 +453,13 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Feather/Supporting Files/Feather.entitlements";
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DLSL362JHJ;
 				ENABLE_PREVIEWS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "IDEVICE=1";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -853,6 +866,14 @@
 				version = 4.104.0;
 			};
 		};
+		3346F8372DC6C68300C7D508 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke";
+			requirement = {
+				kind = exactVersion;
+				version = 12.8.0;
+			};
+		};
 		3371F6F52DA9EBA500281AC6 /* XCRemoteSwiftPackageReference "Zip" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marmelroy/Zip";
@@ -922,6 +943,24 @@
 		3346F5C12DC329A200C7D508 /* ZsignSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ZsignSwift;
+		};
+		3346F8382DC6C6C800C7D508 /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3346F8372DC6C68300C7D508 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
+		};
+		3346F83A2DC6C6D100C7D508 /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3346F8372DC6C68300C7D508 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
+		};
+		3346F8462DC6D64400C7D508 /* NimbleJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NimbleJSON;
+		};
+		3346F8482DC6D64800C7D508 /* NimbleJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NimbleJSON;
 		};
 		3371F6422DA9233C00281AC6 /* Esign */ = {
 			isa = XCSwiftPackageProductDependency;

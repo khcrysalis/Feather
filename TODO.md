@@ -1,2 +1,3 @@
 - app
-- cleanup signingviews/info views/and options
+- cleanup
+- convert libidevice and libplist to xcframeworks

@@ -10,10 +10,10 @@ import UIKit
 
 // MARK: - Class
 class OptionsManager: ObservableObject {
+	static let shared = OptionsManager()
+	
 	@Published var options: Options
 	private let _key = "signing_options"
-	
-	static let shared = OptionsManager()
 	
 	init() {
 		if let data = UserDefaults.standard.data(forKey: _key),

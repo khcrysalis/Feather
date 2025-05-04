@@ -43,21 +43,16 @@ struct SigningView: View {
 		__temporaryCertificate = State(initialValue: storedCert)
 	}
 	
+	#warning("we need to make the certificates cell a reusable view")
+	
 	// MARK: Body
     var body: some View {
 		NBNavigationView(app.name ?? "Unknown", displayMode: .inline) {
 			Form {
-				NBSection("Customization") {
-					_customizationOptions(for: app)
-				}
+				_customizationOptions(for: app)
+				_cert()
+				_customizationProperties(for: app)
 				
-				NBSection("Signing") {
-					_cert()
-				}
-				
-				NBSection("Advanced") {
-					_customizationProperties(for: app)
-				}
 			}
 			.safeAreaInset(edge: .bottom) {
 				Button() {
@@ -139,78 +134,102 @@ struct SigningView: View {
 extension SigningView {
 	@ViewBuilder
 	private func _customizationOptions(for app: AppInfoPresentable) -> some View {
-		Menu {
-			Button("Select Alternative Icon") { _isAltPickerPresenting = true }
-			Button("Choose from Files") { _isFilePickerPresenting = true }
-			Button("Choose from Photos") { _isImagePickerPresenting = true }
-		} label: {
-			if let icon = appIcon {
-				Image(uiImage: icon)
-					.appIconStyle(size: 45, cornerRadius: 12)
-			} else {
-				FRAppIconView(app: app, size: 45, cornerRadius: 12)
+		NBSection("Customization") {
+			Menu {
+				Button("Select Alternative Icon") { _isAltPickerPresenting = true }
+				Button("Choose from Files") { _isFilePickerPresenting = true }
+				Button("Choose from Photos") { _isImagePickerPresenting = true }
+			} label: {
+				if let icon = appIcon {
+					Image(uiImage: icon)
+						.appIconStyle(size: 45, cornerRadius: 12)
+				} else {
+					FRAppIconView(app: app, size: 45, cornerRadius: 12)
+				}
+			}
+			
+			_infoCell("Name", desc: _temporaryOptions.appName ?? app.name) {
+				SigningPropertiesView(
+					title: "Name",
+					initialValue: _temporaryOptions.appName ?? (app.name ?? ""),
+					bindingValue: $_temporaryOptions.appName
+				)
+			}
+			_infoCell("Identifier", desc: _temporaryOptions.appIdentifier ?? app.identifier) {
+				SigningPropertiesView(
+					title: "Identifier",
+					initialValue: _temporaryOptions.appIdentifier ?? (app.identifier ?? ""),
+					bindingValue: $_temporaryOptions.appIdentifier
+				)
+			}
+			_infoCell("Version", desc: _temporaryOptions.appVersion ?? app.version) {
+				SigningPropertiesView(
+					title: "Version",
+					initialValue: _temporaryOptions.appVersion ?? (app.version ?? ""),
+					bindingValue: $_temporaryOptions.appVersion
+				)
 			}
 		}
-		
-		_infoCell("Name", desc: _temporaryOptions.appName ?? app.name) {
-			SigningPropertiesView(
-				title: "Name",
-				initialValue: _temporaryOptions.appName ?? (app.name ?? ""),
-				bindingValue: $_temporaryOptions.appName
-			)
-		}
-		_infoCell("Identifier", desc: _temporaryOptions.appIdentifier ?? app.identifier) {
-			SigningPropertiesView(
-				title: "Identifier",
-				initialValue: _temporaryOptions.appIdentifier ?? (app.identifier ?? ""),
-				bindingValue: $_temporaryOptions.appIdentifier
-			)
-		}
-		_infoCell("Version", desc: _temporaryOptions.appVersion ?? app.version) {
-			SigningPropertiesView(
-				title: "Version",
-				initialValue: _temporaryOptions.appVersion ?? (app.version ?? ""),
-				bindingValue: $_temporaryOptions.appVersion
-			)
+	}
+	
+	@ViewBuilder
+	private func _cert() -> some View {
+		NBSection("Signing") {
+			if let cert = _selectedCert() {
+				NavigationLink {
+					CertificatesView(selectedCert: $_temporaryCertificate)
+				} label: {
+					CertificatesCellView(
+						cert: cert,
+						shouldDisplayInfo: false,
+						isSelectedInfoPresenting: .constant(.none)
+					)
+				}
+			} else {
+				Text("No valid certificate selected.")
+					.foregroundStyle(Color.disabled())
+			}
 		}
 	}
 	
 	@ViewBuilder
 	private func _customizationProperties(for app: AppInfoPresentable) -> some View {
-		DisclosureGroup("Modify") {
-			NavigationLink("Existing Dylibs") {
-				SigningDylibView(
-					app: app,
-					options: $_temporaryOptions.optional()
-				)
+		NBSection("Advanced") {
+			DisclosureGroup("Modify") {
+				NavigationLink("Existing Dylibs") {
+					SigningDylibView(
+						app: app,
+						options: $_temporaryOptions.optional()
+					)
+				}
+				
+				NavigationLink("Frameworks & PlugIns") {
+					SigningFrameworksView(
+						app: app,
+						options: $_temporaryOptions.optional()
+					)
+				}
+				
+				NavigationLink("Entitlements") {
+					SigningEntitlementsView(
+						bindingValue: $_temporaryOptions.appEntitlementsFile
+					)
+				}
+				
+				NavigationLink("Tweaks") {
+					SigningTweaksView(
+						options: $_temporaryOptions
+					)
+				}
 			}
 			
-			NavigationLink("Frameworks & PlugIns") {
-				SigningFrameworksView(
-					app: app,
-					options: $_temporaryOptions.optional()
-				)
+			NavigationLink("Properties") {
+				Form { SigningOptionsView(
+					options: $_temporaryOptions,
+					temporaryOptions: _optionsManager.options
+				)}
+				.navigationTitle("Properties")
 			}
-			
-			NavigationLink("Entitlements") {
-				SigningEntitlementsView(
-					bindingValue: $_temporaryOptions.appEntitlementsFile
-				)
-			}
-			
-			NavigationLink("Tweaks") {
-				SigningTweaksView(
-					options: $_temporaryOptions
-				)
-			}
-		}
-		
-		NavigationLink("Properties") {
-			Form { SigningOptionsView(
-				options: $_temporaryOptions,
-				temporaryOptions: _optionsManager.options
-			)}
-			.navigationTitle("Properties")
 		}
 	}
 	
@@ -222,24 +241,6 @@ extension SigningView {
 			LabeledContent(title) {
 				Text(desc ?? "Unknown")
 			}
-		}
-	}
-	
-	@ViewBuilder
-	private func _cert() -> some View {
-		if let cert = _selectedCert() {
-			NavigationLink {
-				CertificatesView(selectedCert: $_temporaryCertificate)
-			} label: {
-				CertificatesCellView(
-					cert: cert,
-					shouldDisplayInfo: false,
-					isSelectedInfoPresenting: .constant(.none)
-				)
-			}
-		} else {
-			Text("No valid certificate selected.")
-				.foregroundStyle(Color.disabled())
 		}
 	}
 	

@@ -11,7 +11,7 @@ let package = Package(
 	],
 	products: [
 		.library(name: "NimbleExtensions", targets: ["NimbleExtensions"]),
-//		.library(name: "NimbleJSON", targets: ["NimbleJSON"]),
+		.library(name: "NimbleJSON", targets: ["NimbleJSON"]),
 		.library(name: "NimbleViews", targets: ["NimbleViews"]),
 	],
 	targets: [
@@ -22,10 +22,9 @@ let package = Package(
 		.target(
 			name: "NimbleExtensions",
 			dependencies: []
+		),
+		.target(name: "NimbleJSON",
+			dependencies: []
 		)
-//		,
-//		.target(name: "NimbleJSON",
-//			dependencies: []
-//		)
 	]
 )
