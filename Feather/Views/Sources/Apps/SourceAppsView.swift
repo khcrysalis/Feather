@@ -13,6 +13,7 @@ import UIKit
 // MARK: - View
 struct SourceAppsView: View {
 	@State var isLoading = true
+	@State var hasLoadedInitialData = false
 	
 	var object: AltSource
 	@ObservedObject var viewModel: SourcesViewModel
@@ -60,13 +61,18 @@ struct SourceAppsView: View {
 			}
 		}
 		.navigationBarTitleDisplayMode(.inline)
-		.onAppear(perform: loadSourceData)
+		.onAppear {
+			if !hasLoadedInitialData {
+				_load()
+				hasLoadedInitialData = true
+			}
+		}
 		.onChange(of: viewModel.sources[object]) { _ in
-			loadSourceData()
+			_load()
 		}
 	}
 	
-	private func loadSourceData() {
+	private func _load() {
 		isLoading = true
 		
 		Task {
