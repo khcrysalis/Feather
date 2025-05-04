@@ -9,7 +9,7 @@ import SwiftUI
 import Esign
 
 struct SourceNewsView: View {
-	@State private var isLoaded = false
+	@State var isLoading = false
 	var news: [ASRepository.News]?
 	
 	var body: some View {
@@ -27,7 +27,7 @@ struct SourceNewsView: View {
 					.padding(.horizontal)
 				}
 				.frame(height: 150)
-				.opacity(isLoaded ? 1 : 0)
+				.opacity(isLoading ? 1 : 0)
 				.transition(.opacity)
 			}
 		}
@@ -43,7 +43,7 @@ struct SourceNewsView: View {
 		// short delay to ensure UI is responsive during initial render
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
 			withAnimation(.easeIn(duration: 0.3)) {
-				isLoaded = true
+				isLoading = true
 			}
 		}
 	}

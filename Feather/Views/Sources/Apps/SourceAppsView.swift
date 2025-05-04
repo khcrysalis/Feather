@@ -12,7 +12,7 @@ import UIKit
 
 // MARK: - View
 struct SourceAppsView: View {
-	@State private var isLoading = true
+	@State var isLoading = true
 	
 	var object: AltSource
 	@ObservedObject var viewModel: SourcesViewModel
