@@ -117,20 +117,24 @@ extension SettingsViewController {
 	}
 	
 	public func alertToFinish() {
-		let alertController = UIAlertController(
-			title: "",
-			message: String.localized("SUCCESS_REQUIRES_RESTART"),
-			preferredStyle: .alert
-		)
-		
-		let closeAction = UIAlertAction(title: String.localized("OK"), style: .default) { _ in
-			CFPreferencesAppSynchronize(kCFPreferencesCurrentApplication)
-			UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
-			exit(0)
-		}
-		
-		alertController.addAction(closeAction)
-		present(alertController, animated: true, completion: nil)
+        if #available(iOS 18.5, *) {
+            let alertController = UIAlertController(
+                title: "",
+                message: String.localized("SUCCESS_REQUIRES_RESTART"),
+                preferredStyle: .alert
+            )
+            
+            let closeAction = UIAlertAction(title: String.localized("OK"), style: .default) { _ in
+                CFPreferencesAppSynchronize(kCFPreferencesCurrentApplication)
+                UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+                exit(0)
+            }
+            
+            alertController.addAction(closeAction)
+            present(alertController, animated: true, completion: nil)
+        } else {
+            EvilRestart()
+        }
 	}
 }
 
