@@ -9,41 +9,28 @@ import SwiftUI
 import Esign
 import NimbleViews
 import UIKit
-import NukeUI
-import Combine
 
 // MARK: - View
 struct SourceAppsView: View {
-	@StateObject var downloadManager = DownloadManager.shared
-	
-	@State private var _isDataAvailable = false
-	
-	@Namespace private var _namespace
-	
-	var cancellable: AnyCancellable? // Combine
+	@State private var isLoading = true
 	
 	var object: AltSource
 	@ObservedObject var viewModel: SourcesViewModel
-	@State var source: ASRepository? = nil
+	@State private var source: ASRepository?
 	
 	// MARK: Body
 	var body: some View {
-		ZStack {
-			Group {
-				if
-					_isDataAvailable,
-					let source = source
-				{
-					SourceAppsTableRepresentableView(
-						object: object,
-						source: source
-					)
-					.ignoresSafeArea()
-				} else if !_isDataAvailable {
-					ProgressView("Loading...")
-				} else {
-					Text("No data available.")
-				}
+		Group {
+			if isLoading {
+				ProgressView("Loading...")
+			} else if let source = source {
+				SourceAppsTableRepresentableView(
+					object: object,
+					source: source
+				)
+				.ignoresSafeArea()
+			} else {
+				Text("No data available.")
 			}
 		}
 		.navigationTitle(object.name ?? "Unknown")
@@ -73,20 +60,23 @@ struct SourceAppsView: View {
 			}
 		}
 		.navigationBarTitleDisplayMode(.inline)
-		.onAppear {
-			_sourceData()
-		}
+		.onAppear(perform: loadSourceData)
 		.onChange(of: viewModel.sources[object]) { _ in
-			_sourceData()
+			loadSourceData()
 		}
 	}
 	
-	private func _sourceData() {
-		if let source_data = viewModel.sources[object] {
-			source = source_data
-			_isDataAvailable = true
-		} else {
-			_isDataAvailable = false
+	private func loadSourceData() {
+		isLoading = true
+		
+		Task {
+			if let sourceData = viewModel.sources[object] {
+				source = sourceData
+				isLoading = false
+			} else {
+				source = nil
+				isLoading = false
+			}
 		}
 	}
 }

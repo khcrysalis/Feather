@@ -84,10 +84,6 @@ extension SourceAppsCellView {
 			if let currentDownload {
 				ZStack {
 					Circle()
-						.fill(Color(uiColor: .quaternarySystemFill))
-						.frame(width: 29, height: 29)
-					
-					Circle()
 						.trim(from: 0, to: downloadProgress)
 						.stroke(Color.accentColor, style: StrokeStyle(lineWidth: 2.3, lineCap: .round))
 						.rotationEffect(.degrees(-90))
@@ -96,11 +92,6 @@ extension SourceAppsCellView {
 					Image(systemName: downloadProgress >= 0.99 ? "checkmark" : "square.fill")
 						.foregroundStyle(.tint)
 						.font(.footnote).bold()
-					
-					Text("\(Int(downloadProgress * 100))%")
-						.font(.caption2)
-						.foregroundColor(.secondary)
-						.offset(y: 28)
 				}
 				.onTapGesture {
 					downloadManager.cancelDownload(currentDownload)

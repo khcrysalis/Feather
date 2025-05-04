@@ -9,21 +9,42 @@ import SwiftUI
 import Esign
 
 struct SourceNewsView: View {
+	@State private var isLoaded = false
 	var news: [ASRepository.News]?
 	
 	var body: some View {
-		if let news {
-			ScrollView(.horizontal, showsIndicators: false) {
-				HStack(spacing: 10) {
-					ForEach(news.reversed(), id: \.id) { new in
-						SourceNewsCardView(new: new)
+		VStack {
+			if
+				let news = news,
+				!news.isEmpty
+			{
+				ScrollView(.horizontal, showsIndicators: false) {
+					LazyHStack(spacing: 10) {
+						ForEach(news.reversed(), id: \.id) { new in
+							SourceNewsCardView(new: new)
+						}
 					}
+					.padding(.horizontal)
 				}
-				
-				.padding(.horizontal)
+				.frame(height: 150)
+				.opacity(isLoaded ? 1 : 0)
+				.transition(.opacity)
 			}
-			.edgesIgnoringSafeArea(.all)
-			.frame(maxWidth: .infinity)
+		}
+		.frame(height: (news?.isEmpty == false) ? 150 : 0)
+		.onAppear {
+			if news?.isEmpty == false {
+				loadNewsContent()
+			}
+		}
+	}
+	
+	private func loadNewsContent() {
+		// short delay to ensure UI is responsive during initial render
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+			withAnimation(.easeIn(duration: 0.3)) {
+				isLoaded = true
+			}
 		}
 	}
 }
