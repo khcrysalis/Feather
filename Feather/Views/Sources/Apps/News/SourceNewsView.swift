@@ -15,7 +15,7 @@ struct SourceNewsView: View {
 	var body: some View {
 		VStack {
 			if
-				let news = news,
+				let news,
 				!news.isEmpty
 			{
 				ScrollView(.horizontal, showsIndicators: false) {
