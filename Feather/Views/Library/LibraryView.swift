@@ -92,7 +92,7 @@ struct LibraryView: View {
 				}
 			}
 			.listStyle(.plain)
-			.searchable(text: $_searchText, placement: .navigationBarDrawer(displayMode: .always))
+			.searchable(text: $_searchText, placement: .platform())
 			.compatSearchScopes($_selectedScope) {
 				ForEach(Scope.allCases, id: \.displayName) { scope in
 					Text(scope.displayName).tag(scope)

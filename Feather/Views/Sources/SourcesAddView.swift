@@ -20,9 +20,7 @@ struct SourcesAddView: View {
 	
 	@State private var addingSource = false
 	@State private var sourceURL = ""
-	
-	#warning("add basic checks and obfuscated repositories")
-	
+		
 	// MARK: Body
     var body: some View {
 		NBNavigationView("Add Source", displayMode: .inline) {

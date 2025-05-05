@@ -61,7 +61,7 @@ struct SourcesView: View {
 				}
 			}
 			.listStyle(.plain)
-			.searchable(text: $_searchText, placement: .navigationBarDrawer(displayMode: .always))
+			.searchable(text: $_searchText, placement: .platform())
 			.toolbar {
 				NBToolbarButton(
 					"Add",

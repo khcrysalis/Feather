@@ -10,8 +10,6 @@ import Esign
 import NimbleViews
 import UIKit
 
-#warning(".navigationBarDrawer(displayMode: .always) is not good for ipad")
-
 // MARK: - View
 struct SourceAppsView: View {
 	@State var isLoading = true
@@ -47,7 +45,7 @@ struct SourceAppsView: View {
 			}
 		}
 		.navigationTitle(_navigationTitle)
-		.searchable(text: $_searchText, placement: .navigationBarDrawer(displayMode: .always))
+		.searchable(text: $_searchText, placement: .platform())
 		.toolbarTitleMenu {
 			if
 				let _sources,
