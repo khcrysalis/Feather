@@ -35,12 +35,12 @@ class DownloadManager: NSObject, ObservableObject {
 	static let shared = DownloadManager()
 	
     @Published var downloads: [Download] = []
-    private var session: URLSession!
+    private var _session: URLSession!
     
     override init() {
         super.init()
         let configuration = URLSessionConfiguration.default
-        session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
+        _session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
     }
     
     func startDownload(
@@ -54,7 +54,7 @@ class DownloadManager: NSObject, ObservableObject {
         
 		let download = Download(id: id, url: url)
         
-        let task = session.downloadTask(with: url)
+        let task = _session.downloadTask(with: url)
         download.task = task
         task.resume()
         
@@ -64,11 +64,11 @@ class DownloadManager: NSObject, ObservableObject {
     
     func resumeDownload(_ download: Download) {
         if let resumeData = download.resumeData {
-            let task = session.downloadTask(withResumeData: resumeData)
+            let task = _session.downloadTask(withResumeData: resumeData)
             download.task = task
             task.resume()
         } else if let url = download.task?.originalRequest?.url {
-            let task = session.downloadTask(with: url)
+            let task = _session.downloadTask(with: url)
             download.task = task
             task.resume()
         }

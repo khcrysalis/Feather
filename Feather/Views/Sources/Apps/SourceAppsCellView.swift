@@ -11,8 +11,8 @@ import Combine
 
 struct SourceAppsCellView: View {
 	@ObservedObject var downloadManager = DownloadManager.shared
-	@State private var downloadProgress: Double = 0
-	@State private var cancellable: AnyCancellable?
+	@State private var _downloadProgress: Double = 0
+	@State var cancellable: AnyCancellable? // Combine
 	
 	var currentId: String {
 		app.id ?? app.downloadURL?.absoluteString ?? app.uuid.uuidString
@@ -46,7 +46,7 @@ struct SourceAppsCellView: View {
 		cancellable?.cancel()
 		
 		if let download = downloadManager.getDownload(by: currentId) {
-			downloadProgress = download.progress
+			_downloadProgress = download.progress
 			
 			let publisher = Publishers.CombineLatest3(
 				download.$progress,
@@ -55,7 +55,7 @@ struct SourceAppsCellView: View {
 			)
 			
 			cancellable = publisher.sink { (progress, status, bytes) in
-				self.downloadProgress = progress
+				self._downloadProgress = progress
 			}
 		}
 	}
@@ -88,12 +88,12 @@ extension SourceAppsCellView {
 			if let currentDownload {
 				ZStack {
 					Circle()
-						.trim(from: 0, to: downloadProgress)
+						.trim(from: 0, to: _downloadProgress)
 						.stroke(Color.accentColor, style: StrokeStyle(lineWidth: 2.3, lineCap: .round))
 						.rotationEffect(.degrees(-90))
 						.frame(width: 29, height: 29)
 					
-					Image(systemName: downloadProgress >= 0.99 ? "checkmark" : "square.fill")
+					Image(systemName: _downloadProgress >= 0.99 ? "checkmark" : "square.fill")
 						.foregroundStyle(.tint)
 						.font(.footnote).bold()
 				}

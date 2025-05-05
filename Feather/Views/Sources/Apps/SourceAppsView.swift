@@ -21,17 +21,17 @@ struct SourceAppsView: View {
 	
 	var object: AltSource
 	@ObservedObject var viewModel: SourcesViewModel
-	@State private var source: ASRepository?
+	@State private var _source: ASRepository?
 	
 	// MARK: Body
 	var body: some View {
 		Group {
 			if isLoading {
 				ProgressView("Loading...")
-			} else if let source {
+			} else if let _source {
 				SourceAppsTableRepresentableView(
 					object: object,
-					source: source,
+					source: _source,
 					searchText: $_searchText,
 					sortOption: $_sortOption,
 					sortAscending: $_sortAscending
@@ -44,13 +44,13 @@ struct SourceAppsView: View {
 		.navigationTitle(object.name ?? "Unknown")
 		.searchable(text: $_searchText)
 		.toolbarTitleMenu {
-			if let url = source?.website {
+			if let url = _source?.website {
 				Button("Visit Website", systemImage: "globe") {
 					UIApplication.open(url)
 				}
 			}
 			
-			if let url = source?.patreonURL {
+			if let url = _source?.patreonURL {
 				Button("Visit Patreon", systemImage: "dollarsign.circle") {
 					UIApplication.open(url)
 				}
@@ -83,10 +83,10 @@ struct SourceAppsView: View {
 		
 		Task {
 			if let sourceData = viewModel.sources[object] {
-				source = sourceData
+				_source = sourceData
 				isLoading = false
 			} else {
-				source = nil
+				_source = nil
 				isLoading = false
 			}
 		}
