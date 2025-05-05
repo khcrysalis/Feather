@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Esign
+import AltSourceKit
 
 struct SourceNewsView: View {
 	@State var isLoading = true

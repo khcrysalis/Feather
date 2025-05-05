@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Esign
+import AltSourceKit
 import NukeUI
 
 struct SourceNewsCardView: View {

@@ -7,7 +7,7 @@
 
 import SwiftUI
 import NimbleViews
-import Esign
+import AltSourceKit
 import NimbleJSON
 
 // MARK: - View

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Esign
+import AltSourceKit
 import Combine
 
 // thats a whole pharaghraph of codes
@@ -111,6 +111,13 @@ extension SourceAppsCellView {
 					_buttonLabel("arrow.down")
 				}
 				.buttonStyle(.borderless)
+				.simultaneousGesture(
+					LongPressGesture(minimumDuration: 0.5)
+						.onEnded { _ in
+							// Custom long press action
+							print("Long press triggered")
+						}
+				)
 				.compatTransition()
 			}
 		}

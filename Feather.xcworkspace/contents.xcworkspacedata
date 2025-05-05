@@ -14,10 +14,10 @@
       location = "group:Feather.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Esign">
+      location = "group:Zsign">
    </FileRef>
    <FileRef
-      location = "group:Zsign">
+      location = "container:AltSourceKit">
    </FileRef>
    <FileRef
       location = "group:NimbleKit">
