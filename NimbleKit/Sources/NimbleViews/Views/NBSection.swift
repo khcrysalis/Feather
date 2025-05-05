@@ -13,31 +13,31 @@ where 	Content: View,
 {
 	private var _headerText: String
 	private var _headerTextSecondary: String?
-	private var _headerImage: Image?
+	private var _systemName: String?
 	private var _content: Content
 	private var _footer: Footer
 	
 	public init(_ headerText: String,
 		 secondary headerTextSecondary: String? = nil,
-		 image: Image? = nil,
+			systemName: String? = nil,
 		 @ViewBuilder content: () -> Content,
 		 @ViewBuilder footer: () -> Footer
 	) {
 		self._headerText = headerText
 		self._headerTextSecondary = headerTextSecondary
-		self._headerImage = image
+		self._systemName = systemName
 		self._content = content()
 		self._footer = footer()
 	}
 	
 	public init(_ headerText: String,
 		 secondary headerTextSecondary: String? = nil,
-		 image: Image? = nil,
+		 systemName: String? = nil,
 		 @ViewBuilder content: () -> Content
 	) where Footer == EmptyView {
 		self._headerText = headerText
 		self._headerTextSecondary = headerTextSecondary
-		self._headerImage = image
+		self._systemName = systemName
 		self._content = content()
 		self._footer = EmptyView()
 	}
@@ -46,10 +46,10 @@ where 	Content: View,
 		Section(
 			header:
 				HStack(alignment: .firstTextBaseline, spacing: 4) {
-					if let _headerImage {
-						_headerImage
-							.resizable()
-							.frame(width: 23, height: 23)
+					if let _systemName {
+						Image(systemName: _systemName)
+							.font(.system(size: 12))
+							.offset(y: -2)
 					}
 					
 					Text(_headerText)
