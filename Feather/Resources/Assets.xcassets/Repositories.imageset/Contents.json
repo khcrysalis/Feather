@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "feather_all_repositories.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

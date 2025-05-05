@@ -26,7 +26,7 @@ struct SourceNewsView: View {
 							SourceNewsCardView(new: new)
 						}
 					}
-					.padding(.horizontal)
+					.padding(.horizontal, 21)
 				}
 				.frame(height: 150)
 				.opacity(isLoading ? 0 : 1)
@@ -43,11 +43,8 @@ struct SourceNewsView: View {
 	}
 	
 	private func _load() {
-		// short delay to ensure UI is responsive during initial render
-		DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-			withAnimation(.easeIn(duration: 0.3)) {
-				isLoading = false
-			}
+		withAnimation(.easeIn(duration: 0.3)) {
+			isLoading = false
 		}
 	}
 }

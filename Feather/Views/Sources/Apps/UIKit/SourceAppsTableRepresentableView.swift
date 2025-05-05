@@ -13,8 +13,7 @@ import Esign
 #warning("change this to a uicollectionview with grid and table stuff")
 
 struct SourceAppsTableRepresentableView: UIViewRepresentable {
-	var object: AltSource
-	var source: ASRepository
+	var sources: [ASRepository]
 	@Binding var searchText: String
 	@Binding var sortOption: SourceAppsView.SortOption
 	@Binding var sortAscending: Bool
@@ -27,30 +26,51 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 		tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "SectionHeader")
 		tableView.allowsSelection = false
 		
-		// header
-		let header = UIHostingController(rootView: SourceNewsView(news: source.news))
-		header.view.translatesAutoresizingMaskIntoConstraints = true
-		header.view.backgroundColor = .clear
-		let targetSize = header.view.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-		header.view.frame = CGRect(origin: .zero, size: targetSize)
-		tableView.tableHeaderView = header.view
+		if let firstSource = sources.first, sources.count == 1 {
+			let header = UIHostingController(rootView: SourceNewsView(news: firstSource.news))
+			header.view.translatesAutoresizingMaskIntoConstraints = true
+			header.view.backgroundColor = .clear
+			let targetSize = header.view.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+			header.view.frame = CGRect(origin: .zero, size: targetSize)
+			tableView.tableHeaderView = header.view
+		}
+		
+		tableView.alpha = 0
+		
+		if let firstSource = sources.first, sources.count == 1 {
+			let header = UIHostingController(rootView: SourceNewsView(news: firstSource.news))
+			header.view.translatesAutoresizingMaskIntoConstraints = true
+			header.view.backgroundColor = .clear
+		}
+		
+		UIView.transition(with: tableView,  duration: 0.3, options: [.transitionCrossDissolve], animations: {
+			tableView.alpha = 1
+		}, completion: nil)
 		
 		return tableView
 	}
 	
 	func updateUIView(_ tableView: UITableView, context: Context) {
-		context.coordinator.object = object
-		context.coordinator.apps = source.apps
+		context.coordinator.uiTableView = tableView
+		
+		let sourcesChanged = context.coordinator.sources != sources
+		let searchChanged = context.coordinator.searchText != searchText
+		let sortOptionChanged = context.coordinator.sortOption != sortOption
+		let sortDirectionChanged = context.coordinator.sortAscending != sortAscending
+		
+		context.coordinator.sources = sources
 		context.coordinator.searchText = searchText
 		context.coordinator.sortOption = sortOption
 		context.coordinator.sortAscending = sortAscending
-		tableView.reloadData()
+		
+		if sourcesChanged || searchChanged || sortOptionChanged || sortDirectionChanged {
+			context.coordinator.invalidateCache()
+		}
 	}
 	
 	func makeCoordinator() -> Coordinator {
 		Coordinator(
-			object: object,
-			source: source,
+			sources: sources,
 			searchText: searchText,
 			sortOption: sortOption,
 			sortAscending: sortAscending
@@ -59,23 +79,51 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 	
 	// MARK: - Coordinator
 	class Coordinator: NSObject, UITableViewDataSource, UITableViewDelegate {
-		var object: AltSource
-		var apps: [ASRepository.App]
+		var sources: [ASRepository]
 		var searchText: String
 		var sortOption: SourceAppsView.SortOption
 		var sortAscending: Bool
 		
+		private var cachedSortedApps: [ASRepository.App] = []
+		weak var uiTableView: UITableView?
+		
+		private var _apps: [ASRepository.App] {
+			sources.flatMap { $0.apps }
+		}
+		
 		private var _sortedApps: [ASRepository.App] {
-			let filtered = apps.filter {
+			if !cachedSortedApps.isEmpty {
+				return cachedSortedApps
+			}
+			
+			cachedSortedApps = calculateSortedApps()
+			return cachedSortedApps
+		}
+		
+		init(
+			sources: [ASRepository],
+			searchText: String,
+			sortOption: SourceAppsView.SortOption,
+			sortAscending: Bool
+		) {
+			self.sources = sources
+			self.searchText = searchText
+			self.sortOption = sortOption
+			self.sortAscending = sortAscending
+			super.init()
+		}
+		
+		private func calculateSortedApps() -> [ASRepository.App] {
+			let allApps = _apps
+			
+			// Filter
+			let filtered = allApps.filter {
 				searchText.isEmpty || ($0.name?.localizedCaseInsensitiveContains(searchText) ?? false)
 			}
 			
+			// Sort
 			if sortOption == .default {
-				if sortAscending {
-					return filtered
-				} else {
-					return filtered.reversed()
-				}
+				return sortAscending ? filtered : filtered.reversed()
 			}
 			
 			return filtered.sorted { app1, app2 in
@@ -97,18 +145,14 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 			}
 		}
 		
-		init(
-			object: AltSource,
-			source: ASRepository,
-			searchText: String,
-			sortOption: SourceAppsView.SortOption,
-			sortAscending: Bool
-		) {
-			self.object = object
-			self.apps = source.apps
-			self.searchText = searchText
-			self.sortOption = sortOption
-			self.sortAscending = sortAscending
+		// Invalidate cache when data changes
+		func invalidateCache() {
+			cachedSortedApps = calculateSortedApps()
+			if let tableView = uiTableView {
+				UIView.transition(with: tableView,  duration: 0.3, options: [.transitionCrossDissolve], animations: {
+					tableView.reloadData()
+				}, completion: nil)
+			}
 		}
 		
 		func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 80 }

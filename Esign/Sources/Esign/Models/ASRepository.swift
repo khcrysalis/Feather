@@ -317,6 +317,9 @@ extension ASRepository {
 		
 		public var currentName: String {
 			var name = name ?? "Unknown"
+			// additional check for blank names
+			if name.isEmpty { name = "Unknown" }
+			
 			if let id, id.hasSuffix("Beta") {
 				name += " (BETA)"
 			}

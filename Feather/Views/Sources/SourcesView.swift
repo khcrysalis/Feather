@@ -33,13 +33,27 @@ struct SourcesView: View {
 	var body: some View {
 		NBNavigationView("Sources") {
 			List {
+				Section {
+					NavigationLink {
+						SourceAppsView(object: Array(_sources), viewModel: viewModel)
+					} label: {
+						HStack(spacing: 9) {
+							Image("Repositories").appIconStyle()
+							NBTitleWithSubtitleView(
+								title: "All Repositories",
+								subtitle: "See all apps from your sources"
+							)
+						}
+					}
+				}
+				
 				NBSection(
 					"Repositories",
 					secondary: _filteredSources.count.description
 				) {
 					ForEach(_filteredSources) { source in
 						NavigationLink {
-							SourceAppsView(object: source, viewModel: viewModel)
+							SourceAppsView(object: [source], viewModel: viewModel)
 						} label: {
 							SourcesCellView(source: source)
 						}

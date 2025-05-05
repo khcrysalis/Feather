@@ -10,49 +10,59 @@ import Esign
 import NimbleViews
 import UIKit
 
+#warning(".navigationBarDrawer(displayMode: .always) is not good for ipad")
+
 // MARK: - View
 struct SourceAppsView: View {
 	@State var isLoading = true
-	@State var hasLoadedInitialData = false
+	@State var hasLoadedOnce = false
 	
 	@State private var _searchText = ""
 	@State private var _sortOption: SortOption = .default
 	@State private var _sortAscending = true
 	
-	var object: AltSource
+	private var _navigationTitle: String {
+		if object.count == 1 {
+			return object[0].name ?? "Unknown"
+		} else {
+			return "\(object.count) Sources"
+		}
+	}
+	
+	var object: [AltSource]
 	@ObservedObject var viewModel: SourcesViewModel
-	@State private var _source: ASRepository?
+	@State private var _sources: [ASRepository]?
 	
 	// MARK: Body
 	var body: some View {
-		Group {
-			if isLoading {
-				ProgressView("Loading...")
-			} else if let _source {
+		ZStack {
+			if let _sources, !_sources.isEmpty {
 				SourceAppsTableRepresentableView(
-					object: object,
-					source: _source,
+					sources: _sources,
 					searchText: $_searchText,
 					sortOption: $_sortOption,
 					sortAscending: $_sortAscending
 				)
 				.ignoresSafeArea()
-			} else {
-				Text("No data available.")
 			}
 		}
-		.navigationTitle(object.name ?? "Unknown")
-		.searchable(text: $_searchText)
+		.navigationTitle(_navigationTitle)
+		.searchable(text: $_searchText, placement: .navigationBarDrawer(displayMode: .always))
 		.toolbarTitleMenu {
-			if let url = _source?.website {
-				Button("Visit Website", systemImage: "globe") {
-					UIApplication.open(url)
+			if
+				let _sources,
+				_sources.count == 1
+			{
+				if let url = _sources[0].website {
+					Button("Visit Website", systemImage: "globe") {
+						UIApplication.open(url)
+					}
 				}
-			}
-			
-			if let url = _source?.patreonURL {
-				Button("Visit Patreon", systemImage: "dollarsign.circle") {
-					UIApplication.open(url)
+				
+				if let url = _sources[0].patreonURL {
+					Button("Visit Patreon", systemImage: "dollarsign.circle") {
+						UIApplication.open(url)
+					}
 				}
 			}
 		}
@@ -68,12 +78,12 @@ struct SourceAppsView: View {
 		}
 		.navigationBarTitleDisplayMode(.inline)
 		.onAppear {
-			if !hasLoadedInitialData {
+			if !hasLoadedOnce, viewModel.isFinished {
 				_load()
-				hasLoadedInitialData = true
+				hasLoadedOnce = true
 			}
 		}
-		.onChange(of: viewModel.sources[object]) { _ in
+		.onChange(of: viewModel.isFinished) { _ in
 			_load()
 		}
 	}
@@ -82,11 +92,9 @@ struct SourceAppsView: View {
 		isLoading = true
 		
 		Task {
-			if let sourceData = viewModel.sources[object] {
-				_source = sourceData
-				isLoading = false
-			} else {
-				_source = nil
+			let loadedSources = object.compactMap { viewModel.sources[$0] }
+			_sources = loadedSources
+			withAnimation(.easeIn(duration: 0.2)) {
 				isLoading = false
 			}
 		}

@@ -9,6 +9,7 @@ import SwiftUI
 import Esign
 import Combine
 
+// thats a whole pharaghraph of codes
 struct SourceAppsCellView: View {
 	@ObservedObject var downloadManager = DownloadManager.shared
 	@State private var _downloadProgress: Double = 0
