@@ -69,13 +69,17 @@ class Installer: Identifiable, ObservableObject {
 				return Response(status: .ok, version: req.version, headers: [
 					"Content-Type": "image/png",
 				], body: .init(data: displayImageLargeData))
-			case payloadEndpoint.path:
-				DispatchQueue.main.async { self.status = .sendingPayload }
-				return req.fileio.streamFile(
-					at: self.package.path
-				) { result in
-					DispatchQueue.main.async { self.status = .completed(result) }
-				}
+            case payloadEndpoint.path:
+                DispatchQueue.main.async {
+                    self.status = .sendingPayload
+                    BackgroundController.shared.begin()
+                }
+                return req.fileio.streamFile(at: self.package.path) { result in
+                    DispatchQueue.main.async {
+                        self.status = .completed(result)
+                        BackgroundController.shared.end()
+                    }
+                }
 			default:
 				return Response(status: .notFound)
 			}

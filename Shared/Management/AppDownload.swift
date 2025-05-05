@@ -211,6 +211,7 @@ extension AppDownload: URLSessionDownloadDelegate {
 		if let uuid = downloads[downloadTask]?.appuuid {
 			dldelegate?.updateDownloadProgress(progress: progress, uuid: uuid)
 		}
+        BackgroundController.shared.ping()
 	}
 }
 enum HandleIPAFileError: Error {

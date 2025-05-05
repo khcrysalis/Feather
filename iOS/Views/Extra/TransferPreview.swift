@@ -143,31 +143,35 @@ struct TransferPreview: View {
 		.padding()
 	}
 	
-	func archivePayload(at filePath: String, with fileName: String, completion: @escaping (URL?) -> Void) {
-		DispatchQueue.global(qos: .userInitiated).async {
-			let uuid = UUID().uuidString
-			let tempDirectory = FileManager.default.temporaryDirectory.appendingPathComponent(uuid)
-			let payloadPath = tempDirectory.appendingPathComponent("Payload")
-			let sanitizedFileName = fileName.replacingOccurrences(of: "/", with: "_").trimmingCharacters(in: .whitespacesAndNewlines)
-			let ipaPath = tempDirectory.appendingPathComponent("\(sanitizedFileName).ipa")
-			
-			do {
-				try FileManager.default.createDirectory(at: tempDirectory, withIntermediateDirectories: true)
-				try FileManager.default.copyItem(atPath: filePath, toPath: payloadPath.path)
-				try FileManager.default.zipItem(at: payloadPath, to: ipaPath)
-				
-				DispatchQueue.main.async {
-					self.packaging = false
-					completion(ipaPath)
-				}
-			} catch {
-				Debug.shared.log(message: "Error creating archive: \(error)", type: .error)
-				DispatchQueue.main.async {
-					completion(nil)
-				}
-			}
-		}
-	}
+    func archivePayload(at filePath: String, with fileName: String, completion: @escaping (URL?) -> Void) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            BackgroundController.shared.begin() //
+
+            let uuid = UUID().uuidString
+            let tempDirectory = FileManager.default.temporaryDirectory.appendingPathComponent(uuid)
+            let payloadPath = tempDirectory.appendingPathComponent("Payload")
+            let sanitizedFileName = fileName.replacingOccurrences(of: "/", with: "_").trimmingCharacters(in: .whitespacesAndNewlines)
+            let ipaPath = tempDirectory.appendingPathComponent("\(sanitizedFileName).ipa")
+            
+            do {
+                try FileManager.default.createDirectory(at: tempDirectory, withIntermediateDirectories: true)
+                try FileManager.default.copyItem(atPath: filePath, toPath: payloadPath.path)
+                try FileManager.default.zipItem(at: payloadPath, to: ipaPath)
+                
+                DispatchQueue.main.async {
+                    self.packaging = false
+                    completion(ipaPath)
+                }
+            } catch {
+                Debug.shared.log(message: "Error creating archive: \(error)", type: .error)
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+            }
+
+            BackgroundController.shared.end()
+        }
+    }
 
 }
 
