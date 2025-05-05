@@ -42,6 +42,8 @@ struct SourceAppsView: View {
 					sortAscending: $_sortAscending
 				)
 				.ignoresSafeArea()
+			} else {
+				ProgressView()
 			}
 		}
 		.navigationTitle(_navigationTitle)
