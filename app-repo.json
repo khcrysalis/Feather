@@ -2,6 +2,7 @@
 	"name": "Feather Repository",
 	"identifier": "kh.crysalis.feather-repo",
 	"iconURL": "https://github.com/khcrysalis/Feather/blob/main/iOS/Resources/Icons/Main/Mac@3x.png?raw=true",
+	"website": "https://github.com/khcrysalis/Feather",
 	"apps": [
 		{
 			"name": "Feather",
