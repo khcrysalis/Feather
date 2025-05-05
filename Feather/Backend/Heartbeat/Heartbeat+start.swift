@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 // MARK: - Class extension: start
 extension HeartbeatManager {
@@ -151,6 +152,20 @@ extension HeartbeatManager {
 		let hbConnectResult = heartbeat_connect_tcp(provider, &heartbeatClient)
 		if hbConnectResult != IdeviceSuccess {
 			print("Failed to start heartbeat client: \(hbConnectResult)")
+			
+			if hbConnectResult == InvalidHostID, fileManager.fileExists(atPath: Self.pairingFile()) {
+				print("Deleting pairing file, requesting for a new one.")
+				try? fileManager.removeItem(atPath: Self.pairingFile())
+				
+				
+				DispatchQueue.main.async {
+					UIAlertController.showAlertWithOk(
+						title: "InvalidHostID",
+						message: "Your pairing file is invalid and is incompatible with your device, please import a valid pairing file."
+					)
+				}
+			}
+			
 			completion(hbConnectResult)
 			return
 		}

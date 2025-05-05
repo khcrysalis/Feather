@@ -34,7 +34,10 @@ struct SourceAppsView: View {
 	// MARK: Body
 	var body: some View {
 		ZStack {
-			if let _sources, !_sources.isEmpty {
+			if
+				let _sources,
+				!_sources.isEmpty
+			{
 				SourceAppsTableRepresentableView(
 					sources: _sources,
 					searchText: $_searchText,

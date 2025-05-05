@@ -28,6 +28,10 @@ class ConduitInstaller: Identifiable, ObservableObject {
 		var installproxy: InstallationProxyClientHandle?
 		
 		try await Task.detached(priority: .userInitiated) {
+			guard FileManager.default.fileExists(atPath: HeartbeatManager.pairingFile()) else {
+				throw ConduitInstallerError.missingPairing
+			}
+			
 			guard await self._heartbeat.checkSocketConnection().isConnected else {
 				throw ConduitInstallerError.missingPairing
 			}
