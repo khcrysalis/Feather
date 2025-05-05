@@ -195,13 +195,6 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 				identifier: nil,
 				previewProvider: nil
 			) { _ in
-				let copyAction = UIAction(
-					title: "Copy Download URL",
-					image: UIImage(systemName: "doc.on.clipboard")
-				) { _ in
-					UIPasteboard.general.string = app.currentDownloadUrl?.absoluteString
-				}
-				
 				let versionActions = app.versions?.map { version in
 					UIAction(
 						title: version.version,
@@ -209,15 +202,22 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 					) { _ in
 						UIPasteboard.general.string = version.downloadURL?.absoluteString
 					}
-				} ?? []
+				} ?? [
+					UIAction(
+						title: app.currentVersion ?? "",
+						image: UIImage(systemName: "doc.on.clipboard")
+					) { _ in
+						UIPasteboard.general.string = app.currentDownloadUrl?.absoluteString
+					}
+				]
 				
 				let versionsMenu = UIMenu(
-					title: "Other Links",
+					title: "Copy Download URL",
 					image: UIImage(systemName: "list.bullet"),
 					children: versionActions
 				)
 				
-				return UIMenu(title: "", children: [copyAction, versionsMenu])
+				return UIMenu(children: [versionsMenu])
 			}
 		}
 	}

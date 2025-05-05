@@ -43,7 +43,7 @@ extension SourcesCellView {
 	
 	@ViewBuilder
 	private func _contextActions(for source: AltSource) -> some View {
-		Button("Copy", systemImage: "doc.on.doc") {
+		Button("Copy", systemImage: "doc.on.clipboard") {
 			UIPasteboard.general.string = source.sourceURL?.absoluteString
 		}
 		.tint(.accentColor)
