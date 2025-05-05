@@ -15,6 +15,9 @@ struct SourceAppsView: View {
 	@State var isLoading = true
 	@State var hasLoadedInitialData = false
 	
+	@State private var _sortOption: SortOption = .date
+	@State private var _sortAscending = false
+	
 	var object: AltSource
 	@ObservedObject var viewModel: SourcesViewModel
 	@State private var source: ASRepository?
@@ -24,7 +27,7 @@ struct SourceAppsView: View {
 		Group {
 			if isLoading {
 				ProgressView("Loading...")
-			} else if let source = source {
+			} else if let source {
 				SourceAppsTableRepresentableView(
 					object: object,
 					source: source
@@ -55,9 +58,7 @@ struct SourceAppsView: View {
 				style: .icon,
 				placement: .topBarTrailing
 			) {
-				Section("Filter by") {
-					
-				}
+				_sortActions()
 			}
 		}
 		.navigationBarTitleDisplayMode(.inline)
@@ -82,6 +83,52 @@ struct SourceAppsView: View {
 			} else {
 				source = nil
 				isLoading = false
+			}
+		}
+	}
+}
+
+// MARK: - Extension: View
+extension SourceAppsView {
+	enum SortOption: String, CaseIterable, Identifiable {
+		case date = "Date"
+		case name = "Name"
+		var id: String { rawValue }
+	}
+	
+	@ViewBuilder
+	private func _sortActions() -> some View {
+		Section("Filter by") {
+			Button {
+				if _sortOption == .date {
+					_sortAscending.toggle()
+				} else {
+					_sortOption = .date
+				}
+			} label: {
+				HStack {
+					Text("Date")
+					Spacer()
+					if _sortOption == .date {
+						Image(systemName: _sortAscending ? "chevron.up" : "chevron.down")
+					}
+				}
+			}
+			
+			Button {
+				if _sortOption == .name {
+					_sortAscending.toggle()
+				} else {
+					_sortOption = .name
+				}
+			} label: {
+				HStack {
+					Text("Name")
+					Spacer()
+					if _sortOption == .name {
+						Image(systemName: _sortAscending ? "chevron.up" : "chevron.down")
+					}
+				}
 			}
 		}
 	}

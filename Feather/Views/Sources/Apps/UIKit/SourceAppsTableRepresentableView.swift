@@ -37,7 +37,7 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 	
 	func updateUIView(_ tableView: UITableView, context: Context) {
 		context.coordinator.object = object
-		context.coordinator.source = source
+		context.coordinator.apps = source.apps
 		tableView.reloadData()
 	}
 	
@@ -48,23 +48,23 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 	// MARK: - Coordinator
 	class Coordinator: NSObject, UITableViewDataSource, UITableViewDelegate {
 		var object: AltSource
-		var source: ASRepository
+		var apps: [ASRepository.App]
 		
 		init(object: AltSource, source: ASRepository) {
 			self.object = object
-			self.source = source
+			self.apps = source.apps
 		}
 		
 		func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 80 }
 		func numberOfSections(in tableView: UITableView) -> Int { return 1 }
 		
 		func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-			return source.apps.count
+			return apps.count
 		}
 		
 		func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "AppCell", for: indexPath)
-			let app = source.apps[indexPath.row]
+			let app = apps[indexPath.row]
 			
 			cell.contentConfiguration = UIHostingConfiguration {
 				SourceAppsCellView(app: app)
@@ -78,7 +78,7 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 			
 			headerView?.contentConfiguration = UIHostingConfiguration {
 				HStack {
-					Text("\(source.apps.count) Apps")
+					Text("\(apps.count) Apps")
 					Spacer()
 				}
 				.font(.headline)
@@ -89,6 +89,8 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 		}
 		
 		func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+			let app = apps[indexPath.row]
+			
 			return UIContextMenuConfiguration(
 				identifier: nil,
 				previewProvider: nil
@@ -97,10 +99,25 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 					title: "Copy Download URL",
 					image: UIImage(systemName: "doc.on.clipboard")
 				) { _ in
-					UIPasteboard.general.string = self.source.apps[indexPath.row].currentDownloadUrl?.absoluteString
+					UIPasteboard.general.string = app.currentDownloadUrl?.absoluteString
 				}
 				
-				return UIMenu(title: "", children: [copyAction])
+				let versionActions = app.versions?.map { version in
+					UIAction(
+						title: version.version,
+						image: UIImage(systemName: "doc.on.clipboard")
+					) { _ in
+						UIPasteboard.general.string = version.downloadURL?.absoluteString
+					}
+				} ?? []
+				
+				let versionsMenu = UIMenu(
+					title: "Other Links",
+					image: UIImage(systemName: "list.bullet"),
+					children: versionActions
+				)
+				
+				return UIMenu(title: "", children: [copyAction, versionsMenu])
 			}
 		}
 	}

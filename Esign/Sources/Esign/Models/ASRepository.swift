@@ -120,7 +120,7 @@ extension ASRepository {
 	public struct App: Sendable, Decodable, Hashable, Identifiable {
 		public var uuid = UUID()
 		
-		public var id: String
+		public var id: String?
 		public var name: String?
 
 		public var subtitle: String?
@@ -184,7 +184,7 @@ extension ASRepository {
 
 		public init(from decoder: any Decoder) throws {
 			let container = try decoder.container(keyedBy: CodingKeys.self)
-			self.id = try container.decode(String.self, forKey: .id)
+			self.id = try container.decodeIfPresent(String.self, forKey: .id)
 			self.name = try container.decodeIfPresent(String.self, forKey: .name)
 
 			self.subtitle = try container.decodeIfPresent(
@@ -317,7 +317,7 @@ extension ASRepository {
 		
 		public var currentName: String {
 			var name = name ?? "Unknown"
-			if id.hasSuffix("Beta") {
+			if let id, id.hasSuffix("Beta") {
 				name += " (BETA)"
 			}
 			
@@ -529,8 +529,15 @@ public struct DateParsed: Codable, Equatable, Hashable, Comparable, Sendable {
 				formatter.dateFormat = "x"
 				return formatter
 			}(),
+			// Standard timestamp with space
+			{
+				let formatter = DateFormatter()
+				formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+				return formatter
+			}(),
 		]
 	}()
+
 
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.singleValueContainer()

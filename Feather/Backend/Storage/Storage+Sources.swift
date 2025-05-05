@@ -10,6 +10,12 @@ import Esign
 
 // MARK: - Class extension: Sources
 extension Storage {
+	/// Retrieve sources in an array, we don't normally need this in swiftUI but we have it for the copy sources action
+	func getSources() -> [AltSource] {
+		let request: NSFetchRequest<AltSource> = AltSource.fetchRequest()
+		return (try? context.fetch(request)) ?? []
+	}
+	
 	func addSource(
 		_ url: URL,
 		name: String? = "Unknown",
@@ -18,7 +24,7 @@ extension Storage {
 		deferSave: Bool = false,
 		completion: @escaping (Error?) -> Void
 	) {
-		if _sourceExists(identifier) {
+		if sourceExists(identifier) {
 			completion(nil)
 			print("ignoring \(identifier)")
 			return
@@ -44,13 +50,16 @@ extension Storage {
 	func addSource(
 		_ url: URL,
 		repository: ASRepository,
+		id: String = "",
 		deferSave: Bool = false,
 		completion: @escaping (Error?) -> Void
 	) {
 		addSource(
 			url,
 			name: repository.name,
-			identifier: repository.id ?? url.absoluteString,
+			identifier: !id.isEmpty
+						? id
+						: (repository.id ?? url.absoluteString),
 			iconURL: repository.currentIconURL,
 			deferSave: deferSave,
 			completion: completion
@@ -87,7 +96,7 @@ extension Storage {
 		saveContext()
 	}
 
-	private func _sourceExists(_ identifier: String) -> Bool {
+	func sourceExists(_ identifier: String) -> Bool {
 		let fetchRequest: NSFetchRequest<AltSource> = AltSource.fetchRequest()
 		fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
 

@@ -14,8 +14,12 @@ struct SourceAppsCellView: View {
 	@State private var downloadProgress: Double = 0
 	@State private var cancellable: AnyCancellable?
 	
+	var currentId: String {
+		app.id ?? app.downloadURL?.absoluteString ?? app.uuid.uuidString
+	}
+	
 	var currentDownload: Download? {
-		downloadManager.getDownload(by: app.id)
+		downloadManager.getDownload(by: currentId)
 	}
 	
 	var app: ASRepository.App
@@ -41,7 +45,7 @@ struct SourceAppsCellView: View {
 	private func _setupDownloadObserver() {
 		cancellable?.cancel()
 		
-		if let download = downloadManager.getDownload(by: app.id) {
+		if let download = downloadManager.getDownload(by: currentId) {
 			downloadProgress = download.progress
 			
 			let publisher = Publishers.CombineLatest3(
@@ -100,7 +104,7 @@ extension SourceAppsCellView {
 			} else {
 				Button {
 					if let url = app.currentDownloadUrl {
-						_ = downloadManager.startDownload(from: url, id: app.id)
+						_ = downloadManager.startDownload(from: url, id: currentId)
 					}
 				} label: {
 					_buttonLabel("arrow.down")

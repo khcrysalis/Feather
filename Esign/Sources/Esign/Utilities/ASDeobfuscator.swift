@@ -14,11 +14,11 @@ final public class ASDeobfuscator {
 		self._code = code
 	}
 	
-	func decode() -> [String] {
+	public func decode() -> [String] {
 		return Self.decode(with: _code)
 	}
 	
-	static func decode(with code: String) -> [String] {
+	static public func decode(with code: String) -> [String] {
 		let trimmedCode = code.trimmingCharacters(in: .whitespacesAndNewlines)
 		
 		guard !trimmedCode.isEmpty else {
@@ -40,7 +40,7 @@ final public class ASDeobfuscator {
 			.filter { !$0.isEmpty }
 	}
 	
-	static func decodeBase64(with code: String) -> [String] {
+	static public func decodeBase64(with code: String) -> [String] {
 		guard
 			let data = Data(base64Encoded: code),
 			let decodedString = String(data: data, encoding: .utf8)
@@ -48,14 +48,18 @@ final public class ASDeobfuscator {
 			return []
 		}
 		
+		// THERES TOO MANY OF THESE, PLEASE STICK WITH ONE
 		let delimiters = ["[K$]", "[M$]"]
-		guard let delimiter = delimiters.first(where: { decodedString.contains($0) }) else {
-			return []
+		if let delimiter = delimiters.first(where: { decodedString.contains($0) }) {
+			return decodedString
+				.components(separatedBy: delimiter)
+				.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+				.filter { !$0.isEmpty }
 		}
 		
-		return decodedString
-			.components(separatedBy: delimiter)
-			.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-			.filter { !$0.isEmpty }
+		let trimmedResult = decodedString.trimmingCharacters(in: .whitespacesAndNewlines)
+		return trimmedResult.isEmpty
+		? []
+		: [trimmedResult]
 	}
 }

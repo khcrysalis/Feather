@@ -17,21 +17,27 @@ struct SourcesView: View {
 	@StateObject var viewModel = SourcesViewModel()
 	@State private var _isAddingPresenting = false
 	@State private var _addingSourceLoading = false
-
+	@State private var _searchText = ""
+	
+	private var _filteredSources: [AltSource] {
+		_sources.filter { _searchText.isEmpty || ($0.name?.localizedCaseInsensitiveContains(_searchText) ?? false) }
+	}
+	
 	@FetchRequest(
 		entity: AltSource.entity(),
 		sortDescriptors: [NSSortDescriptor(keyPath: \AltSource.name, ascending: true)],
 		animation: .snappy
-	) private var sources: FetchedResults<AltSource>
-	
-	//let status = vm.status[source] ?? .loading
+	) private var _sources: FetchedResults<AltSource>
 	
 	// MARK: Body
 	var body: some View {
 		NBNavigationView("Sources") {
 			List {
-				NBSection("Repositories") {
-					ForEach(sources) { source in
+				NBSection(
+					"Repositories",
+					secondary: _filteredSources.count.description
+				) {
+					ForEach(_filteredSources) { source in
 						NavigationLink {
 							SourceAppsView(object: source, viewModel: viewModel)
 						} label: {
@@ -41,7 +47,7 @@ struct SourcesView: View {
 				}
 			}
 			.listStyle(.plain)
-			.searchable(text: .constant(""), placement: .navigationBarDrawer(displayMode: .always))
+			.searchable(text: $_searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search repositories")
 			.toolbar {
 				NBToolbarButton(
 					"Add",
@@ -58,11 +64,11 @@ struct SourcesView: View {
 					.presentationDetents([.medium])
 			}
 			.refreshable {
-				await viewModel.fetchSources(sources, refresh: true)
+				await viewModel.fetchSources(_sources, refresh: true)
 			}
 		}
-		.task(id: Array(sources)) {
-			await viewModel.fetchSources(sources)
+		.task(id: Array(_sources)) {
+			await viewModel.fetchSources(_sources)
 		}
 	}
 }

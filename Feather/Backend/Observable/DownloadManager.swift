@@ -105,7 +105,9 @@ extension DownloadManager: URLSessionDownloadDelegate {
 				attributes: nil
 			)
 			
-			let destinationURL = customTempDir.appendingPathComponent(download.fileName)
+			// Use the server-suggested filename if available, otherwise fallback
+			let suggestedFileName = downloadTask.response?.suggestedFilename ?? download.fileName
+			let destinationURL = customTempDir.appendingPathComponent(suggestedFileName)
 			
 			if FileManager.default.fileExists(atPath: destinationURL.path) {
 				try FileManager.default.removeItem(at: destinationURL)
@@ -114,7 +116,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
 			try FileManager.default.moveItem(at: location, to: destinationURL)
 			
 			FR.handlePackageFile(destinationURL) { err in
-				if (err != nil) {
+				if err != nil {
 					let generator = UINotificationFeedbackGenerator()
 					generator.notificationOccurred(.error)
 				}
@@ -129,6 +131,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
 			print("Error handling downloaded file: \(error.localizedDescription)")
 		}
 	}
+
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         guard let download = downloads.first(where: { $0.task == downloadTask }) else { return }
