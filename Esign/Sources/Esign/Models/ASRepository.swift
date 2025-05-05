@@ -331,6 +331,10 @@ extension ASRepository {
 		public var currentDownloadUrl: URL? {
 			currentAppVersion?.downloadURL ?? downloadURL
 		}
+		
+		public var currentDate: DateParsed? {
+			currentAppVersion?.date ?? versionDate
+		}
 
 		public struct Version: Decodable, Hashable, Identifiable, Comparable, Sendable {
 			public var id: String { version + (build ?? "") }

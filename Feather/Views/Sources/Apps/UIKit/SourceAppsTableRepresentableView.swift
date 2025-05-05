@@ -15,6 +15,9 @@ import Esign
 struct SourceAppsTableRepresentableView: UIViewRepresentable {
 	var object: AltSource
 	var source: ASRepository
+	@Binding var searchText: String
+	@Binding var sortOption: SourceAppsView.SortOption
+	@Binding var sortAscending: Bool
 	
 	func makeUIView(context: Context) -> UITableView {
 		let tableView = UITableView(frame: .zero, style: .plain)
@@ -38,33 +41,86 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 	func updateUIView(_ tableView: UITableView, context: Context) {
 		context.coordinator.object = object
 		context.coordinator.apps = source.apps
+		context.coordinator.searchText = searchText
+		context.coordinator.sortOption = sortOption
+		context.coordinator.sortAscending = sortAscending
 		tableView.reloadData()
 	}
 	
 	func makeCoordinator() -> Coordinator {
-		Coordinator(object: object, source: source)
+		Coordinator(
+			object: object,
+			source: source,
+			searchText: searchText,
+			sortOption: sortOption,
+			sortAscending: sortAscending
+		)
 	}
 	
 	// MARK: - Coordinator
 	class Coordinator: NSObject, UITableViewDataSource, UITableViewDelegate {
 		var object: AltSource
 		var apps: [ASRepository.App]
+		var searchText: String
+		var sortOption: SourceAppsView.SortOption
+		var sortAscending: Bool
 		
-		init(object: AltSource, source: ASRepository) {
+		private var _sortedApps: [ASRepository.App] {
+			let filtered = apps.filter {
+				searchText.isEmpty || ($0.name?.localizedCaseInsensitiveContains(searchText) ?? false)
+			}
+			
+			if sortOption == .default {
+				if sortAscending {
+					return filtered
+				} else {
+					return filtered.reversed()
+				}
+			}
+			
+			return filtered.sorted { app1, app2 in
+				let comparison: Bool
+				switch sortOption {
+				case .name:
+					let name1 = app1.name ?? ""
+					let name2 = app2.name ?? ""
+					comparison = name1.localizedCaseInsensitiveCompare(name2) == .orderedAscending
+				case .date:
+					let date1 = app1.currentDate?.date ?? Date.distantPast
+					let date2 = app2.currentDate?.date ?? Date.distantPast
+					comparison = date1 < date2
+				case .default:
+					comparison = true
+				}
+				
+				return sortAscending ? comparison : !comparison
+			}
+		}
+		
+		init(
+			object: AltSource,
+			source: ASRepository,
+			searchText: String,
+			sortOption: SourceAppsView.SortOption,
+			sortAscending: Bool
+		) {
 			self.object = object
 			self.apps = source.apps
+			self.searchText = searchText
+			self.sortOption = sortOption
+			self.sortAscending = sortAscending
 		}
 		
 		func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 80 }
 		func numberOfSections(in tableView: UITableView) -> Int { return 1 }
 		
 		func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-			return apps.count
+			return _sortedApps.count
 		}
 		
 		func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "AppCell", for: indexPath)
-			let app = apps[indexPath.row]
+			let app = _sortedApps[indexPath.row]
 			
 			cell.contentConfiguration = UIHostingConfiguration {
 				SourceAppsCellView(app: app)
@@ -78,7 +134,7 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 			
 			headerView?.contentConfiguration = UIHostingConfiguration {
 				HStack {
-					Text("\(apps.count) Apps")
+					Text("\(_sortedApps.count) Apps")
 					Spacer()
 				}
 				.font(.headline)
@@ -89,7 +145,7 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 		}
 		
 		func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-			let app = apps[indexPath.row]
+			let app = _sortedApps[indexPath.row]
 			
 			return UIContextMenuConfiguration(
 				identifier: nil,

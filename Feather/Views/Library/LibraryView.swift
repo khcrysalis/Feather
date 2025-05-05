@@ -18,31 +18,12 @@ struct LibraryView: View {
 	
 	@State private var _searchText = ""
 	@State private var _selectedScope: Scope = .all
-	@State private var _sortOption: SortOption = .date
-	@State private var _sortAscending = false
 	
 	@Namespace private var _namespace
 	
+	// horror
 	private func filteredAndSortedApps<T>(from apps: FetchedResults<T>) -> [T] where T: NSManagedObject {
-		let filtered = apps.filter { app in
-			_searchText.isEmpty ||
-			((app.value(forKey: "name") as? String)?.localizedCaseInsensitiveContains(_searchText) ?? false)
-		}
-		
-		return filtered.sorted { first, second in
-			let comparison: Bool
-			switch _sortOption {
-			case .date:
-				let firstDate = first.value(forKey: "date") as? Date ?? Date()
-				let secondDate = second.value(forKey: "date") as? Date ?? Date()
-				comparison = firstDate < secondDate
-			case .name:
-				let firstName = first.value(forKey: "name") as? String ?? ""
-				let secondName = second.value(forKey: "name") as? String ?? ""
-				comparison = firstName < secondName
-			}
-			return _sortAscending ? comparison : !comparison
-		}
+		apps.filter { _searchText.isEmpty || (($0.value(forKey: "name") as? String)?.localizedCaseInsensitiveContains(_searchText) ?? false) }
 	}
 	
 	private var _filteredSignedApps: [Signed] {
@@ -113,21 +94,11 @@ struct LibraryView: View {
 			.listStyle(.plain)
 			.searchable(text: $_searchText, placement: .navigationBarDrawer(displayMode: .always))
 			.compatSearchScopes($_selectedScope) {
-				ForEach(Scope.allCases) { scope in
-					Text(scope.rawValue).tag(scope)
+				ForEach(Scope.allCases, id: \.displayName) { scope in
+					Text(scope.displayName).tag(scope)
 				}
 			}
 			.toolbar {
-				NBToolbarMenu(
-					"Filter",
-					systemImage: "line.3.horizontal.decrease",
-					style: .icon,
-					placement: .topBarTrailing,
-					alignment: .trailing
-				) {
-					_sortActions()
-				}
-				
 				NBToolbarMenu(
 					"Import",
 					systemImage: "plus",
@@ -165,54 +136,18 @@ struct LibraryView: View {
     }
 }
 
-// MARK: - Extension: View
+// MARK: - Extension: View (Sort)
 extension LibraryView {
-	enum Scope: String, CaseIterable, Identifiable {
-		case all = "All"
-		case signed = "Signed"
-		case imported = "Imported"
-		var id: String { rawValue }
-	}
-	
-	enum SortOption: String, CaseIterable, Identifiable {
-		case date = "Date"
-		case name = "Name"
-		var id: String { rawValue }
-	}
-	
-	@ViewBuilder
-	private func _sortActions() -> some View {
-		Section("Filter by") {
-			Button {
-				if _sortOption == .date {
-					_sortAscending.toggle()
-				} else {
-					_sortOption = .date
-				}
-			} label: {
-				HStack {
-					Text("Date")
-					Spacer()
-					if _sortOption == .date {
-						Image(systemName: _sortAscending ? "chevron.up" : "chevron.down")
-					}
-				}
-			}
-			
-			Button {
-				if _sortOption == .name {
-					_sortAscending.toggle()
-				} else {
-					_sortOption = .name
-				}
-			} label: {
-				HStack {
-					Text("Name")
-					Spacer()
-					if _sortOption == .name {
-						Image(systemName: _sortAscending ? "chevron.up" : "chevron.down")
-					}
-				}
+	enum Scope: CaseIterable {
+		case all
+		case signed
+		case imported
+		
+		var displayName: String {
+			switch self {
+			case .all: return "All"
+			case .signed: return "Signed"
+			case .imported: return "Imported"
 			}
 		}
 	}

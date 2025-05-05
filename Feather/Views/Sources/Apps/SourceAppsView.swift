@@ -15,8 +15,9 @@ struct SourceAppsView: View {
 	@State var isLoading = true
 	@State var hasLoadedInitialData = false
 	
-	@State private var _sortOption: SortOption = .date
-	@State private var _sortAscending = false
+	@State private var _searchText = ""
+	@State private var _sortOption: SortOption = .default
+	@State private var _sortAscending = true
 	
 	var object: AltSource
 	@ObservedObject var viewModel: SourcesViewModel
@@ -30,7 +31,10 @@ struct SourceAppsView: View {
 			} else if let source {
 				SourceAppsTableRepresentableView(
 					object: object,
-					source: source
+					source: source,
+					searchText: $_searchText,
+					sortOption: $_sortOption,
+					sortAscending: $_sortAscending
 				)
 				.ignoresSafeArea()
 			} else {
@@ -38,6 +42,7 @@ struct SourceAppsView: View {
 			}
 		}
 		.navigationTitle(object.name ?? "Unknown")
+		.searchable(text: $_searchText)
 		.toolbarTitleMenu {
 			if let url = source?.website {
 				Button("Visit Website", systemImage: "globe") {
@@ -53,8 +58,8 @@ struct SourceAppsView: View {
 		}
 		.toolbar {
 			NBToolbarMenu(
-				"Options",
-				systemImage: "ellipsis",
+				"Filter",
+				systemImage: "line.3.horizontal.decrease",
 				style: .icon,
 				placement: .topBarTrailing
 			) {
@@ -88,47 +93,44 @@ struct SourceAppsView: View {
 	}
 }
 
-// MARK: - Extension: View
+// MARK: - Extension: View (Sort)
 extension SourceAppsView {
-	enum SortOption: String, CaseIterable, Identifiable {
-		case date = "Date"
-		case name = "Name"
-		var id: String { rawValue }
-	}
-	
 	@ViewBuilder
 	private func _sortActions() -> some View {
 		Section("Filter by") {
-			Button {
-				if _sortOption == .date {
-					_sortAscending.toggle()
-				} else {
-					_sortOption = .date
-				}
-			} label: {
-				HStack {
-					Text("Date")
-					Spacer()
-					if _sortOption == .date {
-						Image(systemName: _sortAscending ? "chevron.up" : "chevron.down")
-					}
+			ForEach(SortOption.allCases, id: \.displayName) { opt in
+				_sortButton(for: opt)
+			}
+		}
+	}
+	
+	private func _sortButton(for option: SortOption) -> some View {
+		Button {
+			if _sortOption == option {
+				_sortAscending.toggle()
+			} else {
+				_sortOption = option
+				_sortAscending = true
+			}
+		} label: {
+			HStack {
+				Text(option.displayName)
+				Spacer()
+				if _sortOption == option {
+					Image(systemName: _sortAscending ? "chevron.up" : "chevron.down")
 				}
 			}
-			
-			Button {
-				if _sortOption == .name {
-					_sortAscending.toggle()
-				} else {
-					_sortOption = .name
-				}
-			} label: {
-				HStack {
-					Text("Name")
-					Spacer()
-					if _sortOption == .name {
-						Image(systemName: _sortAscending ? "chevron.up" : "chevron.down")
-					}
-				}
+		}
+	}
+	
+	enum SortOption: CaseIterable {
+		case `default`, name, date
+		
+		var displayName: String {
+			switch self {
+			case .default: return "Default"
+			case .name: return "Name"
+			case .date: return "Date"
 			}
 		}
 	}
