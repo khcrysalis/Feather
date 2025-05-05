@@ -157,7 +157,6 @@ extension HeartbeatManager {
 				print("Deleting pairing file, requesting for a new one.")
 				try? fileManager.removeItem(atPath: Self.pairingFile())
 				
-				
 				DispatchQueue.main.async {
 					UIAlertController.showAlertWithOk(
 						title: "InvalidHostID",
