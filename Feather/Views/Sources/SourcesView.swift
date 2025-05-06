@@ -12,8 +12,6 @@ import NimbleViews
 
 // MARK: - View
 struct SourcesView: View {
-	@Environment(\.managedObjectContext) var viewContext
-	
 	@StateObject var viewModel = SourcesViewModel()
 	@State private var _isAddingPresenting = false
 	@State private var _addingSourceLoading = false
