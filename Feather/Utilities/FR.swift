@@ -8,6 +8,7 @@
 import Foundation.NSURL
 import UIKit.UIImage
 import Zsign
+import NimbleJSON
 
 enum FR {
 	static func handlePackageFile(
@@ -127,4 +128,37 @@ enum FR {
 		HeartbeatManager.shared.start(true)
 	}
 	#endif
+	
+	#if SERVER
+	static func downloadSSLCertificates(
+		from urlString: String,
+		completion: @escaping (Bool) -> Void
+	) {
+		let generator = UINotificationFeedbackGenerator()
+		generator.prepare()
+		
+		func write(content: String, to filename: String) throws {
+			let path = URL.documentsDirectory.appendingPathComponent(filename)
+			try content.write(to: path, atomically: true, encoding: .utf8)
+		}
+		
+		NBFetchService().fetch(from: urlString) { (result: Result<ServerPackModel, Error>) in
+			switch result {
+			case .success(let pack):
+				do {
+					try write(content: pack.key, to: "server.pem")
+					try write(content: pack.cert, to: "server.crt")
+					try write(content: pack.info.domains.commonName, to: "commonName.txt")
+					generator.notificationOccurred(.success)
+					completion(true)
+				} catch {
+					completion(false)
+				}
+			case .failure(_):
+				completion(false)
+			}
+		}
+	}
+	#endif
+
 }

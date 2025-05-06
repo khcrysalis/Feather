@@ -42,13 +42,13 @@ struct SourceAppsCellView: View {
 	private func _setupDownloadObserver() {
 		cancellable?.cancel()
 		
-		if let download = downloadManager.getDownload(by: app.currentUniqueId) {
-			_downloadProgress = download.progress
+		if let currentDownload {
+			_downloadProgress = currentDownload.progress
 			
 			let publisher = Publishers.CombineLatest3(
-				download.$progress,
-				download.$bytesDownloaded,
-				download.$totalBytes
+				currentDownload.$progress,
+				currentDownload.$bytesDownloaded,
+				currentDownload.$totalBytes
 			)
 			
 			cancellable = publisher.sink { (progress, status, bytes) in
@@ -107,13 +107,6 @@ extension SourceAppsCellView {
 					_buttonLabel("arrow.down")
 				}
 				.buttonStyle(.borderless)
-				.simultaneousGesture(
-					LongPressGesture(minimumDuration: 0.5)
-						.onEnded { _ in
-							// Custom long press action
-							print("Long press triggered")
-						}
-				)
 				.compatTransition()
 			}
 		}

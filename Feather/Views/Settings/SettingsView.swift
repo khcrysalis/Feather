@@ -7,12 +7,22 @@
 
 import SwiftUI
 import NimbleViews
+#if SERVER
+import NimbleJSON
+#endif
 import Zip
 
 // MARK: - View
 struct SettingsView: View {
+	#if SERVER
+	typealias ServerPackDataHandler = Result<ServerPackModel, Error>
+	private let _dataService = NBFetchService()
+	private let _fServerPack = "https://backloop.dev/pack.json"
+	#endif
+	
 	@AppStorage("Feather.compressionLevel") private var _compressionLevel: Int = ZipCompression.DefaultCompression.rawValue
 	@AppStorage("Feather.useShareSheetForArchiving") private var _useShareSheet: Bool = false
+	
 	#if SERVER
 	@AppStorage("Feather.ipFix") private var _ipFix: Bool = false
 	@AppStorage("Feather.serverMethod") private var _serverMethod: Int = 0
@@ -57,6 +67,19 @@ struct SettingsView: View {
 					}
 					Toggle("Only use localhost address", isOn: $_ipFix)
 						.disabled(_serverMethod != 1)
+					Button("Update SSL Certificates") {
+						FR.downloadSSLCertificates(from: _fServerPack) { success in
+							if !success {
+								DispatchQueue.main.async {
+									UIAlertController.showAlertWithOk(
+										title: "SSL Certificates",
+										message: "Failed to download, check your internet connection and try again."
+									)
+								}
+							}
+						}
+
+					}
 				}
 				#elseif IDEVICE
 				NBSection("Pairing") {

@@ -117,10 +117,12 @@ struct InstallPreviewView: View {
 			} catch {
 				await MainActor.run {
 					UIAlertController.showAlertWithOk(
-						title: "ConduitInstaller",
+						title: "Installer",
 						message: error.localizedDescription,
 						action: {
+							#if IDEVICE
 							HeartbeatManager.shared.start(true)
+							#endif
 							dismiss()
 						}
 					)

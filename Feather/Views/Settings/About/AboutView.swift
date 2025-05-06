@@ -11,17 +11,15 @@ import NimbleJSON
 
 // MARK: - View
 struct AboutView: View {
-	typealias RepositoryDataHandler = Result<[CreditsModel], Error>
+	typealias CreditsDataHandler = Result<[CreditsModel], Error>
 	private let _dataService = NBFetchService()
 	
 	@State private var _credits: [CreditsModel] = []
 	@State private var _donators: [CreditsModel] = []
 	@State private var isLoading = false
 	
-	private let _creditsUrl =
-	URL(string: "https://raw.githubusercontent.com/khcrysalis/project-credits/refs/heads/main/feather/creditsv2.json")!
-	private let _donatorsUrl =
-	URL(string: "https://raw.githubusercontent.com/khcrysalis/project-credits/refs/heads/main/sponsors/credits.json")!
+	private let _creditsUrl = "https://raw.githubusercontent.com/khcrysalis/project-credits/refs/heads/main/feather/creditsv2.json"
+	private let _donatorsUrl = "https://raw.githubusercontent.com/khcrysalis/project-credits/refs/heads/main/sponsors/credits.json"
 	
 	// MARK: Body
 	var body: some View {
@@ -62,7 +60,7 @@ struct AboutView: View {
 		isLoading = true
 		let dataService = _dataService
 		
-		await withTaskGroup(of: (String, RepositoryDataHandler).self) { group in
+		await withTaskGroup(of: (String, CreditsDataHandler).self) { group in
 			group.addTask { return await _fetchCredits(self._creditsUrl, using: dataService) }
 			group.addTask { return await _fetchCredits(self._donatorsUrl, using: dataService) }
 			
@@ -86,11 +84,11 @@ struct AboutView: View {
 		}
 	}
 	
-	private func _fetchCredits(_ url: URL, using service: NBFetchService) async -> (String, RepositoryDataHandler) {
-		let type = url == _creditsUrl ? "credits" : "donators"
+	private func _fetchCredits(_ urlString: String, using service: NBFetchService) async -> (String, CreditsDataHandler) {
+		let type = urlString == _creditsUrl ? "credits" : "donators"
 		
 		return await withCheckedContinuation { continuation in
-			service.fetch(from: url) { (result: RepositoryDataHandler) in
+			service.fetch(from: urlString) { (result: CreditsDataHandler) in
 				continuation.resume(returning: (type, result))
 			}
 		}
