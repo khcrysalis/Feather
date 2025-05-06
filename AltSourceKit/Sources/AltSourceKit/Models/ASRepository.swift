@@ -338,6 +338,11 @@ extension ASRepository {
 		public var currentDate: DateParsed? {
 			currentAppVersion?.date ?? versionDate
 		}
+		
+		// "UNIQUE" hahaha
+		public var currentUniqueId: String {
+			id ?? downloadURL?.absoluteString ?? uuid.uuidString
+		}
 
 		public struct Version: Decodable, Hashable, Identifiable, Comparable, Sendable {
 			public var id: String { version + (build ?? "") }
