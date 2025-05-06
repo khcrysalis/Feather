@@ -14,6 +14,10 @@ struct SigningPropertiesView: View {
 	
 	@State private var text: String = ""
 	
+	var saveButtonDisabled: Bool {
+		text == initialValue
+	}
+	
 	var title: String
 	var initialValue: String 
 	@Binding var bindingValue: String?
@@ -31,11 +35,16 @@ struct SigningPropertiesView: View {
 				systemImage: "checkmark",
 				style: .text,
 				placement: .topBarTrailing,
-				isDisabled: text.isEmpty
+				isDisabled: saveButtonDisabled
 			) {
-				bindingValue = text
-				dismiss()
+				if !saveButtonDisabled {
+					bindingValue = text
+					dismiss()
+				}
 			}
+		}
+		.onAppear {
+			text = initialValue
 		}
 	}
 }
