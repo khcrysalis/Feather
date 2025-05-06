@@ -8,9 +8,6 @@
       location = "group:LICENSE">
    </FileRef>
    <FileRef
-      location = "group:TODO.md">
-   </FileRef>
-   <FileRef
       location = "group:Feather.xcodeproj">
    </FileRef>
    <FileRef

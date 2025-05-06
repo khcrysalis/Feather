@@ -1,3 +1,0 @@
-- app
-- cleanup
-- convert libidevice and libplist to xcframeworks

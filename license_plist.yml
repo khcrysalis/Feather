@@ -19,7 +19,7 @@ manual:
     file: "Zsign/LICENSE"
     
   - name: "ElleKit"
-    file: "LICENSE_ElleKit.md"
+    file: "LICENSE_ElleKit"
 
 exclude:
   - swift-html-entities
