@@ -100,7 +100,7 @@ struct InstallPreviewView: View {
 					try await handler.install(at: packageUrl)
 					#endif
 				} else {
-					let package = try await handler.moveToArchive(packageUrl)
+					let package = try await handler.moveToArchive(packageUrl, shouldOpen: !_useShareSheet)
 					
 					if await !_useShareSheet {
 						await MainActor.run {
@@ -109,6 +109,7 @@ struct InstallPreviewView: View {
 					} else {
 						if let package {
 							await MainActor.run {
+								dismiss()
 								UIActivityViewController.show(activityItems: [package])
 							}
 						}
