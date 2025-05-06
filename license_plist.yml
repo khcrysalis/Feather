@@ -1,0 +1,29 @@
+options:
+  licenseFileNames:
+    - LICENSE
+  packagePaths:
+    - Package.swift
+  prefix: thewonderofyou.Feather
+  xcworkspacePath: "*.xcworkspace"
+  addVersionNumbers: false
+  singlePage: false
+  sandboxMode: true
+  force: true
+
+manual:
+  - source: https://github.com/jkcoxson/idevice
+    name: idevice
+    body: |-
+      MIT
+  - name: "Zsign"
+    file: "Zsign/LICENSE"
+    
+  - name: "ElleKit"
+    file: "LICENSE_ElleKit.md"
+
+exclude:
+  - swift-html-entities
+  - LicensePlist
+  - XcodeEdit
+  - Yams
+  - /.*-kit/

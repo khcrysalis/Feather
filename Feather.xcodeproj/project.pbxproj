@@ -199,10 +199,12 @@
 				3305BB432DB893A500660D45 /* Sources */,
 				3305BB442DB893A500660D45 /* Frameworks */,
 				3305BB4A2DB893A500660D45 /* Resources */,
+				33793D7E2DC9DB32004372DA /* Copy Acknowledgements */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				339776092DC9D0FE00642FFB /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				3379C1BB2DA869A1004372DA /* Feather */,
@@ -229,10 +231,12 @@
 				3379C1B52DA869A1004372DA /* Sources */,
 				3379C1B62DA869A1004372DA /* Frameworks */,
 				3379C1B72DA869A1004372DA /* Resources */,
+				3379BC662DC9DB32004372DA /* Copy Acknowledgements */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				339776072DC9D0F800642FFB /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				3379C1BB2DA869A1004372DA /* Feather */,
@@ -315,6 +319,7 @@
 				330F68FF2DC03DF400D8C35D /* XCLocalSwiftPackageReference "NimbleKit" */,
 				3346F8372DC6C68300C7D508 /* XCRemoteSwiftPackageReference "Nuke" */,
 				33693A062DC8BF5B00730215 /* XCLocalSwiftPackageReference "AltSourceKit" */,
+				339776052DC9D05C00642FFB /* XCRemoteSwiftPackageReference "LicensePlist" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3379C1BA2DA869A1004372DA /* Products */;
@@ -352,6 +357,37 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		33793D7E2DC9DB32004372DA /* Copy Acknowledgements */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Acknowledgements";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Will copy acknowledgements\"\n\nACKNOWLEDGEMENTS_DIR=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/com.mono0926.LicensePlist.Output\nDESTINATION_PATH=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/Settings.bundle/\n\ncp -r \"${ACKNOWLEDGEMENTS_DIR}\"/thewonderofyou.Feather \"${DESTINATION_PATH}\"\ncp -r \"${ACKNOWLEDGEMENTS_DIR}\"/thewonderofyou.Feather.plist \"${DESTINATION_PATH}\"\nrm -rf \"${ACKNOWLEDGEMENTS_DIR}\"\n";
+		};
+		3379BC662DC9DB32004372DA /* Copy Acknowledgements */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Acknowledgements";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Will copy acknowledgements\"\n\nACKNOWLEDGEMENTS_DIR=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/com.mono0926.LicensePlist.Output\nDESTINATION_PATH=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/Settings.bundle/\n\ncp -r \"${ACKNOWLEDGEMENTS_DIR}\"/thewonderofyou.Feather \"${DESTINATION_PATH}\"\ncp -r \"${ACKNOWLEDGEMENTS_DIR}\"/thewonderofyou.Feather.plist \"${DESTINATION_PATH}\"\nrm -rf \"${ACKNOWLEDGEMENTS_DIR}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3305BB432DB893A500660D45 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -377,6 +413,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		339776072DC9D0F800642FFB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 339776062DC9D0F800642FFB /* LicensePlistBuildTool */;
+		};
+		339776092DC9D0FE00642FFB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 339776082DC9D0FE00642FFB /* LicensePlistBuildTool */;
+		};
 		AABA5D1E2DB3C87800BFCD2C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3379C1B82DA869A1004372DA /* Feather */;
@@ -399,6 +443,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"IDEVICE=1",
 					"DEBUG=1",
@@ -462,6 +507,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = "IDEVICE=1";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Feather/Resources/Info.plist;
@@ -634,6 +680,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"SERVER=1",
 					"DEBUG=1",
@@ -697,6 +744,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = "SERVER=1";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Feather/Resources/Info.plist;
@@ -883,6 +931,14 @@
 				minimumVersion = 2.1.2;
 			};
 		};
+		339776052DC9D05C00642FFB /* XCRemoteSwiftPackageReference "LicensePlist" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mono0926/LicensePlist";
+			requirement = {
+				kind = exactVersion;
+				version = 3.27.1;
+			};
+		};
 		33CF13372DB5ACFB0021D4C5 /* XCRemoteSwiftPackageReference "SWCompression" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/tsolomko/SWCompression";
@@ -971,6 +1027,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3371F6F52DA9EBA500281AC6 /* XCRemoteSwiftPackageReference "Zip" */;
 			productName = Zip;
+		};
+		339776062DC9D0F800642FFB /* LicensePlistBuildTool */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 339776052DC9D05C00642FFB /* XCRemoteSwiftPackageReference "LicensePlist" */;
+			productName = "plugin:LicensePlistBuildTool";
+		};
+		339776082DC9D0FE00642FFB /* LicensePlistBuildTool */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 339776052DC9D05C00642FFB /* XCRemoteSwiftPackageReference "LicensePlist" */;
+			productName = "plugin:LicensePlistBuildTool";
 		};
 		33CF13382DB5ACFB0021D4C5 /* SWCompression */ = {
 			isa = XCSwiftPackageProductDependency;
