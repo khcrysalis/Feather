@@ -11,10 +11,14 @@ import NimbleViews
 
 // MARK: - View
 struct LibraryView: View {
+	@StateObject var downloadManager = DownloadManager.shared
+	
 	@State private var _selectedInfoAppPresenting: AnyApp?
 	@State private var _selectedSigningAppPresenting: AnyApp?
 	@State private var _selectedInstallAppPresenting: AnyApp?
 	@State private var _isImportingPresenting = false
+	@State private var _isDownloadingPresenting = false
+	@State private var _alertDownloadString: String = "" // for _isDownloadingPresenting
 	
 	@State private var _searchText = ""
 	@State private var _selectedScope: Scope = .all
@@ -108,6 +112,9 @@ struct LibraryView: View {
 					Button("Import from Files") {
 						_isImportingPresenting = true
 					}
+					Button("Import from URL") {
+						_isDownloadingPresenting = true
+					}
 				}
 			}
 			.sheet(item: $_selectedInfoAppPresenting) { app in
@@ -131,6 +138,17 @@ struct LibraryView: View {
 						FR.handlePackageFile(selectedFileURL) { _ in }
 					}
 				)
+			}
+			.alert("Import from URL", isPresented: $_isDownloadingPresenting) {
+				TextField("URL", text: $_alertDownloadString)
+				Button("Cancel", role: .cancel) {
+					_alertDownloadString = ""
+				}
+				Button("OK") {
+					if let url = URL(string: _alertDownloadString) {
+						_ = downloadManager.startDownload(from: url)
+					}
+				}
 			}
         }
     }

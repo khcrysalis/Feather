@@ -42,6 +42,8 @@ struct SourcesAddView: View {
 							$0.sourceURL!.absoluteString
 						}.joined(separator: "\n")
 					}
+				} footer: {
+					Text("Supports importing from KravaSign/MapleSign and ESign")
 				}
 			}
 			.toolbar {
