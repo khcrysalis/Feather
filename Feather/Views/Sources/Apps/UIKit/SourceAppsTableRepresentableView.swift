@@ -195,29 +195,54 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 				identifier: nil,
 				previewProvider: nil
 			) { _ in
-				let versionActions = app.versions?.map { version in
-					UIAction(
-						title: version.version,
-						image: UIImage(systemName: "doc.on.clipboard")
-					) { _ in
-						UIPasteboard.general.string = version.downloadURL?.absoluteString
-					}
-				} ?? [
-					UIAction(
-						title: app.currentVersion ?? "",
-						image: UIImage(systemName: "doc.on.clipboard")
-					) { _ in
-						UIPasteboard.general.string = app.currentDownloadUrl?.absoluteString
-					}
-				]
-				
 				let versionsMenu = UIMenu(
-					title: "Copy Download URL",
+					title: "Copy Download URLs",
 					image: UIImage(systemName: "list.bullet"),
-					children: versionActions
+					children: self._contextActions(for: app, with: { version in
+						UIPasteboard.general.string = version?.absoluteString
+					}, image: UIImage(systemName: "doc.on.clipboard"))
 				)
 				
-				return UIMenu(children: [versionsMenu])
+				let downloadsMenu = UIMenu(
+					title: "Previous Versions",
+					image: UIImage(systemName: "square.and.arrow.down.on.square"),
+					children: self._contextActions(for: app, with: { version in
+						if let url = version {
+							_ = DownloadManager.shared.startDownload(
+								from: url,
+								id: app.currentUniqueId
+							)
+						}
+					}, image: UIImage(systemName: "arrow.down"))
+				)
+				
+				return UIMenu(children: [downloadsMenu, versionsMenu])
+			}
+		}
+		
+		private func _contextActions(
+			for app: ASRepository.App,
+			with action: @escaping (URL?) -> Void,
+			image: UIImage?
+		) -> [UIAction] {
+			if let versions = app.versions, !versions.isEmpty {
+				return versions.map { version in
+					UIAction(
+						title: version.version,
+						image: image
+					) { _ in
+						action(version.downloadURL)
+					}
+				}
+			} else {
+				return [
+					UIAction(
+						title: app.currentVersion ?? "",
+						image: image
+					) { _ in
+						action(app.currentDownloadUrl)
+					}
+				]
 			}
 		}
 	}
