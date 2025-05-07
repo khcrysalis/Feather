@@ -7,98 +7,36 @@
 
 import SwiftUI
 import NimbleViews
-#if SERVER
-import NimbleJSON
-#endif
-import Zip
 
 // MARK: - View
 struct SettingsView: View {
-	#if SERVER
-	typealias ServerPackDataHandler = Result<ServerPackModel, Error>
-	private let _dataService = NBFetchService()
-	private let _fServerPack = "https://backloop.dev/pack.json"
-	#endif
-	
-	@AppStorage("Feather.compressionLevel") private var _compressionLevel: Int = ZipCompression.DefaultCompression.rawValue
-	@AppStorage("Feather.useShareSheetForArchiving") private var _useShareSheet: Bool = false
-	
-	#if SERVER
-	@AppStorage("Feather.ipFix") private var _ipFix: Bool = false
-	@AppStorage("Feather.serverMethod") private var _serverMethod: Int = 0
-	private let _serverMethods = ["Fully Local", "Semi Local"]
-	#endif
-	
 	private let _kDonations = "https://github.com/sponsors/khcrysalis"
 	private let _fGithub = "https://github.com/khcrysalis/Feather"
 	
 	// MARK: Body
     var body: some View {
 		NBNavigationView("Settings") {
-            List {
+			Form {
 				#if !NIGHTLY
 				SettingsDonationCellView(site: _kDonations)
 				#endif
 				
 				_feedback()
 				
-				NBSection("Signing") {
+				NBSection("Features") {
 					NavigationLink("Certificates", destination: CertificatesView())
-					NavigationLink("Global Configuration", destination: ConfigurationView())
-				}
-
-				NBSection("Archive") {
-					Picker("Compression Level", selection: $_compressionLevel) {
-						ForEach(ZipCompression.allCases, id: \.rawValue) { level in
-							Text(level.label).tag(level)
-						}
-					}
-					Toggle("Show Sheet when Exporting", isOn: $_useShareSheet)
-				} footer: {
-					Text("Toggling show sheet will present a share sheet after exporting to your files.")
-				}
-				
-				#if SERVER
-				NBSection("Server") {
-					Picker("Installation Type", selection: $_serverMethod) {
-						ForEach(_serverMethods.indices, id: \.self) { index in
-							Text(_serverMethods[index]).tag(index)
-						}
-					}
-					Toggle("Only use localhost address", isOn: $_ipFix)
-						.disabled(_serverMethod != 1)
-					Button("Update SSL Certificates") {
-						FR.downloadSSLCertificates(from: _fServerPack) { success in
-							if !success {
-								DispatchQueue.main.async {
-									UIAlertController.showAlertWithOk(
-										title: "SSL Certificates",
-										message: "Failed to download, check your internet connection and try again."
-									)
-								}
-							}
-						}
-
-					}
-				}
-				#elseif IDEVICE
-				NBSection("Pairing") {
+					NavigationLink("Signing Options", destination: ConfigurationView())
+					NavigationLink("Archive & Compression", destination: ArchiveView())
+					#if SERVER
+					NavigationLink("Server & SSL", destination: ServerView())
+					#elseif IDEVICE
 					NavigationLink("Tunnel & Pairing", destination: TunnelView())
+					#endif
 				}
-				#endif
 				
 				_directories()
             }
-			#if SERVER
-			.onChange(of: _serverMethod) { _ in
-				UIAlertController.showAlertWithRestart(
-					title: "Restart Required",
-					message: "These changes require a restart of the app"
-				)
-			}
-			#endif
         }
-		
     }
 }
 
@@ -119,7 +57,7 @@ extension SettingsView {
 	
 	@ViewBuilder
 	private func _directories() -> some View {
-		Section {
+		NBSection("Misc") {
 			Button("Open Documents", systemImage: "folder") {
 				UIApplication.open(URL.documentsDirectory.toSharedDocumentsURL()!)
 			}

@@ -11,6 +11,12 @@ import NimbleViews
 
 // MARK: - View
 struct LibraryCellView: View {
+	
+	var certInfo: (info: String?, color: Color?) {
+		let data = Storage.shared.getCertificate(from: app)?.expiration?.expirationInfo()
+		return (data?.formatted, data?.color)
+	}
+	
 	var app: AppInfoPresentable
 	@Binding var selectedInfoAppPresenting: AnyApp?
 	@Binding var selectedSigningAppPresenting: AnyApp?
@@ -101,13 +107,16 @@ extension LibraryCellView {
 				Button {
 					selectedInstallAppPresenting = AnyApp(base: app)
 				} label: {
-					_buttonLabel("Install")
+					_buttonLabel(
+						certInfo.info ?? "Install",
+						color: certInfo.color ?? Color(uiColor: .quaternarySystemFill)
+					)
 				}
 			} else {
 				Button {
 					selectedSigningAppPresenting = AnyApp(base: app)
 				} label: {
-					_buttonLabel("Sign")
+					_buttonLabel("Sign", isWide: true)
 				}
 			}
 		}
@@ -115,13 +124,20 @@ extension LibraryCellView {
 	}
 	
 	@ViewBuilder
-	private func _buttonLabel(_ title: String) -> some View {
-		Group {
-			Text(title)
-				.font(.footnote).bold()
-		}
-		.frame(width: 66, height: 29)
-		.background(Color(uiColor: .quaternarySystemFill))
-		.clipShape(Capsule())
+	private func _buttonLabel(
+		_ title: String,
+		color: Color = Color(uiColor: .quaternarySystemFill),
+		isWide: Bool = false
+	) -> some View {
+		Text(title)
+			.font(.headline.bold())
+			.foregroundStyle(color != Color(uiColor: .quaternarySystemFill) ? .white : .accentColor)
+			.padding(.horizontal, isWide ? 22 : 12)
+			.padding(.vertical, 6)
+			.background {
+				color.opacity(0.85)
+			}
+			.clipShape(Capsule())
 	}
+
 }

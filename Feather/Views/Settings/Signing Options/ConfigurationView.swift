@@ -30,7 +30,7 @@ struct ConfigurationView: View {
 			
 			SigningOptionsView(options: $_optionsManager.options)
 		}
-		.navigationTitle("Configuration")
+		.navigationTitle("Signing Options")
 		.navigationBarTitleDisplayMode(.inline)
 		.toolbar {
 			NBToolbarMenu(
