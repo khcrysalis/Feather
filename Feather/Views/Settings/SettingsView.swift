@@ -10,15 +10,15 @@ import NimbleViews
 
 // MARK: - View
 struct SettingsView: View {
-	private let _kDonations = "https://github.com/sponsors/khcrysalis"
-	private let _fGithub = "https://github.com/khcrysalis/Feather"
+	private let _donationsUrl = "https://github.com/sponsors/khcrysalis"
+	private let _githubUrl = "https://github.com/khcrysalis/Feather"
 	
 	// MARK: Body
     var body: some View {
 		NBNavigationView("Settings") {
 			Form {
 				#if !NIGHTLY
-				SettingsDonationCellView(site: _kDonations)
+				SettingsDonationCellView(site: _donationsUrl)
 				#endif
 				
 				_feedback()
@@ -47,10 +47,10 @@ extension SettingsView {
 		Section {
 			NavigationLink("About", destination: AboutView())
 			Button("Submit Feedback", systemImage: "safari") {
-				UIApplication.open("\(_fGithub)/issues")
+				UIApplication.open("\(_githubUrl)/issues")
 			}
 			Button("GitHub Repository", systemImage: "safari") {
-				UIApplication.open(_fGithub)
+				UIApplication.open(_githubUrl)
 			}
 		}
 	}
