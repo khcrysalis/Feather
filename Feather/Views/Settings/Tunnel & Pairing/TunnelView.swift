@@ -14,7 +14,7 @@ struct TunnelView: View {
 	
 	// MARK: Body
     var body: some View {
-		Form {
+		NBList("Tunnel & Pairing") {
 			Section {
 				_tunnelInfo()
 				TunnelHeaderView()
@@ -41,8 +41,6 @@ struct TunnelView: View {
 				}
 			}
 		}
-		.navigationTitle("Tunnel & Pairing")
-		.navigationBarTitleDisplayMode(.inline)
 		.sheet(isPresented: $_isImportingPairingPresenting) {
 			FileImporterRepresentableView(
 				allowedContentTypes:  [.xmlPropertyList, .plist, .mobiledevicepairing],

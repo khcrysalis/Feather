@@ -23,7 +23,7 @@ struct AboutView: View {
 	
 	// MARK: Body
 	var body: some View {
-		Form {
+		NBList("About") {
 			Section {
 				LabeledContent("Name", value: Bundle.main.exec)
 				LabeledContent("Version", value: Bundle.main.version)
@@ -54,8 +54,6 @@ struct AboutView: View {
 			}
 		}
 		.animation(.default, value: isLoading)
-		.navigationTitle("About")
-		.navigationBarTitleDisplayMode(.inline)
 		.task {
 			await _fetchAllData()
 		}

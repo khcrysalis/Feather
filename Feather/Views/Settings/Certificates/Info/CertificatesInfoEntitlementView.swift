@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleViews
 
 // MARK: - View
 struct CertificatesInfoEntitlementView: View {
@@ -13,14 +14,13 @@ struct CertificatesInfoEntitlementView: View {
 	
 	// MARK: Body
 	var body: some View {
-		List {
+		NBList("Entitlements") {
 			ForEach(entitlements.keys.sorted(), id: \.self) { key in
 				if let value = entitlements[key]?.value {
 					CertificatesInfoEntitlementCellView(key: key, value: value)
 				}
 			}
 		}
-		.navigationTitle("Entitlements")
 		.listStyle(.grouped)
 	}
 }

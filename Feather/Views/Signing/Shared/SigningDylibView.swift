@@ -18,7 +18,7 @@ struct SigningDylibView: View {
 	@Binding var options: Options?
 	
 	var body: some View {
-		List {
+		NBList("Dylibs", type: .list) {
 			Section {
 				ForEach(_dylibs, id: \.self) { dylib in
 					SigningToggleCellView(
@@ -36,7 +36,6 @@ struct SigningDylibView: View {
 			}
 		}
 		.disabled(options == nil)
-		.navigationTitle("Dylibs")
 		.onAppear(perform: _loadDylibs)
 	}
 }

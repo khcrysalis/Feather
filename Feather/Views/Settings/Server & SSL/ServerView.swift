@@ -7,6 +7,7 @@
 
 import SwiftUI
 import NimbleJSON
+import NimbleViews
 
 struct ServerView: View {
 	@AppStorage("Feather.ipFix") private var _ipFix: Bool = false
@@ -17,7 +18,7 @@ struct ServerView: View {
 	private let _serverPackUrl = "https://backloop.dev/pack.json"
 	
 	var body: some View {
-		Form {
+		NBList("Server & SSL") {
 			Section {
 				Picker("Installation Type", systemImage: "server.rack", selection: $_serverMethod) {
 					ForEach(_serverMethods.indices, id: \.self) { index in
@@ -44,8 +45,6 @@ struct ServerView: View {
 				}
 			}
 		}
-		.navigationTitle("Server & SSL")
-		.navigationBarTitleDisplayMode(.inline)
 		.onChange(of: _serverMethod) { _ in
 			UIAlertController.showAlertWithRestart(
 				title: "Restart Required",

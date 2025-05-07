@@ -28,7 +28,7 @@ struct CertificatesAddView: View {
 	
 	// MARK: Body
 	var body: some View {
-		NBNavigationView("New Certificate") {
+		NBNavigationView("New Certificate", displayMode: .inline) {
 			Form {
 				NBSection("Files") {
 					_importButton("Import Certificate File", file: _p12URL) {
@@ -48,7 +48,6 @@ struct CertificatesAddView: View {
 					TextField("Nickname (Optional)", text: $_certificateName)
 				}
 			}
-			.navigationBarTitleDisplayMode(.inline)
 			.toolbar {
 				NBToolbarButton(role: .cancel)
 				

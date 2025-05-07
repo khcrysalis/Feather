@@ -19,7 +19,7 @@ struct SigningTweaksView: View {
 		List(options.injectionFiles, id: \.absoluteString) { tweak in
 			_file(tweak: tweak)
 		}
-		.animation(.smooth, value: options.injectionFiles)
+		.navigationTitle("Tweaks")
 		.listStyle(.plain)
 		.toolbar {
 			NBToolbarButton(
@@ -40,7 +40,7 @@ struct SigningTweaksView: View {
 				}
 			)
 		}
-		.navigationTitle("Tweaks")
+		.animation(.smooth, value: options.injectionFiles)
 	}
 	
 	#warning("this can be improved")

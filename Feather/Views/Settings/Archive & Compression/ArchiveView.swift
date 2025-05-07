@@ -7,13 +7,14 @@
 
 import SwiftUI
 import Zip
+import NimbleViews
 
 struct ArchiveView: View {
 	@AppStorage("Feather.compressionLevel") private var _compressionLevel: Int = ZipCompression.DefaultCompression.rawValue
 	@AppStorage("Feather.useShareSheetForArchiving") private var _useShareSheet: Bool = false
 	
     var body: some View {
-		Form {
+		NBList("Archive & Compression") {
 			Section {
 				Picker("Compression Level", systemImage: "archivebox", selection: $_compressionLevel) {
 					ForEach(ZipCompression.allCases, id: \.rawValue) { level in
@@ -28,7 +29,5 @@ struct ArchiveView: View {
 				Text("Toggling show sheet will present a share sheet after exporting to your files.")
 			}
 		}
-		.navigationTitle("Archive & Compression")
-		.navigationBarTitleDisplayMode(.inline)
     }
 }

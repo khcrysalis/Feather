@@ -16,7 +16,7 @@ struct ConfigurationView: View {
 	
 	// MARK: Body
     var body: some View {
-		List {
+		NBList("Signing Options") {
 			NavigationLink("Display Names", destination: ConfigurationDictView(
 					title: "Display Names",
 					dataDict: $_optionsManager.options.displayNames
@@ -30,8 +30,6 @@ struct ConfigurationView: View {
 			
 			SigningOptionsView(options: $_optionsManager.options)
 		}
-		.navigationTitle("Signing Options")
-		.navigationBarTitleDisplayMode(.inline)
 		.toolbar {
 			NBToolbarMenu(
 				_optionsManager.options.ppqString,

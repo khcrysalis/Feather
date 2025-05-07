@@ -16,7 +16,7 @@ struct SigningEntitlementsView: View {
 	
 	// MARK: Body
 	var body: some View {
-		Form {
+		NBList("Entitlements") {
 			if let ent = bindingValue {
 				Text(ent.lastPathComponent)
 					.swipeActions() { Button("Delete") {
@@ -30,7 +30,6 @@ struct SigningEntitlementsView: View {
 				})
 			}
 		}
-		.navigationTitle("Entitlements")
 		.sheet(isPresented: $_isAddingPresenting) {
 			FileImporterRepresentableView(
 				allowedContentTypes:  [.xmlPropertyList, .plist, .entitlements],

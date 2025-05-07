@@ -21,7 +21,7 @@ struct SigningFrameworksView: View {
 	
 	// MARK: Body
 	var body: some View {
-		List {
+		NBList("Frameworks & PlugIns") {
 			if !_frameworks.isEmpty {
 				NBSection(_frameworksPath) {
 					ForEach(_frameworks, id: \.self) { framework in
@@ -47,7 +47,6 @@ struct SigningFrameworksView: View {
 			}
 		}
 		.disabled(options == nil)
-		.navigationTitle("Frameworks & PlugIns")
 		.onAppear(perform: _listFrameworksAndPlugins)
 	}
 }

@@ -24,11 +24,10 @@ struct SigningPropertiesView: View {
 	
 	// MARK: Body
 	var body: some View {
-		Form {
+		NBList(title) {
 			TextField(initialValue, text: $text)
 				.textInputAutocapitalization(.none)
 		}
-		.navigationTitle(title)
 		.toolbar {
 			NBToolbarButton(
 				"Save",

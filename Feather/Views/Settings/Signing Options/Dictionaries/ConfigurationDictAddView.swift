@@ -24,8 +24,8 @@ struct ConfigurationDictAddView: View {
 	
 	// MARK: Body
     var body: some View {
-		Form {
-			NBSection("New") {
+		NBList("New") {
+			Section {
 				TextField("Identifier", text: $_newKey)
 				TextField("Replacement", text: $_newValue)
 			}
