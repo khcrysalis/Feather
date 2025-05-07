@@ -15,7 +15,7 @@ struct ArchiveView: View {
     var body: some View {
 		Form {
 			Section {
-				Picker("Compression Level", selection: $_compressionLevel) {
+				Picker("Compression Level", systemImage: "archivebox", selection: $_compressionLevel) {
 					ForEach(ZipCompression.allCases, id: \.rawValue) { level in
 						Text(level.label).tag(level)
 					}
@@ -23,7 +23,7 @@ struct ArchiveView: View {
 			}
 			
 			Section {
-				Toggle("Show Sheet when Exporting", isOn: $_useShareSheet)
+				Toggle("Show Sheet when Exporting", systemImage: "square.and.arrow.up", isOn: $_useShareSheet)
 			} footer: {
 				Text("Toggling show sheet will present a share sheet after exporting to your files.")
 			}

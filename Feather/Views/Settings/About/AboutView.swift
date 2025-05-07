@@ -16,7 +16,7 @@ struct AboutView: View {
 	
 	@State private var _credits: [CreditsModel] = []
 	@State private var _donators: [CreditsModel] = []
-	@State private var isLoading = false
+	@State var isLoading = true
 	
 	private let _creditsUrl = "https://raw.githubusercontent.com/khcrysalis/project-credits/refs/heads/main/feather/creditsv2.json"
 	private let _donatorsUrl = "https://raw.githubusercontent.com/khcrysalis/project-credits/refs/heads/main/sponsors/credits.json"
@@ -29,26 +29,31 @@ struct AboutView: View {
 				LabeledContent("Version", value: Bundle.main.version)
 			}
 			
-			if !_credits.isEmpty {
-				NBSection("Credits") {
+			NBSection("Credits") {
+				if !_credits.isEmpty {
 					ForEach(_credits, id: \.self) { credit in
 						_credit(name: credit.name, desc: credit.desc, github: credit.github)
 					}
+					.transition(.slide)
 				}
 			}
 			
-			if !_donators.isEmpty {
-				NBSection("Sponsors") {
-					Text(try! AttributedString(markdown: _donators.map {
-						"[\($0.name ?? $0.github)](https://github.com/\($0.github))"
-					}.joined(separator: ", ")))
-					
-					Text("💜 This couldn't of been done without my sponsors!")
-						.foregroundStyle(.secondary)
-						.padding(.vertical, 2)
+			NBSection("Sponsors") {
+				if !_donators.isEmpty {
+					Group {
+						Text(try! AttributedString(markdown: _donators.map {
+							"[\($0.name ?? $0.github)](https://github.com/\($0.github))"
+						}.joined(separator: ", ")))
+						
+						Text("💜 This couldn't of been done without my sponsors!")
+							.foregroundStyle(.secondary)
+							.padding(.vertical, 2)
+					}
+					.transition(.slide)
 				}
 			}
 		}
+		.animation(.default, value: isLoading)
 		.navigationTitle("About")
 		.navigationBarTitleDisplayMode(.inline)
 		.task {
@@ -57,12 +62,9 @@ struct AboutView: View {
 	}
 	
 	private func _fetchAllData() async {
-		isLoading = true
-		let dataService = _dataService
-		
 		await withTaskGroup(of: (String, CreditsDataHandler).self) { group in
-			group.addTask { return await _fetchCredits(self._creditsUrl, using: dataService) }
-			group.addTask { return await _fetchCredits(self._donatorsUrl, using: dataService) }
+			group.addTask { return await _fetchCredits(self._creditsUrl, using: _dataService) }
+			group.addTask { return await _fetchCredits(self._donatorsUrl, using: _dataService) }
 			
 			for await (type, result) in group {
 				await MainActor.run {
@@ -85,7 +87,9 @@ struct AboutView: View {
 	}
 	
 	private func _fetchCredits(_ urlString: String, using service: NBFetchService) async -> (String, CreditsDataHandler) {
-		let type = urlString == _creditsUrl ? "credits" : "donators"
+		let type = urlString == _creditsUrl 
+		? "credits"
+		: "donators"
 		
 		return await withCheckedContinuation { continuation in
 			service.fetch(from: urlString) { (result: CreditsDataHandler) in

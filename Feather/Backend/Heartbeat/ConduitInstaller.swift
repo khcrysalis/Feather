@@ -176,7 +176,7 @@ private enum ConduitInstallerError: Error, LocalizedError {
 		case .missingFileHandle:
 			return "Missing file handle for AFC operation."
 		case .unableToInstall:
-			return "Installation failed."
+			return "Unable to install specified application. Please check if your app is signed properly and not already installed onto your device with a different certificate."
 		}
 	}
 }
