@@ -111,9 +111,7 @@ final class SigningHandler: NSObject {
 		
 		var destinationURL = try await _directory()
 		
-		if !_fileManager.fileExists(atPath: destinationURL.path) {
-			try _fileManager.createDirectory(at: destinationURL, withIntermediateDirectories: true)
-		}
+		try _fileManager.createDirectoryIfNeeded(at: destinationURL)
 		
 		destinationURL = destinationURL.appendingPathComponent(movedAppPath.lastPathComponent)
 		

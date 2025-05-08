@@ -99,19 +99,13 @@ extension DownloadManager: URLSessionDownloadDelegate {
 		let customTempDir = tempDirectory.appendingPathComponent("FeatherDownloads", isDirectory: true)
 		
 		do {
-			try FileManager.default.createDirectory(
-				at: customTempDir,
-				withIntermediateDirectories: true,
-				attributes: nil
-			)
+			try FileManager.default.createDirectoryIfNeeded(at: customTempDir)
 			
 			// Use the server-suggested filename if available, otherwise fallback
 			let suggestedFileName = downloadTask.response?.suggestedFilename ?? download.fileName
 			let destinationURL = customTempDir.appendingPathComponent(suggestedFileName)
 			
-			if FileManager.default.fileExists(atPath: destinationURL.path) {
-				try FileManager.default.removeItem(at: destinationURL)
-			}
+			try FileManager.default.removeFileIfNeeded(at: destinationURL)
 			
 			try FileManager.default.moveItem(at: location, to: destinationURL)
 			

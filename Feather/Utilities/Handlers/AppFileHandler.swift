@@ -33,15 +33,11 @@ final class AppFileHandler: NSObject {
 	}
 	
 	func copy() async throws {
-		if !_fileManager.fileExists(atPath: _uniqueWorkDir.path) {
-			try _fileManager.createDirectory(at: _uniqueWorkDir, withIntermediateDirectories: true)
-		}
+		try _fileManager.createDirectoryIfNeeded(at: _uniqueWorkDir)
 		
 		let destinationURL = _uniqueWorkDir.appendingPathComponent(_ipa.lastPathComponent)
-		
-		if _fileManager.fileExists(atPath: destinationURL.path) {
-			try _fileManager.removeItem(at: destinationURL)
-		}
+
+		try _fileManager.removeFileIfNeeded(at: destinationURL)
 		
 		try _fileManager.copyItem(at: _ipa, to: destinationURL)
 		_ipa = destinationURL

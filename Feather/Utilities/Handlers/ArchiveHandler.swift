@@ -36,13 +36,8 @@ final class ArchiveHandler: NSObject {
 		
 		let payloadUrl = _uniqueWorkDir.appendingPathComponent("Payload")
 		let movedAppURL = payloadUrl.appendingPathComponent(appUrl.lastPathComponent)
-		
-		if !_fileManager.fileExists(atPath: _uniqueWorkDir.path) {
-			try _fileManager.createDirectory(
-				at: payloadUrl,
-				withIntermediateDirectories: true
-			)
-		}
+
+		try _fileManager.createDirectoryIfNeeded(at: payloadUrl)
 		
 		try _fileManager.copyItem(at: appUrl, to: movedAppURL)
 		_payloadUrl = payloadUrl

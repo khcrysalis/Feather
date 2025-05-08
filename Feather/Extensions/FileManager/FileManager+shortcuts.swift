@@ -8,7 +8,13 @@
 import Foundation.NSFileManager
 
 extension FileManager {
-	func moveFile(from sourceURL: URL, to destinationURL: URL) throws {
+	func removeFileIfNeeded(at url: URL) throws {
+		if self.fileExists(atPath: url.path) {
+			try self.removeItem(at: url)
+		}
+	}
+	
+	func moveFileIfNeeded(from sourceURL: URL, to destinationURL: URL) throws {
 		if !self.fileExists(atPath: destinationURL.path) {
 			try self.moveItem(at: sourceURL, to: destinationURL)
 		}

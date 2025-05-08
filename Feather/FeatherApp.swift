@@ -74,12 +74,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 			URL.documentsDirectory.appendingPathComponent($0)
 		}
 		
-		for url in directories where !fileManager.fileExists(atPath: url.path) {
-			try? fileManager.createDirectory(
-				at: url,
-				withIntermediateDirectories: true,
-				attributes: nil
-			)
+		for url in directories {
+			try? fileManager.createDirectoryIfNeeded(at: url)
 		}
 	}
 }

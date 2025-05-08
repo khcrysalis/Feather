@@ -73,11 +73,11 @@ class TweakHandler {
 				try await _handleDylib(at: url)
 			case "framework":
 				let destinationURL = _app.appendingPathComponent("Frameworks").appendingPathComponent(url.lastPathComponent)
-				try _fileManager.moveFile(from: url, to: destinationURL)
+				try _fileManager.moveFileIfNeeded(from: url, to: destinationURL)
 				try await _handleDylib(framework: destinationURL)
 			case "bundle":
 				let destinationURL = _app.appendingPathComponent(url.lastPathComponent)
-				try _fileManager.moveFile(from: url, to: destinationURL)
+				try _fileManager.moveFileIfNeeded(from: url, to: destinationURL)
 			default:
 				print("Unsupported file type: \(url.lastPathComponent), skipping.")
 			}
@@ -87,7 +87,7 @@ class TweakHandler {
 	// Inject imported dylib file
 	private func _handleDylib(at url: URL) async throws {
 		let destinationURL = _app.appendingPathComponent("Frameworks").appendingPathComponent(url.lastPathComponent)
-		try _fileManager.moveFile(from: url, to: destinationURL)
+		try _fileManager.moveFileIfNeeded(from: url, to: destinationURL)
 		
 		guard let appexe = Bundle(url: _app)?.executableURL else {
 			return
