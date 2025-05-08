@@ -155,8 +155,16 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 			}
 		}
 		
-		func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 80 }
-		func numberOfSections(in tableView: UITableView) -> Int { return 1 }
+		// MARK: - Delegate
+		func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+			return UserDefaults.standard.integer(forKey: "Feather.storeCellAppearance") == 0
+			? 80
+			: UITableView.automaticDimension
+		}
+		
+		func numberOfSections(in tableView: UITableView) -> Int {
+			return 1
+		}
 		
 		func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 			return _sortedApps.count
@@ -220,6 +228,7 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 			}
 		}
 		
+		// MARK: - Actions
 		private func _contextActions(
 			for app: ASRepository.App,
 			with action: @escaping (URL?) -> Void,

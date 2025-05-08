@@ -12,6 +12,8 @@ import Combine
 // thats a whole pharaghraph of codes
 struct SourceAppsCellView: View {
 	@ObservedObject var downloadManager = DownloadManager.shared
+	@AppStorage("Feather.storeCellAppearance") private var _storeCellAppearance: Int = 0
+	
 	@State private var _downloadProgress: Double = 0
 	@State var cancellable: AnyCancellable? // Combine
 	
@@ -22,13 +24,24 @@ struct SourceAppsCellView: View {
 	var app: ASRepository.App
 	
 	var body: some View {
-		HStack(spacing: 2) {
-			FRIconCellView(
-				title: app.currentName,
-				subtitle: _appDescription(app: app),
-				iconUrl: app.iconURL
-			)
-			_download()
+		VStack {
+			HStack(spacing: 2) {
+				FRIconCellView(
+					title: app.currentName,
+					subtitle: _appDescription(app: app),
+					iconUrl: app.iconURL
+				)
+				_download()
+			}
+			
+			if _storeCellAppearance != 0 {
+				Text(app.localizedDescription ?? "")
+					.frame(maxWidth: .infinity, alignment: .leading)
+					.font(.subheadline)
+					.foregroundStyle(.secondary)
+					.lineLimit(18)
+					.padding(.top, 2)
+			}
 		}
 		.onAppear(perform: _setupDownloadObserver)
 		.onDisappear {
