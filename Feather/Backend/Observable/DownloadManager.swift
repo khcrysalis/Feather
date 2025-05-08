@@ -16,7 +16,7 @@ class Download: Identifiable {
 	@Published var unpackageProgress: Double = 0.0
 	
 	var overallProgress: Double {
-		(unpackageProgress + progress) / 2.0
+		(0.3 * unpackageProgress) + (0.7 * progress)
 	}
 	
     var task: URLSessionDownloadTask?
@@ -157,7 +157,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         guard
-			let error,
+			let _ = error,
 			let downloadTask = task as? URLSessionDownloadTask,
 			let download = getDownloadTask(by: downloadTask)
 		else {
