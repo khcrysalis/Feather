@@ -57,16 +57,15 @@ struct SourceAppsCellView: View {
 		cancellable?.cancel()
 		
 		if let currentDownload {
-			_downloadProgress = currentDownload.progress
+			_downloadProgress = currentDownload.overallProgress
 			
-			let publisher = Publishers.CombineLatest3(
+			let publisher = Publishers.CombineLatest(
 				currentDownload.$progress,
-				currentDownload.$bytesDownloaded,
-				currentDownload.$totalBytes
+				currentDownload.$unpackageProgress
 			)
 			
-			cancellable = publisher.sink { (progress, status, bytes) in
-				self._downloadProgress = progress
+			cancellable = publisher.sink { _, _ in
+				self._downloadProgress = currentDownload.overallProgress
 			}
 		}
 	}

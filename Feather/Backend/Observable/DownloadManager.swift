@@ -10,9 +10,14 @@ import Combine
 import UIKit.UIImpactFeedbackGenerator
 
 class Download: Identifiable {
-	@Published var progress: Double = 0
+	@Published var progress: Double = 0.0
 	@Published var bytesDownloaded: Int64 = 0
 	@Published var totalBytes: Int64 = 0
+	@Published var unpackageProgress: Double = 0.0
+	
+	var overallProgress: Double {
+		(unpackageProgress + progress) / 2.0
+	}
 	
     var task: URLSessionDownloadTask?
     var resumeData: Data?
@@ -89,11 +94,19 @@ class DownloadManager: NSObject, ObservableObject {
 	func getDownload(by id: String) -> Download? {
 		return downloads.first(where: { $0.id == id })
 	}
+	
+	func getDownloadIndex(by id: String) -> Int? {
+		return downloads.firstIndex(where: { $0.id == id })
+	}
+	
+	func getDownloadTask(by task: URLSessionDownloadTask) -> Download? {
+		return downloads.first(where: { $0.task == task })
+	}
 }
 
 extension DownloadManager: URLSessionDownloadDelegate {
 	func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-		guard let download = downloads.first(where: { $0.task == downloadTask }) else { return }
+		guard let download = getDownloadTask(by: downloadTask) else { return }
 		
 		let tempDirectory = FileManager.default.temporaryDirectory
 		let customTempDir = tempDirectory.appendingPathComponent("FeatherDownloads", isDirectory: true)
@@ -106,17 +119,21 @@ extension DownloadManager: URLSessionDownloadDelegate {
 			let destinationURL = customTempDir.appendingPathComponent(suggestedFileName)
 			
 			try FileManager.default.removeFileIfNeeded(at: destinationURL)
-			
 			try FileManager.default.moveItem(at: location, to: destinationURL)
 			
-			FR.handlePackageFile(destinationURL) { err in
+			// Mark the download as complete
+			DispatchQueue.main.async {
+				download.progress = 1.0
+			}
+			
+			FR.handlePackageFile(destinationURL, download: download) { err in
 				if err != nil {
 					let generator = UINotificationFeedbackGenerator()
 					generator.notificationOccurred(.error)
 				}
 				
 				DispatchQueue.main.async {
-					if let index = self.downloads.firstIndex(where: { $0.id == download.id }) {
+					if let index = self.getDownloadIndex(by: download.id) {
 						self.downloads.remove(at: index)
 					}
 				}
@@ -127,10 +144,12 @@ extension DownloadManager: URLSessionDownloadDelegate {
 	}
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        guard let download = downloads.first(where: { $0.task == downloadTask }) else { return }
+        guard let download = getDownloadTask(by: downloadTask) else { return }
         
         DispatchQueue.main.async {
-            download.progress = totalBytesExpectedToWrite > 0 ? Double(totalBytesWritten) / Double(totalBytesExpectedToWrite) : 0
+            download.progress = totalBytesExpectedToWrite > 0
+			? Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
+			: 0
             download.bytesDownloaded = totalBytesWritten
             download.totalBytes = totalBytesExpectedToWrite
         }
@@ -138,14 +157,15 @@ extension DownloadManager: URLSessionDownloadDelegate {
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         guard
+			let error,
 			let downloadTask = task as? URLSessionDownloadTask,
-        	let download = downloads.first(where: { $0.task == downloadTask })
+			let download = getDownloadTask(by: downloadTask)
 		else {
 			return
 		}
 		
 		DispatchQueue.main.async {
-			if let index = self.downloads.firstIndex(where: { $0.id == download.id }) {
+			if let index = self.getDownloadIndex(by: download.id) {
 				self.downloads.remove(at: index)
 			}
 		}

@@ -22,7 +22,7 @@ struct InstallPreviewView: View {
 	#endif
 	
 	var app: AppInfoPresentable
-	@StateObject var viewModel: StatusViewModel
+	@StateObject var viewModel: InstallerStatusViewModel
 	#if SERVER
 	@StateObject var installer: ServerInstaller
 	#endif
@@ -31,7 +31,7 @@ struct InstallPreviewView: View {
 	init(app: AppInfoPresentable, isSharing: Bool = false) {
 		self.app = app
 		self.isSharing = isSharing
-		let viewModel = StatusViewModel()
+		let viewModel = InstallerStatusViewModel()
 		self._viewModel = StateObject(wrappedValue: viewModel)
 		#if SERVER
 		self._installer = StateObject(wrappedValue: try! ServerInstaller(app: app, viewModel: viewModel))

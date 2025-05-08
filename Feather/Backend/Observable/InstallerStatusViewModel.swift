@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class StatusViewModel: ObservableObject {
+final class InstallerStatusViewModel: ObservableObject {
 	@Published var status: InstallerStatus
 	
 	@Published var uploadProgress: Double = 0.0

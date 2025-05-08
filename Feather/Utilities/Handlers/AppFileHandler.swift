@@ -7,24 +7,26 @@
 
 import Foundation
 import Zip
+import SwiftUICore
 
 final class AppFileHandler: NSObject {
 	private let _fileManager = FileManager.default
 	private let _uuid = UUID().uuidString
 	private let _uniqueWorkDir: URL
 	var uniqueWorkDirPayload: URL?
-	//
-	//
-	//
+
 	private var _ipa: URL
 	private let _install: Bool
+	private let _download: Download?
 	
 	init(
 		file ipa: URL,
-		install: Bool = false
+		install: Bool = false,
+		download: Download? = nil
 	) {
 		self._ipa = ipa
 		self._install = install
+		self._download = download
 		self._uniqueWorkDir = _fileManager.temporaryDirectory
 			.appendingPathComponent("FeatherImport_\(_uuid)", isDirectory: true)
 		
@@ -50,6 +52,12 @@ final class AppFileHandler: NSObject {
 		
 		try Zip.unzipFile(_ipa, destination: _uniqueWorkDir, overwrite: true, password: nil, progress: { progress in
 			print("[\(self._uuid)] Unzip progress: \(progress)")
+			
+			if let download = self._download {
+				DispatchQueue.main.async {
+					download.unpackageProgress = progress
+				}
+			}
 		})
 		uniqueWorkDirPayload = _uniqueWorkDir.appendingPathComponent("Payload")
 	}

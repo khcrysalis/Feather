@@ -13,10 +13,11 @@ import NimbleJSON
 enum FR {
 	static func handlePackageFile(
 		_ ipa: URL,
+		download: Download? = nil,
 		completion: @escaping (Error?) -> Void
 	) {
 		Task.detached {
-			let handler = AppFileHandler(file: ipa)
+			let handler = AppFileHandler(file: ipa, download: download)
 			
 			do {
 				try await handler.copy()

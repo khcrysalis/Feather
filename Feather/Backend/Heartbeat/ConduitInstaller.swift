@@ -16,9 +16,9 @@ class ConduitInstaller: Identifiable, ObservableObject {
 	typealias AfcFileHandle = OpaquePointer
 	typealias InstallationProxyClientHandle = OpaquePointer
 	
-	@ObservedObject var viewModel: StatusViewModel
+	@ObservedObject var viewModel: InstallerStatusViewModel
 	
-	init(viewModel: StatusViewModel) {
+	init(viewModel: InstallerStatusViewModel) {
 		self.viewModel = viewModel
 	}
 	

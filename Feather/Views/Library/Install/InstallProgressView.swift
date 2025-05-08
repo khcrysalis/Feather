@@ -11,7 +11,7 @@ struct InstallProgressView: View {
 	@State private var _isPulsing = false
 	
 	var app: AppInfoPresentable
-	@ObservedObject var viewModel: StatusViewModel
+	@ObservedObject var viewModel: InstallerStatusViewModel
 	
 	var body: some View {
 		VStack(spacing: 12) {
