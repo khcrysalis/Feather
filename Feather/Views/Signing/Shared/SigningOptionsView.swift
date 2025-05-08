@@ -33,8 +33,6 @@ struct SigningOptionsView: View {
 				Text(
 				  """
 				  Enabling any protection will append a random string to the bundleidentifiers of the apps you sign, this is to ensure your Apple ID does not get flagged by Apple. However, when using a signing service you can ignore this.
-				  
-				  Dynamic protection will only apply the random string to apps found on the App Store, as a caveat this requires an internet connection.
 				  """
 				)
 			}
