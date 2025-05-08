@@ -157,9 +157,7 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 		
 		// MARK: - Delegate
 		func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-			return UserDefaults.standard.integer(forKey: "Feather.storeCellAppearance") == 0
-			? 80
-			: UITableView.automaticDimension
+			return UITableView.automaticDimension
 		}
 		
 		func numberOfSections(in tableView: UITableView) -> Int {

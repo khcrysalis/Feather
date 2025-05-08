@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AltSourceKit
+import NimbleViews
 import Combine
 
 // thats a whole pharaghraph of codes
@@ -117,24 +118,12 @@ extension SourceAppsCellView {
 						_ = downloadManager.startDownload(from: url, id: app.currentUniqueId)
 					}
 				} label: {
-					_buttonLabel("arrow.down")
+					NBButton("", systemImage: "arrow.down", horizontalPadding: 0)
 				}
 				.buttonStyle(.borderless)
 				.compatTransition()
 			}
 		}
 		.animation(.easeInOut(duration: 0.3), value: currentDownload != nil)
-	}
-	
-	@ViewBuilder
-	private func _buttonLabel(_ systemImage: String) -> some View {
-		Group {
-			Image(systemName: systemImage)
-				.foregroundStyle(.tint)
-				.font(.footnote).bold()
-		}
-		.frame(width: 66, height: 29)
-		.background(Color(uiColor: .quaternarySystemFill))
-		.clipShape(Capsule())
 	}
 }
