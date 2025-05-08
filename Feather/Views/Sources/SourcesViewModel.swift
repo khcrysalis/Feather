@@ -12,6 +12,8 @@ import NimbleJSON
 
 // MARK: - Class
 final class SourcesViewModel: ObservableObject {
+	static let shared = SourcesViewModel()
+	
 	typealias RepositoryDataHandler = Result<ASRepository, Error>
 	
 	private let _dataService = NBFetchService()
