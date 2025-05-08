@@ -57,7 +57,7 @@
 				"Backend/Server/ServerInstaller+TLS.swift",
 				Resources/ellekit.deb,
 				Resources/Info.plist,
-				Views/Settings/Models/ServerPackModel.swift,
+				"Views/Settings/Server & SSL/Models/ServerPackModel.swift",
 				"Views/Settings/Server & SSL/ServerView.swift",
 			);
 			target = 3305BB3C2DB893A500660D45 /* Feather (idevice) */;
