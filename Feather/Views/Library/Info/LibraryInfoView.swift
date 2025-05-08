@@ -82,7 +82,7 @@ extension LibraryInfoView {
 			NavigationLink("Alternative Icons") {
 				SigningAlternativeIconView(app: app, appIcon: .constant(nil), isModifing: .constant(false))
 			}
-			NavigationLink("Frameworks & Plugins") {
+			NavigationLink("Frameworks & PlugIns") {
 				SigningFrameworksView(app: app, options: .constant(nil))
 			}
 		}
