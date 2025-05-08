@@ -23,7 +23,7 @@ extension Storage {
 	) {
 		let generator = UIImpactFeedbackGenerator(style: .light)
 		
-		var new = Imported(context: context)
+		let new = Imported(context: context)
 		
 		new.uuid = uuid
 		new.source = source
