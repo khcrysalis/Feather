@@ -50,17 +50,13 @@ struct SigningView: View {
 				_customizationOptions(for: app)
 				_cert()
 				_customizationProperties(for: app)
-				
 			}
 			.safeAreaInset(edge: .bottom) {
 				Button() {
 					_start()
 				} label: {
-					_sheetButton("Start Signing")
+					NBSheetButton(title: "Start Signing")
 				}
-				.animation(.smooth, value: _isSigning)
-				.frame(height: 50)
-				.padding()
 			}
 			.toolbar {
 				NBToolbarButton(role: .dismiss)
@@ -75,7 +71,6 @@ struct SigningView: View {
 					appIcon = nil
 				}
 			}
-			// Image shit
 			.sheet(isPresented: $_isAltPickerPresenting) { SigningAlternativeIconView(app: app, appIcon: $appIcon, isModifing: .constant(true)) }
 			.sheet(isPresented: $_isFilePickerPresenting) {
 				FileImporterRepresentableView(
@@ -237,18 +232,6 @@ extension SigningView {
 				Text(desc ?? "Unknown")
 			}
 		}
-	}
-	
-	@ViewBuilder
-	private func _sheetButton(_ title: String) -> some View {
-		Text(title)
-			.frame(maxWidth: .infinity, maxHeight: .infinity)
-			.background(Color.accentColor)
-			.foregroundColor(.white)
-			.clipShape(
-				RoundedRectangle(cornerRadius: 12, style: .continuous)
-			)
-			.bold()
 	}
 }
 
