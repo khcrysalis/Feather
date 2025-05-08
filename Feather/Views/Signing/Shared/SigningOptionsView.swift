@@ -23,13 +23,12 @@ struct SigningOptionsView: View {
 						temporaryValue: temporaryOptions?.ppqProtection
 				)
 				#warning("add dynamic protect (itunes api)")
-				_toggle("Dynamic Protection",
-						systemImage: "shield.lefthalf.filled",
-						isOn: $options.dynamicProtection,
-						temporaryValue: temporaryOptions?.dynamicProtection
-				)
+//				_toggle("Dynamic Protection",
+//						systemImage: "shield.lefthalf.filled",
+//						isOn: $options.dynamicProtection,
+//						temporaryValue: temporaryOptions?.dynamicProtection
+//				)
 //					.disabled(!options.ppqProtection)
-				.disabled(true)
 			} footer: {
 				Text(
 				  """
