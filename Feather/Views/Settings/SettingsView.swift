@@ -23,6 +23,10 @@ struct SettingsView: View {
 				
 				_feedback()
 				
+				Section {
+					NavigationLink("Appearance", destination: AppearanceView())
+				}
+				
 				NBSection("Features") {
 					NavigationLink("Certificates", destination: CertificatesView())
 					NavigationLink("Signing Options", destination: ConfigurationView())

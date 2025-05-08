@@ -41,7 +41,6 @@ struct ServerView: View {
 							}
 						}
 					}
-					
 				}
 			}
 		}

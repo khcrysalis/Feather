@@ -20,9 +20,9 @@ struct SourcesAddView: View {
 	
 	@State private var addingSource = false
 	@State private var sourceURL = ""
-		
+	
 	// MARK: Body
-    var body: some View {
+	var body: some View {
 		NBNavigationView("Add Source", displayMode: .inline) {
 			Form {
 				NBSection("Source") {
@@ -60,7 +60,7 @@ struct SourcesAddView: View {
 				}
 			}
 		}
-    }
+	}
 	
 	private func _add(_ urlString: String) {
 		guard let url = URL(string: urlString) else { return }
@@ -93,8 +93,6 @@ struct SourcesAddView: View {
 		let handler = ASDeobfuscator(with: code)
 		let repoUrls = handler.decode().compactMap { URL(string: $0) }
 
-		print(repoUrls)
-		
 		guard !repoUrls.isEmpty else { return }
 		
 		actor RepositoryCollector {
@@ -145,5 +143,6 @@ struct SourcesAddView: View {
 				}
 			}
 		}
-	}}
+	}
+}
 
