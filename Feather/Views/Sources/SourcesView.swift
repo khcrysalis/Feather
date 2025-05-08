@@ -30,7 +30,7 @@ struct SourcesView: View {
 	// MARK: Body
 	var body: some View {
 		NBNavigationView("Sources") {
-			List {
+			NBListAdaptable {
 				Section {
 					NavigationLink {
 						SourceAppsView(object: Array(_sources), viewModel: viewModel)
@@ -43,6 +43,7 @@ struct SourcesView: View {
 							)
 						}
 					}
+					.buttonStyle(.plain)
 				}
 				
 				NBSection(
@@ -55,10 +56,10 @@ struct SourcesView: View {
 						} label: {
 							SourcesCellView(source: source)
 						}
+						.buttonStyle(.plain)
 					}
 				}
 			}
-			.listStyle(.plain)
 			.searchable(text: $_searchText, placement: .platform())
 			.toolbar {
 				NBToolbarButton(

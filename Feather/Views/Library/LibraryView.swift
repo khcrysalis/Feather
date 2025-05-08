@@ -27,7 +27,10 @@ struct LibraryView: View {
 	
 	// horror
 	private func filteredAndSortedApps<T>(from apps: FetchedResults<T>) -> [T] where T: NSManagedObject {
-		apps.filter { _searchText.isEmpty || (($0.value(forKey: "name") as? String)?.localizedCaseInsensitiveContains(_searchText) ?? false) }
+		apps.filter {
+			_searchText.isEmpty ||
+			(($0.value(forKey: "name") as? String)?.localizedCaseInsensitiveContains(_searchText) ?? false)
+		}
 	}
 	
 	private var _filteredSignedApps: [Signed] {
@@ -54,7 +57,7 @@ struct LibraryView: View {
 	// MARK: Body
     var body: some View {
 		NBNavigationView("Library") {
-			List {
+			NBListAdaptable {
 				if
 					_selectedScope == .all ||
 					_selectedScope == .signed
@@ -95,7 +98,6 @@ struct LibraryView: View {
 					}
 				}
 			}
-			.listStyle(.plain)
 			.searchable(text: $_searchText, placement: .platform())
 			.compatSearchScopes($_selectedScope) {
 				ForEach(Scope.allCases, id: \.displayName) { scope in
