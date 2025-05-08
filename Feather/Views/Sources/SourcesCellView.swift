@@ -46,6 +46,5 @@ extension SourcesCellView {
 		Button("Copy", systemImage: "doc.on.clipboard") {
 			UIPasteboard.general.string = source.sourceURL?.absoluteString
 		}
-		.tint(.accentColor)
 	}
 }

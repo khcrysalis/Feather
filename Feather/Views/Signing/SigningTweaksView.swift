@@ -36,31 +36,14 @@ struct SigningTweaksView: View {
 				allowedContentTypes: [.dylib, .deb],
 				onDocumentsPicked: { urls in
 					guard let selectedFileURL = urls.first else { return }
-					_moveTweak(selectedFileURL)
+					
+					FileManager.default.moveAndStore(selectedFileURL, with: "FeatherTweak") { url in
+						options.injectionFiles.append(url)
+					}
 				}
 			)
 		}
 		.animation(.smooth, value: options.injectionFiles)
-	}
-	
-	#warning("this can be improved")
-	private func _moveTweak(_ url: URL) {
-		let fileManager = FileManager.default
-		let tempDir = fileManager.temporaryDirectory
-			.appendingPathComponent("FeatherTweak_\(UUID().uuidString)", isDirectory: true)
-		let destinationUrl = tempDir.appendingPathComponent(url.lastPathComponent)
-		
-		Task {
-			do {
-				if !fileManager.fileExists(atPath: tempDir.path) {
-					try fileManager.createDirectory(at: tempDir, withIntermediateDirectories: true)
-				}
-								
-				try fileManager.copyItem(at: url, to: destinationUrl)
-				
-				options.injectionFiles.append(destinationUrl)
-			}
-		}
 	}
 }
 
@@ -73,20 +56,14 @@ extension SigningTweaksView {
 			.frame(maxWidth: .infinity, alignment: .leading)
 			.swipeActions(edge: .trailing, allowsFullSwipe: true) {
 				Button(role: .destructive) {
-					_deleteFile(at: tweak)
+					FileManager.default.deleteStored(tweak) { url in
+						if let index = options.injectionFiles.firstIndex(where: { $0 == url }) {
+							options.injectionFiles.remove(at: index)
+						}
+					}
 				} label: {
 					Label("Delete", systemImage: "trash")
 				}
 			}
-	}
-	
-	private func _deleteFile(at url: URL) {
-		if let index = options.injectionFiles.firstIndex(where: { $0 == url }) {
-			options.injectionFiles.remove(at: index)
-		}
-		
-		do {
-			try? FileManager.default.removeItem(at: url)
-		}
 	}
 }

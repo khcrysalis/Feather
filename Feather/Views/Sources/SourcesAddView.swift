@@ -18,15 +18,14 @@ struct SourcesAddView: View {
 	
 	private let _dataService = NBFetchService()
 	
-	@State private var addingSource = false
-	@State private var sourceURL = ""
+	@State private var _sourceURL = ""
 	
 	// MARK: Body
 	var body: some View {
 		NBNavigationView("Add Source", displayMode: .inline) {
 			Form {
 				NBSection("Source") {
-					TextField("Source Repo URL", text: $sourceURL)
+					TextField("Source Repo URL", text: $_sourceURL)
 						.keyboardType(.URL)
 				} footer: {
 					Text("Enter a URL to start validation.")
@@ -54,9 +53,9 @@ struct SourcesAddView: View {
 					systemImage: "checkmark",
 					style: .text,
 					placement: .confirmationAction,
-					isDisabled: sourceURL.isEmpty
+					isDisabled: _sourceURL.isEmpty
 				) {
-					_add(sourceURL)
+					_add(_sourceURL)
 				}
 			}
 		}

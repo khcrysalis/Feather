@@ -42,9 +42,7 @@ struct SigningView: View {
 		let storedCert = UserDefaults.standard.integer(forKey: "feather.selectedCert")
 		__temporaryCertificate = State(initialValue: storedCert)
 	}
-	
-	#warning("we need to make the certificates cell a reusable view")
-	
+		
 	// MARK: Body
     var body: some View {
 		NBNavigationView(app.name ?? "Unknown", displayMode: .inline) {
@@ -185,9 +183,6 @@ extension SigningView {
 						isSelectedInfoPresenting: .constant(.none)
 					)
 				}
-			} else {
-				Text("No valid certificate selected.")
-					.foregroundStyle(Color.disabled())
 			}
 		}
 	}

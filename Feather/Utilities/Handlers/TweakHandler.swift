@@ -38,9 +38,9 @@ class TweakHandler {
 		}
 
 		let baseTmpDir = _fileManager.temporaryDirectory.appendingPathComponent("FeatherTweak_\(UUID().uuidString)")
-		
-		try TweakHandler.createDirectoryIfNeeded(at: _app.appendingPathComponent("Frameworks"))
-		try TweakHandler.createDirectoryIfNeeded(at: baseTmpDir)
+
+		try _fileManager.createDirectoryIfNeeded(at: _app.appendingPathComponent("Frameworks"))
+		try _fileManager.createDirectoryIfNeeded(at: baseTmpDir)
 		
 		// check for appropriate files, if theres debs
 		// it will extract then add a url, if theres no url, i.e.
@@ -73,11 +73,11 @@ class TweakHandler {
 				try await _handleDylib(at: url)
 			case "framework":
 				let destinationURL = _app.appendingPathComponent("Frameworks").appendingPathComponent(url.lastPathComponent)
-				try TweakHandler.moveFile(from: url, to: destinationURL)
+				try _fileManager.moveFile(from: url, to: destinationURL)
 				try await _handleDylib(framework: destinationURL)
 			case "bundle":
 				let destinationURL = _app.appendingPathComponent(url.lastPathComponent)
-				try TweakHandler.moveFile(from: url, to: destinationURL)
+				try _fileManager.moveFile(from: url, to: destinationURL)
 			default:
 				print("Unsupported file type: \(url.lastPathComponent), skipping.")
 			}
@@ -87,9 +87,9 @@ class TweakHandler {
 	// Inject imported dylib file
 	private func _handleDylib(at url: URL) async throws {
 		let destinationURL = _app.appendingPathComponent("Frameworks").appendingPathComponent(url.lastPathComponent)
-		try TweakHandler.moveFile(from: url, to: destinationURL)
+		try _fileManager.moveFile(from: url, to: destinationURL)
 		
-		guard let appexe = try TweakHandler.findExecutable(at: _app) else {
+		guard let appexe = Bundle(url: _app)?.executableURL else {
 			return
 		}
 		
@@ -112,8 +112,8 @@ class TweakHandler {
 	// Inject imported framework dir
 	private func _handleDylib(framework: URL) async throws {
 		guard
-			let fexe = try TweakHandler.findExecutable(at: framework),
-			let appexe = try TweakHandler.findExecutable(at: _app)
+			let fexe = Bundle(url: framework)?.executableURL,
+			let appexe = Bundle(url: _app)?.executableURL
 		else {
 			return
 		}
@@ -137,7 +137,7 @@ class TweakHandler {
 	// Extracy imported deb file
 	private func _handleDeb(at url: URL, baseTmpDir: URL) async throws {
 		let uniqueSubDir = baseTmpDir.appendingPathComponent(UUID().uuidString)
-		try TweakHandler.createDirectoryIfNeeded(at: uniqueSubDir)
+		try _fileManager.createDirectoryIfNeeded(at: uniqueSubDir)
 		
 		// I don't particularly like this code
 		// but it somehow works well enough,
@@ -252,40 +252,6 @@ extension TweakHandler {
 		}
 		
 		return frameworkDirectories
-	}
-}
-
-
-#warning("this functions may be redundent")
-// MARK: - File management
-extension TweakHandler {
-	private static func createDirectoryIfNeeded(at url: URL) throws {
-		let fileManager = FileManager.default
-		if !fileManager.fileExists(atPath: url.path) {
-			try fileManager.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
-		}
-	}
-	
-	public static func findExecutable(at frameworkURL: URL) throws -> URL? {
-		
-		let infoPlistURL = frameworkURL.appendingPathComponent("Info.plist")
-		
-		let plistData = try Data(contentsOf: infoPlistURL)
-		if let plist = try PropertyListSerialization.propertyList(from: plistData, options: [], format: nil) as? [String: Any],
-		   let executableName = plist["CFBundleExecutable"] as? String {
-			let executableURL = frameworkURL.appendingPathComponent(executableName)
-			return executableURL
-		} else {
-			print("CFBundleExecutable not found in Info.plist")
-			return nil
-		}
-	}
-
-	private static func moveFile(from sourceURL: URL, to destinationURL: URL) throws {
-		let fileManager = FileManager.default
-		if !fileManager.fileExists(atPath: destinationURL.path) {
-			try fileManager.moveItem(at: sourceURL, to: destinationURL)
-		}
 	}
 }
 
