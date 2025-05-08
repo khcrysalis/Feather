@@ -20,7 +20,6 @@ final class SourcesViewModel: ObservableObject {
 	
 	var isFinished = true
 	@Published var sources: [AltSource: ASRepository] = [:]
-	@Published var status: [AltSource: RepoStatus] = [:]
 	
 	func fetchSources(_ sources: FetchedResults<AltSource>, refresh: Bool = false) async {
 		guard isFinished else { return }
@@ -35,36 +34,25 @@ final class SourcesViewModel: ObservableObject {
 		
 		await MainActor.run {
 			self.sources = [:]
-			// set loading status for all sources
-			for source in sources {
-				self.status[source] = .loading
-			}
-		}
-		
-		// remove statuses for sources that dont exist anymore
-		await MainActor.run {
-			self.status = self.status.filter { source in
-				sources.contains(where: { $0.identifier == source.key.identifier })
-			}
 		}
 		
 		await withTaskGroup(
-			of: (RepoStatus, AltSource, ASRepository?).self,
+			of: (AltSource, ASRepository?).self,
 			returning: Void.self
 		) { group in
 			for source in sources {
 				group.addTask {
 					guard let url = source.sourceURL else {
-						return (.error(NBFetchService.NBFetchServiceError.invalidURL), source, nil)
+						return (source, nil)
 					}
 					
 					return await withCheckedContinuation { continuation in
 						self._dataService.fetch(from: url) { (result: RepositoryDataHandler) in
 							switch result {
 							case .success(let repo):
-								continuation.resume(returning: (.ready, source, repo))
-							case .failure(let error):
-								continuation.resume(returning: (.error(error), source, nil))
+								continuation.resume(returning: (source, repo))
+							case .failure(_):
+								continuation.resume(returning: (source, nil))
 							}
 						}
 					}
@@ -72,20 +60,13 @@ final class SourcesViewModel: ObservableObject {
 			}
 			
 			for await tuple in group {
-				let (status, source, repo) = tuple
+				let (source, repo) = tuple
 				await MainActor.run {
 					if let repo {
 						self.sources[source] = repo
 					}
-					self.status[source] = status
 				}
 			}
 		}
 	}
-}
-
-enum RepoStatus {
-	case ready
-	case loading
-	case error(Error)
 }
