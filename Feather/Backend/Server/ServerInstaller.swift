@@ -21,10 +21,10 @@ class ServerInstaller: Identifiable, ObservableObject {
 	
 	var packageUrl: URL?
 	var app: AppInfoPresentable
-	@ObservedObject var viewModel: StatusViewModel
+	@ObservedObject var viewModel: InstallerStatusViewModel
 	private let _server: Application
 
-	init(app: AppInfoPresentable, viewModel: StatusViewModel) throws {
+	init(app: AppInfoPresentable, viewModel: InstallerStatusViewModel) throws {
 		self.app = app
 		self.viewModel = viewModel
 		self._server = try Self.setupApp(port: port)
