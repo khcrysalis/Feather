@@ -121,11 +121,6 @@ extension DownloadManager: URLSessionDownloadDelegate {
 			try FileManager.default.removeFileIfNeeded(at: destinationURL)
 			try FileManager.default.moveItem(at: location, to: destinationURL)
 			
-			// Mark the download as complete
-			DispatchQueue.main.async {
-				download.progress = 1.0
-			}
-			
 			FR.handlePackageFile(destinationURL, download: download) { err in
 				if err != nil {
 					let generator = UINotificationFeedbackGenerator()
