@@ -10,19 +10,31 @@ import NimbleViews
 
 struct AppearanceView: View {
 	@AppStorage("Feather.libraryCellAppearance") private var _libraryCellAppearance: Int = 0
-	private let _libraryCellAppearanceMethods = ["Expiration Pills", "Expiration On Top"]
+	private let _libraryCellAppearanceMethods = ["Standard", "Expiration Pill"]
+	
+	@AppStorage("Feather.storeCellAppearance") private var _storeCellAppearance: Int = 0
+	private let _storeCellAppearanceMethods = ["Standard", "Big Description"]
 	
     var body: some View {
 		NBList("Appearance") {
 			NBSection("Library") {
 				_libraryPreview()
 				Picker("Library Cell Appearance", selection: $_libraryCellAppearance) {
-					ForEach(_libraryCellAppearanceMethods.indices, id: \.self) { index in
+					ForEach(_libraryCellAppearanceMethods.indices, id: \.description) { index in
 						Text(_libraryCellAppearanceMethods[index]).tag(index)
 					}
 				}
 				.pickerStyle(.inline)
 				.labelsHidden()
+			}
+			
+			NBSection("Store") {
+				Picker("Store Cell Appearance", selection: $_storeCellAppearance) {
+					ForEach(_storeCellAppearanceMethods.indices, id: \.description) { index in
+						Text(_storeCellAppearanceMethods[index]).tag(index)
+					}
+				}
+				.pickerStyle(.inline)
 			}
 		}
     }
