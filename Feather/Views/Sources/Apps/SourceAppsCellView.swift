@@ -60,7 +60,7 @@ struct SourceAppsCellView: View {
 	private func _appDescription(app: ASRepository.App) -> String {
 		let optionalComponents: [String?] = [
 			app.currentVersion,
-			app.subtitle ?? "An awesome application"
+			app.subtitle ?? app.localizedDescription ?? "An awesome application"
 		]
 		
 		let components: [String] = optionalComponents.compactMap { value in
