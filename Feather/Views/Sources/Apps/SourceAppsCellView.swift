@@ -102,13 +102,16 @@ extension SourceAppsCellView {
 						.stroke(Color.accentColor, style: StrokeStyle(lineWidth: 2.3, lineCap: .round))
 						.rotationEffect(.degrees(-90))
 						.frame(width: 29, height: 29)
+						.animation(.smooth, value: _downloadProgress)
 					
-					Image(systemName: _downloadProgress >= 0.99 ? "checkmark" : "square.fill")
+					Image(systemName: _downloadProgress >= 0.75 ? "archivebox" : "square.fill")
 						.foregroundStyle(.tint)
 						.font(.footnote).bold()
 				}
 				.onTapGesture {
-					downloadManager.cancelDownload(currentDownload)
+					if _downloadProgress <= 0.75 {
+						downloadManager.cancelDownload(currentDownload)
+					}
 				}
 				.compatTransition()
 			} else {
