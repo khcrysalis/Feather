@@ -53,7 +53,6 @@ struct CertificatesAddView: View {
 				
 				NBToolbarButton(
 					.localized("Save"),
-					systemImage: "",
 					style: .text,
 					placement: .confirmationAction,
 					isDisabled: saveButtonDisabled

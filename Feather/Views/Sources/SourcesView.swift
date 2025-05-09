@@ -63,7 +63,6 @@ struct SourcesView: View {
 			.searchable(text: $_searchText, placement: .platform())
 			.toolbar {
 				NBToolbarButton(
-					.localized("Add"),
 					systemImage: "plus",
 					style: .icon,
 					placement: .topBarTrailing,

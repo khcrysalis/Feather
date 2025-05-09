@@ -51,7 +51,6 @@ struct CertificatesView: View {
 		.toolbar {
 			if bindingSelectedCert == nil {
 				NBToolbarButton(
-					"",
 					systemImage: "plus",
 					style: .icon,
 					placement: .topBarTrailing

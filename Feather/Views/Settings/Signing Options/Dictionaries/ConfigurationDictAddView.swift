@@ -34,7 +34,6 @@ struct ConfigurationDictAddView: View {
 		.toolbar {
 			NBToolbarButton(
 				"Save",
-				systemImage: "",
 				style: .text,
 				placement: .confirmationAction,
 				isDisabled: saveButtonDisabled

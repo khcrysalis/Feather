@@ -23,7 +23,6 @@ struct SigningTweaksView: View {
 		.listStyle(.plain)
 		.toolbar {
 			NBToolbarButton(
-				"",
 				systemImage: "plus",
 				style: .icon,
 				placement: .topBarTrailing

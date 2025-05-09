@@ -31,7 +31,6 @@ struct SigningPropertiesView: View {
 		.toolbar {
 			NBToolbarButton(
 				.localized("Save"),
-				systemImage: "",
 				style: .text,
 				placement: .topBarTrailing,
 				isDisabled: saveButtonDisabled

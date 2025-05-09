@@ -50,7 +50,6 @@ struct SourcesAddView: View {
 				
 				NBToolbarButton(
 					.localized("Save"),
-					systemImage: "checkmark",
 					style: .text,
 					placement: .confirmationAction,
 					isDisabled: _sourceURL.isEmpty

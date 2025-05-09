@@ -20,8 +20,8 @@ public struct NBToolbarButton: ToolbarContent {
 	private var _role: NBToolbarButtonRole?
 	
 	public init(
-		_ title: String,
-		systemImage: String,
+		_ title: String = "",
+		systemImage: String = "",
 		style: NBToolbarMenuStyle = .icon,
 		placement: ToolbarItemPlacement = .automatic,
 		isDisabled: Bool = false,

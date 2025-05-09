@@ -71,7 +71,6 @@ struct SourceAppsView: View {
 		}
 		.toolbar {
 			NBToolbarMenu(
-				"",
 				systemImage: "line.3.horizontal.decrease",
 				style: .icon,
 				placement: .topBarTrailing

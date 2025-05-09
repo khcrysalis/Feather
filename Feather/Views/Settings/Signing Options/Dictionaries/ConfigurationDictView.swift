@@ -28,7 +28,6 @@ struct ConfigurationDictView: View {
 		}
 		.toolbar {
 			NBToolbarButton(
-				"",
 				systemImage: "plus",
 				style: .icon,
 				placement: .topBarTrailing

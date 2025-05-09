@@ -106,7 +106,6 @@ struct LibraryView: View {
 			}
 			.toolbar {
 				NBToolbarMenu(
-					"",
 					systemImage: "plus",
 					style: .icon,
 					placement: .topBarTrailing

@@ -8,8 +8,6 @@
 import SwiftUI
 import NimbleViews
 
-#warning("maybe we dont need blank \"\"")
-
 // MARK: - View
 struct ConfigurationView: View {
 	@StateObject private var _optionsManager = OptionsManager.shared
@@ -34,7 +32,6 @@ struct ConfigurationView: View {
 		}
 		.toolbar {
 			NBToolbarMenu(
-				"",
 				systemImage: "character.textbox",
 				style: .icon,
 				placement: .topBarTrailing

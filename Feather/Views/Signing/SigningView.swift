@@ -63,7 +63,6 @@ struct SigningView: View {
 				
 				NBToolbarButton(
 					.localized("Reset"),
-					systemImage: "checkmark",
 					style: .text,
 					placement: .topBarTrailing
 				) {

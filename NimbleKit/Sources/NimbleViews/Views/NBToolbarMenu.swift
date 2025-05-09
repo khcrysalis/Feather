@@ -16,8 +16,8 @@ public struct NBToolbarMenu<Content>: ToolbarContent where Content: View {
 	private var _content: Content
 	
 	public init(
-		_ title: String,
-		systemImage: String,
+		_ title: String = "",
+		systemImage: String = "",
 		style: NBToolbarMenuStyle = .icon,
 		placement: ToolbarItemPlacement = .automatic,
 		alignment: NBToolbarAlignment = .none,
