@@ -41,7 +41,7 @@ struct CertificatesAddView: View {
 				NBSection(.localized("Password")) {
 					SecureField(.localized("Enter Password"), text: $_p12Password)
 				} footer: {
-					Text(verbatim: .localized("Enter the password associated with the private key. Leave it blank if theres no password required."))
+					Text(.localized("Enter the password associated with the private key. Leave it blank if theres no password required."))
 				}
 				
 				Section {
@@ -80,9 +80,9 @@ struct CertificatesAddView: View {
 			}
 			.alert(isPresented: $_isPasswordAlertPresenting) {
 				Alert(
-					title: Text(verbatim: .localized("Bad Password")),
-					message: Text(verbatim: .localized("Please check the password and try again.")),
-					dismissButton: .default(Text(verbatim: .localized("OK")))
+					title: Text(.localized("Bad Password")),
+					message: Text(.localized("Please check the password and try again.")),
+					dismissButton: .default(Text(.localized("OK")))
 				)
 			}
 		}

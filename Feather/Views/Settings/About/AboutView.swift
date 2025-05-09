@@ -45,7 +45,7 @@ struct AboutView: View {
 							"[\($0.name ?? $0.github)](https://github.com/\($0.github))"
 						}.joined(separator: ", ")))
 						
-						Text(verbatim: .localized("💜 This couldn't of been done without my sponsors!"))
+						Text(.localized("💜 This couldn't of been done without my sponsors!"))
 							.foregroundStyle(.secondary)
 							.padding(.vertical, 2)
 					}

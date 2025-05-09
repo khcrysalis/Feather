@@ -28,7 +28,7 @@ struct SourcesAddView: View {
 					TextField(.localized("Source Repo URL"), text: $_sourceURL)
 						.keyboardType(.URL)
 				} footer: {
-					Text(verbatim: .localized("Enter a URL to start validation."))
+					Text(.localized("Enter a URL to start validation."))
 				}
 				
 				Section {

@@ -20,9 +20,9 @@ struct TunnelView: View {
 				TunnelHeaderView()
 			} footer: {
 				if FileManager.default.fileExists(atPath: HeartbeatManager.pairingFile()) {
-					Text(verbatim: .localized("Seems like you've gotten your hands on your pairing file! If you encounter ever `InvalidHostID -9` error please make a new pairing file and import it."))
+					Text(.localized("Seems like you've gotten your hands on your pairing file! If you encounter ever `InvalidHostID -9` error please make a new pairing file and import it."))
 				} else {
-					Text(verbatim: .localized("No pearing file found, please import it."))
+					Text(.localized("No pearing file found, please import it."))
 				}
 			}
 			
