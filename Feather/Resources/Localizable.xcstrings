@@ -889,13 +889,13 @@
         }
       }
     },
-    "No pearing file found, please import it." : {
+    "No pairing file found, please import it." : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No pearing file found, please import it."
+            "value" : "No pairing file found, please import it."
           }
         }
       }

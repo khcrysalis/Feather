@@ -22,7 +22,7 @@ struct TunnelView: View {
 				if FileManager.default.fileExists(atPath: HeartbeatManager.pairingFile()) {
 					Text(.localized("Seems like you've gotten your hands on your pairing file! If you encounter ever `InvalidHostID -9` error please make a new pairing file and import it."))
 				} else {
-					Text(.localized("No pearing file found, please import it."))
+					Text(.localized("No pairing file found, please import it."))
 				}
 			}
 			
