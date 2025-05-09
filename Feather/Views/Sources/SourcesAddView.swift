@@ -25,18 +25,18 @@ struct SourcesAddView: View {
 		NBNavigationView(.localized("Add Source"), displayMode: .inline) {
 			Form {
 				NBSection("Source") {
-					TextField(String.localized("Source Repo URL"), text: $_sourceURL)
+					TextField(.localized("Source Repo URL"), text: $_sourceURL)
 						.keyboardType(.URL)
 				} footer: {
-					Text(String.localized("Enter a URL to start validation."))
+					Text(verbatim: .localized("Enter a URL to start validation."))
 				}
 				
 				Section {
-					Button(String.localized("Import"), systemImage: "square.and.arrow.down") {
+					Button(.localized("Import"), systemImage: "square.and.arrow.down") {
 						_addCode(UIPasteboard.general.string)
 					}
 					
-					Button(String.localized("Export"), systemImage: "doc.on.clipboard") {
+					Button(.localized("Export"), systemImage: "doc.on.clipboard") {
 						UIPasteboard.general.string = Storage.shared.getSources().map {
 							$0.sourceURL!.absoluteString
 						}.joined(separator: "\n")

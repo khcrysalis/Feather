@@ -27,7 +27,7 @@ struct AppearanceView: View {
 		NBList(.localized("Appearance")) {
 			NBSection(.localized("Library")) {
 				_libraryPreview()
-				Picker(String.localized("Library Cell Appearance"), selection: $_libraryCellAppearance) {
+				Picker(.localized("Library Cell Appearance"), selection: $_libraryCellAppearance) {
 					ForEach(_libraryCellAppearanceMethods.indices, id: \.description) { index in
 						Text(_libraryCellAppearanceMethods[index]).tag(index)
 					}
@@ -37,7 +37,7 @@ struct AppearanceView: View {
 			}
 			
 			NBSection(.localized("Sources")) {
-				Picker(String.localized("Store Cell Appearance"), selection: $_storeCellAppearance) {
+				Picker(.localized("Store Cell Appearance"), selection: $_storeCellAppearance) {
 					ForEach(_storeCellAppearanceMethods.indices, id: \.description) { index in
 						Text(_storeCellAppearanceMethods[index]).tag(index)
 					}

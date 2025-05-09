@@ -26,8 +26,8 @@ struct ConfigurationDictAddView: View {
     var body: some View {
 		NBList(.localized("New")) {
 			Section {
-				TextField(String.localized("Identifier"), text: $_newKey)
-				TextField(String.localized("Replacement"), text: $_newValue)
+				TextField(.localized("Identifier"), text: $_newKey)
+				TextField(.localized("Replacement"), text: $_newValue)
 			}
 			.autocapitalization(.none)
 		}

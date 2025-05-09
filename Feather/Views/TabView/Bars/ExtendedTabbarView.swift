@@ -42,7 +42,7 @@ struct ExtendedTabbarView: View {
 			}
 			
 			TabSection("Sources") {
-				Tab(String.localized("All Repositories"), systemImage: "globe.desk") {
+				Tab(.localized("All Repositories"), systemImage: "globe.desk") {
 					NavigationStack {
 						SourceAppsView(object: Array(_sources), viewModel: viewModel)
 					}
@@ -64,7 +64,7 @@ struct ExtendedTabbarView: View {
 				}
 			}
 			.sectionActions {
-				Button(String.localized("Add Source"), systemImage: "plus") {
+				Button(.localized("Add Source"), systemImage: "plus") {
 					_isAddingPresenting = true
 				}
 			}

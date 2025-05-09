@@ -20,23 +20,23 @@ struct TunnelView: View {
 				TunnelHeaderView()
 			} footer: {
 				if FileManager.default.fileExists(atPath: HeartbeatManager.pairingFile()) {
-					Text(String.localized("Seems like you've gotten your hands on your pairing file! If you encounter ever `InvalidHostID -9` error please make a new pairing file and import it."))
+					Text(verbatim: .localized("Seems like you've gotten your hands on your pairing file! If you encounter ever `InvalidHostID -9` error please make a new pairing file and import it."))
 				} else {
-					Text(String.localized("No pearing file found, please import it."))
+					Text(verbatim: .localized("No pearing file found, please import it."))
 				}
 			}
 			
 			Section {
-				Button(String.localized("Import Pairing File"), systemImage: "square.and.arrow.down") {
+				Button(.localized("Import Pairing File"), systemImage: "square.and.arrow.down") {
 					_isImportingPairingPresenting = true
 				}
-				Button(String.localized("Restart Heartbeat"), systemImage: "arrow.counterclockwise") {
+				Button(.localized("Restart Heartbeat"), systemImage: "arrow.counterclockwise") {
 					HeartbeatManager.shared.start(true)
 				}
 			}
 			
 			NBSection(.localized("Help")) {
-				Button(String.localized("Pairing File Guide"), systemImage: "questionmark.circle") {
+				Button(.localized("Pairing File Guide"), systemImage: "questionmark.circle") {
 					UIApplication.open("https://github.com/StephenDev0/StikDebug-Guide/blob/main/pairing_file.md")
 				}
 			}
@@ -56,9 +56,9 @@ struct TunnelView: View {
 	private func _tunnelInfo() -> some View {
 		HStack {
 			VStack(alignment: .leading, spacing: 6) {
-				Text(String.localized("Heartbeat"))
+				Text(.localized("Heartbeat"))
 					.font(.headline)
-				Text(String.localized("The heartbeat is activated in the background, it will restart when the app is re-opened or prompted. If the status below is pulsing, that means its healthy."))
+				Text(.localized("The heartbeat is activated in the background, it will restart when the app is re-opened or prompted. If the status below is pulsing, that means its healthy."))
 					.font(.subheadline)
 					.foregroundStyle(.secondary)
 			}

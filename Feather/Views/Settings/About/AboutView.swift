@@ -25,8 +25,8 @@ struct AboutView: View {
 	var body: some View {
 		NBList(.localized("About")) {
 			Section {
-				LabeledContent(String.localized("Name"), value: Bundle.main.exec)
-				LabeledContent(String.localized("Version"), value: Bundle.main.version)
+				LabeledContent(.localized("Name"), value: Bundle.main.exec)
+				LabeledContent(.localized("Version"), value: Bundle.main.version)
 			}
 			
 			NBSection(.localized("Credits")) {
@@ -45,7 +45,7 @@ struct AboutView: View {
 							"[\($0.name ?? $0.github)](https://github.com/\($0.github))"
 						}.joined(separator: ", ")))
 						
-						Text(String.localized("💜 This couldn't of been done without my sponsors!"))
+						Text(verbatim: .localized("💜 This couldn't of been done without my sponsors!"))
 							.foregroundStyle(.secondary)
 							.padding(.vertical, 2)
 					}

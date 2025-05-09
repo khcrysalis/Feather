@@ -128,9 +128,9 @@ extension SigningView {
 	private func _customizationOptions(for app: AppInfoPresentable) -> some View {
 		NBSection(.localized("Customization")) {
 			Menu {
-				Button(String.localized("Select Alternative Icon")) { _isAltPickerPresenting = true }
-				Button(String.localized("Choose from Files")) { _isFilePickerPresenting = true }
-				Button(String.localized("Choose from Photos")) { _isImagePickerPresenting = true }
+				Button(.localized("Select Alternative Icon")) { _isAltPickerPresenting = true }
+				Button(.localized("Choose from Files")) { _isFilePickerPresenting = true }
+				Button(.localized("Choose from Photos")) { _isImagePickerPresenting = true }
 			} label: {
 				if let icon = appIcon {
 					Image(uiImage: icon)
@@ -184,8 +184,8 @@ extension SigningView {
 	@ViewBuilder
 	private func _customizationProperties(for app: AppInfoPresentable) -> some View {
 		NBSection(.localized("Advanced")) {
-			DisclosureGroup(String.localized("Modify")) {
-				NavigationLink(String.localized("Existing Dylibs")) {
+			DisclosureGroup(.localized("Modify")) {
+				NavigationLink(.localized("Existing Dylibs")) {
 					SigningDylibView(
 						app: app,
 						options: $_temporaryOptions.optional()
@@ -217,7 +217,7 @@ extension SigningView {
 					options: $_temporaryOptions,
 					temporaryOptions: _optionsManager.options
 				)}
-				.navigationTitle(String.localized("Properties"))
+				.navigationTitle(.localized("Properties"))
 			}
 		}
 	}

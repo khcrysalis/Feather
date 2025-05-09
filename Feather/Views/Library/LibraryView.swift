@@ -110,10 +110,10 @@ struct LibraryView: View {
 					style: .icon,
 					placement: .topBarTrailing
 				) {
-					Button(String.localized("Import from Files")) {
+					Button(.localized("Import from Files")) {
 						_isImportingPresenting = true
 					}
-					Button(String.localized("Import from URL")) {
+					Button(.localized("Import from URL")) {
 						_isDownloadingPresenting = true
 					}
 				}
@@ -140,12 +140,12 @@ struct LibraryView: View {
 					}
 				)
 			}
-			.alert(String.localized("Import from URL"), isPresented: $_isDownloadingPresenting) {
-				TextField(String.localized("URL"), text: $_alertDownloadString)
-				Button(String.localized("Cancel"), role: .cancel) {
+			.alert(.localized("Import from URL"), isPresented: $_isDownloadingPresenting) {
+				TextField(.localized("URL"), text: $_alertDownloadString)
+				Button(.localized("Cancel"), role: .cancel) {
 					_alertDownloadString = ""
 				}
-				Button(String.localized("OK")) {
+				Button(.localized("OK")) {
 					if let url = URL(string: _alertDownloadString) {
 						_ = downloadManager.startDownload(from: url)
 					}

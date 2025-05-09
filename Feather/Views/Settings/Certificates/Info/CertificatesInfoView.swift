@@ -34,7 +34,7 @@ struct CertificatesInfoView: View {
 				}
 				
 				Section {
-					Button(String.localized("Open in Files"), systemImage: "folder") {
+					Button(.localized("Open in Files"), systemImage: "folder") {
 						UIApplication.open(Storage.shared.getUuidDirectory(for: cert)!.toSharedDocumentsURL()!)
 					}
 				}
@@ -73,7 +73,7 @@ extension CertificatesInfoView {
 	private func _entitlementsSection(data: Certificate) -> some View {
 		if let entitlements = data.Entitlements {
 			Section {
-				NavigationLink(String.localized("View Entitlements")) {
+				NavigationLink(.localized("View Entitlements")) {
 					CertificatesInfoEntitlementView(entitlements: entitlements)
 				}
 			}

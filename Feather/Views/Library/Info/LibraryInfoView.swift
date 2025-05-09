@@ -28,7 +28,7 @@ struct LibraryInfoView: View {
 				_executableSection(for: app)
 				
 				Section {
-					Button(String.localized("Open in Files"), systemImage: "folder") {
+					Button(.localized("Open in Files"), systemImage: "folder") {
 						UIApplication.open(Storage.shared.getUuidDirectory(for: app)!.toSharedDocumentsURL()!)
 					}
 				}
@@ -79,10 +79,10 @@ extension LibraryInfoView {
 	@ViewBuilder
 	private func _bundleSection(for app: AppInfoPresentable) -> some View {
 		NBSection(.localized("Bundle")) {
-			NavigationLink(String.localized("Alternative Icons")) {
+			NavigationLink(.localized("Alternative Icons")) {
 				SigningAlternativeIconView(app: app, appIcon: .constant(nil), isModifing: .constant(false))
 			}
-			NavigationLink(String.localized("Frameworks & PlugIns")) {
+			NavigationLink(.localized("Frameworks & PlugIns")) {
 				SigningFrameworksView(app: app, options: .constant(nil))
 			}
 		}
@@ -91,7 +91,7 @@ extension LibraryInfoView {
 	@ViewBuilder
 	private func _executableSection(for app: AppInfoPresentable) -> some View {
 		NBSection(.localized("Executable")) {
-			NavigationLink(String.localized("Dylibs")) {
+			NavigationLink(.localized("Dylibs")) {
 				SigningDylibView(app: app, options: .constant(nil))
 			}
 		}

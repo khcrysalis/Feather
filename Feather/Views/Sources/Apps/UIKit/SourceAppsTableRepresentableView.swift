@@ -184,7 +184,7 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 			
 			headerView?.contentConfiguration = UIHostingConfiguration {
 				HStack {
-					Text(String.localized("%lld Apps", arguments: _sortedApps.count))
+					Text(verbatim: .localized("%lld Apps", arguments: _sortedApps.count))
 					Spacer()
 				}
 				.font(.headline)

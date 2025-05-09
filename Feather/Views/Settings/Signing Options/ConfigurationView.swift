@@ -17,12 +17,12 @@ struct ConfigurationView: View {
 	// MARK: Body
     var body: some View {
 		NBList(.localized("Signing Options")) {
-			NavigationLink(String.localized("Display Names"), destination: ConfigurationDictView(
+			NavigationLink(.localized("Display Names"), destination: ConfigurationDictView(
 				title: .localized("Display Names"),
 					dataDict: $_optionsManager.options.displayNames
 				)
 			)
-			NavigationLink(String.localized("Identifers"), destination: ConfigurationDictView(
+			NavigationLink(.localized("Identifers"), destination: ConfigurationDictView(
 					title: .localized("Identifers"),
 					dataDict: $_optionsManager.options.identifiers
 				)
@@ -53,10 +53,10 @@ extension ConfigurationView {
 	@ViewBuilder
 	private func _randomMenuItem() -> some View {
 		Section(_optionsManager.options.ppqString) {
-			Button(String.localized("Change")) {
+			Button(.localized("Change")) {
 				isRandomAlertPresenting = true
 			}
-			Button(String.localized("Copy")) {
+			Button(.localized("Copy")) {
 				UIPasteboard.general.string = _optionsManager.options.ppqString
 			}
 		}
@@ -64,13 +64,13 @@ extension ConfigurationView {
 	
 	@ViewBuilder
 	private func _randomMenuAlert() -> some View {
-		TextField(String.localized("String"), text: $randomString)
-		Button(String.localized("Save")) {
+		TextField(.localized("String"), text: $randomString)
+		Button(.localized("Save")) {
 			if !randomString.isEmpty {
 				_optionsManager.options.ppqString = randomString
 			}
 		}
 		
-		Button(String.localized("Cancel"), role: .cancel) {}
+		Button(.localized("Cancel"), role: .cancel) {}
 	}
 }

@@ -57,13 +57,13 @@ struct SourceAppsView: View {
 				_sources.count == 1
 			{
 				if let url = _sources[0].website {
-					Button(String.localized("Visit Website"), systemImage: "globe") {
+					Button(.localized("Visit Website"), systemImage: "globe") {
 						UIApplication.open(url)
 					}
 				}
 				
 				if let url = _sources[0].patreonURL {
-					Button(String.localized("Visit Patreon"), systemImage: "dollarsign.circle") {
+					Button(.localized("Visit Patreon"), systemImage: "dollarsign.circle") {
 						UIApplication.open(url)
 					}
 				}
@@ -107,7 +107,7 @@ struct SourceAppsView: View {
 extension SourceAppsView {
 	@ViewBuilder
 	private func _sortActions() -> some View {
-		Section(String.localized("Filter by")) {
+		Section(.localized("Filter by")) {
 			ForEach(SortOption.allCases, id: \.displayName) { opt in
 				_sortButton(for: opt)
 			}

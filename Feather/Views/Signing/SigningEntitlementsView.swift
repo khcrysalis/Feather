@@ -20,14 +20,14 @@ struct SigningEntitlementsView: View {
 			if let ent = bindingValue {
 				Text(ent.lastPathComponent)
 					.swipeActions() {
-						Button(String.localized("Delete")) {
+						Button(.localized("Delete")) {
 							FileManager.default.deleteStored(ent) { _ in
 								bindingValue = nil
 							}
 						}
 					}
 			} else {
-				Button(String.localized("Select entitlements file")) {
+				Button(.localized("Select entitlements file")) {
 					_isAddingPresenting = true
 				}
 			}

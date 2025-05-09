@@ -6,6 +6,7 @@
 //
 
 import Foundation.NSString
+import SwiftUICore
 
 extension String {
 	// from: https://github.com/NSAntoine/Antoine/blob/main/Antoine/Backend/Extensions/Foundation.swift#L43-L55
@@ -23,5 +24,11 @@ extension String {
 	/// - Returns: The localized string.
 	public func localized() -> String {
 		return String.localized(self)
+	}
+}
+
+extension LocalizedStringKey {
+	static public func localized(_ key: String) -> LocalizedStringKey {
+		return LocalizedStringKey(key)
 	}
 }

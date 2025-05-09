@@ -39,13 +39,13 @@ struct CertificatesAddView: View {
 					}
 				}
 				NBSection(.localized("Password")) {
-					SecureField(String.localized("Enter Password"), text: $_p12Password)
+					SecureField(.localized("Enter Password"), text: $_p12Password)
 				} footer: {
-					Text(String.localized("Enter the password associated with the private key. Leave it blank if theres no password required."))
+					Text(verbatim: .localized("Enter the password associated with the private key. Leave it blank if theres no password required."))
 				}
 				
 				Section {
-					TextField(String.localized("Nickname (Optional)"), text: $_certificateName)
+					TextField(.localized("Nickname (Optional)"), text: $_certificateName)
 				}
 			}
 			.toolbar {
@@ -80,9 +80,9 @@ struct CertificatesAddView: View {
 			}
 			.alert(isPresented: $_isPasswordAlertPresenting) {
 				Alert(
-					title: Text(String.localized("Bad Password")),
-					message: Text(String.localized("Please check the password and try again.")),
-					dismissButton: .default(Text(String.localized("OK")))
+					title: Text(verbatim: .localized("Bad Password")),
+					message: Text(verbatim: .localized("Please check the password and try again.")),
+					dismissButton: .default(Text(verbatim: .localized("OK")))
 				)
 			}
 		}

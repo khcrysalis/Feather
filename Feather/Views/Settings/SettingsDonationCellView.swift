@@ -52,7 +52,7 @@ struct SettingsDonationCellView: View {
 				.font(.system(size: 38, weight: .bold))
 				.foregroundStyle(.pink)
 			
-			Text(String.localized("Donations"))
+			Text(verbatim: .localized("Donations"))
 				.font(.title)
 				.bold()
 		}

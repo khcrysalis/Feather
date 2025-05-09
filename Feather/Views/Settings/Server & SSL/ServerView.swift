@@ -24,17 +24,17 @@ struct ServerView: View {
 	var body: some View {
 		NBList(.localized("Server & SSL")) {
 			Section {
-				Picker(String.localized("Installation Type"), systemImage: "server.rack", selection: $_serverMethod) {
+				Picker(.localized("Installation Type"), systemImage: "server.rack", selection: $_serverMethod) {
 					ForEach(_serverMethods.indices, id: \.self) { index in
 						Text(_serverMethods[index]).tag(index)
 					}
 				}
-				Toggle(String.localized("Only use localhost address"), systemImage: "lifepreserver", isOn: $_ipFix)
+				Toggle(.localized("Only use localhost address"), systemImage: "lifepreserver", isOn: $_ipFix)
 					.disabled(_serverMethod != 1)
 			}
 			
 			Section {
-				Button(String.localized("Update SSL Certificates"), systemImage: "arrow.down.doc") {
+				Button(.localized("Update SSL Certificates"), systemImage: "arrow.down.doc") {
 					FR.downloadSSLCertificates(from: _serverPackUrl) { success in
 						if !success {
 							DispatchQueue.main.async {
