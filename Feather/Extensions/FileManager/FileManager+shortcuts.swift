@@ -26,6 +26,11 @@ extension FileManager {
 		}
 	}
 	
+	static func forceWrite(content: String, to filename: String) throws {
+		let path = URL.documentsDirectory.appendingPathComponent(filename)
+		try content.write(to: path, atomically: true, encoding: .utf8)
+	}
+	
 	// FeatherTweak
 	func moveAndStore(_ url: URL, with prepend: String, completion: @escaping (URL) -> Void) {
 		let destination = _getDestination(url, with: prepend)

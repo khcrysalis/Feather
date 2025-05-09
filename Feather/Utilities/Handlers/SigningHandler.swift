@@ -185,11 +185,7 @@ extension SigningHandler {
 			let imageData = resizedImage.pngData()
 			let fileURL = app.appendingPathComponent(imageSize.name)
 			
-			do {
-				try imageData?.write(to: fileURL)
-			} catch {
-				throw error
-			}
+			try imageData?.write(to: fileURL)
 		}
 		
 		let cfBundleIcons: [String: Any] = [
