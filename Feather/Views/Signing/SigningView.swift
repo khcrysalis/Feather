@@ -45,7 +45,7 @@ struct SigningView: View {
 		
 	// MARK: Body
     var body: some View {
-		NBNavigationView(app.name ?? "Unknown", displayMode: .inline) {
+		NBNavigationView(app.name ?? .localized("Unknown"), displayMode: .inline) {
 			Form {
 				_customizationOptions(for: app)
 				_cert()
@@ -55,14 +55,14 @@ struct SigningView: View {
 				Button() {
 					_start()
 				} label: {
-					NBSheetButton(title: "Start Signing")
+					NBSheetButton(title: .localized("Start Signing"))
 				}
 			}
 			.toolbar {
 				NBToolbarButton(role: .dismiss)
 				
 				NBToolbarButton(
-					"Reset",
+					.localized("Reset"),
 					systemImage: "checkmark",
 					style: .text,
 					placement: .topBarTrailing
@@ -127,11 +127,11 @@ struct SigningView: View {
 extension SigningView {
 	@ViewBuilder
 	private func _customizationOptions(for app: AppInfoPresentable) -> some View {
-		NBSection("Customization") {
+		NBSection(.localized("Customization")) {
 			Menu {
-				Button("Select Alternative Icon") { _isAltPickerPresenting = true }
-				Button("Choose from Files") { _isFilePickerPresenting = true }
-				Button("Choose from Photos") { _isImagePickerPresenting = true }
+				Button(String.localized("Select Alternative Icon")) { _isAltPickerPresenting = true }
+				Button(String.localized("Choose from Files")) { _isFilePickerPresenting = true }
+				Button(String.localized("Choose from Photos")) { _isImagePickerPresenting = true }
 			} label: {
 				if let icon = appIcon {
 					Image(uiImage: icon)
@@ -141,23 +141,23 @@ extension SigningView {
 				}
 			}
 			
-			_infoCell("Name", desc: _temporaryOptions.appName ?? app.name) {
+			_infoCell(.localized("Name"), desc: _temporaryOptions.appName ?? app.name) {
 				SigningPropertiesView(
-					title: "Name",
+					title: .localized("Name"),
 					initialValue: _temporaryOptions.appName ?? (app.name ?? ""),
 					bindingValue: $_temporaryOptions.appName
 				)
 			}
-			_infoCell("Identifier", desc: _temporaryOptions.appIdentifier ?? app.identifier) {
+			_infoCell(.localized("Identifier"), desc: _temporaryOptions.appIdentifier ?? app.identifier) {
 				SigningPropertiesView(
-					title: "Identifier",
+					title: .localized("Identifier"),
 					initialValue: _temporaryOptions.appIdentifier ?? (app.identifier ?? ""),
 					bindingValue: $_temporaryOptions.appIdentifier
 				)
 			}
-			_infoCell("Version", desc: _temporaryOptions.appVersion ?? app.version) {
+			_infoCell(.localized("Version"), desc: _temporaryOptions.appVersion ?? app.version) {
 				SigningPropertiesView(
-					title: "Version",
+					title: .localized("Version"),
 					initialValue: _temporaryOptions.appVersion ?? (app.version ?? ""),
 					bindingValue: $_temporaryOptions.appVersion
 				)
@@ -167,7 +167,7 @@ extension SigningView {
 	
 	@ViewBuilder
 	private func _cert() -> some View {
-		NBSection("Signing") {
+		NBSection(.localized("Signing")) {
 			if let cert = _selectedCert() {
 				NavigationLink {
 					CertificatesView(selectedCert: $_temporaryCertificate)
@@ -184,41 +184,41 @@ extension SigningView {
 	
 	@ViewBuilder
 	private func _customizationProperties(for app: AppInfoPresentable) -> some View {
-		NBSection("Advanced") {
-			DisclosureGroup("Modify") {
-				NavigationLink("Existing Dylibs") {
+		NBSection(.localized("Advanced")) {
+			DisclosureGroup(String.localized("Modify")) {
+				NavigationLink(String.localized("Existing Dylibs")) {
 					SigningDylibView(
 						app: app,
 						options: $_temporaryOptions.optional()
 					)
 				}
 				
-				NavigationLink("Frameworks & PlugIns") {
+				NavigationLink(String.localized("Frameworks & PlugIns")) {
 					SigningFrameworksView(
 						app: app,
 						options: $_temporaryOptions.optional()
 					)
 				}
 				
-				NavigationLink("Entitlements") {
+				NavigationLink(String.localized("Entitlements")) {
 					SigningEntitlementsView(
 						bindingValue: $_temporaryOptions.appEntitlementsFile
 					)
 				}
 				
-				NavigationLink("Tweaks") {
+				NavigationLink(String.localized("Tweaks")) {
 					SigningTweaksView(
 						options: $_temporaryOptions
 					)
 				}
 			}
 			
-			NavigationLink("Properties") {
+			NavigationLink(String.localized("Properties")) {
 				Form { SigningOptionsView(
 					options: $_temporaryOptions,
 					temporaryOptions: _optionsManager.options
 				)}
-				.navigationTitle("Properties")
+				.navigationTitle(String.localized("Properties"))
 			}
 		}
 	}
@@ -229,7 +229,7 @@ extension SigningView {
 			destination()
 		} label: {
 			LabeledContent(title) {
-				Text(desc ?? "Unknown")
+				Text(desc ?? .localized("Unknown"))
 			}
 		}
 	}
@@ -240,8 +240,8 @@ extension SigningView {
 	private func _start() {
 		guard _selectedCert() != nil || _temporaryOptions.doAdhocSigning else {
 			UIAlertController.showAlertWithOk(
-				title: "No Certificate",
-				message: "Please go to settings and import a valid certificate",
+				title: .localized("No Certificate"),
+				message: .localized("Please go to settings and import a valid certificate"),
 				isCancel: true
 			)
 			return
@@ -258,12 +258,12 @@ extension SigningView {
 			certificate: _selectedCert()
 		) { error in
 			if let error {
-				let ok = UIAlertAction(title: "Dismiss", style: .cancel) { _ in
+				let ok = UIAlertAction(title: .localized("Dismiss"), style: .cancel) { _ in
 					dismiss()
 				}
 				
 				UIAlertController.showAlert(
-					title: "Signing",
+					title: .localized("Signing"),
 					message: error.localizedDescription,
 					actions: [ok]
 				)

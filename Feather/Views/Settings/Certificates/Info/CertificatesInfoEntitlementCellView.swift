@@ -18,7 +18,7 @@ struct CertificatesInfoEntitlementCellView: View {
 		if let dict = value as? [String: Any] {
 			_makeDisclosureGroup(items: dict.map { ($0.key, $0.value) }.sorted { $0.0 < $1.0 })
 		} else if let array = value as? [Any] {
-			_makeDisclosureGroup(items: array.enumerated().map { ("Item \($0)", $1) })
+			_makeDisclosureGroup(items: array.enumerated().map { ("\($0)", $1) })
 		} else {
 			HStack {
 				Text(key)
@@ -41,7 +41,7 @@ struct CertificatesInfoEntitlementCellView: View {
 	
 	private func _formatted(_ value: Any) -> String {
 		switch value {
-		case let bool as Bool: return bool ? "true" : "false"
+		case let bool as Bool: return bool ? "✓" : "✗"
 		case let number as NSNumber: return number.stringValue
 		case let string as String: return string
 		default: return String(describing: value)

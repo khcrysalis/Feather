@@ -14,29 +14,29 @@ struct TunnelView: View {
 	
 	// MARK: Body
     var body: some View {
-		NBList("Tunnel & Pairing") {
+		NBList(.localized("Tunnel & Pairing")) {
 			Section {
 				_tunnelInfo()
 				TunnelHeaderView()
 			} footer: {
 				if FileManager.default.fileExists(atPath: HeartbeatManager.pairingFile()) {
-					Text("Seems like you've gotten your hands on your pairing file! If you encounter ever `InvalidHostID -9` error please make a new pairing file and import it.")
+					Text(String.localized("Seems like you've gotten your hands on your pairing file! If you encounter ever `InvalidHostID -9` error please make a new pairing file and import it."))
 				} else {
-					Text("No pearing file found, please import it.")
+					Text(String.localized("No pearing file found, please import it."))
 				}
 			}
 			
 			Section {
-				Button("Import Pairing File", systemImage: "square.and.arrow.down") {
+				Button(String.localized("Import Pairing File"), systemImage: "square.and.arrow.down") {
 					_isImportingPairingPresenting = true
 				}
-				Button("Restart Heartbeat", systemImage: "arrow.counterclockwise") {
+				Button(String.localized("Restart Heartbeat"), systemImage: "arrow.counterclockwise") {
 					HeartbeatManager.shared.start(true)
 				}
 			}
 			
-			NBSection("Help") {
-				Button("Pairing File Guide", systemImage: "questionmark.circle") {
+			NBSection(.localized("Help")) {
+				Button(String.localized("Pairing File Guide"), systemImage: "questionmark.circle") {
 					UIApplication.open("https://github.com/StephenDev0/StikDebug-Guide/blob/main/pairing_file.md")
 				}
 			}
@@ -56,9 +56,9 @@ struct TunnelView: View {
 	private func _tunnelInfo() -> some View {
 		HStack {
 			VStack(alignment: .leading, spacing: 6) {
-				Text("Heartbeat")
+				Text(String.localized("Heartbeat"))
 					.font(.headline)
-				Text("The heartbeat is activated in the background, it will restart when the app is re-opened or prompted. If the status below is pulsing, that means its healthy.")
+				Text(String.localized("The heartbeat is activated in the background, it will restart when the app is re-opened or prompted. If the status below is pulsing, that means its healthy."))
 					.font(.subheadline)
 					.foregroundStyle(.secondary)
 			}

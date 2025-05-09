@@ -10,16 +10,24 @@ import NimbleViews
 
 struct AppearanceView: View {
 	@AppStorage("Feather.libraryCellAppearance") private var _libraryCellAppearance: Int = 0
-	private let _libraryCellAppearanceMethods = ["Standard", "Expiration Pill"]
+	
+	private let _libraryCellAppearanceMethods: [String] = [
+		.localized("Standard"),
+		.localized("Pill")
+	]
 	
 	@AppStorage("Feather.storeCellAppearance") private var _storeCellAppearance: Int = 0
-	private let _storeCellAppearanceMethods = ["Standard", "Big Description"]
+	
+	private let _storeCellAppearanceMethods: [String] = [
+		.localized("Standard"),
+		.localized("Big Description")
+	]
 	
     var body: some View {
-		NBList("Appearance") {
-			NBSection("Library") {
+		NBList(.localized("Appearance")) {
+			NBSection(.localized("Library")) {
 				_libraryPreview()
-				Picker("Library Cell Appearance", selection: $_libraryCellAppearance) {
+				Picker(String.localized("Library Cell Appearance"), selection: $_libraryCellAppearance) {
 					ForEach(_libraryCellAppearanceMethods.indices, id: \.description) { index in
 						Text(_libraryCellAppearanceMethods[index]).tag(index)
 					}
@@ -28,8 +36,8 @@ struct AppearanceView: View {
 				.labelsHidden()
 			}
 			
-			NBSection("Store") {
-				Picker("Store Cell Appearance", selection: $_storeCellAppearance) {
+			NBSection(.localized("Sources")) {
+				Picker(String.localized("Store Cell Appearance"), selection: $_storeCellAppearance) {
 					ForEach(_storeCellAppearanceMethods.indices, id: \.description) { index in
 						Text(_storeCellAppearanceMethods[index]).tag(index)
 					}
@@ -52,7 +60,7 @@ struct AppearanceView: View {
 			)
 			
 			FRExpirationPillView(
-				title: "Install",
+				title: .localized("Install"),
 				showOverlay: _libraryCellAppearance == 0,
 				expiration: Date.now.expirationInfo()
 			).animation(.spring, value: _libraryCellAppearance)

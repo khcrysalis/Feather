@@ -16,10 +16,10 @@ enum TabEnum: String, CaseIterable, Hashable {
 	
 	var title: String {
 		switch self {
-		case .sources:     	return "Sources"
-		case .library: 		return "Library"
-		case .settings: 	return "Settings"
-		case .certificates:	return "Certificates"
+		case .sources:     	return .localized("Sources")
+		case .library: 		return .localized("Library")
+		case .settings: 	return .localized("Settings")
+		case .certificates:	return .localized("Certificates")
 		}
 	}
 	
@@ -38,7 +38,7 @@ enum TabEnum: String, CaseIterable, Hashable {
 		case .sources: SourcesView()
 		case .library: LibraryView()
 		case .settings: SettingsView()
-		case .certificates: NBNavigationView("Certificates") { CertificatesView() }
+		case .certificates: NBNavigationView(.localized("Certificates")) { CertificatesView() }
 		}
 	}
 	

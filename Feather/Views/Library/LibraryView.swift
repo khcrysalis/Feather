@@ -56,14 +56,14 @@ struct LibraryView: View {
 	
 	// MARK: Body
     var body: some View {
-		NBNavigationView("Library") {
+		NBNavigationView(.localized("Library")) {
 			NBListAdaptable {
 				if
 					_selectedScope == .all ||
 					_selectedScope == .signed
 				{
 					NBSection(
-						"Signed",
+						.localized("Signed"),
 						secondary: _filteredSignedApps.count.description
 					) {
 						ForEach(_filteredSignedApps, id: \.uuid) { app in
@@ -83,7 +83,7 @@ struct LibraryView: View {
 					_selectedScope == .imported
 				{
 					NBSection(
-						"Imported",
+						.localized("Imported"),
 						secondary: _filteredImportedApps.count.description
 					) {
 						ForEach(_filteredImportedApps, id: \.uuid) { app in
@@ -106,15 +106,15 @@ struct LibraryView: View {
 			}
 			.toolbar {
 				NBToolbarMenu(
-					"Import",
+					"",
 					systemImage: "plus",
 					style: .icon,
 					placement: .topBarTrailing
 				) {
-					Button("Import from Files") {
+					Button(String.localized("Import from Files")) {
 						_isImportingPresenting = true
 					}
-					Button("Import from URL") {
+					Button(String.localized("Import from URL")) {
 						_isDownloadingPresenting = true
 					}
 				}
@@ -141,12 +141,12 @@ struct LibraryView: View {
 					}
 				)
 			}
-			.alert("Import from URL", isPresented: $_isDownloadingPresenting) {
-				TextField("URL", text: $_alertDownloadString)
-				Button("Cancel", role: .cancel) {
+			.alert(String.localized("Import from URL"), isPresented: $_isDownloadingPresenting) {
+				TextField(String.localized("URL"), text: $_alertDownloadString)
+				Button(String.localized("Cancel"), role: .cancel) {
 					_alertDownloadString = ""
 				}
-				Button("OK") {
+				Button(String.localized("OK")) {
 					if let url = URL(string: _alertDownloadString) {
 						_ = downloadManager.startDownload(from: url)
 					}
@@ -165,9 +165,9 @@ extension LibraryView {
 		
 		var displayName: String {
 			switch self {
-			case .all: return "All"
-			case .signed: return "Signed"
-			case .imported: return "Imported"
+			case .all: return .localized("All")
+			case .signed: return .localized("Signed")
+			case .imported: return .localized("Imported")
 			}
 		}
 	}

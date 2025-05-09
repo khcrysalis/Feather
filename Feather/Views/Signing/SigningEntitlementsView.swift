@@ -16,18 +16,18 @@ struct SigningEntitlementsView: View {
 	
 	// MARK: Body
 	var body: some View {
-		NBList("Entitlements") {
+		NBList(.localized("Entitlements")) {
 			if let ent = bindingValue {
 				Text(ent.lastPathComponent)
 					.swipeActions() {
-						Button("Delete") {
+						Button(String.localized("Delete")) {
 							FileManager.default.deleteStored(ent) { _ in
 								bindingValue = nil
 							}
 						}
 					}
 			} else {
-				Button("Select entitlements file") {
+				Button(String.localized("Select entitlements file")) {
 					_isAddingPresenting = true
 				}
 			}

@@ -2,6 +2,8 @@
   "sourceLanguage" : "en",
   "strings" : {
     "%lld Apps" : {
+      "comment" : "Repository app count",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "variations" : {
@@ -24,11 +26,23 @@
       }
     },
     "%lld required system dylibs not shown" : {
+      "comment" : "Number of macho load paths not listed for safety",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld required system dylibs not shown"
+          }
+        }
+      }
+    },
+    "%lld Sources" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Sources"
           }
         }
       }
@@ -53,12 +67,45 @@
         }
       }
     },
+    "Add" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add"
+          }
+        }
+      }
+    },
     "Add Source" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Add Source"
+          }
+        }
+      }
+    },
+    "Advanced" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Advanced"
+          }
+        }
+      }
+    },
+    "All" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All"
           }
         }
       }
@@ -74,6 +121,7 @@
       }
     },
     "All Repositories" : {
+      "comment" : "All repositories",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -93,12 +141,35 @@
         }
       }
     },
+    "An awesome application" : {
+      "comment" : "Repository app has no description",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An awesome application"
+          }
+        }
+      }
+    },
     "Appearance" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Appearance"
+          }
+        }
+      }
+    },
+    "AppID Name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AppID Name"
           }
         }
       }
@@ -114,11 +185,34 @@
       }
     },
     "Bad Password" : {
+      "comment" : "Bad certificate password",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bad Password"
+          }
+        }
+      }
+    },
+    "Big Description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Big Description"
+          }
+        }
+      }
+    },
+    "Bundle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bundle"
           }
         }
       }
@@ -133,7 +227,19 @@
         }
       }
     },
+    "Certificate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certificate"
+          }
+        }
+      }
+    },
     "Certificates" : {
+      "comment" : "Certificates tab",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -154,6 +260,7 @@
       }
     },
     "Choose from Files" : {
+      "comment" : "Select custom app icon from files",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -164,6 +271,7 @@
       }
     },
     "Choose from Photos" : {
+      "comment" : "Select custom app icon from photos",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -174,6 +282,7 @@
       }
     },
     "Compression Level" : {
+      "comment" : "Archive compression level",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -193,12 +302,78 @@
         }
       }
     },
+    "Credits" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credits"
+          }
+        }
+      }
+    },
+    "Customization" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Customization"
+          }
+        }
+      }
+    },
+    "Date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
+          }
+        }
+      }
+    },
+    "Date Added" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date Added"
+          }
+        }
+      }
+    },
+    "Default" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default"
+          }
+        }
+      }
+    },
     "Delete" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Delete"
+          }
+        }
+      }
+    },
+    "Discord" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discord"
           }
         }
       }
@@ -213,7 +388,19 @@
         }
       }
     },
+    "Donate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Donate"
+          }
+        }
+      }
+    },
     "Donations" : {
+      "comment" : "Title for the big donation card",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -283,6 +470,17 @@
         }
       }
     },
+    "Executable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Executable"
+          }
+        }
+      }
+    },
     "Existing Dylibs" : {
       "localizations" : {
         "en" : {
@@ -293,12 +491,57 @@
         }
       }
     },
+    "Expires" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expires"
+          }
+        }
+      }
+    },
     "Export" : {
+      "comment" : "Export repositories",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Export"
+          }
+        }
+      }
+    },
+    "Failed to download, check your internet connection and try again." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to download, check your internet connection and try again."
+          }
+        }
+      }
+    },
+    "Features" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Features"
+          }
+        }
+      }
+    },
+    "Files" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Files"
           }
         }
       }
@@ -313,6 +556,17 @@
         }
       }
     },
+    "Frameworks" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frameworks"
+          }
+        }
+      }
+    },
     "Frameworks & PlugIns" : {
       "localizations" : {
         "en" : {
@@ -323,7 +577,30 @@
         }
       }
     },
+    "Fully Local" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fully Local"
+          }
+        }
+      }
+    },
+    "Get access to our secret Discord by donating, where we talk about future updates, betas, and potential ways to make your experience better." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get access to our secret Discord by donating, where we talk about future updates, betas, and potential ways to make your experience better."
+          }
+        }
+      }
+    },
     "Get Info" : {
+      "comment" : "Show info about the app",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -339,6 +616,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "GitHub Repository"
+          }
+        }
+      }
+    },
+    "Heartbeat" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heartbeat"
+          }
+        }
+      }
+    },
+    "Help" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Help"
+          }
+        }
+      }
+    },
+    "Hidden" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hidden"
           }
         }
       }
@@ -363,7 +673,19 @@
         }
       }
     },
+    "Identifier Prefix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identifier Prefix"
+          }
+        }
+      }
+    },
     "Import" : {
+      "comment" : "Import repositories",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -373,7 +695,19 @@
         }
       }
     },
+    "Import Certificate File" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import Certificate File"
+          }
+        }
+      }
+    },
     "Import from Files" : {
+      "comment" : "Select an app from files to import",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -384,11 +718,56 @@
       }
     },
     "Import from URL" : {
+      "comment" : "Select an app from a URL to import",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Import from URL"
+          }
+        }
+      }
+    },
+    "Import Pairing File" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import Pairing File"
+          }
+        }
+      }
+    },
+    "Import Provisioning File" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import Provisioning File"
+          }
+        }
+      }
+    },
+    "Imported" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imported"
+          }
+        }
+      }
+    },
+    "Info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info"
           }
         }
       }
@@ -413,12 +792,35 @@
         }
       }
     },
+    "Library" : {
+      "comment" : "Library tab",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Library"
+          }
+        }
+      }
+    },
     "Library Cell Appearance" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Library Cell Appearance"
+          }
+        }
+      }
+    },
+    "Misc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Misc"
           }
         }
       }
@@ -443,12 +845,57 @@
         }
       }
     },
+    "New" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New"
+          }
+        }
+      }
+    },
+    "New Certificate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Certificate"
+          }
+        }
+      }
+    },
     "Nickname (Optional)" : {
+      "comment" : "Certificate custom nickname",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nickname (Optional)"
+          }
+        }
+      }
+    },
+    "No Certificate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Certificate"
+          }
+        }
+      }
+    },
+    "No pearing file found, please import it." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No pearing file found, please import it."
           }
         }
       }
@@ -523,7 +970,52 @@
         }
       }
     },
+    "Pairing File Guide" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pairing File Guide"
+          }
+        }
+      }
+    },
+    "Password" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password"
+          }
+        }
+      }
+    },
+    "Pill" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pill"
+          }
+        }
+      }
+    },
+    "Platform" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Platform"
+          }
+        }
+      }
+    },
     "Please check the password and try again." : {
+      "comment" : "Bad certificate password, try again",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -533,12 +1025,58 @@
         }
       }
     },
+    "Please go to settings and import a valid certificate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please go to settings and import a valid certificate"
+          }
+        }
+      }
+    },
+    "Previous Versions" : {
+      "comment" : "Repository app previous versions",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previous Versions"
+          }
+        }
+      }
+    },
     "Properties" : {
+      "comment" : "Select custom properties for the app",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Properties"
+          }
+        }
+      }
+    },
+    "Provision All Devices" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provision All Devices"
+          }
+        }
+      }
+    },
+    "Provisioned Devices" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provisioned Devices"
           }
         }
       }
@@ -553,12 +1091,78 @@
         }
       }
     },
+    "Remove annoying alerts like these after getting beta access!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove annoying alerts like these after getting beta access!"
+          }
+        }
+      }
+    },
+    "Remove this Alert" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove this Alert"
+          }
+        }
+      }
+    },
     "Replacement" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Replacement"
+          }
+        }
+      }
+    },
+    "Repositories" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repositories"
+          }
+        }
+      }
+    },
+    "Reset" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset"
+          }
+        }
+      }
+    },
+    "Restart Heartbeat" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restart Heartbeat"
+          }
+        }
+      }
+    },
+    "Restart Required" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restart Required"
           }
         }
       }
@@ -573,7 +1177,31 @@
         }
       }
     },
+    "See all apps from your sources" : {
+      "comment" : "All repositories description",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See all apps from your sources"
+          }
+        }
+      }
+    },
+    "Seems like you've gotten your hands on your pairing file! If you encounter ever `InvalidHostID -9` error please make a new pairing file and import it." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seems like you've gotten your hands on your pairing file! If you encounter ever `InvalidHostID -9` error please make a new pairing file and import it."
+          }
+        }
+      }
+    },
     "Select Alternative Icon" : {
+      "comment" : "Select custom alternative app icon",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -584,11 +1212,23 @@
       }
     },
     "Select entitlements file" : {
+      "comment" : "Select custom entitlements for the app",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Select entitlements file"
+          }
+        }
+      }
+    },
+    "Semi Local" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Semi Local"
           }
         }
       }
@@ -603,12 +1243,80 @@
         }
       }
     },
+    "Settings" : {
+      "comment" : "Settings tab",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        }
+      }
+    },
     "Show Sheet when Exporting" : {
+      "comment" : "Archiving opens share sheet",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Show Sheet when Exporting"
+          }
+        }
+      }
+    },
+    "Show Your Support" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Your Support"
+          }
+        }
+      }
+    },
+    "Show your support by donating! If you're unable to donate, spreading the word works too!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show your support by donating! If you're unable to donate, spreading the word works too!"
+          }
+        }
+      }
+    },
+    "Sign" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign"
+          }
+        }
+      }
+    },
+    "Signed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signed"
+          }
+        }
+      }
+    },
+    "Signing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signing"
           }
         }
       }
@@ -634,11 +1342,56 @@
       }
     },
     "Sources" : {
+      "comment" : "Sources tab",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sources"
+          }
+        }
+      }
+    },
+    "Sponsors" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sponsors"
+          }
+        }
+      }
+    },
+    "SSL Certificates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SSL Certificates"
+          }
+        }
+      }
+    },
+    "Standard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard"
+          }
+        }
+      }
+    },
+    "Start Signing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Signing"
           }
         }
       }
@@ -683,6 +1436,50 @@
         }
       }
     },
+    "Team Identifiers" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Team Identifiers"
+          }
+        }
+      }
+    },
+    "Team Name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Team Name"
+          }
+        }
+      }
+    },
+    "The heartbeat is activated in the background, it will restart when the app is re-opened or prompted. If the status below is pulsing, that means its healthy." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The heartbeat is activated in the background, it will restart when the app is re-opened or prompted. If the status below is pulsing, that means its healthy."
+          }
+        }
+      }
+    },
+    "These changes require a restart of the app" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "These changes require a restart of the app"
+          }
+        }
+      }
+    },
     "Toggling show sheet will present a share sheet after exporting to your files." : {
       "localizations" : {
         "en" : {
@@ -693,7 +1490,19 @@
         }
       }
     },
+    "Tunnel & Pairing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tunnel & Pairing"
+          }
+        }
+      }
+    },
     "Tweaks" : {
+      "comment" : "Select custom tweaks to install and inject",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -734,6 +1543,7 @@
       }
     },
     "View Entitlements" : {
+      "comment" : "Certificate listed entitlements",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -744,6 +1554,7 @@
       }
     },
     "Visit Patreon" : {
+      "comment" : "Repository listed patreon",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -754,6 +1565,7 @@
       }
     },
     "Visit Website" : {
+      "comment" : "Repository listed website",
       "localizations" : {
         "en" : {
           "stringUnit" : {

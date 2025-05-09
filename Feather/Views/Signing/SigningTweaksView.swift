@@ -19,11 +19,11 @@ struct SigningTweaksView: View {
 		List(options.injectionFiles, id: \.absoluteString) { tweak in
 			_file(tweak: tweak)
 		}
-		.navigationTitle("Tweaks")
+		.navigationTitle(String.localized("Tweaks"))
 		.listStyle(.plain)
 		.toolbar {
 			NBToolbarButton(
-				"Add",
+				"",
 				systemImage: "plus",
 				style: .icon,
 				placement: .topBarTrailing
@@ -62,7 +62,7 @@ extension SigningTweaksView {
 						}
 					}
 				} label: {
-					Label("Delete", systemImage: "trash")
+					Label(String.localized("Delete"), systemImage: "trash")
 				}
 			}
 	}

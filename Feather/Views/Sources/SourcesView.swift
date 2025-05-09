@@ -29,7 +29,7 @@ struct SourcesView: View {
 	
 	// MARK: Body
 	var body: some View {
-		NBNavigationView("Sources") {
+		NBNavigationView(.localized("Sources")) {
 			NBListAdaptable {
 				Section {
 					NavigationLink {
@@ -38,8 +38,8 @@ struct SourcesView: View {
 						HStack(spacing: 9) {
 							Image("Repositories").appIconStyle()
 							NBTitleWithSubtitleView(
-								title: "All Repositories",
-								subtitle: "See all apps from your sources"
+								title: .localized("All Repositories"),
+								subtitle: .localized("See all apps from your sources")
 							)
 						}
 					}
@@ -47,7 +47,7 @@ struct SourcesView: View {
 				}
 				
 				NBSection(
-					"Repositories",
+					.localized("Repositories"),
 					secondary: _filteredSources.count.description
 				) {
 					ForEach(_filteredSources) { source in
@@ -63,7 +63,7 @@ struct SourcesView: View {
 			.searchable(text: $_searchText, placement: .platform())
 			.toolbar {
 				NBToolbarButton(
-					"Add",
+					.localized("Add"),
 					systemImage: "plus",
 					style: .icon,
 					placement: .topBarTrailing,

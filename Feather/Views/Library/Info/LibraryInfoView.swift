@@ -28,7 +28,7 @@ struct LibraryInfoView: View {
 				_executableSection(for: app)
 				
 				Section {
-					Button("Open in Files", systemImage: "folder") {
+					Button(String.localized("Open in Files"), systemImage: "folder") {
 						UIApplication.open(Storage.shared.getUuidDirectory(for: app)!.toSharedDocumentsURL()!)
 					}
 				}
@@ -44,21 +44,21 @@ struct LibraryInfoView: View {
 extension LibraryInfoView {
 	@ViewBuilder
 	private func _infoSection(for app: AppInfoPresentable) -> some View {
-		NBSection("Info") {
+		NBSection(.localized("Info")) {
 			if let name = app.name {
-				_infoCell("Name", desc: name)
+				_infoCell(.localized("Name"), desc: name)
 			}
 			
 			if let ver = app.version {
-				_infoCell("Version", desc: ver)
+				_infoCell(.localized("Version"), desc: ver)
 			}
 			
 			if let id = app.identifier {
-				_infoCell("Identifier", desc: id)
+				_infoCell(.localized("Identifier"), desc: id)
 			}
 			
 			if let date = app.date {
-				_infoCell("Date Added", desc: date.formatted())
+				_infoCell(.localized("Date Added"), desc: date.formatted())
 			}
 		}
 	}
@@ -66,7 +66,7 @@ extension LibraryInfoView {
 	@ViewBuilder
 	private func _certSection(for app: AppInfoPresentable) -> some View {
 		if let cert = Storage.shared.getCertificate(from: app) {
-			NBSection("Certificate") {
+			NBSection(.localized("Certificate")) {
 				CertificatesCellView(
 					cert: cert,
 					shouldDisplayInfo: false,
@@ -78,11 +78,11 @@ extension LibraryInfoView {
 	
 	@ViewBuilder
 	private func _bundleSection(for app: AppInfoPresentable) -> some View {
-		NBSection("Bundle") {
-			NavigationLink("Alternative Icons") {
+		NBSection(.localized("Bundle")) {
+			NavigationLink(String.localized("Alternative Icons")) {
 				SigningAlternativeIconView(app: app, appIcon: .constant(nil), isModifing: .constant(false))
 			}
-			NavigationLink("Frameworks & PlugIns") {
+			NavigationLink(String.localized("Frameworks & PlugIns")) {
 				SigningFrameworksView(app: app, options: .constant(nil))
 			}
 		}
@@ -90,8 +90,8 @@ extension LibraryInfoView {
 	
 	@ViewBuilder
 	private func _executableSection(for app: AppInfoPresentable) -> some View {
-		NBSection("Executable") {
-			NavigationLink("Dylibs") {
+		NBSection(.localized("Executable")) {
+			NavigationLink(String.localized("Dylibs")) {
 				SigningDylibView(app: app, options: .constant(nil))
 			}
 		}

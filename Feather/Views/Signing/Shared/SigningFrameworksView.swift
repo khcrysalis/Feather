@@ -13,15 +13,15 @@ struct SigningFrameworksView: View {
 	@State private var _frameworks: [String] = []
 	@State private var _plugins: [String] = []
 	
-	private let _frameworksPath = "Frameworks"
-	private let _pluginsPath = "PlugIns"
+	private let _frameworksPath: String = .localized("Frameworks")
+	private let _pluginsPath: String = .localized("PlugIns")
 	
 	var app: AppInfoPresentable
 	@Binding var options: Options?
 	
 	// MARK: Body
 	var body: some View {
-		NBList("Frameworks & PlugIns") {
+		NBList(.localized("Frameworks & PlugIns")) {
 			if !_frameworks.isEmpty {
 				NBSection(_frameworksPath) {
 					ForEach(_frameworks, id: \.self) { framework in

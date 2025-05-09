@@ -22,21 +22,21 @@ struct SourcesAddView: View {
 	
 	// MARK: Body
 	var body: some View {
-		NBNavigationView("Add Source", displayMode: .inline) {
+		NBNavigationView(.localized("Add Source"), displayMode: .inline) {
 			Form {
 				NBSection("Source") {
-					TextField("Source Repo URL", text: $_sourceURL)
+					TextField(String.localized("Source Repo URL"), text: $_sourceURL)
 						.keyboardType(.URL)
 				} footer: {
-					Text("Enter a URL to start validation.")
+					Text(String.localized("Enter a URL to start validation."))
 				}
 				
 				Section {
-					Button("Import", systemImage: "square.and.arrow.down") {
+					Button(String.localized("Import"), systemImage: "square.and.arrow.down") {
 						_addCode(UIPasteboard.general.string)
 					}
 					
-					Button("Export", systemImage: "doc.on.clipboard") {
+					Button(String.localized("Export"), systemImage: "doc.on.clipboard") {
 						UIPasteboard.general.string = Storage.shared.getSources().map {
 							$0.sourceURL!.absoluteString
 						}.joined(separator: "\n")
@@ -49,7 +49,7 @@ struct SourcesAddView: View {
 				NBToolbarButton(role: .cancel)
 				
 				NBToolbarButton(
-					"Save",
+					.localized("Save"),
 					systemImage: "checkmark",
 					style: .text,
 					placement: .confirmationAction,

@@ -18,7 +18,7 @@ struct SigningDylibView: View {
 	@Binding var options: Options?
 	
 	var body: some View {
-		NBList("Dylibs", type: .list) {
+		NBList(.localized("Dylibs"), type: .list) {
 			Section {
 				ForEach(_dylibs, id: \.self) { dylib in
 					SigningToggleCellView(
@@ -29,8 +29,8 @@ struct SigningDylibView: View {
 				}
 			}
 			
-			NBSection("Hidden") {
-				Text("\(_hiddenDylibCount) required system dylibs not shown")
+			NBSection(.localized("Hidden")) {
+				Text(String.localized("%lld required system dylibs not shown", arguments: _hiddenDylibCount))
 					.font(.footnote)
 					.foregroundColor(.disabled())
 			}

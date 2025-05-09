@@ -21,9 +21,9 @@ struct SourceAppsView: View {
 	
 	private var _navigationTitle: String {
 		if object.count == 1 {
-			return object[0].name ?? "Unknown"
+			return object[0].name ?? .localized("Unknown")
 		} else {
-			return "\(object.count) Sources"
+			return .localized("%lld Sources", arguments: object.count)
 		}
 	}
 	
@@ -57,13 +57,13 @@ struct SourceAppsView: View {
 				_sources.count == 1
 			{
 				if let url = _sources[0].website {
-					Button("Visit Website", systemImage: "globe") {
+					Button(String.localized("Visit Website"), systemImage: "globe") {
 						UIApplication.open(url)
 					}
 				}
 				
 				if let url = _sources[0].patreonURL {
-					Button("Visit Patreon", systemImage: "dollarsign.circle") {
+					Button(String.localized("Visit Patreon"), systemImage: "dollarsign.circle") {
 						UIApplication.open(url)
 					}
 				}
@@ -71,7 +71,7 @@ struct SourceAppsView: View {
 		}
 		.toolbar {
 			NBToolbarMenu(
-				"Filter",
+				"",
 				systemImage: "line.3.horizontal.decrease",
 				style: .icon,
 				placement: .topBarTrailing
@@ -108,7 +108,7 @@ struct SourceAppsView: View {
 extension SourceAppsView {
 	@ViewBuilder
 	private func _sortActions() -> some View {
-		Section("Filter by") {
+		Section(String.localized("Filter by")) {
 			ForEach(SortOption.allCases, id: \.displayName) { opt in
 				_sortButton(for: opt)
 			}
@@ -139,9 +139,9 @@ extension SourceAppsView {
 		
 		var displayName: String {
 			switch self {
-			case .default: return "Default"
-			case .name: return "Name"
-			case .date: return "Date"
+			case .default: return .localized("Default")
+			case .name: return .localized("Name")
+			case .date: return .localized("Date")
 			}
 		}
 	}

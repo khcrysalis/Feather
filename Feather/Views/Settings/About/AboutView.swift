@@ -23,13 +23,13 @@ struct AboutView: View {
 	
 	// MARK: Body
 	var body: some View {
-		NBList("About") {
+		NBList(.localized("About")) {
 			Section {
-				LabeledContent("Name", value: Bundle.main.exec)
-				LabeledContent("Version", value: Bundle.main.version)
+				LabeledContent(String.localized("Name"), value: Bundle.main.exec)
+				LabeledContent(String.localized("Version"), value: Bundle.main.version)
 			}
 			
-			NBSection("Credits") {
+			NBSection(.localized("Credits")) {
 				if !_credits.isEmpty {
 					ForEach(_credits, id: \.self) { credit in
 						_credit(name: credit.name, desc: credit.desc, github: credit.github)
@@ -38,14 +38,14 @@ struct AboutView: View {
 				}
 			}
 			
-			NBSection("Sponsors") {
+			NBSection(.localized("Sponsors")) {
 				if !_donators.isEmpty {
 					Group {
 						Text(try! AttributedString(markdown: _donators.map {
 							"[\($0.name ?? $0.github)](https://github.com/\($0.github))"
 						}.joined(separator: ", ")))
 						
-						Text("💜 This couldn't of been done without my sponsors!")
+						Text(String.localized("💜 This couldn't of been done without my sponsors!"))
 							.foregroundStyle(.secondary)
 							.padding(.vertical, 2)
 					}

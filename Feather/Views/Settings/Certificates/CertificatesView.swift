@@ -46,12 +46,12 @@ struct CertificatesView: View {
 			}
 			.padding()
 		}
-		.navigationTitle("Certificates")
+		.navigationTitle(String.localized("Certificates"))
 		.navigationBarTitleDisplayMode(.inline)
 		.toolbar {
 			if bindingSelectedCert == nil {
 				NBToolbarButton(
-					"Add",
+					"",
 					systemImage: "plus",
 					style: .icon,
 					placement: .topBarTrailing
@@ -108,7 +108,7 @@ extension CertificatesView {
 		Button(role: .destructive) {
 			Storage.shared.deleteCertificate(for: cert)
 		} label: {
-			Label("Delete", systemImage: "trash")
+			Label(String.localized("Delete"), systemImage: "trash")
 		}
 	}
 	
@@ -117,7 +117,7 @@ extension CertificatesView {
 		Button {
 			_isSelectedInfoPresenting = cert
 		} label: {
-			Label("Get Info", systemImage: "info.circle")
+			Label(String.localized("Get Info"), systemImage: "info.circle")
 		}
 	}
 }

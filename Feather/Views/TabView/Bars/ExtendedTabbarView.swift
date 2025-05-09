@@ -42,7 +42,7 @@ struct ExtendedTabbarView: View {
 			}
 			
 			TabSection("Sources") {
-				Tab("All Repositories", systemImage: "globe.desk") {
+				Tab(String.localized("All Repositories"), systemImage: "globe.desk") {
 					NavigationStack {
 						SourceAppsView(object: Array(_sources), viewModel: viewModel)
 					}
@@ -54,17 +54,17 @@ struct ExtendedTabbarView: View {
 							SourceAppsView(object: [source], viewModel: viewModel)
 						}
 					} label: {
-						_icon(source.name ?? "Unknown", iconUrl: source.iconURL)
+						_icon(source.name ?? .localized("Unknown"), iconUrl: source.iconURL)
 					}
 					.swipeActions {
-						Button("Delete", systemImage: "trash", role: .destructive) {
+						Button(String.localized("Delete"), systemImage: "trash", role: .destructive) {
 							Storage.shared.deleteSource(for: source)
 						}
 					}
 				}
 			}
 			.sectionActions {
-				Button("Add Source", systemImage: "plus") {
+				Button(String.localized("Add Source"), systemImage: "plus") {
 					_isAddingPresenting = true
 				}
 			}

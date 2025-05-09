@@ -28,7 +28,7 @@ struct ConfigurationDictView: View {
 		}
 		.toolbar {
 			NBToolbarButton(
-				"Add",
+				"",
 				systemImage: "plus",
 				style: .icon,
 				placement: .topBarTrailing
@@ -49,7 +49,7 @@ extension ConfigurationDictView {
 		Button(role: .destructive) {
 			dataDict.removeValue(forKey: key)
 		} label: {
-			Label("Delete", systemImage: "trash")
+			Label(String.localized("Delete"), systemImage: "trash")
 		}
 	}
 }

@@ -118,7 +118,7 @@ struct InstallPreviewView: View {
 			} catch {
 				await MainActor.run {
 					UIAlertController.showAlertWithOk(
-						title: "Installer",
+						title: .localized("Install"),
 						message: error.localizedDescription,
 						action: {
 							#if IDEVICE

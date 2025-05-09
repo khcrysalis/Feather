@@ -28,7 +28,7 @@ struct LibraryCellView: View {
 			FRAppIconView(app: app, size: 57, cornerRadius: 14)
 			
 			NBTitleWithSubtitleView(
-				title: app.name ?? "Unknown",
+				title: app.name ?? .localized("Unknown"),
 				subtitle: _desc,
 				linelimit: 0
 			)
@@ -55,7 +55,7 @@ struct LibraryCellView: View {
 		{
 			return "\(version) • \(id)"
 		} else {
-			return "Unknown"
+			return .localized("Unknown")
 		}
 	}
 }
@@ -64,14 +64,14 @@ struct LibraryCellView: View {
 extension LibraryCellView {
 	@ViewBuilder
 	private func _actions(for app: AppInfoPresentable) -> some View {
-		Button("Delete", systemImage: "trash", role: .destructive) {
+		Button(String.localized("Delete"), systemImage: "trash", role: .destructive) {
 			Storage.shared.deleteApp(for: app)
 		}
 	}
 	
 	@ViewBuilder
 	private func _contextActions(for app: AppInfoPresentable) -> some View {
-		Button("Get Info", systemImage: "info.circle") {
+		Button(String.localized("Get Info"), systemImage: "info.circle") {
 			selectedInfoAppPresenting = AnyApp(base: app)
 		}
 	}
@@ -80,21 +80,21 @@ extension LibraryCellView {
 	private func _contextActionsExtra(for app: AppInfoPresentable) -> some View {
 		if app.isSigned {
 			if let id = app.identifier {
-				Button("Open", systemImage: "app.badge.checkmark") {
+				Button(String.localized("Open"), systemImage: "app.badge.checkmark") {
 					UIApplication.openApp(with: id)
 				}
 			}
-			Button("Install", systemImage: "square.and.arrow.down") {
+			Button(String.localized("Install"), systemImage: "square.and.arrow.down") {
 				selectedInstallAppPresenting = AnyApp(base: app)
 			}
-			Button("Re-sign", systemImage: "signature") {
+			Button(String.localized("Re-sign"), systemImage: "signature") {
 				selectedSigningAppPresenting = AnyApp(base: app)
 			}
-			Button("Export", systemImage: "square.and.arrow.up") {
+			Button(String.localized("Export"), systemImage: "square.and.arrow.up") {
 				selectedInstallAppPresenting = AnyApp(base: app, archive: true)
 			}
 		} else {
-			Button("Install", systemImage: "square.and.arrow.down") {
+			Button(String.localized("Install"), systemImage: "square.and.arrow.down") {
 				selectedInstallAppPresenting = AnyApp(base: app)
 			}
 		}
@@ -108,7 +108,7 @@ extension LibraryCellView {
 					selectedInstallAppPresenting = AnyApp(base: app)
 				} label: {
 					FRExpirationPillView(
-						title: "Install",
+						title: .localized("Install"),
 						showOverlay: _libraryCellAppearance == 0,
 						expiration: certInfo
 					)
@@ -118,7 +118,7 @@ extension LibraryCellView {
 					selectedSigningAppPresenting = AnyApp(base: app)
 				} label: {
 					FRExpirationPillView(
-						title: "Sign",
+						title: .localized("Sign"),
 						showOverlay: true,
 						expiration: nil
 					)

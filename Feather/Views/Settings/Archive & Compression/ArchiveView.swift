@@ -14,9 +14,9 @@ struct ArchiveView: View {
 	@AppStorage("Feather.useShareSheetForArchiving") private var _useShareSheet: Bool = false
 	
     var body: some View {
-		NBList("Archive & Compression") {
+		NBList(.localized("Archive & Compression")) {
 			Section {
-				Picker("Compression Level", systemImage: "archivebox", selection: $_compressionLevel) {
+				Picker(String.localized("Compression Level"), systemImage: "archivebox", selection: $_compressionLevel) {
 					ForEach(ZipCompression.allCases, id: \.rawValue) { level in
 						Text(level.label).tag(level)
 					}
@@ -24,9 +24,9 @@ struct ArchiveView: View {
 			}
 			
 			Section {
-				Toggle("Show Sheet when Exporting", systemImage: "square.and.arrow.up", isOn: $_useShareSheet)
+				Toggle(String.localized("Show Sheet when Exporting"), systemImage: "square.and.arrow.up", isOn: $_useShareSheet)
 			} footer: {
-				Text("Toggling show sheet will present a share sheet after exporting to your files.")
+				Text(String.localized("Toggling show sheet will present a share sheet after exporting to your files."))
 			}
 		}
     }

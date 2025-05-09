@@ -24,17 +24,17 @@ struct ConfigurationDictAddView: View {
 	
 	// MARK: Body
     var body: some View {
-		NBList("New") {
+		NBList(.localized("New")) {
 			Section {
-				TextField("Identifier", text: $_newKey)
-				TextField("Replacement", text: $_newValue)
+				TextField(String.localized("Identifier"), text: $_newKey)
+				TextField(String.localized("Replacement"), text: $_newValue)
 			}
 			.autocapitalization(.none)
 		}
 		.toolbar {
 			NBToolbarButton(
 				"Save",
-				systemImage: "plus",
+				systemImage: "",
 				style: .text,
 				placement: .confirmationAction,
 				isDisabled: saveButtonDisabled

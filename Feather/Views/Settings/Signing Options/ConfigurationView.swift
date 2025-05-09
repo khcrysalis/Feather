@@ -8,6 +8,8 @@
 import SwiftUI
 import NimbleViews
 
+#warning("maybe we dont need blank \"\"")
+
 // MARK: - View
 struct ConfigurationView: View {
 	@StateObject private var _optionsManager = OptionsManager.shared
@@ -16,14 +18,14 @@ struct ConfigurationView: View {
 	
 	// MARK: Body
     var body: some View {
-		NBList("Signing Options") {
-			NavigationLink("Display Names", destination: ConfigurationDictView(
-					title: "Display Names",
+		NBList(.localized("Signing Options")) {
+			NavigationLink(String.localized("Display Names"), destination: ConfigurationDictView(
+				title: .localized("Display Names"),
 					dataDict: $_optionsManager.options.displayNames
 				)
 			)
-			NavigationLink("Identifers", destination: ConfigurationDictView(
-					title: "Identifers",
+			NavigationLink(String.localized("Identifers"), destination: ConfigurationDictView(
+					title: .localized("Identifers"),
 					dataDict: $_optionsManager.options.identifiers
 				)
 			)
@@ -32,7 +34,7 @@ struct ConfigurationView: View {
 		}
 		.toolbar {
 			NBToolbarMenu(
-				_optionsManager.options.ppqString,
+				"",
 				systemImage: "character.textbox",
 				style: .icon,
 				placement: .topBarTrailing
@@ -54,10 +56,10 @@ extension ConfigurationView {
 	@ViewBuilder
 	private func _randomMenuItem() -> some View {
 		Section(_optionsManager.options.ppqString) {
-			Button("Change") {
+			Button(String.localized("Change")) {
 				isRandomAlertPresenting = true
 			}
-			Button("Copy") {
+			Button(String.localized("Copy")) {
 				UIPasteboard.general.string = _optionsManager.options.ppqString
 			}
 		}
@@ -65,13 +67,13 @@ extension ConfigurationView {
 	
 	@ViewBuilder
 	private func _randomMenuAlert() -> some View {
-		TextField("String", text: $randomString)
-		Button("Save") {
+		TextField(String.localized("String"), text: $randomString)
+		Button(String.localized("Save")) {
 			if !randomString.isEmpty {
 				_optionsManager.options.ppqString = randomString
 			}
 		}
 		
-		Button("Cancel", role: .cancel) {}
+		Button(String.localized("Cancel"), role: .cancel) {}
 	}
 }

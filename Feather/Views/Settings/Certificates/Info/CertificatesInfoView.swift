@@ -34,7 +34,7 @@ struct CertificatesInfoView: View {
 				}
 				
 				Section {
-					Button("Open in Files", systemImage: "folder") {
+					Button(String.localized("Open in Files"), systemImage: "folder") {
 						UIApplication.open(Storage.shared.getUuidDirectory(for: cert)!.toSharedDocumentsURL()!)
 					}
 				}
@@ -54,14 +54,14 @@ struct CertificatesInfoView: View {
 extension CertificatesInfoView {
 	@ViewBuilder
 	private func _infoSection(data: Certificate) -> some View {
-		NBSection("Info") {
-			_info("Name", description: data.Name)
-			_info("AppID Name", description: data.AppIDName)
-			_info("Team Name", description: data.TeamName)
+		NBSection(.localized("Info")) {
+			_info(.localized("Name"), description: data.Name)
+			_info(.localized("AppID Name"), description: data.AppIDName)
+			_info(.localized("Team Name"), description: data.TeamName)
 		}
 		
 		Section {
-			_info("Expires", description: data.ExpirationDate.expirationInfo().formatted)
+			_info(.localized("Expires"), description: data.ExpirationDate.expirationInfo().formatted)
 				.foregroundStyle(data.ExpirationDate.expirationInfo().color)
 			if let ppq = data.PPQCheck {
 				_info("PPQCheck", description: ppq.description)
@@ -73,7 +73,7 @@ extension CertificatesInfoView {
 	private func _entitlementsSection(data: Certificate) -> some View {
 		if let entitlements = data.Entitlements {
 			Section {
-				NavigationLink("View Entitlements") {
+				NavigationLink(String.localized("View Entitlements")) {
 					CertificatesInfoEntitlementView(entitlements: entitlements)
 				}
 			}
@@ -82,21 +82,21 @@ extension CertificatesInfoView {
 	
 	@ViewBuilder
 	private func _miscSection(data: Certificate) -> some View {
-		NBSection("Misc") {
-			_disclosure("Platform", keys: data.Platform)
+		NBSection(.localized("Misc")) {
+			_disclosure(.localized("Platform"), keys: data.Platform)
 			
 			if let all = data.ProvisionsAllDevices {
-				_info("Provision All Devices", description: all.description)
+				_info(.localized("Provision All Devices"), description: all.description)
 			}
 			
 			if let devices = data.ProvisionedDevices {
-				_disclosure("Provisioned Devices", keys: devices)
+				_disclosure(.localized("Provisioned Devices"), keys: devices)
 			}
 			
-			_disclosure("Team Identifiers", keys: data.TeamIdentifier)
+			_disclosure(.localized("Team Identifiers"), keys: data.TeamIdentifier)
 			
 			if let prefix = data.ApplicationIdentifierPrefix{
-				_disclosure("Identifier Prefix", keys: prefix)
+				_disclosure(.localized("Identifier Prefix"), keys: prefix)
 			}
 		}
 	}

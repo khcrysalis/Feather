@@ -18,25 +18,25 @@ struct SettingsDonationCellView: View {
 				_title()
 				
 				_benefit(
-					"Discord",
-					"Get access to our secret Discord by donating, where we talk about future updates, betas, and potential ways to make your experience better.",
+					.localized("Discord"),
+					.localized("Get access to our secret Discord by donating, where we talk about future updates, betas, and potential ways to make your experience better."),
 					systemName: "lock.fill"
 				)
 				_benefit(
-					"Remove this Alert",
-					"Remove annoying alerts like these after getting beta access!",
+					.localized("Remove this Alert"),
+					.localized("Remove annoying alerts like these after getting beta access!"),
 					systemName: "heart.text.square.fill"
 				)
 				_benefit(
-					"Show Your Support",
-					"Show your support by donating! If you're unable to donate, spreading the word works too!",
+					.localized("Show Your Support"),
+					.localized("Show your support by donating! If you're unable to donate, spreading the word works too!"),
 					systemName: "heart.fill"
 				)
 				
 				Button() {
 					UIApplication.open(site)
 				} label: {
-					_sheetButton("Donate")
+					_sheetButton(.localized("Donate"))
 				}
 				.frame(height: 45)
 			}
@@ -52,7 +52,7 @@ struct SettingsDonationCellView: View {
 				.font(.system(size: 38, weight: .bold))
 				.foregroundStyle(.pink)
 			
-			Text("Donations")
+			Text(String.localized("Donations"))
 				.font(.title)
 				.bold()
 		}

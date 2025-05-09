@@ -15,7 +15,7 @@ struct SettingsView: View {
 	
 	// MARK: Body
     var body: some View {
-		NBNavigationView("Settings") {
+		NBNavigationView(.localized("Settings")) {
 			Form {
 				#if !NIGHTLY
 				SettingsDonationCellView(site: _donationsUrl)
@@ -24,17 +24,17 @@ struct SettingsView: View {
 				_feedback()
 				
 				Section {
-					NavigationLink("Appearance", destination: AppearanceView())
+					NavigationLink(String.localized("Appearance"), destination: AppearanceView())
 				}
 				
-				NBSection("Features") {
-					NavigationLink("Certificates", destination: CertificatesView())
-					NavigationLink("Signing Options", destination: ConfigurationView())
-					NavigationLink("Archive & Compression", destination: ArchiveView())
+				NBSection(.localized("Features")) {
+					NavigationLink(String.localized("Certificates"), destination: CertificatesView())
+					NavigationLink(String.localized("Signing Options"), destination: ConfigurationView())
+					NavigationLink(String.localized("Archive & Compression"), destination: ArchiveView())
 					#if SERVER
-					NavigationLink("Server & SSL", destination: ServerView())
+					NavigationLink(String.localized("Server & SSL"), destination: ServerView())
 					#elseif IDEVICE
-					NavigationLink("Tunnel & Pairing", destination: TunnelView())
+					NavigationLink(String.localized("Tunnel & Pairing"), destination: TunnelView())
 					#endif
 				}
 				
@@ -49,11 +49,11 @@ extension SettingsView {
 	@ViewBuilder
 	private func _feedback() -> some View {
 		Section {
-			NavigationLink("About", destination: AboutView())
-			Button("Submit Feedback", systemImage: "safari") {
+			NavigationLink(String.localized("About"), destination: AboutView())
+			Button(String.localized("Submit Feedback"), systemImage: "safari") {
 				UIApplication.open("\(_githubUrl)/issues")
 			}
-			Button("GitHub Repository", systemImage: "safari") {
+			Button(String.localized("GitHub Repository"), systemImage: "safari") {
 				UIApplication.open(_githubUrl)
 			}
 		}
@@ -61,18 +61,18 @@ extension SettingsView {
 	
 	@ViewBuilder
 	private func _directories() -> some View {
-		NBSection("Misc") {
-			Button("Open Documents", systemImage: "folder") {
+		NBSection(.localized("Misc")) {
+			Button(String.localized("Open Documents"), systemImage: "folder") {
 				UIApplication.open(URL.documentsDirectory.toSharedDocumentsURL()!)
 			}
-			Button("Open Archives", systemImage: "folder") {
+			Button(String.localized("Open Archives"), systemImage: "folder") {
 				UIApplication.open(FileManager.default.archives.toSharedDocumentsURL()!)
 			}
-			Button("Open Certificates", systemImage: "folder") {
+			Button(String.localized("Open Certificates"), systemImage: "folder") {
 				UIApplication.open(FileManager.default.certificates.toSharedDocumentsURL()!)
 			}
 		} footer: {
-			Text("All of Feathers files are contained in the documents directory, here are some quick links to these.")
+			Text(String.localized("All of Feathers files are contained in the documents directory, here are some quick links to these."))
 		}
 	}
 }

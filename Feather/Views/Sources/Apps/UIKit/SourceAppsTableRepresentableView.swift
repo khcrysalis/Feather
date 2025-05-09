@@ -184,7 +184,7 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 			
 			headerView?.contentConfiguration = UIHostingConfiguration {
 				HStack {
-					Text("\(_sortedApps.count) Apps")
+					Text(String.localized("%lld Apps", arguments: _sortedApps.count))
 					Spacer()
 				}
 				.font(.headline)
@@ -202,7 +202,7 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 				previewProvider: nil
 			) { _ in
 				let versionsMenu = UIMenu(
-					title: "Copy Download URLs",
+					title: .localized("Copy Download URLs"),
 					image: UIImage(systemName: "list.bullet"),
 					children: self._contextActions(for: app, with: { version in
 						UIPasteboard.general.string = version?.absoluteString
@@ -210,7 +210,7 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 				)
 				
 				let downloadsMenu = UIMenu(
-					title: "Previous Versions",
+					title: .localized("Previous Versions"),
 					image: UIImage(systemName: "square.and.arrow.down.on.square"),
 					children: self._contextActions(for: app, with: { version in
 						if let url = version {

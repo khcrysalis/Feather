@@ -28,32 +28,32 @@ struct CertificatesAddView: View {
 	
 	// MARK: Body
 	var body: some View {
-		NBNavigationView("New Certificate", displayMode: .inline) {
+		NBNavigationView(.localized("New Certificate"), displayMode: .inline) {
 			Form {
-				NBSection("Files") {
-					_importButton("Import Certificate File", file: _p12URL) {
+				NBSection(.localized("Files")) {
+					_importButton(.localized("Import Certificate File"), file: _p12URL) {
 						_isImportingP12Presenting = true
 					}
-					_importButton("Import Provisioning File", file: _provisionURL) {
+					_importButton(.localized("Import Provisioning File"), file: _provisionURL) {
 						_isImportingMobileProvisionPresenting = true
 					}
 				}
-				NBSection("Password") {
-					SecureField("Enter Password", text: $_p12Password)
+				NBSection(.localized("Password")) {
+					SecureField(String.localized("Enter Password"), text: $_p12Password)
 				} footer: {
-					Text("Enter the password associated with the private key. Leave it blank if theres no password required.")
+					Text(String.localized("Enter the password associated with the private key. Leave it blank if theres no password required."))
 				}
 				
 				Section {
-					TextField("Nickname (Optional)", text: $_certificateName)
+					TextField(String.localized("Nickname (Optional)"), text: $_certificateName)
 				}
 			}
 			.toolbar {
 				NBToolbarButton(role: .cancel)
 				
 				NBToolbarButton(
-					"Save",
-					systemImage: "checkmark",
+					.localized("Save"),
+					systemImage: "",
 					style: .text,
 					placement: .confirmationAction,
 					isDisabled: saveButtonDisabled
@@ -80,7 +80,11 @@ struct CertificatesAddView: View {
 				)
 			}
 			.alert(isPresented: $_isPasswordAlertPresenting) {
-				Alert(title: Text("Bad Password"), message: Text("Please check the password and try again."), dismissButton: .default(Text("OK")))
+				Alert(
+					title: Text(String.localized("Bad Password")),
+					message: Text(String.localized("Please check the password and try again.")),
+					dismissButton: .default(Text(String.localized("OK")))
+				)
 			}
 		}
 	}
