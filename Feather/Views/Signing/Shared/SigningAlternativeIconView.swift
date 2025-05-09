@@ -28,8 +28,8 @@ struct SigningAlternativeIconView: View {
 				} label: {
 					_icon(icon)
 				}
+				.disabled(!isModifing)
 			}
-			.disabled(!isModifing)
 			.onAppear(perform: _loadAlternateIcons)
 			.toolbar {
 				if isModifing {
