@@ -54,37 +54,9 @@ struct SourcesAddView: View {
 					placement: .confirmationAction,
 					isDisabled: _sourceURL.isEmpty
 				) {
-					Self.add(_sourceURL) {
+					FR.add(_sourceURL) {
 						dismiss()
 					}
-				}
-			}
-		}
-	}
-	
-	static func add(
-		_ urlString: String,
-		competion: @escaping () -> Void
-	) {
-		guard let url = URL(string: urlString) else { return }
-		
-		NBFetchService().fetch<ASRepository>(from: url) { (result: Result<ASRepository, Error>) in
-			switch result {
-			case .success(let data):
-				let id = data.id ?? url.absoluteString
-				
-				if !Storage.shared.sourceExists(id) {
-					Storage.shared.addSource(url, repository: data, id: id) { _ in
-						competion()
-					}
-				} else {
-					DispatchQueue.main.async {
-						UIAlertController.showAlertWithOk(title: "Error", message: "Repository already added.")
-					}
-				}
-			case .failure(let error):
-				DispatchQueue.main.async {
-					UIAlertController.showAlertWithOk(title: "Error", message: error.localizedDescription)
 				}
 			}
 		}
