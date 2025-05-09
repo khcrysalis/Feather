@@ -40,10 +40,8 @@ final class SigningHandler: NSObject {
 		guard let appUrl = Storage.shared.getAppDirectory(for: _app) else {
 			throw SigningFileHandlerError.appNotFound
 		}
-		
-		if !_fileManager.fileExists(atPath: _uniqueWorkDir.path) {
-			try _fileManager.createDirectory(at: _uniqueWorkDir, withIntermediateDirectories: true)
-		}
+
+		try _fileManager.createDirectoryIfNeeded(at: _uniqueWorkDir)
 		
 		let movedAppURL = _uniqueWorkDir.appendingPathComponent(appUrl.lastPathComponent)
 		
@@ -147,9 +145,7 @@ final class SigningHandler: NSObject {
 	}
 	
 	func clean() async throws {
-		if _fileManager.fileExists(atPath: _uniqueWorkDir.path()) {
-			try _fileManager.removeItem(at: _uniqueWorkDir)
-		}
+		try _fileManager.removeFileIfNeeded(at: _uniqueWorkDir)
 	}
 }
 
@@ -210,9 +206,7 @@ extension SigningHandler {
 	
 	private func _removePlaceholderWatch(for app: URL) async throws {
 		let path = app.appendingPathComponent("com.apple.WatchPlaceholder")
-		if _fileManager.fileExists(atPath: path.path) {
-			try _fileManager.removeItem(at: path)
-		}
+		try _fileManager.removeFileIfNeeded(at: path)
 	}
 	
 	private func _removeFiles(for app: URL, from appendingComponent: [String]) async throws {
@@ -220,8 +214,8 @@ extension SigningHandler {
 			app.appendingPathComponent($0)
 		}
 		
-		for url in filesToRemove where _fileManager.fileExists(atPath: url.path) {
-			try _fileManager.removeItem(at: url)
+		for url in filesToRemove {
+			try _fileManager.removeFileIfNeeded(at: url)
 		}
 	}
 	
@@ -247,9 +241,7 @@ extension SigningHandler {
 	
 	private func _removeProvisioning(for app: URL) async throws {
 		let provisioningFilePath = app.appendingPathComponent("embedded.mobileprovision")
-		if _fileManager.fileExists(atPath: provisioningFilePath.path) {
-			try _fileManager.removeItem(at: provisioningFilePath)
-		}
+		try _fileManager.removeFileIfNeeded(at: provisioningFilePath)
 	}
 	
 	private func _inject(for app: URL, with tweaks: [URL]) async throws {

@@ -105,9 +105,7 @@ final class AppFileHandler: NSObject {
 	}
 	
 	func clean() async throws {
-		if _fileManager.fileExists(atPath: _uniqueWorkDir.path()) {
-			try _fileManager.removeItem(at: _uniqueWorkDir)
-		}
+		try _fileManager.removeFileIfNeeded(at: _uniqueWorkDir)
 	}
 }
 
