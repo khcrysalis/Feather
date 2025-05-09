@@ -1,0 +1,29 @@
+name: Create Feature Request
+description: Suggest a feature to be implemented to Feather.
+title: '[Feature] '
+labels:
+  - enhancement
+
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        Make sure you read the [Code of
+        Conduct](https://github.com/khcrysalis/Feather/blob/main/CODE_OF_CONDUCT.md)
+        before making an issue, and make sure there aren't already the same bug
+        reported.
+
+  - type: textarea
+    id: text
+    attributes:
+      label: Request
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: agreement
+    attributes:
+      label: Request Agreement
+      options:
+        - label: I have read the requirements for opening an issue above
+          required: true
