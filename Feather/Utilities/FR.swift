@@ -163,7 +163,7 @@ enum FR {
 	}
 	#endif
 	
-	static func add(
+	static func handleSource(
 		_ urlString: String,
 		competion: @escaping () -> Void
 	) {

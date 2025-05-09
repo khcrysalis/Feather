@@ -54,7 +54,7 @@ struct SourcesAddView: View {
 					placement: .confirmationAction,
 					isDisabled: _sourceURL.isEmpty
 				) {
-					FR.add(_sourceURL) {
+					FR.handleSource(_sourceURL) {
 						dismiss()
 					}
 				}

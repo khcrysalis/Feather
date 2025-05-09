@@ -27,7 +27,7 @@ struct FeatherApp: App {
 	private func _handleURL(_ url: URL) {
 		if url.scheme == "feather" {
 			if let fullPath = url.validatedScheme(after: "/source/") {
-				FR.add(fullPath) { }
+				FR.handleSource(fullPath) { }
 			}
 			
 			if
