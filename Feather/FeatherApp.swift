@@ -25,23 +25,23 @@ struct FeatherApp: App {
 	}
 	
 	private func _handleURL(_ url: URL) {
-		if url.pathExtension == "ipa" {
-			guard url.startAccessingSecurityScopedResource() else { return }
-			FR.handlePackageFile(url) { _ in }
-			return
-		}
-		
-		guard url.scheme == "feather" else { return }
-		
-		if let fullPath = url.validatedScheme(after: "/source/") {
-			SourcesAddView.add(fullPath) { }
-		}
-		
-		if
-			let fullPath = url.validatedScheme(after: "/install/"),
-			let downloadURL = URL(string: fullPath)
-		{
-			_ = DownloadManager.shared.startDownload(from: downloadURL)
+		if url.scheme == "feather" {
+			if let fullPath = url.validatedScheme(after: "/source/") {
+				SourcesAddView.add(fullPath) { }
+			}
+			
+			if
+				let fullPath = url.validatedScheme(after: "/install/"),
+				let downloadURL = URL(string: fullPath)
+			{
+				_ = DownloadManager.shared.startDownload(from: downloadURL)
+			}
+		} else {
+			if url.pathExtension == "ipa" {
+				guard url.startAccessingSecurityScopedResource() else { return }
+				FR.handlePackageFile(url) { _ in }
+				return
+			}
 		}
 	}
 }
