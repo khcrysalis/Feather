@@ -54,23 +54,28 @@ struct SourcesAddView: View {
 					placement: .confirmationAction,
 					isDisabled: _sourceURL.isEmpty
 				) {
-					_add(_sourceURL)
+					Self.add(_sourceURL) {
+						dismiss()
+					}
 				}
 			}
 		}
 	}
 	
-	private func _add(_ urlString: String) {
+	static func add(
+		_ urlString: String,
+		competion: @escaping () -> Void
+	) {
 		guard let url = URL(string: urlString) else { return }
 		
-		_dataService.fetch<ASRepository>(from: url) { (result: RepositoryDataHandler) in
+		NBFetchService().fetch<ASRepository>(from: url) { (result: Result<ASRepository, Error>) in
 			switch result {
 			case .success(let data):
 				let id = data.id ?? url.absoluteString
 				
 				if !Storage.shared.sourceExists(id) {
 					Storage.shared.addSource(url, repository: data, id: id) { _ in
-						dismiss()
+						competion()
 					}
 				} else {
 					DispatchQueue.main.async {
