@@ -18,8 +18,28 @@ Any contributions should follow the [Code of Conduct](./CODE_OF_CONDUCT.md).
 - **Typo contributions are okay**, just make sure they are appropriate.
 - **Code cleaning contributions are okay**.
 
-### Notes
+## Contributing to Feather
 
+#### Compiling requirements
+
+- Xcode 16.0
+- Swift 6.0
+- iOS 16.0
+
+1. Clone repository
+    ```sh
+    git clone https://github.com/khcrysalis/Feather --recursive
+    ```
+    - `Zsign` is a submodule, recursive is required.
+
+2. Opening with Xcode
+    ```sh
+    cd Feather && open Feather.xcworkspace
+    ```
+
+#### Making a pull request
+
+- Make sure your contributions stay isolated in their own branch, and not `main`.
 - When contributing don't be afraid of any reviewers requesting changes or judging how you wrote something, it's all to keep the project clean and tidy.
 
 ## Contributing to Zsign

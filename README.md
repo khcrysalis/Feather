@@ -1,9 +1,12 @@
 # Feather
+
 [![GitHub Release](https://img.shields.io/github/v/release/khcrysalis/feather?include_prereleases)](https://github.com/khcrysalis/feather/releases)
 [![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/khcrysalis/feather/total)](https://github.com/khcrysalis/feather/releases)
 [![GitHub License](https://img.shields.io/github/license/khcrysalis/feather?color=%23C96FAD)](https://github.com/khcrysalis/feather/blob/main/LICENSE)
 
 This app allows you to install and manage applications contained in a single app, using certificate pairs and various installation techniques to allow apps to install to your device.
+
+<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Image-dark.png"><source media="(prefers-color-scheme: light)" srcset="Images/Image-light.png"><img alt="Pointercrate-pocket." src="Images/Image-light.png"></picture></p>
 
 ## Features
 - Install applications via [`idevice`](https://github.com/jkcoxson/idevice) or using a [`server`](https://github.com/vapor/vapor).
@@ -11,27 +14,13 @@ This app allows you to install and manage applications contained in a single app
 - Globally configurable signing options.
 - No tracking or analytics, ensuring user privacy.
 
+## Download
+
+Visit [releases](https://github.com/khcrysalis/Feather/releases) and get the latest `.ipa`.
+
 ## Contributing
 
-#### Minimum requirements
-
-- Xcode 16.0
-- Swift 6.0
-- iOS 16.0
-
-1. Clone repository
-    ```sh
-    git clone https://github.com/khcrysalis/Feather
-    ```
-
-2. Opening with Xcode
-    ```sh
-    cd Feather && open Feather.xcworkspace
-    ```
-
-3. Making a pull request
-    - Make sure your contributions stay isolated in their own branch, and not `main`.
-    - Once you've made your changes, submit your pull request, but when making changes make sure to follow any requested changes /or explain them.
+Read the [contribution requirements](./CONTRIBUTING.md) for more information.
 
 ## Sponsors
 
@@ -49,6 +38,15 @@ This app allows you to install and manage applications contained in a single app
    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=khcrysalis/feather&type=Date" />
  </picture>
 </a>
+
+## Acknowledgements
+
+- [*.backloop.dev](https://backloop.dev/) - localhost with public CA signed SSL certificate
+- [Vapor](https://github.com/vapor/vapor) - A server-side Swift HTTP web framework.
+- [Zsign](https://github.com/zhlynn/zsign) - Allowing to sign on-device, reimplimented to work on other platforms such as iOS.
+- [Nuke](https://github.com/kean/Nuke) - Image caching.
+- [Asspp](https://github.com/Lakr233/Asspp) - Some code for setting up the http server.
+- [plistserver](https://github.com/nekohaxx/plistserver) - Hosted on https://api.palera.in.
 
 ## License 
 
