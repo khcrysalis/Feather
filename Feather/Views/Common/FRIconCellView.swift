@@ -33,7 +33,7 @@ struct FRIconCellView: View {
 			NBTitleWithSubtitleView(
 				title: title,
 				subtitle: subtitle,
-				linelimit: 2
+				linelimit: 0
 			)
 		}
 	}

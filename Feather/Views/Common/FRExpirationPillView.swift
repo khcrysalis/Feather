@@ -20,6 +20,7 @@ struct FRExpirationPillView: View {
 		: (expiration?.color.opacity(0.85) ?? Color(uiColor: .quaternarySystemFill))
 		
 		Text(labelText)
+			.lineLimit(0)
 			.font(.headline.bold())
 			.foregroundStyle((showOverlay || expiration == nil) ? .accent : .white)
 			.padding(.horizontal, 12)
