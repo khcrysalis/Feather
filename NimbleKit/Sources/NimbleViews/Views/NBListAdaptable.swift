@@ -16,7 +16,7 @@ public struct NBListAdaptable<Content>: View where Content: View {
 		self._content = content()
 	}
 	
-	private var adaptiveColumns: [GridItem] {
+	private var _adaptiveColumns: [GridItem] {
 		[GridItem(.adaptive(minimum: 340), spacing: 16)]
 	}
 	
@@ -28,13 +28,8 @@ public struct NBListAdaptable<Content>: View where Content: View {
 			.listStyle(.plain)
 		} else {
 			ScrollView {
-				LazyVGrid(columns: adaptiveColumns, spacing: 16) {
+				LazyVGrid(columns: _adaptiveColumns, spacing: 16) {
 					_content
-						.padding()
-						.background(
-							RoundedRectangle(cornerRadius: 20)
-								.fill(Color(uiColor: .quaternarySystemFill))
-						)
 				}
 				.padding()
 			}
