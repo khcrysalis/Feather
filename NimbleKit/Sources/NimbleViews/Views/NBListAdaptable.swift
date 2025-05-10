@@ -16,10 +16,6 @@ public struct NBListAdaptable<Content>: View where Content: View {
 		self._content = content()
 	}
 	
-	private var _adaptiveColumns: [GridItem] {
-		[GridItem(.adaptive(minimum: 340), spacing: 16)]
-	}
-	
 	public var body: some View {
 		if horizontalSizeClass == .compact {
 			List {
@@ -27,11 +23,8 @@ public struct NBListAdaptable<Content>: View where Content: View {
 			}
 			.listStyle(.plain)
 		} else {
-			ScrollView {
-				LazyVGrid(columns: _adaptiveColumns, spacing: 16) {
-					_content
-				}
-				.padding()
+			NBGrid {
+				_content
 			}
 		}
 	}

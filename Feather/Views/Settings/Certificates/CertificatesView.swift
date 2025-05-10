@@ -14,10 +14,6 @@ struct CertificatesView: View {
 	
 	@State private var _isAddingPresenting = false
 	@State private var _isSelectedInfoPresenting: CertificatePair?
-	
-	let columns: [GridItem] = [
-		GridItem(.adaptive(minimum: 300))
-	]
 
 	// MARK: Fetch
 	@FetchRequest(
@@ -27,29 +23,26 @@ struct CertificatesView: View {
 	) private var certificates: FetchedResults<CertificatePair>
 	
 	//
-	private var bindingSelectedCert: Binding<Int>?
-	private var selectedCertBinding: Binding<Int> {
-		bindingSelectedCert ?? $_storedSelectedCert
+	private var _bindingSelectedCert: Binding<Int>?
+	private var _selectedCertBinding: Binding<Int> {
+		_bindingSelectedCert ?? $_storedSelectedCert
 	}
 	
 	init(selectedCert: Binding<Int>? = nil) {
-		self.bindingSelectedCert = selectedCert
+		self._bindingSelectedCert = selectedCert
 	}
 	
 	// MARK: Body
 	var body: some View {
-		ScrollView {
-			LazyVGrid(columns: columns, spacing: 16) {
-				ForEach(Array(certificates.enumerated()), id: \.element.uuid) { index, cert in
-					_cellButton(for: cert, at: index)
-				}
+		NBGrid {
+			ForEach(Array(certificates.enumerated()), id: \.element.uuid) { index, cert in
+				_cellButton(for: cert, at: index)
 			}
-			.padding()
 		}
 		.navigationTitle(.localized("Certificates"))
 		.navigationBarTitleDisplayMode(.inline)
 		.toolbar {
-			if bindingSelectedCert == nil {
+			if _bindingSelectedCert == nil {
 				NBToolbarButton(
 					systemImage: "plus",
 					style: .icon,
@@ -73,14 +66,12 @@ extension CertificatesView {
 	@ViewBuilder
 	private func _cellButton(for cert: CertificatePair, at index: Int) -> some View {
 		Button {
-			selectedCertBinding.wrappedValue = index
+			_selectedCertBinding.wrappedValue = index
 		} label: {
 			CertificatesCellView(
-				cert: cert,
-				isSelectedInfoPresenting: $_isSelectedInfoPresenting
+				cert: cert
 			)
 			.padding()
-			.frame(maxWidth: .infinity)
 			.background(
 				RoundedRectangle(cornerRadius: 17)
 					.fill(Color(uiColor: .quaternarySystemFill))
@@ -88,7 +79,7 @@ extension CertificatesView {
 			.overlay(
 				RoundedRectangle(cornerRadius: 17)
 					.strokeBorder(
-						selectedCertBinding.wrappedValue == index ? Color.accentColor : Color.clear,
+						_selectedCertBinding.wrappedValue == index ? Color.accentColor : Color.clear,
 						lineWidth: 2
 					)
 			)
@@ -97,7 +88,7 @@ extension CertificatesView {
 				Divider()
 				_actions(for: cert)
 			}
-			.animation(.smooth, value: selectedCertBinding.wrappedValue)
+			.animation(.smooth, value: _selectedCertBinding.wrappedValue)
 		}
 		.buttonStyle(.plain)
 	}

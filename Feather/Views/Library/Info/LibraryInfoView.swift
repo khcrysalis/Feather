@@ -68,9 +68,7 @@ extension LibraryInfoView {
 		if let cert = Storage.shared.getCertificate(from: app) {
 			NBSection(.localized("Certificate")) {
 				CertificatesCellView(
-					cert: cert,
-					shouldDisplayInfo: false,
-					isSelectedInfoPresenting: .constant(.none)
+					cert: cert
 				)
 			}
 		}
