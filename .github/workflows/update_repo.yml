@@ -1,0 +1,12 @@
+name: Update Repository
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
