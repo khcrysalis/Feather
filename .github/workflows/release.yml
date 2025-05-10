@@ -26,7 +26,7 @@ jobs:
       - name: Get Version
         id: get_version
         run: |
-          VERSION=$( /usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" 'Payload/Feather (idevice).app/Info.plist' )
+          VERSION=$( /usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" Payload/*.app/Info.plist )
           echo "VERSION=${VERSION}" >> $GITHUB_ENV
 
       - name: Create Release
