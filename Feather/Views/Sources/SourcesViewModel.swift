@@ -24,8 +24,11 @@ final class SourcesViewModel: ObservableObject {
 	func fetchSources(_ sources: FetchedResults<AltSource>, refresh: Bool = false, batchSize: Int = 4) async {
 		guard isFinished else { return }
 		
+		// check if sources to be fetched are the same as before, if yes, return
+		// also skip check if refresh is true
 		if !refresh, sources.allSatisfy({ self.sources[$0] != nil }) { return }
 		
+		// isfinished is used to prevent multiple fetches at the same time
 		isFinished = false
 		defer { isFinished = true }
 		
