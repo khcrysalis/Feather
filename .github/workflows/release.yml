@@ -1,0 +1,43 @@
+name: Create New Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: 'true'
+      
+      - name: Use Xcode 16.2
+        run: |
+          sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
+
+      - name: Compile Feather
+        run: | 
+          mkdir upload
+          ./bump.sh
+          make
+          mv packages/* upload/
+
+      - name: Get Version
+        id: get_version
+        run: |
+          VERSION=$( /usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" 'Payload/Feather (idevice).app/Info.plist' )
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Feather v${{ env.VERSION }}
+          tag_name: v${{ env.VERSION }}
+          files: |
+            upload/*ipa
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          draft: true
+        env:
+          GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}

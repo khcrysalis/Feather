@@ -1,0 +1,23 @@
+name: Update Repository
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Update app-repo.json
+        run: |
+          ./update-repo.sh
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
+          message: "chore: update repo"
+          add: app-repo.json

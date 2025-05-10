@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3305BB3C2DB893A500660D45"
-               BuildableName = "Feather (idevice).app"
-               BlueprintName = "Feather (idevice)"
+               BuildableName = "Feather-idevice.app"
+               BlueprintName = "Feather-idevice"
                ReferencedContainer = "container:Feather.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3305BB3C2DB893A500660D45"
-            BuildableName = "Feather (idevice).app"
-            BlueprintName = "Feather (idevice)"
+            BuildableName = "Feather-idevice.app"
+            BlueprintName = "Feather-idevice"
             ReferencedContainer = "container:Feather.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3305BB3C2DB893A500660D45"
-            BuildableName = "Feather (idevice).app"
-            BlueprintName = "Feather (idevice)"
+            BuildableName = "Feather-idevice.app"
+            BlueprintName = "Feather-idevice"
             ReferencedContainer = "container:Feather.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

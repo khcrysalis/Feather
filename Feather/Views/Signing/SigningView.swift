@@ -198,7 +198,7 @@ extension SigningView {
 						options: $_temporaryOptions.optional()
 					)
 				}
-				#if NIGHTLY
+				#if NIGHTLY || DEBUG
 				NavigationLink(String.localized("Entitlements")) {
 					SigningEntitlementsView(
 						bindingValue: $_temporaryOptions.appEntitlementsFile

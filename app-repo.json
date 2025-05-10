@@ -1,0 +1,58 @@
+{
+  "name": "Feather Repository",
+  "identifier": "kh.crysalis.feather-repo",
+  "iconURL": "https://github.com/khcrysalis/Feather/blob/main/iOS/Resources/Icons/Main/Mac@3x.png?raw=true",
+  "website": "https://github.com/khcrysalis/Feather",
+  "apps": [
+    {
+      "name": "Feather",
+      "bundleIdentifier": "kh.crysalis.feather",
+      "developerName": "Samara",
+      "iconURL": "https://github.com/khcrysalis/Feather/blob/main/iOS/Resources/Icons/Main/Mac@3x.png?raw=true",
+      "localizedDescription": "Feather is a free on-device iOS application manager/installer built with UIKit for quality.",
+      "subtitle": "On-device signing application",
+      "tintColor": "848ef9",
+      "versions": [
+        {
+          "version": "1.4.1",
+          "date": "2025-04-05T21:36:24Z",
+          "size": 12598584,
+          "downloadURL": "https://github.com/khcrysalis/Feather/releases/download/v1.4.1/feather_v1.4.1.ipa"
+        }
+      ],
+      "appPermissions": {},
+      "screenshotURLs": [
+        "https://github.com/khcrysalis/Feather/blob/main/Images/Library.png?raw=true",
+        "https://github.com/khcrysalis/Feather/blob/main/Images/Repos.png?raw=true",
+        "https://github.com/khcrysalis/Feather/blob/main/Images/Sign.png?raw=true",
+        "https://github.com/khcrysalis/Feather/blob/main/Images/Store.png?raw=true"
+      ],
+      "version": "1.4.1",
+      "versionDate": "2025-04-05T21:36:24Z",
+      "size": 12598584,
+      "downloadURL": "https://github.com/khcrysalis/Feather/releases/download/v1.4.1/feather_v1.4.1.ipa"
+    }
+  ],
+  "news": [
+    {
+      "title": "Donate",
+      "identifier": "feather-donate",
+      "caption": "Feather is a free project and is not made possible without my sponsors! Feel free to donate, it helps keep me motivated in making new updates for this app, and thank you everyone.",
+      "tintColor": "848ef9",
+      "imageURL": "https://github.com/khcrysalis/Feather/blob/main/Images/donate.png?raw=true",
+      "date": "2025-02-04",
+      "url": "https://github.com/sponsors/khcrysalis",
+      "notify": false
+    },
+    {
+      "title": "About Feather",
+      "identifier": "feather-about",
+      "caption": "Feather allows you to use an Apple Developer Account to sign and install applications on device without needing a computer on stock iOS versions, while allowing easy management with its applications.\n\nDue to limitations, it's hard to tell if the application is actually installed, so you will need to keep track of whats on your device. This is an entirely stock application and uses built-in features to be able to do this!",
+      "tintColor": "8A28F7",
+      "imageURL": "https://media.idownloadblog.com/wp-content/uploads/2024/08/Feather-on-device-signing-UI-app.jpg",
+      "url": "https://github.com/khcrysalis/feather",
+      "date": "2025-02-03",
+      "notify": true
+    }
+  ]
+}

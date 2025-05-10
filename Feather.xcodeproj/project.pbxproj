@@ -41,14 +41,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3305BB4E2DB893A500660D45 /* Feather (idevice).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Feather (idevice).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3305BB4E2DB893A500660D45 /* Feather-idevice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Feather-idevice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		336D43972DB7454A00206400 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS18.2.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		3379C1B92DA869A1004372DA /* Feather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Feather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABA5D192DB3C87800BFCD2C /* FeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		3305BB4F2DB893A500660D45 /* Exceptions for "Feather" folder in "Feather (idevice)" target */ = {
+		3305BB4F2DB893A500660D45 /* Exceptions for "Feather" folder in "Feather-idevice" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Backend/Server/Models/AppDataModel.swift,
@@ -60,7 +60,7 @@
 				"Views/Settings/Server & SSL/Models/ServerPackModel.swift",
 				"Views/Settings/Server & SSL/ServerView.swift",
 			);
-			target = 3305BB3C2DB893A500660D45 /* Feather (idevice) */;
+			target = 3305BB3C2DB893A500660D45 /* Feather-idevice */;
 		};
 		3371F6492DA92A1800281AC6 /* Exceptions for "Feather" folder in "Feather" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -81,7 +81,7 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		3305BBA92DB8943000660D45 /* Exceptions for "Feather" folder in "Copy Bundle Resources" phase from "Feather (idevice)" target */ = {
+		3305BBA92DB8943000660D45 /* Exceptions for "Feather" folder in "Copy Bundle Resources" phase from "Feather-idevice" target */ = {
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
 			buildPhase = 3305BB4A2DB893A500660D45 /* Resources */;
 			membershipExceptions = (
@@ -103,8 +103,8 @@
 			exceptions = (
 				3371F6492DA92A1800281AC6 /* Exceptions for "Feather" folder in "Feather" target */,
 				33CF134C2DB5B9BC0021D4C5 /* Exceptions for "Feather" folder in "Copy Bundle Resources" phase from "Feather" target */,
-				3305BB4F2DB893A500660D45 /* Exceptions for "Feather" folder in "Feather (idevice)" target */,
-				3305BBA92DB8943000660D45 /* Exceptions for "Feather" folder in "Copy Bundle Resources" phase from "Feather (idevice)" target */,
+				3305BB4F2DB893A500660D45 /* Exceptions for "Feather" folder in "Feather-idevice" target */,
+				3305BBA92DB8943000660D45 /* Exceptions for "Feather" folder in "Copy Bundle Resources" phase from "Feather-idevice" target */,
 			);
 			path = Feather;
 			sourceTree = "<group>";
@@ -185,7 +185,7 @@
 			children = (
 				3379C1B92DA869A1004372DA /* Feather.app */,
 				AABA5D192DB3C87800BFCD2C /* FeatherTests.xctest */,
-				3305BB4E2DB893A500660D45 /* Feather (idevice).app */,
+				3305BB4E2DB893A500660D45 /* Feather-idevice.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -193,9 +193,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3305BB3C2DB893A500660D45 /* Feather (idevice) */ = {
+		3305BB3C2DB893A500660D45 /* Feather-idevice */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3305BB4B2DB893A500660D45 /* Build configuration list for PBXNativeTarget "Feather (idevice)" */;
+			buildConfigurationList = 3305BB4B2DB893A500660D45 /* Build configuration list for PBXNativeTarget "Feather-idevice" */;
 			buildPhases = (
 				3305BB432DB893A500660D45 /* Sources */,
 				3305BB442DB893A500660D45 /* Frameworks */,
@@ -210,7 +210,7 @@
 			fileSystemSynchronizedGroups = (
 				3379C1BB2DA869A1004372DA /* Feather */,
 			);
-			name = "Feather (idevice)";
+			name = "Feather-idevice";
 			packageProductDependencies = (
 				3305BB3E2DB893A500660D45 /* Zip */,
 				3305BB412DB893A500660D45 /* SWCompression */,
@@ -222,7 +222,7 @@
 				33693A092DC8BF6800730215 /* AltSourceKit */,
 			);
 			productName = Feather;
-			productReference = 3305BB4E2DB893A500660D45 /* Feather (idevice).app */;
+			productReference = 3305BB4E2DB893A500660D45 /* Feather-idevice.app */;
 			productType = "com.apple.product-type.application";
 		};
 		3379C1B82DA869A1004372DA /* Feather */ = {
@@ -328,7 +328,7 @@
 			projectRoot = "";
 			targets = (
 				3379C1B82DA869A1004372DA /* Feather */,
-				3305BB3C2DB893A500660D45 /* Feather (idevice) */,
+				3305BB3C2DB893A500660D45 /* Feather-idevice */,
 				AABA5D182DB3C87800BFCD2C /* FeatherTests */,
 			);
 		};
@@ -844,7 +844,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3305BB4B2DB893A500660D45 /* Build configuration list for PBXNativeTarget "Feather (idevice)" */ = {
+		3305BB4B2DB893A500660D45 /* Build configuration list for PBXNativeTarget "Feather-idevice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3305BB4C2DB893A500660D45 /* Debug */,
