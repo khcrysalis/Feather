@@ -28,6 +28,7 @@ struct SigningDylibView: View {
 					)
 				}
 			}
+			.disabled(options == nil)
 			
 			NBSection(.localized("Hidden")) {
 				Text(verbatim: .localized("%lld required system dylibs not shown", arguments: _hiddenDylibCount))
@@ -35,7 +36,6 @@ struct SigningDylibView: View {
 					.foregroundColor(.disabled())
 			}
 		}
-		.disabled(options == nil)
 		.onAppear(perform: _loadDylibs)
 	}
 }

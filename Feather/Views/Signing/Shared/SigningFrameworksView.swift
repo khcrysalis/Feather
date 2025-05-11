@@ -22,31 +22,33 @@ struct SigningFrameworksView: View {
 	// MARK: Body
 	var body: some View {
 		NBList(.localized("Frameworks & PlugIns")) {
-			if !_frameworks.isEmpty {
-				NBSection(_frameworksPath) {
-					ForEach(_frameworks, id: \.self) { framework in
-						SigningToggleCellView(
-							title: "\(self._frameworksPath)/\(framework)",
-							options: $options,
-							arrayKeyPath: \.removeFiles
-						)
+			Group {
+				if !_frameworks.isEmpty {
+					NBSection(_frameworksPath) {
+						ForEach(_frameworks, id: \.self) { framework in
+							SigningToggleCellView(
+								title: "\(self._frameworksPath)/\(framework)",
+								options: $options,
+								arrayKeyPath: \.removeFiles
+							)
+						}
+					}
+				}
+				
+				if !_plugins.isEmpty {
+					NBSection(_pluginsPath) {
+						ForEach(_plugins, id: \.self) { plugin in
+							SigningToggleCellView(
+								title: "\(self._pluginsPath)/\(plugin)",
+								options: $options,
+								arrayKeyPath: \.removeFiles
+							)
+						}
 					}
 				}
 			}
-			
-			if !_plugins.isEmpty {
-				NBSection(_pluginsPath) {
-					ForEach(_plugins, id: \.self) { plugin in
-						SigningToggleCellView(
-							title: "\(self._pluginsPath)/\(plugin)",
-							options: $options,
-							arrayKeyPath: \.removeFiles
-						)
-					}
-				}
-			}
+			.disabled(options == nil)
 		}
-		.disabled(options == nil)
 		.onAppear(perform: _listFrameworksAndPlugins)
 	}
 }
