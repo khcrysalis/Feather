@@ -16,8 +16,8 @@ struct SigningOptionsView: View {
 	// MARK: Body
 	var body: some View {
 		if (temporaryOptions == nil) {
-			NBSection("Protection") {
-				_toggle("PPQ Protection",
+			NBSection(.localized("Protection")) {
+				_toggle(.localized("PPQ Protection"),
 						systemImage: "shield.fill",
 						isOn: $options.ppqProtection,
 						temporaryValue: temporaryOptions?.ppqProtection
@@ -30,22 +30,18 @@ struct SigningOptionsView: View {
 //				)
 //					.disabled(!options.ppqProtection)
 			} footer: {
-				Text(
-				  """
-				  Enabling any protection will append a random string to the bundleidentifiers of the apps you sign, this is to ensure your Apple ID does not get flagged by Apple. However, when using a signing service you can ignore this.
-				  """
-				)
+				Text(.localized("Enabling any protection will append a random string to the bundleidentifiers of the apps you sign, this is to ensure your Apple ID does not get flagged by Apple. However, when using a signing service you can ignore this."))
 			}
 		} else {
-			NBSection("General") {
-				_picker("Appearance",
+			NBSection(.localized("General")) {
+				_picker(.localized("Appearance"),
 						systemImage: "paintpalette",
 						selection: $options.appAppearance,
 						values: Options.appAppearanceValues,
 						id: \.description
 				)
 				
-				_picker("Minimum Requirement",
+				_picker(.localized("Minimum Requirement"),
 						systemImage: "ruler",
 						selection: $options.minimumAppRequirement,
 						values: Options.appMinimumAppRequirementValues,
@@ -54,14 +50,14 @@ struct SigningOptionsView: View {
 			}
 		}
 		
-		NBSection("App Features") {
-			_toggle("File Sharing",
+		NBSection(.localized("App Features")) {
+			_toggle(.localized("File Sharing"),
 					systemImage: "folder.badge.person.crop",
 					isOn: $options.fileSharing,
 					temporaryValue: temporaryOptions?.fileSharing
 			)
 			
-			_toggle("iTunes File Sharing",
+			_toggle(.localized("iTunes File Sharing"),
 					systemImage: "music.note.list",
 					isOn: $options.itunesFileSharing,
 					temporaryValue: temporaryOptions?.itunesFileSharing
@@ -73,55 +69,55 @@ struct SigningOptionsView: View {
 					temporaryValue: temporaryOptions?.proMotion
 			)
 			
-			_toggle("Game Mode",
+			_toggle("GameMode",
 					systemImage: "gamecontroller",
 					isOn: $options.gameMode,
 					temporaryValue: temporaryOptions?.gameMode
 			)
 			
-			_toggle("iPad Fullscreen",
+			_toggle(.localized("iPad Fullscreen"),
 					systemImage: "ipad.landscape",
 					isOn: $options.ipadFullscreen,
 					temporaryValue: temporaryOptions?.ipadFullscreen
 			)
 		}
 		
-		NBSection("Removal") {
-			_toggle("Remove Supported Devices",
+		NBSection(.localized("Removal")) {
+			_toggle(.localized("Remove Supported Devices"),
 					systemImage: "iphone.slash",
 					isOn: $options.removeSupportedDevices,
 					temporaryValue: temporaryOptions?.removeSupportedDevices
 			)
 			
-			_toggle("Remove URL Scheme",
+			_toggle(.localized("Remove URL Scheme"),
 					systemImage: "ellipsis.curlybraces",
 					isOn: $options.removeURLScheme,
 					temporaryValue: temporaryOptions?.removeURLScheme
 			)
 			
-			_toggle("Remove Provisioning",
+			_toggle(.localized("Remove Provisioning"),
 					systemImage: "doc.badge.gearshape",
 					isOn: $options.removeProvisioning,
 					temporaryValue: temporaryOptions?.removeProvisioning
 			)
 			
-			_toggle("Remove Watch Placeholder",
+			_toggle(.localized("Remove Watch Placeholder"),
 					systemImage: "applewatch.slash",
 					isOn: $options.removeWatchPlaceholder,
 					temporaryValue: temporaryOptions?.removeWatchPlaceholder
 			)
 		}
 		
-		NBSection("Display Options") {
-			_toggle("Force Localize",
+		Section {
+			_toggle(.localized("Force Localize"),
 					systemImage: "character.bubble",
 					isOn: $options.changeLanguageFilesForCustomDisplayName,
 					temporaryValue: temporaryOptions?.changeLanguageFilesForCustomDisplayName
 			)
 		}
 		
-		NBSection("Advanced") {
-			_toggle("Adhoc Signing",
+		NBSection(.localized("Advanced")) {
+			_toggle(.localized("Adhoc Signing"),
 					systemImage: "signature",
 					isOn: $options.doAdhocSigning,
 					temporaryValue: temporaryOptions?.doAdhocSigning
