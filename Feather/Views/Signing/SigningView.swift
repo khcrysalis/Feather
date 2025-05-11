@@ -172,9 +172,7 @@ extension SigningView {
 					CertificatesView(selectedCert: $_temporaryCertificate)
 				} label: {
 					CertificatesCellView(
-						cert: cert,
-						shouldDisplayInfo: false,
-						isSelectedInfoPresenting: .constant(.none)
+						cert: cert
 					)
 				}
 			}

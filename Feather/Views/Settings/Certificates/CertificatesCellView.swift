@@ -13,7 +13,6 @@ struct CertificatesCellView: View {
 	@State var data: Certificate?
 	
 	var cert: CertificatePair
-	var shouldDisplayInfo: Bool = true
 	
 	// MARK: Body
 	var body: some View {
