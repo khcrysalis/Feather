@@ -17,7 +17,7 @@ struct SettingsView: View {
     var body: some View {
 		NBNavigationView(.localized("Settings")) {
 			Form {
-				#if !NIGHTLY
+				#if !NIGHTLY || !DEBUG
 				SettingsDonationCellView(site: _donationsUrl)
 				#endif
 				

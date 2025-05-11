@@ -5,6 +5,36 @@
       "comment" : "Repository app count",
       "extractionState" : "stale",
       "localizations" : {
+        "cs" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld aplikace"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld aplikací"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld aplikace"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld aplikací"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -28,6 +58,12 @@
     "%lld required system dylibs not shown" : {
       "comment" : "Number of macho load paths not listed for safety",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld požadované systémové knihovny nejsou zobrazeny"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -37,8 +73,39 @@
       }
     },
     "%lld Sources" : {
+      "comment" : "Amount of sources",
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld zdroje"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld zdrojů"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld zdroj"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld zdrojů"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -49,6 +116,12 @@
     },
     "💜 This couldn't of been done without my sponsors!" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "💜Nebylo by to možné bez mých sponzorů!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -59,6 +132,12 @@
     },
     "About" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O aplikaci"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -70,6 +149,12 @@
     "Add" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Přidat"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -80,6 +165,12 @@
     },
     "Add Source" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Přidat zdroj"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -91,6 +182,12 @@
     "Advanced" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokročilé"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -102,6 +199,12 @@
     "All" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vše"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -112,6 +215,12 @@
     },
     "All of Feathers files are contained in the documents directory, here are some quick links to these." : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Všechny soubory Featheru jsou v složce Dokumenty, zde jsou na ně rychlé odkazy."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -123,6 +232,12 @@
     "All Repositories" : {
       "comment" : "All repositories",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Všechny zdroje"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -133,6 +248,12 @@
     },
     "Alternative Icons" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Další ikony"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -145,6 +266,12 @@
       "comment" : "Repository app has no description",
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skvělá aplikace"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -155,6 +282,12 @@
     },
     "Appearance" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vzhled"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -166,6 +299,12 @@
     "AppID Name" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Název AppID"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -176,6 +315,12 @@
     },
     "Archive & Compression" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archivy a komprimace"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -187,6 +332,12 @@
     "Bad Password" : {
       "comment" : "Bad certificate password",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Špatné heslo"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -198,6 +349,12 @@
     "Big Description" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Velký popis"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -209,6 +366,12 @@
     "Bundle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bundle"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -219,6 +382,12 @@
     },
     "Cancel" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zrušit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -230,6 +399,12 @@
     "Certificate" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certifikát"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -241,6 +416,12 @@
     "Certificates" : {
       "comment" : "Certificates tab",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certifikáty"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -251,6 +432,12 @@
     },
     "Change" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Změnit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -262,6 +449,12 @@
     "Choose from Files" : {
       "comment" : "Select custom app icon from files",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vybrat ze souborý"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -273,6 +466,12 @@
     "Choose from Photos" : {
       "comment" : "Select custom app icon from photos",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vybrat z fotek"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -284,6 +483,12 @@
     "Compression Level" : {
       "comment" : "Archive compression level",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stupeň komprimace"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -294,6 +499,12 @@
     },
     "Copy" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zkopírovat"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -305,6 +516,12 @@
     "Credits" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poděkování"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -316,6 +533,12 @@
     "Customization" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Přizpůsobení"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -327,6 +550,12 @@
     "Date" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datum"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -338,6 +567,12 @@
     "Date Added" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datum přidání"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -349,6 +584,12 @@
     "Default" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Výchozí"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -359,6 +600,12 @@
     },
     "Delete" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smazat"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -376,10 +623,17 @@
             "value" : "Discord"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Display Names" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobrazená jména"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -391,6 +645,12 @@
     "Donate" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podpořit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -402,6 +662,12 @@
     "Donations" : {
       "comment" : "Title for the big donation card",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podpoření"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -412,6 +678,12 @@
     },
     "Dylibs" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dyliby"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -422,6 +694,12 @@
     },
     "Enabling any protection will append a random string to the bundleidentifiers of the apps you sign, this is to ensure your Apple ID does not get flagged by Apple. However, when using a signing service you can ignore this." : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zapnutí jakékoliv ochrany přidá náhodné znaky na konec Bundle ID aplikací které podepíšete, kvůli snížení šance označení vašeho Apple ID jako špatného. Pří používání podepisovací služby toto můžete ignorovat."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -432,6 +710,12 @@
     },
     "Enter a URL to start validation." : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zadejte URL pro začátek validace."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -442,6 +726,12 @@
     },
     "Enter Password" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zadejte heslo"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -452,6 +742,12 @@
     },
     "Enter the password associated with the private key. Leave it blank if theres no password required." : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zadejte heslo spojené s privátním klíčem. Když žádné není potřeba, nezadávejte ho."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -462,6 +758,12 @@
     },
     "Entitlements" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entitlementy"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -473,6 +775,12 @@
     "Executable" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spustitelný soubor"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -483,6 +791,12 @@
     },
     "Existing Dylibs" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Existující dyliby"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -494,6 +808,12 @@
     "Expires" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vyprší"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -505,6 +825,12 @@
     "Export" : {
       "comment" : "Export repositories",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -516,6 +842,12 @@
     "Failed to download, check your internet connection and try again." : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nelze stáhnout, zkontrolujte svoje připojení k internetu a zkuste znovu."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -527,6 +859,12 @@
     "Features" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funkce"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -538,6 +876,12 @@
     "Files" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soubory"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -548,6 +892,12 @@
     },
     "Filter by" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrovat"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -559,6 +909,12 @@
     "Frameworks" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frameworky"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -569,6 +925,12 @@
     },
     "Frameworks & PlugIns" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frameworky a pluginy"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -580,6 +942,12 @@
     "Fully Local" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zcela lokální"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -591,6 +959,12 @@
     "Get access to our secret Discord by donating, where we talk about future updates, betas, and potential ways to make your experience better." : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Získejte po podpoření přístup k našemu skrytému Discordu, kde se mluví o dalších aktualizacích, beta verzích a vylepšeních."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -602,6 +976,12 @@
     "Get Info" : {
       "comment" : "Show info about the app",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Získat info"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -612,6 +992,12 @@
     },
     "GitHub Repository" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub repozitář"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -623,6 +1009,12 @@
     "Heartbeat" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heartbeat"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -634,6 +1026,12 @@
     "Help" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pomoc"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -645,6 +1043,12 @@
     "Hidden" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skryté"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -655,6 +1059,12 @@
     },
     "Identifers" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identifikátory"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -665,6 +1075,12 @@
     },
     "Identifier" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identifikátor"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -676,6 +1092,12 @@
     "Identifier Prefix" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prefix identifikátoru"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -687,6 +1109,12 @@
     "Import" : {
       "comment" : "Import repositories",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importovat"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -698,6 +1126,12 @@
     "Import Certificate File" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importovat certifikát"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -709,6 +1143,12 @@
     "Import from Files" : {
       "comment" : "Select an app from files to import",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import ze souborů"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -720,6 +1160,12 @@
     "Import from URL" : {
       "comment" : "Select an app from a URL to import",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import z URL"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -731,6 +1177,12 @@
     "Import Pairing File" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importovat párovací soubor"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -742,6 +1194,12 @@
     "Import Provisioning File" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importovat soubor Provision"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -753,6 +1211,12 @@
     "Imported" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importováno"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -764,6 +1228,12 @@
     "Info" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informace"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -774,6 +1244,12 @@
     },
     "Install" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nainstalovat"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -784,6 +1260,12 @@
     },
     "Installation Type" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Typ instalace"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -796,6 +1278,12 @@
       "comment" : "Library tab",
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Knihovna"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -806,6 +1294,12 @@
     },
     "Library Cell Appearance" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vzhled buňky knihovny"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -817,6 +1311,12 @@
     "Misc" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jiné"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -827,6 +1327,12 @@
     },
     "Modify" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifikovat"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -837,6 +1343,12 @@
     },
     "Name" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jméno"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -848,6 +1360,12 @@
     "New" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nový"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -859,6 +1377,12 @@
     "New Certificate" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nový certifikát"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -870,6 +1394,12 @@
     "Nickname (Optional)" : {
       "comment" : "Certificate custom nickname",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Přezdívka (nepovinné)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -881,6 +1411,12 @@
     "No Certificate" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Žádný certifikát"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -892,6 +1428,12 @@
     "No pairing file found, please import it." : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Párovací soubor nebyl nalezen, importujte ho prosím."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -902,6 +1444,12 @@
     },
     "OK" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -912,6 +1460,12 @@
     },
     "Only use localhost address" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pouze použít adresu localhost"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -922,6 +1476,12 @@
     },
     "Open" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otevřít"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -932,6 +1492,12 @@
     },
     "Open Archives" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otevřít archivy"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -942,6 +1508,12 @@
     },
     "Open Certificates" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otevřít certifikáty"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -952,6 +1524,12 @@
     },
     "Open Documents" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otevřít dokumenty"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -962,6 +1540,12 @@
     },
     "Open in Files" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otevřít v Soubory"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -973,6 +1557,12 @@
     "Pairing File Guide" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Průvodce párovacího souboru"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -984,6 +1574,12 @@
     "Password" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heslo"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -995,6 +1591,12 @@
     "Pill" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pilulka"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1006,6 +1608,12 @@
     "Platform" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Platforma"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1017,6 +1625,12 @@
     "Please check the password and try again." : {
       "comment" : "Bad certificate password, try again",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zkontrolujte prosím heslo a zkuste to znovu."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1028,6 +1642,12 @@
     "Please go to settings and import a valid certificate" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jděte do nastavení a importujte platný certifikát."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1040,6 +1660,12 @@
       "comment" : "Repository app previous versions",
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Předchozí verze"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1051,6 +1677,12 @@
     "Properties" : {
       "comment" : "Select custom properties for the app",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nastavení"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1062,6 +1694,12 @@
     "Provision All Devices" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zapsat všechna zařízení"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1073,6 +1711,12 @@
     "Provisioned Devices" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zapsaná zařízení"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1083,6 +1727,12 @@
     },
     "Re-sign" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podepsat znovu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1094,6 +1744,12 @@
     "Remove annoying alerts like these after getting beta access!" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odeberte tyto otravné upozornění po získání beta přístupu!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1105,6 +1761,12 @@
     "Remove this Alert" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odebrat toto upozornění"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1115,6 +1777,12 @@
     },
     "Replacement" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Záměna"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1126,6 +1794,12 @@
     "Repositories" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repozitáře"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1137,6 +1811,12 @@
     "Reset" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetovat"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1148,6 +1828,12 @@
     "Restart Heartbeat" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restartovat heartbeat"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1159,6 +1845,12 @@
     "Restart Required" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vyžadován restart"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1169,6 +1861,12 @@
     },
     "Save" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uložit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1181,6 +1879,12 @@
       "comment" : "All repositories description",
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobrazit všechny aplikace ze všech zdrojů"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1192,6 +1896,12 @@
     "Seems like you've gotten your hands on your pairing file! If you encounter ever `InvalidHostID -9` error please make a new pairing file and import it." : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vypad\u0001á to, že máte párovací soubor! Pokud dostanete chybu ‘InvalidHostID -9’, udělejte si prosím nový párovací soubor."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1203,6 +1913,12 @@
     "Select Alternative Icon" : {
       "comment" : "Select custom alternative app icon",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vybrat jinou ikonu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1214,6 +1930,12 @@
     "Select entitlements file" : {
       "comment" : "Select custom entitlements for the app",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vybrat soubor s entitlementy"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1225,6 +1947,12 @@
     "Semi Local" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Polo-lokální"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1235,6 +1963,12 @@
     },
     "Server & SSL" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server a SSL"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1247,6 +1981,12 @@
       "comment" : "Settings tab",
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nastavení"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1258,6 +1998,12 @@
     "Show Sheet when Exporting" : {
       "comment" : "Archiving opens share sheet",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobrazit sdílící panel při exportu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1269,6 +2015,12 @@
     "Show Your Support" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ukažte svojí podporu!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1280,6 +2032,12 @@
     "Show your support by donating! If you're unable to donate, spreading the word works too!" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ukažte svojí podporu díky podpoření! Pokud nemůžete podpořit, alespoň se o aplikaci podělte s ostatními!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1291,6 +2049,12 @@
     "Sign" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podepsat"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1302,6 +2066,12 @@
     "Signed" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podepsáno"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1313,6 +2083,12 @@
     "Signing" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podpis"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1323,6 +2099,12 @@
     },
     "Signing Options" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Možnosti podpisu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1333,6 +2115,12 @@
     },
     "Source Repo URL" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL zdroje"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1344,6 +2132,12 @@
     "Sources" : {
       "comment" : "Sources tab",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zdroje"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1355,6 +2149,12 @@
     "Sponsors" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sponzoři"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1366,6 +2166,12 @@
     "SSL Certificates" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SSL certifikáty"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1377,6 +2183,12 @@
     "Standard" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standardní"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1388,6 +2200,12 @@
     "Start Signing" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Začít podepisovat"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1398,6 +2216,12 @@
     },
     "Store Cell Appearance" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vzhled buňky zdroje"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1408,6 +2232,12 @@
     },
     "String" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "String"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1418,6 +2248,12 @@
     },
     "Submit Feedback" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poslat zpětnou vazbu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1428,6 +2264,12 @@
     },
     "Supports importing from KravaSign/MapleSign and ESign" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podporuje import z KravaSign a ESign"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1439,6 +2281,12 @@
     "Team Identifiers" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identifikátory týmu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1450,6 +2298,12 @@
     "Team Name" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jméno týmu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1461,6 +2315,12 @@
     "The heartbeat is activated in the background, it will restart when the app is re-opened or prompted. If the status below is pulsing, that means its healthy." : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heartbeat je aktivován v pozadí, sám se zrestartuje když se aplikace znovu otevře nebo po dotázání. Když status dole pulzuje, znamená to, že je funkční."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1472,6 +2332,12 @@
     "These changes require a restart of the app" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tyto změny vyžadují restart aplikace"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1482,6 +2348,12 @@
     },
     "Toggling show sheet will present a share sheet after exporting to your files." : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zapnutí sdílícího panelu ho ukáže po exportu do Souborů."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1493,6 +2365,12 @@
     "Tunnel & Pairing" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tunel a párování"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1504,6 +2382,12 @@
     "Tweaks" : {
       "comment" : "Select custom tweaks to install and inject",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tweaky"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1514,6 +2398,12 @@
     },
     "Update SSL Certificates" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualizovat SSL certifikáty"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1530,10 +2420,17 @@
             "value" : "URL"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Version" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verze"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1545,6 +2442,12 @@
     "View Entitlements" : {
       "comment" : "Certificate listed entitlements",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ukázat entitlementy"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1556,6 +2459,12 @@
     "Visit Patreon" : {
       "comment" : "Repository listed patreon",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navštívit Patreon"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1567,6 +2476,12 @@
     "Visit Website" : {
       "comment" : "Repository listed website",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navštívit stránku"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",

@@ -24,7 +24,7 @@ struct SourcesAddView: View {
 	var body: some View {
 		NBNavigationView(.localized("Add Source"), displayMode: .inline) {
 			Form {
-				NBSection("Source") {
+				Section {
 					TextField(.localized("Source Repo URL"), text: $_sourceURL)
 						.keyboardType(.URL)
 				} footer: {
@@ -42,7 +42,7 @@ struct SourcesAddView: View {
 						}.joined(separator: "\n")
 					}
 				} footer: {
-					Text("Supports importing from KravaSign/MapleSign and ESign")
+					Text(.localized("Supports importing from KravaSign/MapleSign and ESign"))
 				}
 			}
 			.toolbar {

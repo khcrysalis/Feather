@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleExtensions
 
 public struct NBToolbarButton: ToolbarContent {
 	@Environment(\.dismiss) private var dismiss
@@ -50,15 +51,15 @@ public struct NBToolbarButton: ToolbarContent {
 		
 		switch role {
 		case .cancel:
-			self._title = "Cancel"
+			self._title = .localized("Cancel")
 			self._icon = "xmark"
 			self._style = .text
 		case .dismiss:
-			self._title = "Dismiss"
+			self._title = .localized("Dismiss")
 			self._icon = "chevron.left"
 			self._style = .icon
 		case .close:
-			self._title = "Close"
+			self._title = .localized("Close")
 			self._icon = "xmark"
 			self._style = .icon
 			self._placement = .topBarTrailing
