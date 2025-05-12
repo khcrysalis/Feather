@@ -37,7 +37,8 @@ struct FeatherApp: App {
 				_ = DownloadManager.shared.startDownload(from: downloadURL)
 			}
 		} else {
-			if url.pathExtension == "ipa" {
+			if url.pathExtension == "ipa" || url.pathExtension == "tipa" {
+				print(url)
 				guard url.startAccessingSecurityScopedResource() else { return }
 				FR.handlePackageFile(url) { _ in }
 				return

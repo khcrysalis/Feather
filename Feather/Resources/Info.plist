@@ -5,6 +5,8 @@
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeIconFile</key>
+			<string>feather_extension</string>
 			<key>CFBundleTypeName</key>
 			<string>iOS Package Archive</string>
 			<key>CFBundleTypeRole</key>
@@ -16,6 +18,20 @@
 				<string>thewonderofyou.Feather.ipa</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeIconFile</key>
+			<string>feather_extension</string>
+			<key>CFBundleTypeName</key>
+			<string>AirDrop friendly iOS app</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>thewonderofyou.Feather.tipa</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleURLTypes</key>
 	<array>
@@ -23,7 +39,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLIconFile</key>
-			<string>feather_ipa</string>
+			<string>feather_extension</string>
 			<key>CFBundleURLName</key>
 			<string>thewonderofyou.Feather</string>
 			<key>CFBundleURLSchemes</key>
@@ -47,6 +63,8 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>iOS Package Archive</string>
+			<key>UTTypeIconFile</key>
+			<string>feather_extension</string>
 			<key>UTTypeIcons</key>
 			<dict>
 				<key>UTTypeIconText</key>
@@ -63,6 +81,38 @@
 				<key>public.mime-type</key>
 				<array>
 					<string>application/octet-stream</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>com.apple.itunes.ipa</string>
+				<string>public.data</string>
+				<string>public.content</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>AirDrop friendly iOS app</string>
+			<key>UTTypeIconFile</key>
+			<string>feather_extension</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconBadgeName</key>
+				<string></string>
+				<key>UTTypeIconText</key>
+				<string>TIPA</string>
+			</dict>
+			<key>UTTypeIdentifier</key>
+			<string>thewonderofyou.Feather.tipa</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>tipa</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/trollstore-ipa</string>
 				</array>
 			</dict>
 		</dict>
