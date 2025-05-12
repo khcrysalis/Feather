@@ -1,14 +1,14 @@
 {
   "name": "Feather Repository",
   "identifier": "kh.crysalis.feather-repo",
-  "iconURL": "https://github.com/khcrysalis/Feather/blob/main/iOS/Resources/Icons/Main/Mac@3x.png?raw=true",
+  "iconURL": "https://github.com/khcrysalis/Feather/blob/v1/iOS/Resources/Icons/Main/Mac%403x.png?raw=true",
   "website": "https://github.com/khcrysalis/Feather",
   "apps": [
     {
       "name": "Feather",
       "bundleIdentifier": "kh.crysalis.feather",
       "developerName": "Samara",
-      "iconURL": "https://github.com/khcrysalis/Feather/blob/main/iOS/Resources/Icons/Main/Mac@3x.png?raw=true",
+      "iconURL": "https://github.com/khcrysalis/Feather/blob/v1/iOS/Resources/Icons/Main/Mac%403x.png?raw=true",
       "localizedDescription": "Feather is a free on-device iOS application manager/installer built with UIKit for quality.",
       "subtitle": "On-device signing application",
       "tintColor": "848ef9",
@@ -22,15 +22,32 @@
       ],
       "appPermissions": {},
       "screenshotURLs": [
-        "https://github.com/khcrysalis/Feather/blob/main/Images/Library.png?raw=true",
-        "https://github.com/khcrysalis/Feather/blob/main/Images/Repos.png?raw=true",
-        "https://github.com/khcrysalis/Feather/blob/main/Images/Sign.png?raw=true",
-        "https://github.com/khcrysalis/Feather/blob/main/Images/Store.png?raw=true"
+        "https://github.com/khcrysalis/Feather/blob/v1/Images/Library.png?raw=true",
+        "https://github.com/khcrysalis/Feather/blob/v1/Images/Repos.png?raw=true",
+        "https://github.com/khcrysalis/Feather/blob/v1/Images/Sign.png?raw=true",
+        "https://github.com/khcrysalis/Feather/blob/v1/Images/Store.png?raw=true"
       ],
       "version": "1.4.1",
       "versionDate": "2025-04-05T21:36:24Z",
       "size": 12598584,
       "downloadURL": "https://github.com/khcrysalis/Feather/releases/download/v1.4.1/feather_v1.4.1.ipa"
+    },
+    {
+      "name": "Feather (idevice)",
+      "bundleIdentifier": "kh.crysalis.feather-idevice",
+      "developerName": "Samara",
+      "iconURL": "https://github.com/khcrysalis/Feather/blob/v1/iOS/Resources/Icons/Main/Mac%403x.png?raw=true",
+      "localizedDescription": "Feather is a free on-device iOS application manager/installer built with UIKit for quality.",
+      "subtitle": "On-device signing application using idevice",
+      "tintColor": "848ef9",
+      "versions": [],
+      "appPermissions": {},
+      "screenshotURLs": [
+        "https://github.com/khcrysalis/Feather/blob/v1/Images/Library.png?raw=true",
+        "https://github.com/khcrysalis/Feather/blob/v1/Images/Repos.png?raw=true",
+        "https://github.com/khcrysalis/Feather/blob/v1/Images/Sign.png?raw=true",
+        "https://github.com/khcrysalis/Feather/blob/v1/Images/Store.png?raw=true"
+      ]
     }
   ],
   "news": [
