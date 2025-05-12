@@ -18,15 +18,15 @@ jobs:
 
       - name: Compile Feather
         run: | 
-          mkdir upload
-          ./bump.sh
+          agvtool new-version -all $(git rev-parse HEAD)
           make
+          mkdir upload
           mv packages/* upload/
 
       - name: Get Version
         id: get_version
         run: |
-          VERSION=$( /usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" Payload/*.app/Info.plist )
+          VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" Payload/*.app/Info.plist)
           echo "VERSION=${VERSION}" >> $GITHUB_ENV
 
       - name: Create Release
