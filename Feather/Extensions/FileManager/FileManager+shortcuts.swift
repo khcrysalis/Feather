@@ -8,6 +8,21 @@
 import Foundation.NSFileManager
 
 extension FileManager {
+	
+	func isFileFromFileProvider(at url: URL) -> Bool {
+		if let resourceValues = try? url.resourceValues(forKeys: [.isUbiquitousItemKey, .fileResourceIdentifierKey]),
+		   resourceValues.isUbiquitousItem == true {
+			return true
+		}
+		
+		let path = url.path
+		if path.contains("/Library/CloudStorage/") || path.contains("/File Provider Storage/") {
+			return true
+		}
+		
+		return false
+	}
+	
 	func removeFileIfNeeded(at url: URL) throws {
 		if self.fileExists(atPath: url.path) {
 			try self.removeItem(at: url)
