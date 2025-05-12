@@ -16,6 +16,7 @@ Any contributions should follow the [Code of Conduct](./CODE_OF_CONDUCT.md).
   - NimbleKit: MIT 
   - Zsign: MIT
 - **Typo contributions are okay**, just make sure they are appropriate.
+  - This includes localizations
 - **Code cleaning contributions are okay**.
 
 ## Contributing to Feather
@@ -36,6 +37,15 @@ Any contributions should follow the [Code of Conduct](./CODE_OF_CONDUCT.md).
     ```sh
     cd Feather && open Feather.xcworkspace
     ```
+
+#### Localizations
+- For localizations, you will need Xcode 15 or higher to edit the `Feather/Resources/Localizable.xcstrings` file, or some alternative software which allows you to edit an `.xcstrings` file. 
+- We use a newer format for convenience, but at a cost of less accessibility when it comes to actually editing it.
+  - **Disclaimer: do NOT edit by hand.**
+- Some localizations were imported from V1, if they don't make sense please feel free to change them.
+- After localizing, please have another person review your localizations (unless the owners have asked you personally to help translate). 
+  - We want high quality localizations and have them actually make sense when in the application.
+  - They will not be merged unless the latter was done.
 
 #### Making a pull request
 
