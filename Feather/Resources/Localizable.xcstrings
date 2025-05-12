@@ -76,6 +76,36 @@
     "%lld Days" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dny"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dnů"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld den"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dnů"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -307,6 +337,12 @@
     "Adhoc Signing" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adhoc podpisy"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -485,6 +521,12 @@
     "App Features" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funkce aplikace"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1655,6 +1697,12 @@
     "Expired" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vypršelo"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1789,6 +1837,12 @@
       "comment" : "If app should have file sharing",
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sdílení souborů"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1863,6 +1917,12 @@
     "Force Localize" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Donucení lokalizace"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1954,6 +2014,12 @@
     "General" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obecné"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2523,6 +2589,12 @@
     "iPad Fullscreen" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fullscreen na iPadu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2541,6 +2613,12 @@
       "comment" : "If app should have iTunes file sharing",
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sdílení souboru v iTunes"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2635,6 +2713,12 @@
       "comment" : "Minimum app version",
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minimální požadavky"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3270,6 +3354,12 @@
     "PPQ Protection" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PPQ ochrana"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3352,6 +3442,12 @@
     "Protection" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ochrana"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3437,6 +3533,12 @@
     "Removal" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odebrání"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3477,6 +3579,12 @@
     "Remove Provisioning" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odebrat provisioning"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3506,6 +3614,12 @@
     "Remove Supported Devices" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odebrat list podporovaných zařízení"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3546,6 +3660,12 @@
     "Remove URL Scheme" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odebrat schéma URL"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3575,6 +3695,12 @@
     "Remove Watch Placeholder" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odebrat Watch aplikaci"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4634,6 +4760,12 @@
     "Unknown" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neznámé"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
