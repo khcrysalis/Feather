@@ -341,7 +341,7 @@ extension ASRepository {
 		
 		// "UNIQUE" hahaha
 		public var currentUniqueId: String {
-			id ?? downloadURL?.absoluteString ?? uuid.uuidString
+			"\(id ?? uuid.uuidString).\(downloadURL?.absoluteString ?? uuid.uuidString)"
 		}
 
 		public struct Version: Decodable, Hashable, Identifiable, Comparable, Sendable {

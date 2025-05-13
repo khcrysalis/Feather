@@ -5,7 +5,7 @@
 //  Created by samara on 30.04.2025.
 //
 
-#if !NIGHTLY
+#if !NIGHTLY || !DEBUG
 import SwiftUI
 import NimbleViews
 
