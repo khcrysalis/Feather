@@ -509,6 +509,12 @@ public struct DateParsed: Codable, Equatable, Hashable, Comparable, Sendable {
 				formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
 				return formatter
 			}(),
+			// ISO8601 with no fractional seconds and no timezone
+			{
+				let formatter = DateFormatter()
+				formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+				return formatter
+			}(),
 			// ISO8601 without fractional seconds
 			{
 				let formatter = DateFormatter()
@@ -549,6 +555,7 @@ public struct DateParsed: Codable, Equatable, Hashable, Comparable, Sendable {
 			}(),
 		]
 	}()
+
 
 
 	public init(from decoder: Decoder) throws {
