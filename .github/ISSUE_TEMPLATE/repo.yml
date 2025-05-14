@@ -1,0 +1,35 @@
+name: Create Repo Support Request
+description: Suggest a repository to be supported by Feather.
+title: '[Repo Support] '
+labels:
+  - enhancement
+
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        Make sure you read the [Code of
+        Conduct](https://github.com/khcrysalis/Feather/blob/main/CODE_OF_CONDUCT.md)
+        before making an issue, and make sure there aren't already the same bug
+        reported.
+
+        When it comes to requesting a repository to be supported, please make sure to include any generator websites you may have used for these.
+
+        If possible link any reference guides you may have used when creating said repository.
+
+        If you haven't created the repository yourself but you want it to be supported, please do also link it below (only AltStore repositories will be used in Feather, no other repositories like you've seen in Scarlet, or APT repositories). 
+
+  - type: textarea
+    id: text
+    attributes:
+      label: Request
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: agreement
+    attributes:
+      label: Request Agreement
+      options:
+        - label: I have read the requirements for opening an issue above
+          required: true
