@@ -312,7 +312,7 @@ extension ASRepository {
 		}
 		
 		public var currentAppVersion: Version? {
-			versions?.sorted(path: \.version).last
+			versions?.first
 		}
 		
 		public var currentName: String {
