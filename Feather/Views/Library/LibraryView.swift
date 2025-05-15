@@ -18,6 +18,7 @@ struct LibraryView: View {
 	@State private var _selectedInstallAppPresenting: AnyApp?
 	@State private var _isImportingPresenting = false
 	@State private var _isDownloadingPresenting = false
+	@State private var _isImporting = false // for Loading Overlay
 	@State private var _alertDownloadString: String = "" // for _isDownloadingPresenting
 	
 	@State private var _searchText = ""
@@ -55,67 +56,74 @@ struct LibraryView: View {
 	) private var _importedApps: FetchedResults<Imported>
 	
 	// MARK: Body
-    var body: some View {
+    	var body: some View {
 		NBNavigationView(.localized("Library")) {
-			NBListAdaptable {
-				if
-					_selectedScope == .all ||
-					_selectedScope == .signed
-				{
-					NBSection(
-						.localized("Signed"),
-						secondary: _filteredSignedApps.count.description
+			ZStack {
+				NBListAdaptable {
+					if
+						_selectedScope == .all ||
+						_selectedScope == .signed
+					{
+						NBSection(
+							.localized("Signed"),
+							secondary: _filteredSignedApps.count.description
+						) {
+							ForEach(_filteredSignedApps, id: \.uuid) { app in
+								LibraryCellView(
+									app: app,
+									selectedInfoAppPresenting: $_selectedInfoAppPresenting,
+									selectedSigningAppPresenting: $_selectedSigningAppPresenting,
+									selectedInstallAppPresenting: $_selectedInstallAppPresenting
+								)
+								.compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
+							}
+						}
+					}
+					
+					if
+						_selectedScope == .all ||
+						_selectedScope == .imported
+					{
+						NBSection(
+							.localized("Imported"),
+							secondary: _filteredImportedApps.count.description
+						) {
+							ForEach(_filteredImportedApps, id: \.uuid) { app in
+								LibraryCellView(
+									app: app,
+									selectedInfoAppPresenting: $_selectedInfoAppPresenting,
+									selectedSigningAppPresenting: $_selectedSigningAppPresenting,
+									selectedInstallAppPresenting: $_selectedInstallAppPresenting
+								)
+								.compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
+							}
+						}
+					}
+				}
+				.searchable(text: $_searchText, placement: .platform())
+				.compatSearchScopes($_selectedScope) {
+					ForEach(Scope.allCases, id: \.displayName) { scope in
+						Text(scope.displayName).tag(scope)
+					}
+				}
+				.toolbar {
+					NBToolbarMenu(
+						systemImage: "plus",
+						style: .icon,
+						placement: .topBarTrailing
 					) {
-						ForEach(_filteredSignedApps, id: \.uuid) { app in
-							LibraryCellView(
-								app: app,
-								selectedInfoAppPresenting: $_selectedInfoAppPresenting,
-								selectedSigningAppPresenting: $_selectedSigningAppPresenting,
-								selectedInstallAppPresenting: $_selectedInstallAppPresenting
-							)
-							.compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
+						Button(.localized("Import from Files")) {
+							_isImportingPresenting = true
+						}
+						Button(.localized("Import from URL")) {
+							_isDownloadingPresenting = true
 						}
 					}
 				}
 				
-				if
-					_selectedScope == .all ||
-					_selectedScope == .imported
-				{
-					NBSection(
-						.localized("Imported"),
-						secondary: _filteredImportedApps.count.description
-					) {
-						ForEach(_filteredImportedApps, id: \.uuid) { app in
-							LibraryCellView(
-								app: app,
-								selectedInfoAppPresenting: $_selectedInfoAppPresenting,
-								selectedSigningAppPresenting: $_selectedSigningAppPresenting,
-								selectedInstallAppPresenting: $_selectedInstallAppPresenting
-							)
-							.compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
-						}
-					}
-				}
-			}
-			.searchable(text: $_searchText, placement: .platform())
-			.compatSearchScopes($_selectedScope) {
-				ForEach(Scope.allCases, id: \.displayName) { scope in
-					Text(scope.displayName).tag(scope)
-				}
-			}
-			.toolbar {
-				NBToolbarMenu(
-					systemImage: "plus",
-					style: .icon,
-					placement: .topBarTrailing
-				) {
-					Button(.localized("Import from Files")) {
-						_isImportingPresenting = true
-					}
-					Button(.localized("Import from URL")) {
-						_isDownloadingPresenting = true
-					}
+				// Loading overlay while importing
+				if _isImporting {
+					LoadingOverlayView()
 				}
 			}
 			.sheet(item: $_selectedInfoAppPresenting) { app in
@@ -133,10 +141,13 @@ struct LibraryView: View {
 			}
 			.sheet(isPresented: $_isImportingPresenting) {
 				FileImporterRepresentableView(
-					allowedContentTypes:  [.ipa, .tipa],
+					allowedContentTypes: [.ipa, .tipa],
 					onDocumentsPicked: { urls in
 						guard let selectedFileURL = urls.first else { return }
-						FR.handlePackageFile(selectedFileURL) { _ in }
+						_isImporting = true // Start showing loading
+						FR.handlePackageFile(selectedFileURL) { _ in
+							_isImporting = false // Finish loading when import is complete
+						}
 					}
 				)
 			}
@@ -169,5 +180,27 @@ extension LibraryView {
 			case .imported: return .localized("Imported")
 			}
 		}
+	}
+}
+
+// MARK: - Loading Overlay
+struct LoadingOverlayView: View {
+	var body: some View {
+		ZStack {
+			Color.black.opacity(0.4)
+				.edgesIgnoringSafeArea(.all)
+			
+			VStack(spacing: 16) {
+				ProgressView()
+					.scaleEffect(1.2)
+					.tint(.white)
+			}
+			.padding(24)
+			.background(
+				RoundedRectangle(cornerRadius: 12)
+					.fill(Color.gray.opacity(0.7))
+			)
+		}
+		.transition(.opacity)
 	}
 }
