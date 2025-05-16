@@ -361,7 +361,7 @@ extension ASRepository {
 					String.self,
 					forKey: .build
 				)
-				self.date = try container.decodeIfPresent(
+				self.date = try? container.decodeIfPresent(
 					DateParsed.self,
 					forKey: .date
 				)
@@ -494,136 +494,115 @@ extension ASRepository {
 public struct DateParsed: Codable, Equatable, Hashable, Comparable, Sendable {
 	public let date: Date
 	public let rawDate: RawDate
-
-	public enum RawDate: Decodable, Sendable {
+	
+	public enum RawDate: Decodable, Hashable, Sendable {
 		case number(Double)
 		case string(String)
 	}
-
-	// buncha date formats, i asked ai to make a list of these
+	
+	// ISO8601 formatters (more accurate for machine-generated dates)
+	private static let isoFormatters: [ISO8601DateFormatter] = [
+		{
+			let formatter = ISO8601DateFormatter()
+			formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+			return formatter
+		}(),
+		{
+			let formatter = ISO8601DateFormatter()
+			formatter.formatOptions = [.withInternetDateTime]
+			return formatter
+		}()
+	]
+	
+	// legacy formatters
 	private static let formatters: [DateFormatter] = {
-		[
-			// ISO8601 with fractional seconds
-			{
-				let formatter = DateFormatter()
-				formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-				return formatter
-			}(),
-			// ISO8601 with no fractional seconds and no timezone
-			{
-				let formatter = DateFormatter()
-				formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-				return formatter
-			}(),
-			// ISO8601 without fractional seconds
-			{
-				let formatter = DateFormatter()
-				formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-				return formatter
-			}(),
-			// Date only
-			{
-				let formatter = DateFormatter()
-				formatter.dateFormat = "yyyy-MM-dd"
-				return formatter
-			}(),
-			// HTTP date format (RFC 1123)
-			{
-				let formatter = DateFormatter()
-				formatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss zzz"
-				formatter.locale = Locale(identifier: "en_US_POSIX")
-				return formatter
-			}(),
-			// Twitter date format
-			{
-				let formatter = DateFormatter()
-				formatter.dateFormat = "EEE MMM dd HH:mm:ss Z yyyy"
-				formatter.locale = Locale(identifier: "en_US_POSIX")
-				return formatter
-			}(),
-			// Unix timestamp (as string)
-			{
-				let formatter = DateFormatter()
-				formatter.dateFormat = "x"
-				return formatter
-			}(),
-			// Standard timestamp with space
-			{
-				let formatter = DateFormatter()
-				formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-				return formatter
-			}(),
-		]
+		let locale = Locale(identifier: "en_US_POSIX")
+		let tz = TimeZone(secondsFromGMT: 0)
+		
+		return [
+			"yyyy-MM-dd'T'HH:mm:ss.SSSZ",
+			"yyyy-MM-dd'T'HH:mm:ssZ",
+			"yyyy-MM-dd'T'HH:mm:ss",
+			"yyyy-MM-dd",
+			"EEE, dd MMM yyyy HH:mm:ss zzz", // RFC1123
+			"EEE MMM dd HH:mm:ss Z yyyy",    // Twitter
+			"yyyy-MM-dd HH:mm:ss",
+		].map {
+			let formatter = DateFormatter()
+			formatter.dateFormat = $0
+			formatter.locale = locale
+			formatter.timeZone = tz
+			return formatter
+		}
 	}()
-
-
-
+	
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.singleValueContainer()
+		
 		// prevent nil
 		if container.decodeNil() {
 			throw DecodingError.valueNotFound(
 				Date.self,
-				DecodingError.Context(
+				.init(
 					codingPath: decoder.codingPath,
-					debugDescription:
-						"Found nil for date :c\n\nPls ensure you mark the date type as optional in the Decodable struct you used this in."
+					debugDescription: "Found nil for date. Mark the date optional."
 				)
 			)
 		}
-
-		// attempt decode as number, then parse as date
-		do {
-			let timestamp = try container.decode(TimeInterval.self)
+		
+		// timestamp (e.g., 1699999999.0)
+		if let timestamp = try? container.decode(Double.self) {
+			self.date = Date(timeIntervalSince1970: timestamp)
 			self.rawDate = .number(timestamp)
-
+			return
+		}
+		
+		// string formats
+		let dateString = try container.decode(String.self).trimmingCharacters(in: .whitespacesAndNewlines)
+		self.rawDate = .string(dateString)
+		
+		// ISO8601 formatters
+		for formatter in Self.isoFormatters {
+			if let date = formatter.date(from: dateString) {
+				self.date = date
+				return
+			}
+		}
+		
+		// legacy formatters
+		for formatter in Self.formatters {
+			if let date = formatter.date(from: dateString) {
+				self.date = date
+				return
+			}
+		}
+		
+		// numeric timestamp string
+		if let timestamp = Double(dateString) {
 			self.date = Date(timeIntervalSince1970: timestamp)
 			return
-		} catch { /* failed parse as number, move on */  }
-
-		// decode as string
-		do {
-			let dateString = try container.decode(String.self)
-			self.rawDate = .string(dateString)
-
-			// go thru all formatters and try to parse
-			for formatter in Self.formatters {
-				if let date = formatter.date(from: dateString) {
-					self.date = date
-					return
-				}
-			}
-		} catch {}
-		// ok lets actually handle this error now since we exhausted all options
+		}
+		
 		throw DecodingError.dataCorruptedError(
 			in: container,
-			debugDescription: "Cannot decode date, exhausted all options."
+			debugDescription: "Failed to decode date from: \(dateString)"
 		)
 	}
-
+	
 	public func encode(to encoder: Encoder) throws {
 		var container = encoder.singleValueContainer()
 		try container.encode(date)
 	}
-
-	// allows use of date in comparisons without having to unwrap
-
-	public static func == (lhs: Self, rhs: Date) -> Bool {
-		return lhs.date == rhs
-	}
-
+	
 	public static func == (lhs: Self, rhs: Self) -> Bool {
-		return lhs.date == rhs.date
+		lhs.date == rhs.date
 	}
-
-	public func hash(into hasher: inout Hasher) {
-		hasher.combine(date)
-	}
-
+	
 	public static func < (lhs: Self, rhs: Self) -> Bool {
-		return lhs.date < rhs.date
+		lhs.date < rhs.date
 	}
 }
+
 
 public struct OSVersion: Decodable, Hashable, CustomStringConvertible, Sendable {
 	public var description: String {
