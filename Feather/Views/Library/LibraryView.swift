@@ -136,7 +136,9 @@ struct LibraryView: View {
 					allowedContentTypes:  [.ipa, .tipa],
 					onDocumentsPicked: { urls in
 						guard let selectedFileURL = urls.first else { return }
-						FR.handlePackageFile(selectedFileURL) { _ in }
+						let id = "FeatherManualDownload_\(UUID().uuidString)"
+						let dl = downloadManager.startArchive(from: selectedFileURL, id: id)
+						try? downloadManager.handlePachageFile(url: selectedFileURL, dl: dl)
 					}
 				)
 			}
@@ -147,7 +149,7 @@ struct LibraryView: View {
 				}
 				Button(.localized("OK")) {
 					if let url = URL(string: _alertDownloadString) {
-						_ = downloadManager.startDownload(from: url)
+						_ = downloadManager.startDownload(from: url, id: "FeatherManualDownload_\(UUID().uuidString)")
 					}
 				}
 			}

@@ -14,13 +14,20 @@ struct FeatherApp: App {
 	#if IDEVICE
 	let heartbeat = HeartbeatManager.shared
 	#endif
+	@StateObject var downloadManager = DownloadManager.shared
 	let storage = Storage.shared
 
 	var body: some Scene {
 		WindowGroup {
-			VariedTabbarView()
-				.environment(\.managedObjectContext, storage.context)
-				.onOpenURL(perform: _handleURL)
+			VStack {
+				DownloadHeaderView(downloadManager: downloadManager)
+					.transition(.move(edge: .top).combined(with: .opacity))
+				VariedTabbarView()
+					.environment(\.managedObjectContext, storage.context)
+					.onOpenURL(perform: _handleURL)
+					.transition(.move(edge: .top).combined(with: .opacity))
+			}
+			.animation(.smooth, value: downloadManager.manualDownloads.description)
 		}
 	}
 	

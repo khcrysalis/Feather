@@ -9,14 +9,16 @@ import Foundation
 import Combine
 import UIKit.UIImpactFeedbackGenerator
 
-class Download: Identifiable {
+class Download: Identifiable, @unchecked Sendable {
 	@Published var progress: Double = 0.0
 	@Published var bytesDownloaded: Int64 = 0
 	@Published var totalBytes: Int64 = 0
 	@Published var unpackageProgress: Double = 0.0
 	
 	var overallProgress: Double {
-		(0.3 * unpackageProgress) + (0.7 * progress)
+		onlyArchiving
+		? unpackageProgress
+		: (0.3 * unpackageProgress) + (0.7 * progress)
 	}
 	
     var task: URLSessionDownloadTask?
@@ -25,13 +27,16 @@ class Download: Identifiable {
 	let id: String
 	let url: URL
 	let fileName: String
+	let onlyArchiving: Bool
     
     init(
 		id: String,
-		url: URL
+		url: URL,
+		onlyArchiving: Bool = false
 	) {
 		self.id = id
         self.url = url
+		self.onlyArchiving = onlyArchiving
         self.fileName = url.lastPathComponent
     }
 }
@@ -40,6 +45,11 @@ class DownloadManager: NSObject, ObservableObject {
 	static let shared = DownloadManager()
 	
     @Published var downloads: [Download] = []
+	
+	var manualDownloads: [Download] {
+		downloads.filter { isManualDownload($0.id) }
+	}
+	
     private var _session: URLSession!
     
     override init() {
@@ -66,6 +76,15 @@ class DownloadManager: NSObject, ObservableObject {
         downloads.append(download)
         return download
     }
+	
+	func startArchive(
+		from url: URL,
+		id: String = UUID().uuidString
+	) -> Download {
+		let download = Download(id: id, url: url, onlyArchiving: true)
+		downloads.append(download)
+		return download
+	}
     
     func resumeDownload(_ download: Download) {
         if let resumeData = download.resumeData {
@@ -87,9 +106,9 @@ class DownloadManager: NSObject, ObservableObject {
         }
     }
     
-    func getAllDownloads() -> [Download] {
-        return downloads
-    }
+	func isManualDownload(_ string: String) -> Bool {
+		return string.contains("FeatherManualDownload")
+	}
 	
 	func getDownload(by id: String) -> Download? {
 		return downloads.first(where: { $0.id == id })
@@ -105,6 +124,22 @@ class DownloadManager: NSObject, ObservableObject {
 }
 
 extension DownloadManager: URLSessionDownloadDelegate {
+	
+	func handlePachageFile(url: URL, dl: Download) throws {
+		FR.handlePackageFile(url, download: dl) { err in
+			if err != nil {
+				let generator = UINotificationFeedbackGenerator()
+				generator.notificationOccurred(.error)
+			}
+			
+			DispatchQueue.main.async {
+				if let index = DownloadManager.shared.getDownloadIndex(by: dl.id) {
+					DownloadManager.shared.downloads.remove(at: index)
+				}
+			}
+		}
+	}
+	
 	func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
 		guard let download = getDownloadTask(by: downloadTask) else { return }
 		
@@ -121,18 +156,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
 			try FileManager.default.removeFileIfNeeded(at: destinationURL)
 			try FileManager.default.moveItem(at: location, to: destinationURL)
 			
-			FR.handlePackageFile(destinationURL, download: download) { err in
-				if err != nil {
-					let generator = UINotificationFeedbackGenerator()
-					generator.notificationOccurred(.error)
-				}
-				
-				DispatchQueue.main.async {
-					if let index = self.getDownloadIndex(by: download.id) {
-						self.downloads.remove(at: index)
-					}
-				}
-			}
+			try handlePachageFile(url: destinationURL, dl: download)
 		} catch {
 			print("Error handling downloaded file: \(error.localizedDescription)")
 		}
