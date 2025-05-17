@@ -9,7 +9,7 @@ import Foundation
 import Zip
 import SwiftUICore
 
-final class AppFileHandler: NSObject {
+final class AppFileHandler: NSObject, @unchecked Sendable {
 	private let _fileManager = FileManager.default
 	private let _uuid = UUID().uuidString
 	private let _uniqueWorkDir: URL
@@ -50,17 +50,36 @@ final class AppFileHandler: NSObject {
 		Zip.addCustomFileExtension("ipa")
 		Zip.addCustomFileExtension("tipa")
 		
-		try Zip.unzipFile(_ipa, destination: _uniqueWorkDir, overwrite: true, password: nil, progress: { progress in
-			print("[\(self._uuid)] Unzip progress: \(progress)")
-			
-			if let download = self._download {
-				DispatchQueue.main.async {
-					download.unpackageProgress = progress
+		let download = self._download
+		
+		try await withCheckedThrowingContinuation { continuation in
+			DispatchQueue.global(qos: .utility).async {
+				do {
+					try Zip.unzipFile(
+						self._ipa,
+						destination: self._uniqueWorkDir,
+						overwrite: true,
+						password: nil,
+						progress: { progress in
+							print("[\(self._uuid)] Unzip progress: \(progress)")
+							
+							if let download = download {
+								DispatchQueue.main.async {
+									download.unpackageProgress = progress
+								}
+							}
+						}
+					)
+					
+					self.uniqueWorkDirPayload = self._uniqueWorkDir.appendingPathComponent("Payload")
+					continuation.resume()
+				} catch {
+					continuation.resume(throwing: error)
 				}
 			}
-		})
-		uniqueWorkDirPayload = _uniqueWorkDir.appendingPathComponent("Payload")
+		}
 	}
+
 	
 	func move() async throws {
 		guard let payloadURL = uniqueWorkDirPayload else {
