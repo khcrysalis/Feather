@@ -10,12 +10,10 @@ import SwiftUI
 struct FRAppIconView: View {
 	private var _app: AppInfoPresentable
 	private var _size: CGFloat
-	private var _cornerRadius: CGFloat
 	
-	init(app: AppInfoPresentable, size: CGFloat = 87, cornerRadius: CGFloat = 20) {
+	init(app: AppInfoPresentable, size: CGFloat = 87) {
 		self._app = app
 		self._size = size
-		self._cornerRadius = cornerRadius
 	}
 	
 	var body: some View {
@@ -24,7 +22,7 @@ struct FRAppIconView: View {
 			let uiImage = UIImage(contentsOfFile: iconFilePath.path)
 		{
 			Image(uiImage: uiImage)
-				.appIconStyle(size: _size, cornerRadius: _cornerRadius)
+				.appIconStyle(size: _size)
 		} else {
 			Image("App_Unknown")
 				.appIconStyle(size: _size)

@@ -20,21 +20,36 @@ struct SettingsView: View {
 				#if !NIGHTLY && !DEBUG
 				SettingsDonationCellView(site: _donationsUrl)
 				#endif
-				
+                
 				_feedback()
 				
-				Section {
-					NavigationLink(.localized("Appearance"), destination: AppearanceView())
+                NBSection(.localized("General")) {
+                    NavigationLink(destination: AppearanceView()) {
+                        FRTintedIconLabelView("Appearance", systemName: "eye.fill", tintColor: .blue)
+                    }
 				}
 				
 				NBSection(.localized("Features")) {
-					NavigationLink(.localized("Certificates"), destination: CertificatesView())
-					NavigationLink(.localized("Signing Options"), destination: ConfigurationView())
-					NavigationLink(.localized("Archive & Compression"), destination: ArchiveView())
+                    NavigationLink(destination: CertificatesView()) {
+                        FRTintedIconLabelView("Certificates", systemName: "checkmark.seal.text.page.fill", tintColor: .green)
+                    }
+                    
+                    NavigationLink(destination: ConfigurationView()) {
+                        FRTintedIconLabelView("Signing Options", systemName: "signature", tintColor: .red)
+                    }
+                    
+                    NavigationLink(destination: ArchiveView()) {
+                        FRTintedIconLabelView("Archive & Compression", systemName: "archivebox.fill", tintColor: .orange)
+                    }
+                    
 					#if SERVER
-					NavigationLink(.localized("Server & SSL"), destination: ServerView())
+                    NavigationLink(destination: ServerView()) {
+                        FRTintedIconLabelView("Server & SSL", systemName: "server.rack", tintColor: .blue)
+                    }
 					#elseif IDEVICE
-					NavigationLink(.localized("Tunnel & Pairing"), destination: TunnelView())
+                    NavigationLink(destination: TunnelView()) {
+                        FRTintedIconLabelView("Tunnel & Pairing", systemName: "personalhotspot", tintColor: .blue)
+                    }
 					#endif
 				}
 				
@@ -48,29 +63,52 @@ struct SettingsView: View {
 extension SettingsView {
 	@ViewBuilder
 	private func _feedback() -> some View {
-		Section {
-			NavigationLink(.localized("About"), destination: AboutView())
-			Button(.localized("Submit Feedback"), systemImage: "safari") {
-				UIApplication.open("\(_githubUrl)/issues")
-			}
-			Button(.localized("GitHub Repository"), systemImage: "safari") {
-				UIApplication.open(_githubUrl)
-			}
+        NBSection(Bundle.main.name) {
+            NavigationLink(destination: AboutView()) {
+                FRTintedIconLabelView("About", name: "Glyph", tintColor: .accentColor)
+            }
+            
+            Button {
+                UIApplication.open("\(_githubUrl)/issues")
+            } label: {
+                FRTintedIconLabelView("Submit Feedback", systemName: "exclamationmark.bubble.fill", tintColor: .purple, showLinkHint: true)
+            }
+            .foregroundStyle(.primary)
+            
+            Button {
+                UIApplication.open(_githubUrl)
+            } label: {
+                FRTintedIconLabelView("GitHub Repository", name: "Github_Logo", tintColor: .black, showLinkHint: true)
+            }
+            .foregroundStyle(.primary)
 		}
 	}
 	
 	@ViewBuilder
 	private func _directories() -> some View {
 		NBSection(.localized("Misc")) {
-			Button(.localized("Open Documents"), systemImage: "folder") {
-				UIApplication.open(URL.documentsDirectory.toSharedDocumentsURL()!)
-			}
-			Button(.localized("Open Archives"), systemImage: "folder") {
-				UIApplication.open(FileManager.default.archives.toSharedDocumentsURL()!)
-			}
-			Button(.localized("Open Certificates"), systemImage: "folder") {
-				UIApplication.open(FileManager.default.certificates.toSharedDocumentsURL()!)
-			}
+            
+            Button {
+                UIApplication.open(URL.documentsDirectory.toSharedDocumentsURL()!)
+            } label: {
+                FRTintedIconLabelView("Open Documents", systemName: "folder.fill", tintColor: .blue, showLinkHint: true)
+            }
+            .foregroundStyle(.primary)
+            
+            Button {
+                UIApplication.open(FileManager.default.archives.toSharedDocumentsURL()!)
+            } label: {
+                FRTintedIconLabelView("Open Archives", systemName: "folder.fill", tintColor: .blue, showLinkHint: true)
+            }
+            .foregroundStyle(.primary)
+            
+            Button {
+                UIApplication.open(FileManager.default.certificates.toSharedDocumentsURL()!)
+            } label: {
+                FRTintedIconLabelView("Open Certificates", systemName: "folder.fill", tintColor: .blue, showLinkHint: true)
+            }
+            .foregroundStyle(.primary)
+            
 		} footer: {
 			Text(.localized("All of Feathers files are contained in the documents directory, here are some quick links to these."))
 		}

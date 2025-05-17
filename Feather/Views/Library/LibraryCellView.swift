@@ -25,7 +25,7 @@ struct LibraryCellView: View {
 	// MARK: Body
 	var body: some View {
 		HStack(spacing: 9) {
-			FRAppIconView(app: app, size: 57, cornerRadius: 14)
+			FRAppIconView(app: app, size: 57)
 			
 			NBTitleWithSubtitleView(
 				title: app.name ?? .localized("Unknown"),

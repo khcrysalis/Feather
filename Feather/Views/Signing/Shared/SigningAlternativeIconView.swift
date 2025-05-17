@@ -47,7 +47,7 @@ extension SigningAlternativeIconView {
 		HStack(spacing: 12) {
 			if let image = _iconUrl(icon.path) {
 				Image(uiImage: image)
-					.appIconStyle(size: 32, cornerRadius: 7.4)
+					.appIconStyle(size: 32)
 			}
 			
 			Text(icon.name)

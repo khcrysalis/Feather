@@ -16,7 +16,7 @@ struct CertificatesCellView: View {
 	
 	// MARK: Body
 	var body: some View {
-		VStack(spacing: 6) {
+		VStack {
 			
 			NBTitleWithSubtitleView(
 				title: cert.nickname ?? data?.Name ?? .localized("Unknown"),
@@ -25,7 +25,6 @@ struct CertificatesCellView: View {
 			
 			_certInfoPill(data: cert)
 		}
-		.frame(height: 80)
 		.contentTransition(.opacity)
 		.frame(maxWidth: .infinity, alignment: .leading)
 		.onAppear {
