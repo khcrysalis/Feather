@@ -19,6 +19,14 @@ body:
 
         If you haven't created the repository yourself but you want it to be supported, please do also link it below (only AltStore repositories will be used in Feather, no other repositories like you've seen in Scarlet, or APT repositories). 
 
+  - type: input
+    id: repo
+    attributes:
+      label: Repository
+      placeholder: AltStore repository or anything similar
+    validations:
+      required: true
+
   - type: textarea
     id: text
     attributes:
