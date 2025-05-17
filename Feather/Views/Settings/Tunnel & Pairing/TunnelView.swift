@@ -12,6 +12,8 @@ import NimbleViews
 struct TunnelView: View {
 	@State private var _isImportingPairingPresenting = false
 	
+	@State var doesHavePairingFile = false
+	
 	// MARK: Body
     var body: some View {
 		NBList(.localized("Tunnel & Pairing")) {
@@ -19,7 +21,7 @@ struct TunnelView: View {
 				_tunnelInfo()
 				TunnelHeaderView()
 			} footer: {
-				if FileManager.default.fileExists(atPath: HeartbeatManager.pairingFile()) {
+				if doesHavePairingFile {
 					Text(.localized("Seems like you've gotten your hands on your pairing file! If you encounter ever `InvalidHostID -9` error please make a new pairing file and import it."))
 				} else {
 					Text(.localized("No pairing file found, please import it."))
@@ -47,8 +49,16 @@ struct TunnelView: View {
 				onDocumentsPicked: { urls in
 					guard let selectedFileURL = urls.first else { return }
 					FR.movePairing(selectedFileURL)
+					doesHavePairingFile = true
 				}
 			)
+		}
+		.onAppear {
+			if FileManager.default.fileExists(atPath: HeartbeatManager.pairingFile()) {
+				doesHavePairingFile = true
+			} else {
+				doesHavePairingFile = false
+			}
 		}
     }
 	
