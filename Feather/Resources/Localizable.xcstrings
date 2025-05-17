@@ -53,6 +53,12 @@
             }
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Uygulama"
+          }
+        },
         "vi" : {
           "variations" : {
             "plural" : {
@@ -124,6 +130,12 @@
             }
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Gün"
+          }
+        },
         "vi" : {
           "variations" : {
             "plural" : {
@@ -157,6 +169,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld required system dylibs not shown"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld gerekli sistem dylib kütüphanesi gösterilmiyor."
           }
         },
         "vi" : {
@@ -213,6 +231,12 @@
             "value" : "%lld Sources"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Kaynak"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -235,6 +259,12 @@
             "value" : "💜 This couldn't of been done without my sponsors!"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "💜 Sponsorlarım olmadan başarılamazdı!"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -255,6 +285,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "About"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hakkında"
           }
         },
         "vi" : {
@@ -298,6 +334,12 @@
             "value" : "Добавить"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekle"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -326,6 +368,12 @@
             "value" : "Add Source"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaynak Ekle"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -347,6 +395,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Adhoc Signing"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ad-Hoc İmzalama"
           }
         },
         "vi" : {
@@ -390,6 +444,12 @@
             "value" : "Avancé"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İleri Düzey"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -413,6 +473,12 @@
             "value" : "All"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tümü"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -433,6 +499,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "All of Feathers files are contained in the documents directory, here are some quick links to these."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feather’ın tüm dosyaları “Belgeler” klasöründe yer almaktadır. Yukarıda yer alan bağlantılar ile bunlardan bazılarına erişebilirsiniz."
           }
         },
         "vi" : {
@@ -458,6 +530,12 @@
             "value" : "All Repositories"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tüm Depolar"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -478,6 +556,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alternative Icons"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alternatif Simgeler"
           }
         },
         "vi" : {
@@ -510,6 +594,12 @@
             "value" : "An awesome application"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harika bir uygulama."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -531,6 +621,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "App Features"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uygulama Özellikleri"
           }
         },
         "vi" : {
@@ -579,6 +675,12 @@
             "value" : "Внешний вид"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Görünüş"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -602,6 +704,12 @@
             "value" : "AppID Name"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uygulama Kimliği Adı"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -622,6 +730,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Archive & Compression"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arşivleme ve Sıkıştırma"
           }
         },
         "vi" : {
@@ -671,6 +785,12 @@
             "value" : "Неверный пароль"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hatalı Parola"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -718,6 +838,12 @@
             "value" : "Большое описание"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geniş Açıklama"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -739,6 +865,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bundle"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paket"
           }
         },
         "vi" : {
@@ -787,6 +919,12 @@
             "value" : "Отменить"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vazgeç"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -808,6 +946,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Certificate"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sertifika"
           }
         },
         "vi" : {
@@ -857,6 +1001,12 @@
             "value" : "Сертификаты"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sertifikalar"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -877,6 +1027,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Change"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Değiştir"
           }
         },
         "vi" : {
@@ -902,6 +1058,12 @@
             "value" : "Choose from Files"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosyalar’dan Seç"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -923,6 +1085,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Choose from Photos"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotoğraflar’dan Seç"
           }
         },
         "vi" : {
@@ -948,6 +1116,12 @@
             "value" : "Close"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapat"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -969,6 +1143,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Compression Level"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sıkıştırma Düzeyi"
           }
         },
         "vi" : {
@@ -1015,6 +1195,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Копировать"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopyala"
           }
         },
         "vi" : {
@@ -1064,6 +1250,12 @@
             "value" : "Авторы"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Katkıda Bulunanlar"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1093,6 +1285,12 @@
             "value" : "Customization"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Özelleştirme"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1120,6 +1318,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Date"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tarih"
           }
         },
         "vi" : {
@@ -1161,6 +1365,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Date d'ajout"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eklenme Tarihi"
           }
         },
         "vi" : {
@@ -1210,6 +1420,12 @@
             "value" : "По умолчанию"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saptanmış"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1254,6 +1470,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Удалить"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sil"
           }
         },
         "vi" : {
@@ -1321,6 +1543,12 @@
             "value" : "Закрыть"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapat"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1353,6 +1581,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отображаемые имена"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Görünen Ad"
           }
         },
         "vi" : {
@@ -1402,6 +1636,12 @@
             "value" : "Пожертвовать"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bağış Yap"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1449,6 +1689,12 @@
             "value" : "Пожертвования"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bağışlar"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1475,6 +1721,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dylibs"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dylib Kütüphaneleri"
           }
         },
         "vi" : {
@@ -1505,6 +1757,12 @@
             "value" : "Enabling any protection will append a random string to the bundleidentifiers of the apps you sign, this is to ensure your Apple ID does not get flagged by Apple. However, when using a signing service you can ignore this."
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Herhangi bir korumanın etkinleştirilmesi, imzaladığınız uygulamaların paket tanımlayıcılarına rastgele bir dize ekleyecektir. Bu, Apple kimliğinizin Apple tarafından işaretlenmemesini sağlamak içindir. Ancak bir imzalama hizmeti kullanırken bunu göz ardı edebilirsiniz."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1525,6 +1783,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enter a URL to start validation."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doğrulamayı başlatmak için bir URL girin."
           }
         },
         "vi" : {
@@ -1573,6 +1837,12 @@
             "value" : "Введите пароль"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parolayı Girin"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1619,6 +1889,12 @@
             "value" : "Введите пароль, связанный с закрытым ключом, оставьте поле пустым, если пароль не требуется."
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Özel anahtarla ilişkilendirilmiş parolayı girin. Parola gerekmiyorsa boş bırakın."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1639,6 +1915,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Entitlements"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yetki Anahtarları"
           }
         },
         "vi" : {
@@ -1664,6 +1946,12 @@
             "value" : "Executable"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çalıştırılabilir Dosya"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1684,6 +1972,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Existing Dylibs"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Var Olan Dylib Kütüphaneleri"
           }
         },
         "vi" : {
@@ -1727,6 +2021,12 @@
             "value" : "Истёк"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Süresi Dolmuş"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1748,6 +2048,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Expires"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitiş Tarihi"
           }
         },
         "vi" : {
@@ -1779,6 +2085,12 @@
             "value" : "Export"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dışarı Aktar"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1802,6 +2114,12 @@
             "value" : "Failed to download, check your internet connection and try again."
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İndirme sırasında hata oluştu, internet bağlantınızı kontrol edip tekrar deneyin."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1823,6 +2141,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Features"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Özellikler"
           }
         },
         "vi" : {
@@ -1855,6 +2179,12 @@
             "value" : "Разрешить просмотр документов"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya Paylaşımı"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1876,6 +2206,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Files"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosyalar"
           }
         },
         "vi" : {
@@ -1904,6 +2240,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Filter by"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şuna Göre Filtrele"
           }
         },
         "vi" : {
@@ -1935,6 +2277,12 @@
             "value" : "Force Localize"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yerelleştirmeyi Zorla"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1956,6 +2304,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Frameworks"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Framework’ler"
           }
         },
         "vi" : {
@@ -1980,6 +2334,12 @@
             "value" : "Frameworks & PlugIns"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Framework’ler ve Eklentiler"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2001,6 +2361,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fully Local"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamamen Yerel"
           }
         },
         "vi" : {
@@ -2044,6 +2410,12 @@
             "value" : "Общие"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genel"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2067,6 +2439,12 @@
             "value" : "Get access to our secret Discord by donating, where we talk about future updates, betas, and potential ways to make your experience better."
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bağış yaparak gelecekteki güncellemeler, beta sürümleri ve deneyiminizi daha iyi hale getirmenin yolları hakkında konuştuğumuz gizli Discord sunucumuza erişin."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2088,6 +2466,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Get Info"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilgi Ver"
           }
         },
         "vi" : {
@@ -2136,6 +2520,12 @@
             "value" : "GitHub репозиторий"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub Deposu"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2154,6 +2544,12 @@
           }
         },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heartbeat"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Heartbeat"
@@ -2182,6 +2578,12 @@
             "value" : "Help"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yardım"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2205,6 +2607,12 @@
             "value" : "Hidden"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gizli"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2225,6 +2633,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Identifers"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tanıtıcılar"
           }
         },
         "vi" : {
@@ -2273,6 +2687,12 @@
             "value" : "Идентификатор"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tanıtıcı"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2294,6 +2714,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Identifier Prefix"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tanıtıcı Ön Eki"
           }
         },
         "vi" : {
@@ -2343,6 +2769,12 @@
             "value" : "Импорт"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İçe Aktar"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2364,6 +2796,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Import Certificate File"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sertifikayı İçe Aktar"
           }
         },
         "vi" : {
@@ -2395,6 +2833,12 @@
             "value" : "Import from Files"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosyalar’dan İçe Aktar"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2416,6 +2860,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Import from URL"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL’den İçe Aktar"
           }
         },
         "vi" : {
@@ -2441,6 +2891,12 @@
             "value" : "Import Pairing File"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eşleştirme Dosyasını İçe Aktar"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2462,6 +2918,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Import Provisioning File"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hazırlık Profilini İçe Aktar"
           }
         },
         "vi" : {
@@ -2487,6 +2949,12 @@
             "value" : "Imported"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İçe Aktarılan"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2508,6 +2976,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Info"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilgi"
           }
         },
         "vi" : {
@@ -2556,6 +3030,12 @@
             "value" : "Установить"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yükle"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2576,6 +3056,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Installation Type"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yükleme Türü"
           }
         },
         "vi" : {
@@ -2599,6 +3085,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "iPad Fullscreen"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPad’de Tam Ekran"
           }
         },
         "vi" : {
@@ -2635,6 +3127,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Разрешить общий доступ через iTunes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iTunes Dosya Paylaşımı"
           }
         },
         "vi" : {
@@ -2679,6 +3177,12 @@
             "value" : "Bibliothèque"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kitaplık"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2699,6 +3203,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Library Cell Appearance"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kitaplık Öğe Görünümü"
           }
         },
         "vi" : {
@@ -2731,6 +3241,12 @@
             "value" : "Minimum Requirement"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minimum Gereksinim"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2754,6 +3270,12 @@
             "value" : "Misc"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çeşitli"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2774,6 +3296,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Modify"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Değiştir"
           }
         },
         "vi" : {
@@ -2816,6 +3344,12 @@
             "value" : "Nom"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ad"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2837,6 +3371,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "New"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni"
           }
         },
         "vi" : {
@@ -2886,6 +3426,12 @@
             "value" : "Добавить сертификаты"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni Sertifika"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2907,6 +3453,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nickname (Optional)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Takma Ad (İsteğe Bağlı)"
           }
         },
         "vi" : {
@@ -2932,6 +3484,12 @@
             "value" : "No Certificate"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sertifika Yok"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2953,6 +3511,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No pairing file found, please import it."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eşleştirme dosyası bulunamadı, lütfen içe aktarın."
           }
         },
         "vi" : {
@@ -3001,6 +3565,12 @@
             "value" : "OK"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3021,6 +3591,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Only use localhost address"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yalnızca “localhost” adresini kullan"
           }
         },
         "vi" : {
@@ -3045,6 +3621,12 @@
             "value" : "Open"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aç"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3065,6 +3647,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Open Archives"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arşivleri Aç"
           }
         },
         "vi" : {
@@ -3089,6 +3677,12 @@
             "value" : "Open Certificates"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sertifikaları Aç"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3109,6 +3703,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Open Documents"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belgeleri Aç"
           }
         },
         "vi" : {
@@ -3157,6 +3757,12 @@
             "value" : "Открыть в Файлах"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosyalar’da Aç"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3178,6 +3784,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pairing File Guide"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eşleştirme Dosyası Kılavuzu"
           }
         },
         "vi" : {
@@ -3227,6 +3839,12 @@
             "value" : "Пароль"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parola"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3250,6 +3868,12 @@
             "value" : "Pill"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapsül"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3268,6 +3892,12 @@
           }
         },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Platform"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Platform"
@@ -3320,6 +3950,12 @@
             "value" : "Пожалуйста, проверьте пароль и попробуйте снова."
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lütfen parolayı kontrol edip tekrar deneyin."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3341,6 +3977,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Please go to settings and import a valid certificate"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lütfen ayarlara gidin ve geçerli bir sertifika içe aktarın."
           }
         },
         "vi" : {
@@ -3372,6 +4014,12 @@
             "value" : "Включить защиту"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PPQ Koruması"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3394,6 +4042,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Previous Versions"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Önceki Sürümler"
           }
         },
         "vi" : {
@@ -3431,6 +4085,12 @@
             "value" : "Propriétés"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Özellikler"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3452,6 +4112,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Protection"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koruma"
           }
         },
         "vi" : {
@@ -3477,6 +4143,12 @@
             "value" : "Provision All Devices"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tüm Cihazları Hazırla"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3500,6 +4172,12 @@
             "value" : "Provisioned Devices"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hazırlanmış Cihazlar"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3520,6 +4198,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Re-sign"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeniden İmzala"
           }
         },
         "vi" : {
@@ -3545,6 +4229,12 @@
             "value" : "Removal"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaldırma"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3566,6 +4256,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Remove annoying alerts like these after getting beta access!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beta erişimini alarak bunun gibi can sıkıcı uyarıları kaldırın!"
           }
         },
         "vi" : {
@@ -3603,6 +4299,12 @@
             "value" : "Удалить Provisioning File"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hazırlık Profilini Kaldır"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3626,6 +4328,12 @@
             "value" : "Remove Supported Devices"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desteklenen Cihazları Kaldır"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3647,6 +4355,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Remove this Alert"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu Uyarıyı Kaldır"
           }
         },
         "vi" : {
@@ -3684,6 +4398,12 @@
             "value" : "Удалить URLScheme"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL Şemasını Kaldır"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3711,6 +4431,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Remove Watch Placeholder"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Watch Yer Tutucusunu Kaldır"
           }
         },
         "vi" : {
@@ -3747,6 +4473,12 @@
             "value" : "Замена"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Değişim"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3774,6 +4506,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Repositories"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Depolar"
           }
         },
         "vi" : {
@@ -3823,6 +4561,12 @@
             "value" : "Сброс"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sıfırla"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3846,6 +4590,12 @@
             "value" : "Restart Heartbeat"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heartbeat’ı Sıfırla"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3867,6 +4617,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Restart Required"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeniden Başlatma Gerekli"
           }
         },
         "vi" : {
@@ -3909,6 +4665,12 @@
             "value" : "Сохранить"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaydet"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3931,6 +4693,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "See all apps from your sources"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tüm kaynaklarınızdaki uygulamaları görün"
           }
         },
         "vi" : {
@@ -3956,6 +4724,12 @@
             "value" : "Seems like you've gotten your hands on your pairing file! If you encounter ever `InvalidHostID -9` error please make a new pairing file and import it."
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Görünüşe göre eşleştirme dosyanızı temin etmişsiniz. Eğer ‘InvalidHostID -9’ hatası alırsanız lütfen yeni bir eşleştirme dosyası oluşturun ve tekrar içe aktarın."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3977,6 +4751,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Select Alternative Icon"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alternatif Simge Seçin"
           }
         },
         "vi" : {
@@ -4002,6 +4782,12 @@
             "value" : "Select entitlements file"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yetki anahtarları dosyasını seçin"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4025,6 +4811,12 @@
             "value" : "Semi Local"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yarı Yerel"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4045,6 +4837,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Server & SSL"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sunucu ve SSL"
           }
         },
         "vi" : {
@@ -4089,6 +4887,12 @@
             "value" : "Paramètres"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlar"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4110,6 +4914,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Show Sheet when Exporting"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dışa Aktarmada Paylaşma Sayfasını Göster"
           }
         },
         "vi" : {
@@ -4135,6 +4945,12 @@
             "value" : "Show Your Support"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desteğinizi Gösterin"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4156,6 +4972,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Show your support by donating! If you're unable to donate, spreading the word works too!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bağış yaparak desteğinizi gösterin! Eğer bağış yapamıyorsanız Feather’ı dilden dile yaymak da işe yarar!"
           }
         },
         "vi" : {
@@ -4181,6 +5003,12 @@
             "value" : "Sign"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İmzala"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4202,6 +5030,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Signed"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İmzalı"
           }
         },
         "vi" : {
@@ -4239,6 +5073,12 @@
             "value" : "Signature"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İmzalama"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4273,6 +5113,12 @@
             "value" : "Параметры подписи"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İmzalama Ayarları"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4293,6 +5139,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Source Repo URL"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaynak Depo URL’si"
           }
         },
         "vi" : {
@@ -4334,6 +5186,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sources"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaynaklar"
           }
         },
         "vi" : {
@@ -4383,6 +5241,12 @@
             "value" : "Спонсоры"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sponsorlar"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4404,6 +5268,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "SSL Certificates"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SSL Sertifikaları"
           }
         },
         "vi" : {
@@ -4433,6 +5303,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Standard"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standart"
           }
         },
         "vi" : {
@@ -4470,6 +5346,12 @@
             "value" : "Empezar a Firmar"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İmzalamaya Başla"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4492,6 +5374,12 @@
             "value" : "Store Cell Appearance"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mağaza Öğe Görünümü"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4512,6 +5400,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "String"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dize"
           }
         },
         "vi" : {
@@ -4560,6 +5454,12 @@
             "value" : "Отправить отзыв"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri Bildirim Gönder"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4580,6 +5480,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Supports importing from KravaSign/MapleSign and ESign"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "KravaSign/MapleSign ve ESign’den içe aktarmayı destekler"
           }
         },
         "vi" : {
@@ -4605,6 +5511,12 @@
             "value" : "Team Identifiers"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Takım Tanıtıcıları"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4626,6 +5538,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Team Name"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Takım Adı"
           }
         },
         "vi" : {
@@ -4651,6 +5569,12 @@
             "value" : "The heartbeat is activated in the background, it will restart when the app is re-opened or prompted. If the status below is pulsing, that means its healthy."
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heartbeat arka planda etkinleştirilir ve uygulama yeniden açıldığında ya da istenildiğinde yeniden başlatılır. Eğer aşağıdaki durum kalp atışı şeklide ise bu Heartbeat’in işlevsel olduğu anlamına gelir."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4672,6 +5596,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "These changes require a restart of the app"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu değişiklikler uygulamanın yeniden başlatılmasını gerektirir"
           }
         },
         "vi" : {
@@ -4696,6 +5626,12 @@
             "value" : "Toggling show sheet will present a share sheet after exporting to your files."
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paylaşım sayfasını göster seçeneğinin etkinleştirilmesi, dışa aktarım sonrasında bir paylaşım sayfasının görüntülenmesini sağlayacaktır."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4717,6 +5653,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tunnel & Pairing"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tünel ve Eşleştirme"
           }
         },
         "vi" : {
@@ -4796,6 +5738,12 @@
             "value" : "Неизвестно"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilinmeyen"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4822,6 +5770,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Update SSL Certificates"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SSL Sertifikalarını Güncelle"
           }
         },
         "vi" : {
@@ -4881,6 +5835,12 @@
             "value" : "Version"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sürüm"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4902,6 +5862,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "View Entitlements"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yetki Anahtarlarını Görüntüle"
           }
         },
         "vi" : {
@@ -4927,6 +5893,12 @@
             "value" : "Visit Patreon"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Patreon’u Ziyaret Et"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4948,6 +5920,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Visit Website"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Web Sayfasını Ziyaret Et"
           }
         },
         "vi" : {

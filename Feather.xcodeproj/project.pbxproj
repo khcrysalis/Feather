@@ -70,9 +70,9 @@
 				"Backend/Heartbeat/Heartbeat+checks.swift",
 				"Backend/Heartbeat/Heartbeat+start.swift",
 				Resources/ellekit.deb,
+				Resources/Info.plist,
 				Resources/idevice/libidevice_ffi.a,
 				"Resources/idevice/libplist-2.0.a",
-				Resources/Info.plist,
 				"Views/Settings/Tunnel & Pairing/TunnelHeaderCellView.swift",
 				"Views/Settings/Tunnel & Pairing/TunnelView.swift",
 			);
@@ -314,6 +314,7 @@
 				ru,
 				es,
 				vi,
+				tr,
 			);
 			mainGroup = 3379C1B02DA869A1004372DA;
 			minimizedProjectReferenceProxies = 1;
