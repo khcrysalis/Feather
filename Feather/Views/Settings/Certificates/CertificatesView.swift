@@ -72,17 +72,27 @@ extension CertificatesView {
 				cert: cert
 			)
 			.padding()
-			.background(
-				RoundedRectangle(cornerRadius: 17)
-					.fill(Color(uiColor: .quaternarySystemFill))
-			)
-			.overlay(
-				RoundedRectangle(cornerRadius: 17)
-					.strokeBorder(
-						_selectedCertBinding.wrappedValue == index ? Color.accentColor : Color.clear,
-						lineWidth: 2
-					)
-			)
+            .background {
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .fill(Color.accentColor.opacity(_selectedCertBinding.wrappedValue == index ? 0.2 : 0.05))
+            }
+            .overlay {
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .strokeBorder(Color.accentColor.opacity(_selectedCertBinding.wrappedValue == index ? 1 : 0.5), lineWidth: 1)
+            }
+            .grayscale(_selectedCertBinding.wrappedValue == index ? 0 : 1)
+
+//			.background(
+//                RoundedRectangle(cornerRadius: 12, style: .continuous)
+//                    .fill(Color(uiColor: _selectedCertBinding.wrappedValue == index ? UIColor.accent.withAlphaComponent(0.2) : .quaternarySystemFill))
+//			)
+//			.overlay(
+//                RoundedRectangle(cornerRadius: 12, style: .continuous)
+//					.strokeBorder(
+//						_selectedCertBinding.wrappedValue == index ? Color.accentColor : Color.clear,
+//						lineWidth: 1
+//					)
+//			)
 			.contextMenu {
 				_contextActions(for: cert)
 				Divider()

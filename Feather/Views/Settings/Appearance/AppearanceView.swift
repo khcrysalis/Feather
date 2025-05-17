@@ -37,12 +37,14 @@ struct AppearanceView: View {
 			}
 			
 			NBSection(.localized("Sources")) {
+                _storePreview()
 				Picker(.localized("Store Cell Appearance"), selection: $_storeCellAppearance) {
 					ForEach(_storeCellAppearanceMethods.indices, id: \.description) { index in
 						Text(_storeCellAppearanceMethods[index]).tag(index)
 					}
 				}
 				.pickerStyle(.inline)
+                .labelsHidden()
 			}
 		}
     }
@@ -51,7 +53,7 @@ struct AppearanceView: View {
 	private func _libraryPreview() -> some View {
 		HStack(spacing: 9) {
 			Image(uiImage: (UIImage(named: Bundle.main.iconFileName ?? ""))! )
-				.appIconStyle(size: 57, cornerRadius: 14)
+				.appIconStyle(size: 57)
 			
 			NBTitleWithSubtitleView(
 				title: Bundle.main.name,
@@ -66,4 +68,30 @@ struct AppearanceView: View {
 			).animation(.spring, value: _libraryCellAppearance)
 		}
 	}
+    
+    @ViewBuilder
+    private func _storePreview() -> some View {
+        VStack {
+            HStack(spacing: 9) {
+                Image(uiImage: (UIImage(named: Bundle.main.iconFileName ?? ""))! )
+                    .appIconStyle(size: 57)
+                
+                NBTitleWithSubtitleView(
+                    title: Bundle.main.name,
+                    subtitle: "\(Bundle.main.version) • " + .localized("An awesome application"),
+                    linelimit: 0
+                )
+            }
+            
+            if _storeCellAppearance != 0 {
+                Text(.localized("An awesome application"))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(18)
+                    .padding(.top, 2)
+            }
+        }
+        .animation(.spring, value: _storeCellAppearance)
+    }
 }

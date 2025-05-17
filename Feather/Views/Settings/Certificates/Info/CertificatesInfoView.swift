@@ -23,7 +23,7 @@ struct CertificatesInfoView: View {
 					Image("Cert")
 						.resizable()
 						.scaledToFit()
-						.frame(width: 107, height: 107)
+						.frame(width: 128)
 						.frame(maxWidth: .infinity, alignment: .center)
 				}
 				

@@ -24,10 +24,27 @@ struct AboutView: View {
 	// MARK: Body
 	var body: some View {
 		NBList(.localized("About")) {
-			Section {
-				LabeledContent(.localized("Name"), value: Bundle.main.exec)
-				LabeledContent(.localized("Version"), value: Bundle.main.version)
-			}
+            Section {
+                VStack {
+                    Image(uiImage: (UIImage(named: Bundle.main.iconFileName ?? ""))! )
+                        .appIconStyle(size: 72)
+                    
+                    Text(Bundle.main.exec)
+                        .font(.largeTitle)
+                        .bold()
+                        .foregroundStyle(.accent)
+                    
+                    HStack(spacing: 4) {
+                        Text("Version")
+                        Text(Bundle.main.version)
+                    }
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .listRowBackground(EmptyView())
 			
 			NBSection(.localized("Credits")) {
 				if !_credits.isEmpty {
