@@ -39,6 +39,7 @@ struct SourceNewsCardView: View {
 				startPoint: .bottom,
 				endPoint: .top
 			)
+			.frame(height: 70)
 			.frame(maxWidth: .infinity, alignment: .bottom)
 			.clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
 			
@@ -47,7 +48,6 @@ struct SourceNewsCardView: View {
 				.foregroundColor(.white)
 				.lineLimit(2)
 				.padding()
-                .shadow(color: .white, radius: 6)
 		}
 		.frame(width: 250, height: 150)
 		.background(new.tintColor ?? Color.secondary)
