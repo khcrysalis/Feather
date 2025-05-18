@@ -56,6 +56,7 @@ where 	Content: View,
 						.fontWeight(.bold)
 						.font(.title2)
 						.foregroundStyle(.primary)
+						
 					
                     Spacer()
                     
@@ -65,13 +66,13 @@ where 	Content: View,
 							.foregroundStyle(.secondary)
 							.contentTransition(.numericText())
                             .padding(.horizontal, 8)
-                            .padding(.vertical, 2)
-                            .background {
-                                Capsule(style: .continuous)
-                                    .fill(.quinary)
-                            }
+							.padding(.vertical, 4.4)
+							.background(Color(uiColor: .quaternarySystemFill))
+							.clipShape(Capsule())
 					}
-				},
+				}
+				.offset(y: 2)
+			,
 			footer: _footer
 				.font(.caption)
 				.foregroundColor(.secondary)
