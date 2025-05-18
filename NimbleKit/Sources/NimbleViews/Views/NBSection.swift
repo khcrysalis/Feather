@@ -45,7 +45,7 @@ where 	Content: View,
 	public var body: some View {
 		Section(
 			header:
-				HStack(alignment: .firstTextBaseline, spacing: 4) {
+				HStack(alignment: .center, spacing: 4) {
 					if let _systemName {
 						Image(systemName: _systemName)
 							.font(.system(size: 12))
@@ -56,16 +56,23 @@ where 	Content: View,
 						.fontWeight(.bold)
 						.font(.title2)
 						.foregroundStyle(.primary)
+						
 					
+                    Spacer()
+                    
 					if let _headerTextSecondary {
 						Text(_headerTextSecondary)
 							.font(.caption)
 							.foregroundStyle(.secondary)
 							.contentTransition(.numericText())
+                            .padding(.horizontal, 8)
+							.padding(.vertical, 4.4)
+							.background(Color(uiColor: .quaternarySystemFill))
+							.clipShape(Capsule())
 					}
-					
-					Spacer()
-				},
+				}
+				.offset(y: 2)
+			,
 			footer: _footer
 				.font(.caption)
 				.foregroundColor(.secondary)

@@ -134,9 +134,9 @@ extension SigningView {
 			} label: {
 				if let icon = appIcon {
 					Image(uiImage: icon)
-						.appIconStyle(size: 55, cornerRadius: 13)
+						.appIconStyle(size: 55)
 				} else {
-					FRAppIconView(app: app, size: 55, cornerRadius: 13)
+					FRAppIconView(app: app, size: 55)
 				}
 			}
 			
