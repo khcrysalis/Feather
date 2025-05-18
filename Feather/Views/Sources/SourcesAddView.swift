@@ -18,6 +18,7 @@ struct SourcesAddView: View {
 	
 	private let _dataService = NBFetchService()
 	
+	@State private var _isImporting = false
 	@State private var _sourceURL = ""
 	
 	// MARK: Body
@@ -33,7 +34,11 @@ struct SourcesAddView: View {
 				
 				Section {
 					Button(.localized("Import"), systemImage: "square.and.arrow.down") {
-						_addCode(UIPasteboard.general.string)
+						_isImporting = true
+						_addCode(UIPasteboard.general.string) {
+							dismiss()
+						}
+						
 					}
 					
 					Button(.localized("Export"), systemImage: "doc.on.clipboard") {
@@ -48,21 +53,30 @@ struct SourcesAddView: View {
 			.toolbar {
 				NBToolbarButton(role: .cancel)
 				
-				NBToolbarButton(
-					.localized("Save"),
-					style: .text,
-					placement: .confirmationAction,
-					isDisabled: _sourceURL.isEmpty
-				) {
-					FR.handleSource(_sourceURL) {
-						dismiss()
+				if !_isImporting {
+					NBToolbarButton(
+						.localized("Save"),
+						style: .text,
+						placement: .confirmationAction,
+						isDisabled: _sourceURL.isEmpty
+					) {
+						FR.handleSource(_sourceURL) {
+							dismiss()
+						}
+					}
+				} else {
+					ToolbarItem(placement: .confirmationAction) {
+						ProgressView()
 					}
 				}
 			}
 		}
 	}
 	
-	private func _addCode(_ code: String?) {
+	private func _addCode(
+		_ code: String?,
+		competion: @escaping () -> Void
+	) {
 		guard let code else { return }
 		
 		let handler = ASDeobfuscator(with: code)
@@ -114,7 +128,7 @@ struct SourcesAddView: View {
 			
 			await MainActor.run {
 				Storage.shared.addSources(repos: repositories) { _ in
-					dismiss()
+					competion()
 				}
 			}
 		}
