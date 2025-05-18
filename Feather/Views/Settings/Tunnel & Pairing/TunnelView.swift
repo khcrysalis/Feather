@@ -34,6 +34,17 @@ struct TunnelView: View {
 				}
 				Button(.localized("Restart Heartbeat"), systemImage: "arrow.counterclockwise") {
 					HeartbeatManager.shared.start(true)
+					
+					DispatchQueue.global(qos: .userInitiated).async {
+						if !HeartbeatManager.shared.checkSocketConnection().isConnected {
+							DispatchQueue.main.async {
+								UIAlertController.showAlertWithOk(
+									title: "Socket",
+									message: "Unable to connect to TCP. Make sure you have loopback VPN enabled and you are on WiFi or Airplane mode."
+								)
+							}
+						}
+					}
 				}
 			}
 			

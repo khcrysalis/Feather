@@ -21,7 +21,7 @@ extension HeartbeatManager {
 			close(socketFD)
 		}
 		
-		var flags = fcntl(socketFD, F_GETFL, 0)
+		let flags = fcntl(socketFD, F_GETFL, 0)
 		if flags == -1 {
 			return (false, "Failed to get socket flags")
 		}
@@ -49,7 +49,7 @@ extension HeartbeatManager {
 				return (false, "Failed to connect: \(String(cString: strerror(errno)))")
 			}
 			
-			var writeFds = fd_set()
+			let writeFds = fd_set()
 			var writeSet = fd_set()
 			__darwin_fd_set(socketFD, &writeSet)
 			
