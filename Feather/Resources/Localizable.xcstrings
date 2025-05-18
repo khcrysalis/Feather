@@ -1703,6 +1703,18 @@
         }
       }
     },
+    "Download StosVPN" : {
+      "comment" : "Don't translate StosVPN, this is for linking the download to the required VPN for idevice",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download StosVPN"
+          }
+        }
+      }
+    },
     "Dylibs" : {
       "localizations" : {
         "cs" : {
@@ -4709,31 +4721,31 @@
         }
       }
     },
-    "Seems like you've gotten your hands on your pairing file! If you encounter ever `InvalidHostID -9` error please make a new pairing file and import it." : {
+    "Seems like you've gotten your hands on your pairing file!" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vypad\u0001á to, že máte párovací soubor! Pokud dostanete chybu ‘InvalidHostID -9’, udělejte si prosím nový párovací soubor."
+            "value" : "Vypad\u0001á to, že máte párovací soubor!"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seems like you've gotten your hands on your pairing file! If you encounter ever `InvalidHostID -9` error please make a new pairing file and import it."
+            "value" : "Seems like you've gotten your hands on your pairing file!"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Görünüşe göre eşleştirme dosyanızı temin etmişsiniz. Eğer ‘InvalidHostID -9’ hatası alırsanız lütfen yeni bir eşleştirme dosyası oluşturun ve tekrar içe aktarın."
+            "value" : "Görünüşe göre eşleştirme dosyanızı temin etmişsiniz. "
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Có vẻ như bạn đã có tệp ghép nối của mình! Nếu bạn gặp lỗi `InvalidHostID -9`, vui lòng tạo tệp ghép nối mới và nhập nó."
+            "value" : "Có vẻ như bạn đã có tệp ghép nối của mình!"
           }
         }
       }

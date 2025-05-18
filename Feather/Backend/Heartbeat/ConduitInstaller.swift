@@ -166,7 +166,7 @@ private enum ConduitInstallerError: Error, LocalizedError {
 	var errorDescription: String? {
 		switch self {
 		case .missingPairing:
-			return "Unable to connect to TCP. Make sure you're connected to WiFi or Airplane Mode."
+			return "Unable to connect to TCP. Make sure you have loopback VPN enabled and you are on WiFi or Airplane mode."
 		case .cannotConnectToAFC:
 			return "Cannot connect to AFC (Apple File Conduit)."
 		case .unableToCreateStaging:

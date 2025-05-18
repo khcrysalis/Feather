@@ -22,7 +22,7 @@ struct TunnelView: View {
 				TunnelHeaderView()
 			} footer: {
 				if doesHavePairingFile {
-					Text(.localized("Seems like you've gotten your hands on your pairing file! If you encounter ever `InvalidHostID -9` error please make a new pairing file and import it."))
+					Text(.localized("Seems like you've gotten your hands on your pairing file!"))
 				} else {
 					Text(.localized("No pairing file found, please import it."))
 				}
@@ -40,6 +40,9 @@ struct TunnelView: View {
 			NBSection(.localized("Help")) {
 				Button(.localized("Pairing File Guide"), systemImage: "questionmark.circle") {
 					UIApplication.open("https://github.com/StephenDev0/StikDebug-Guide/blob/main/pairing_file.md")
+				}
+				Button(.localized("Download StosVPN"), systemImage: "arrow.down.app") {
+					UIApplication.open("https://apps.apple.com/us/app/stosvpn/id6744003051")
 				}
 			}
 		}
