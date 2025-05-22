@@ -6,7 +6,7 @@
   "apps": [
     {
       "name": "Feather",
-      "bundleIdentifier": "kh.crysalis.feather",
+      "bundleIdentifier": "thewonderofyou.Feather",
       "developerName": "Samara",
       "iconURL": "https://github.com/khcrysalis/Feather/blob/v1/iOS/Resources/Icons/Main/Mac%403x.png?raw=true",
       "localizedDescription": "Feather is a free on-device iOS application manager/installer built with UIKit for quality.",
@@ -34,7 +34,7 @@
     },
     {
       "name": "Feather (idevice)",
-      "bundleIdentifier": "kh.crysalis.feather-idevice",
+      "bundleIdentifier": "thewonderofyou.Feather-idevice",
       "developerName": "Samara",
       "iconURL": "https://github.com/khcrysalis/Feather/blob/v1/iOS/Resources/Icons/Main/Mac%403x.png?raw=true",
       "localizedDescription": "Feather is a free on-device iOS application manager/installer built with UIKit for quality.",
