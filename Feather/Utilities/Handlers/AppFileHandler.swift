@@ -72,6 +72,18 @@ final class AppFileHandler: NSObject, @unchecked Sendable {
 					)
 					
 					self.uniqueWorkDirPayload = self._uniqueWorkDir.appendingPathComponent("Payload")
+                    
+                    if let payloadURL = self.uniqueWorkDirPayload {
+                        let contents = try? self._fileManager.contentsOfDirectory(at: payloadURL, includingPropertiesForKeys: nil)
+                        if let appFolder = contents?.first(where: { $0.pathExtension == "app" }) {
+                            let codeSignatureURL = appFolder.appendingPathComponent("_CodeSignature")
+                            if self._fileManager.fileExists(atPath: codeSignatureURL.path) {
+                                try? self._fileManager.removeItem(at: codeSignatureURL)
+                                print("[\(self._uuid)] Removed _CodeSignature directory inside \(appFolder.lastPathComponent)")
+                            }
+                        }
+                    }
+                    
 					continuation.resume()
 				} catch {
 					continuation.resume(throwing: error)
