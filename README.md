@@ -16,7 +16,7 @@ This is an entirely stock application and uses built-in features to be able to d
 - Globally configurable signing options.
 - No tracking or analytics, ensuring user privacy.
 
-## How It Works
+## How does it work?
 
 How Feather works is a bit complicated, with having multiple ways to install, app management, tweaks, etc. However, I'll point out how the important features work here.
 
