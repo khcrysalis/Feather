@@ -445,6 +445,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Feather/Supporting Files/Feather.entitlements";
 				CODE_SIGN_IDENTITY = "";
+				COMPRESS_PNG_FILES = NO;
+				STRIP_PNG_TEXT = NO;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -509,6 +511,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Feather/Supporting Files/Feather.entitlements";
 				CODE_SIGN_IDENTITY = "";
+				COMPRESS_PNG_FILES = NO;
+				STRIP_PNG_TEXT = NO;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
@@ -688,6 +692,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Feather/Supporting Files/Feather.entitlements";
 				CODE_SIGN_IDENTITY = "";
+				COMPRESS_PNG_FILES = NO;
+				STRIP_PNG_TEXT = NO;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -752,6 +758,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Feather/Supporting Files/Feather.entitlements";
 				CODE_SIGN_IDENTITY = "";
+				COMPRESS_PNG_FILES = NO;
+				STRIP_PNG_TEXT = NO;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
@@ -810,6 +818,8 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_ENTITLEMENTS = "Feather/Supporting Files/Feather.entitlements";
 				CODE_SIGN_IDENTITY = "";
+				COMPRESS_PNG_FILES = NO;
+				STRIP_PNG_TEXT = NO;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -833,6 +843,8 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_ENTITLEMENTS = "Feather/Supporting Files/Feather.entitlements";
 				CODE_SIGN_IDENTITY = "";
+				COMPRESS_PNG_FILES = NO;
+				STRIP_PNG_TEXT = NO;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
