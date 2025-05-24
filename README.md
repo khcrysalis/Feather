@@ -13,8 +13,10 @@ This is an entirely stock application and uses built-in features to be able to d
 ### Features
 - Install applications via [`idevice`](https://github.com/jkcoxson/idevice) or using a [`server`](https://github.com/vapor/vapor).
 - Inspect and manage imported apps, certificates, and altstore sources.
-- Globally configurable signing options.
+- Globally configurable signing options, and even supports Adhoc signing.
+- Advanced tweak support, using [Ellekit](https://github.com/tealbathingsuit/ellekit) for injection. Supports `.deb` and `.dylib` files.
 - No tracking or analytics, ensuring user privacy.
+- Of course, open source and free.
 
 ## How does it work?
 
