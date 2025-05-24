@@ -8,6 +8,7 @@
 
 import Foundation
 import ZsignSwift
+import OSLog
 
 class TweakHandler {
 	private let _fileManager = FileManager.default
@@ -37,7 +38,7 @@ class TweakHandler {
 			if let ellekitURL = Bundle.main.url(forResource: "ellekit", withExtension: "deb") {
 				self._urls.insert(ellekitURL, at: 0)
 			} else {
-				print("ellekit.deb not found in the app bundle ")
+				Logger.misc.info("ellekit.deb not found in the app bundle")
 				return
 			}
 		}
@@ -57,7 +58,7 @@ class TweakHandler {
 			case "deb":
 				try await _handleDeb(at: url, baseTmpDir: baseTmpDir)
 			default:
-				print("Unsupported file type: \(url.lastPathComponent), skipping.")
+				Logger.misc.warning("Unsupported file type: \(url.lastPathComponent), skipping.")
 			}
 		}
 		
@@ -84,7 +85,7 @@ class TweakHandler {
 				let destinationURL = _app.appendingPathComponent(url.lastPathComponent)
 				try _fileManager.moveFileIfNeeded(from: url, to: destinationURL)
 			default:
-				print("Unsupported file type: \(url.lastPathComponent), skipping.")
+				Logger.misc.warning("Unsupported file type: \(url.lastPathComponent), skipping.")
 			}
 		}
 	}
@@ -204,7 +205,7 @@ class TweakHandler {
 					let directoryURL = baseURL.appendingPathComponent(path)
 					
 					guard _fileManager.fileExists(atPath: directoryURL.path) else {
-						print("Directory does not exist: \(directoryURL.path). Skipping.")
+						Logger.misc.warning("Directory does not exist: \(directoryURL.path). Skipping.")
 						continue
 					}
 					

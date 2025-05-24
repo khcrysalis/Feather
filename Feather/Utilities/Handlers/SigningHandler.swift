@@ -8,6 +8,7 @@
 import Foundation
 import Zsign
 import UIKit
+import OSLog
 
 final class SigningHandler: NSObject {
 	private let _fileManager = FileManager.default
@@ -45,12 +46,9 @@ final class SigningHandler: NSObject {
 		
 		let movedAppURL = _uniqueWorkDir.appendingPathComponent(appUrl.lastPathComponent)
 		
-		print(appUrl)
-		print(movedAppURL)
-		
 		try _fileManager.copyItem(at: appUrl, to: movedAppURL)
 		_movedAppPath = movedAppURL
-		print("[\(_uuid)] Moved Payload to: \(movedAppURL.path)")
+		Logger.misc.info("[\(self._uuid)] Moved Payload to: \(movedAppURL.path)")
 	}
 	
 	func modify() async throws {
@@ -114,7 +112,8 @@ final class SigningHandler: NSObject {
 		destinationURL = destinationURL.appendingPathComponent(movedAppPath.lastPathComponent)
 		
 		try _fileManager.moveItem(at: movedAppPath, to: destinationURL)
-		print("[\(_uuid)] Moved App to: \(destinationURL.path)")
+		Logger.misc.info("[\(self._uuid)] Moved App to: \(destinationURL.path)")
+		
 		try? _fileManager.removeItem(at: _uniqueWorkDir)
 	}
 	
@@ -135,7 +134,7 @@ final class SigningHandler: NSObject {
 			appVersion: bundle?.version,
 			appIcon: bundle?.iconFileName
 		) { _ in
-			print("[\(self._uuid)] Added to database")
+			Logger.signing.info("[\(self._uuid)] Added to database")
 		}
 	}
 	

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import OSLog
 
 class CertificateReader: NSObject {
 	let file: URL?
@@ -24,7 +25,7 @@ class CertificateReader: NSObject {
 			let fileData = try Data(contentsOf: file)
 			
 			guard let xmlRange = fileData.range(of: Data("<?xml".utf8)) else {
-				print("XML start not found")
+				Logger.misc.error("XML start not found")
 				return nil
 			}
 			
@@ -34,7 +35,7 @@ class CertificateReader: NSObject {
 			let data = try decoder.decode(Certificate.self, from: xmlData)
 			return data
 		} catch {
-			print("Error extracting certificate: \(error.localizedDescription)")
+			Logger.misc.error("Error extracting certificate: \(error.localizedDescription)")
 			return nil
 		}
 	}

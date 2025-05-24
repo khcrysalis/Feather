@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import OSLog
 
 final class CertificateFileHandler: NSObject {
 	private let _fileManager = FileManager.default
@@ -57,7 +58,7 @@ final class CertificateFileHandler: NSObject {
 			ppq: _certPair?.PPQCheck ?? false,
 			expiration: _certPair?.ExpirationDate ?? Date()
 		) { _ in
-			print("[\(self._uuid)] Added to database")
+			Logger.misc.info("[\(self._uuid)] Added to database")
 		}
 	}
 	
