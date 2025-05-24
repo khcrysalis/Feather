@@ -68,11 +68,9 @@ struct TunnelView: View {
 			)
 		}
 		.onAppear {
-			if FileManager.default.fileExists(atPath: HeartbeatManager.pairingFile()) {
-				doesHavePairingFile = true
-			} else {
-				doesHavePairingFile = false
-			}
+			doesHavePairingFile = FileManager.default.fileExists(atPath: HeartbeatManager.pairingFile())
+			? true
+			: false
 		}
     }
 	

@@ -16,23 +16,23 @@ import SystemConfiguration.CaptiveNetwork
 // MARK: - Class extension: TLS/Setup
 extension ServerInstaller {
 	// MARK: Setup
-	private static let env: Environment = {
+	static let env: Environment = {
 		var env = try! Environment.detect()
 		try! LoggingSystem.bootstrap(from: &env)
 		return env
 	}()
 	
-	static func setupApp(port: Int) throws -> Application {
-		let app = Application(env)
+	func setupApp(port: Int) throws -> Application {
+		let app = Application(Self.env)
 		app.threadPool = .init(numberOfThreads: 1)
 		
-		if ServerInstaller.getServerMethod() != 1 {
-			if let tls = try Self.tls() {
+		if getServerMethod() != 1 {
+			if let tls = try tls() {
 				app.http.server.configuration.tlsConfiguration = tls
 			}
 		}
 		
-		app.http.server.configuration.hostname = Self.sni
+		app.http.server.configuration.hostname = sni()
 		app.http.server.configuration.tcpNoDelay = true
 		app.http.server.configuration.address = .hostname("0.0.0.0", port: port)
 		app.http.server.configuration.port = port
@@ -43,22 +43,22 @@ extension ServerInstaller {
 	}
 	
 	// MARK: Files/IP
-	static let sni: String = {
+	func sni() -> String {
 		let localhost = "127.0.0.1"
 		
 		if getServerMethod() == 1 {
-			return !ServerInstaller.getIPFix()
-			? (getLocalAddress() ?? localhost)
+			return !self.getIPFix()
+			? (Self.getLocalAddress() ?? localhost)
 			: localhost
 		} else {
 			return readCommonName() ?? localhost
 		}
-	}()
+	}
 	
-	static func tls() throws -> TLSConfiguration? {
+	func tls() throws -> TLSConfiguration? {
 		guard
-			let crt = getUrl("server", ext: "crt"),
-			let pem = getUrl("server", ext: "pem")
+			let crt = Self.getUrl("server", ext: "crt"),
+			let pem = Self.getUrl("server", ext: "pem")
 		else {
 			return nil
 		}
@@ -73,8 +73,8 @@ extension ServerInstaller {
 		)
 	}
 	
-	static func readCommonName() -> String? {
-		guard let url = getUrl("commonName", ext: "txt") else {
+	func readCommonName() -> String? {
+		guard let url = Self.getUrl("commonName", ext: "txt") else {
 			return nil
 		}
 		

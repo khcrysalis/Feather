@@ -22,24 +22,27 @@ class ServerInstaller: Identifiable, ObservableObject {
 	var packageUrl: URL?
 	var app: AppInfoPresentable
 	@ObservedObject var viewModel: InstallerStatusViewModel
-	private let _server: Application
+	private var _server: Application?
 
 	init(app: AppInfoPresentable, viewModel: InstallerStatusViewModel) throws {
 		self.app = app
 		self.viewModel = viewModel
-		self._server = try Self.setupApp(port: port)
-		
+		try _setup()
 		try _configureRoutes()
-		try _server.server.start()
+		try _server?.server.start()
 		_needsShutdown = true
 	}
 	
 	deinit {
 		_shutdownServer()
 	}
+	
+	private func _setup() throws {
+		self._server = try? setupApp(port: port)
+	}
 		
 	private func _configureRoutes() throws {
-		_server.get("*") { [weak self] req in
+		_server?.get("*") { [weak self] req in
 			guard let self else { return Response(status: .badGateway) }
 			switch req.url.path {
 			case plistEndpoint.path:
@@ -81,8 +84,8 @@ class ServerInstaller: Identifiable, ObservableObject {
 		guard _needsShutdown else { return }
 		
 		_needsShutdown = false
-		_server.server.shutdown()
-		_server.shutdown()
+		_server?.server.shutdown()
+		_server?.shutdown()
 	}
 	
 	private func _updateStatus(_ newStatus: InstallerStatus) {
@@ -91,11 +94,11 @@ class ServerInstaller: Identifiable, ObservableObject {
 		}
 	}
 		
-	static func getServerMethod() -> Int {
+	func getServerMethod() -> Int {
 		UserDefaults.standard.integer(forKey: "Feather.serverMethod")
 	}
 	
-	static func getIPFix() -> Bool {
+	func getIPFix() -> Bool {
 		UserDefaults.standard.bool(forKey: "Feather.ipFix")
 	}
 }
