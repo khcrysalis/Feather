@@ -34,18 +34,18 @@ struct SigningOptionsView: View {
 			}
 		} else {
 			NBSection(.localized("General")) {
-				_picker(.localized("Appearance"),
-						systemImage: "paintpalette",
-						selection: $options.appAppearance,
-						values: Options.appAppearanceValues,
-						id: \.description
+				Self.picker(.localized("Appearance"),
+							systemImage: "paintpalette",
+							selection: $options.appAppearance,
+							values: Options.appAppearanceValues,
+							id: \.description
 				)
 				
-				_picker(.localized("Minimum Requirement"),
-						systemImage: "ruler",
-						selection: $options.minimumAppRequirement,
-						values: Options.appMinimumAppRequirementValues,
-						id: \.description
+				Self.picker(.localized("Minimum Requirement"),
+							systemImage: "ruler",
+							selection: $options.minimumAppRequirement,
+							values: Options.appMinimumAppRequirementValues,
+							id: \.description
 				)
 			}
 		}
@@ -126,7 +126,7 @@ struct SigningOptionsView: View {
 	}
 	
 	@ViewBuilder
-	private func _picker<SelectionValue, T>(
+	static func picker<SelectionValue, T>(
 		_ title: String,
 		systemImage: String,
 		selection: Binding<SelectionValue>,

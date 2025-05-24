@@ -54,6 +54,10 @@ struct Options: Codable, Equatable {
 	var appAppearance: String
 	/// App minimum iOS requirement (i.e. iOS 11.0)
 	var minimumAppRequirement: String
+	/// Inject path (i.e. `@rpath`)
+	var injectPath: String
+	/// Inject folder (i.e. `Frameworks/`)
+	var injectFolder: String
 	/// Random string appended to the app identifier
 	var ppqString: String
 	/// Basic protection against PPQ
@@ -95,8 +99,10 @@ struct Options: Codable, Equatable {
 	
 	// default
 	static let defaultOptions = Options(
-		appAppearance: "Default",
-		minimumAppRequirement: "Default",
+		appAppearance: appAppearanceValues[0],
+		minimumAppRequirement: appMinimumAppRequirementValues[0],
+		injectPath: injectPathValues[0],
+		injectFolder: injectFolderValues[1],
 		ppqString: randomString(),
 		ppqProtection: false,
 		dynamicProtection: false,
@@ -123,6 +129,10 @@ struct Options: Codable, Equatable {
 	static let appAppearanceValues = ["Default", "Light", "Dark"]
 	/// Default values for `minimumAppRequirement`
 	static let appMinimumAppRequirementValues = ["Default", "16.0", "15.0", "14.0", "13.0", "12.0"]
+	/// Default values for `injectPath`
+	static let injectPathValues = ["@executable_path", "@rpath"]
+	/// Default values for `injectFolder`
+	static let injectFolderValues = ["/", "/Frameworks/"]
 	/// Default random value for `ppqString`
 	static func randomString() -> String {
 		let letters = UUID().uuidString
