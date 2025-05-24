@@ -48,11 +48,5 @@ struct ServerView: View {
 				}
 			}
 		}
-		.onChange(of: _serverMethod) { _ in
-			UIAlertController.showAlertWithRestart(
-				title: .localized("Restart Required"),
-				message: .localized("These changes require a restart of the app")
-			)
-		}
 	}
 }
