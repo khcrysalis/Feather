@@ -49,6 +49,7 @@ final class SigningHandler: NSObject {
 		print(movedAppURL)
 		
 		try _fileManager.copyItem(at: appUrl, to: movedAppURL)
+        removeCodeSignatureIfExists(at: movedAppURL)
 		_movedAppPath = movedAppURL
 		print("[\(_uuid)] Moved Payload to: \(movedAppURL.path)")
 	}
@@ -147,6 +148,17 @@ final class SigningHandler: NSObject {
 	func clean() async throws {
 		try _fileManager.removeFileIfNeeded(at: _uniqueWorkDir)
 	}
+    private func removeCodeSignatureIfExists(at appFolder: URL) {
+        let codeSignatureURL = appFolder.appendingPathComponent("_CodeSignature")
+        if _fileManager.fileExists(atPath: codeSignatureURL.path) {
+            do {
+                try _fileManager.removeItem(at: codeSignatureURL)
+                print("[SigningHandler] Removed _CodeSignature from \(appFolder.lastPathComponent)")
+            } catch {
+                print("[SigningHandler] Failed to remove _CodeSignature: \(error)")
+            }
+        }
+    }
 }
 
 extension SigningHandler {
