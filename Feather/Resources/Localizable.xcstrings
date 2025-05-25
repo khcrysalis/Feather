@@ -3004,6 +3004,20 @@
         }
       }
     },
+    "Injection Folder" : {
+      "extractionState" : "manual"
+    },
+    "Injection Path" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Injection Path"
+          }
+        }
+      }
+    },
     "Install" : {
       "localizations" : {
         "cs" : {
@@ -3509,6 +3523,9 @@
           }
         }
       }
+    },
+    "No files chosen." : {
+      "extractionState" : "manual"
     },
     "No pairing file found, please import it." : {
       "extractionState" : "manual",
