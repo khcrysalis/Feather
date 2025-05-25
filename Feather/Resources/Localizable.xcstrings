@@ -3005,7 +3005,15 @@
       }
     },
     "Injection Folder" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Injection Folder"
+          }
+        }
+      }
     },
     "Injection Path" : {
       "extractionState" : "manual",
@@ -3525,7 +3533,15 @@
       }
     },
     "No files chosen." : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No files chosen."
+          }
+        }
+      }
     },
     "No pairing file found, please import it." : {
       "extractionState" : "manual",
@@ -5961,6 +5977,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Truy cập trang web"
+          }
+        }
+      }
+    },
+    "You cannot update ‘%@‘ with itself, please use an alternative tool to update it." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You cannot update ‘%@‘ with itself, please use an alternative tool to update it."
           }
         }
       }
