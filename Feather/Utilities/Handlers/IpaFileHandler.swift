@@ -10,7 +10,7 @@ import Zip
 import SwiftUICore
 import OSLog
 
-final class AppFileHandler: NSObject, @unchecked Sendable {
+final class IpaFileHandler: NSObject, @unchecked Sendable {
 	private let _fileManager = FileManager.default
 	private let _uuid = UUID().uuidString
 	private let _uniqueWorkDir: URL

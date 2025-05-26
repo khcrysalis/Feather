@@ -86,6 +86,15 @@ class DownloadManager: NSObject, ObservableObject {
 		return download
 	}
     
+    func startBundle(
+        from url: URL,
+        id: String = UUID().uuidString
+    ) -> Download {
+        let download = Download(id: id, url: url, onlyArchiving: true)
+        downloads.append(download)
+        return download
+    }
+    
     func resumeDownload(_ download: Download) {
         if let resumeData = download.resumeData {
             let task = _session.downloadTask(withResumeData: resumeData)
@@ -139,6 +148,21 @@ extension DownloadManager: URLSessionDownloadDelegate {
 			}
 		}
 	}
+    
+    func handleAppBundle(url: URL, dl: Download) throws {
+        FR.handleAppBundle(url, download: dl) { err in
+            if err != nil {
+                let generator = UINotificationFeedbackGenerator()
+                generator.notificationOccurred(.error)
+            }
+            
+            DispatchQueue.main.async {
+                if let index = DownloadManager.shared.getDownloadIndex(by: dl.id) {
+                    DownloadManager.shared.downloads.remove(at: index)
+                }
+            }
+        }
+    }
 	
 	func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
 		guard let download = getDownloadTask(by: downloadTask) else { return }

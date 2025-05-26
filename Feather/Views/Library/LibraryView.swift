@@ -133,12 +133,19 @@ struct LibraryView: View {
 			}
 			.sheet(isPresented: $_isImportingPresenting) {
 				FileImporterRepresentableView(
-					allowedContentTypes:  [.ipa, .tipa],
+                    allowedContentTypes:  [.ipa, .tipa, .applicationBundle],
 					onDocumentsPicked: { urls in
 						guard let selectedFileURL = urls.first else { return }
-						let id = "FeatherManualDownload_\(UUID().uuidString)"
-						let dl = downloadManager.startArchive(from: selectedFileURL, id: id)
-						try? downloadManager.handlePachageFile(url: selectedFileURL, dl: dl)
+                        let id = "FeatherManualDownload_\(UUID().uuidString)"
+                        
+                        if selectedFileURL.pathExtension == "ipa" || selectedFileURL.pathExtension == "tipa" {
+                            let dl = downloadManager.startArchive(from: selectedFileURL, id: id)
+                            try? downloadManager.handlePachageFile(url: selectedFileURL, dl: dl)
+                        } else if selectedFileURL.pathExtension == "app" {
+                            let dl = downloadManager.startBundle(from: selectedFileURL, id: id)
+                            try? downloadManager.handleAppBundle(url: selectedFileURL, dl: dl)
+                            
+                        }
 					}
 				)
 			}
