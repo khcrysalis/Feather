@@ -16,11 +16,36 @@ struct SigningTweaksView: View {
 	
 	// MARK: Body
 	var body: some View {
-		List(options.injectionFiles, id: \.absoluteString) { tweak in
-			_file(tweak: tweak)
+		NBList(.localized("Tweaks")) {
+			NBSection(.localized("Injection")) {
+				SigningOptionsView.picker(
+					.localized("Injection Path"),
+					systemImage: "doc.badge.gearshape",
+					selection: $options.injectPath,
+					values: Options.injectPathValues,
+					id: \.description
+				)
+				SigningOptionsView.picker(
+					.localized("Injection Folder"),
+					systemImage: "folder.badge.gearshape",
+					selection: $options.injectFolder,
+					values: Options.injectFolderValues,
+					id: \.description
+				)
+			}
+			
+			NBSection(.localized("Tweaks")) {
+				if !options.injectionFiles.isEmpty {
+					ForEach(options.injectionFiles, id: \.absoluteString) { tweak in
+						_file(tweak: tweak)
+					}
+				} else {
+					Text(verbatim: .localized("No files chosen."))
+						.font(.footnote)
+						.foregroundColor(.disabled())
+				}
+			}
 		}
-		.navigationTitle(.localized("Tweaks"))
-		.listStyle(.plain)
 		.toolbar {
 			NBToolbarButton(
 				systemImage: "plus",
@@ -50,7 +75,7 @@ struct SigningTweaksView: View {
 extension SigningTweaksView {
 	@ViewBuilder
 	private func _file(tweak: URL) -> some View {
-		Text(tweak.lastPathComponent)
+		Label(tweak.lastPathComponent, systemImage: "folder")
 			.lineLimit(2)
 			.frame(maxWidth: .infinity, alignment: .leading)
 			.swipeActions(edge: .trailing, allowsFullSwipe: true) {

@@ -7,6 +7,7 @@
 
 import CoreData
 import AltSourceKit
+import OSLog
 
 // MARK: - Class extension: Sources
 extension Storage {
@@ -26,7 +27,7 @@ extension Storage {
 	) {
 		if sourceExists(identifier) {
 			completion(nil)
-			print("ignoring \(identifier)")
+			Logger.misc.debug("ignoring \(identifier)")
 			return
 		}
 		
@@ -104,7 +105,7 @@ extension Storage {
 			let count = try context.count(for: fetchRequest)
 			return count > 0
 		} catch {
-			print("Error checking if repository exists: \(error)")
+			Logger.misc.error("Error checking if repository exists: \(error)")
 			return false
 		}
 	}

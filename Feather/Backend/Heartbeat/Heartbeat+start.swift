@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import OSLog
 
 // MARK: - Class extension: start
 extension HeartbeatManager {
@@ -20,16 +21,16 @@ extension HeartbeatManager {
 		restartWorkItem = nil
 		
 		if isRestartInProgress && !forceRestart {
-			print("Restart already in progress, ignoring call")
+			Logger.heartbeat.debug("Restart already in progress, ignoring call")
 			return
 		}
 		
 		let existingThreadIsActive = heartbeatThread?.isExecuting ?? false
 		if forceRestart {
 			sessionId = arc4random()
-			print("Forcing heartbeat restart with new session ID")
+			Logger.heartbeat.info("Forcing heartbeat restart with new session ID")
 		} else if existingThreadIsActive {
-			print("Heartbeat thread already running")
+			Logger.heartbeat.info("Heartbeat thread already running")
 			return
 		}
 		
@@ -49,7 +50,7 @@ extension HeartbeatManager {
 				defer { self.restartLock.unlock() }
 				
 				if let error = error {
-					print("Heartbeat error: \(error)")
+					Logger.heartbeat.error("Heartbeat error: \(error.rawValue)")
 					self._scheduleRestart()
 				} else {
 					self.restartBackoffTime = 1.0
@@ -63,7 +64,7 @@ extension HeartbeatManager {
 			thread.name = "idevice-heartbeat"
 			thread.qualityOfService = .background
 			thread.start()
-			print("Started new heartbeat thread")
+			Logger.heartbeat.info("Started new heartbeat thread")
 		}
 	}
 	/// Schedules heartbeat restart if any errors occur
@@ -82,7 +83,7 @@ extension HeartbeatManager {
 		restartWorkItem = workItem
 		restartBackoffTime = min(restartBackoffTime * 1.5, 30.0)
 		
-		print("Scheduling restart in \(restartBackoffTime) seconds")
+		Logger.heartbeat.info("Scheduling restart in \(self.restartBackoffTime) seconds")
 		DispatchQueue.main.asyncAfter(deadline: .now() + restartBackoffTime, execute: workItem)
 	}
 	/// Establishes heartbeat
@@ -98,7 +99,7 @@ extension HeartbeatManager {
 		sessionId = arc4random()
 		
 		guard checkSocketConnection().isConnected else {
-			print("Socket connection check failed - device unreachable")
+			Logger.heartbeat.error("Socket connection check failed - device unreachable")
 			completion(NotFound)
 			return
 		}
@@ -131,7 +132,7 @@ extension HeartbeatManager {
 		addr.sin_port = CFSwapInt16HostToBig(port)
 		
 		guard inet_pton(AF_INET, ipAddress, &addr.sin_addr) == 1 else {
-			print("Invalid IP address")
+			Logger.heartbeat.error("Invalid IP address")
 			completion(UnknownErrorType)
 			return
 		}
@@ -143,7 +144,7 @@ extension HeartbeatManager {
 		}
 		
 		if result != IdeviceSuccess {
-			print("Failed to create TCP provider: \(result)")
+			Logger.heartbeat.error("Failed to create TCP provider: \(result.rawValue)")
 			completion(result)
 			return
 		}
@@ -151,10 +152,10 @@ extension HeartbeatManager {
 		var heartbeatClient: HeartbeatClientHandle?
 		let hbConnectResult = heartbeat_connect_tcp(provider, &heartbeatClient)
 		if hbConnectResult != IdeviceSuccess {
-			print("Failed to start heartbeat client: \(hbConnectResult)")
+			Logger.heartbeat.error("Failed to start heartbeat client: \(hbConnectResult.rawValue)")
 			
 			if hbConnectResult == InvalidHostID, fileManager.fileExists(atPath: Self.pairingFile()) {
-				print("Deleting pairing file, requesting for a new one.")
+				Logger.heartbeat.info("Deleting pairing file, requesting for a new one.")
 				try? fileManager.removeItem(atPath: Self.pairingFile())
 				
 				DispatchQueue.main.async {
@@ -198,7 +199,7 @@ extension HeartbeatManager {
 			
 			let marcoResult = heartbeat_get_marco(heartbeatClient, currentInterval, &nextInterval)
 			if marcoResult != IdeviceSuccess {
-				print("heartbeat_get_marco failed: \(marcoResult)")
+				Logger.heartbeat.error("heartbeat_get_marco failed: \(marcoResult.rawValue)")
 				heartbeat_client_free(heartbeatClient)
 				return
 			}
@@ -208,14 +209,14 @@ extension HeartbeatManager {
 			}
 			
 			#if DEBUG
-			print("bump \(Date.now.formatted(date: .numeric, time: .standard))")
+			Logger.heartbeat.debug("bump \(Date.now.formatted(date: .numeric, time: .standard))")
 			#endif
 			
 			currentInterval = nextInterval + 5
 			
 			let poloResult = heartbeat_send_polo(heartbeatClient)
 			if poloResult != IdeviceSuccess {
-				print("heartbeat_send_polo failed: \(poloResult)")
+				Logger.heartbeat.error("heartbeat_send_polo failed: \(poloResult.rawValue)")
 				heartbeat_client_free(heartbeatClient)
 				return
 			}

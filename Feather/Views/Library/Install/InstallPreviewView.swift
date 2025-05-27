@@ -53,9 +53,6 @@ struct InstallPreviewView: View {
 			SafariRepresentableView(url: installer.pageEndpoint).ignoresSafeArea()
 		}
 		.onReceive(viewModel.$status) { newStatus in
-			#if DEBUG
-			print(newStatus)
-			#endif
 			if case .ready = newStatus {
 				if _serverMethod == 0 {
 					UIApplication.shared.open(URL(string: installer.iTunesLink)!)
@@ -82,6 +79,14 @@ struct InstallPreviewView: View {
 	}
 	
 	private func _install() {
+		guard app.identifier != Bundle.main.bundleIdentifier! else {
+			UIAlertController.showAlertWithOk(
+				title: .localized("Install"),
+				message: .localized("You cannot update ‘%@‘ with itself, please use an alternative tool to update it.", arguments: Bundle.main.name)
+			)
+			return
+		}
+		
 		Task.detached {
 			do {
 				let handler = await ArchiveHandler(app: app, viewModel: viewModel)

@@ -9,6 +9,7 @@ import SwiftUI
 import NimbleViews
 import AltSourceKit
 import NimbleJSON
+import OSLog
 
 // MARK: - View
 struct SourcesAddView: View {
@@ -112,7 +113,7 @@ struct SourcesAddView: View {
 											await collector.add(url: url, repository: data)
 										}
 									case .failure(let error):
-										print("Failed to fetch \(url): \(error)")
+										Logger.misc.error("Failed to fetch \(url): \(error)")
 									}
 									continuation.resume()
 								}

@@ -95,9 +95,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 	private func _createSourcesDirectory() {
 		let fileManager = FileManager.default
 
-		let directories = ["Signed", "Unsigned", "Certificates", "Archives"].map {
-			URL.documentsDirectory.appendingPathComponent($0)
-		}
+		let directories: [URL] = [
+			fileManager.archives,
+			fileManager.certificates,
+			fileManager.signed,
+			fileManager.unsigned
+		]
 		
 		for url in directories {
 			try? fileManager.createDirectoryIfNeeded(at: url)

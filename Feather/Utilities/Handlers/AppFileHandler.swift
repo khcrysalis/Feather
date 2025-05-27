@@ -8,6 +8,7 @@
 import Foundation
 import Zip
 import SwiftUICore
+import OSLog
 
 final class AppFileHandler: NSObject, @unchecked Sendable {
 	private let _fileManager = FileManager.default
@@ -31,7 +32,7 @@ final class AppFileHandler: NSObject, @unchecked Sendable {
 			.appendingPathComponent("FeatherImport_\(_uuid)", isDirectory: true)
 		
 		super.init()
-		print("Import initiated for: \(_ipa.lastPathComponent) with ID: \(_uuid)")
+		Logger.misc.debug("Import initiated for: \(self._ipa.lastPathComponent) with ID: \(self._uuid)")
 	}
 	
 	func copy() async throws {
@@ -43,7 +44,7 @@ final class AppFileHandler: NSObject, @unchecked Sendable {
 		
 		try _fileManager.copyItem(at: _ipa, to: destinationURL)
 		_ipa = destinationURL
-		print("[\(_uuid)] File copied to: \(_ipa.path)")
+		Logger.misc.info("[\(self._uuid)] File copied to: \(self._ipa.path)")
 	}
 	
 	func extract() async throws {
@@ -61,8 +62,6 @@ final class AppFileHandler: NSObject, @unchecked Sendable {
 						overwrite: true,
 						password: nil,
 						progress: { progress in
-							print("[\(self._uuid)] Unzip progress: \(progress)")
-							
 							if let download = download {
 								DispatchQueue.main.async {
 									download.unpackageProgress = progress
@@ -93,7 +92,7 @@ final class AppFileHandler: NSObject, @unchecked Sendable {
 		}
 		
 		try _fileManager.moveItem(at: payloadURL, to: destinationURL)
-		print("[\(_uuid)] Moved Payload to: \(destinationURL.path)")
+		Logger.misc.info("[\(self._uuid)] Moved Payload to: \(destinationURL.path)")
 		
 		try? _fileManager.removeItem(at: _uniqueWorkDir)
 	}
@@ -114,7 +113,7 @@ final class AppFileHandler: NSObject, @unchecked Sendable {
 			appVersion: bundle?.version,
 			appIcon: bundle?.iconFileName
 		) { _ in
-			print("[\(self._uuid)] Added to database")
+			Logger.misc.info("[\(self._uuid)] Added to database")
 		}
 	}
 	

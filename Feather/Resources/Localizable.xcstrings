@@ -3484,6 +3484,28 @@
         }
       }
     },
+    "Injection Folder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Injection Folder"
+          }
+        }
+      }
+    },
+    "Injection Path" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Injection Path"
+          }
+        }
+      }
+    },
     "Install" : {
       "localizations" : {
         "cs" : {
@@ -4070,6 +4092,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Không có chứng chỉ"
+          }
+        }
+      }
+    },
+    "No files chosen." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No files chosen."
           }
         }
       }
@@ -6928,6 +6961,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Truy cập trang web"
+          }
+        }
+      }
+    },
+    "You cannot update ‘%@‘ with itself, please use an alternative tool to update it." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You cannot update ‘%@‘ with itself, please use an alternative tool to update it."
           }
         }
       }

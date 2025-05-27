@@ -38,15 +38,11 @@ extension Storage {
 	}
 	
 	func deleteCertificate(for cert: CertificatePair) {
-		do {
-			if let url = getUuidDirectory(for: cert) {
-				try FileManager.default.removeItem(at: url)
-			}
-			context.delete(cert)
-			saveContext()
-		} catch {
-			print(error)
+		if let url = getUuidDirectory(for: cert) {
+			try? FileManager.default.removeItem(at: url)
 		}
+		context.delete(cert)
+		saveContext()
 	}
 		
 	enum FileRequest: String {

@@ -36,20 +36,12 @@ final class Storage: ObservableObject {
 	
 	func saveContext() {
 		if context.hasChanges {
-			do {
-				try context.save()
-			} catch {
-				print("saveContext: \(error)")
-			}
+			try? context.save()
 		}
 	}
 	
 	func clearContext<T: NSManagedObject>(request: NSFetchRequest<T>) {
 		let deleteRequest = NSBatchDeleteRequest(fetchRequest: (request as? NSFetchRequest<NSFetchRequestResult>)!)
-		do {
-			_ = try context.execute(deleteRequest)
-		} catch {
-			print("clear: \(error.localizedDescription)")
-		}
+		_ = try? context.execute(deleteRequest)
 	}
 }

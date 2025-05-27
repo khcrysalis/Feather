@@ -8,18 +8,24 @@
 
 import Foundation
 import ZsignSwift
+import OSLog
 
 class TweakHandler {
 	private let _fileManager = FileManager.default
 	private var _urlsToInject: [URL] = []
 	private var _directoriesToCheck: [URL] = []
 
-	private var _urls: [URL]
 	private let _app: URL
+	private var _options: Options
+	private var _urls: [URL]
 
-	init(app: URL, with urls: [URL]) {
+	init(
+		app: URL,
+		options: Options = OptionsManager.shared.options
+	) {
 		self._app = app
-		self._urls = urls
+		self._options = options
+		self._urls = options.injectionFiles
 	}
 
 	public func getInputFiles() async throws {
@@ -32,13 +38,13 @@ class TweakHandler {
 			if let ellekitURL = Bundle.main.url(forResource: "ellekit", withExtension: "deb") {
 				self._urls.insert(ellekitURL, at: 0)
 			} else {
-				print("ellekit.deb not found in the app bundle ")
+				Logger.misc.info("ellekit.deb not found in the app bundle")
 				return
 			}
 		}
 
 		let baseTmpDir = _fileManager.temporaryDirectory.appendingPathComponent("FeatherTweak_\(UUID().uuidString)")
-
+		
 		try _fileManager.createDirectoryIfNeeded(at: _app.appendingPathComponent("Frameworks"))
 		try _fileManager.createDirectoryIfNeeded(at: baseTmpDir)
 		
@@ -52,7 +58,7 @@ class TweakHandler {
 			case "deb":
 				try await _handleDeb(at: url, baseTmpDir: baseTmpDir)
 			default:
-				print("Unsupported file type: \(url.lastPathComponent), skipping.")
+				Logger.misc.warning("Unsupported file type: \(url.lastPathComponent), skipping.")
 			}
 		}
 		
@@ -79,14 +85,34 @@ class TweakHandler {
 				let destinationURL = _app.appendingPathComponent(url.lastPathComponent)
 				try _fileManager.moveFileIfNeeded(from: url, to: destinationURL)
 			default:
-				print("Unsupported file type: \(url.lastPathComponent), skipping.")
+				Logger.misc.warning("Unsupported file type: \(url.lastPathComponent), skipping.")
 			}
 		}
 	}
 	
 	// Inject imported dylib file
 	private func _handleDylib(at url: URL) async throws {
-		let destinationURL = _app.appendingPathComponent("Frameworks").appendingPathComponent(url.lastPathComponent)
+		var destinationURL = _app
+		var injectFolder = _options.injectFolder
+		
+		// check for "/Frameworks/", then append the destinationUrl
+		if _options.injectFolder.contains(Options.injectFolderValues[1]) {
+			destinationURL = destinationURL.appendingPathComponent("Frameworks")
+		}
+		
+		// We check for "@rpath" and "/Frameworks/", if they're both enabled force
+		// the inject folder to be root "/" instead, as the @rpath is already in
+		// frameworks
+		if
+			_options.injectPath.contains(Options.injectPathValues[1]) &&
+			_options.injectFolder.contains(Options.injectFolderValues[1])
+		{
+			injectFolder = Options.injectFolderValues[0]
+		}
+		
+		destinationURL = destinationURL.appendingPathComponent(url.lastPathComponent)
+		
+		
 		try _fileManager.moveFileIfNeeded(from: url, to: destinationURL)
 		
 		guard let appexe = Bundle(url: _app)?.executableURL else {
@@ -105,7 +131,7 @@ class TweakHandler {
 		// inject if there's a valid app main executable
 		_ = Zsign.injectDyLib(
 			appExecutable: appexe.path,
-			with: "@executable_path/Frameworks/\(destinationURL.lastPathComponent)"
+			with: "\(_options.injectPath)\(injectFolder)\(destinationURL.lastPathComponent)"
 		)
 	}
 	
@@ -179,7 +205,7 @@ class TweakHandler {
 					let directoryURL = baseURL.appendingPathComponent(path)
 					
 					guard _fileManager.fileExists(atPath: directoryURL.path) else {
-						print("Directory does not exist: \(directoryURL.path). Skipping.")
+						Logger.misc.warning("Directory does not exist: \(directoryURL.path). Skipping.")
 						continue
 					}
 					
