@@ -53,6 +53,18 @@
             }
           }
         },
+        "id" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Aplikasi"
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4007,6 +4019,10 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "注入文件夹"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Folder Injeksi"
           }
         }
       }
@@ -4024,6 +4040,10 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "注入路径"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direktori Injeksi"
           }
         }
       }
@@ -4715,6 +4735,10 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "未选择文件。"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belum ada file yang dipilih."
           }
         }
       }
@@ -8015,6 +8039,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "You cannot update ‘%@‘ with itself, please use an alternative tool to update it."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamu tidak bisa melakukan update pada ‘%@’ menggunakan dirinya sendiri. Silakan gunakan tool alternatif untuk memperbaruinya."
           }
         }
       }
