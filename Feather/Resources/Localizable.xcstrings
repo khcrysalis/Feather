@@ -53,6 +53,18 @@
             }
           }
         },
+        "id" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Aplikasi"
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3492,6 +3504,12 @@
             "state" : "translated",
             "value" : "Injection Folder"
           }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Folder Injeksi"
+          }
         }
       }
     },
@@ -3502,6 +3520,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Injection Path"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direktori Injeksi"
           }
         }
       }
@@ -4103,6 +4127,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No files chosen."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belum ada file yang dipilih."
           }
         }
       }
@@ -6972,6 +7002,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "You cannot update ‘%@‘ with itself, please use an alternative tool to update it."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamu tidak bisa melakukan update pada ‘%@’ menggunakan dirinya sendiri. Silakan gunakan tool alternatif untuk memperbaruinya."
           }
         }
       }
