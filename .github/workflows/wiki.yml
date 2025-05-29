@@ -33,7 +33,11 @@ jobs:
           declare -A source_files
           for f in wiki/*.md; do
             base=$(basename "$f" .md)
+            if [[ "$base" == _* ]]; then
+            newname="$base"
+            else
             newname="${base//_/ }"
+            fi
             cp "$f" "wiki-repo/${newname}.md"
             source_files["${newname}.md"]=1
           done
