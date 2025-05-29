@@ -1,0 +1,54 @@
+name: Wiki
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'wiki/*.md'
+
+jobs:
+  update-wiki:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Git perms
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Clone
+        env:
+          REPO: ${{ github.repository }}
+        run: |
+          git clone "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${REPO}.wiki.git" wiki-repo
+
+      - name: Markdown formatting & deletion of pages that no longer have a file
+        run: |
+          shopt -s nullglob
+
+          # Tracking setup
+          declare -A source_files
+          for f in wiki/*.md; do
+            base=$(basename "$f" .md)
+            newname="${base//_/ }"
+            cp "$f" "wiki-repo/${newname}.md"
+            source_files["${newname}.md"]=1
+          done
+
+          # Removal of pages with no source
+          cd wiki-repo
+          for f in *.md; do
+            if [[ -z "${source_files[$f]}" ]]; then
+              rm "$f"
+            fi
+          done
+
+      - name: Commit & push
+        run: |
+          cd wiki-repo
+          git add .
+          git diff-index --quiet HEAD || git commit -m "wiki: synced changes from /wiki, gh actions"
+          git push
