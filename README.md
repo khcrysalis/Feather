@@ -91,6 +91,6 @@ This project is licensed under the GPL-3.0 license. You can see the full details
 
 By contributing to this project, you agree to license your code under the GPL-3.0 license as well (including agreeing to license exceptions), ensuring that your work, like all other contributions, remains freely accessible and open.
 
-## Caution
+## Disclaimer
 
-This project is maintained here, on GitHub. Releases are distributed here, on GitHub. We do not currently have a project website outside of this repository. There is a known website with associated social media accounts impersonating the project, distributing potentially malicious downloads. Never download any Feather .ipas from any source other than this repository.
+This project is maintained here, on GitHub. Releases are distributed here, on GitHub. We do not currently have a project website outside of this repository. Please make sure to avoid any sites that host our software as they are often malicious and are there to mislead to user.
