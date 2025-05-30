@@ -43,6 +43,7 @@ struct InstallPreviewView: View {
 		ZStack {
 			InstallProgressView(app: app, viewModel: viewModel)
 			_status()
+			_button()
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
 		.background(Color(UIColor.secondarySystemBackground))
@@ -76,6 +77,23 @@ struct InstallPreviewView: View {
 			.labelStyle(.titleAndIcon)
 			.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
 			.animation(.smooth, value: viewModel.statusImage)
+	}
+	
+	@ViewBuilder
+	private func _button() -> some View {
+		ZStack {
+			if viewModel.isCompleted {
+				Button {
+					UIApplication.openApp(with: app.identifier ?? "")
+				} label: {
+					NBButton("Open", systemImage: "", style: .text)
+				}
+				.padding()
+				.compatTransition()
+			}
+		}
+		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+		.animation(.easeInOut(duration: 0.3), value: viewModel.isCompleted)
 	}
 	
 	private func _install() {
