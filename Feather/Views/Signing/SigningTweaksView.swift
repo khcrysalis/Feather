@@ -19,14 +19,14 @@ struct SigningTweaksView: View {
 		NBList(.localized("Tweaks")) {
 			NBSection(.localized("Injection")) {
 				SigningOptionsView.picker(
-					"Injection Path",
+					.localized("Injection Path"),
 					systemImage: "doc.badge.gearshape",
 					selection: $options.injectPath,
 					values: Options.injectPathValues,
 					id: \.description
 				)
 				SigningOptionsView.picker(
-					"Injection Folder",
+					.localized("Injection Folder"),
 					systemImage: "folder.badge.gearshape",
 					selection: $options.injectFolder,
 					values: Options.injectFolderValues,
@@ -40,7 +40,7 @@ struct SigningTweaksView: View {
 						_file(tweak: tweak)
 					}
 				} else {
-					Text(verbatim: "No files chosen.")
+					Text(verbatim: .localized("No files chosen."))
 						.font(.footnote)
 						.foregroundColor(.disabled())
 				}

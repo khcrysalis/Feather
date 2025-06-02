@@ -82,6 +82,7 @@ final class SigningHandler: NSObject {
 			try await _removeFiles(for: movedAppPath, from: _options.removeFiles)
 		}
 		
+		try await _removeCodeSignature(for: movedAppPath)
 		try await _removeProvisioning(for: movedAppPath)
 		
 		if !_options.injectionFiles.isEmpty {
@@ -236,6 +237,11 @@ extension SigningHandler {
 			dictionary["CFBundleDisplayName"] = name
 			dictionary.write(toFile: plistURL.path, atomically: true)
 		}
+	}
+	
+	private func _removeCodeSignature(for app: URL) async throws {
+		let provisioningFilePath = app.appendingPathComponent("_CodeSignature")
+		try _fileManager.removeFileIfNeeded(at: provisioningFilePath)
 	}
 	
 	private func _removeProvisioning(for app: URL) async throws {

@@ -35,7 +35,7 @@ struct AboutView: View {
                         .foregroundStyle(.accent)
                     
                     HStack(spacing: 4) {
-                        Text("Version")
+						Text(.localized("Version"))
                         Text(Bundle.main.version)
                     }
                     .font(.footnote)
@@ -122,10 +122,14 @@ extension AboutView {
 		desc: String?,
 		github: String
 	) -> some View {
-		FRIconCellView(
-			title: name ?? github,
-			subtitle: desc ?? "",
-			iconUrl: URL(string: "https://github.com/\(github).png")!
-		)
+		Button {
+			UIApplication.open("https://github.com/\(github)")
+		} label: {
+			NBTitleWithSubtitleView(
+				title: name ?? github,
+				subtitle: desc ?? "",
+				linelimit: 0
+			)
+		}
 	}
 }
