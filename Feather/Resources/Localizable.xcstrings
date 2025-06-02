@@ -931,6 +931,17 @@
         }
       }
     },
+    "Best" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Best"
+          }
+        }
+      }
+    },
     "Big Description" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1312,6 +1323,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Đóng"
+          }
+        }
+      }
+    },
+    "Completed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completed"
           }
         }
       }
@@ -2239,6 +2261,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Quyền hạn"
+          }
+        }
+      }
+    },
+    "Error" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
           }
         }
       }
@@ -3622,6 +3655,17 @@
         }
       }
     },
+    "Installing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installing"
+          }
+        }
+      }
+    },
     "iPad Fullscreen" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4172,6 +4216,17 @@
         }
       }
     },
+    "None" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
+          }
+        }
+      }
+    },
     "OK" : {
       "localizations" : {
         "cs" : {
@@ -4454,6 +4509,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mở trong Tệp"
+          }
+        }
+      }
+    },
+    "Packaging" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Packaging"
           }
         }
       }
@@ -4975,6 +5041,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ký lại"
+          }
+        }
+      }
+    },
+    "Ready" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ready"
           }
         }
       }
@@ -5698,6 +5775,28 @@
         }
       }
     },
+    "Sending Manifest" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sending Manifest"
+          }
+        }
+      }
+    },
+    "Sending Payload" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sending Payload"
+          }
+        }
+      }
+    },
     "Server & SSL" : {
       "localizations" : {
         "cs" : {
@@ -6137,6 +6236,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nguồn"
+          }
+        }
+      }
+    },
+    "Speed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speed"
           }
         }
       }

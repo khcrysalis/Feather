@@ -47,13 +47,13 @@ final class InstallerStatusViewModel: ObservableObject {
 	
 	var statusLabel: String {
 		switch status {
-		case .none: return "Packaging"
-		case .ready: return "Ready"
-		case .sendingManifest: return "Sending Manifest"
-		case .sendingPayload: return "Sending Payload"
-		case .installing: return "Installing"
-		case .completed: return "Completed"
-		case .broken: return "Error"
+		case .none: return .localized("Packaging")
+		case .ready: return .localized("Ready")
+		case .sendingManifest: return .localized("Sending Manifest")
+		case .sendingPayload: return .localized("Sending Payload")
+		case .installing: return .localized("Installing")
+		case .completed: return .localized("Completed")
+		case .broken: return .localized("Error")
 		}
 	}
 }
