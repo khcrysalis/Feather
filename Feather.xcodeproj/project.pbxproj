@@ -28,6 +28,8 @@
 		336D43982DB7454A00206400 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336D43972DB7454A00206400 /* MobileCoreServices.framework */; };
 		3371F7322DA9ECDD00281AC6 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 3371F7312DA9ECDD00281AC6 /* Zip */; };
 		33CF13392DB5ACFB0021D4C5 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 33CF13382DB5ACFB0021D4C5 /* SWCompression */; };
+		C88054892DEEEE3D00D04D63 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = C88054882DEEEE3D00D04D63 /* ZIPFoundation */; };
+		C880548B2DEEEE4600D04D63 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = C880548A2DEEEE4600D04D63 /* ZIPFoundation */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +132,7 @@
 				3305BB482DB893A500660D45 /* MobileCoreServices.framework in Frameworks */,
 				3346F8392DC6C6C800C7D508 /* NukeUI in Frameworks */,
 				330F69052DC03E0400D8C35D /* NimbleExtensions in Frameworks */,
+				C880548B2DEEEE4600D04D63 /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +151,7 @@
 				330F69032DC03DF500D8C35D /* NimbleViews in Frameworks */,
 				3305BBAC2DB8944200660D45 /* Vapor in Frameworks */,
 				3346F83B2DC6C6D100C7D508 /* NukeUI in Frameworks */,
+				C88054892DEEEE3D00D04D63 /* ZIPFoundation in Frameworks */,
 				336D43982DB7454A00206400 /* MobileCoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,6 +224,7 @@
 				3346F8382DC6C6C800C7D508 /* NukeUI */,
 				3346F8462DC6D64400C7D508 /* NimbleJSON */,
 				33693A092DC8BF6800730215 /* AltSourceKit */,
+				C880548A2DEEEE4600D04D63 /* ZIPFoundation */,
 			);
 			productName = Feather;
 			productReference = 3305BB4E2DB893A500660D45 /* Feather-idevice.app */;
@@ -255,6 +260,7 @@
 				3346F83A2DC6C6D100C7D508 /* NukeUI */,
 				3346F8482DC6D64800C7D508 /* NimbleJSON */,
 				33693A072DC8BF5B00730215 /* AltSourceKit */,
+				C88054882DEEEE3D00D04D63 /* ZIPFoundation */,
 			);
 			productName = Feather;
 			productReference = 3379C1B92DA869A1004372DA /* Feather.app */;
@@ -328,6 +334,7 @@
 				3346F8372DC6C68300C7D508 /* XCRemoteSwiftPackageReference "Nuke" */,
 				33693A062DC8BF5B00730215 /* XCLocalSwiftPackageReference "AltSourceKit" */,
 				339776052DC9D05C00642FFB /* XCRemoteSwiftPackageReference "LicensePlist" */,
+				C88054872DEEEE3D00D04D63 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3379C1BA2DA869A1004372DA /* Products */;
@@ -977,6 +984,14 @@
 				minimumVersion = 4.8.6;
 			};
 		};
+		C88054872DEEEE3D00D04D63 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.19;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1072,6 +1087,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 33CF13372DB5ACFB0021D4C5 /* XCRemoteSwiftPackageReference "SWCompression" */;
 			productName = SWCompression;
+		};
+		C88054882DEEEE3D00D04D63 /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C88054872DEEEE3D00D04D63 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
+		C880548A2DEEEE4600D04D63 /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C88054872DEEEE3D00D04D63 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

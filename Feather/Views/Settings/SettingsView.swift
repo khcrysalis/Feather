@@ -39,6 +39,7 @@ struct SettingsView: View {
 				}
 				
 				_directories()
+                _tools()
             }
         }
     }
@@ -75,4 +76,17 @@ extension SettingsView {
 			Text(.localized("All of Feathers files are contained in the documents directory, here are some quick links to these."))
 		}
 	}
+}
+
+extension SettingsView {
+    @ViewBuilder
+    private func _tools() -> some View {
+        NBSection(.localized("Tools")) {
+            NavigationLink(destination: PlethoraView()) {
+                Label(.localized("Bundle ID / App ID Matcher"), systemImage: "rectangle.3.group")
+            }
+        } footer: {
+            Text(.localized("Proceed with caution. For advanced users."))
+        }
+    }
 }
