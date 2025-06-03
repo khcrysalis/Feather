@@ -7,6 +7,7 @@
 
 import SwiftUI
 import NimbleViews
+import IDeviceSwift
 
 // MARK: - View
 struct InstallPreviewView: View {
@@ -144,9 +145,7 @@ struct InstallPreviewView: View {
 						title: .localized("Install"),
 						message: error.localizedDescription,
 						action: {
-							#if IDEVICE
 							HeartbeatManager.shared.start(true)
-							#endif
 							dismiss()
 						}
 					)

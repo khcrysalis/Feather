@@ -7,6 +7,7 @@
 
 import SwiftUI
 import NimbleViews
+import IDeviceSwift
 
 // MARK: - View
 struct TunnelView: View {

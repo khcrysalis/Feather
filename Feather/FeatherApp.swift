@@ -7,13 +7,14 @@
 
 import SwiftUI
 import Nuke
+import IDeviceSwift
 
 @main
 struct FeatherApp: App {
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-	#if IDEVICE
+	
 	let heartbeat = HeartbeatManager.shared
-	#endif
+	
 	@StateObject var downloadManager = DownloadManager.shared
 	let storage = Storage.shared
 

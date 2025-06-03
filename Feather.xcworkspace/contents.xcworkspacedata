@@ -19,4 +19,7 @@
    <FileRef
       location = "group:NimbleKit">
    </FileRef>
+   <FileRef
+      location = "container:IDeviceKitten">
+   </FileRef>
 </Workspace>
