@@ -97,6 +97,9 @@ extension LibraryCellView {
 			Button(.localized("Install"), systemImage: "square.and.arrow.down") {
 				selectedInstallAppPresenting = AnyApp(base: app)
 			}
+			Button(.localized("Sign"), systemImage: "signature") {
+				selectedSigningAppPresenting = AnyApp(base: app)
+			}
 		}
 	}
 	
