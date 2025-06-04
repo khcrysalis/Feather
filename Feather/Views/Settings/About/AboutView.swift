@@ -40,34 +40,27 @@ struct AboutView: View {
                     }
                     .font(.footnote)
                     .foregroundStyle(.secondary)
-                    
                 }
             }
             .frame(maxWidth: .infinity)
             .listRowBackground(EmptyView())
 			
 			NBSection(.localized("Credits")) {
-				if !_credits.isEmpty {
-					ForEach(_credits, id: \.self) { credit in
-						_credit(name: credit.name, desc: credit.desc, github: credit.github)
-					}
-					.transition(.slide)
+				ForEach(_credits, id: \.github) { credit in
+					_credit(name: credit.name, desc: credit.desc, github: credit.github)
 				}
+				.transition(.slide)
 			}
 			
 			NBSection(.localized("Sponsors")) {
-				if !_donators.isEmpty {
-					Group {
-						Text(try! AttributedString(markdown: _donators.map {
-							"[\($0.name ?? $0.github)](https://github.com/\($0.github))"
-						}.joined(separator: ", ")))
-						
-						Text(.localized("💜 This couldn't of been done without my sponsors!"))
-							.foregroundStyle(.secondary)
-							.padding(.vertical, 2)
-					}
-					.transition(.slide)
-				}
+				Text(try! AttributedString(markdown: _donators.map {
+					"[\($0.name ?? $0.github)](https://github.com/\($0.github))"
+				}.joined(separator: ", ")))
+				.transition(.slide)
+				
+				Text(.localized("💜 This couldn't of been done without my sponsors!"))
+					.foregroundStyle(.secondary)
+					.padding(.vertical, 2)
 			}
 		}
 		.animation(.default, value: isLoading)
