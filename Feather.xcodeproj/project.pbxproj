@@ -7,24 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3305BB462DB893A500660D45 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 3305BB412DB893A500660D45 /* SWCompression */; };
-		3305BB472DB893A500660D45 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 3305BB3E2DB893A500660D45 /* Zip */; };
-		3305BB482DB893A500660D45 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336D43972DB7454A00206400 /* MobileCoreServices.framework */; };
 		3305BBAC2DB8944200660D45 /* Vapor in Frameworks */ = {isa = PBXBuildFile; productRef = 3305BBAB2DB8944200660D45 /* Vapor */; };
 		330F68FC2DBF7C8600D8C35D /* NimbleExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 330F68FB2DBF7C8600D8C35D /* NimbleExtensions */; };
 		330F68FE2DBF7C8600D8C35D /* NimbleViews in Frameworks */ = {isa = PBXBuildFile; productRef = 330F68FD2DBF7C8600D8C35D /* NimbleViews */; };
 		330F69012DC03DF500D8C35D /* NimbleExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 330F69002DC03DF500D8C35D /* NimbleExtensions */; };
 		330F69032DC03DF500D8C35D /* NimbleViews in Frameworks */ = {isa = PBXBuildFile; productRef = 330F69022DC03DF500D8C35D /* NimbleViews */; };
-		330F69052DC03E0400D8C35D /* NimbleExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 330F69042DC03E0400D8C35D /* NimbleExtensions */; };
-		330F69072DC03E0700D8C35D /* NimbleViews in Frameworks */ = {isa = PBXBuildFile; productRef = 330F69062DC03E0700D8C35D /* NimbleViews */; };
-		3346F5C02DC3299D00C7D508 /* ZsignSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3346F5BF2DC3299D00C7D508 /* ZsignSwift */; };
 		3346F5C22DC329A200C7D508 /* ZsignSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3346F5C12DC329A200C7D508 /* ZsignSwift */; };
-		3346F8392DC6C6C800C7D508 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3346F8382DC6C6C800C7D508 /* NukeUI */; };
 		3346F83B2DC6C6D100C7D508 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3346F83A2DC6C6D100C7D508 /* NukeUI */; };
-		3346F8472DC6D64400C7D508 /* NimbleJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 3346F8462DC6D64400C7D508 /* NimbleJSON */; };
 		3346F8492DC6D64800C7D508 /* NimbleJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 3346F8482DC6D64800C7D508 /* NimbleJSON */; };
+		3349E7672DEFB46F00E317ED /* IDeviceSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3349E7662DEFB46F00E317ED /* IDeviceSwift */; };
 		33693A082DC8BF5B00730215 /* AltSourceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 33693A072DC8BF5B00730215 /* AltSourceKit */; };
-		33693A0A2DC8BF6800730215 /* AltSourceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 33693A092DC8BF6800730215 /* AltSourceKit */; };
 		336D43982DB7454A00206400 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336D43972DB7454A00206400 /* MobileCoreServices.framework */; };
 		3371F7322DA9ECDD00281AC6 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 3371F7312DA9ECDD00281AC6 /* Zip */; };
 		33CF13392DB5ACFB0021D4C5 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 33CF13382DB5ACFB0021D4C5 /* SWCompression */; };
@@ -41,53 +33,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3305BB4E2DB893A500660D45 /* Feather-idevice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Feather-idevice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		336D43972DB7454A00206400 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS18.2.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		3379C1B92DA869A1004372DA /* Feather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Feather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABA5D192DB3C87800BFCD2C /* FeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		3305BB4F2DB893A500660D45 /* Exceptions for "Feather" folder in "Feather-idevice" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Backend/Server/Models/AppDataModel.swift,
-				Backend/Server/ServerInstaller.swift,
-				"Backend/Server/ServerInstaller+Compute.swift",
-				"Backend/Server/ServerInstaller+TLS.swift",
-				Resources/ellekit.deb,
-				Resources/Info.plist,
-				"Views/Settings/Server & SSL/Models/ServerPackModel.swift",
-				"Views/Settings/Server & SSL/ServerView.swift",
-			);
-			target = 3305BB3C2DB893A500660D45 /* Feather-idevice */;
-		};
 		3371F6492DA92A1800281AC6 /* Exceptions for "Feather" folder in "Feather" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Backend/Heartbeat/ConduitInstaller.swift,
-				Backend/Heartbeat/Heartbeat.swift,
-				"Backend/Heartbeat/Heartbeat+checks.swift",
-				"Backend/Heartbeat/Heartbeat+start.swift",
 				Resources/ellekit.deb,
-				Resources/idevice/libidevice_ffi.a,
-				"Resources/idevice/libplist-2.0.a",
 				Resources/Info.plist,
-				"Views/Settings/Tunnel & Pairing/TunnelHeaderCellView.swift",
-				"Views/Settings/Tunnel & Pairing/TunnelView.swift",
 			);
 			target = 3379C1B82DA869A1004372DA /* Feather */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		3305BBA92DB8943000660D45 /* Exceptions for "Feather" folder in "Copy Bundle Resources" phase from "Feather-idevice" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 3305BB4A2DB893A500660D45 /* Resources */;
-			membershipExceptions = (
-				Resources/ellekit.deb,
-			);
-		};
 		33CF134C2DB5B9BC0021D4C5 /* Exceptions for "Feather" folder in "Copy Bundle Resources" phase from "Feather" target */ = {
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
 			buildPhase = 3379C1B72DA869A1004372DA /* Resources */;
@@ -103,8 +65,6 @@
 			exceptions = (
 				3371F6492DA92A1800281AC6 /* Exceptions for "Feather" folder in "Feather" target */,
 				33CF134C2DB5B9BC0021D4C5 /* Exceptions for "Feather" folder in "Copy Bundle Resources" phase from "Feather" target */,
-				3305BB4F2DB893A500660D45 /* Exceptions for "Feather" folder in "Feather-idevice" target */,
-				3305BBA92DB8943000660D45 /* Exceptions for "Feather" folder in "Copy Bundle Resources" phase from "Feather-idevice" target */,
 			);
 			path = Feather;
 			sourceTree = "<group>";
@@ -117,22 +77,6 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3305BB442DB893A500660D45 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				33693A0A2DC8BF6800730215 /* AltSourceKit in Frameworks */,
-				3346F8472DC6D64400C7D508 /* NimbleJSON in Frameworks */,
-				3346F5C02DC3299D00C7D508 /* ZsignSwift in Frameworks */,
-				330F69072DC03E0700D8C35D /* NimbleViews in Frameworks */,
-				3305BB462DB893A500660D45 /* SWCompression in Frameworks */,
-				3305BB472DB893A500660D45 /* Zip in Frameworks */,
-				3305BB482DB893A500660D45 /* MobileCoreServices.framework in Frameworks */,
-				3346F8392DC6C6C800C7D508 /* NukeUI in Frameworks */,
-				330F69052DC03E0400D8C35D /* NimbleExtensions in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3379C1B62DA869A1004372DA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -142,6 +86,7 @@
 				3346F5C22DC329A200C7D508 /* ZsignSwift in Frameworks */,
 				3346F8492DC6D64800C7D508 /* NimbleJSON in Frameworks */,
 				330F69012DC03DF500D8C35D /* NimbleExtensions in Frameworks */,
+				3349E7672DEFB46F00E317ED /* IDeviceSwift in Frameworks */,
 				33CF13392DB5ACFB0021D4C5 /* SWCompression in Frameworks */,
 				33693A082DC8BF5B00730215 /* AltSourceKit in Frameworks */,
 				3371F7322DA9ECDD00281AC6 /* Zip in Frameworks */,
@@ -185,7 +130,6 @@
 			children = (
 				3379C1B92DA869A1004372DA /* Feather.app */,
 				AABA5D192DB3C87800BFCD2C /* FeatherTests.xctest */,
-				3305BB4E2DB893A500660D45 /* Feather-idevice.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -193,38 +137,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3305BB3C2DB893A500660D45 /* Feather-idevice */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3305BB4B2DB893A500660D45 /* Build configuration list for PBXNativeTarget "Feather-idevice" */;
-			buildPhases = (
-				3305BB432DB893A500660D45 /* Sources */,
-				3305BB442DB893A500660D45 /* Frameworks */,
-				3305BB4A2DB893A500660D45 /* Resources */,
-				33793D7E2DC9DB32004372DA /* Copy Acknowledgements */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				339776092DC9D0FE00642FFB /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				3379C1BB2DA869A1004372DA /* Feather */,
-			);
-			name = "Feather-idevice";
-			packageProductDependencies = (
-				3305BB3E2DB893A500660D45 /* Zip */,
-				3305BB412DB893A500660D45 /* SWCompression */,
-				330F69042DC03E0400D8C35D /* NimbleExtensions */,
-				330F69062DC03E0700D8C35D /* NimbleViews */,
-				3346F5BF2DC3299D00C7D508 /* ZsignSwift */,
-				3346F8382DC6C6C800C7D508 /* NukeUI */,
-				3346F8462DC6D64400C7D508 /* NimbleJSON */,
-				33693A092DC8BF6800730215 /* AltSourceKit */,
-			);
-			productName = Feather;
-			productReference = 3305BB4E2DB893A500660D45 /* Feather-idevice.app */;
-			productType = "com.apple.product-type.application";
-		};
 		3379C1B82DA869A1004372DA /* Feather */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3379C1CD2DA869A3004372DA /* Build configuration list for PBXNativeTarget "Feather" */;
@@ -255,6 +167,7 @@
 				3346F83A2DC6C6D100C7D508 /* NukeUI */,
 				3346F8482DC6D64800C7D508 /* NimbleJSON */,
 				33693A072DC8BF5B00730215 /* AltSourceKit */,
+				3349E7662DEFB46F00E317ED /* IDeviceSwift */,
 			);
 			productName = Feather;
 			productReference = 3379C1B92DA869A1004372DA /* Feather.app */;
@@ -328,6 +241,7 @@
 				3346F8372DC6C68300C7D508 /* XCRemoteSwiftPackageReference "Nuke" */,
 				33693A062DC8BF5B00730215 /* XCLocalSwiftPackageReference "AltSourceKit" */,
 				339776052DC9D05C00642FFB /* XCRemoteSwiftPackageReference "LicensePlist" */,
+				3349E7652DEFB46F00E317ED /* XCLocalSwiftPackageReference "IDeviceKitten" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3379C1BA2DA869A1004372DA /* Products */;
@@ -335,20 +249,12 @@
 			projectRoot = "";
 			targets = (
 				3379C1B82DA869A1004372DA /* Feather */,
-				3305BB3C2DB893A500660D45 /* Feather-idevice */,
 				AABA5D182DB3C87800BFCD2C /* FeatherTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		3305BB4A2DB893A500660D45 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3379C1B72DA869A1004372DA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -366,20 +272,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		33793D7E2DC9DB32004372DA /* Copy Acknowledgements */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Acknowledgements";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"Will copy acknowledgements\"\n\nACKNOWLEDGEMENTS_DIR=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/com.mono0926.LicensePlist.Output\nDESTINATION_PATH=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/Settings.bundle/\n\ncp -r \"${ACKNOWLEDGEMENTS_DIR}\"/thewonderofyou.Feather \"${DESTINATION_PATH}\"\ncp -r \"${ACKNOWLEDGEMENTS_DIR}\"/thewonderofyou.Feather.plist \"${DESTINATION_PATH}\"\nrm -rf \"${ACKNOWLEDGEMENTS_DIR}\"\n";
-		};
 		3379BC662DC9DB32004372DA /* Copy Acknowledgements */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -397,13 +289,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3305BB432DB893A500660D45 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3379C1B52DA869A1004372DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -425,10 +310,6 @@
 			isa = PBXTargetDependency;
 			productRef = 339776062DC9D0F800642FFB /* LicensePlistBuildTool */;
 		};
-		339776092DC9D0FE00642FFB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 339776082DC9D0FE00642FFB /* LicensePlistBuildTool */;
-		};
 		AABA5D1E2DB3C87800BFCD2C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3379C1B82DA869A1004372DA /* Feather */;
@@ -437,135 +318,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		3305BB4C2DB893A500660D45 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "Feather/Supporting Files/Feather.entitlements";
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
-				COMPRESS_PNG_FILES = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = "";
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"IDEVICE=1",
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Feather/Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Feather;
-				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = NO;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright (c) 2024 Samara M";
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Feather/Resources",
-					"$(PROJECT_DIR)/Feather/Resources/idevice",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 2.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "thewonderofyou.Feather-idevice";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = auto;
-				STRIP_INSTALLED_PRODUCT = NO;
-				STRIP_PNG_TEXT = NO;
-				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "IDEVICE DEBUG $(inherited)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Feather/Supporting Files/Feather-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,3";
-				TVOS_DEPLOYMENT_TARGET = 16.0;
-				XROS_DEPLOYMENT_TARGET = 2.2;
-			};
-			name = Debug;
-		};
-		3305BB4D2DB893A500660D45 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "Feather/Supporting Files/Feather.entitlements";
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
-				COMPRESS_PNG_FILES = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEPLOYMENT_POSTPROCESSING = YES;
-				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = "";
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREPROCESSOR_DEFINITIONS = "IDEVICE=1";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Feather/Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Feather;
-				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = NO;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright (c) 2024 Samara M";
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Feather/Resources",
-					"$(PROJECT_DIR)/Feather/Resources/idevice",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 2.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "thewonderofyou.Feather-idevice";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = auto;
-				STRIPFLAGS = "-rSTx";
-				STRIP_PNG_TEXT = NO;
-				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = IDEVICE;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Feather/Supporting Files/Feather-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,3";
-				TVOS_DEPLOYMENT_TARGET = 16.0;
-				XROS_DEPLOYMENT_TARGET = 2.2;
-			};
-			name = Release;
-		};
 		3379C1CB2DA869A3004372DA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -867,15 +619,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3305BB4B2DB893A500660D45 /* Build configuration list for PBXNativeTarget "Feather-idevice" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3305BB4C2DB893A500660D45 /* Debug */,
-				3305BB4D2DB893A500660D45 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		3379C1B42DA869A1004372DA /* Build configuration list for PBXProject "Feather" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -910,6 +653,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = NimbleKit;
 		};
+		3349E7652DEFB46F00E317ED /* XCLocalSwiftPackageReference "IDeviceKitten" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = IDeviceKitten;
+		};
 		33693A062DC8BF5B00730215 /* XCLocalSwiftPackageReference "AltSourceKit" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = AltSourceKit;
@@ -921,22 +668,6 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3305BB3F2DB893A500660D45 /* XCRemoteSwiftPackageReference "Zip" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/marmelroy/Zip";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.2;
-			};
-		};
-		3305BB422DB893A500660D45 /* XCRemoteSwiftPackageReference "SWCompression" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tsolomko/SWCompression";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.8.6;
-			};
-		};
 		3305BBAA2DB8944200660D45 /* XCRemoteSwiftPackageReference "vapor" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/vapor/vapor";
@@ -980,16 +711,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3305BB3E2DB893A500660D45 /* Zip */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3305BB3F2DB893A500660D45 /* XCRemoteSwiftPackageReference "Zip" */;
-			productName = Zip;
-		};
-		3305BB412DB893A500660D45 /* SWCompression */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3305BB422DB893A500660D45 /* XCRemoteSwiftPackageReference "SWCompression" */;
-			productName = SWCompression;
-		};
 		3305BBAB2DB8944200660D45 /* Vapor */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3305BBAA2DB8944200660D45 /* XCRemoteSwiftPackageReference "vapor" */;
@@ -1011,45 +732,24 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = NimbleViews;
 		};
-		330F69042DC03E0400D8C35D /* NimbleExtensions */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = NimbleExtensions;
-		};
-		330F69062DC03E0700D8C35D /* NimbleViews */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = NimbleViews;
-		};
-		3346F5BF2DC3299D00C7D508 /* ZsignSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = ZsignSwift;
-		};
 		3346F5C12DC329A200C7D508 /* ZsignSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ZsignSwift;
-		};
-		3346F8382DC6C6C800C7D508 /* NukeUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3346F8372DC6C68300C7D508 /* XCRemoteSwiftPackageReference "Nuke" */;
-			productName = NukeUI;
 		};
 		3346F83A2DC6C6D100C7D508 /* NukeUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3346F8372DC6C68300C7D508 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = NukeUI;
 		};
-		3346F8462DC6D64400C7D508 /* NimbleJSON */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = NimbleJSON;
-		};
 		3346F8482DC6D64800C7D508 /* NimbleJSON */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = NimbleJSON;
 		};
-		33693A072DC8BF5B00730215 /* AltSourceKit */ = {
+		3349E7662DEFB46F00E317ED /* IDeviceSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = AltSourceKit;
+			productName = IDeviceSwift;
 		};
-		33693A092DC8BF6800730215 /* AltSourceKit */ = {
+		33693A072DC8BF5B00730215 /* AltSourceKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AltSourceKit;
 		};
@@ -1059,11 +759,6 @@
 			productName = Zip;
 		};
 		339776062DC9D0F800642FFB /* LicensePlistBuildTool */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 339776052DC9D05C00642FFB /* XCRemoteSwiftPackageReference "LicensePlist" */;
-			productName = "plugin:LicensePlistBuildTool";
-		};
-		339776082DC9D0FE00642FFB /* LicensePlistBuildTool */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 339776052DC9D05C00642FFB /* XCRemoteSwiftPackageReference "LicensePlist" */;
 			productName = "plugin:LicensePlistBuildTool";

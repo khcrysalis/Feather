@@ -1,6 +1,6 @@
 NAME := Feather
 PLATFORM := iphoneos
-SCHEMES := Feather Feather-idevice
+SCHEMES := Feather
 TMP := $(TMPDIR)/$(NAME)
 STAGE := $(TMP)/stage
 APP := $(TMP)/Build/Products/Release-$(PLATFORM)
