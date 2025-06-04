@@ -12,6 +12,8 @@ import NimbleViews
 
 // MARK: - View
 struct SourcesView: View {
+	@Environment(\.horizontalSizeClass) private var horizontalSizeClass
+	
 	@StateObject var viewModel = SourcesViewModel.shared
 	@State private var _isAddingPresenting = false
 	@State private var _addingSourceLoading = false
@@ -35,6 +37,7 @@ struct SourcesView: View {
 					NavigationLink {
 						SourceAppsView(object: Array(_sources), viewModel: viewModel)
 					} label: {
+						let isRegular = horizontalSizeClass != .compact
 						HStack(spacing: 9) {
 							Image("Repositories").appIconStyle()
 							NBTitleWithSubtitleView(
@@ -42,6 +45,13 @@ struct SourcesView: View {
 								subtitle: .localized("See all apps from your sources")
 							)
 						}
+						.padding(isRegular ? 12 : 0)
+						.background(
+							isRegular
+							? RoundedRectangle(cornerRadius: 18, style: .continuous)
+								.fill(Color(.quaternarySystemFill))
+							: nil
+						)
 					}
 					.buttonStyle(.plain)
 				}
