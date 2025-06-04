@@ -24,7 +24,6 @@ struct ServerView: View {
 	var body: some View {
 		NBList(.localized("Server & SSL")) {
 			Section {
-				// localize
 				Picker(.localized("Server Type"), systemImage: "server.rack", selection: $_serverMethod) {
 					ForEach(_serverMethods.indices, id: \.description) { index in
 						Text(_serverMethods[index]).tag(index)

@@ -3621,6 +3621,17 @@
         }
       }
     },
+    "Installation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installation"
+          }
+        }
+      }
+    },
     "Installation Type" : {
       "localizations" : {
         "cs" : {
@@ -5831,6 +5842,17 @@
         }
       }
     },
+    "Server Type" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server Type"
+          }
+        }
+      }
+    },
     "Settings" : {
       "comment" : "Settings tab",
       "extractionState" : "manual",
@@ -7118,6 +7140,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kamu tidak bisa melakukan update pada ‘%@’ menggunakan dirinya sendiri. Silakan gunakan tool alternatif untuk memperbaruinya."
+          }
+        }
+      }
+    },
+    "Your pairing file is invalid and is incompatible with your device, please import a valid pairing file." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your pairing file is invalid and is incompatible with your device, please import a valid pairing file."
           }
         }
       }

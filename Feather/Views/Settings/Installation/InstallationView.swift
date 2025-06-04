@@ -8,6 +8,7 @@
 import SwiftUI
 import NimbleViews
 
+// MARK: - View
 struct InstallationView: View {
 	@AppStorage("Feather.installationMethod") private var _installationMethod: Int = 0
 	
@@ -16,8 +17,9 @@ struct InstallationView: View {
 		.localized("idevice")
 	]
 	
+	// MARK: Body
     var body: some View {
-		NBList(.localized("Installation")) { // localize
+		NBList(.localized("Installation")) {
 			Section {
 				Picker(.localized("Installation Type"), systemImage: "arrow.down.app", selection: $_installationMethod) {
 					ForEach(_installationMethods.indices, id: \.description) { index in
