@@ -31,8 +31,7 @@ struct SettingsView: View {
 					NavigationLink(.localized("Certificates"), destination: CertificatesView())
 					NavigationLink(.localized("Signing Options"), destination: ConfigurationView())
 					NavigationLink(.localized("Archive & Compression"), destination: ArchiveView())
-					NavigationLink(.localized("Server & SSL"), destination: ServerView())
-					NavigationLink(.localized("Tunnel & Pairing"), destination: TunnelView())
+					NavigationLink(.localized("Installation"), destination: InstallationView())
 				}
 				
 				_directories()
