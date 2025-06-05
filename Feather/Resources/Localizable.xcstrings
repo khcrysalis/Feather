@@ -7004,6 +7004,17 @@
       },
       "shouldTranslate" : false
     },
+    "Value" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Value"
+          }
+        }
+      }
+    },
     "Version" : {
       "localizations" : {
         "cs" : {
