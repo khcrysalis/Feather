@@ -13,6 +13,7 @@
         <attribute name="nickname" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
         <attribute name="ppQCheck" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="revoked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="uuid" attributeType="String"/>
         <relationship name="signedApps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Signed" inverseName="certificate" inverseEntity="Signed"/>
     </entity>

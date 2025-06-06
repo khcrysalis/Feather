@@ -21,6 +21,9 @@ manual:
   - name: "ElleKit"
     file: "LICENSE_EllEKIT"
 
+  - name: "LiveContainer"
+    file: "Zsign/LICENSE_LC"
+
 exclude:
   - swift-html-entities
   - LicensePlist
