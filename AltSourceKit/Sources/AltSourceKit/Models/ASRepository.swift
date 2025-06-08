@@ -157,6 +157,8 @@ extension ASRepository {
 		public var screenshots: Screenshots?
 
 		public var screenshotURLs: [URL]?
+		
+		public var marketplaceID: String?
 
 		public struct Screenshots: Decodable, Hashable, Sendable {
 			public var iPhone: [URL]?
@@ -260,6 +262,11 @@ extension ASRepository {
 
 			self.screenshotURLs =
 				try container.decodeIfPresent([URL].self, forKey: .screenshotURLs)
+			
+			if let _ = try container.decodeIfPresent(String.self, forKey: .marketplaceID) {
+				throw NSError(domain: "FeatherSources", code: 112789, userInfo: [NSLocalizedDescriptionKey: "AltStore PAL repositories aren't supported: \(id ?? "")"])
+			}
+
 		}
 
 		//		func encode(to encoder: any Encoder) throws {
@@ -309,6 +316,7 @@ extension ASRepository {
 				localizedDescription, iconURL, tintColor, size, category, beta
 			case permissions, appPermissions
 			case screenshots, screenshotURLs
+			case marketplaceID
 		}
 		
 		public var currentAppVersion: Version? {
