@@ -594,7 +594,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tất cả các tệp của Feathers được chứa trong thư mục tài liệu, đây là một số liên kết nhanh đến chúng."
+            "value" : "Tất cả các tệp của Feathers có thể được tìm thấy trong ứng dụng Tệp, đây là một số liên kết nhanh đến chúng."
           }
         }
       }
@@ -938,6 +938,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Best"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tốt nhất"
           }
         }
       }
@@ -1335,6 +1341,12 @@
             "state" : "translated",
             "value" : "Completed"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoàn thành"
+          }
         }
       }
     },
@@ -1485,7 +1497,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bản quyền"
+            "value" : "Ghi công"
           }
         }
       }
@@ -1998,6 +2010,12 @@
             "state" : "translated",
             "value" : "Unduh StosVPN"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tải StosVPN"
+          }
         }
       }
     },
@@ -2226,7 +2244,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nhập mật khẩu liên kết với khóa riêng tư. Để trống nếu không yêu cầu mật khẩu."
+            "value" : "Nhập mật khẩu của chứng chỉ. Để trống nếu không yêu cầu mật khẩu."
           }
         }
       }
@@ -2272,6 +2290,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Error"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lỗi"
           }
         }
       }
@@ -2656,7 +2680,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lọc theo"
+            "value" : "Sắp xếp theo"
           }
         }
       }
@@ -3227,6 +3251,12 @@
             "state" : "translated",
             "value" : "idevice"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "idevice"
+          }
         }
       },
       "shouldTranslate" : false
@@ -3320,7 +3350,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nhập tệp chứng chỉ"
+            "value" : "Nhập tệp .p12"
           }
         }
       }
@@ -3466,7 +3496,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nhập tệp provisioning"
+            "value" : "Nhập tệp mobileprovision"
           }
         }
       }
@@ -3555,6 +3585,12 @@
             "state" : "translated",
             "value" : "Folder Injeksi"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thư mục tiêm"
+          }
         }
       }
     },
@@ -3571,6 +3607,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Direktori Injeksi"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đường dẫn tiêm"
           }
         }
       }
@@ -3641,6 +3683,12 @@
             "state" : "translated",
             "value" : "Installation"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cài đặt"
+          }
         }
       }
     },
@@ -3685,6 +3733,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Installing"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đang cài đặt"
           }
         }
       }
@@ -4201,6 +4255,12 @@
             "state" : "translated",
             "value" : "Belum ada file yang dipilih."
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không có tập tin nào được chọn."
+          }
         }
       }
     },
@@ -4246,6 +4306,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "None"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không"
           }
         }
       }
@@ -4405,7 +4471,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mở kho lưu trữ"
+            "value" : "Mở thư mục lưu trữ"
           }
         }
       }
@@ -4439,7 +4505,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mở chứng chỉ"
+            "value" : "Mở thư mục chứng chỉ"
           }
         }
       }
@@ -4473,7 +4539,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mở tài liệu"
+            "value" : "Mở thư mục tài liệu"
           }
         }
       }
@@ -4543,6 +4609,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Packaging"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đóng gói"
           }
         }
       }
@@ -5075,6 +5147,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ready"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sẵn sàng"
           }
         }
       }
@@ -5806,6 +5884,12 @@
             "state" : "translated",
             "value" : "Sending Manifest"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gửi Manifest"
+          }
         }
       }
     },
@@ -5816,6 +5900,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sending Payload"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gửi Payload"
           }
         }
       }
@@ -5828,16 +5918,28 @@
             "state" : "translated",
             "value" : "Server"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Máy chủ"
+          }
         }
       }
     },
-    "Server (Recommended):\\nUses a locally hosted server and itms-services:// to install applications.\\n\\nIDevice (advanced):\\nUses a VPN and a pairing file. Writes to AFC and manually calls installd, while monitoring install progress by using a callback\\nAdvantage: It is very reliable, does not need SSL certificates or a externally hosted server. Rather, works similarly to a computer." : {
+    "Server (Recommended):\nUses a locally hosted server and itms-services:// to install applications.\n\nIDevice (advanced):\nUses a VPN and a pairing file. Writes to AFC and manually calls installd, while monitoring install progress by using a callback\nAdvantage: It is very reliable, does not need SSL certificates or a externally hosted server. Rather, works similarly to a computer." : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Server (Recommended):\\nUses a locally hosted server and itms-services:// to install applications.\\n\\nIDevice (advanced):\\nUses a VPN and a pairing file. Writes to AFC and manually calls installd, while monitoring install progress by using a callback\\nAdvantage: It is very reliable, does not need SSL certificates or a externally hosted server. Rather, works similarly to a computer."
+            "value" : "Server (Recommended):\nUses a locally hosted server and itms-services:// to install applications.\n\nIDevice (advanced):\nUses a VPN and a pairing file. Writes to AFC and manually calls installd, while monitoring install progress by using a callback\nAdvantage: It is very reliable, does not need SSL certificates or a externally hosted server. Rather, works similarly to a computer."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Máy chủ (Khuyến nghị):\nSử dụng máy chủ lưu trữ cục bộ và itms-services:// để cài đặt ứng dụng.\n\nIDevice (nâng cao):\nSử dụng VPN và tệp ghép nối. Ghi vào AFC và gọi installd theo cách thủ công, đồng thời theo dõi tiến trình cài đặt bằng cách sử dụng lệnh gọi lại\nƯu điểm: Rất đáng tin cậy, không cần chứng chỉ SSL hoặc máy chủ lưu trữ bên ngoài. Thay vào đó, hoạt động tương tự như máy tính."
           }
         }
       }
@@ -5883,6 +5985,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Server Type"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loại máy chủ"
           }
         }
       }
@@ -5971,7 +6079,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hiển thị bảng khi xuất"
+            "value" : "Hiển thị bảng chia sẻ khi xuất"
           }
         }
       }
@@ -6303,6 +6411,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Speed"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tốc độ"
           }
         }
       }
@@ -6818,7 +6932,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bật hiển thị bảng sẽ hiện một bảng chia sẻ sau khi xuất vào tệp của bạn."
+            "value" : "Bật tính năng này sẽ hiển thị một bảng chia sẻ sau khi xuất IPA vào tệp của bạn."
           }
         }
       }
@@ -7012,6 +7126,12 @@
             "state" : "translated",
             "value" : "Value"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giá trị"
+          }
         }
       }
     },
@@ -7186,6 +7306,12 @@
             "state" : "translated",
             "value" : "Kamu tidak bisa melakukan update pada ‘%@’ menggunakan dirinya sendiri. Silakan gunakan tool alternatif untuk memperbaruinya."
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn không thể cập nhật ‘%@‘ bằng chính nó, vui lòng sử dụng công cụ thay thế để cập nhật."
+          }
         }
       }
     },
@@ -7196,6 +7322,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Your pairing file is invalid and is incompatible with your device, please import a valid pairing file."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tệp ghép nối của bạn không hợp lệ và không tương thích với thiết bị của bạn, vui lòng nhập tệp ghép nối hợp lệ."
           }
         }
       }
