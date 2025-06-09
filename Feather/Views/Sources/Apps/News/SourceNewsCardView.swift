@@ -9,9 +9,11 @@ import SwiftUI
 import AltSourceKit
 import NukeUI
 
+// MARK: - View
 struct SourceNewsCardView: View {
 	var new: ASRepository.News
 	
+	// MARK: Body
 	var body: some View {
 		ZStack(alignment: .bottomLeading) {
 			let placeholderView = {
@@ -35,7 +37,7 @@ struct SourceNewsCardView: View {
 			}
 			
 			LinearGradient(
-				gradient: Gradient(colors: [.black.opacity(0.6), .clear]),
+				gradient: Gradient(colors: [.black.opacity(0.8), .clear]),
 				startPoint: .bottom,
 				endPoint: .top
 			)
@@ -47,6 +49,7 @@ struct SourceNewsCardView: View {
 				.font(.headline)
 				.foregroundColor(.white)
 				.lineLimit(2)
+				.multilineTextAlignment(.leading)
 				.padding()
 		}
 		.frame(width: 250, height: 150)

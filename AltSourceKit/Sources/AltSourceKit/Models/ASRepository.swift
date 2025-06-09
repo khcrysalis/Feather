@@ -415,6 +415,7 @@ extension ASRepository {
 		public var caption: String
 		public var tintColor: Color?
 		public var imageURL: URL?
+		public var url: URL?
 		public var appID: App.ID?
 		public var date: DateParsed?
 		public var notify: Bool
@@ -429,6 +430,7 @@ extension ASRepository {
 				forKey: .tintColor
 			)
 			self.imageURL = try container.decodeIfPresent(URL.self, forKey: .imageURL)
+			self.url = try container.decodeIfPresent(URL.self, forKey: .url)
 			self.appID = try container.decodeIfPresent(App.ID.self, forKey: .appID)
 			self.date = try container.decodeIfPresent(DateParsed.self, forKey: .date)
 			self.notify =
@@ -437,7 +439,7 @@ extension ASRepository {
 
 		public enum CodingKeys: String, CodingKey {
 			case id = "identifier"
-			case title, caption, tintColor, imageURL, appID, date, notify
+			case title, caption, tintColor, imageURL, url, appID, date, notify
 		}
 	}
 }
