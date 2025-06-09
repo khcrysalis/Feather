@@ -35,8 +35,10 @@ final class Storage: ObservableObject {
 	}
 	
 	func saveContext() {
-		if context.hasChanges {
-			try? context.save()
+		DispatchQueue.main.async {
+			if self.context.hasChanges {
+				try? self.context.save()
+			}
 		}
 	}
 	

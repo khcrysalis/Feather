@@ -29,13 +29,9 @@ extension Storage {
 		new.expiration = expiration
 		new.nickname = nickname
 		
-		do {
-			try context.save()
-			generator.impactOccurred()
-			completion(nil)
-		} catch {
-			completion(error)
-		}
+		saveContext()
+		generator.impactOccurred()
+		completion(nil)
 	}
 	
 	func deleteCertificate(for cert: CertificatePair) {
