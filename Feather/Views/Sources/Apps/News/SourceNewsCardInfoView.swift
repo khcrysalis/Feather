@@ -63,12 +63,8 @@ struct SourceNewsCardInfoView: View {
 						}
 						
 						if let url = new.url {
-							Button {
+							Button(.localized("Open"), systemImage: "arrow.up.right") {
 								UIApplication.shared.open(url)
-							} label: {
-								Label(.localized("Open"), systemImage: "arrow.up.right")
-									.font(.headline)
-									.frame(maxWidth: .infinity)
 							}
 							.padding()
 							.background(Color(uiColor: .quaternarySystemFill))

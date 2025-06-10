@@ -28,6 +28,7 @@ extension Storage {
 		new.ppQCheck = ppq
 		new.expiration = expiration
 		new.nickname = nickname
+		Storage.shared.revokagedCertificate(for: new)
 		
 		saveContext()
 		generator.impactOccurred()
@@ -53,7 +54,7 @@ extension Storage {
 			if status == 1 {
 				DispatchQueue.main.async {
 					cert.revoked = true
-					Storage.shared.saveContext()
+					self.saveContext()
 				}
 			}
 		}

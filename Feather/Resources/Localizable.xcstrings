@@ -1228,6 +1228,17 @@
         }
       }
     },
+    "Check Revokage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check Revokage"
+          }
+        }
+      }
+    },
     "Choose from Files" : {
       "comment" : "Select custom app icon from files",
       "localizations" : {

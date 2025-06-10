@@ -17,7 +17,6 @@ struct CertificatesCellView: View {
 	// MARK: Body
 	var body: some View {
 		VStack(spacing: 6) {
-			
 			NBTitleWithSubtitleView(
 				title: cert.nickname ?? data?.Name ?? .localized("Unknown"),
 				subtitle: data?.AppIDName ?? .localized("Unknown")
@@ -31,7 +30,6 @@ struct CertificatesCellView: View {
 		.onAppear {
 			withAnimation {
 				data = Storage.shared.getProvisionFileDecoded(for: cert)
-				Storage.shared.revokagedCertificate(for: cert)
 			}
 		}
 	}
