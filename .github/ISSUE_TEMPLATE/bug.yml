@@ -27,3 +27,11 @@ body:
       options:
         - label: I have read the requirements for opening an issue above
           required: true
+
+  - type: checkboxes
+    id: agreement2
+    attributes:
+      label: Contributor Checks
+      options:
+        - label: I am willing to attempt to make a pull request to fix this bug
+          required: false
