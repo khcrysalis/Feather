@@ -11,8 +11,10 @@ import NimbleViews
 
 // MARK: - View
 struct LibraryCellView: View {
-	@AppStorage("Feather.libraryCellAppearance") private var _libraryCellAppearance: Int = 0
+	@Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
+	@AppStorage("Feather.libraryCellAppearance") private var _libraryCellAppearance: Int = 0
+	
 	var certInfo: Date.ExpirationInfo? {
 		Storage.shared.getCertificate(from: app)?.expiration?.expirationInfo()
 	}
@@ -22,8 +24,9 @@ struct LibraryCellView: View {
 	@Binding var selectedSigningAppPresenting: AnyApp?
 	@Binding var selectedInstallAppPresenting: AnyApp?
 	
-	// MARK: Body
 	var body: some View {
+		let isRegular = horizontalSizeClass != .compact
+		
 		HStack(spacing: 9) {
 			FRAppIconView(app: app, size: 57)
 			
@@ -35,7 +38,13 @@ struct LibraryCellView: View {
 			
 			_buttonActions(for: app)
 		}
-		
+		.padding(isRegular ? 12 : 0)
+		.background(
+			isRegular
+			? RoundedRectangle(cornerRadius: 18, style: .continuous)
+				.fill(Color(.quaternarySystemFill))
+			: nil
+		)
 		.swipeActions {
 			_actions(for: app)
 		}
@@ -49,16 +58,14 @@ struct LibraryCellView: View {
 	}
 	
 	private var _desc: String {
-		if
-			let version = app.version,
-			let id = app.identifier
-		{
+		if let version = app.version, let id = app.identifier {
 			return "\(version) • \(id)"
 		} else {
 			return .localized("Unknown")
 		}
 	}
 }
+
 
 // MARK: - Extension: View
 extension LibraryCellView {
@@ -96,6 +103,9 @@ extension LibraryCellView {
 		} else {
 			Button(.localized("Install"), systemImage: "square.and.arrow.down") {
 				selectedInstallAppPresenting = AnyApp(base: app)
+			}
+			Button(.localized("Sign"), systemImage: "signature") {
+				selectedSigningAppPresenting = AnyApp(base: app)
 			}
 		}
 	}

@@ -31,11 +31,7 @@ struct SettingsView: View {
 					NavigationLink(.localized("Certificates"), destination: CertificatesView())
 					NavigationLink(.localized("Signing Options"), destination: ConfigurationView())
 					NavigationLink(.localized("Archive & Compression"), destination: ArchiveView())
-					#if SERVER
-					NavigationLink(.localized("Server & SSL"), destination: ServerView())
-					#elseif IDEVICE
-					NavigationLink(.localized("Tunnel & Pairing"), destination: TunnelView())
-					#endif
+					NavigationLink(.localized("Installation"), destination: InstallationView())
 				}
 				
 				_directories()

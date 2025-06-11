@@ -7,6 +7,7 @@
 
 import CoreData
 import UIKit.UIImpactFeedbackGenerator
+import ZsignSwift
 
 // MARK: - Class extension: certificate
 extension Storage {
@@ -27,14 +28,11 @@ extension Storage {
 		new.ppQCheck = ppq
 		new.expiration = expiration
 		new.nickname = nickname
+		Storage.shared.revokagedCertificate(for: new)
 		
-		do {
-			try context.save()
-			generator.impactOccurred()
-			completion(nil)
-		} catch {
-			completion(error)
-		}
+		saveContext()
+		generator.impactOccurred()
+		completion(nil)
 	}
 	
 	func deleteCertificate(for cert: CertificatePair) {
@@ -44,7 +42,24 @@ extension Storage {
 		context.delete(cert)
 		saveContext()
 	}
+	
+	func revokagedCertificate(for cert: CertificatePair) {
+		guard !cert.revoked else { return }
 		
+		Zsign.checkRevokage(
+			provisionPath: Storage.shared.getFile(.provision, from: cert)?.path ?? "",
+			p12Path: Storage.shared.getFile(.certificate, from: cert)?.path ?? "",
+			p12Password: cert.password ?? ""
+		) { (status, _, _) in
+			if status == 1 {
+				DispatchQueue.main.async {
+					cert.revoked = true
+					self.saveContext()
+				}
+			}
+		}
+	}
+	
 	enum FileRequest: String {
 		case certificate = "p12"
 		case provision = "mobileprovision"

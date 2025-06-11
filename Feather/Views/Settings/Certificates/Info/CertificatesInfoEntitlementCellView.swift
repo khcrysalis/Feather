@@ -25,6 +25,7 @@ struct CertificatesInfoEntitlementCellView: View {
 				Spacer()
 				Text(_formatted(value))
 					.foregroundStyle(.secondary)
+					.copyableText(_formatted(value))
 			}
 		}
 	}

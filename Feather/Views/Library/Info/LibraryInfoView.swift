@@ -100,5 +100,6 @@ extension LibraryInfoView {
 		LabeledContent(title) {
 			Text(desc)
 		}
+		.copyableText(desc)
 	}
 }

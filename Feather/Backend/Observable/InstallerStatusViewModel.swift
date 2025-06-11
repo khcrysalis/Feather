@@ -7,33 +7,9 @@
 
 import Foundation
 import Combine
+import IDeviceSwift
 
-final class InstallerStatusViewModel: ObservableObject {
-	@Published var status: InstallerStatus
-	
-	@Published var uploadProgress: Double = 0.0
-	@Published var packageProgress: Double = 0.0
-	@Published var installProgress: Double = 0.0
-	
-	var overallProgress: Double {
-		#if IDEVICE
-		(installProgress + uploadProgress + packageProgress) / 3.0
-		#elseif SERVER
-		packageProgress
-		#endif
-	}
-	
-	var isCompleted: Bool {
-		if case .completed = status {
-			return true
-		}
-		return false
-	}
-	
-	init(status: InstallerStatus = .none) {
-		self.status = status
-	}
-	
+extension InstallerStatusViewModel {
 	var statusImage: String {
 		switch status {
 		case .none: return "archivebox.fill"
@@ -47,23 +23,13 @@ final class InstallerStatusViewModel: ObservableObject {
 	
 	var statusLabel: String {
 		switch status {
-		case .none: return "Packaging"
-		case .ready: return "Ready"
-		case .sendingManifest: return "Sending Manifest"
-		case .sendingPayload: return "Sending Payload"
-		case .installing: return "Installing"
-		case .completed: return "Completed"
-		case .broken: return "Error"
+		case .none: return .localized("Packaging")
+		case .ready: return .localized("Ready")
+		case .sendingManifest: return .localized("Sending Manifest")
+		case .sendingPayload: return .localized("Sending Payload")
+		case .installing: return .localized("Installing")
+		case .completed: return .localized("Completed")
+		case .broken: return .localized("Error")
 		}
 	}
-}
-
-enum InstallerStatus {
-	case none
-	case ready
-	case sendingManifest
-	case sendingPayload
-	case installing
-	case completed(Result<Void, Error>)
-	case broken(Error)
 }

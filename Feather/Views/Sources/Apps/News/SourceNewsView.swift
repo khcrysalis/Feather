@@ -7,13 +7,20 @@
 
 import SwiftUI
 import AltSourceKit
+import NimbleViews
 
+// MARK: - View
 struct SourceNewsView: View {
 	@State var isLoading = true
 	@State var hasLoadedInitialData = false
 	
+	@State private var _selectedNewsPresenting: ASRepository.News?
+	
+	@Namespace private var _namespace
+	
 	var news: [ASRepository.News]?
 	
+	// MARK: Body
 	var body: some View {
 		VStack {
 			if
@@ -23,7 +30,12 @@ struct SourceNewsView: View {
 				ScrollView(.horizontal, showsIndicators: false) {
 					LazyHStack(spacing: 10) {
 						ForEach(news.reversed(), id: \.id) { new in
-							SourceNewsCardView(new: new)
+							Button {
+								_selectedNewsPresenting = new
+							} label: {
+								SourceNewsCardView(new: new)
+									.compatMatchedTransitionSource(id: new.id, ns: _namespace)
+							}
 						}
 					}
 					.padding(.horizontal, 21)
@@ -39,6 +51,10 @@ struct SourceNewsView: View {
 				_load()
 				hasLoadedInitialData = true
 			}
+		}
+		.fullScreenCover(item: $_selectedNewsPresenting) { new in
+			SourceNewsCardInfoView(new: new)
+				.compatNavigationTransition(id: new.id, ns: _namespace)
 		}
 	}
 	

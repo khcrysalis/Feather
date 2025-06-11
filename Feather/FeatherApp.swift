@@ -7,13 +7,14 @@
 
 import SwiftUI
 import Nuke
+import IDeviceSwift
 
 @main
 struct FeatherApp: App {
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-	#if IDEVICE
+	
 	let heartbeat = HeartbeatManager.shared
-	#endif
+	
 	@StateObject var downloadManager = DownloadManager.shared
 	let storage = Storage.shared
 
@@ -28,6 +29,14 @@ struct FeatherApp: App {
 					.transition(.move(edge: .top).combined(with: .opacity))
 			}
 			.animation(.smooth, value: downloadManager.manualDownloads.description)
+			.onReceive(NotificationCenter.default.publisher(for: .heartbeatInvalidHost)) { _ in
+				DispatchQueue.main.async {
+					UIAlertController.showAlertWithOk(
+						title: "InvalidHostID",
+						message: .localized("Your pairing file is invalid and is incompatible with your device, please import a valid pairing file.")
+					)
+				}
+			}
 		}
 	}
 	

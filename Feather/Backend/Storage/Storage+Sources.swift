@@ -84,12 +84,8 @@ extension Storage {
 			)
 		}
 		
-		do {
-			try context.save()
-			completion(nil)
-		} catch {
-			completion(error)
-		}
+		saveContext()
+		completion(nil)
 	}
 
 	func deleteSource(for source: AltSource) {

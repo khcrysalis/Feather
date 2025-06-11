@@ -95,19 +95,21 @@ extension CertificatesView {
 	
 	@ViewBuilder
 	private func _actions(for cert: CertificatePair) -> some View {
-		Button(role: .destructive) {
+		Button(.localized("Delete"), systemImage: "trash", role: .destructive) {
 			Storage.shared.deleteCertificate(for: cert)
-		} label: {
-			Label(.localized("Delete"), systemImage: "trash")
 		}
 	}
 	
 	@ViewBuilder
 	private func _contextActions(for cert: CertificatePair) -> some View {
-		Button {
+		Button(.localized("Get Info"), systemImage: "info.circle") {
 			_isSelectedInfoPresenting = cert
-		} label: {
-			Label(.localized("Get Info"), systemImage: "info.circle")
+		}
+		
+		Divider()
+		
+		Button(.localized("Check Revokage"), systemImage: "person.text.rectangle") {
+			Storage.shared.revokagedCertificate(for: cert)
 		}
 	}
 }

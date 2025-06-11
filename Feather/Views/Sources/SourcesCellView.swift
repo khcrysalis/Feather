@@ -11,14 +11,25 @@ import NukeUI
 
 // MARK: - View
 struct SourcesCellView: View {
+	@Environment(\.horizontalSizeClass) private var horizontalSizeClass
+	
 	var source: AltSource
 	
 	// MARK: Body
 	var body: some View {
+		let isRegular = horizontalSizeClass != .compact
+		
 		FRIconCellView(
 			title: source.name ?? .localized("Unknown"),
 			subtitle: source.sourceURL?.absoluteString ?? "",
 			iconUrl: source.iconURL
+		)
+		.padding(isRegular ? 12 : 0)
+		.background(
+			isRegular
+			? RoundedRectangle(cornerRadius: 18, style: .continuous)
+				.fill(Color(.quaternarySystemFill))
+			: nil
 		)
 		.swipeActions {
 			_actions(for: source)

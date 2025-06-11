@@ -12,12 +12,11 @@ import NimbleViews
 struct CertificatesCellView: View {
 	@State var data: Certificate?
 	
-	var cert: CertificatePair
+	@ObservedObject var cert: CertificatePair
 	
 	// MARK: Body
 	var body: some View {
 		VStack(spacing: 6) {
-			
 			NBTitleWithSubtitleView(
 				title: cert.nickname ?? data?.Name ?? .localized("Unknown"),
 				subtitle: data?.AppIDName ?? .localized("Unknown")
@@ -60,6 +59,10 @@ extension CertificatesCellView {
 		
 		if cert.ppQCheck == true {
 			pills.append(NBPillItem(title: "PPQCheck", icon: "checkmark.shield", color: .red))
+		}
+		
+		if cert.revoked == true {
+			pills.append(NBPillItem(title: "Revoked", icon: "xmark.octagon", color: .red))
 		}
 		
 		if let info = cert.expiration?.expirationInfo() {
