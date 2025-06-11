@@ -19,7 +19,7 @@ enum FR {
 		completion: @escaping (Error?) -> Void
 	) {
 		Task.detached {
-			let handler = AppFileHandler(file: ipa, download: download)
+			let handler = IpaFileHandler(file: ipa, download: download)
 			
 			do {
 				try await handler.copy()
@@ -38,7 +38,31 @@ enum FR {
 			}
 		}
 	}
-	
+    
+    static func handleAppBundle(
+        _ app: URL,
+        download: Download? = nil,
+        completion: @escaping (Error?) -> Void
+    ) {
+        Task.detached {
+            let handler = AppBundleHandler(file: app, download: download)
+            
+            do {
+                try await handler.copy()
+                try await handler.addToDatabase()
+                
+                await MainActor.run {
+                    completion(nil)
+                }
+            } catch {
+                try? await handler.clean()
+                await MainActor.run {
+                    completion(error)
+                }
+            }
+        }
+    }
+
 	static func signPackageFile(
 		_ app: AppInfoPresentable,
 		using options: Options,
