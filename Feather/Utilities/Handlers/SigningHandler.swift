@@ -85,8 +85,12 @@ final class SigningHandler: NSObject {
 		try await _removeCodeSignature(for: movedAppPath)
 		try await _removeProvisioning(for: movedAppPath)
 		
-		if !_options.injectionFiles.isEmpty {
+		if #available(iOS 19, *) {
 			try await _inject(for: movedAppPath, with: _options)
+		} else {
+			if !_options.injectionFiles.isEmpty {
+				try await _inject(for: movedAppPath, with: _options)
+			}
 		}
 		
 		let handler = ZsignHandler(appUrl: movedAppPath, options: _options, cert: appCertificate)
