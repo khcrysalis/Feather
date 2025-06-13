@@ -29,6 +29,7 @@ struct SourcesAddView: View {
 				Section {
 					TextField(.localized("Source Repo URL"), text: $_sourceURL)
 						.keyboardType(.URL)
+						.textInputAutocapitalization(.never)
 				} footer: {
 					Text(.localized("Enter a URL to start validation."))
 				}
