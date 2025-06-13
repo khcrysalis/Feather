@@ -100,7 +100,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 		
 		ImagePipeline.shared = pipeline
 	}
-
+	
 	private func _createSourcesDirectory() {
 		let fileManager = FileManager.default
 

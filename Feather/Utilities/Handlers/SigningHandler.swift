@@ -74,19 +74,16 @@ final class SigningHandler: NSObject {
 			try await _modifyLocalesForName(name, for: movedAppPath)
 		}
 		
-		if _options.removeWatchPlaceholder {
-			try await _removePlaceholderWatch(for: movedAppPath)
-		}
-		
 		if !_options.removeFiles.isEmpty {
 			try await _removeFiles(for: movedAppPath, from: _options.removeFiles)
 		}
 		
-		try await _removeCodeSignature(for: movedAppPath)
-		try await _removeProvisioning(for: movedAppPath)
+		try await _removePresetFiles(for: movedAppPath)
 		
+		// iOS "26" (19) needs special treatment
 		if #available(iOS 19, *) {
 			try await _inject(for: movedAppPath, with: _options)
+			try await _locateMachosAndFixupArm64eSlice(for: movedAppPath)
 		} else {
 			if !_options.injectionFiles.isEmpty {
 				try await _inject(for: movedAppPath, with: _options)
@@ -208,21 +205,6 @@ extension SigningHandler {
 		try infoDictionary.write(to: app.appendingPathComponent("Info.plist"))
 	}
 	
-	private func _removePlaceholderWatch(for app: URL) async throws {
-		let path = app.appendingPathComponent("com.apple.WatchPlaceholder")
-		try _fileManager.removeFileIfNeeded(at: path)
-	}
-	
-	private func _removeFiles(for app: URL, from appendingComponent: [String]) async throws {
-		let filesToRemove = appendingComponent.map {
-			app.appendingPathComponent($0)
-		}
-		
-		for url in filesToRemove {
-			try _fileManager.removeFileIfNeeded(at: url)
-		}
-	}
-	
 	private func _modifyLocalesForName(_ name: String, for app: URL) async throws {
 		let localizationBundles = try _fileManager
 			.contentsOfDirectory(at: app, includingPropertiesForKeys: nil)
@@ -243,19 +225,51 @@ extension SigningHandler {
 		}
 	}
 	
-	private func _removeCodeSignature(for app: URL) async throws {
-		let provisioningFilePath = app.appendingPathComponent("_CodeSignature")
-		try _fileManager.removeFileIfNeeded(at: provisioningFilePath)
+	private func _removePresetFiles(for app: URL) async throws {
+		let files = [
+			"_CodeSignature", // Remove this because zsign doesn't replace it
+			"embedded.mobileprovision", // Remove this because zsign doesn't replace it
+			"com.apple.WatchPlaceholder" // Useless
+		].map {
+			app.appendingPathComponent($0)
+		}
+		
+		for file in files {
+			try _fileManager.removeFileIfNeeded(at: file)
+		}
 	}
 	
-	private func _removeProvisioning(for app: URL) async throws {
-		let provisioningFilePath = app.appendingPathComponent("embedded.mobileprovision")
-		try _fileManager.removeFileIfNeeded(at: provisioningFilePath)
+	private func _removeFiles(for app: URL, from appendingComponent: [String]) async throws {
+		let filesToRemove = appendingComponent.map {
+			app.appendingPathComponent($0)
+		}
+		
+		for url in filesToRemove {
+			try _fileManager.removeFileIfNeeded(at: url)
+		}
 	}
 	
 	private func _inject(for app: URL, with options: Options) async throws {
 		let handler = TweakHandler(app: app, options: options)
 		try await handler.getInputFiles()
+	}
+	
+	@available(iOS 19, *)
+	private func _locateMachosAndFixupArm64eSlice(for app: URL) async throws {
+		let fileEnum = _fileManager.enumerator(atPath: app.path())
+
+		while let file = fileEnum?.nextObject() as? String {
+			if file.hasSuffix(".dylib") {
+				LCPatchMachOFixupARM64eSlice(app.appendingPathComponent(file).relativePath);
+			} else if file.hasSuffix("framework") {
+				let exec = Bundle(url: app.appendingPathComponent(file))?.executableURL
+				let path = app
+					.appendingPathComponent(file)
+					.appendingPathComponent(exec?.relativePath ?? "")
+					.relativePath
+				LCPatchMachOFixupARM64eSlice(path);
+			}
+		}
 	}
 }
 
@@ -268,16 +282,11 @@ enum SigningFileHandlerError: Error, LocalizedError {
 	
 	var errorDescription: String? {
 		switch self {
-		case .appNotFound:
-			return "Unable to locate bundle path."
-		case .infoPlistNotFound:
-			return "Unable to locate info.plist path."
-		case .missingCertifcate:
-			return "No certificate was specified."
-		case .disinjectFailed:
-			return "Removing mach-O load paths failed."
-		case .signFailed:
-			return "Signing failed."
+		case .appNotFound: "Unable to locate bundle path."
+		case .infoPlistNotFound: "Unable to locate info.plist path."
+		case .missingCertifcate: "No certificate was specified."
+		case .disinjectFailed: "Removing mach-O load paths failed."
+		case .signFailed: "Signing failed."
 		}
 	}
 }

@@ -100,12 +100,6 @@ struct SigningOptionsView: View {
 					isOn: $options.removeProvisioning,
 					temporaryValue: temporaryOptions?.removeProvisioning
 			)
-			
-			_toggle(.localized("Remove Watch Placeholder"),
-					systemImage: "applewatch.slash",
-					isOn: $options.removeWatchPlaceholder,
-					temporaryValue: temporaryOptions?.removeWatchPlaceholder
-			)
 		}
 		
 		Section {

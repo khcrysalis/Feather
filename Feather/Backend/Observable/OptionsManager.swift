@@ -90,7 +90,7 @@ struct Options: Codable, Equatable {
 	var removeURLScheme: Bool
 	/// If app should not include a `embedded.mobileprovision` (useful for JB detection)
 	var removeProvisioning: Bool
-	/// If app shouldn't include a "Watch Placeholder" (i.e. `Youtube Music` may include a useless app)
+	/// `Deprecated` If app shouldn't include a "Watch Placeholder" (i.e. `Youtube Music` may include a useless app)
 	var removeWatchPlaceholder: Bool
 	/// Forcefully rename string files for App name
 	var changeLanguageFilesForCustomDisplayName: Bool
@@ -119,6 +119,7 @@ struct Options: Codable, Equatable {
 		removeSupportedDevices: false,
 		removeURLScheme: false,
 		removeProvisioning: false,
+		// deprecated
 		removeWatchPlaceholder: false,
 		changeLanguageFilesForCustomDisplayName: false,
 		doAdhocSigning: false
