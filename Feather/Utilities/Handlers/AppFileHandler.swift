@@ -7,7 +7,7 @@
 
 import Foundation
 import Zip
-import SwiftUICore
+import SwiftUI
 import OSLog
 
 final class AppFileHandler: NSObject, @unchecked Sendable {

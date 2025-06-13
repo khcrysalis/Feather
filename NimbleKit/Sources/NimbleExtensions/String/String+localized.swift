@@ -6,7 +6,7 @@
 //
 
 import Foundation.NSString
-import SwiftUICore
+import SwiftUI
 
 extension String {
 	// from: https://github.com/NSAntoine/Antoine/blob/main/Antoine/Backend/Extensions/Foundation.swift#L43-L55

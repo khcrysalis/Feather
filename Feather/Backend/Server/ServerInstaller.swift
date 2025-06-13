@@ -11,7 +11,7 @@ import Foundation
 import Vapor
 import NIOSSL
 import NIOTLS
-import SwiftUICore
+import SwiftUI
 import IDeviceSwift
 
 // MARK: - Class
