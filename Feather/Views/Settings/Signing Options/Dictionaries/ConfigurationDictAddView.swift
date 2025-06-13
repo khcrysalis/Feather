@@ -39,6 +39,7 @@ struct ConfigurationDictAddView: View {
 				isDisabled: saveButtonDisabled
 			) {
 				dataDict[_newKey] = _newValue
+				OptionsManager.shared.saveOptions()
 				dismiss()
 			}
 		}
