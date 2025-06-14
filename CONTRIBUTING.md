@@ -59,4 +59,13 @@ When contributing to Zsign, head over to [khcrysalis/Zsign-Package](https://gith
 Any contributions to here will be immediately updated to here, to keep things consistent.
 
 ## Contributing to the wiki
-- If you want to add a page or suggest edits, make an issue with your proposed changes.
+
+This repository has a GitHub actions workflow set up to support PRs to the Wiki via a synced folder, as it is impossible to do so standardly.
+To contribute to the Wiki, make your pull request with markdown files within the folder /wiki. Be aware of several things:
+
+**You can propose edits to an existing page, an additional page, or the deletion of a page.**
+  - To delete a page, simply delete the corresponding markdown file.
+  - To edit a page, find the corresponding markdown file (the name will be the same as the Wiki page name<sup>1</sup>, simply make your edits.
+  - To add a page, make a new markdown file within the folder /wiki, and write in standard markdown formatting within that file. Note the following regarding file names:
+
+1\. Markdown files within the folder should have exactly the same name of the Wiki page you intend to edit or create, however spaces within the title should be replaced with underscores. Special pages are exempt from this rule, such as _Footer.md, _Header.md, and _Sidebar.md. Pages and page headings are picked up by the Pages sidebar.
