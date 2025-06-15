@@ -450,6 +450,12 @@
             "state" : "translated",
             "value" : "Adds the localized description of the app."
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thêm mô tả bản địa hóa của ứng dụng."
+          }
         }
       }
     },
@@ -1061,6 +1067,12 @@
             "state" : "translated",
             "value" : "By default, localized titles for the app won't be changed, however this option overrides it."
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theo mặc định, tiêu đề bản địa hóa cho ứng dụng sẽ không bị thay đổi, tuy nhiên tùy chọn này sẽ ghi đè lên nó."
+          }
         }
       }
     },
@@ -1257,6 +1269,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Check Revokage"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kiểm tra thu hồi"
           }
         }
       }
@@ -1737,16 +1755,28 @@
             "state" : "translated",
             "value" : "Default style for the app, only includes subtitle."
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giao diện mặc định cho ứng dụng, chỉ bao gồm phụ đề."
+          }
         }
       }
     },
-    "Default:\\nSigns an application with your specified certificate.\\n\\nAdhoc (Advanced):\\nSigns with no identity, however this unfortunately strips entitlements (iOS won't install this type)." : {
+    "Default:\nSigns an application with your specified certificate.\n\nAdhoc (Advanced):\nSigns with no identity, however this unfortunately strips entitlements (iOS won't install this type)." : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Default:\\nSigns an application with your specified certificate.\\n\\nAdhoc (Advanced):\\nSigns with no identity, however this unfortunately strips entitlements (iOS won't install this type)."
+            "value" : "Default:\nSigns an application with your specified certificate.\n\nAdhoc (Advanced):\nSigns with no identity, however this unfortunately strips entitlements (iOS won't install this type)."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mặc định:\nKý một ứng dụng bằng chứng chỉ do bạn chỉ định.\n\nAdhoc (Nâng cao):\nKý mà không cần danh tính, tuy nhiên điều này không may sẽ xóa bỏ các quyền (iOS sẽ không cài đặt loại này)."
           }
         }
       }
@@ -2122,6 +2152,12 @@
             "state" : "translated",
             "value" : "Enable Liquid Glass"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bật Liquid Glass"
+          }
         }
       }
     },
@@ -2173,6 +2209,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enjoying %@?"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thưởng thức %@?"
           }
         }
       }
@@ -3096,6 +3138,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Go to our GitHub and give us a star!"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hãy vào GitHub của chúng tôi và cho chúng tôi một ngôi sao!"
           }
         }
       }
@@ -6415,6 +6463,12 @@
             "state" : "translated",
             "value" : "Signing Type"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loại ký"
+          }
         }
       }
     },
@@ -6977,6 +7031,12 @@
             "state" : "translated",
             "value" : "Theme"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chủ đề"
+          }
         }
       }
     },
@@ -7022,6 +7082,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "This option force converts apps to try to use the new liquid glass redesign iOS 26 introduced, this may not work for all applications due to differing frameworks."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tùy chọn này buộc phải chuyển đổi ứng dụng để thử sử dụng giao diện Liquid Glass mới được giới thiệu trong iOS 26. Tùy chọn này có thể không hoạt động với tất cả các ứng dụng do có nhiều khuôn khổ khác nhau."
           }
         }
       }
