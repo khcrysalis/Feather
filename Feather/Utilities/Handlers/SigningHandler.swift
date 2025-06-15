@@ -80,14 +80,14 @@ final class SigningHandler: NSObject {
 		
 		try await _removePresetFiles(for: movedAppPath)
 		
+		if _options.experiment_supportLiquidGlass {
+			try await _locateMachosAndChangeToSDK26(for: movedAppPath)
+		}
+		
 		// iOS "26" (19) needs special treatment
 		if #available(iOS 19, *) {
 			try await _inject(for: movedAppPath, with: _options)
 			try await _locateMachosAndFixupArm64eSlice(for: movedAppPath)
-			
-			if _options.experiment_supportLiquidGlass {
-				try await _locateMachosAndChangeToSDK26(for: movedAppPath)
-			}
 		} else {
 			if !_options.injectionFiles.isEmpty {
 				try await _inject(for: movedAppPath, with: _options)
@@ -280,7 +280,6 @@ extension SigningHandler {
 		}
 	}
 	
-	@available(iOS 19, *)
 	private func _locateMachosAndChangeToSDK26(for app: URL) async throws {
 		if let url = Bundle(url: app)?.executableURL {
 			LCPatchMachOForSDK26(app.appendingPathComponent(url.relativePath).relativePath)
