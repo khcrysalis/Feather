@@ -40,7 +40,6 @@ struct CertificatesView: View {
 			}
 		}
 		.navigationTitle(.localized("Certificates"))
-		.navigationBarTitleDisplayMode(.inline)
 		.toolbar {
 			if _bindingSelectedCert == nil {
 				NBToolbarButton(

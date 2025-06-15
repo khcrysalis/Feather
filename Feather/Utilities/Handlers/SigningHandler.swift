@@ -84,6 +84,10 @@ final class SigningHandler: NSObject {
 		if #available(iOS 19, *) {
 			try await _inject(for: movedAppPath, with: _options)
 			try await _locateMachosAndFixupArm64eSlice(for: movedAppPath)
+			
+			if _options.experiment_supportLiquidGlass {
+				try await _locateMachosAndChangeToSDK26(for: movedAppPath)
+			}
 		} else {
 			if !_options.injectionFiles.isEmpty {
 				try await _inject(for: movedAppPath, with: _options)
@@ -93,13 +97,17 @@ final class SigningHandler: NSObject {
 		let handler = ZsignHandler(appUrl: movedAppPath, options: _options, cert: appCertificate)
 		try await handler.disinject()
 		
-		if _options.doAdhocSigning {
-			try await handler.adhocSign()
-		} else if (appCertificate != nil) {
+		if
+			_options.signingOption == Options.signingOptionValues[0],
+			appCertificate != nil
+		{
 			try await handler.sign()
+		} else if _options.signingOption == Options.signingOptionValues[1] {
+			try await handler.adhocSign()
 		} else {
 			throw SigningFileHandlerError.missingCertifcate
 		}
+		
 	}
 	
 	func move() async throws {
@@ -130,7 +138,7 @@ final class SigningHandler: NSObject {
 		
 		Storage.shared.addSigned(
 			uuid: _uuid,
-			certificate: _options.doAdhocSigning ? nil : appCertificate,
+			certificate: _options.signingOption != Options.signingOptionValues[0] ? nil : appCertificate,
 			appName: bundle?.name,
 			appIdentifier: bundle?.bundleIdentifier,
 			appVersion: bundle?.version,
@@ -269,6 +277,13 @@ extension SigningHandler {
 					.relativePath
 				LCPatchMachOFixupARM64eSlice(path);
 			}
+		}
+	}
+	
+	@available(iOS 19, *)
+	private func _locateMachosAndChangeToSDK26(for app: URL) async throws {
+		if let url = Bundle(url: app)?.executableURL {
+			LCPatchMachOForSDK26(app.appendingPathComponent(url.relativePath).relativePath)
 		}
 	}
 }

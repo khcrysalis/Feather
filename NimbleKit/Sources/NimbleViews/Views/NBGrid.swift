@@ -22,7 +22,7 @@ public struct NBGrid<Content>: View where Content: View {
 		ScrollView {
 			LazyVGrid(columns: _adaptiveColumns, spacing: 16) {
 				_content
-			}.padding()
+			}.padding(.horizontal)
 		}
 	}
 }

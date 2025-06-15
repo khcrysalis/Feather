@@ -20,7 +20,7 @@ struct InstallationView: View {
 	// MARK: Body
     var body: some View {
 		NBList(.localized("Installation")) {
-			NBSection(.localized("Installation Type")) {
+			Section {
 				Picker(.localized("Installation Type"), systemImage: "arrow.down.app", selection: $_installationMethod) {
 					ForEach(_installationMethods.indices, id: \.description) { index in
 						Text(_installationMethods[index]).tag(index)

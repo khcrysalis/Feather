@@ -104,6 +104,7 @@ struct LibraryView: View {
 					Text(scope.displayName).tag(scope)
 				}
 			}
+			.scrollDismissesKeyboard(.interactively)
 			.toolbar {
 				NBToolbarMenu(
 					systemImage: "plus",

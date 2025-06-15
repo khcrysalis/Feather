@@ -1042,6 +1042,17 @@
         }
       }
     },
+    "By default, localized titles for the app won't be changed, however this option overrides it." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "By default, localized titles for the app won't be changed, however this option overrides it."
+          }
+        }
+      }
+    },
     "Cancel" : {
       "localizations" : {
         "cs" : {
@@ -1707,6 +1718,17 @@
         }
       }
     },
+    "Default:\\nSigns an application with your specified certificate.\\n\\nAdhoc (Advanced):\\nSigns with no identity, however this unfortunately strips entitlements (iOS won't install this type)." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default:\\nSigns an application with your specified certificate.\\n\\nAdhoc (Advanced):\\nSigns with no identity, however this unfortunately strips entitlements (iOS won't install this type)."
+          }
+        }
+      }
+    },
     "Delete" : {
       "localizations" : {
         "cs" : {
@@ -2066,6 +2088,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dylibs"
+          }
+        }
+      }
+    },
+    "Enable Liquid Glass" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable Liquid Glass"
           }
         }
       }
@@ -6328,6 +6361,17 @@
         }
       }
     },
+    "Signing Type" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signing Type"
+          }
+        }
+      }
+    },
     "Source Repo URL" : {
       "localizations" : {
         "cs" : {
@@ -6910,6 +6954,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Những thay đổi này yêu cầu khởi động lại ứng dụng"
+          }
+        }
+      }
+    },
+    "This option force converts apps to try to use the new liquid glass redesign iOS 26 introduced, this may not work for all applications due to differing frameworks." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This option force converts apps to try to use the new liquid glass redesign iOS 26 introduced, this may not work for all applications due to differing frameworks."
           }
         }
       }

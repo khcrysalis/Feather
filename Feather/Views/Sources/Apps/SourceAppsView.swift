@@ -78,7 +78,6 @@ struct SourceAppsView: View {
 				_sortActions()
 			}
 		}
-		.navigationBarTitleDisplayMode(.inline)
 		.onAppear {
 			if !hasLoadedOnce, viewModel.isFinished {
 				_load()

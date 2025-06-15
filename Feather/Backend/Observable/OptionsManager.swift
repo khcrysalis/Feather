@@ -94,8 +94,12 @@ struct Options: Codable, Equatable {
 	var removeWatchPlaceholder: Bool
 	/// Forcefully rename string files for App name
 	var changeLanguageFilesForCustomDisplayName: Bool
-	/// If app should be Adhoc signed instead of normally signed
+	/// `Deprecated` If app should be Adhoc signed instead of normally signed
 	var doAdhocSigning: Bool
+	/// Signing options
+	var signingOption: String
+	/// Modifies app to support liquid glass
+	var experiment_supportLiquidGlass: Bool
 	
 	// default
 	static let defaultOptions = Options(
@@ -119,13 +123,16 @@ struct Options: Codable, Equatable {
 		removeSupportedDevices: false,
 		removeURLScheme: false,
 		removeProvisioning: false,
-		// deprecated
-		removeWatchPlaceholder: false,
+		removeWatchPlaceholder: false, // Deprecated
 		changeLanguageFilesForCustomDisplayName: false,
-		doAdhocSigning: false
+		doAdhocSigning: false, // Deprecated
+		signingOption: signingOptionValues[0],
+		experiment_supportLiquidGlass: false // experiments
 	)
 	
-	// duplicate values are not recommended!
+	// duplicate values are not recommended!'
+	
+	static let signingOptionValues = ["Default", "Adhoc"]
 	/// Default values for `appAppearance`
 	static let appAppearanceValues = ["Default", "Light", "Dark"]
 	/// Default values for `minimumAppRequirement`

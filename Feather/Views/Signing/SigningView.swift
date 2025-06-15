@@ -235,7 +235,7 @@ extension SigningView {
 // MARK: - Extension: View (import)
 extension SigningView {
 	private func _start() {
-		guard _selectedCert() != nil || _temporaryOptions.doAdhocSigning else {
+		guard _selectedCert() != nil || _temporaryOptions.signingOption != Options.signingOptionValues[0] else {
 			UIAlertController.showAlertWithOk(
 				title: .localized("No Certificate"),
 				message: .localized("Please go to settings and import a valid certificate"),

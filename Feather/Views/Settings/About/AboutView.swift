@@ -24,43 +24,45 @@ struct AboutView: View {
 	// MARK: Body
 	var body: some View {
 		NBList(.localized("About")) {
-            Section {
-                VStack {
-                    Image(uiImage: (UIImage(named: Bundle.main.iconFileName ?? ""))! )
-                        .appIconStyle(size: 72)
-                    
-                    Text(Bundle.main.exec)
-                        .font(.largeTitle)
-                        .bold()
-                        .foregroundStyle(.accent)
-                    
-                    HStack(spacing: 4) {
-						Text(.localized("Version"))
-                        Text(Bundle.main.version)
-                    }
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-                }
-            }
-            .frame(maxWidth: .infinity)
-            .listRowBackground(EmptyView())
-			
-			NBSection(.localized("Credits")) {
-				ForEach(_credits, id: \.github) { credit in
-					_credit(name: credit.name, desc: credit.desc, github: credit.github)
+			if !isLoading {
+				Section {
+					VStack {
+						Image(uiImage: (UIImage(named: Bundle.main.iconFileName ?? ""))! )
+							.appIconStyle(size: 72)
+						
+						Text(Bundle.main.exec)
+							.font(.largeTitle)
+							.bold()
+							.foregroundStyle(.accent)
+						
+						HStack(spacing: 4) {
+							Text(.localized("Version"))
+							Text(Bundle.main.version)
+						}
+						.font(.footnote)
+						.foregroundStyle(.secondary)
+					}
 				}
-				.transition(.slide)
-			}
-			
-			NBSection(.localized("Sponsors")) {
-				Text(try! AttributedString(markdown: _donators.map {
-					"[\($0.name ?? $0.github)](https://github.com/\($0.github))"
-				}.joined(separator: ", ")))
-				.transition(.slide)
+				.frame(maxWidth: .infinity)
+				.listRowBackground(EmptyView())
 				
-				Text(.localized("💜 This couldn't of been done without my sponsors!"))
-					.foregroundStyle(.secondary)
-					.padding(.vertical, 2)
+				Section {
+					ForEach(_credits, id: \.github) { credit in
+						_credit(name: credit.name, desc: credit.desc, github: credit.github)
+					}
+					.transition(.slide)
+				}
+				
+				NBSection(.localized("Sponsors")) {
+					Text(try! AttributedString(markdown: _donators.map {
+						"[\($0.name ?? $0.github)](https://github.com/\($0.github))"
+					}.joined(separator: ", ")))
+					.transition(.slide)
+					
+					Text(.localized("💜 This couldn't of been done without my sponsors!"))
+						.foregroundStyle(.secondary)
+						.padding(.vertical, 2)
+				}
 			}
 		}
 		.animation(.default, value: isLoading)
