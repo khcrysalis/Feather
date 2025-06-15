@@ -2165,6 +2165,18 @@
         }
       }
     },
+    "Enjoying %@?" : {
+      "comment" : "Enjoying Feather?",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enjoying %@?"
+          }
+        }
+      }
+    },
     "Enter a URL to start validation." : {
       "localizations" : {
         "cs" : {
@@ -3073,6 +3085,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kho lưu trữ GitHub"
+          }
+        }
+      }
+    },
+    "Go to our GitHub and give us a star!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go to our GitHub and give us a star!"
           }
         }
       }
