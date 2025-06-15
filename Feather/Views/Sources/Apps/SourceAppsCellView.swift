@@ -44,7 +44,13 @@ struct SourceAppsCellView: View {
 					.padding(.top, 2)
 			}
 		}
-		.padding(.vertical, 6)
+		.padding(.vertical, {
+			if #available(iOS 19, *) {
+				return 6
+			} else {
+				return 0
+			}
+		}())
 		.onAppear(perform: _setupDownloadObserver)
 		.onDisappear {
 			cancellable?.cancel()
