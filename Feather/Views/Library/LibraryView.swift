@@ -111,10 +111,10 @@ struct LibraryView: View {
 					style: .icon,
 					placement: .topBarTrailing
 				) {
-					Button(.localized("Import from Files")) {
+					Button(.localized("Import from Files"), systemImage: "folder") {
 						_isImportingPresenting = true
 					}
-					Button(.localized("Import from URL")) {
+					Button(.localized("Import from URL"), systemImage: "globe") {
 						_isDownloadingPresenting = true
 					}
 				}

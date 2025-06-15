@@ -17,7 +17,7 @@ struct FeatherApp: App {
 	
 	@StateObject var downloadManager = DownloadManager.shared
 	let storage = Storage.shared
-
+	
 	var body: some Scene {
 		WindowGroup {
 			VStack {
@@ -36,6 +36,14 @@ struct FeatherApp: App {
 						message: .localized("Your pairing file is invalid and is incompatible with your device, please import a valid pairing file.")
 					)
 				}
+			}
+			// dear god help me
+			.onAppear {
+				if let style = UIUserInterfaceStyle(rawValue: UserDefaults.standard.integer(forKey: "Feather.userInterfaceStyle")) {
+					UIApplication.topViewController()?.view.window?.overrideUserInterfaceStyle = style
+				}
+				
+				UIApplication.topViewController()?.view.window?.tintColor = UIColor(Color(hex: UserDefaults.standard.string(forKey: "Feather.userTintColor") ?? "#B496DC"))
 			}
 		}
 	}

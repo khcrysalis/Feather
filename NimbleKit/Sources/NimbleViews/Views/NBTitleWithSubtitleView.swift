@@ -26,6 +26,7 @@ public struct NBTitleWithSubtitleView: View {
 				.font(.subheadline)
 				.foregroundStyle(.secondary)
 		}
+		.padding(.vertical, 2)
 		.lineLimit(_linelimit)
 		.frame(maxWidth: .infinity, alignment: .leading)
 	}

@@ -87,7 +87,6 @@ extension CertificatesView {
 				Divider()
 				_actions(for: cert)
 			}
-			.animation(.smooth, value: _selectedCertBinding.wrappedValue)
 		}
 		.buttonStyle(.plain)
 	}

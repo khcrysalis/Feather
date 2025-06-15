@@ -13,8 +13,6 @@ import NimbleViews
 struct LibraryCellView: View {
 	@Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
-	@AppStorage("Feather.libraryCellAppearance") private var _libraryCellAppearance: Int = 0
-	
 	var certInfo: Date.ExpirationInfo? {
 		Storage.shared.getCertificate(from: app)?.expiration?.expirationInfo()
 	}
@@ -119,7 +117,6 @@ extension LibraryCellView {
 				} label: {
 					FRExpirationPillView(
 						title: .localized("Install"),
-						showOverlay: _libraryCellAppearance == 0,
 						expiration: certInfo
 					)
 				}
@@ -129,7 +126,6 @@ extension LibraryCellView {
 				} label: {
 					FRExpirationPillView(
 						title: .localized("Sign"),
-						showOverlay: true,
 						expiration: nil
 					)
 				}

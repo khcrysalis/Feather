@@ -44,6 +44,7 @@ struct SourceAppsCellView: View {
 					.padding(.top, 2)
 			}
 		}
+		.padding(.vertical, 6)
 		.onAppear(perform: _setupDownloadObserver)
 		.onDisappear {
 			cancellable?.cancel()

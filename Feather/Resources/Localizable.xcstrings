@@ -442,6 +442,17 @@
         }
       }
     },
+    "Adds the localized description of the app." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adds the localized description of the app."
+          }
+        }
+      }
+    },
     "Adhoc Signing" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1714,6 +1725,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mặc định"
+          }
+        }
+      }
+    },
+    "Default style for the app, only includes subtitle." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default style for the app, only includes subtitle."
           }
         }
       }
@@ -3925,6 +3947,7 @@
       }
     },
     "Library Cell Appearance" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6919,6 +6942,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Heartbeat được kích hoạt trong nền, nó sẽ khởi động lại khi ứng dụng được mở lại hoặc được nhắc nhở. Nếu trạng thái bên dưới đang nhịp đập, điều đó có nghĩa là nó hoạt động bình thường."
+          }
+        }
+      }
+    },
+    "Theme" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theme"
           }
         }
       }

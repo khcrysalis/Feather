@@ -9,7 +9,7 @@ import Zip
 
 extension ZipCompression {
 	static var allCases: [ZipCompression] {
-		return [.NoCompression, .BestSpeed, .DefaultCompression, .BestCompression]
+		[.NoCompression, .BestSpeed, .DefaultCompression, .BestCompression]
 	}
 	
 	var label: String {

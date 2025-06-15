@@ -128,9 +128,9 @@ extension SigningView {
 	private func _customizationOptions(for app: AppInfoPresentable) -> some View {
 		NBSection(.localized("Customization")) {
 			Menu {
-				Button(.localized("Select Alternative Icon")) { _isAltPickerPresenting = true }
-				Button(.localized("Choose from Files")) { _isFilePickerPresenting = true }
-				Button(.localized("Choose from Photos")) { _isImagePickerPresenting = true }
+				Button(.localized("Select Alternative Icon"), systemImage: "app.dashed") { _isAltPickerPresenting = true }
+				Button(.localized("Choose from Files"), systemImage: "folder") { _isFilePickerPresenting = true }
+				Button(.localized("Choose from Photos"), systemImage: "photo") { _isImagePickerPresenting = true }
 			} label: {
 				if let icon = appIcon {
 					Image(uiImage: icon)
