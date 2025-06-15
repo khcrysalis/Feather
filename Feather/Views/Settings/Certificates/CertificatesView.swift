@@ -72,11 +72,11 @@ extension CertificatesView {
 			)
 			.padding()
 			.background(
-				RoundedRectangle(cornerRadius: 17)
+				RoundedRectangle(cornerRadius: 10.5)
 					.fill(Color(uiColor: .quaternarySystemFill))
 			)
 			.overlay(
-				RoundedRectangle(cornerRadius: 17)
+				RoundedRectangle(cornerRadius: 10.5)
 					.strokeBorder(
 						_selectedCertBinding.wrappedValue == index ? Color.accentColor : Color.clear,
 						lineWidth: 2

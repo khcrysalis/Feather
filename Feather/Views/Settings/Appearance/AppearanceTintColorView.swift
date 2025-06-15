@@ -15,7 +15,11 @@ struct AppearanceTintColorView: View {
 		("Classic", 	"#848ef9"),
 		("Berry",   	"#ff7a83"),
 		("Cool Blue", 	"#4161F1"),
-		("Fuchsia", 	"#FF00FF")
+		("Fuchsia", 	"#FF00FF"),
+		("Protokolle", 	"#4CD964"),
+		("Discord", 	"#5865F2"),
+		("Aidoku", 		"#FF2D55"),
+		("Clock", 		"#FF9500")
 	]
 	
 	// MARK: Body
