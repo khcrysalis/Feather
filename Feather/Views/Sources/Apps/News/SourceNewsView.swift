@@ -38,7 +38,7 @@ struct SourceNewsView: View {
 							}
 						}
 					}
-					.padding(.horizontal, 21)
+					.padding(.horizontal, 19.4)
 				}
 				.frame(height: 150)
 				.opacity(isLoading ? 0 : 1)

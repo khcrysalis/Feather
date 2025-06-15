@@ -50,6 +50,7 @@ struct SourceAppsView: View {
 			}
 		}
 		.navigationTitle(_navigationTitle)
+		.navigationTitle2Lined()
 		.searchable(text: $_searchText, placement: .platform())
 		.toolbarTitleMenu {
 			if
