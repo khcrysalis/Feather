@@ -142,6 +142,7 @@ struct LibraryView: View {
 						try? downloadManager.handlePachageFile(url: selectedFileURL, dl: dl)
 					}
 				)
+				.ignoresSafeArea()
 			}
 			.alert(.localized("Import from URL"), isPresented: $_isDownloadingPresenting) {
 				TextField(.localized("URL"), text: $_alertDownloadString)

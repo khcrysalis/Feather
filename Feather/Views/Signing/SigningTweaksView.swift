@@ -66,6 +66,7 @@ struct SigningTweaksView: View {
 					}
 				}
 			)
+			.ignoresSafeArea()
 		}
 		.animation(.smooth, value: options.injectionFiles)
 	}

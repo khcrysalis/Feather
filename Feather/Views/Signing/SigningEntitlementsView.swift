@@ -43,6 +43,7 @@ struct SigningEntitlementsView: View {
 					}
 				}
 			)
+			.ignoresSafeArea()
 		}
 	}
 }

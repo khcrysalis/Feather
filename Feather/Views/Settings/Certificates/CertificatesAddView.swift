@@ -68,6 +68,7 @@ struct CertificatesAddView: View {
 						self._p12URL = selectedFileURL
 					}
 				)
+				.ignoresSafeArea()
 			}
 			.sheet(isPresented: $_isImportingMobileProvisionPresenting) {
 				FileImporterRepresentableView(
@@ -77,6 +78,7 @@ struct CertificatesAddView: View {
 						self._provisionURL = selectedFileURL
 					}
 				)
+				.ignoresSafeArea()
 			}
 			.alert(isPresented: $_isPasswordAlertPresenting) {
 				Alert(
