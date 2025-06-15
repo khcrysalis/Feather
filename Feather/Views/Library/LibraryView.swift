@@ -145,6 +145,7 @@ struct LibraryView: View {
 			}
 			.alert(.localized("Import from URL"), isPresented: $_isDownloadingPresenting) {
 				TextField(.localized("URL"), text: $_alertDownloadString)
+					.textInputAutocapitalization(.never)
 				Button(.localized("Cancel"), role: .cancel) {
 					_alertDownloadString = ""
 				}
