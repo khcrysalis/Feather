@@ -30,9 +30,7 @@ class TweakHandler {
 	
 	private func _checkEllekit() async throws {
 		let frameworksPath = _app.appendingPathComponent("Frameworks").appendingPathComponent("CydiaSubstrate.framework")
-		// iOS "26" (19) is so stupid that it needs me to manually replace
-		// CydiaSubstrate with ElleKit, absolutely the worst ever version
-		// in existence
+
 		func addEllekit() async throws {
 			if let ellekitURL = Bundle.main.url(forResource: "ellekit", withExtension: "deb") {
 				self._urls.insert(ellekitURL, at: 0)
@@ -43,15 +41,14 @@ class TweakHandler {
 			try _fileManager.createDirectoryIfNeeded(at: _app.appendingPathComponent("Frameworks"))
 		}
 		// we should check if CydiaSubstrate.framework exists, if it doesn't
-		// just add ellekit, if it does we need to do a check for iOS "26" (19)
-		// iOS "26" (19):
+		// just add ellekit
+		// experiment_replaceSubstrateWithEllekit:
 		// 	for this version, we need to replace CydiaSubstrate.framework with
 		//	our own version containing ElleKit
 		// other:
 		// 	just return if it exists, should work fine
 		if _fileManager.fileExists(atPath: frameworksPath.path) {
-			if #available(iOS 19, *) {
-				// for iOS "26" (19), replace CydiaSubstrate with ElleKit
+			if _options.experiment_replaceSubstrateWithEllekit {
 				Logger.misc.info("Attempting to replace Substrate with ElleKit")
 				try _fileManager.removeFileIfNeeded(at: frameworksPath)
 				try await addEllekit()
@@ -67,7 +64,7 @@ class TweakHandler {
 	public func getInputFiles() async throws {
 		Logger.misc.info("Attempting to inject")
 		
-		if #unavailable(iOS 19) {
+		if !_options.experiment_replaceSubstrateWithEllekit {
 			guard !_urls.isEmpty else { return }
 		}
 

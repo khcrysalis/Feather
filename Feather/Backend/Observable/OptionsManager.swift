@@ -100,6 +100,8 @@ struct Options: Codable, Equatable {
 	var signingOption: String
 	/// Modifies app to support liquid glass
 	var experiment_supportLiquidGlass: Bool
+	/// Modifies application to use ElleKit instead of CydiaSubstrate
+	var experiment_replaceSubstrateWithEllekit: Bool
 	
 	// default
 	static let defaultOptions = Options(
@@ -127,10 +129,11 @@ struct Options: Codable, Equatable {
 		changeLanguageFilesForCustomDisplayName: false,
 		doAdhocSigning: false, // Deprecated
 		signingOption: signingOptionValues[0],
-		experiment_supportLiquidGlass: false // experiments
+		experiment_supportLiquidGlass: false, // experiments
+		experiment_replaceSubstrateWithEllekit: false // experiments
 	)
 	
-	// duplicate values are not recommended!'
+	// MARK: duplicate values are not recommended!
 	
 	static let signingOptionValues = ["Default", "Adhoc"]
 	/// Default values for `appAppearance`

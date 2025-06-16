@@ -124,6 +124,12 @@ struct SigningOptionsView: View {
 		}
 		
 		NBSection(.localized("Advanced")) {
+			_toggle(.localized("Replace Substrate with ElleKit"),
+					systemImage: "pencil",
+					isOn: $options.experiment_replaceSubstrateWithEllekit,
+					temporaryValue: temporaryOptions?.experiment_replaceSubstrateWithEllekit
+			)
+			
 			_toggle(.localized("Enable Liquid Glass"),
 					systemImage: "26.circle",
 					isOn: $options.experiment_supportLiquidGlass,

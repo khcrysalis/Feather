@@ -84,14 +84,17 @@ final class SigningHandler: NSObject {
 			try await _locateMachosAndChangeToSDK26(for: movedAppPath)
 		}
 		
-		// iOS "26" (19) needs special treatment
-		if #available(iOS 19, *) {
+		if _options.experiment_replaceSubstrateWithEllekit {
 			try await _inject(for: movedAppPath, with: _options)
-			try await _locateMachosAndFixupArm64eSlice(for: movedAppPath)
 		} else {
 			if !_options.injectionFiles.isEmpty {
 				try await _inject(for: movedAppPath, with: _options)
 			}
+		}
+		
+		// iOS "26" (19) needs special treatment
+		if #available(iOS 19, *) {
+			try await _locateMachosAndFixupArm64eSlice(for: movedAppPath)
 		}
 		
 		let handler = ZsignHandler(appUrl: movedAppPath, options: _options, cert: appCertificate)
