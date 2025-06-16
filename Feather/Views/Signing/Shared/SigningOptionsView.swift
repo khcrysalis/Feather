@@ -123,7 +123,7 @@ struct SigningOptionsView: View {
 			Text(.localized("By default, localized titles for the app won't be changed, however this option overrides it."))
 		}
 		
-		NBSection(.localized("Advanced")) {
+		NBSection(.localized("Experiments")) {
 			_toggle(.localized("Replace Substrate with ElleKit"),
 					systemImage: "pencil",
 					isOn: $options.experiment_replaceSubstrateWithEllekit,

@@ -2489,6 +2489,17 @@
         }
       }
     },
+    "Experiments" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Experiments"
+          }
+        }
+      }
+    },
     "Expired" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5570,6 +5581,17 @@
         }
       }
     },
+    "Replace Substrate with ElleKit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Replace Substrate with ElleKit"
+          }
+        }
+      }
+    },
     "Replacement" : {
       "localizations" : {
         "cs" : {
@@ -7071,6 +7093,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Những thay đổi này yêu cầu khởi động lại ứng dụng"
+          }
+        }
+      }
+    },
+    "This enables liquid glass for this app, this requires a restart of the app to take effect." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This enables liquid glass for this app, this requires a restart of the app to take effect."
           }
         }
       }
