@@ -191,27 +191,27 @@ extension SigningView {
 					)
 				}
 				
-				NavigationLink(String.localized("Frameworks & PlugIns")) {
+				NavigationLink(.localized("Frameworks & PlugIns")) {
 					SigningFrameworksView(
 						app: app,
 						options: $_temporaryOptions.optional()
 					)
 				}
 				#if NIGHTLY || DEBUG
-				NavigationLink(String.localized("Entitlements")) {
+				NavigationLink(.localized("Entitlements")) {
 					SigningEntitlementsView(
 						bindingValue: $_temporaryOptions.appEntitlementsFile
 					)
 				}
 				#endif
-				NavigationLink(String.localized("Tweaks")) {
+				NavigationLink(.localized("Tweaks")) {
 					SigningTweaksView(
 						options: $_temporaryOptions
 					)
 				}
 			}
 			
-			NavigationLink(String.localized("Properties")) {
+			NavigationLink(.localized("Properties")) {
 				Form { SigningOptionsView(
 					options: $_temporaryOptions,
 					temporaryOptions: _optionsManager.options

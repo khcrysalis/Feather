@@ -57,7 +57,7 @@ struct ExtendedTabbarView: View {
 						_icon(source.name ?? .localized("Unknown"), iconUrl: source.iconURL)
 					}
 					.swipeActions {
-						Button(String.localized("Delete"), systemImage: "trash", role: .destructive) {
+						Button(.localized("Delete"), systemImage: "trash", role: .destructive) {
 							Storage.shared.deleteSource(for: source)
 						}
 					}
