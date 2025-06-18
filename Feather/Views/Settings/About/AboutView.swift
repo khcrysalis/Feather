@@ -46,7 +46,7 @@ struct AboutView: View {
 				.frame(maxWidth: .infinity)
 				.listRowBackground(EmptyView())
 				
-				Section {
+				NBSection(.localized("Credits")) {
 					ForEach(_credits, id: \.github) { credit in
 						_credit(name: credit.name, desc: credit.desc, github: credit.github)
 					}

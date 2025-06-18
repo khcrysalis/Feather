@@ -61,6 +61,7 @@ struct CertificatesView: View {
 	}
 }
 
+// MARK: - View extension
 extension CertificatesView {
 	@ViewBuilder
 	private func _cellButton(for cert: CertificatePair, at index: Int) -> some View {
@@ -86,6 +87,9 @@ extension CertificatesView {
 				_contextActions(for: cert)
 				Divider()
 				_actions(for: cert)
+			}
+			.transaction {
+				$0.animation = nil
 			}
 		}
 		.buttonStyle(.plain)
