@@ -3518,6 +3518,17 @@
         }
       }
     },
+    "Game Mode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Game Mode"
+          }
+        }
+      }
+    },
     "General" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -6018,6 +6029,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Phiên bản trước"
+          }
+        }
+      }
+    },
+    "Pro Motion" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro Motion"
           }
         }
       }
