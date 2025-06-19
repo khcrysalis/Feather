@@ -71,13 +71,13 @@
               "few" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%lld aplikacje"
+                  "value" : "%lld aplikacji"
                 }
               },
               "many" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%lld aplikacje"
+                  "value" : "%lld aplikacji"
                 }
               },
               "one" : {
@@ -89,7 +89,7 @@
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%lld aplikacje"
+                  "value" : "%lld aplikacji"
                 }
               }
             }
@@ -335,9 +335,33 @@
           }
         },
         "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld źródeł"
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld źródeł"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld źródeł"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld źródło"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld źródeł"
+                }
+              }
+            }
           }
         },
         "tr" : {
@@ -2872,7 +2896,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Plik wykonywalny"
+            "value" : "Dodatkowe biblioteki"
           }
         },
         "tr" : {
@@ -2942,7 +2966,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eksperymenty"
+            "value" : "Eksperymentalne"
           }
         }
       }
@@ -2983,7 +3007,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wygasło"
+            "value" : "Wygasł"
           }
         },
         "ru" : {
@@ -3384,7 +3408,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Frameworki"
+            "value" : "Biblioteki"
           }
         },
         "tr" : {
@@ -3425,7 +3449,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Frameworki i wtyczki"
+            "value" : "Biblioteki i wtyczki"
           }
         },
         "tr" : {
@@ -5094,7 +5118,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pseudonim (opcjonalnie)"
+            "value" : "Własna nazwa (opcjonalnie)"
           }
         },
         "tr" : {
@@ -5592,7 +5616,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pakowanie"
+            "value" : "Tworzenie paczki"
           }
         },
         "vi" : {
@@ -6557,7 +6581,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zastąp Substrate ElleKit"
+            "value" : "Zastąp Substrate przez ElleKit"
           }
         }
       }
@@ -8479,7 +8503,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ulepszenia"
+            "value" : "Tweaks"
           }
         },
         "vi" : {
