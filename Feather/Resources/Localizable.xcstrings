@@ -3,7 +3,7 @@
   "strings" : {
     "%lld Apps" : {
       "comment" : "Repository app count",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "variations" : {
@@ -242,7 +242,7 @@
     },
     "%lld required system dylibs not shown" : {
       "comment" : "Number of macho load paths not listed for safety",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -379,7 +379,7 @@
       }
     },
     "💜 This couldn't of been done without my sponsors!" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -420,7 +420,7 @@
       }
     },
     "About" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -520,7 +520,7 @@
       }
     },
     "Add Source" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -731,7 +731,7 @@
       }
     },
     "All of Feathers files are contained in the documents directory, here are some quick links to these." : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -773,7 +773,7 @@
     },
     "All Repositories" : {
       "comment" : "All repositories",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -814,7 +814,7 @@
       }
     },
     "Alternative Icons" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -944,7 +944,7 @@
       }
     },
     "Appearance" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1050,7 +1050,7 @@
       }
     },
     "Archive & Compression" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1092,7 +1092,7 @@
     },
     "Bad Password" : {
       "comment" : "Bad certificate password",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1309,7 +1309,7 @@
       }
     },
     "Cancel" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1416,7 +1416,7 @@
     },
     "Certificates" : {
       "comment" : "Certificates tab",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1481,7 +1481,7 @@
       }
     },
     "Change" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1546,7 +1546,7 @@
     },
     "Choose from Files" : {
       "comment" : "Select custom app icon from files",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1588,7 +1588,7 @@
     },
     "Choose from Photos" : {
       "comment" : "Select custom app icon from photos",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1694,7 +1694,7 @@
     },
     "Compression Level" : {
       "comment" : "Archive compression level",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1735,7 +1735,7 @@
       }
     },
     "Copy" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2146,7 +2146,7 @@
       }
     },
     "Delete" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2300,7 +2300,7 @@
       }
     },
     "Display Names" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2419,7 +2419,7 @@
     },
     "Donations" : {
       "comment" : "Title for the big donation card",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2514,7 +2514,7 @@
       }
     },
     "Dylibs" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2584,7 +2584,7 @@
       }
     },
     "Enabling any protection will append a random string to the bundleidentifiers of the apps you sign, this is to ensure your Apple ID does not get flagged by Apple. However, when using a signing service you can ignore this." : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2655,7 +2655,7 @@
       }
     },
     "Enter a URL to start validation." : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2696,7 +2696,7 @@
       }
     },
     "Enter Password" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2761,7 +2761,7 @@
       }
     },
     "Enter the password associated with the private key. Leave it blank if theres no password required." : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2826,7 +2826,7 @@
       }
     },
     "Entitlements" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2931,7 +2931,7 @@
       }
     },
     "Existing Dylibs" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -3090,7 +3090,7 @@
     },
     "Export" : {
       "comment" : "Export repositories",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -3308,7 +3308,7 @@
       }
     },
     "Filter by" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -3443,7 +3443,7 @@
       }
     },
     "Frameworks & PlugIns" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -3643,7 +3643,7 @@
     },
     "Get Info" : {
       "comment" : "Show info about the app",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -3684,7 +3684,7 @@
       }
     },
     "GitHub Repository" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -3895,7 +3895,7 @@
       }
     },
     "Identifers" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -3936,7 +3936,7 @@
       }
     },
     "Identifier" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4067,7 +4067,7 @@
     },
     "Import" : {
       "comment" : "Import repositories",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4174,7 +4174,7 @@
     },
     "Import from Files" : {
       "comment" : "Select an app from files to import",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4222,7 +4222,7 @@
     },
     "Import from URL" : {
       "comment" : "Select an app from a URL to import",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4485,7 +4485,7 @@
       }
     },
     "Install" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4573,7 +4573,7 @@
       }
     },
     "Installation Type" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4792,7 +4792,7 @@
       }
     },
     "Library Cell Appearance" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4922,7 +4922,7 @@
       }
     },
     "Modify" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4963,7 +4963,7 @@
       }
     },
     "Name" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -5129,7 +5129,7 @@
     },
     "Nickname (Optional)" : {
       "comment" : "Certificate custom nickname",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -5304,7 +5304,7 @@
       }
     },
     "OK" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -5369,7 +5369,7 @@
       }
     },
     "Only use localhost address" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -5410,7 +5410,7 @@
       }
     },
     "Open" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -5451,7 +5451,7 @@
       }
     },
     "Open Archives" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -5492,7 +5492,7 @@
       }
     },
     "Open Certificates" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -5533,7 +5533,7 @@
       }
     },
     "Open Documents" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -5574,7 +5574,7 @@
       }
     },
     "Open in Files" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -5851,7 +5851,7 @@
     },
     "Please check the password and try again." : {
       "comment" : "Bad certificate password, try again",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6065,7 +6065,7 @@
     },
     "Properties" : {
       "comment" : "Select custom properties for the app",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6241,7 +6241,7 @@
       }
     },
     "Re-sign" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6639,7 +6639,7 @@
       }
     },
     "Replacement" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6886,7 +6886,7 @@
       }
     },
     "Save" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -7029,7 +7029,7 @@
     },
     "Select Alternative Icon" : {
       "comment" : "Select custom alternative app icon",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -7071,7 +7071,7 @@
     },
     "Select entitlements file" : {
       "comment" : "Select custom entitlements for the app",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -7245,7 +7245,7 @@
       }
     },
     "Server & SSL" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -7370,7 +7370,7 @@
     },
     "Show Sheet when Exporting" : {
       "comment" : "Archiving opens share sheet",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -7628,7 +7628,7 @@
       }
     },
     "Signing Options" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -7704,7 +7704,7 @@
       }
     },
     "Source Repo URL" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -7746,7 +7746,7 @@
     },
     "Sources" : {
       "comment" : "Sources tab",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -8034,7 +8034,7 @@
       }
     },
     "Store Cell Appearance" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -8075,7 +8075,7 @@
       }
     },
     "String" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -8116,7 +8116,7 @@
       }
     },
     "Submit Feedback" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -8181,7 +8181,7 @@
       }
     },
     "Supports importing from KravaSign/MapleSign and ESign" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -8449,7 +8449,7 @@
       }
     },
     "Toggling show sheet will present a share sheet after exporting to your files." : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -8532,7 +8532,7 @@
     },
     "Tweaks" : {
       "comment" : "Select custom tweaks to install and inject",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -8633,7 +8633,7 @@
       }
     },
     "Update SSL Certificates" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -8680,7 +8680,7 @@
       }
     },
     "URL" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8727,7 +8727,7 @@
       }
     },
     "Version" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -8787,7 +8787,7 @@
     },
     "View Entitlements" : {
       "comment" : "Certificate listed entitlements",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -8829,7 +8829,7 @@
     },
     "Visit Patreon" : {
       "comment" : "Repository listed patreon",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -8871,7 +8871,7 @@
     },
     "Visit Website" : {
       "comment" : "Repository listed website",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
