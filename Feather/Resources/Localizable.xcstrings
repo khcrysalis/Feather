@@ -1807,6 +1807,12 @@
             "state" : "translated",
             "value" : "Copy Download URLs"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopiuj URL do pobrania"
+          }
         }
       }
     },
@@ -3525,6 +3531,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Game Mode"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tryb Gry"
           }
         }
       }
@@ -6041,8 +6053,15 @@
             "state" : "translated",
             "value" : "Pro Motion"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro Motion"
+          }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Properties" : {
       "comment" : "Select custom properties for the app",
