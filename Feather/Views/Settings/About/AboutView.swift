@@ -120,11 +120,18 @@ extension AboutView {
 		Button {
 			UIApplication.open("https://github.com/\(github)")
 		} label: {
-			NBTitleWithSubtitleView(
-				title: name ?? github,
-				subtitle: desc ?? "",
-				linelimit: 0
-			)
+			HStack {
+				FRIconCellView(
+					title: name ?? github,
+					subtitle: desc ?? "",
+					iconUrl: URL(string: "https://github.com/\(github).png")!,
+					size: 45,
+					isCircle: true
+				)
+				
+				Image(systemName: "arrow.up.right")
+					.foregroundColor(.secondary.opacity(0.65))
+			}
 		}
 	}
 }

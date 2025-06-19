@@ -14,6 +14,7 @@ struct FRIconCellView: View {
 	var title: String
 	var subtitle: String
 	var iconUrl: URL?
+	var size: CGFloat = 56
 	var isCircle: Bool = false
 	
 	// MARK: Body
@@ -22,7 +23,7 @@ struct FRIconCellView: View {
 			if let iconURL = iconUrl {
 				LazyImage(url: iconURL) { state in
 					if let image = state.image {
-						image.appIconStyle(isCircle: isCircle)
+						image.appIconStyle(size: size, isCircle: isCircle)
 					} else {
 						standardIcon
 					}
@@ -41,6 +42,6 @@ struct FRIconCellView: View {
 	
 	var standardIcon: some View {
 		Image("App_Unknown")
-			.appIconStyle(isCircle: isCircle)
+			.appIconStyle(size: size, isCircle: isCircle)
 	}
 }

@@ -240,7 +240,8 @@ extension SigningHandler {
 		let files = [
 			"_CodeSignature", // Remove this because zsign doesn't replace it
 			"embedded.mobileprovision", // Remove this because zsign doesn't replace it
-			"com.apple.WatchPlaceholder" // Useless
+			"com.apple.WatchPlaceholder", // Useless
+			"SignedByEsign" // Useless
 		].map {
 			app.appendingPathComponent($0)
 		}
