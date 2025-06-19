@@ -65,6 +65,36 @@
             }
           }
         },
+        "pl" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld aplikacji"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld aplikacji"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld aplikacja"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld aplikacji"
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -154,6 +184,36 @@
             }
           }
         },
+        "pl" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dni"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dni"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dzień"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dni"
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -182,6 +242,7 @@
     },
     "%lld required system dylibs not shown" : {
       "comment" : "Number of macho load paths not listed for safety",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -199,6 +260,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld dylib sistem yang diperlukan tidak ditampilkan"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie pokazano %lld wymaganych bibliotek systemowych"
           }
         },
         "tr" : {
@@ -267,6 +334,36 @@
             "value" : "%lld Sumber"
           }
         },
+        "pl" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld źródeł"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld źródeł"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld źródło"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld źródeł"
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -282,6 +379,7 @@
       }
     },
     "💜 This couldn't of been done without my sponsors!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -301,6 +399,12 @@
             "value" : "💜 Ini tidak akan bisa dilakukan tanpa sponsor saya!"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "💜 To nie byłoby możliwe bez moich sponsorów!"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -316,6 +420,7 @@
       }
     },
     "About" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -333,6 +438,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tentang"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O aplikacji"
           }
         },
         "tr" : {
@@ -382,6 +493,12 @@
             "value" : "Tambah"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodaj"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -403,6 +520,7 @@
       }
     },
     "Add Source" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -428,6 +546,12 @@
             "value" : "Tambah Sumber"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodaj źródło"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -449,6 +573,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Adds the localized description of the app."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodaje przetłumaczony opis aplikacji."
           }
         },
         "vi" : {
@@ -478,6 +608,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Penandatanganan Adhoc"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podpis Adhoc"
           }
         },
         "tr" : {
@@ -533,6 +669,12 @@
             "value" : "Lanjutan"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zaawansowane"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -568,6 +710,12 @@
             "value" : "Semua"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wszystkie"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -583,6 +731,7 @@
       }
     },
     "All of Feathers files are contained in the documents directory, here are some quick links to these." : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -602,6 +751,12 @@
             "value" : "Semua berkas Feather berada di direktori dokumen, berikut beberapa tautan cepat ke berkas-berkas tersebut."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wszystkie pliki Feather znajdują się w katalogu dokumentów, oto szybkie odnośniki do nich."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -618,6 +773,7 @@
     },
     "All Repositories" : {
       "comment" : "All repositories",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -637,6 +793,12 @@
             "value" : "Semua Repositori"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wszystkie repozytoria"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -652,6 +814,7 @@
       }
     },
     "Alternative Icons" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -669,6 +832,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ikon Alternatif"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alternatywne ikony"
           }
         },
         "tr" : {
@@ -713,6 +882,12 @@
             "value" : "Aplikasi yang luar biasa"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inne świetne aplikacje"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -748,6 +923,12 @@
             "value" : "Fitur Aplikasi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funkcje aplikacji"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -763,6 +944,7 @@
       }
     },
     "Appearance" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -798,6 +980,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tampilan"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wygląd"
           }
         },
         "ru" : {
@@ -841,6 +1029,12 @@
             "value" : "Nama AppID"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa AppID"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -856,6 +1050,7 @@
       }
     },
     "Archive & Compression" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -875,6 +1070,12 @@
             "value" : "Arsip & Kompresi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archiwizacja i kompresja"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -891,6 +1092,7 @@
     },
     "Bad Password" : {
       "comment" : "Bad certificate password",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -928,6 +1130,12 @@
             "value" : "Kata Sandi Salah"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niepoprawne hasło"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -955,6 +1163,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Best"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Najlepszy"
           }
         },
         "vi" : {
@@ -1004,6 +1218,12 @@
             "value" : "Deskripsi Besar"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rozszerzony opis"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1045,6 +1265,12 @@
             "value" : "Bundle"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paczka"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1068,6 +1294,12 @@
             "value" : "By default, localized titles for the app won't be changed, however this option overrides it."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domyślnie tłumaczone tytuły aplikacji nie będą zmieniane, jednak ta opcja to nadpisuje."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1077,6 +1309,7 @@
       }
     },
     "Cancel" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1112,6 +1345,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Batal"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anuluj"
           }
         },
         "ru" : {
@@ -1155,6 +1394,12 @@
             "value" : "Sertifikat"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certyfikat"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1171,6 +1416,7 @@
     },
     "Certificates" : {
       "comment" : "Certificates tab",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1208,6 +1454,12 @@
             "value" : "Sertifikat"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certyfikaty"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1229,6 +1481,7 @@
       }
     },
     "Change" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1246,6 +1499,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ubah"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zmień"
           }
         },
         "tr" : {
@@ -1271,6 +1530,12 @@
             "value" : "Check Revokage"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sprawdź unieważnienie"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1281,6 +1546,7 @@
     },
     "Choose from Files" : {
       "comment" : "Select custom app icon from files",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1300,6 +1566,12 @@
             "value" : "Pilih dari Berkas"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz z plików"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1316,6 +1588,7 @@
     },
     "Choose from Photos" : {
       "comment" : "Select custom app icon from photos",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1333,6 +1606,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pilih dari Foto"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz ze zdjęć"
           }
         },
         "tr" : {
@@ -1370,6 +1649,12 @@
             "value" : "Tutup"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zamknij"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1393,6 +1678,12 @@
             "value" : "Completed"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zakończono"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1403,6 +1694,7 @@
     },
     "Compression Level" : {
       "comment" : "Archive compression level",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1422,6 +1714,12 @@
             "value" : "Tingkat Kompresi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poziom kompresji"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1437,6 +1735,7 @@
       }
     },
     "Copy" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1474,6 +1773,12 @@
             "value" : "Salin"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopiuj"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1490,6 +1795,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sao chép"
+          }
+        }
+      }
+    },
+    "Copy Download URLs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy Download URLs"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopiuj URL do pobrania"
           }
         }
       }
@@ -1531,6 +1853,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kredit"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podziękowania"
           }
         },
         "ru" : {
@@ -1580,6 +1908,12 @@
             "value" : "Kustomisasi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dostosowanie"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1619,6 +1953,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tanggal"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data"
           }
         },
         "tr" : {
@@ -1674,6 +2014,12 @@
             "value" : "Tanggal Ditambahkan"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data dodania"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1727,6 +2073,12 @@
             "value" : "Default"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domyślny"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1756,6 +2108,12 @@
             "value" : "Default style for the app, only includes subtitle."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domyślny styl aplikacji, zawiera tylko podtytuł."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1773,6 +2131,12 @@
             "value" : "Default:\nSigns an application with your specified certificate.\n\nAdhoc (Advanced):\nSigns with no identity, however this unfortunately strips entitlements (iOS won't install this type)."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domyślnie:\nPodpisuje aplikację wskazanym certyfikatem.\n\nAdhoc (Zaawansowane):\nPodpisuje bez tożsamości, jednak usuwa uprawnienia (iOS nie zainstaluje takiego typu)."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1782,6 +2146,7 @@
       }
     },
     "Delete" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1819,6 +2184,12 @@
             "value" : "Hapus"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1843,6 +2214,12 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discord"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Discord"
@@ -1896,6 +2273,12 @@
             "value" : "Abaikan"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zamknij"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1917,6 +2300,7 @@
       }
     },
     "Display Names" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1940,6 +2324,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tampilkan Nama"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyświetlane nazwy"
           }
         },
         "ru" : {
@@ -2001,6 +2391,12 @@
             "value" : "Donasi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wesprzyj"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2023,6 +2419,7 @@
     },
     "Donations" : {
       "comment" : "Title for the big donation card",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2058,6 +2455,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Donasi"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Darowizny"
           }
         },
         "ru" : {
@@ -2096,6 +2499,12 @@
             "value" : "Unduh StosVPN"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pobierz StosVPN"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2105,6 +2514,7 @@
       }
     },
     "Dylibs" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2125,6 +2535,12 @@
           }
         },
         "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dylibs"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dylibs"
@@ -2153,6 +2569,12 @@
             "value" : "Enable Liquid Glass"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Włącz Liquid Glass"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2162,6 +2584,7 @@
       }
     },
     "Enabling any protection will append a random string to the bundleidentifiers of the apps you sign, this is to ensure your Apple ID does not get flagged by Apple. However, when using a signing service you can ignore this." : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2185,6 +2608,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mengaktifkan perlindungan apa pun akan menambahkan string acak ke identitas bundle dari aplikasi yang Anda tanda tangani, ini untuk memastikan Apple ID Anda tidak ditandai oleh Apple. Namun, saat menggunakan layanan penandatanganan, Anda bisa mengabaikan ini."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Włączenie ochrony doda losowy ciąg do identyfikatorów aplikacji, aby uniknąć oznaczenia przez Apple. Przy użyciu usługi podpisującej można to zignorować."
           }
         },
         "tr" : {
@@ -2211,6 +2640,12 @@
             "value" : "Enjoying %@?"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podoba Ci się %@?"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2220,6 +2655,7 @@
       }
     },
     "Enter a URL to start validation." : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2239,6 +2675,12 @@
             "value" : "Masukkan URL untuk memulai validasi."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wprowadź adres URL, aby rozpocząć weryfikację."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2254,6 +2696,7 @@
       }
     },
     "Enter Password" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2291,6 +2734,12 @@
             "value" : "Masukkan Kata Sandi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wprowadź hasło"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2312,6 +2761,7 @@
       }
     },
     "Enter the password associated with the private key. Leave it blank if theres no password required." : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2349,6 +2799,12 @@
             "value" : "Masukkan kata sandi yang terkait dengan kunci privat. Biarkan kosong jika tidak diperlukan kata sandi."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wprowadź hasło powiązane z kluczem prywatnym. Pozostaw puste, jeśli nie jest wymagane hasło."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2370,6 +2826,7 @@
       }
     },
     "Entitlements" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2387,6 +2844,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hak Akses (Entitlements)"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uprawnienia"
           }
         },
         "tr" : {
@@ -2410,6 +2873,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Error"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Błąd"
           }
         },
         "vi" : {
@@ -2441,6 +2910,12 @@
             "value" : "Eksekusi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodatkowe biblioteki"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2456,6 +2931,7 @@
       }
     },
     "Existing Dylibs" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2473,6 +2949,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dylib yang Ada"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Istniejące dylibs"
           }
         },
         "tr" : {
@@ -2496,6 +2978,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Experiments"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eksperymentalne"
           }
         }
       }
@@ -2531,6 +3019,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kedaluwarsa"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wygasł"
           }
         },
         "ru" : {
@@ -2574,6 +3068,12 @@
             "value" : "Tanggal Kedaluwarsa"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wygasa"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2590,6 +3090,7 @@
     },
     "Export" : {
       "comment" : "Export repositories",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2613,6 +3114,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ekspor"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eksportuj"
           }
         },
         "tr" : {
@@ -2650,6 +3157,12 @@
             "value" : "Gagal mengunduh, periksa koneksi internet Anda dan coba lagi."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie udało się pobrać. Sprawdź połączenie z internetem i spróbuj ponownie."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2683,6 +3196,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fitur"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funkcje"
           }
         },
         "tr" : {
@@ -2719,6 +3238,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Berbagi File"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Udostępnianie plików"
           }
         },
         "ru" : {
@@ -2762,6 +3287,12 @@
             "value" : "Berkas"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pliki"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2777,6 +3308,7 @@
       }
     },
     "Filter by" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2800,6 +3332,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Filter berdasarkan"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtruj według"
           }
         },
         "tr" : {
@@ -2843,6 +3381,12 @@
             "value" : "Paksa Lokalisasi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wymuś lokalizację"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2878,6 +3422,12 @@
             "value" : "Frameworks"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biblioteki"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2893,6 +3443,7 @@
       }
     },
     "Frameworks & PlugIns" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2910,6 +3461,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Frameworks & PlugIns"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biblioteki i wtyczki"
           }
         },
         "tr" : {
@@ -2947,6 +3504,12 @@
             "value" : "Sepenuhnya Lokal"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "W pełni lokalnie"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2957,6 +3520,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cục bộ hoàn toàn"
+          }
+        }
+      }
+    },
+    "Game Mode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Game Mode"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tryb Gry"
           }
         }
       }
@@ -2992,6 +3572,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Umum"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ogólne"
           }
         },
         "ru" : {
@@ -3035,6 +3621,12 @@
             "value" : "Dapatkan akses ke Discord rahasia kami dengan berdonasi, di mana kami membahas pembaruan mendatang, versi beta, dan cara-cara potensial untuk meningkatkan pengalaman Anda."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uzyskaj dostęp do naszego prywatnego Discorda poprzez wsparcie, gdzie rozmawiamy o przyszłych aktualizacjach, wersjach beta i możliwościach poprawy doświadczeń."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3051,6 +3643,7 @@
     },
     "Get Info" : {
       "comment" : "Show info about the app",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -3070,6 +3663,12 @@
             "value" : "Dapatkan Info"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pobierz informacje"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3085,6 +3684,7 @@
       }
     },
     "GitHub Repository" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -3122,6 +3722,12 @@
             "value" : "Repositori GitHub"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repozytorium GitHub"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3151,6 +3757,12 @@
             "value" : "Go to our GitHub and give us a star!"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odwiedź nasze GitHub i zostaw gwiazdkę!"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3178,6 +3790,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Detak Jantung"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heartbeat"
           }
         },
         "tr" : {
@@ -3215,6 +3833,12 @@
             "value" : "Bantuan"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pomoc"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3250,6 +3874,12 @@
             "value" : "Tersembunyi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ukryte"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3265,6 +3895,7 @@
       }
     },
     "Identifers" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -3284,6 +3915,12 @@
             "value" : "Pengidentifikasi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identyfikatory"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3299,6 +3936,7 @@
       }
     },
     "Identifier" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -3334,6 +3972,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pengidentifikasi"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identyfikator"
           }
         },
         "ru" : {
@@ -3377,6 +4021,12 @@
             "value" : "Awalan Pengidentifikasi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prefiks identyfikatora"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3400,6 +4050,12 @@
             "value" : "idevice"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "idevice"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3411,6 +4067,7 @@
     },
     "Import" : {
       "comment" : "Import repositories",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -3446,6 +4103,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impor"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importuj"
           }
         },
         "ru" : {
@@ -3489,6 +4152,12 @@
             "value" : "Impor Berkas Sertifikat"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importuj plik certyfikatu"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3505,6 +4174,7 @@
     },
     "Import from Files" : {
       "comment" : "Select an app from files to import",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -3530,6 +4200,12 @@
             "value" : "Impor dari Berkas"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importuj z plików"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3546,6 +4222,7 @@
     },
     "Import from URL" : {
       "comment" : "Select an app from a URL to import",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -3563,6 +4240,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impor dari URL"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importuj z adresu URL"
           }
         },
         "tr" : {
@@ -3600,6 +4283,12 @@
             "value" : "Impor Berkas Pairing"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importuj plik parowania"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3633,6 +4322,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impor Berkas Provisioning"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importuj plik provisioning"
           }
         },
         "tr" : {
@@ -3670,6 +4365,12 @@
             "value" : "Telah Diimpor"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zaimportowano"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3705,6 +4406,12 @@
             "value" : "Info"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informacje"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3734,6 +4441,12 @@
             "value" : "Folder Injeksi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Folder iniekcji"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3757,6 +4470,12 @@
             "value" : "Direktori Injeksi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ścieżka iniekcji"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3766,6 +4485,7 @@
       }
     },
     "Install" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -3803,6 +4523,12 @@
             "value" : "Pasang"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instaluj"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3832,6 +4558,12 @@
             "value" : "Installation"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instalacja"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3841,6 +4573,7 @@
       }
     },
     "Installation Type" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -3858,6 +4591,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Jenis Instalasi"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Typ instalacji"
           }
         },
         "tr" : {
@@ -3881,6 +4620,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Installing"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instalowanie"
           }
         },
         "vi" : {
@@ -3910,6 +4655,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Layar Penuh iPad"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPad pełny ekran"
           }
         },
         "tr" : {
@@ -3952,6 +4703,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Berbagi Berkas iTunes"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Udostępnianie plików iTunes"
           }
         },
         "ru" : {
@@ -4014,6 +4771,12 @@
             "value" : "Perpustakaan"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biblioteka"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4047,6 +4810,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tampilan Sel Perpustakaan"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wygląd komórki biblioteki"
           }
         },
         "tr" : {
@@ -4091,6 +4860,12 @@
             "value" : "Persyaratan Minimum"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minimalne wymagania"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4126,6 +4901,12 @@
             "value" : "Lain-lain"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Różne"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4141,6 +4922,7 @@
       }
     },
     "Modify" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4160,6 +4942,12 @@
             "value" : "Ubah"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modyfikuj"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4175,6 +4963,7 @@
       }
     },
     "Name" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4212,6 +5001,12 @@
             "value" : "Nama"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4245,6 +5040,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Baru"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nowy"
           }
         },
         "tr" : {
@@ -4300,6 +5101,12 @@
             "value" : "Sertifikat Baru"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nowy certyfikat"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4322,6 +5129,7 @@
     },
     "Nickname (Optional)" : {
       "comment" : "Certificate custom nickname",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4339,6 +5147,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nama Panggilan (Opsional)"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Własna nazwa (opcjonalnie)"
           }
         },
         "tr" : {
@@ -4376,6 +5190,12 @@
             "value" : "Tidak Ada Sertifikat"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak certyfikatu"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4403,6 +5223,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Belum ada file yang dipilih."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie wybrano plików."
           }
         },
         "vi" : {
@@ -4434,6 +5260,12 @@
             "value" : "Tidak ditemukan berkas pairing, silakan impor terlebih dahulu."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie znaleziono pliku parowania, zaimportuj go."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4457,6 +5289,12 @@
             "value" : "None"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4466,6 +5304,7 @@
       }
     },
     "OK" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4503,6 +5342,12 @@
             "value" : "OK"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4524,6 +5369,7 @@
       }
     },
     "Only use localhost address" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4543,6 +5389,12 @@
             "value" : "Hanya gunakan alamat localhost"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Używaj tylko adresu localhost"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4558,6 +5410,7 @@
       }
     },
     "Open" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4577,6 +5430,12 @@
             "value" : "Buka"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otwórz"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4592,6 +5451,7 @@
       }
     },
     "Open Archives" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4611,6 +5471,12 @@
             "value" : "Buka Arsip"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otwórz archiwa"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4626,6 +5492,7 @@
       }
     },
     "Open Certificates" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4645,6 +5512,12 @@
             "value" : "Buka Sertifikat"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otwórz certyfikaty"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4660,6 +5533,7 @@
       }
     },
     "Open Documents" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4679,6 +5553,12 @@
             "value" : "Buka Dokumen"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otwórz dokumenty"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4694,6 +5574,7 @@
       }
     },
     "Open in Files" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4731,6 +5612,12 @@
             "value" : "Buka di Files"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otwórz w Plikach"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4760,6 +5647,12 @@
             "value" : "Packaging"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tworzenie paczki"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4787,6 +5680,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Panduan Berkas Pairing"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przewodnik po pliku parowania"
           }
         },
         "tr" : {
@@ -4842,6 +5741,12 @@
             "value" : "Kata Sandi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hasło"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4883,6 +5788,12 @@
             "value" : "Pill"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapsułka"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4918,6 +5829,12 @@
             "value" : "Platform"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Platforma"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4934,6 +5851,7 @@
     },
     "Please check the password and try again." : {
       "comment" : "Bad certificate password, try again",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4969,6 +5887,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Silakan periksa kata sandi dan coba lagi."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sprawdź hasło i spróbuj ponownie."
           }
         },
         "ru" : {
@@ -5012,6 +5936,12 @@
             "value" : "Silakan buka pengaturan dan impor sertifikat yang valid"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przejdź do ustawień i zaimportuj poprawny certyfikat"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5045,6 +5975,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Perlindungan PPQ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ochrona PPQ"
           }
         },
         "ru" : {
@@ -5089,6 +6025,12 @@
             "value" : "Versi Sebelumnya"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poprzednie wersje"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5103,8 +6045,27 @@
         }
       }
     },
+    "Pro Motion" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro Motion"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro Motion"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
     "Properties" : {
       "comment" : "Select custom properties for the app",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -5134,6 +6095,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Properti"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Właściwości"
           }
         },
         "tr" : {
@@ -5171,6 +6138,12 @@
             "value" : "Perlindungan"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ochrona"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5204,6 +6177,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Provision untuk Semua Perangkat"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provisionuj wszystkie urządzenia"
           }
         },
         "tr" : {
@@ -5241,6 +6220,12 @@
             "value" : "Perangkat yang Telah Diprovision"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provisionowane urządzenia"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5256,6 +6241,7 @@
       }
     },
     "Re-sign" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -5273,6 +6259,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tandatangani Ulang"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podpisz ponownie"
           }
         },
         "tr" : {
@@ -5296,6 +6288,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ready"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gotowe"
           }
         },
         "vi" : {
@@ -5325,6 +6323,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Penghapusan"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuwanie"
           }
         },
         "tr" : {
@@ -5360,6 +6364,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hapus notifikasi mengganggu seperti ini setelah mendapatkan akses beta!"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń irytujące alerty jak ten po uzyskaniu dostępu do bety!"
           }
         },
         "tr" : {
@@ -5403,6 +6413,12 @@
             "value" : "Hapus Provisioning"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń provisioning"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5444,6 +6460,12 @@
             "value" : "Hapus Perangkat yang Didukung"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń obsługiwane urządzenia"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5477,6 +6499,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hapus Notifikasi Ini"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń ten alert"
           }
         },
         "tr" : {
@@ -5518,6 +6546,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hapus Skema URL"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń schemat URL"
           }
         },
         "ru" : {
@@ -5567,6 +6601,12 @@
             "value" : "Hapus Placeholder Watch"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń placeholder Watch"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5589,10 +6629,17 @@
             "state" : "translated",
             "value" : "Replace Substrate with ElleKit"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zastąp Substrate przez ElleKit"
+          }
         }
       }
     },
     "Replacement" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -5616,6 +6663,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Penggantian"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podmiana"
           }
         },
         "ru" : {
@@ -5663,6 +6716,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Repositori"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repozytoria"
           }
         },
         "tr" : {
@@ -5718,6 +6777,12 @@
             "value" : "Atur Ulang"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetuj"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5759,6 +6824,12 @@
             "value" : "Mulai Ulang Detak Jantung"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restartuj Heartbeat"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5794,6 +6865,12 @@
             "value" : "Diperlukan Mulai Ulang"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wymagany restart"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5809,6 +6886,7 @@
       }
     },
     "Save" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -5838,6 +6916,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Simpan"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zapisz"
           }
         },
         "ru" : {
@@ -5882,6 +6966,12 @@
             "value" : "Lihat semua aplikasi dari sumber Anda"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobacz wszystkie aplikacje ze swoich źródeł"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5917,6 +7007,12 @@
             "value" : "Sepertinya Anda sudah mendapatkan berkas pairing Anda"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wygląda na to, że masz swój plik parowania!"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5933,6 +7029,7 @@
     },
     "Select Alternative Icon" : {
       "comment" : "Select custom alternative app icon",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -5952,6 +7049,12 @@
             "value" : "Pilih Ikon Alternatif"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz alternatywną ikonę"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5968,6 +7071,7 @@
     },
     "Select entitlements file" : {
       "comment" : "Select custom entitlements for the app",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -5985,6 +7089,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pilih berkas entitlements"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz plik uprawnień"
           }
         },
         "tr" : {
@@ -6022,6 +7132,12 @@
             "value" : "Semi Lokal"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Częściowo lokalnie"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6045,6 +7161,12 @@
             "value" : "Sending Manifest"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wysyłanie manifestu"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6060,6 +7182,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sending Payload"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wysyłanie ładunku"
           }
         },
         "vi" : {
@@ -6079,6 +7207,12 @@
             "value" : "Server"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serwer"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6096,6 +7230,12 @@
             "value" : "Server (Recommended):\nUses a locally hosted server and itms-services:// to install applications.\n\nIDevice (advanced):\nUses a VPN and a pairing file. Writes to AFC and manually calls installd, while monitoring install progress by using a callback\nAdvantage: It is very reliable, does not need SSL certificates or a externally hosted server. Rather, works similarly to a computer."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serwer (zalecane):\nUżywa lokalnie hostowanego serwera i itms-services:// do instalowania aplikacji.\n\nIDevice (zaawansowane):\nUżywa VPN i pliku parowania. Zapisuje do AFC i ręcznie wywołuje installd, monitorując postęp instalacji przez callback.\nZaleta: Jest bardzo niezawodny, nie wymaga certyfikatów SSL ani zewnętrznego serwera. Działa podobnie do komputera."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6105,6 +7245,7 @@
       }
     },
     "Server & SSL" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6122,6 +7263,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Server & SSL"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serwer i SSL"
           }
         },
         "tr" : {
@@ -6145,6 +7292,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Server Type"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Typ serwera"
           }
         },
         "vi" : {
@@ -6195,6 +7348,12 @@
             "value" : "Pengaturan"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustawienia"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6211,6 +7370,7 @@
     },
     "Show Sheet when Exporting" : {
       "comment" : "Archiving opens share sheet",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6228,6 +7388,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tampilkan Lembar saat Mengekspor"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokaż arkusz podczas eksportu"
           }
         },
         "tr" : {
@@ -6265,6 +7431,12 @@
             "value" : "Tunjukkan Dukungan Anda"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokaż swoje wsparcie"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6298,6 +7470,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dukung kami dengan berdonasi! Jika Anda tidak bisa berdonasi, menyebarkan informasi juga sangat membantu!"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Okaż wsparcie poprzez darowiznę! Jeśli nie możesz wesprzeć finansowo, podziel się informacją z innymi!"
           }
         },
         "tr" : {
@@ -6335,6 +7513,12 @@
             "value" : "Tandatangani"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podpisz"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6368,6 +7552,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Telah Ditandatangani"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podpisano"
           }
         },
         "tr" : {
@@ -6417,6 +7607,12 @@
             "value" : "Menandatangani"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podpisywanie"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6432,6 +7628,7 @@
       }
     },
     "Signing Options" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6455,6 +7652,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Opsi Penandatanganan"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opcje podpisywania"
           }
         },
         "ru" : {
@@ -6486,6 +7689,12 @@
             "value" : "Signing Type"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Typ podpisu"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6495,6 +7704,7 @@
       }
     },
     "Source Repo URL" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6514,6 +7724,12 @@
             "value" : "URL Repo Sumber"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adres URL repozytorium źródłowego"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6530,6 +7746,7 @@
     },
     "Sources" : {
       "comment" : "Sources tab",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6567,6 +7784,12 @@
             "value" : "Sumber"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Źródła"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6588,6 +7811,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Speed"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prędkość"
           }
         },
         "vi" : {
@@ -6637,6 +7866,12 @@
             "value" : "Sponsor"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sponsorzy"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6678,6 +7913,12 @@
             "value" : "Sertifikat SSL"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certyfikaty SSL"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6717,6 +7958,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Standar"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standardowy"
           }
         },
         "tr" : {
@@ -6766,6 +8013,12 @@
             "value" : "Mulai Menandatangani"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rozpocznij podpisywanie"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6781,6 +8034,7 @@
       }
     },
     "Store Cell Appearance" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6800,6 +8054,12 @@
             "value" : "Tampilan Sel Penyimpanan"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wygląd komórki sklepu"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6815,6 +8075,7 @@
       }
     },
     "String" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6834,6 +8095,12 @@
             "value" : "String"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ciąg znaków"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6849,6 +8116,7 @@
       }
     },
     "Submit Feedback" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6886,6 +8154,12 @@
             "value" : "Kirim Masukan"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prześlij opinię"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6907,6 +8181,7 @@
       }
     },
     "Supports importing from KravaSign/MapleSign and ESign" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6924,6 +8199,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mendukung impor dari KravaSign/MapleSign dan ESign"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obsługuje importowanie z KravaSign/MapleSign i ESign"
           }
         },
         "tr" : {
@@ -6961,6 +8242,12 @@
             "value" : "Pengidentifikasi Tim"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identyfikatory zespołu"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6994,6 +8281,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nama Tim"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa zespołu"
           }
         },
         "tr" : {
@@ -7031,6 +8324,12 @@
             "value" : "Detak jantung diaktifkan di latar belakang, akan\ndimulai ulang saat aplikasi dibuka kembali atau diminta. Jika status di bawah ini berdenyut, berarti dalam kondisi sehat."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monitor pracy aplikacji działa w tle. Zostanie uruchomiony ponownie po ponownym otwarciu lub wymuszeniu. Jeśli poniższy status pulsuje, wszystko działa poprawnie."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7052,6 +8351,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Theme"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Motyw"
           }
         },
         "vi" : {
@@ -7083,6 +8388,12 @@
             "value" : "Mengaktifkan tampilan lembar akan menampilkan lembar berbagi setelah mengekspor ke berkas Anda."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Te zmiany wymagają ponownego uruchomienia aplikacji"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7105,6 +8416,12 @@
             "state" : "translated",
             "value" : "This enables liquid glass for this app, this requires a restart of the app to take effect."
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Włącza liquid glass dla tej aplikacji. Wymaga ponownego uruchomienia, aby zmiany zostały zastosowane."
+          }
         }
       }
     },
@@ -7117,6 +8434,12 @@
             "value" : "This option force converts apps to try to use the new liquid glass redesign iOS 26 introduced, this may not work for all applications due to differing frameworks."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ta opcja wymusza konwersję aplikacji na nowy wygląd liquid glass wprowadzony w iOS 26. Może nie działać ze wszystkimi aplikacjami z powodu różnych frameworków."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7126,6 +8449,7 @@
       }
     },
     "Toggling show sheet will present a share sheet after exporting to your files." : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -7143,6 +8467,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mengaktifkan tampilan lembar akan menampilkan lembar berbagi setelah mengekspor ke berkas Anda."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Włączenie arkusza spowoduje wyświetlenie arkusza udostępniania po wyeksportowaniu do plików."
           }
         },
         "tr" : {
@@ -7180,6 +8510,12 @@
             "value" : "Tunnel & Pairing"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tunel i parowanie"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7196,6 +8532,7 @@
     },
     "Tweaks" : {
       "comment" : "Select custom tweaks to install and inject",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -7210,6 +8547,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tweaks"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tweaks"
@@ -7263,6 +8606,12 @@
             "value" : "Tidak Dikenal"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nieznane"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7284,6 +8633,7 @@
       }
     },
     "Update SSL Certificates" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -7309,6 +8659,12 @@
             "value" : "Perbarui Sertifikat SSL"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualizuj certyfikaty SSL"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7324,8 +8680,15 @@
       }
     },
     "URL" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL"
@@ -7349,6 +8712,12 @@
             "value" : "Value"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wartość"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7358,6 +8727,7 @@
       }
     },
     "Version" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -7395,6 +8765,12 @@
             "value" : "Versi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wersja"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7411,6 +8787,7 @@
     },
     "View Entitlements" : {
       "comment" : "Certificate listed entitlements",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -7430,6 +8807,12 @@
             "value" : "Lihat Entitlements"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobacz uprawnienia"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7446,6 +8829,7 @@
     },
     "Visit Patreon" : {
       "comment" : "Repository listed patreon",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -7465,6 +8849,12 @@
             "value" : "Kunjungi Patreon"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odwiedź Patreon"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7481,6 +8871,7 @@
     },
     "Visit Website" : {
       "comment" : "Repository listed website",
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -7498,6 +8889,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kunjungi Situs Web"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odwiedź stronę"
           }
         },
         "tr" : {
@@ -7529,6 +8926,12 @@
             "value" : "Kamu tidak bisa melakukan update pada ‘%@’ menggunakan dirinya sendiri. Silakan gunakan tool alternatif untuk memperbaruinya."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie można zaktualizować „%@” przy jego użyciu. Użyj innego narzędzia do aktualizacji."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7544,6 +8947,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Your pairing file is invalid and is incompatible with your device, please import a valid pairing file."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Twój plik parowania jest nieprawidłowy i niekompatybilny z urządzeniem. Zaimportuj poprawny plik."
           }
         },
         "vi" : {
