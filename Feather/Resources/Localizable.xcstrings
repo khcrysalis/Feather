@@ -1799,6 +1799,17 @@
         }
       }
     },
+    "Copy Download URLs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy Download URLs"
+          }
+        }
+      }
+    },
     "Credits" : {
       "extractionState" : "manual",
       "localizations" : {
