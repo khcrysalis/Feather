@@ -31,7 +31,7 @@ struct SigningDylibView: View {
 			.disabled(options == nil)
 			
 			NBSection(.localized("Hidden")) {
-				Text(verbatim: .localized("%lld required system dylibs not shown", arguments: _hiddenDylibCount))
+				Text(verbatim: .localized("%lld required system dylibs not shown.", arguments: _hiddenDylibCount))
 					.font(.footnote)
 					.foregroundColor(.disabled())
 			}

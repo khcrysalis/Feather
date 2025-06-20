@@ -46,6 +46,15 @@ struct SigningFrameworksView: View {
 						}
 					}
 				}
+				
+				if
+					_frameworks.isEmpty,
+					_plugins.isEmpty
+				{
+					Text(.localized("No Frameworks or PlugIns Found."))
+						.font(.footnote)
+						.foregroundColor(.disabled())
+				}
 			}
 			.disabled(options == nil)
 		}

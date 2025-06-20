@@ -240,43 +240,43 @@
         }
       }
     },
-    "%lld required system dylibs not shown" : {
+    "%lld required system dylibs not shown." : {
       "comment" : "Number of macho load paths not listed for safety",
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "%lld požadované systémové knihovny nejsou zobrazeny"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld required system dylibs not shown"
+            "value" : "%lld required system dylibs not shown."
           }
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "%lld dylib sistem yang diperlukan tidak ditampilkan"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Nie pokazano %lld wymaganych bibliotek systemowych"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "%lld gerekli sistem dylib kütüphanesi gösterilmiyor."
           }
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "%lld thư viện hệ thống bắt buộc không được hiển thị"
           }
         }
@@ -3695,6 +3695,39 @@
         }
       }
     },
+    "Get started by adding your first repository." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get started by adding your first repository."
+          }
+        }
+      }
+    },
+    "Get started by importing your first IPA file." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get started by importing your first IPA file."
+          }
+        }
+      }
+    },
+    "Get started signing by importing your first certificate." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get started signing by importing your first certificate."
+          }
+        }
+      }
+    },
     "GitHub Repository" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5181,6 +5214,17 @@
         }
       }
     },
+    "No Apps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Apps"
+          }
+        }
+      }
+    },
     "No Certificate" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5222,6 +5266,17 @@
         }
       }
     },
+    "No Certificates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Certificates"
+          }
+        }
+      }
+    },
     "No files chosen." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5247,6 +5302,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Không có tập tin nào được chọn."
+          }
+        }
+      }
+    },
+    "No Frameworks or PlugIns Found." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Frameworks or PlugIns Found."
+          }
+        }
+      }
+    },
+    "No Icons Found." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Icons Found."
           }
         }
       }
@@ -5288,6 +5365,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Không tìm thấy tệp ghép nối, vui lòng nhập tệp."
+          }
+        }
+      }
+    },
+    "No Repositories" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Repositories"
           }
         }
       }

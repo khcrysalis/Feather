@@ -10,6 +10,7 @@ import NimbleViews
 import AltSourceKit
 import NimbleJSON
 import OSLog
+import UIKit.UIImpactFeedbackGenerator
 
 // MARK: - View
 struct SourcesAddView: View {
@@ -40,13 +41,13 @@ struct SourcesAddView: View {
 						_addCode(UIPasteboard.general.string) {
 							dismiss()
 						}
-						
 					}
 					
 					Button(.localized("Export"), systemImage: "doc.on.clipboard") {
 						UIPasteboard.general.string = Storage.shared.getSources().map {
 							$0.sourceURL!.absoluteString
 						}.joined(separator: "\n")
+						UINotificationFeedbackGenerator().notificationOccurred(.success)
 					}
 				} footer: {
 					Text(.localized("Supports importing from KravaSign/MapleSign and ESign"))

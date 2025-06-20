@@ -135,9 +135,9 @@ extension SigningView {
 			} label: {
 				if let icon = appIcon {
 					Image(uiImage: icon)
-						.appIconStyle(size: 55)
+						.appIconStyle()
 				} else {
-					FRAppIconView(app: app, size: 55)
+					FRAppIconView(app: app, size: 56)
 				}
 			}
 			
@@ -176,6 +176,10 @@ extension SigningView {
 						cert: cert
 					)
 				}
+			} else {
+				Text(.localized("No Certificate"))
+					.font(.footnote)
+					.foregroundColor(.disabled())
 			}
 		}
 	}

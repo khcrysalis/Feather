@@ -59,41 +59,46 @@ struct LibraryView: View {
 		NBNavigationView(.localized("Library")) {
 			NBListAdaptable {
 				if
-					_selectedScope == .all ||
-					_selectedScope == .signed
+					!_filteredSignedApps.isEmpty ||
+					!_filteredImportedApps.isEmpty
 				{
-					NBSection(
-						.localized("Signed"),
-						secondary: _filteredSignedApps.count.description
-					) {
-						ForEach(_filteredSignedApps, id: \.uuid) { app in
-							LibraryCellView(
-								app: app,
-								selectedInfoAppPresenting: $_selectedInfoAppPresenting,
-								selectedSigningAppPresenting: $_selectedSigningAppPresenting,
-								selectedInstallAppPresenting: $_selectedInstallAppPresenting
-							)
-							.compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
+					if
+						_selectedScope == .all ||
+						_selectedScope == .signed
+					{
+						NBSection(
+							.localized("Signed"),
+							secondary: _filteredSignedApps.count.description
+						) {
+							ForEach(_filteredSignedApps, id: \.uuid) { app in
+								LibraryCellView(
+									app: app,
+									selectedInfoAppPresenting: $_selectedInfoAppPresenting,
+									selectedSigningAppPresenting: $_selectedSigningAppPresenting,
+									selectedInstallAppPresenting: $_selectedInstallAppPresenting
+								)
+								.compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
+							}
 						}
 					}
-				}
-				
-				if
-					_selectedScope == .all ||
-					_selectedScope == .imported
-				{
-					NBSection(
-						.localized("Imported"),
-						secondary: _filteredImportedApps.count.description
-					) {
-						ForEach(_filteredImportedApps, id: \.uuid) { app in
-							LibraryCellView(
-								app: app,
-								selectedInfoAppPresenting: $_selectedInfoAppPresenting,
-								selectedSigningAppPresenting: $_selectedSigningAppPresenting,
-								selectedInstallAppPresenting: $_selectedInstallAppPresenting
-							)
-							.compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
+					
+					if
+						_selectedScope == .all ||
+							_selectedScope == .imported
+					{
+						NBSection(
+							.localized("Imported"),
+							secondary: _filteredImportedApps.count.description
+						) {
+							ForEach(_filteredImportedApps, id: \.uuid) { app in
+								LibraryCellView(
+									app: app,
+									selectedInfoAppPresenting: $_selectedInfoAppPresenting,
+									selectedSigningAppPresenting: $_selectedSigningAppPresenting,
+									selectedInstallAppPresenting: $_selectedInstallAppPresenting
+								)
+								.compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
+							}
 						}
 					}
 				}
@@ -105,18 +110,33 @@ struct LibraryView: View {
 				}
 			}
 			.scrollDismissesKeyboard(.interactively)
+			.overlay {
+				if
+					_filteredSignedApps.isEmpty,
+					_filteredImportedApps.isEmpty
+				{
+					if #available(iOS 17, *) {
+						ContentUnavailableView {
+							Label(.localized("No Apps"), systemImage: "questionmark.app.fill")
+						} description: {
+							Text(.localized("Get started by importing your first IPA file."))
+						} actions: {
+							Menu {
+								_importActions()
+							} label: {
+								NBButton(.localized("Import"), style: .text)
+							}
+						}
+					}
+				}
+			}
 			.toolbar {
 				NBToolbarMenu(
 					systemImage: "plus",
 					style: .icon,
 					placement: .topBarTrailing
 				) {
-					Button(.localized("Import from Files"), systemImage: "folder") {
-						_isImportingPresenting = true
-					}
-					Button(.localized("Import from URL"), systemImage: "globe") {
-						_isDownloadingPresenting = true
-					}
+					_importActions()
 				}
 			}
 			.sheet(item: $_selectedInfoAppPresenting) { app in
@@ -158,6 +178,19 @@ struct LibraryView: View {
 			}
         }
     }
+}
+
+// MARK: - Extension: View
+extension LibraryView {
+	@ViewBuilder
+	private func _importActions() -> some View {
+		Button(.localized("Import from Files"), systemImage: "folder") {
+			_isImportingPresenting = true
+		}
+		Button(.localized("Import from URL"), systemImage: "globe") {
+			_isDownloadingPresenting = true
+		}
+	}
 }
 
 // MARK: - Extension: View (Sort)

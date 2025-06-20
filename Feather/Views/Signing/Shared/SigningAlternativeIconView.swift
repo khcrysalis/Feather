@@ -21,14 +21,22 @@ struct SigningAlternativeIconView: View {
 	// MARK: Body
 	var body: some View {
 		NBNavigationView(.localized("Alternative Icons"), displayMode: .inline) {
-			List(_alternateIcons, id: \.name) { icon in
-				Button {
-					appIcon = _iconUrl(icon.path)
-					dismiss()
-				} label: {
-					_icon(icon)
+			List {
+				if !_alternateIcons.isEmpty {
+					ForEach(_alternateIcons, id: \.name) { icon in
+						Button {
+							appIcon = _iconUrl(icon.path)
+							dismiss()
+						} label: {
+							_icon(icon)
+						}
+						.disabled(!isModifing)
+					}
+				} else {
+					Text(.localized("No Icons Found."))
+						.font(.footnote)
+						.foregroundColor(.disabled())
 				}
-				.disabled(!isModifing)
 			}
 			.onAppear(perform: _loadAlternateIcons)
 			.toolbar {
