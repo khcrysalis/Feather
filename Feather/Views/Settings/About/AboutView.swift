@@ -27,7 +27,7 @@ struct AboutView: View {
 			if !isLoading {
 				Section {
 					VStack {
-						Image(uiImage: (UIImage(named: Bundle.main.iconFileName ?? ""))! )
+						Image(uiImage: AppIconView.altImage(UIApplication.shared.alternateIconName))
 							.appIconStyle(size: 72)
 						
 						Text(Bundle.main.exec)

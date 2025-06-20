@@ -10,6 +10,8 @@ import NimbleViews
 
 // MARK: - View
 struct SettingsView: View {
+	@State private var _currentIcon: String? = UIApplication.shared.alternateIconName
+	
 	private let _donationsUrl = "https://github.com/sponsors/khcrysalis"
 	private let _githubUrl = "https://github.com/khcrysalis/Feather"
 	
@@ -25,6 +27,9 @@ struct SettingsView: View {
 				
 				Section {
 					NavigationLink(.localized("Appearance"), destination: AppearanceView())
+					if UIDevice.current.doesHaveAppIdCapabilities {
+						NavigationLink(.localized("App Icon"), destination: AppIconView(currentIcon: $_currentIcon))
+					}
 				}
 				
 				NBSection(.localized("Features")) {
@@ -49,7 +54,15 @@ extension SettingsView {
 	@ViewBuilder
 	private func _feedback() -> some View {
 		Section {
-			NavigationLink(.localized("About"), destination: AboutView())
+			NavigationLink(destination: AboutView()) {
+				Label {
+					Text(verbatim: .localized("About %@", arguments: Bundle.main.name))
+				} icon: {
+					Image(uiImage: AppIconView.altImage(_currentIcon))
+						.appIconStyle(size: 23)
+				}
+			}
+			
 			Button(.localized("Submit Feedback"), systemImage: "safari") {
 				UIApplication.open("\(_githubUrl)/issues")
 			}

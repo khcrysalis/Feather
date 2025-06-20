@@ -26,10 +26,11 @@ struct LibraryCellView: View {
 	@Binding var selectedSigningAppPresenting: AnyApp?
 	@Binding var selectedInstallAppPresenting: AnyApp?
 	
+	// MARK: Body
 	var body: some View {
 		let isRegular = horizontalSizeClass != .compact
 		
-		HStack(spacing: 9) {
+		HStack(spacing: 18) {
 			FRAppIconView(app: app, size: 57)
 			
 			NBTitleWithSubtitleView(

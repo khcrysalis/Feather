@@ -19,7 +19,7 @@ struct FRIconCellView: View {
 	
 	// MARK: Body
 	var body: some View {
-		HStack(spacing: 9) {
+		HStack(spacing: 18) {
 			if let iconURL = iconUrl {
 				LazyImage(url: iconURL) { state in
 					if let image = state.image {

@@ -40,7 +40,7 @@ struct SourcesView: View {
 						SourceAppsView(object: Array(_sources), viewModel: viewModel)
 					} label: {
 						let isRegular = horizontalSizeClass != .compact
-						HStack(spacing: 9) {
+						HStack(spacing: 18) {
 							Image("Repositories").appIconStyle()
 							NBTitleWithSubtitleView(
 								title: .localized("All Repositories"),
@@ -85,7 +85,6 @@ struct SourcesView: View {
 			}
 			.sheet(isPresented: $_isAddingPresenting) {
 				SourcesAddView()
-					.presentationDetents([.medium])
 			}
 			.refreshable {
 				await viewModel.fetchSources(_sources, refresh: true)
