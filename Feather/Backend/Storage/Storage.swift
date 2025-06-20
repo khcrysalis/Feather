@@ -46,4 +46,9 @@ final class Storage: ObservableObject {
 		let deleteRequest = NSBatchDeleteRequest(fetchRequest: (request as? NSFetchRequest<NSFetchRequestResult>)!)
 		_ = try? context.execute(deleteRequest)
 	}
+	
+	func countContent<T: NSManagedObject>(for type: T.Type) -> String {
+		let request = T.fetchRequest()
+		return "\((try? context.count(for: request)) ?? 0)"
+	}
 }

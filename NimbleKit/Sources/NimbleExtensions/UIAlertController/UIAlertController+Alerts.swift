@@ -8,6 +8,34 @@
 import UIKit.UIAlertController
 
 extension UIAlertController {
+	/// Presents an alert
+	/// - Parameters:
+	///   - presenter: View where its presenting
+	///   - title: Alert title
+	///   - message: Alert message
+	///   - actions: Alert actions
+	static public func showAlertWithCancel(
+		_ presenter: UIViewController = UIApplication.topViewController()!,
+		_ popoverFromView: UIView? = nil,
+		title: String?,
+		message: String?,
+		style: UIAlertController.Style = .alert,
+		actions: [UIAlertAction]
+	) {
+		var actions = actions
+		actions.append(
+			UIAlertAction(title: .localized("Cancel"), style: .cancel, handler: nil)
+		)
+		
+		showAlert(
+			presenter,
+			popoverFromView,
+			title: title,
+			message: message,
+			style: style,
+			actions: actions
+		)
+	}
 	/// Presents an alert with an OK button
 	/// - Parameters:
 	///   - presenter: View where it is presenting

@@ -20,7 +20,7 @@ struct CertificatesView: View {
 		entity: CertificatePair.entity(),
 		sortDescriptors: [NSSortDescriptor(keyPath: \CertificatePair.date, ascending: false)],
 		animation: .snappy
-	) private var certificates: FetchedResults<CertificatePair>
+	) private var _certificates: FetchedResults<CertificatePair>
 	
 	//
 	private var _bindingSelectedCert: Binding<Int>?
@@ -35,7 +35,7 @@ struct CertificatesView: View {
 	// MARK: Body
 	var body: some View {
 		NBGrid {
-			ForEach(Array(certificates.enumerated()), id: \.element.uuid) { index, cert in
+			ForEach(Array(_certificates.enumerated()), id: \.element.uuid) { index, cert in
 				_cellButton(for: cert, at: index)
 			}
 		}

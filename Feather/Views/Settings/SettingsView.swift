@@ -35,6 +35,10 @@ struct SettingsView: View {
 				}
 				
 				_directories()
+				
+				Section {
+					NavigationLink(.localized("Reset"), destination: ResetView())
+				}
             }
         }
     }

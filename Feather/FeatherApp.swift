@@ -81,8 +81,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 		didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
 	) -> Bool {
 		_createPipeline()
-		_createSourcesDirectory()
-		_clean()
+		_createDocumentsDirectories()
+		ResetView.clearWorkCache()
 		return true
 	}
 	
@@ -109,7 +109,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 		ImagePipeline.shared = pipeline
 	}
 	
-	private func _createSourcesDirectory() {
+	private func _createDocumentsDirectories() {
 		let fileManager = FileManager.default
 
 		let directories: [URL] = [
@@ -121,17 +121,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 		
 		for url in directories {
 			try? fileManager.createDirectoryIfNeeded(at: url)
-		}
-	}
-	
-	private func _clean() {
-		let fileManager = FileManager.default
-		let tmpDirectory = fileManager.temporaryDirectory
-		
-		if let files = try? fileManager.contentsOfDirectory(atPath: tmpDirectory.path()) {
-			for file in files {
-				try? fileManager.removeItem(atPath: tmpDirectory.appendingPathComponent(file).path())
-			}
 		}
 	}
 }
