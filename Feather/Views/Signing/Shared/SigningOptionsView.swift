@@ -18,7 +18,7 @@ struct SigningOptionsView: View {
 		if (temporaryOptions == nil) {
 			NBSection(.localized("Protection")) {
 				_toggle(.localized("PPQ Protection"),
-						systemImage: "shield.fill",
+						systemImage: "shield",
 						isOn: $options.ppqProtection,
 						temporaryValue: temporaryOptions?.ppqProtection
 				)

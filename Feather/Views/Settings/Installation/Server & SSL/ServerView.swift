@@ -22,7 +22,7 @@ struct ServerView: View {
 	private let _serverPackUrl = "https://backloop.dev/pack.json"
 	
 	var body: some View {
-		NBList(.localized("Server & SSL")) {
+		Group {
 			Section {
 				Picker(.localized("Server Type"), systemImage: "server.rack", selection: $_serverMethod) {
 					ForEach(_serverMethods.indices, id: \.description) { index in

@@ -32,12 +32,12 @@ struct InstallationView: View {
 				Text(.localized("Server (Recommended):\nUses a locally hosted server and itms-services:// to install applications.\n\nIDevice (advanced):\nUses a VPN and a pairing file. Writes to AFC and manually calls installd, while monitoring install progress by using a callback\nAdvantage: It is very reliable, does not need SSL certificates or a externally hosted server. Rather, works similarly to a computer."))
 			}
 			
-			Section {
-				NavigationLink(.localized("Server & SSL"), destination: ServerView())
-					.disabled(_installationMethod != 0)
-				NavigationLink(.localized("Tunnel & Pairing"), destination: TunnelView())
-					.disabled(_installationMethod != 1)
+			if _installationMethod == 0 {
+				ServerView()
+			} else if _installationMethod == 1 {
+				TunnelView()
 			}
 		}
+		.animation(.default, value: _installationMethod)
     }
 }

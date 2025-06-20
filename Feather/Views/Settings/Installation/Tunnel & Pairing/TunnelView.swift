@@ -17,7 +17,7 @@ struct TunnelView: View {
 	
 	// MARK: Body
     var body: some View {
-		NBList(.localized("Tunnel & Pairing")) {
+		Group {
 			Section {
 				_tunnelInfo()
 				TunnelHeaderView()
