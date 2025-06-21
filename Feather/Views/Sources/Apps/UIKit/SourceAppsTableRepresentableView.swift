@@ -9,9 +9,6 @@ import SwiftUI
 import AltSourceKit
 
 // MARK: - Representable
-
-#warning("change this to a uicollectionview with grid and table stuff")
-
 struct SourceAppsTableRepresentableView: UIViewRepresentable {
 	var sources: [ASRepository]
 	@Binding var searchText: String
@@ -76,183 +73,227 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 			sortAscending: sortAscending
 		)
 	}
+}
+
+// MARK: - Representable Extension: Coordinator
+extension SourceAppsTableRepresentableView { class Coordinator: NSObject, UITableViewDataSource, UITableViewDelegate {
+	var sources: [ASRepository]
+	var searchText: String
+	var sortOption: SourceAppsView.SortOption
+	var sortAscending: Bool
 	
-	// MARK: - Coordinator
-	class Coordinator: NSObject, UITableViewDataSource, UITableViewDelegate {
-		var sources: [ASRepository]
-		var searchText: String
-		var sortOption: SourceAppsView.SortOption
-		var sortAscending: Bool
-		
-		private var cachedSortedApps: [ASRepository.App] = []
-		weak var uiTableView: UITableView?
-		
-		private var _apps: [ASRepository.App] {
-			sources.flatMap { $0.apps }
-		}
-		
-		private var _sortedApps: [ASRepository.App] {
-			if !cachedSortedApps.isEmpty {
-				return cachedSortedApps
-			}
-			
-			cachedSortedApps = calculateSortedApps()
+	private var groupedAppsByNameFirstLetter: [String: [(source: ASRepository, app: ASRepository.App)]] = [:]
+	private var groupedAppsByDate: [String: [(source: ASRepository, app: ASRepository.App)]] = [:]
+	private var sortedSectionTitles: [String] = []
+	
+	private var cachedSortedApps: [(source: ASRepository, app: ASRepository.App)] = []
+	weak var uiTableView: UITableView?
+	
+	private var allAppsWithSource: [(source: ASRepository, app: ASRepository.App)] {
+		sources.flatMap { source in source.apps.map { (source: source, app: $0) } }
+	}
+	
+	private var _sortedApps: [(source: ASRepository, app: ASRepository.App)] {
+		if !cachedSortedApps.isEmpty {
 			return cachedSortedApps
 		}
-		
-		init(
-			sources: [ASRepository],
-			searchText: String,
-			sortOption: SourceAppsView.SortOption,
-			sortAscending: Bool
-		) {
-			self.sources = sources
-			self.searchText = searchText
-			self.sortOption = sortOption
-			self.sortAscending = sortAscending
-			super.init()
+		cachedSortedApps = calculateSortedApps()
+		return cachedSortedApps
+	}
+	
+	init(sources: [ASRepository], searchText: String, sortOption: SourceAppsView.SortOption, sortAscending: Bool) {
+		self.sources = sources
+		self.searchText = searchText
+		self.sortOption = sortOption
+		self.sortAscending = sortAscending
+		super.init()
+	}
+	
+	private func calculateSortedApps() -> [(source: ASRepository, app: ASRepository.App)] {
+		let filtered = allAppsWithSource.filter {
+			searchText.isEmpty || ($0.app.name?.localizedCaseInsensitiveContains(searchText) ?? false)
 		}
 		
-		private func calculateSortedApps() -> [ASRepository.App] {
-			let allApps = _apps
-			
-			// Filter
-			let filtered = allApps.filter {
-				searchText.isEmpty || ($0.name?.localizedCaseInsensitiveContains(searchText) ?? false)
+		switch sortOption {
+		case .default:
+			groupedAppsByDate = [:]
+			groupedAppsByNameFirstLetter = [:]
+			sortedSectionTitles = []
+			return sortAscending ? filtered : filtered.reversed()
+		case .date:
+			let sorted = filtered.sorted {
+				let d1 = $0.app.currentDate?.date ?? .distantPast
+				let d2 = $1.app.currentDate?.date ?? .distantPast
+				return sortAscending ? (d1 < d2) : (d1 > d2)
 			}
 			
-			// Sort
-			if sortOption == .default {
-				return sortAscending ? filtered : filtered.reversed()
+			let formatter = DateFormatter()
+			formatter.dateFormat = "MMMM d, yyyy"
+			
+			let grouped = Dictionary(grouping: sorted) {
+				$0.app.currentDate?.date.stripTime() ?? .distantPast
 			}
 			
-			return filtered.sorted { app1, app2 in
-				let comparison: Bool
-				switch sortOption {
-				case .name:
-					let name1 = app1.name ?? ""
-					let name2 = app2.name ?? ""
-					comparison = name1.localizedCaseInsensitiveCompare(name2) == .orderedAscending
-				case .date:
-					let date1 = app1.currentDate?.date ?? Date.distantPast
-					let date2 = app2.currentDate?.date ?? Date.distantPast
-					comparison = date1 < date2
-				case .default:
-					comparison = true
-				}
-				
+			let sortedDates = grouped.keys.sorted(by: { sortAscending ? $0 > $1 : $0 < $1 })
+			
+			groupedAppsByDate = grouped.reduce(into: [:]) { result, pair in
+				let key = formatter.string(from: pair.key)
+				result[key] = pair.value
+			}
+			
+			sortedSectionTitles = sortedDates.map { formatter.string(from: $0) }
+			return sorted
+		case .name:
+			let sorted = filtered.sorted {
+				let n1 = $0.app.name ?? ""
+				let n2 = $1.app.name ?? ""
+				let comparison = n1.localizedCaseInsensitiveCompare(n2) == .orderedAscending
 				return sortAscending ? comparison : !comparison
 			}
-		}
-		
-		// Invalidate cache when data changes
-		func invalidateCache() {
-			cachedSortedApps = calculateSortedApps()
-			if let tableView = uiTableView {
-				UIView.transition(with: tableView,  duration: 0.3, options: [.transitionCrossDissolve], animations: {
-					tableView.reloadData()
-				}, completion: nil)
+			groupedAppsByNameFirstLetter = Dictionary(grouping: sorted) {
+				let first = $0.app.name?.trimmingCharacters(in: .whitespacesAndNewlines).first?.uppercased() ?? "#"
+				return first.range(of: "[A-Z]", options: .regularExpression) != nil ? first : "#"
 			}
-		}
-		
-		// MARK: - Delegate
-		func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-			UITableView.automaticDimension
-		}
-		
-		func numberOfSections(in tableView: UITableView) -> Int {
-			1
-		}
-		
-		func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-			_sortedApps.count
-		}
-		
-		func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-			let cell = tableView.dequeueReusableCell(withIdentifier: "AppCell", for: indexPath)
-			let app = _sortedApps[indexPath.row]
-			
-			cell.contentConfiguration = UIHostingConfiguration {
-				SourceAppsCellView(app: app)
-			}
-			
-			return cell
-		}
-		
-		func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-			let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SectionHeader")
-			
-			headerView?.contentConfiguration = UIHostingConfiguration {
-				HStack {
-					Text(verbatim: .localized("%lld Apps", arguments: _sortedApps.count))
-					Spacer()
-				}
-				.font(.headline)
-				.padding(.vertical, 2)
-			}
-			
-			return headerView
-		}
-		
-		func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-			let app = _sortedApps[indexPath.row]
-			
-			return UIContextMenuConfiguration(
-				identifier: nil,
-				previewProvider: nil
-			) { _ in
-				let versionsMenu = UIMenu(
-					title: .localized("Copy Download URLs"),
-					image: UIImage(systemName: "list.bullet"),
-					children: self._contextActions(for: app, with: { version in
-						UIPasteboard.general.string = version?.absoluteString
-					}, image: UIImage(systemName: "doc.on.clipboard"))
-				)
-				
-				let downloadsMenu = UIMenu(
-					title: .localized("Previous Versions"),
-					image: UIImage(systemName: "square.and.arrow.down.on.square"),
-					children: self._contextActions(for: app, with: { version in
-						if let url = version {
-							_ = DownloadManager.shared.startDownload(
-								from: url,
-								id: app.currentUniqueId
-							)
-						}
-					}, image: UIImage(systemName: "arrow.down"))
-				)
-				
-				return UIMenu(children: [downloadsMenu, versionsMenu])
-			}
-		}
-		
-		// MARK: - Actions
-		private func _contextActions(
-			for app: ASRepository.App,
-			with action: @escaping (URL?) -> Void,
-			image: UIImage?
-		) -> [UIAction] {
-			if let versions = app.versions, !versions.isEmpty {
-				return versions.map { version in
-					UIAction(
-						title: version.version,
-						image: image
-					) { _ in
-						action(version.downloadURL)
-					}
-				}
-			} else {
-				return [
-					UIAction(
-						title: app.currentVersion ?? "",
-						image: image
-					) { _ in
-						action(app.currentDownloadUrl)
-					}
-				]
-			}
+			sortedSectionTitles = groupedAppsByNameFirstLetter.keys.sorted(by: {
+				if $0 == "#" { return false }
+				if $1 == "#" { return true }
+				return sortAscending ? $0 < $1 : $0 > $1
+			})
+			return sorted
 		}
 	}
 	
-	// MARK: -
-}
+	func invalidateCache() {
+		cachedSortedApps = calculateSortedApps()
+		if let tableView = uiTableView {
+			UIView.transition(with: tableView, duration: 0.3, options: [.transitionCrossDissolve], animations: {
+				tableView.reloadData()
+			})
+		}
+	}
+	
+	// MARK: TableView
+	
+	func numberOfSections(in tableView: UITableView) -> Int {
+		switch sortOption {
+		case .default: 1
+		case .name, .date: sortedSectionTitles.count
+		}
+	}
+	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		switch sortOption {
+		case .default: _sortedApps.count
+		case .name: groupedAppsByNameFirstLetter[sortedSectionTitles[section]]?.count ?? 0
+		case .date: groupedAppsByDate[sortedSectionTitles[section]]?.count ?? 0
+		}
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "AppCell", for: indexPath)
+		let entry: (source: ASRepository, app: ASRepository.App)
+		switch sortOption {
+		case .default: entry = _sortedApps[indexPath.row]
+		case .name: entry = groupedAppsByNameFirstLetter[sortedSectionTitles[indexPath.section]]?[indexPath.row] ?? _sortedApps[indexPath.row]
+		case .date: entry = groupedAppsByDate[sortedSectionTitles[indexPath.section]]?[indexPath.row] ?? _sortedApps[indexPath.row]
+		}
+		cell.contentConfiguration = UIHostingConfiguration {
+			SourceAppsCellView(source: entry.source, app: entry.app)
+		}
+		return cell
+	}
+	
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SectionHeader")
+		let title: String
+		
+		switch sortOption {
+		case .default: title = .localized("%lld Apps", arguments: _sortedApps.count)
+		case .name, .date: title = sortedSectionTitles[section]
+		}
+		
+		headerView?.contentConfiguration = UIHostingConfiguration {
+			HStack {
+				Text(verbatim: title)
+				Spacer()
+			}
+			.font(.headline)
+			.padding(.vertical, 2)
+		}
+		
+		return headerView
+	}
+	
+	func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+		sortOption == .name ? sortedSectionTitles : nil
+	}
+	
+	func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+		sortedSectionTitles.firstIndex(of: title) ?? 0
+	}
+	
+	func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+		let entry: (source: ASRepository, app: ASRepository.App)
+		switch sortOption {
+		case .default: entry = _sortedApps[indexPath.row]
+		case .name: entry = groupedAppsByNameFirstLetter[sortedSectionTitles[indexPath.section]]?[indexPath.row] ?? _sortedApps[indexPath.row]
+		case .date: entry = groupedAppsByDate[sortedSectionTitles[indexPath.section]]?[indexPath.row] ?? _sortedApps[indexPath.row]
+		}
+		
+		return UIContextMenuConfiguration(
+			identifier: nil,
+			previewProvider: nil
+		) { _ in
+			let versionsMenu = UIMenu(
+				title: .localized("Copy Download URLs"),
+				image: UIImage(systemName: "list.bullet"),
+				children: self._contextActions(for: entry.app, with: { version in
+					UIPasteboard.general.string = version?.absoluteString
+				}, image: UIImage(systemName: "doc.on.clipboard"))
+			)
+			
+			let downloadsMenu = UIMenu(
+				title: .localized("Previous Versions"),
+				image: UIImage(systemName: "square.and.arrow.down.on.square"),
+				children: self._contextActions(for: entry.app, with: { version in
+					if let url = version {
+						_ = DownloadManager.shared.startDownload(
+							from: url,
+							id: entry.app.currentUniqueId
+						)
+					}
+				}, image: UIImage(systemName: "arrow.down"))
+			)
+			
+			return UIMenu(children: [downloadsMenu, versionsMenu])
+		}
+	}
+	
+	// MARK: Actions
+	
+	private func _contextActions(
+		for app: ASRepository.App,
+		with action: @escaping (URL?) -> Void,
+		image: UIImage?
+	) -> [UIAction] {
+		if let versions = app.versions, !versions.isEmpty {
+			return versions.map { version in
+				UIAction(
+					title: version.version,
+					image: image
+				) { _ in
+					action(version.downloadURL)
+				}
+			}
+		} else {
+			return [
+				UIAction(
+					title: app.currentVersion ?? "",
+					image: image
+				) { _ in
+					action(app.currentDownloadUrl)
+				}
+			]
+		}
+	}
+}}

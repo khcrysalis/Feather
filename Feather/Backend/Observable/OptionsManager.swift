@@ -103,8 +103,13 @@ struct Options: Codable, Equatable {
 	/// Modifies application to use ElleKit instead of CydiaSubstrate
 	var experiment_replaceSubstrateWithEllekit: Bool
 	
+	var post_installAppAfterSigned: Bool
+	/// This will delete your imported application after signing, to save on using unneeded space.
+	var post_deleteAppAfterSigned: Bool
+	
 	// default
 	static let defaultOptions = Options(
+		// pre-sign modifications
 		appAppearance: appAppearanceValues[0],
 		minimumAppRequirement: appMinimumAppRequirementValues[0],
 		injectPath: injectPathValues[0],
@@ -129,8 +134,12 @@ struct Options: Codable, Equatable {
 		changeLanguageFilesForCustomDisplayName: false,
 		doAdhocSigning: false, // Deprecated
 		signingOption: signingOptionValues[0],
-		experiment_supportLiquidGlass: false, // experiments
-		experiment_replaceSubstrateWithEllekit: false // experiments
+		// pre-sign experiments
+		experiment_supportLiquidGlass: false,
+		experiment_replaceSubstrateWithEllekit: false,
+		// post sign
+		post_installAppAfterSigned: false,
+		post_deleteAppAfterSigned: false
 	)
 	
 	// MARK: duplicate values are not recommended!

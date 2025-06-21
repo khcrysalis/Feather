@@ -9,6 +9,7 @@ import SwiftUI
 import AltSourceKit
 import NimbleViews
 import Combine
+import NukeUI
 
 // thats a whole pharaghraph of codes
 struct SourceAppsCellView: View {
@@ -22,6 +23,7 @@ struct SourceAppsCellView: View {
 		downloadManager.getDownload(by: app.currentUniqueId)
 	}
 	
+	var source: ASRepository
 	var app: ASRepository.App
 	
 	var body: some View {
@@ -32,6 +34,17 @@ struct SourceAppsCellView: View {
 					subtitle: _appDescription(app: app),
 					iconUrl: app.iconURL
 				)
+				.overlay(alignment: .bottomLeading) {
+					if let iconURL = source.currentIconURL {
+						LazyImage(url: iconURL) { state in
+							if let image = state.image {
+								image
+									.appIconStyle(size: 20, isCircle: true, background: Color(uiColor: .secondarySystemBackground))
+									.offset(x: 41, y: 4)
+							}
+						}
+					}
+				}
 				_download()
 			}
 			
@@ -44,13 +57,7 @@ struct SourceAppsCellView: View {
 					.padding(.top, 2)
 			}
 		}
-		.padding(.vertical, {
-			if #available(iOS 19, *) {
-				return 6
-			} else {
-				return 0
-			}
-		}())
+		.padding(.vertical, { if #available(iOS 19, *) { 6 } else { 0 } }())
 		.onAppear(perform: _setupDownloadObserver)
 		.onDisappear {
 			cancellable?.cancel()

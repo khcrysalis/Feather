@@ -22,13 +22,6 @@ struct SigningOptionsView: View {
 						isOn: $options.ppqProtection,
 						temporaryValue: temporaryOptions?.ppqProtection
 				)
-				#warning("add dynamic protect (itunes api)")
-//				_toggle("Dynamic Protection",
-//						systemImage: "shield.lefthalf.filled",
-//						isOn: $options.dynamicProtection,
-//						temporaryValue: temporaryOptions?.dynamicProtection
-//				)
-//					.disabled(!options.ppqProtection)
 			} footer: {
 				Text(.localized("Enabling any protection will append a random string to the bundleidentifiers of the apps you sign, this is to ensure your Apple ID does not get flagged by Apple. However, when using a signing service you can ignore this."))
 			}
@@ -121,6 +114,16 @@ struct SigningOptionsView: View {
 			)
 		} footer: {
 			Text(.localized("By default, localized titles for the app won't be changed, however this option overrides it."))
+		}
+		
+		NBSection(.localized("Post Signing")) {
+			_toggle(.localized("Delete After Signing"),
+					systemImage: "trash",
+					isOn: $options.post_deleteAppAfterSigned,
+					temporaryValue: temporaryOptions?.post_deleteAppAfterSigned
+			)
+		} footer: {
+			Text(.localized("This will delete your imported application after signing, to save on using unneeded space."))
 		}
 		
 		NBSection(.localized("Experiments")) {

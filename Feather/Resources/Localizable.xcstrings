@@ -2222,6 +2222,17 @@
         }
       }
     },
+    "Delete After Signing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete After Signing"
+          }
+        }
+      }
+    },
     "Discord" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -6056,6 +6067,17 @@
         }
       }
     },
+    "Post Signing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Post Signing"
+          }
+        }
+      }
+    },
     "PPQ Protection" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -8653,6 +8675,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tùy chọn này buộc phải chuyển đổi ứng dụng để thử sử dụng giao diện Liquid Glass mới được giới thiệu trong iOS 26. Tùy chọn này có thể không hoạt động với tất cả các ứng dụng do có nhiều khuôn khổ khác nhau."
+          }
+        }
+      }
+    },
+    "This will delete your imported application after signing, to save on using unneeded space." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This will delete your imported application after signing, to save on using unneeded space."
           }
         }
       }
