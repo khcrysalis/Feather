@@ -134,7 +134,7 @@ enum FR {
 		let generator = UINotificationFeedbackGenerator()
 		generator.prepare()
 		
-		NBFetchService().fetch(from: urlString) { (result: Result<ServerPackModel, Error>) in
+		NBFetchService().fetch(from: urlString) { (result: Result<ServerView.ServerPackModel, Error>) in
 			switch result {
 			case .success(let pack):
 				do {

@@ -9,6 +9,15 @@ import SwiftUI
 import NimbleViews
 import NimbleJSON
 
+// MARK: - Extension: Model
+extension AboutView {
+	struct CreditsModel: Codable, Hashable {
+		let name: String?
+		let desc: String?
+		let github: String
+	}
+}
+
 // MARK: - View
 struct AboutView: View {
 	typealias CreditsDataHandler = Result<[CreditsModel], Error>

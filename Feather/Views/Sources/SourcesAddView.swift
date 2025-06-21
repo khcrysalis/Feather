@@ -43,7 +43,7 @@ struct SourcesAddView: View {
 						}
 					}
 					
-					Button(.localized("Export"), systemImage: "doc.on.clipboard") {
+					Button(.localized("Export"), systemImage: "doc.on.doc") {
 						UIPasteboard.general.string = Storage.shared.getSources().map {
 							$0.sourceURL!.absoluteString
 						}.joined(separator: "\n")
@@ -137,4 +137,3 @@ struct SourcesAddView: View {
 		}
 	}
 }
-

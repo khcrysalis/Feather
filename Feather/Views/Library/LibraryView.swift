@@ -155,11 +155,15 @@ struct LibraryView: View {
 			.sheet(isPresented: $_isImportingPresenting) {
 				FileImporterRepresentableView(
 					allowedContentTypes:  [.ipa, .tipa],
+					allowsMultipleSelection: true,
 					onDocumentsPicked: { urls in
-						guard let selectedFileURL = urls.first else { return }
-						let id = "FeatherManualDownload_\(UUID().uuidString)"
-						let dl = downloadManager.startArchive(from: selectedFileURL, id: id)
-						try? downloadManager.handlePachageFile(url: selectedFileURL, dl: dl)
+						guard !urls.isEmpty else { return }
+						
+						for url in urls {
+							let id = "FeatherManualDownload_\(UUID().uuidString)"
+							let dl = downloadManager.startArchive(from: url, id: id)
+							try? downloadManager.handlePachageFile(url: url, dl: dl)
+						}
 					}
 				)
 				.ignoresSafeArea()

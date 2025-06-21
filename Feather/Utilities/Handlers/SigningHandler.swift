@@ -237,14 +237,15 @@ extension SigningHandler {
 	}
 	
 	private func _removePresetFiles(for app: URL) async throws {
-		let files = [
-			"_CodeSignature", // Remove this because zsign doesn't replace it
+		var files = [
 			"embedded.mobileprovision", // Remove this because zsign doesn't replace it
 			"com.apple.WatchPlaceholder", // Useless
 			"SignedByEsign" // Useless
 		].map {
 			app.appendingPathComponent($0)
 		}
+		
+		await files += try _locateCodeSignatureDirectories(for: app)
 		
 		for file in files {
 			try _fileManager.removeFileIfNeeded(at: file)
@@ -266,28 +267,53 @@ extension SigningHandler {
 		try await handler.getInputFiles()
 	}
 	
-	@available(iOS 19, *)
-	private func _locateMachosAndFixupArm64eSlice(for app: URL) async throws {
-		let fileEnum = _fileManager.enumerator(atPath: app.path())
-
-		while let file = fileEnum?.nextObject() as? String {
-			if file.hasSuffix(".dylib") {
-				LCPatchMachOFixupARM64eSlice(app.appendingPathComponent(file).relativePath);
-			} else if file.hasSuffix("framework") {
-				let exec = Bundle(url: app.appendingPathComponent(file))?.executableURL
-				let path = app
-					.appendingPathComponent(file)
-					.appendingPathComponent(exec?.relativePath ?? "")
-					.relativePath
-				LCPatchMachOFixupARM64eSlice(path);
-			}
-		}
-	}
-	
 	private func _locateMachosAndChangeToSDK26(for app: URL) async throws {
 		if let url = Bundle(url: app)?.executableURL {
 			LCPatchMachOForSDK26(app.appendingPathComponent(url.relativePath).relativePath)
 		}
+	}
+	
+	private func _locateCodeSignatureDirectories(for app: URL) async throws -> [URL] {
+		_enumerateFiles(at: app) { $0.hasSuffix("_CodeSignature") }
+	}
+	
+	@available(iOS 19, *)
+	private func _locateMachosAndFixupArm64eSlice(for app: URL) async throws {
+		let machoFiles = _enumerateFiles(at: app) {
+			$0.hasSuffix(".dylib") || $0.hasSuffix(".framework")
+		}
+		
+		for fileURL in machoFiles {
+			switch fileURL.pathExtension {
+			case "dylib":
+				LCPatchMachOFixupARM64eSlice(fileURL.path)
+			case "framework":
+				if
+					let bundle = Bundle(url: fileURL),
+					let execURL = bundle.executableURL
+				{
+					LCPatchMachOFixupARM64eSlice(execURL.path)
+				}
+			default:
+				continue
+			}
+		}
+	}
+	
+	private func _enumerateFiles(at base: URL, where predicate: (String) -> Bool) -> [URL] {
+		guard let fileEnum = _fileManager.enumerator(atPath: base.path()) else {
+			return []
+		}
+		
+		var results: [URL] = []
+		
+		while let file = fileEnum.nextObject() as? String {
+			if predicate(file) {
+				results.append(base.appendingPathComponent(file))
+			}
+		}
+		
+		return results
 	}
 }
 

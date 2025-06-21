@@ -37,6 +37,15 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
+			<key>Donor</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Donor</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
 			<key>V0</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -69,15 +78,6 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>V2Mac</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>Donor</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Donor</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
