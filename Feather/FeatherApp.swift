@@ -18,14 +18,6 @@ struct FeatherApp: App {
 	@StateObject var downloadManager = DownloadManager.shared
 	let storage = Storage.shared
 	
-	@State private var certImportAlert: ImportAlert?
-	
-	private struct ImportAlert: Identifiable {
-		let id = UUID()
-		let title: String
-		let message: String
-	}
-	
 	var body: some Scene {
 		WindowGroup {
 			VStack {
@@ -35,13 +27,6 @@ struct FeatherApp: App {
 					.environment(\.managedObjectContext, storage.context)
 					.onOpenURL(perform: _handleURL)
 					.transition(.move(edge: .top).combined(with: .opacity))
-					.alert(item: $certImportAlert) { alert in
-						Alert(
-							title: Text(alert.title),
-							message: Text(alert.message),
-							dismissButton: .default(Text("OK"))
-						)
-					}
 			}
 			.animation(.smooth, value: downloadManager.manualDownloads.description)
 			.onReceive(NotificationCenter.default.publisher(for: .heartbeatInvalidHost)) { _ in
@@ -79,7 +64,7 @@ struct FeatherApp: App {
 					let provisionBase64Raw = item("mobileprovision"),
 					let passwordBase64Raw = item("password")
 				else {
-					certImportAlert = ImportAlert(title: "Error", message: "Invalid certificate import URL. Missing parameters.")
+					UIAlertController.showAlertWithOk(title: "Error", message: "Invalid certificate import URL. Missing parameters.")
 					return
 				}
 
@@ -94,7 +79,7 @@ struct FeatherApp: App {
 					let passwordData = Data(base64Encoded: passwordBase64),
 					let password = String(data: passwordData, encoding: .utf8)
 				else {
-					certImportAlert = ImportAlert(title: "Error", message: "Unable to decode certificate data.")
+					UIAlertController.showAlertWithOk(title: "Error", message: "Unable to decode certificate data.")
 					return
 				}
 
@@ -113,9 +98,9 @@ struct FeatherApp: App {
 					certificateName: ""
 				) { error in
 					if let error = error {
-						certImportAlert = ImportAlert(title: "Error", message: error.localizedDescription)
+						UIAlertController.showAlertWithOk(title: "Error", message: error.localizedDescription)
 					} else {
-						certImportAlert = ImportAlert(title: "Success", message: "Certificate imported successfully.")
+						UIAlertController.showAlertWithOk(title: "Success", message: "Certificate imported successfully.")
 					}
 				}
 				return
