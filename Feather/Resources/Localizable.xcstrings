@@ -1426,6 +1426,17 @@
         }
       }
     },
+    "Certificate imported successfully" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certificate imported successfully"
+          }
+        }
+      }
+    },
     "Certificates" : {
       "comment" : "Certificates tab",
       "extractionState" : "manual",
@@ -8397,6 +8408,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gửi phản hồi"
+          }
+        }
+      }
+    },
+    "Success" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Success"
           }
         }
       }

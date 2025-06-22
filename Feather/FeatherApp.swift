@@ -64,7 +64,6 @@ struct FeatherApp: App {
 					let provisionBase64Raw = item("mobileprovision"),
 					let passwordBase64Raw = item("password")
 				else {
-					UIAlertController.showAlertWithOk(title: "Error", message: "Invalid certificate import URL. Missing parameters.")
 					return
 				}
 
@@ -79,7 +78,6 @@ struct FeatherApp: App {
 					let passwordData = Data(base64Encoded: passwordBase64),
 					let password = String(data: passwordData, encoding: .utf8)
 				else {
-					UIAlertController.showAlertWithOk(title: "Error", message: "Unable to decode certificate data.")
 					return
 				}
 
@@ -98,9 +96,9 @@ struct FeatherApp: App {
 					certificateName: ""
 				) { error in
 					if let error = error {
-						UIAlertController.showAlertWithOk(title: "Error", message: error.localizedDescription)
+						UIAlertController.showAlertWithOk(title: .localized("Error"), message: error.localizedDescription)
 					} else {
-						UIAlertController.showAlertWithOk(title: "Success", message: "Certificate imported successfully.")
+						UIAlertController.showAlertWithOk(title: .localized("Success"), message: .localized("Certificate imported successfully"))
 					}
 				}
 				return
