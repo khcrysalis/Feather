@@ -89,6 +89,15 @@ struct FeatherApp: App {
 				try? p12Data.write(to: p12URL)
 				try? provisionData.write(to: provisionURL)
 
+				// Validate password (same check used in manual import flow)
+				guard FR.checkPasswordForCertificate(for: p12URL, with: password, using: provisionURL) else {
+					UIAlertController.showAlertWithOk(
+						title: .localized("Bad Password"),
+						message: .localized("Please check the password and try again.")
+					)
+					return
+				}
+
 				FR.handleCertificateFiles(
 					p12URL: p12URL,
 					provisionURL: provisionURL,
