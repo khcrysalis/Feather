@@ -742,42 +742,42 @@
         }
       }
     },
-    "All of Feathers files are contained in the documents directory, here are some quick links to these." : {
+    "All of the apps files are contained in the documents directory, here are some quick links to these." : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Všechny soubory Featheru jsou v složce Dokumenty, zde jsou na ně rychlé odkazy."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "All of Feathers files are contained in the documents directory, here are some quick links to these."
+            "value" : "All of the apps files are contained in the documents directory, here are some quick links to these."
           }
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Semua berkas Feather berada di direktori dokumen, berikut beberapa tautan cepat ke berkas-berkas tersebut."
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Wszystkie pliki Feather znajdują się w katalogu dokumentów, oto szybkie odnośniki do nich."
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Feather’ın tüm dosyaları “Belgeler” klasöründe yer almaktadır. Yukarıda yer alan bağlantılar ile bunlardan bazılarına erişebilirsiniz."
           }
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Tất cả các tệp của Feathers có thể được tìm thấy trong ứng dụng Tệp, đây là một số liên kết nhanh đến chúng."
           }
         }
@@ -1742,6 +1742,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mức độ nén"
+          }
+        }
+      }
+    },
+    "Configure the apps way of installing, its zip compression levels, and custom modifications to apps." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configure the apps way of installing, its zip compression levels, and custom modifications to apps."
           }
         }
       }
@@ -4120,6 +4131,17 @@
         }
       },
       "shouldTranslate" : false
+    },
+    "If any issues occur within the app please report it via the GitHub repository. When submitting an issue, make sure to submit detailed information." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If any issues occur within the app please report it via the GitHub repository. When submitting an issue, make sure to submit detailed information."
+          }
+        }
+      }
     },
     "Import" : {
       "comment" : "Import repositories",
@@ -7009,6 +7031,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reset Sources"
+          }
+        }
+      }
+    },
+    "Reset the applications sources, certificates, apps, and general contents." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset the applications sources, certificates, apps, and general contents."
           }
         }
       }

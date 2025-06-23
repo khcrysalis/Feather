@@ -37,12 +37,16 @@ struct SettingsView: View {
 					NavigationLink(.localized("Signing Options"), destination: ConfigurationView())
 					NavigationLink(.localized("Archive & Compression"), destination: ArchiveView())
 					NavigationLink(.localized("Installation"), destination: InstallationView())
+				} footer: {
+					Text(.localized("Configure the apps way of installing, its zip compression levels, and custom modifications to apps."))
 				}
 				
 				_directories()
 				
 				Section {
 					NavigationLink(.localized("Reset"), destination: ResetView())
+				} footer: {
+					Text(.localized("Reset the applications sources, certificates, apps, and general contents."))
 				}
             }
         }
@@ -69,6 +73,8 @@ extension SettingsView {
 			Button(.localized("GitHub Repository"), systemImage: "safari") {
 				UIApplication.open(_githubUrl)
 			}
+		} footer: {
+			Text(.localized("If any issues occur within the app please report it via the GitHub repository. When submitting an issue, make sure to submit detailed information."))
 		}
 	}
 	
@@ -85,7 +91,7 @@ extension SettingsView {
 				UIApplication.open(FileManager.default.certificates.toSharedDocumentsURL()!)
 			}
 		} footer: {
-			Text(.localized("All of Feathers files are contained in the documents directory, here are some quick links to these."))
+			Text(.localized("All of the apps files are contained in the documents directory, here are some quick links to these."))
 		}
 	}
 }

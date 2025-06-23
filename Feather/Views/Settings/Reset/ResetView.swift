@@ -17,83 +17,9 @@ struct ResetView: View {
 	// MARK: Body
     var body: some View {
 		NBList(.localized("Reset")) {
-			Section {
-				Button(.localized("Reset Work Cache"), systemImage: "xmark.rectangle.portrait") {
-					Self.resetAlert(title: .localized("Reset Work Cache")) {
-						Self.clearWorkCache()
-					}
-				}
-				
-				Button(.localized("Reset Network Cache"), systemImage: "xmark.rectangle.portrait") {
-					Self.resetAlert(
-						title: .localized("Reset Network Cache"),
-						message: _cacheSize()
-					) {
-						Self.clearNetworkCache()
-					}
-				}
-			}
-			
-			Section {
-				Button(.localized("Reset Sources"), systemImage: "xmark.circle") {
-					Self.resetAlert(
-						title: .localized("Reset Signed Apps"),
-						message: Storage.shared.countContent(for: AltSource.self)
-					) {
-						Self.resetSources()
-					}
-				}
-				
-				Button(.localized("Reset Signed Apps"), systemImage: "xmark.circle") {
-					Self.resetAlert(
-						title: .localized("Reset Signed Apps"),
-						message: Storage.shared.countContent(for: Signed.self)
-					) {
-						Self.deleteSignedApps()
-					}
-				}
-				
-				Button(.localized("Reset Imported Apps"), systemImage: "xmark.circle") {
-					Self.resetAlert(
-						title: .localized("Reset Imported Apps"),
-						message: Storage.shared.countContent(for: Imported.self)
-					) {
-						Self.deleteImportedApps()
-					}
-				}
-				
-				Button(.localized("Reset Certificates"), systemImage: "xmark.circle") {
-					Self.resetAlert(
-						title: .localized("Reset Certificates"),
-						message: Storage.shared.countContent(for: CertificatePair.self)
-					) {
-						Self.resetCertificates()
-					}
-				}
-			}
-			
-			Section {
-				Button(
-					.localized("Reset Settings"),
-					systemImage: "xmark.octagon"
-				) {
-					Self.resetAlert(title: .localized("Reset Settings")) {
-						Self.resetUserDefaults()
-					}
-				}
-				.foregroundStyle(.red)
-				
-				Button(
-					.localized("Reset All"),
-					systemImage: "xmark.octagon"
-				) {
-					dismiss()
-					Self.resetAlert(title: .localized("Reset All")) {
-						Self.resetAll()
-					}
-				}
-				.foregroundStyle(.red)
-			}
+			_cache()
+			_coredata()
+			_all()
 		}
     }
 	
@@ -136,6 +62,89 @@ struct ResetView: View {
 }
 
 // MARK: - View extension
+extension ResetView {
+	@ViewBuilder
+	private func _cache() -> some View {
+		Section {
+			Button(.localized("Reset Work Cache"), systemImage: "xmark.rectangle.portrait") {
+				Self.resetAlert(title: .localized("Reset Work Cache")) {
+					Self.clearWorkCache()
+				}
+			}
+			
+			Button(.localized("Reset Network Cache"), systemImage: "xmark.rectangle.portrait") {
+				Self.resetAlert(
+					title: .localized("Reset Network Cache"),
+					message: _cacheSize()
+				) {
+					Self.clearNetworkCache()
+				}
+			}
+		}
+	}
+	
+	@ViewBuilder
+	private func _coredata() -> some View {
+		Section {
+			Button(.localized("Reset Sources"), systemImage: "xmark.circle") {
+				Self.resetAlert(
+					title: .localized("Reset Signed Apps"),
+					message: Storage.shared.countContent(for: AltSource.self)
+				) {
+					Self.resetSources()
+				}
+			}
+			
+			Button(.localized("Reset Signed Apps"), systemImage: "xmark.circle") {
+				Self.resetAlert(
+					title: .localized("Reset Signed Apps"),
+					message: Storage.shared.countContent(for: Signed.self)
+				) {
+					Self.deleteSignedApps()
+				}
+			}
+			
+			Button(.localized("Reset Imported Apps"), systemImage: "xmark.circle") {
+				Self.resetAlert(
+					title: .localized("Reset Imported Apps"),
+					message: Storage.shared.countContent(for: Imported.self)
+				) {
+					Self.deleteImportedApps()
+				}
+			}
+			
+			Button(.localized("Reset Certificates"), systemImage: "xmark.circle") {
+				Self.resetAlert(
+					title: .localized("Reset Certificates"),
+					message: Storage.shared.countContent(for: CertificatePair.self)
+				) {
+					Self.resetCertificates()
+				}
+			}
+		}
+	}
+	
+	@ViewBuilder
+	private func _all() -> some View {
+		Section {
+			Button(.localized("Reset Settings"), systemImage: "xmark.octagon") {
+				Self.resetAlert(title: .localized("Reset Settings")) {
+					Self.resetUserDefaults()
+				}
+			}
+			
+			Button(.localized("Reset All"), systemImage: "xmark.octagon") {
+				dismiss()
+				Self.resetAlert(title: .localized("Reset All")) {
+					Self.resetAll()
+				}
+			}
+		}
+		.foregroundStyle(.red)
+	}
+}
+
+// MARK: - View extension: reset
 extension ResetView {
 	static func clearWorkCache() {
 		let fileManager = FileManager.default
