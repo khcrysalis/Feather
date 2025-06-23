@@ -66,7 +66,9 @@ struct FeatherApp: App {
 				guard
 					let p12Base64 = queryValue("p12"),
 					let provisionBase64 = queryValue("mobileprovision"),
-					let password = queryValue("password")
+					let passwordBase64 = queryValue("password"),
+					let passwordData = Data(base64Encoded: passwordBase64),
+					let password = String(data: passwordData, encoding: .utf8)
 				else {
 					return
 				}
