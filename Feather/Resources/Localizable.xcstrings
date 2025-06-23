@@ -469,6 +469,12 @@
             "state" : "translated",
             "value" : "About %@"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Về %@"
+          }
         }
       }
     },
@@ -1754,6 +1760,12 @@
             "state" : "translated",
             "value" : "Configure the apps way of installing, its zip compression levels, and custom modifications to apps."
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cấu hình cách cài đặt ứng dụng, mức độ nén zip và các sửa đổi tùy chỉnh cho ứng dụng."
+          }
         }
       }
     },
@@ -1836,7 +1848,13 @@
             "state" : "translated",
             "value" : "Kopiuj URL do pobrania"
           }
-        }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sao chép URL tải xuống"
+          }
+        },
       }
     },
     "Credits" : {
@@ -2240,6 +2258,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Delete After Signing"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xóa sau khi ký"
           }
         }
       }
@@ -2683,7 +2707,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Thưởng thức %@?"
+            "value" : "Tận hưởng %@?"
           }
         }
       }
@@ -3018,6 +3042,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eksperymentalne"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thử nghiệm"
           }
         }
       }
@@ -3572,6 +3602,12 @@
             "state" : "translated",
             "value" : "Tryb Gry"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chế độ trò chơi"
+          }
         }
       }
     },
@@ -3725,6 +3761,12 @@
             "state" : "translated",
             "value" : "Get started by adding your first repository."
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bắt đầu bằng cách thêm kho lưu trữ đầu tiên của bạn."
+          }
         }
       }
     },
@@ -3736,6 +3778,12 @@
             "state" : "translated",
             "value" : "Get started by importing your first IPA file."
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bắt đầu bằng cách nhập tệp IPA đầu tiên của bạn."
+          }
         }
       }
     },
@@ -3746,6 +3794,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Get started signing by importing your first certificate."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bắt đầu ký bằng cách nhập chứng chỉ đầu tiên của bạn."
           }
         }
       }
@@ -4139,6 +4193,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "If any issues occur within the app please report it via the GitHub repository. When submitting an issue, make sure to submit detailed information."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nếu có bất kỳ vấn đề nào xảy ra trong ứng dụng, vui lòng báo lỗi qua kho lưu trữ GitHub. Khi báo lỗi, hãy đảm bảo gửi thông tin chi tiết."
           }
         }
       }
@@ -5255,6 +5315,12 @@
             "state" : "translated",
             "value" : "No Apps"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không có ứng dụng"
+          }
         }
       }
     },
@@ -5307,6 +5373,12 @@
             "state" : "translated",
             "value" : "No Certificates"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không có chứng chỉ"
+          }
         }
       }
     },
@@ -5347,6 +5419,12 @@
             "state" : "translated",
             "value" : "No Frameworks or PlugIns Found."
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không tìm thấy Framework hoặc Plug-In nào."
+          }
         }
       }
     },
@@ -5357,6 +5435,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No Icons Found."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không tìm thấy Icon nào."
           }
         }
       }
@@ -5409,6 +5493,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No Repositories"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không có kho lưu trữ"
           }
         }
       }
@@ -6097,6 +6187,12 @@
             "state" : "translated",
             "value" : "Post Signing"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đăng ký"
+          }
         }
       }
     },
@@ -6203,6 +6299,12 @@
             "state" : "translated",
             "value" : "Pro Motion"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro Motion"
+          }
         }
       },
       "shouldTranslate" : false
@@ -6214,6 +6316,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Proceed"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiếp tục"
           }
         }
       }
@@ -6790,6 +6898,12 @@
             "state" : "translated",
             "value" : "Zastąp Substrate przez ElleKit"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thay thế Substrate bằng ElleKit"
+          }
         }
       }
     },
@@ -6966,6 +7080,12 @@
             "state" : "translated",
             "value" : "Reset All"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt lại tất cả"
+          }
         }
       }
     },
@@ -6976,6 +7096,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reset Certificates"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt lại chứng chỉ"
           }
         }
       }
@@ -6988,6 +7114,12 @@
             "state" : "translated",
             "value" : "Reset Imported Apps"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt lại ứng dụng đã nhập"
+          }
         }
       }
     },
@@ -6998,6 +7130,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reset Network Cache"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt lại bộ nhớ đệm mạng"
           }
         }
       }
@@ -7010,6 +7148,12 @@
             "state" : "translated",
             "value" : "Reset Settings"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt lại cài đặt"
+          }
         }
       }
     },
@@ -7020,6 +7164,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reset Signed Apps"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt lại ứng dụng đã ký"
           }
         }
       }
@@ -7032,6 +7182,12 @@
             "state" : "translated",
             "value" : "Reset Sources"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt lại nguồn"
+          }
         }
       }
     },
@@ -7043,6 +7199,12 @@
             "state" : "translated",
             "value" : "Reset the applications sources, certificates, apps, and general contents."
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt lại nguồn ứng dụng, chứng chỉ, ứng dụng và nội dung chung."
+          }
         }
       }
     },
@@ -7053,6 +7215,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reset Work Cache"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt lại bộ nhớ đệm công việc"
           }
         }
       }
@@ -8669,6 +8837,12 @@
             "state" : "translated",
             "value" : "This action cannot be undone. Would you like to proceed?"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không thể hoàn tác hành động này. Bạn có muốn tiếp tục không?"
+          }
         }
       }
     },
@@ -8685,6 +8859,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Włącza liquid glass dla tej aplikacji. Wymaga ponownego uruchomienia, aby zmiany zostały zastosowane."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Điều này cho phép sử dụng liquid glass cho ứng dụng này, điều này yêu cầu khởi động lại ứng dụng để có hiệu lực."
           }
         }
       }
@@ -8719,6 +8899,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "This will delete your imported application after signing, to save on using unneeded space."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thao tác này sẽ xóa ứng dụng đã nhập của bạn sau khi ký, để tiết kiệm dung lượng không cần thiết."
           }
         }
       }
