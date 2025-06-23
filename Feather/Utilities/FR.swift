@@ -169,7 +169,7 @@ enum FR {
 					}
 				} else {
 					DispatchQueue.main.async {
-						UIAlertController.showAlertWithOk(title: .localized("Error"), message: "Repository already added.")
+						UIAlertController.showAlertWithOk(title: .localized("Error"), message: .localized("Repository already added."))
 					}
 				}
 			case .failure(let error):
