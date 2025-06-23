@@ -1,15 +1,22 @@
 //
-//  FileManager+shortcuts.swift
+//  FileManager+bundle.swift
 //  Feather
 //
-//  Created by samara on 8.05.2025.
+//  Created by samara on 16.04.2025.
 //
 
 import Foundation.NSFileManager
 
 extension FileManager {
+	public func getPath(in directory: URL, for pathExtension: String) -> URL? {
+		guard let contents = try? contentsOfDirectory(at: directory, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles]) else {
+			return nil
+		}
+		
+		return contents.first(where: { $0.pathExtension == pathExtension })
+	}
 	
-	func isFileFromFileProvider(at url: URL) -> Bool {
+	public func isFileFromFileProvider(at url: URL) -> Bool {
 		if let resourceValues = try? url.resourceValues(forKeys: [.isUbiquitousItemKey, .fileResourceIdentifierKey]),
 		   resourceValues.isUbiquitousItem == true {
 			return true
@@ -23,31 +30,39 @@ extension FileManager {
 		return false
 	}
 	
-	func removeFileIfNeeded(at url: URL) throws {
+	public func removeFileIfNeeded(at url: URL) throws {
 		if self.fileExists(atPath: url.path) {
 			try self.removeItem(at: url)
 		}
 	}
 	
-	func moveFileIfNeeded(from sourceURL: URL, to destinationURL: URL) throws {
+	public func moveFileIfNeeded(from sourceURL: URL, to destinationURL: URL) throws {
 		if !self.fileExists(atPath: destinationURL.path) {
 			try self.moveItem(at: sourceURL, to: destinationURL)
 		}
 	}
 	
-	func createDirectoryIfNeeded(at url: URL) throws {
+	public func createDirectoryIfNeeded(at url: URL) throws {
 		if !self.fileExists(atPath: url.path) {
 			try self.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
 		}
 	}
 	
-	static func forceWrite(content: String, to filename: String) throws {
+	static public func forceWrite(content: String, to filename: String) throws {
 		let path = URL.documentsDirectory.appendingPathComponent(filename)
 		try content.write(to: path, atomically: true, encoding: .utf8)
 	}
 	
+	public func decodeAndWrite(base64: String, pathComponent: String) -> URL? {
+		let raw = base64.replacingOccurrences(of: " ", with: "+")
+		guard let data = Data(base64Encoded: raw) else { return nil }
+		let dir = self.temporaryDirectory.appendingPathComponent(UUID().uuidString + pathComponent)
+		try? data.write(to: dir)
+		return dir
+	}
+	
 	// FeatherTweak
-	func moveAndStore(_ url: URL, with prepend: String, completion: @escaping (URL) -> Void) {
+	public func moveAndStore(_ url: URL, with prepend: String, completion: @escaping (URL) -> Void) {
 		let destination = _getDestination(url, with: prepend)
 		
 		try? createDirectoryIfNeeded(at: destination.temp)
@@ -56,7 +71,7 @@ extension FileManager {
 		completion(destination.dest)
 	}
 	
-	func deleteStored(_ url: URL, completion: @escaping (URL) -> Void) {
+	public func deleteStored(_ url: URL, completion: @escaping (URL) -> Void) {
 		try? FileManager.default.removeItem(at: url)
 		completion(url)
 	}

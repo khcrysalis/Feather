@@ -8412,17 +8412,6 @@
         }
       }
     },
-    "Success" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Success"
-          }
-        }
-      }
-    },
     "Supports importing from KravaSign/MapleSign and ESign" : {
       "extractionState" : "manual",
       "localizations" : {
