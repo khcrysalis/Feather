@@ -29,16 +29,12 @@ struct AppearanceView: View {
     var body: some View {
 		NBList(.localized("Appearance")) {
 			Section {
-				HStack {
-					Text(.localized("Appearance"))
-						.padding(.trailing, 20)
-					Picker(.localized("Appearance"), selection: $_userIntefacerStyle) {
-						ForEach(UIUserInterfaceStyle.allCases.sorted(by: { $0.rawValue < $1.rawValue }), id: \.rawValue) { style in
-							Text(style.label).tag(style.rawValue)
-						}
+				Picker(.localized("Appearance"), selection: $_userIntefacerStyle) {
+					ForEach(UIUserInterfaceStyle.allCases.sorted(by: { $0.rawValue < $1.rawValue }), id: \.rawValue) { style in
+						Text(style.label).tag(style.rawValue)
 					}
-					.pickerStyle(.segmented)
 				}
+				.pickerStyle(.segmented)
 			}
 			
 			NBSection(.localized("Theme")) {

@@ -52,7 +52,7 @@ struct SourceNewsCardInfoView: View {
 					VStack(alignment: .leading, spacing: 12) {
 						Text(new.title)
 							.font(.title.bold())
-							.foregroundStyle(.primary)
+							.foregroundStyle(.tint)
 							.multilineTextAlignment(.leading)
 						
 						if !new.caption.isEmpty {
@@ -66,6 +66,7 @@ struct SourceNewsCardInfoView: View {
 							Button(.localized("Open"), systemImage: "arrow.up.right") {
 								UIApplication.shared.open(url)
 							}
+							.frame(maxWidth: .infinity)
 							.padding()
 							.background(Color(uiColor: .quaternarySystemFill))
 							.foregroundColor(.accentColor)
