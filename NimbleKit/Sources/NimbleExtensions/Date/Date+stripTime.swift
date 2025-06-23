@@ -8,7 +8,7 @@
 import Foundation.NSDate
 
 extension Date {
-	func stripTime() -> Date {
+	public func stripTime() -> Date {
 		Calendar.current.startOfDay(for: self)
 	}
 }

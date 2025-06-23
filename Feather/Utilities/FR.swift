@@ -73,7 +73,7 @@ enum FR {
 		p12URL: URL,
 		provisionURL: URL,
 		p12Password: String,
-		certificateName: String,
+		certificateName: String = "",
 		completion: @escaping (Error?) -> Void
 	) {
 		Task.detached {
@@ -169,15 +169,14 @@ enum FR {
 					}
 				} else {
 					DispatchQueue.main.async {
-						UIAlertController.showAlertWithOk(title: "Error", message: "Repository already added.")
+						UIAlertController.showAlertWithOk(title: .localized("Error"), message: "Repository already added.")
 					}
 				}
 			case .failure(let error):
 				DispatchQueue.main.async {
-					UIAlertController.showAlertWithOk(title: "Error", message: error.localizedDescription)
+					UIAlertController.showAlertWithOk(title: .localized("Error"), message: error.localizedDescription)
 				}
 			}
 		}
 	}
-
 }

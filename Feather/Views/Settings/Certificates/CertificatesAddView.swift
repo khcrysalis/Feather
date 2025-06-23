@@ -20,7 +20,6 @@ struct CertificatesAddView: View {
 	
 	@State private var _isImportingP12Presenting = false
 	@State private var _isImportingMobileProvisionPresenting = false
-	@State private var _isPasswordAlertPresenting = false
 	
 	var saveButtonDisabled: Bool {
 		_p12URL == nil || _provisionURL == nil
@@ -80,13 +79,6 @@ struct CertificatesAddView: View {
 				)
 				.ignoresSafeArea()
 			}
-			.alert(isPresented: $_isPasswordAlertPresenting) {
-				Alert(
-					title: Text(.localized("Bad Password")),
-					message: Text(.localized("Please check the password and try again.")),
-					dismissButton: .default(Text(.localized("OK")))
-				)
-			}
 		}
 	}
 }
@@ -116,7 +108,10 @@ extension CertificatesAddView {
 			let provisionURL = _provisionURL,
 			FR.checkPasswordForCertificate(for: p12URL, with: _p12Password, using: provisionURL)
 		else {
-			_isPasswordAlertPresenting = true
+			UIAlertController.showAlertWithOk(
+				title: .localized("Bad Password"),
+				message: .localized("Please check the password and try again.")
+			)
 			return
 		}
 		
