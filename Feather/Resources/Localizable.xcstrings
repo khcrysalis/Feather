@@ -264,7 +264,7 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Nie pokazano %lld wymaganych bibliotek systemowych"
           }
         },
@@ -468,6 +468,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "About %@"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O %@"
           }
         },
         "vi" : {
@@ -771,7 +777,7 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Wszystkie pliki Feather znajdują się w katalogu dokumentów, oto szybkie odnośniki do nich."
           }
         },
@@ -1761,6 +1767,12 @@
             "value" : "Configure the apps way of installing, its zip compression levels, and custom modifications to apps."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skonfiguruj sposób instalacji aplikacji, poziom kompresji ZIP i niestandardowe modyfikacje aplikacji."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2258,6 +2270,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Delete After Signing"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń po podpisaniu"
           }
         },
         "vi" : {
@@ -2826,6 +2844,12 @@
             "state" : "translated",
             "value" : "Enter Source URL"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wprowadź URL źródła"
+          }
         }
       }
     },
@@ -3259,6 +3283,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Featured"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Polecane"
           }
         }
       }
@@ -3784,6 +3814,12 @@
             "value" : "Get started by adding your first repository."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zacznij od dodania pierwszego repozytorium."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3801,6 +3837,12 @@
             "value" : "Get started by importing your first IPA file."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zacznij od importu Twojego pierwszego pliku IPA."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3816,6 +3858,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Get started signing by importing your first certificate."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rozpocznij podpisywanie od zaimportowania pierwszego certyfikatu."
           }
         },
         "vi" : {
@@ -4215,6 +4263,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "If any issues occur within the app please report it via the GitHub repository. When submitting an issue, make sure to submit detailed information."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeśli wystąpią jakiekolwiek problemy w aplikacji, zgłoś je za pośrednictwem repozytorium GitHub. Podczas zgłaszania problemu upewnij się, że podajesz szczegółowe informacje."
           }
         },
         "vi" : {
@@ -5338,6 +5392,12 @@
             "value" : "No Apps"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak aplikacji"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5396,6 +5456,12 @@
             "value" : "No Certificates"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak certyfikatów"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5442,6 +5508,12 @@
             "value" : "No Frameworks or PlugIns Found."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie znaleziono żadnych bibliotek ani wtyczek."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5457,6 +5529,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No Icons Found."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie znaleziono żadnych ikon"
           }
         },
         "vi" : {
@@ -5515,6 +5593,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No Repositories"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak Repozytoriów"
           }
         },
         "vi" : {
@@ -5702,6 +5786,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Open an [issue](https://github.com/khcrysalis/Feather/issues) on GitHub if you want your source to be featured."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otwórz [issue](https://github.com/khcrysalis/Feather/issues) na GitHubie, jeśli chcesz, aby Twoje źródło zostało wyróżnione."
           }
         }
       }
@@ -6221,6 +6311,12 @@
             "value" : "Post Signing"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Po podpisaniu"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6349,6 +6445,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Proceed"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przystąp"
           }
         },
         "vi" : {
@@ -7048,6 +7150,12 @@
             "state" : "translated",
             "value" : "Repository already added."
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repozytorium jest obecnie dodane."
+          }
         }
       }
     },
@@ -7125,6 +7233,12 @@
             "value" : "Reset All"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetuj wszystko"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7140,6 +7254,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reset Certificates"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetuj certyfikaty"
           }
         },
         "vi" : {
@@ -7159,6 +7279,12 @@
             "value" : "Reset Imported Apps"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetuj zaimportowane aplikacje"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7174,6 +7300,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reset Network Cache"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetuj pamięć podręczną sieci"
           }
         },
         "vi" : {
@@ -7193,6 +7325,12 @@
             "value" : "Reset Settings"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetuj ustawienia"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7208,6 +7346,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reset Signed Apps"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetuj podpisane aplikacje"
           }
         },
         "vi" : {
@@ -7227,6 +7371,12 @@
             "value" : "Reset Sources"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetuj źródła"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7244,6 +7394,12 @@
             "value" : "Reset the applications sources, certificates, apps, and general contents."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zresetuj źródła aplikacji, certyfikaty, aplikacje i ogólną zawartość."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7259,6 +7415,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reset Work Cache"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zresetuj pamięć podręczną"
           }
         },
         "vi" : {
@@ -8192,7 +8354,7 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Adres URL repozytorium źródłowego"
           }
         },
@@ -8669,7 +8831,7 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Obsługuje importowanie z KravaSign/MapleSign i ESign"
           }
         },
@@ -8818,6 +8980,12 @@
             "state" : "translated",
             "value" : "The only supported repositories are AltStore repositories.\\n[Learn more about how to setup a repository...](https://faq.altstore.io/developers/make-a-source)"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jedynymi obsługiwanymi repozytoriami są repozytoria AltStore.\\n[Dowiedz się więcej o tym, jak skonfigurować repozytorium...](https://faq.altstore.io/developers/make-a-source)"
+          }
         }
       }
     },
@@ -8893,6 +9061,12 @@
             "value" : "This action cannot be undone. Would you like to proceed?"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tej czynności nie można cofnąć. Czy chcesz kontynuować?"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8954,6 +9128,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "This will delete your imported application after signing, to save on using unneeded space."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spowoduje to usunięcie zaimportowanej aplikacji po jej podpisaniu, co pozwoli zwolnić miejsce."
           }
         },
         "vi" : {
