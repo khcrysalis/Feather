@@ -19,8 +19,9 @@ struct SourcesAddView: View {
 
 	private let _dataService = NBFetchService()
 	
-	private var _filteredRecommendedSourcesData: [(url: URL, data: ASRepository)] {
-		recommendedSourcesData
+	@State private var _filteredRecommendedSourcesData: [(url: URL, data: ASRepository)] = []
+	private func _refreshFilteredRecommendedSourcesData() {
+		let filtered = recommendedSourcesData
 			.filter { (url, data) in
 				let id = data.id ?? url.absoluteString
 				return !Storage.shared.sourceExists(id)
@@ -30,6 +31,7 @@ struct SourcesAddView: View {
 				let rhsName = rhs.data.name ?? ""
 				return lhsName.localizedCaseInsensitiveCompare(rhsName) == .orderedAscending
 			}
+		_filteredRecommendedSourcesData = filtered
 	}
 	
 	@State var recommendedSourcesData: [(url: URL, data: ASRepository)] = []
@@ -90,7 +92,9 @@ struct SourcesAddView: View {
 									iconUrl: source.currentIconURL
 								)
 								Button {
-									Storage.shared.addSource(url, repository: source) { _ in }
+									Storage.shared.addSource(url, repository: source) { _ in
+										_refreshFilteredRecommendedSourcesData()
+									}
 								} label: {
 									NBButton(.localized("Add"), systemImage: "arrow.down", style: .text)
 								}
@@ -131,7 +135,8 @@ struct SourcesAddView: View {
 	private func _fetchRecommendedRepositories() async {
 		let fetched = await _concurrentFetchRepositories(from: recommendedSources)
 		await MainActor.run {
-			self.recommendedSourcesData = fetched
+			recommendedSourcesData = fetched
+			_refreshFilteredRecommendedSourcesData()
 		}
 	}
 	
@@ -157,7 +162,6 @@ struct SourcesAddView: View {
 			}
 		}
 	}
-
 	
 	private func _concurrentFetchRepositories(
 		from urls: [URL]
