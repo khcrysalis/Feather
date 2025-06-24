@@ -179,6 +179,11 @@ extension SigningHandler {
 			infoDictionary.setObject(options.minimumAppRequirement, forKey: "MinimumOSVersion" as NSCopying)
 		}
 		
+		// useless crap
+		if infoDictionary["UISupportedDevices"] != nil {
+			infoDictionary.removeObject(forKey: "UISupportedDevices")
+		}
+		
 		try infoDictionary.write(to: app.appendingPathComponent("Info.plist"))
 	}
 	
