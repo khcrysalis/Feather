@@ -2818,6 +2818,17 @@
         }
       }
     },
+    "Enter Source URL" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter Source URL"
+          }
+        }
+      }
+    },
     "Enter the password associated with the private key. Leave it blank if theres no password required." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3237,6 +3248,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tải xuống thất bại, hãy kiểm tra kết nối internet của bạn và thử lại."
+          }
+        }
+      }
+    },
+    "Featured" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Featured"
           }
         }
       }
@@ -5669,6 +5691,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mở"
+          }
+        }
+      }
+    },
+    "Open an [issue](https://github.com/khcrysalis/Feather/issues) on GitHub if you want your source to be featured." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open an [issue](https://github.com/khcrysalis/Feather/issues) on GitHub if you want your source to be featured."
           }
         }
       }
@@ -8136,42 +8169,42 @@
         }
       }
     },
-    "Source Repo URL" : {
+    "Source URL" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "URL zdroje"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Source Repo URL"
+            "value" : "Source URL"
           }
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "URL Repo Sumber"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Adres URL repozytorium źródłowego"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Kaynak Depo URL’si"
           }
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "URL nguồn"
           }
         }
@@ -8613,42 +8646,42 @@
         }
       }
     },
-    "Supports importing from KravaSign/MapleSign and ESign" : {
+    "Supports importing from KravaSign/MapleSign and ESign." : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Podporuje import z KravaSign a ESign"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Supports importing from KravaSign/MapleSign and ESign"
+            "value" : "Supports importing from KravaSign/MapleSign and ESign."
           }
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Mendukung impor dari KravaSign/MapleSign dan ESign"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Obsługuje importowanie z KravaSign/MapleSign i ESign"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "KravaSign/MapleSign ve ESign’den içe aktarmayı destekler"
           }
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Hỗ trợ nhập từ KravaSign/MapleSign và ESign"
           }
         }
@@ -8773,6 +8806,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Heartbeat được kích hoạt trong nền, nó sẽ khởi động lại khi ứng dụng được mở lại hoặc được nhắc nhở. Nếu trạng thái bên dưới đang nhịp đập, điều đó có nghĩa là nó hoạt động bình thường."
+          }
+        }
+      }
+    },
+    "The only supported repositories are AltStore repositories.\\n[Learn more about how to setup a repository...](https://faq.altstore.io/developers/make-a-source)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The only supported repositories are AltStore repositories.\\n[Learn more about how to setup a repository...](https://faq.altstore.io/developers/make-a-source)"
           }
         }
       }

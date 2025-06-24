@@ -102,11 +102,11 @@ struct SourcesView: View {
 					_isAddingPresenting = true
 				}
 			}
-			.sheet(isPresented: $_isAddingPresenting) {
-				SourcesAddView()
-			}
 			.refreshable {
 				await viewModel.fetchSources(_sources, refresh: true)
+			}
+			.sheet(isPresented: $_isAddingPresenting) {
+				SourcesAddView()
 			}
 		}
 		.task(id: Array(_sources)) {

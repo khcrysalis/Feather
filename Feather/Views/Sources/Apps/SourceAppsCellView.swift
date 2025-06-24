@@ -124,6 +124,7 @@ extension SourceAppsCellView {
 				}
 				.onTapGesture {
 					if _downloadProgress <= 0.75 {
+						UINotificationFeedbackGenerator().notificationOccurred(.error)
 						downloadManager.cancelDownload(currentDownload)
 					}
 				}
@@ -134,7 +135,7 @@ extension SourceAppsCellView {
 						_ = downloadManager.startDownload(from: url, id: app.currentUniqueId)
 					}
 				} label: {
-					NBButton("", systemImage: "arrow.down", horizontalPadding: 0)
+					NBButton(systemImage: "arrow.down", horizontalPadding: 0)
 				}
 				.buttonStyle(.borderless)
 				.compatTransition()

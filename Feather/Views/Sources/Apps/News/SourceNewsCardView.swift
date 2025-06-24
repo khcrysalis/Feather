@@ -8,6 +8,7 @@
 import SwiftUI
 import AltSourceKit
 import NukeUI
+import NimbleViews
 
 // MARK: - View
 struct SourceNewsCardView: View {
@@ -43,6 +44,12 @@ struct SourceNewsCardView: View {
 			)
 			.frame(height: 70)
 			.frame(maxWidth: .infinity, alignment: .bottom)
+			.overlay(
+				NBVariableBlurView()
+					.rotationEffect(.degrees(180))
+					.frame(height: 50)
+					.frame(maxHeight: .infinity, alignment: .bottom)
+			)
 			.clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
 			
 			Text(new.title)

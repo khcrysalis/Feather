@@ -63,14 +63,12 @@ struct SourceNewsCardInfoView: View {
 						}
 						
 						if let url = new.url {
-							Button(.localized("Open"), systemImage: "arrow.up.right") {
+							Button {
 								UIApplication.shared.open(url)
+							} label: {
+								NBSheetButton(title: .localized("Open"), systemImage: "arrow.up.right")
 							}
-							.frame(maxWidth: .infinity)
-							.padding()
-							.background(Color(uiColor: .quaternarySystemFill))
-							.foregroundColor(.accentColor)
-							.clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+							.buttonStyle(.plain)
 						}
 						
 						if let date = new.date?.date {

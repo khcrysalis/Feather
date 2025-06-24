@@ -51,13 +51,26 @@ struct SigningView: View {
 				_cert()
 				_customizationProperties(for: app)
 			}
-			.safeAreaInset(edge: .bottom) {
-				Button() {
-					_start()
-				} label: {
-					NBSheetButton(title: .localized("Start Signing"))
+			.overlay {
+				VStack(spacing: 0) {
+					Spacer()
+					NBVariableBlurView()
+						.frame(height: UIDevice.current.userInterfaceIdiom == .pad ? 60 : 80)
+						.rotationEffect(.degrees(180))
+						.overlay {
+							Button {
+								_start()
+							} label: {
+								NBSheetButton(title: .localized("Start Signing"), style: .prominent)
+									.padding()
+							}
+							.buttonStyle(.plain)
+							.offset(y: UIDevice.current.userInterfaceIdiom == .pad ? -20 : -40)
+						}
 				}
+				.ignoresSafeArea(edges: .bottom)
 			}
+
 			.toolbar {
 				NBToolbarButton(role: .dismiss)
 				

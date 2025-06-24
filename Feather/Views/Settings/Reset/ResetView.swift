@@ -12,8 +12,6 @@ import CoreData
 
 // MARK: - View
 struct ResetView: View {
-	@Environment(\.dismiss) var dismiss
-
 	// MARK: Body
     var body: some View {
 		NBList(.localized("Reset")) {
@@ -23,7 +21,7 @@ struct ResetView: View {
 		}
     }
 	
-	func _cacheSize() -> String {
+	private func _cacheSize() -> String {
 		var totalCacheSize = URLCache.shared.currentDiskUsage
 		if let nukeCache = ImagePipeline.shared.configuration.dataCache as? DataCache {
 			totalCacheSize += nukeCache.totalSize
@@ -134,7 +132,6 @@ extension ResetView {
 			}
 			
 			Button(.localized("Reset All"), systemImage: "xmark.octagon") {
-				dismiss()
 				Self.resetAlert(title: .localized("Reset All")) {
 					Self.resetAll()
 				}
