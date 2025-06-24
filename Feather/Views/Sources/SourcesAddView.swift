@@ -19,6 +19,19 @@ struct SourcesAddView: View {
 
 	private let _dataService = NBFetchService()
 	
+	private var _filteredRecommendedSourcesData: [(url: URL, data: ASRepository)] {
+		recommendedSourcesData
+			.filter { (url, data) in
+				let id = data.id ?? url.absoluteString
+				return !Storage.shared.sourceExists(id)
+			}
+			.sorted { lhs, rhs in
+				let lhsName = lhs.data.name ?? ""
+				let rhsName = rhs.data.name ?? ""
+				return lhsName.localizedCaseInsensitiveCompare(rhsName) == .orderedAscending
+			}
+	}
+	
 	@State var recommendedSourcesData: [(url: URL, data: ASRepository)] = []
 	let recommendedSources: [URL] = [
 		"https://raw.githubusercontent.com/khcrysalis/Feather/refs/heads/main/app-repo.json",
@@ -32,18 +45,6 @@ struct SourcesAddView: View {
 		"https://community-apps.sidestore.io/sidecommunity.json",
 		"https://alt.getutm.app"
 	].map { URL(string: $0)! }
-	private var _filteredRecommendedSourcesData: [(url: URL, data: ASRepository)] {
-		recommendedSourcesData
-			.filter { (url, data) in
-				let id = data.id ?? url.absoluteString
-				return !Storage.shared.sourceExists(id)
-			}
-			.sorted { lhs, rhs in
-				let lhsName = lhs.data.name ?? ""
-				let rhsName = rhs.data.name ?? ""
-				return lhsName.localizedCaseInsensitiveCompare(rhsName) == .orderedAscending
-			}
-	}
 	
 	@State private var _isImporting = false
 	@State private var _sourceURL = ""

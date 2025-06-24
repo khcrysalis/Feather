@@ -124,7 +124,6 @@ extension SourceAppsCellView {
 				}
 				.onTapGesture {
 					if _downloadProgress <= 0.75 {
-						UINotificationFeedbackGenerator().notificationOccurred(.error)
 						downloadManager.cancelDownload(currentDownload)
 					}
 				}
