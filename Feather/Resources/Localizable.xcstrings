@@ -679,53 +679,6 @@
         }
       }
     },
-    "Adhoc Signing" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Adhoc podpisy"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Adhoc-Signierung"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Adhoc Signing"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Penandatanganan Adhoc"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Podpis Adhoc"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ad-Hoc İmzalama"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ký Adhoc"
-          }
-        }
-      }
-    },
     "Advanced" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2856,7 +2809,8 @@
             "value" : "Dylibs"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Enable Liquid Glass" : {
       "extractionState" : "manual",
@@ -5425,6 +5379,29 @@
         }
       }
     },
+    "Learn more about how to setup a repository…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lerne mehr darüber wie man ein Repositorium einrichtet…"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Learn more about how to setup a repository…"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dowiedz się więcej o tym, jak skonfigurować repozytorium..."
+          }
+        }
+      }
+    },
     "Library" : {
       "comment" : "Library tab",
       "extractionState" : "manual",
@@ -6721,53 +6698,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mật khẩu"
-          }
-        }
-      }
-    },
-    "Pill" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pilulka"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pille"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pill"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pill"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kapsułka"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kapsül"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Viên"
           }
         }
       }
@@ -9914,25 +9844,25 @@
         }
       }
     },
-    "The only supported repositories are AltStore repositories.\\n[Learn more about how to setup a repository...](https://faq.altstore.io/developers/make-a-source)" : {
+    "The only supported repositories are AltStore repositories." : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Es werden nur AltStore-Repositorien unterstützt.\\n[Lerne mehr darüber wie man ein Repositorium einrichtet…](https://faq.altstore.io/developers/make-a-source)"
+            "value" : "Es werden nur AltStore-Repositorien unterstützt."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The only supported repositories are AltStore repositories.\\n[Learn more about how to setup a repository...](https://faq.altstore.io/developers/make-a-source)"
+            "value" : "The only supported repositories are AltStore repositories."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jedynymi obsługiwanymi repozytoriami są repozytoria AltStore.\\n[Dowiedz się więcej o tym, jak skonfigurować repozytorium...](https://faq.altstore.io/developers/make-a-source)"
+            "value" : "Jedynymi obsługiwanymi repozytoriami są repozytoria AltStore."
           }
         }
       }

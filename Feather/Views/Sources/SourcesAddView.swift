@@ -60,7 +60,8 @@ struct SourcesAddView: View {
 						.keyboardType(.URL)
 						.textInputAutocapitalization(.never)
 				} footer: {
-					Text(.localized("The only supported repositories are AltStore repositories.\n[Learn more about how to setup a repository...](https://faq.altstore.io/developers/make-a-source)"))
+					Text(.localized("The only supported repositories are AltStore repositories."))
+					Text(verbatim: "[\(String.localized("Learn more about how to setup a repository..."))](https://faq.altstore.io/developers/make-a-source)")
 				}
 				
 				Section {
