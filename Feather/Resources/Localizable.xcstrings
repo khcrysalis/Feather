@@ -2848,7 +2848,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wprowadź URL źródła"
+            "value" : "Podaj adres"
           }
         }
       }
