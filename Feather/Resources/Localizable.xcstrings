@@ -8619,7 +8619,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Server (Empfohlen):\nBenutzt einen lokalen laufenden Server und itms-services:// um Apps zu installieren.\n\nIDevice (Erweitert):\nBenutzt eine VPN und eine Pairing-Datei. Schreibt zu AFC und ruft manuell installd auf, während der Installations-Fortschritt überwacht in dem ein Callback benutzt wird\nVorteil: Es ist sehr zuverlässig, braucht keine SSL-Zertifikate oder einen externen laufenden Server. Vielmehr funktioniert es wie ein Computer."
+            "value" : "Server (Empfohlen):\nBenutzt einen lokalen laufenden Server und itms-services:// um Apps zu installieren.\n\niDevice (Erweitert):\nBenutzt eine VPN und eine Pairing-Datei. Schreibt zu AFC und ruft manuell installd auf, während der Installations-Fortschritt überwacht in dem ein Callback benutzt wird\nVorteil: Es ist sehr zuverlässig, braucht keine SSL-Zertifikate oder einen externen laufenden Server. Vielmehr funktioniert es wie ein Computer."
           }
         },
         "en" : {
@@ -9809,7 +9809,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Der Herzschlag ist aktiv im Hintergrund, und wird neugestartet wenn die App neu geöffnet oder aufgefordert wird. Wenn der Status unten pulsiert, bedeutet es dann es gesund ist."
+            "value" : "Der Herzschlag ist aktiv im Hintergrund, und wird neugestartet wenn die App neu geöffnet oder aufgefordert wird. Wenn der Status unten pulsiert, bedeutet es dass er gesund ist."
           }
         },
         "en" : {
