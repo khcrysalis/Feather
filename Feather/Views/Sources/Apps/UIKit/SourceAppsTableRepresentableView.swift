@@ -23,8 +23,13 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 		tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "SectionHeader")
 		tableView.allowsSelection = false
 		
-		if let firstSource = sources.first, sources.count == 1 {
-			let header = UIHostingController(rootView: SourceNewsView(news: firstSource.news))
+		if
+			let firstSource = sources.first,
+			sources.count == 1,
+			let news = firstSource.news,
+			!news.isEmpty
+		{
+			let header = UIHostingController(rootView: SourceNewsView(news: news))
 			header.view.translatesAutoresizingMaskIntoConstraints = true
 			header.view.backgroundColor = .clear
 			let fixedHeight: CGFloat = 161
