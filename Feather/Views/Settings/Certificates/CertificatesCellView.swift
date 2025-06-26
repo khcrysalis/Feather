@@ -17,8 +17,18 @@ struct CertificatesCellView: View {
 	// MARK: Body
 	var body: some View {
 		VStack(spacing: 6) {
+			let title = {
+				var title = cert.nickname ?? data?.Name ?? .localized("Unknown")
+				
+				if let getTaskAllow = data?.Entitlements?["get-task-allow"]?.value as? Bool, getTaskAllow == true {
+					title = "🐞 \(title)"
+				}
+				
+				return title
+			}()
+			
 			NBTitleWithSubtitleView(
-				title: cert.nickname ?? data?.Name ?? .localized("Unknown"),
+				title: title,
 				subtitle: data?.AppIDName ?? .localized("Unknown")
 			)
 			
