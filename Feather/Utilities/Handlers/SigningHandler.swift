@@ -168,7 +168,6 @@ extension SigningHandler {
 		if options.proMotion { infoDictionary.setObject(true, forKey: "CADisableMinimumFrameDurationOnPhone" as NSCopying) }
 		if options.gameMode { infoDictionary.setObject(true, forKey: "GCSupportsGameMode" as NSCopying)}
 		if options.ipadFullscreen { infoDictionary.setObject(true, forKey: "UIRequiresFullScreen" as NSCopying) }
-		if options.removeSupportedDevices { infoDictionary.removeObject(forKey: "UISupportedDevices") }
 		if options.removeURLScheme { infoDictionary.removeObject(forKey: "CFBundleURLTypes") }
 		
 		// these are for picker arrays, we check if the default option is named "Default" before applying

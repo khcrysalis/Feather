@@ -87,12 +87,6 @@ struct SigningOptionsView: View {
 		}
 		
 		NBSection(.localized("Removal")) {
-			_toggle(.localized("Remove Supported Devices"),
-					systemImage: "iphone.slash",
-					isOn: $options.removeSupportedDevices,
-					temporaryValue: temporaryOptions?.removeSupportedDevices
-			)
-			
 			_toggle(.localized("Remove URL Scheme"),
 					systemImage: "ellipsis.curlybraces",
 					isOn: $options.removeURLScheme,

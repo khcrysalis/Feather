@@ -84,7 +84,7 @@ struct Options: Codable, Equatable {
 	var gameMode: Bool
 	/// If app should use fullscreen (iPad mainly)
 	var ipadFullscreen: Bool
-	/// If app shouldn't have device restrictions
+	/// `Deprecated` If app shouldn't have device restrictions
 	var removeSupportedDevices: Bool
 	/// If app shouldn't have URL Schemes
 	var removeURLScheme: Bool
@@ -127,7 +127,7 @@ struct Options: Codable, Equatable {
 		proMotion: false,
 		gameMode: false,
 		ipadFullscreen: false,
-		removeSupportedDevices: false,
+		removeSupportedDevices: false, // Deprecated
 		removeURLScheme: false,
 		removeProvisioning: false,
 		removeWatchPlaceholder: false, // Deprecated
