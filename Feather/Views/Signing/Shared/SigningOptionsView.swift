@@ -98,6 +98,8 @@ struct SigningOptionsView: View {
 					isOn: $options.removeProvisioning,
 					temporaryValue: temporaryOptions?.removeProvisioning
 			)
+		} footer: {
+			Text(.localized("Removing the provisioning file will exclude the mobileprovision file from being embedded inside of the application when signing, to help prevent any detection."))
 		}
 		
 		Section {

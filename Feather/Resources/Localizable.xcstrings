@@ -7632,6 +7632,17 @@
         }
       }
     },
+    "Removing the provisioning file will exclude the mobileprovision file from being embedded inside of the application when signing, to help prevent any detection." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Removing the provisioning file will exclude the mobileprovision file from being embedded inside of the application when signing, to help prevent any detection."
+          }
+        }
+      }
+    },
     "Replace Substrate with ElleKit" : {
       "extractionState" : "manual",
       "localizations" : {
