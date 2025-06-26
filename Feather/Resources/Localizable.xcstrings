@@ -2591,6 +2591,17 @@
         }
       }
     },
+    "Do you want to export your certificate to an external app? That app will be able to sign apps using your certificate." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you want to export your certificate to an external app? That app will be able to sign apps using your certificate."
+          }
+        }
+      }
+    },
     "Donate" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3467,6 +3478,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Xuất"
+          }
+        }
+      }
+    },
+    "Export Certificate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export Certificate"
           }
         }
       }

@@ -179,4 +179,50 @@ enum FR {
 			}
 		}
 	}
+	
+	static func exportCertificateAndOpenUrl(using template: String) {
+		func export() {
+			guard
+				let certificate = Storage.shared.getCertificate(for: UserDefaults.standard.integer(forKey: "feather.selectedCert")),
+				let certificateKeyFile = Storage.shared.getFile(.certificate, from: certificate),
+				let certificateKeyFileData = try? Data(contentsOf: certificateKeyFile)
+			else {
+				return
+			}
+			
+			let base64encodedCert = certificateKeyFileData.base64EncodedString()
+			
+			var allowedQueryParamAndKey = NSCharacterSet.urlQueryAllowed
+			allowedQueryParamAndKey.remove(charactersIn: ";/?:@&=+$, ")
+			
+			guard let encodedCert = base64encodedCert.addingPercentEncoding(withAllowedCharacters: allowedQueryParamAndKey) else {
+				return
+			}
+			
+			var urlStr = template
+				.replacingOccurrences(of: "$(BASE64_CERT)", with: encodedCert)
+				.replacingOccurrences(of: "$(PASSWORD)", with: certificate.password ?? "")
+			
+			guard let callbackUrl = URL(string: urlStr) else {
+				return
+			}
+			
+			UIApplication.shared.open(callbackUrl)
+		}
+		
+		DispatchQueue.main.async {
+			let action = UIAlertAction(
+				title: .localized("OK"),
+				style: .default
+			) { _ in
+				export()
+			}
+			
+			UIAlertController.showAlertWithCancel(
+				title: .localized("Export Certificate"),
+				message: .localized("Do you want to export your certificate to an external app? That app will be able to sign apps using your certificate."),
+				actions: [action]
+			)
+		}
+	}
 }

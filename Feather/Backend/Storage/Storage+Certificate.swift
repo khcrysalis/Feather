@@ -43,6 +43,20 @@ extension Storage {
 		saveContext()
 	}
 	
+	func getCertificate(for index: Int) -> CertificatePair? {
+		let fetchRequest: NSFetchRequest<CertificatePair> = CertificatePair.fetchRequest()
+		fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \CertificatePair.date, ascending: false)]
+
+		guard
+			let results = try? context.fetch(fetchRequest),
+			index >= 0 && index < results.count
+		else {
+			return nil
+		}
+		
+		return results[index]
+	}
+	
 	func revokagedCertificate(for cert: CertificatePair) {
 		guard !cert.revoked else { return }
 		

@@ -41,6 +41,7 @@ struct SourcesAddView: View {
 		"https://flyinghead.github.io/flycast-builds/altstore.json",
 		"https://xitrix.github.io/iTorrent/AltStore.json",
 		"https://altstore.oatmealdome.me/",
+		"https://raw.githubusercontent.com/LiveContainer/LiveContainer/refs/heads/main/apps.json",
 		"https://alt.crystall1ne.dev/",
 		"https://pokemmo.com/altstore/",
 		"https://provenance-emu.com/apps.json",
