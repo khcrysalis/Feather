@@ -103,4 +103,10 @@ extension Storage {
 		
 		return FileManager.default.certificates(uuid)
 	}
+	
+	func getAllCertificates() -> [CertificatePair] {
+		let fetchRequest: NSFetchRequest<CertificatePair> = CertificatePair.fetchRequest()
+		fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \CertificatePair.date, ascending: false)]
+		return (try? context.fetch(fetchRequest)) ?? []
+	}
 }

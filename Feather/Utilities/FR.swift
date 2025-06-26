@@ -181,9 +181,9 @@ enum FR {
 	}
 	
 	static func exportCertificateAndOpenUrl(using template: String) {
-		func export() {
+		// Helper that performs the export for a given certificate
+		func performExport(for certificate: CertificatePair) {
 			guard
-				let certificate = Storage.shared.getCertificate(for: UserDefaults.standard.integer(forKey: "feather.selectedCert")),
 				let certificateKeyFile = Storage.shared.getFile(.certificate, from: certificate),
 				let certificateKeyFileData = try? Data(contentsOf: certificateKeyFile)
 			else {
@@ -199,7 +199,7 @@ enum FR {
 				return
 			}
 			
-			var urlStr = template
+			let urlStr = template
 				.replacingOccurrences(of: "$(BASE64_CERT)", with: encodedCert)
 				.replacingOccurrences(of: "$(PASSWORD)", with: certificate.password ?? "")
 			
@@ -210,18 +210,36 @@ enum FR {
 			UIApplication.shared.open(callbackUrl)
 		}
 		
+		// Retrieve all available certificates
+		let certificates = Storage.shared.getAllCertificates()
+		guard !certificates.isEmpty else { return }
+		
 		DispatchQueue.main.async {
-			let action = UIAlertAction(
-				title: .localized("OK"),
-				style: .default
-			) { _ in
-				export()
+			// Build selection actions for each certificate
+			var selectionActions: [UIAlertAction] = []
+			
+			for cert in certificates {
+				let title: String
+				if let nickname = cert.nickname, !nickname.isEmpty {
+					title = nickname
+				} else if let name = Storage.shared.getProvisionFileDecoded(for: cert)?.Name {
+					title = name
+				} else {
+					title = .localized("Unknown")
+				}
+				
+				let selectAction = UIAlertAction(title: title, style: .default) { _ in
+					performExport(for: cert)
+				}
+				selectionActions.append(selectAction)
 			}
 			
+			// Present centred alert for certificate selection & confirmation combined
 			UIAlertController.showAlertWithCancel(
 				title: .localized("Export Certificate"),
 				message: .localized("Do you want to export your certificate to an external app? That app will be able to sign apps using your certificate."),
-				actions: [action]
+				style: .alert,
+				actions: selectionActions
 			)
 		}
 	}
