@@ -42,6 +42,9 @@ $(SCHEMES): deps
 
 	mv "$(APP)/$@.app" "$(STAGE)/Payload/$@.app"
 
+	chmod -R 0755 "$(STAGE)/Payload/$@.app"
+	codesign --force --sign - --timestamp=none "$(STAGE)/Payload/$@.app"
+
 	cp deps/* "$(STAGE)/Payload/$@.app/" || true
 
 	rm -rf "$(STAGE)/Payload/$@.app/_CodeSignature"
