@@ -111,7 +111,11 @@ extension SourceAppsTableRepresentableView { class Coordinator: NSObject, UITabl
 	
 	private func calculateSortedApps() -> [(source: ASRepository, app: ASRepository.App)] {
 		let filtered = allAppsWithSource.filter {
-			searchText.isEmpty || ($0.app.name?.localizedCaseInsensitiveContains(searchText) ?? false)
+			searchText.isEmpty ||
+			($0.app.name?.localizedCaseInsensitiveContains(searchText) ?? false) ||
+			($0.app.description?.localizedCaseInsensitiveContains(searchText) ?? false) ||
+			($0.app.subtitle?.localizedCaseInsensitiveContains(searchText) ?? false) ||
+			($0.app.localizedDescription?.localizedCaseInsensitiveContains(searchText) ?? false)
 		}
 		
 		switch sortOption {
