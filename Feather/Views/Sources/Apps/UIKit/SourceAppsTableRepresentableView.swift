@@ -27,20 +27,18 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 			let header = UIHostingController(rootView: SourceNewsView(news: firstSource.news))
 			header.view.translatesAutoresizingMaskIntoConstraints = true
 			header.view.backgroundColor = .clear
-			let targetSize = header.view.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-			header.view.frame = CGRect(origin: .zero, size: targetSize)
-			tableView.tableHeaderView = header.view
+			let fixedHeight: CGFloat = 161
+			let width = tableView.bounds.width
+			header.view.frame = CGRect(origin: .zero, size: CGSize(width: width, height: fixedHeight))
+
+			DispatchQueue.main.async {
+				tableView.tableHeaderView = header.view
+			}
 		}
 		
 		tableView.alpha = 0
 		
-		if let firstSource = sources.first, sources.count == 1 {
-			let header = UIHostingController(rootView: SourceNewsView(news: firstSource.news))
-			header.view.translatesAutoresizingMaskIntoConstraints = true
-			header.view.backgroundColor = .clear
-		}
-		
-		UIView.transition(with: tableView,  duration: 0.3, options: [.transitionCrossDissolve], animations: {
+		UIView.transition(with: tableView,  duration: 0.5, options: [.transitionCrossDissolve], animations: {
 			tableView.alpha = 1
 		}, completion: nil)
 		
