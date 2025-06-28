@@ -10,20 +10,38 @@ import AltSourceKit
 import NimbleViews
 import UIKit
 
+// MARK: - Extension: View (Enil)
+extension SourceAppsView {
+	enum SortOption: String, CaseIterable {
+		case `default` = "default"
+		case name
+		case date
+		
+		var displayName: String {
+			switch self {
+			case .default:  .localized("Default")
+			case .name: 	.localized("Name")
+			case .date: 	.localized("Date")
+			}
+		}
+	}
+}
+
 // MARK: - View
 struct SourceAppsView: View {
+	@AppStorage("Feather.sortOptionRawValue") private var _sortOptionRawValue: String = SortOption.default.rawValue
+	@AppStorage("Feather.sortAscending") private var _sortAscending: Bool = true
+	@State private var _sortOption: SortOption = .default
+	
 	@State var isLoading = true
 	@State var hasLoadedOnce = false
-	
 	@State private var _searchText = ""
-	@State private var _sortOption: SortOption = .default
-	@State private var _sortAscending = true
-	
+
 	private var _navigationTitle: String {
 		if object.count == 1 {
-			return object[0].name ?? .localized("Unknown")
+			object[0].name ?? .localized("Unknown")
 		} else {
-			return .localized("%lld Sources", arguments: object.count)
+			.localized("%lld Sources", arguments: object.count)
 		}
 	}
 	
@@ -92,9 +110,13 @@ struct SourceAppsView: View {
 				_load()
 				hasLoadedOnce = true
 			}
+			_sortOption = SortOption(rawValue: _sortOptionRawValue) ?? .default
 		}
 		.onChange(of: viewModel.isFinished) { _ in
 			_load()
+		}
+		.onChange(of: _sortOption) { newValue in
+			_sortOptionRawValue = newValue.rawValue
 		}
 	}
 	
@@ -137,18 +159,6 @@ extension SourceAppsView {
 				if _sortOption == option {
 					Image(systemName: _sortAscending ? "chevron.up" : "chevron.down")
 				}
-			}
-		}
-	}
-	
-	enum SortOption: CaseIterable {
-		case `default`, name, date
-		
-		var displayName: String {
-			switch self {
-			case .default: return .localized("Default")
-			case .name: return .localized("Name")
-			case .date: return .localized("Date")
 			}
 		}
 	}

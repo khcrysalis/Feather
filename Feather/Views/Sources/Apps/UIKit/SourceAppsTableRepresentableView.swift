@@ -85,23 +85,23 @@ extension SourceAppsTableRepresentableView { class Coordinator: NSObject, UITabl
 	var sortOption: SourceAppsView.SortOption
 	var sortAscending: Bool
 	
-	private var groupedAppsByNameFirstLetter: [String: [(source: ASRepository, app: ASRepository.App)]] = [:]
-	private var groupedAppsByDate: [String: [(source: ASRepository, app: ASRepository.App)]] = [:]
-	private var sortedSectionTitles: [String] = []
+	private var _groupedAppsByNameFirstLetter: [String: [(source: ASRepository, app: ASRepository.App)]] = [:]
+	private var _groupedAppsByDate: [String: [(source: ASRepository, app: ASRepository.App)]] = [:]
+	private var _sortedSectionTitles: [String] = []
 	
-	private var cachedSortedApps: [(source: ASRepository, app: ASRepository.App)] = []
+	private var _cachedSortedApps: [(source: ASRepository, app: ASRepository.App)] = []
 	weak var uiTableView: UITableView?
 	
-	private var allAppsWithSource: [(source: ASRepository, app: ASRepository.App)] {
+	private var _allAppsWithSource: [(source: ASRepository, app: ASRepository.App)] {
 		sources.flatMap { source in source.apps.map { (source: source, app: $0) } }
 	}
 	
 	private var _sortedApps: [(source: ASRepository, app: ASRepository.App)] {
-		if !cachedSortedApps.isEmpty {
-			return cachedSortedApps
+		if !_cachedSortedApps.isEmpty {
+			return _cachedSortedApps
 		}
-		cachedSortedApps = calculateSortedApps()
-		return cachedSortedApps
+		_cachedSortedApps = _calculateSortedApps()
+		return _cachedSortedApps
 	}
 	
 	init(sources: [ASRepository], searchText: String, sortOption: SourceAppsView.SortOption, sortAscending: Bool) {
@@ -110,10 +110,14 @@ extension SourceAppsTableRepresentableView { class Coordinator: NSObject, UITabl
 		self.sortOption = sortOption
 		self.sortAscending = sortAscending
 		super.init()
+		
+		if sortOption != .default {
+			invalidateCache()
+		}
 	}
 	
-	private func calculateSortedApps() -> [(source: ASRepository, app: ASRepository.App)] {
-		let filtered = allAppsWithSource.filter {
+	private func _calculateSortedApps() -> [(source: ASRepository, app: ASRepository.App)] {
+		let filtered = _allAppsWithSource.filter {
 			searchText.isEmpty ||
 			($0.app.name?.localizedCaseInsensitiveContains(searchText) ?? false) ||
 			($0.app.description?.localizedCaseInsensitiveContains(searchText) ?? false) ||
@@ -123,9 +127,9 @@ extension SourceAppsTableRepresentableView { class Coordinator: NSObject, UITabl
 		
 		switch sortOption {
 		case .default:
-			groupedAppsByDate = [:]
-			groupedAppsByNameFirstLetter = [:]
-			sortedSectionTitles = []
+			_groupedAppsByDate = [:]
+			_groupedAppsByNameFirstLetter = [:]
+			_sortedSectionTitles = []
 			return sortAscending ? filtered : filtered.reversed()
 		case .date:
 			let sorted = filtered.sorted {
@@ -143,12 +147,12 @@ extension SourceAppsTableRepresentableView { class Coordinator: NSObject, UITabl
 			
 			let sortedDates = grouped.keys.sorted(by: { sortAscending ? $0 > $1 : $0 < $1 })
 			
-			groupedAppsByDate = grouped.reduce(into: [:]) { result, pair in
+			_groupedAppsByDate = grouped.reduce(into: [:]) { result, pair in
 				let key = formatter.string(from: pair.key)
 				result[key] = pair.value
 			}
 			
-			sortedSectionTitles = sortedDates.map { formatter.string(from: $0) }
+			_sortedSectionTitles = sortedDates.map { formatter.string(from: $0) }
 			return sorted
 		case .name:
 			let sorted = filtered.sorted {
@@ -157,11 +161,11 @@ extension SourceAppsTableRepresentableView { class Coordinator: NSObject, UITabl
 				let comparison = n1.localizedCaseInsensitiveCompare(n2) == .orderedAscending
 				return sortAscending ? comparison : !comparison
 			}
-			groupedAppsByNameFirstLetter = Dictionary(grouping: sorted) {
+			_groupedAppsByNameFirstLetter = Dictionary(grouping: sorted) {
 				let first = $0.app.name?.trimmingCharacters(in: .whitespacesAndNewlines).first?.uppercased() ?? "#"
 				return first.range(of: "[A-Z]", options: .regularExpression) != nil ? first : "#"
 			}
-			sortedSectionTitles = groupedAppsByNameFirstLetter.keys.sorted(by: {
+			_sortedSectionTitles = _groupedAppsByNameFirstLetter.keys.sorted(by: {
 				if $0 == "#" { return false }
 				if $1 == "#" { return true }
 				return sortAscending ? $0 < $1 : $0 > $1
@@ -171,7 +175,7 @@ extension SourceAppsTableRepresentableView { class Coordinator: NSObject, UITabl
 	}
 	
 	func invalidateCache() {
-		cachedSortedApps = calculateSortedApps()
+		_cachedSortedApps = _calculateSortedApps()
 		if let tableView = uiTableView {
 			UIView.transition(with: tableView, duration: 0.3, options: [.transitionCrossDissolve], animations: {
 				tableView.reloadData()
@@ -184,15 +188,15 @@ extension SourceAppsTableRepresentableView { class Coordinator: NSObject, UITabl
 	func numberOfSections(in tableView: UITableView) -> Int {
 		switch sortOption {
 		case .default: 1
-		case .name, .date: sortedSectionTitles.count
+		case .name, .date: _sortedSectionTitles.count
 		}
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		switch sortOption {
 		case .default: _sortedApps.count
-		case .name: groupedAppsByNameFirstLetter[sortedSectionTitles[section]]?.count ?? 0
-		case .date: groupedAppsByDate[sortedSectionTitles[section]]?.count ?? 0
+		case .name: _groupedAppsByNameFirstLetter[_sortedSectionTitles[section]]?.count ?? 0
+		case .date: _groupedAppsByDate[_sortedSectionTitles[section]]?.count ?? 0
 		}
 	}
 	
@@ -201,8 +205,8 @@ extension SourceAppsTableRepresentableView { class Coordinator: NSObject, UITabl
 		let entry: (source: ASRepository, app: ASRepository.App)
 		switch sortOption {
 		case .default: entry = _sortedApps[indexPath.row]
-		case .name: entry = groupedAppsByNameFirstLetter[sortedSectionTitles[indexPath.section]]?[indexPath.row] ?? _sortedApps[indexPath.row]
-		case .date: entry = groupedAppsByDate[sortedSectionTitles[indexPath.section]]?[indexPath.row] ?? _sortedApps[indexPath.row]
+		case .name: entry = _groupedAppsByNameFirstLetter[_sortedSectionTitles[indexPath.section]]?[indexPath.row] ?? _sortedApps[indexPath.row]
+		case .date: entry = _groupedAppsByDate[_sortedSectionTitles[indexPath.section]]?[indexPath.row] ?? _sortedApps[indexPath.row]
 		}
 		cell.contentConfiguration = UIHostingConfiguration {
 			SourceAppsCellView(source: entry.source, app: entry.app)
@@ -216,7 +220,7 @@ extension SourceAppsTableRepresentableView { class Coordinator: NSObject, UITabl
 		
 		switch sortOption {
 		case .default: title = .localized("%lld Apps", arguments: _sortedApps.count)
-		case .name, .date: title = sortedSectionTitles[section]
+		case .name, .date: title = _sortedSectionTitles[section]
 		}
 		
 		headerView?.contentConfiguration = UIHostingConfiguration {
@@ -232,19 +236,19 @@ extension SourceAppsTableRepresentableView { class Coordinator: NSObject, UITabl
 	}
 	
 	func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-		sortOption == .name ? sortedSectionTitles : nil
+		sortOption == .name ? _sortedSectionTitles : nil
 	}
 	
 	func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
-		sortedSectionTitles.firstIndex(of: title) ?? 0
+		_sortedSectionTitles.firstIndex(of: title) ?? 0
 	}
 	
 	func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
 		let entry: (source: ASRepository, app: ASRepository.App)
 		switch sortOption {
 		case .default: entry = _sortedApps[indexPath.row]
-		case .name: entry = groupedAppsByNameFirstLetter[sortedSectionTitles[indexPath.section]]?[indexPath.row] ?? _sortedApps[indexPath.row]
-		case .date: entry = groupedAppsByDate[sortedSectionTitles[indexPath.section]]?[indexPath.row] ?? _sortedApps[indexPath.row]
+		case .name: entry = _groupedAppsByNameFirstLetter[_sortedSectionTitles[indexPath.section]]?[indexPath.row] ?? _sortedApps[indexPath.row]
+		case .date: entry = _groupedAppsByDate[_sortedSectionTitles[indexPath.section]]?[indexPath.row] ?? _sortedApps[indexPath.row]
 		}
 		
 		return UIContextMenuConfiguration(
