@@ -79,6 +79,7 @@ final class SigningHandler: NSObject {
 		}
 		
 		try await _removePresetFiles(for: movedAppPath)
+		try await _removeWatchIfNeeded(for: movedAppPath)
 		
 		if _options.experiment_supportLiquidGlass {
 			try await _locateMachosAndChangeToSDK26(for: movedAppPath)
@@ -253,6 +254,21 @@ extension SigningHandler {
 		
 		for file in files {
 			try _fileManager.removeFileIfNeeded(at: file)
+		}
+	}
+	
+	// horrible edge-case
+	private func _removeWatchIfNeeded(for app: URL) async throws {
+		let watchDir = app.appendingPathComponent("Watch")
+		guard _fileManager.fileExists(atPath: watchDir.path) else { return }
+		
+		let contents = try _fileManager.contentsOfDirectory(at: watchDir, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
+		
+		for app in contents where app.pathExtension == "app" {
+			let infoPlist = app.appendingPathComponent("Info.plist")
+			if !_fileManager.fileExists(atPath: infoPlist.path) {
+				try? _fileManager.removeItem(at: app)
+			}
 		}
 	}
 	
