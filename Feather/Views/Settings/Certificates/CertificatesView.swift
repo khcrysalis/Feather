@@ -20,7 +20,7 @@ struct CertificatesView: View {
 		entity: CertificatePair.entity(),
 		sortDescriptors: [NSSortDescriptor(keyPath: \CertificatePair.date, ascending: false)],
 		animation: .snappy
-	) private var certificates: FetchedResults<CertificatePair>
+	) private var _certificates: FetchedResults<CertificatePair>
 	
 	//
 	private var _bindingSelectedCert: Binding<Int>?
@@ -35,12 +35,28 @@ struct CertificatesView: View {
 	// MARK: Body
 	var body: some View {
 		NBGrid {
-			ForEach(Array(certificates.enumerated()), id: \.element.uuid) { index, cert in
+			ForEach(Array(_certificates.enumerated()), id: \.element.uuid) { index, cert in
 				_cellButton(for: cert, at: index)
 			}
 		}
 		.navigationTitle(.localized("Certificates"))
-		.navigationBarTitleDisplayMode(.inline)
+		.overlay {
+			if _certificates.isEmpty {
+				if #available(iOS 17, *) {
+					ContentUnavailableView {
+						Label(.localized("No Certificates"), systemImage: "questionmark.folder.fill")
+					} description: {
+						Text(.localized("Get started signing by importing your first certificate."))
+					} actions: {
+						Button {
+							_isAddingPresenting = true
+						} label: {
+							NBButton(.localized("Import"), style: .text)
+						}
+					}
+				}
+			}
+		}
 		.toolbar {
 			if _bindingSelectedCert == nil {
 				NBToolbarButton(
@@ -62,6 +78,7 @@ struct CertificatesView: View {
 	}
 }
 
+// MARK: - View extension
 extension CertificatesView {
 	@ViewBuilder
 	private func _cellButton(for cert: CertificatePair, at index: Int) -> some View {
@@ -73,11 +90,11 @@ extension CertificatesView {
 			)
 			.padding()
 			.background(
-				RoundedRectangle(cornerRadius: 17)
+				RoundedRectangle(cornerRadius: 10.5)
 					.fill(Color(uiColor: .quaternarySystemFill))
 			)
 			.overlay(
-				RoundedRectangle(cornerRadius: 17)
+				RoundedRectangle(cornerRadius: 10.5)
 					.strokeBorder(
 						_selectedCertBinding.wrappedValue == index ? Color.accentColor : Color.clear,
 						lineWidth: 2
@@ -88,26 +105,30 @@ extension CertificatesView {
 				Divider()
 				_actions(for: cert)
 			}
-			.animation(.smooth, value: _selectedCertBinding.wrappedValue)
+			.transaction {
+				$0.animation = nil
+			}
 		}
 		.buttonStyle(.plain)
 	}
 	
 	@ViewBuilder
 	private func _actions(for cert: CertificatePair) -> some View {
-		Button(role: .destructive) {
+		Button(.localized("Delete"), systemImage: "trash", role: .destructive) {
 			Storage.shared.deleteCertificate(for: cert)
-		} label: {
-			Label(.localized("Delete"), systemImage: "trash")
 		}
 	}
 	
 	@ViewBuilder
 	private func _contextActions(for cert: CertificatePair) -> some View {
-		Button {
+		Button(.localized("Get Info"), systemImage: "info.circle") {
 			_isSelectedInfoPresenting = cert
-		} label: {
-			Label(.localized("Get Info"), systemImage: "info.circle")
+		}
+		
+		Divider()
+		
+		Button(.localized("Check Revokage"), systemImage: "person.text.rectangle") {
+			Storage.shared.revokagedCertificate(for: cert)
 		}
 	}
 }

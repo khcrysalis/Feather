@@ -50,17 +50,35 @@ struct SigningView: View {
 				_customizationOptions(for: app)
 				_cert()
 				_customizationProperties(for: app)
+				
+				// horrible
+				Rectangle()
+					.foregroundStyle(.clear)
+					.frame(height: 30)
+					.listRowBackground(EmptyView())
 			}
-			.safeAreaInset(edge: .bottom) {
-				Button() {
-					_start()
-				} label: {
-					NBSheetButton(title: .localized("Start Signing"))
+			.overlay {
+				VStack(spacing: 0) {
+					Spacer()
+					NBVariableBlurView()
+						.frame(height: UIDevice.current.userInterfaceIdiom == .pad ? 60 : 80)
+						.rotationEffect(.degrees(180))
+						.overlay {
+							Button {
+								_start()
+							} label: {
+								NBSheetButton(title: .localized("Start Signing"), style: .prominent)
+									.padding()
+							}
+							.buttonStyle(.plain)
+							.offset(y: UIDevice.current.userInterfaceIdiom == .pad ? -20 : -40)
+						}
 				}
+				.ignoresSafeArea(edges: .bottom)
 			}
+
 			.toolbar {
 				NBToolbarButton(role: .dismiss)
-				
 				NBToolbarButton(
 					.localized("Reset"),
 					style: .text,
@@ -79,6 +97,7 @@ struct SigningView: View {
 						self.appIcon = UIImage.fromFile(selectedFileURL)?.resizeToSquare()
 					}
 				)
+				.ignoresSafeArea()
 			}
 			.photosPicker(isPresented: $_isImagePickerPresenting, selection: $_selectedPhoto)
 			.onChange(of: _selectedPhoto) { newValue in
@@ -128,15 +147,15 @@ extension SigningView {
 	private func _customizationOptions(for app: AppInfoPresentable) -> some View {
 		NBSection(.localized("Customization")) {
 			Menu {
-				Button(.localized("Select Alternative Icon")) { _isAltPickerPresenting = true }
-				Button(.localized("Choose from Files")) { _isFilePickerPresenting = true }
-				Button(.localized("Choose from Photos")) { _isImagePickerPresenting = true }
+				Button(.localized("Select Alternative Icon"), systemImage: "app.dashed") { _isAltPickerPresenting = true }
+				Button(.localized("Choose from Files"), systemImage: "folder") { _isFilePickerPresenting = true }
+				Button(.localized("Choose from Photos"), systemImage: "photo") { _isImagePickerPresenting = true }
 			} label: {
 				if let icon = appIcon {
 					Image(uiImage: icon)
-						.appIconStyle(size: 55)
+						.appIconStyle()
 				} else {
-					FRAppIconView(app: app, size: 55)
+					FRAppIconView(app: app, size: 56)
 				}
 			}
 			
@@ -175,6 +194,10 @@ extension SigningView {
 						cert: cert
 					)
 				}
+			} else {
+				Text(.localized("No Certificate"))
+					.font(.footnote)
+					.foregroundColor(.disabled())
 			}
 		}
 	}
@@ -190,27 +213,27 @@ extension SigningView {
 					)
 				}
 				
-				NavigationLink(String.localized("Frameworks & PlugIns")) {
+				NavigationLink(.localized("Frameworks & PlugIns")) {
 					SigningFrameworksView(
 						app: app,
 						options: $_temporaryOptions.optional()
 					)
 				}
 				#if NIGHTLY || DEBUG
-				NavigationLink(String.localized("Entitlements")) {
+				NavigationLink(.localized("Entitlements")) {
 					SigningEntitlementsView(
 						bindingValue: $_temporaryOptions.appEntitlementsFile
 					)
 				}
 				#endif
-				NavigationLink(String.localized("Tweaks")) {
+				NavigationLink(.localized("Tweaks")) {
 					SigningTweaksView(
 						options: $_temporaryOptions
 					)
 				}
 			}
 			
-			NavigationLink(String.localized("Properties")) {
+			NavigationLink(.localized("Properties")) {
 				Form { SigningOptionsView(
 					options: $_temporaryOptions,
 					temporaryOptions: _optionsManager.options
@@ -235,7 +258,10 @@ extension SigningView {
 // MARK: - Extension: View (import)
 extension SigningView {
 	private func _start() {
-		guard _selectedCert() != nil || _temporaryOptions.doAdhocSigning else {
+		guard
+			_selectedCert() != nil ||
+			_temporaryOptions.signingOption != Options.signingOptionValues[0]
+		else {
 			UIAlertController.showAlertWithOk(
 				title: .localized("No Certificate"),
 				message: .localized("Please go to settings and import a valid certificate"),
@@ -265,6 +291,13 @@ extension SigningView {
 					actions: [ok]
 				)
 			} else {
+				if
+					_temporaryOptions.post_deleteAppAfterSigned,
+					!app.isSigned
+				{
+					Storage.shared.deleteApp(for: app)
+				}
+				
 				dismiss()
 			}
 		}

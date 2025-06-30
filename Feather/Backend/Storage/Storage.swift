@@ -35,13 +35,20 @@ final class Storage: ObservableObject {
 	}
 	
 	func saveContext() {
-		if context.hasChanges {
-			try? context.save()
+		DispatchQueue.main.async {
+			if self.context.hasChanges {
+				try? self.context.save()
+			}
 		}
 	}
 	
 	func clearContext<T: NSManagedObject>(request: NSFetchRequest<T>) {
 		let deleteRequest = NSBatchDeleteRequest(fetchRequest: (request as? NSFetchRequest<NSFetchRequestResult>)!)
 		_ = try? context.execute(deleteRequest)
+	}
+	
+	func countContent<T: NSManagedObject>(for type: T.Type) -> String {
+		let request = T.fetchRequest()
+		return "\((try? context.count(for: request)) ?? 0)"
 	}
 }

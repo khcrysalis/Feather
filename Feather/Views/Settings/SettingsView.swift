@@ -10,6 +10,8 @@ import NimbleViews
 
 // MARK: - View
 struct SettingsView: View {
+	@State private var _currentIcon: String? = UIApplication.shared.alternateIconName
+	
 	private let _donationsUrl = "https://github.com/sponsors/khcrysalis"
 	private let _githubUrl = "https://github.com/khcrysalis/Feather"
 	
@@ -25,20 +27,27 @@ struct SettingsView: View {
 				
 				Section {
 					NavigationLink(.localized("Appearance"), destination: AppearanceView())
+					if UIDevice.current.doesHaveAppIdCapabilities {
+						NavigationLink(.localized("App Icon"), destination: AppIconView(currentIcon: $_currentIcon))
+					}
 				}
 				
 				NBSection(.localized("Features")) {
 					NavigationLink(.localized("Certificates"), destination: CertificatesView())
 					NavigationLink(.localized("Signing Options"), destination: ConfigurationView())
 					NavigationLink(.localized("Archive & Compression"), destination: ArchiveView())
-					#if SERVER
-					NavigationLink(.localized("Server & SSL"), destination: ServerView())
-					#elseif IDEVICE
-					NavigationLink(.localized("Tunnel & Pairing"), destination: TunnelView())
-					#endif
+					NavigationLink(.localized("Installation"), destination: InstallationView())
+				} footer: {
+					Text(.localized("Configure the apps way of installing, its zip compression levels, and custom modifications to apps."))
 				}
 				
 				_directories()
+				
+				Section {
+					NavigationLink(.localized("Reset"), destination: ResetView())
+				} footer: {
+					Text(.localized("Reset the applications sources, certificates, apps, and general contents."))
+				}
             }
         }
     }
@@ -49,13 +58,23 @@ extension SettingsView {
 	@ViewBuilder
 	private func _feedback() -> some View {
 		Section {
-			NavigationLink(.localized("About"), destination: AboutView())
+			NavigationLink(destination: AboutView()) {
+				Label {
+					Text(verbatim: .localized("About %@", arguments: Bundle.main.name))
+				} icon: {
+					Image(uiImage: AppIconView.altImage(_currentIcon))
+						.appIconStyle(size: 23)
+				}
+			}
+			
 			Button(.localized("Submit Feedback"), systemImage: "safari") {
 				UIApplication.open("\(_githubUrl)/issues")
 			}
 			Button(.localized("GitHub Repository"), systemImage: "safari") {
 				UIApplication.open(_githubUrl)
 			}
+		} footer: {
+			Text(.localized("If any issues occur within the app please report it via the GitHub repository. When submitting an issue, make sure to submit detailed information."))
 		}
 	}
 	
@@ -72,7 +91,7 @@ extension SettingsView {
 				UIApplication.open(FileManager.default.certificates.toSharedDocumentsURL()!)
 			}
 		} footer: {
-			Text(.localized("All of Feathers files are contained in the documents directory, here are some quick links to these."))
+			Text(.localized("All of the apps files are contained in the documents directory, here are some quick links to these."))
 		}
 	}
 }

@@ -33,6 +33,75 @@
 			</array>
 		</dict>
 	</array>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundleAlternateIcons</key>
+		<dict>
+			<key>Donor</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Donor</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>V0</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>V0</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>V1</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>V1</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>V1Mac</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>V1Mac</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>V2Mac</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>V2Mac</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Wing</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Wing</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+		</dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>AppIcon</string>
+			</array>
+			<key>UIPrerenderedIcon</key>
+			<false/>
+		</dict>
+	</dict>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

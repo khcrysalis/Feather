@@ -9,15 +9,15 @@ import Zip
 
 extension ZipCompression {
 	static var allCases: [ZipCompression] {
-		return [.NoCompression, .BestSpeed, .DefaultCompression, .BestCompression]
+		[.NoCompression, .BestSpeed, .DefaultCompression, .BestCompression]
 	}
 	
 	var label: String {
 		switch self {
-		case .NoCompression: return "None"
-		case .BestSpeed: return "Speed"
-		case .DefaultCompression: return "Default"
-		case .BestCompression: return "Best"
+		case .NoCompression: return .localized("None")
+		case .BestSpeed: return .localized("Speed")
+		case .DefaultCompression: return .localized("Default")
+		case .BestCompression: return .localized("Best")
 		}
 	}
 }

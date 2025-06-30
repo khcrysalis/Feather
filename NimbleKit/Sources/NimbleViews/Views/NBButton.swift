@@ -14,8 +14,8 @@ public struct NBButton: View {
 	private var _horizontalPadding: CGFloat
 	
 	public init(
-		_ title: String,
-		systemImage: String,
+		_ title: String = "",
+		systemImage: String = "",
 		style: NBToolbarMenuStyle = .icon,
 		horizontalPadding: CGFloat = 12
 	) {

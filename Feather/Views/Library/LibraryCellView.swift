@@ -11,10 +11,14 @@ import NimbleViews
 
 // MARK: - View
 struct LibraryCellView: View {
-	@AppStorage("Feather.libraryCellAppearance") private var _libraryCellAppearance: Int = 0
+	@Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
 	var certInfo: Date.ExpirationInfo? {
 		Storage.shared.getCertificate(from: app)?.expiration?.expirationInfo()
+	}
+	
+	var certRevoked: Bool {
+		Storage.shared.getCertificate(from: app)?.revoked == true
 	}
 	
 	var app: AppInfoPresentable
@@ -24,7 +28,9 @@ struct LibraryCellView: View {
 	
 	// MARK: Body
 	var body: some View {
-		HStack(spacing: 9) {
+		let isRegular = horizontalSizeClass != .compact
+		
+		HStack(spacing: 18) {
 			FRAppIconView(app: app, size: 57)
 			
 			NBTitleWithSubtitleView(
@@ -35,7 +41,13 @@ struct LibraryCellView: View {
 			
 			_buttonActions(for: app)
 		}
-		
+		.padding(isRegular ? 12 : 0)
+		.background(
+			isRegular
+			? RoundedRectangle(cornerRadius: 18, style: .continuous)
+				.fill(Color(.quaternarySystemFill))
+			: nil
+		)
 		.swipeActions {
 			_actions(for: app)
 		}
@@ -49,16 +61,14 @@ struct LibraryCellView: View {
 	}
 	
 	private var _desc: String {
-		if
-			let version = app.version,
-			let id = app.identifier
-		{
+		if let version = app.version, let id = app.identifier {
 			return "\(version) • \(id)"
 		} else {
 			return .localized("Unknown")
 		}
 	}
 }
+
 
 // MARK: - Extension: View
 extension LibraryCellView {
@@ -97,6 +107,9 @@ extension LibraryCellView {
 			Button(.localized("Install"), systemImage: "square.and.arrow.down") {
 				selectedInstallAppPresenting = AnyApp(base: app)
 			}
+			Button(.localized("Sign"), systemImage: "signature") {
+				selectedSigningAppPresenting = AnyApp(base: app)
+			}
 		}
 	}
 	
@@ -109,7 +122,7 @@ extension LibraryCellView {
 				} label: {
 					FRExpirationPillView(
 						title: .localized("Install"),
-						showOverlay: _libraryCellAppearance == 0,
+						revoked: certRevoked,
 						expiration: certInfo
 					)
 				}
@@ -119,7 +132,7 @@ extension LibraryCellView {
 				} label: {
 					FRExpirationPillView(
 						title: .localized("Sign"),
-						showOverlay: true,
+						revoked: false,
 						expiration: nil
 					)
 				}

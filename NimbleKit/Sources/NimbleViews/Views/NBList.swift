@@ -20,7 +20,7 @@ public struct NBList<Content>: View where Content: View {
 	
 	public init(
 		_ title: String,
-		displayMode: NavigationBarItem.TitleDisplayMode = .inline,
+		displayMode: NavigationBarItem.TitleDisplayMode = .automatic,
 		type: NBListType = .form,
 		@ViewBuilder content: () -> Content
 	) {

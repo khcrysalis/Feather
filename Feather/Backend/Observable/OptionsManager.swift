@@ -84,21 +84,32 @@ struct Options: Codable, Equatable {
 	var gameMode: Bool
 	/// If app should use fullscreen (iPad mainly)
 	var ipadFullscreen: Bool
-	/// If app shouldn't have device restrictions
+	/// `Deprecated` If app shouldn't have device restrictions
 	var removeSupportedDevices: Bool
 	/// If app shouldn't have URL Schemes
 	var removeURLScheme: Bool
 	/// If app should not include a `embedded.mobileprovision` (useful for JB detection)
 	var removeProvisioning: Bool
-	/// If app shouldn't include a "Watch Placeholder" (i.e. `Youtube Music` may include a useless app)
+	/// `Deprecated` If app shouldn't include a "Watch Placeholder" (i.e. `Youtube Music` may include a useless app)
 	var removeWatchPlaceholder: Bool
 	/// Forcefully rename string files for App name
 	var changeLanguageFilesForCustomDisplayName: Bool
-	/// If app should be Adhoc signed instead of normally signed
+	/// `Deprecated` If app should be Adhoc signed instead of normally signed
 	var doAdhocSigning: Bool
+	/// Signing options
+	var signingOption: String
+	/// Modifies app to support liquid glass
+	var experiment_supportLiquidGlass: Bool
+	/// Modifies application to use ElleKit instead of CydiaSubstrate
+	var experiment_replaceSubstrateWithEllekit: Bool
+	
+	var post_installAppAfterSigned: Bool
+	/// This will delete your imported application after signing, to save on using unneeded space.
+	var post_deleteAppAfterSigned: Bool
 	
 	// default
 	static let defaultOptions = Options(
+		// pre-sign modifications
 		appAppearance: appAppearanceValues[0],
 		minimumAppRequirement: appMinimumAppRequirementValues[0],
 		injectPath: injectPathValues[0],
@@ -116,15 +127,24 @@ struct Options: Codable, Equatable {
 		proMotion: false,
 		gameMode: false,
 		ipadFullscreen: false,
-		removeSupportedDevices: false,
+		removeSupportedDevices: false, // Deprecated
 		removeURLScheme: false,
 		removeProvisioning: false,
-		removeWatchPlaceholder: false,
+		removeWatchPlaceholder: false, // Deprecated
 		changeLanguageFilesForCustomDisplayName: false,
-		doAdhocSigning: false
+		doAdhocSigning: false, // Deprecated
+		signingOption: signingOptionValues[0],
+		// pre-sign experiments
+		experiment_supportLiquidGlass: false,
+		experiment_replaceSubstrateWithEllekit: false,
+		// post sign
+		post_installAppAfterSigned: false,
+		post_deleteAppAfterSigned: false
 	)
 	
-	// duplicate values are not recommended!
+	// MARK: duplicate values are not recommended!
+	
+	static let signingOptionValues = ["Default", "Adhoc"]
 	/// Default values for `appAppearance`
 	static let appAppearanceValues = ["Default", "Light", "Dark"]
 	/// Default values for `minimumAppRequirement`

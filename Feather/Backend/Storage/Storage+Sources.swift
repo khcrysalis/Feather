@@ -8,6 +8,7 @@
 import CoreData
 import AltSourceKit
 import OSLog
+import UIKit.UIImpactFeedbackGenerator
 
 // MARK: - Class extension: Sources
 extension Storage {
@@ -31,6 +32,8 @@ extension Storage {
 			return
 		}
 		
+		let generator = UIImpactFeedbackGenerator(style: .light)
+		
 		let new = AltSource(context: context)
 		new.name = name
 		new.date = Date()
@@ -41,6 +44,7 @@ extension Storage {
 		do {
 			if !deferSave {
 				try context.save()
+				generator.impactOccurred()
 			}
 			completion(nil)
 		} catch {
@@ -71,6 +75,8 @@ extension Storage {
 		repos: [URL: ASRepository],
 		completion: @escaping (Error?) -> Void
 	) {
+		let generator = UIImpactFeedbackGenerator(style: .light)
+		
 		for (url, repo) in repos {
 			addSource(
 				url,
@@ -84,12 +90,9 @@ extension Storage {
 			)
 		}
 		
-		do {
-			try context.save()
-			completion(nil)
-		} catch {
-			completion(error)
-		}
+		saveContext()
+		generator.impactOccurred()
+		completion(nil)
 	}
 
 	func deleteSource(for source: AltSource) {

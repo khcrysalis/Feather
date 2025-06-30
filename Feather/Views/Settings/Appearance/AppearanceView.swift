@@ -7,91 +7,73 @@
 
 import SwiftUI
 import NimbleViews
+import UIKit
 
+// MARK: - View
+// dear god help me
 struct AppearanceView: View {
-	@AppStorage("Feather.libraryCellAppearance") private var _libraryCellAppearance: Int = 0
+	@AppStorage("Feather.userInterfaceStyle")
+	private var _userIntefacerStyle: Int = UIUserInterfaceStyle.unspecified.rawValue
 	
-	private let _libraryCellAppearanceMethods: [String] = [
-		.localized("Standard"),
-		.localized("Pill")
+	@AppStorage("Feather.storeCellAppearance")
+	private var _storeCellAppearance: Int = 0
+	private let _storeCellAppearanceMethods: [(name: String, desc: String)] = [
+		(.localized("Standard"), .localized("Default style for the app, only includes subtitle.")),
+		(.localized("Big Description"), .localized("Adds the localized description of the app."))
 	]
 	
-	@AppStorage("Feather.storeCellAppearance") private var _storeCellAppearance: Int = 0
+	@AppStorage("com.apple.SwiftUI.IgnoreSolariumLinkedOnCheck")
+	private var _ignoreSolariumLinkedOnCheck: Bool = false
 	
-	private let _storeCellAppearanceMethods: [String] = [
-		.localized("Standard"),
-		.localized("Big Description")
-	]
-	
+	// MARK: Body
     var body: some View {
 		NBList(.localized("Appearance")) {
-			NBSection(.localized("Library")) {
-				_libraryPreview()
-				Picker(.localized("Library Cell Appearance"), selection: $_libraryCellAppearance) {
-					ForEach(_libraryCellAppearanceMethods.indices, id: \.description) { index in
-						Text(_libraryCellAppearanceMethods[index]).tag(index)
+			Section {
+				Picker(.localized("Appearance"), selection: $_userIntefacerStyle) {
+					ForEach(UIUserInterfaceStyle.allCases.sorted(by: { $0.rawValue < $1.rawValue }), id: \.rawValue) { style in
+						Text(style.label).tag(style.rawValue)
 					}
 				}
-				.pickerStyle(.inline)
-				.labelsHidden()
+				.pickerStyle(.segmented)
+			}
+			
+			NBSection(.localized("Theme")) {
+				AppearanceTintColorView()
+					.listRowInsets(EdgeInsets())
+					.listRowBackground(EmptyView())
 			}
 			
 			NBSection(.localized("Sources")) {
-                _storePreview()
 				Picker(.localized("Store Cell Appearance"), selection: $_storeCellAppearance) {
-					ForEach(_storeCellAppearanceMethods.indices, id: \.description) { index in
-						Text(_storeCellAppearanceMethods[index]).tag(index)
+					ForEach(0..<_storeCellAppearanceMethods.count, id: \.self) { index in
+						let method = _storeCellAppearanceMethods[index]
+						NBTitleWithSubtitleView(
+							title: method.name,
+							subtitle: method.desc
+						)
+						.tag(index)
 					}
+
 				}
+				.labelsHidden()
 				.pickerStyle(.inline)
-                .labelsHidden()
+			}
+			
+			if #available(iOS 19.0, *) {
+				NBSection(.localized("Experiments")) {
+					Toggle(.localized("Enable Liquid Glass"), isOn: $_ignoreSolariumLinkedOnCheck)
+				} footer: {
+					Text(.localized("This enables liquid glass for this app, this requires a restart of the app to take effect."))
+				}
 			}
 		}
-    }
-	
-	@ViewBuilder
-	private func _libraryPreview() -> some View {
-		HStack(spacing: 9) {
-			Image(uiImage: (UIImage(named: Bundle.main.iconFileName ?? ""))! )
-				.appIconStyle(size: 57)
-			
-			NBTitleWithSubtitleView(
-				title: Bundle.main.name,
-				subtitle: "\(Bundle.main.version) • \(Bundle.main.bundleIdentifier ?? "")",
-				linelimit: 0
-			)
-			
-			FRExpirationPillView(
-				title: .localized("Install"),
-				showOverlay: _libraryCellAppearance == 0,
-				expiration: Date.now.expirationInfo()
-			).animation(.spring, value: _libraryCellAppearance)
+		.onChange(of: _userIntefacerStyle) { value in
+			if let style = UIUserInterfaceStyle(rawValue: value) {
+				UIApplication.topViewController()?.view.window?.overrideUserInterfaceStyle = style
+			}
 		}
-	}
-    
-    @ViewBuilder
-    private func _storePreview() -> some View {
-        VStack {
-            HStack(spacing: 9) {
-                Image(uiImage: (UIImage(named: Bundle.main.iconFileName ?? ""))! )
-                    .appIconStyle(size: 57)
-                
-                NBTitleWithSubtitleView(
-                    title: Bundle.main.name,
-                    subtitle: "\(Bundle.main.version) • " + .localized("An awesome application"),
-                    linelimit: 0
-                )
-            }
-            
-            if _storeCellAppearance != 0 {
-                Text(.localized("An awesome application"))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(18)
-                    .padding(.top, 2)
-            }
-        }
-        .animation(.spring, value: _storeCellAppearance)
+		.onChange(of: _ignoreSolariumLinkedOnCheck) { _ in
+			UIApplication.shared.suspendAndReopen()
+		}
     }
 }

@@ -1,6 +1,6 @@
 NAME := Feather
 PLATFORM := iphoneos
-SCHEMES := Feather Feather-idevice
+SCHEMES := Feather
 TMP := $(TMPDIR)/$(NAME)
 STAGE := $(TMP)/stage
 APP := $(TMP)/Build/Products/Release-$(PLATFORM)
@@ -41,6 +41,9 @@ $(SCHEMES): deps
 	mkdir -p $(STAGE)/Payload
 
 	mv "$(APP)/$@.app" "$(STAGE)/Payload/$@.app"
+
+	chmod -R 0755 "$(STAGE)/Payload/$@.app"
+	codesign --force --sign - --timestamp=none "$(STAGE)/Payload/$@.app"
 
 	cp deps/* "$(STAGE)/Payload/$@.app/" || true
 

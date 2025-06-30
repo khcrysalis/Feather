@@ -7,7 +7,7 @@
 
 import Foundation
 import Zip
-import SwiftUICore
+import SwiftUI
 import OSLog
 
 final class AppFileHandler: NSObject, @unchecked Sendable {
@@ -48,8 +48,12 @@ final class AppFileHandler: NSObject, @unchecked Sendable {
 	}
 	
 	func extract() async throws {
-		Zip.addCustomFileExtension("ipa")
-		Zip.addCustomFileExtension("tipa")
+		if _ipa.pathExtension == "ipa" {
+			Zip.addCustomFileExtension("ipa")
+		}
+		if _ipa.pathExtension == "tipa" {
+			Zip.addCustomFileExtension("tipa")
+		}
 		
 		let download = self._download
 		
@@ -78,7 +82,6 @@ final class AppFileHandler: NSObject, @unchecked Sendable {
 			}
 		}
 	}
-
 	
 	func move() async throws {
 		guard let payloadURL = uniqueWorkDirPayload else {

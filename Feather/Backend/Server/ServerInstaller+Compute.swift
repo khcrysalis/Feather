@@ -87,7 +87,7 @@ extension ServerInstaller {
 	private func _createIcon(_ r: CGFloat) -> Data {
 		let renderer = UIGraphicsImageRenderer(size: .init(width: r, height: r))
 		let image = renderer.image { ctx in
-			UIColor.accent.setFill()
+			UIColor.tintColor.setFill()
 			ctx.fill(.init(x: 0, y: 0, width: r, height: r))
 		}
 		return image.pngData()!

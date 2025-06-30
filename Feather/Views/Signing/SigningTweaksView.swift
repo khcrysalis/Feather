@@ -58,14 +58,18 @@ struct SigningTweaksView: View {
 		.sheet(isPresented: $_isAddingPresenting) {
 			FileImporterRepresentableView(
 				allowedContentTypes: [.dylib, .deb],
+				allowsMultipleSelection: true,
 				onDocumentsPicked: { urls in
-					guard let selectedFileURL = urls.first else { return }
+					guard !urls.isEmpty else { return }
 					
-					FileManager.default.moveAndStore(selectedFileURL, with: "FeatherTweak") { url in
-						options.injectionFiles.append(url)
+					for url in urls {
+						FileManager.default.moveAndStore(url, with: "FeatherTweak") { url in
+							options.injectionFiles.append(url)
+						}
 					}
 				}
 			)
+			.ignoresSafeArea()
 		}
 		.animation(.smooth, value: options.injectionFiles)
 	}
@@ -75,19 +79,27 @@ struct SigningTweaksView: View {
 extension SigningTweaksView {
 	@ViewBuilder
 	private func _file(tweak: URL) -> some View {
-		Label(tweak.lastPathComponent, systemImage: "folder")
+		Label(tweak.lastPathComponent, systemImage: "folder.fill")
 			.lineLimit(2)
 			.frame(maxWidth: .infinity, alignment: .leading)
 			.swipeActions(edge: .trailing, allowsFullSwipe: true) {
-				Button(role: .destructive) {
-					FileManager.default.deleteStored(tweak) { url in
-						if let index = options.injectionFiles.firstIndex(where: { $0 == url }) {
-							options.injectionFiles.remove(at: index)
-						}
-					}
-				} label: {
-					Label(.localized("Delete"), systemImage: "trash")
+				_fileActions(tweak: tweak)
+			}
+			.contextMenu {
+				_fileActions(tweak: tweak)
+			}
+	}
+	
+	@ViewBuilder
+	private func _fileActions(tweak: URL) -> some View {
+		Button(role: .destructive) {
+			FileManager.default.deleteStored(tweak) { url in
+				if let index = options.injectionFiles.firstIndex(where: { $0 == url }) {
+					options.injectionFiles.remove(at: index)
 				}
 			}
+		} label: {
+			Label(.localized("Delete"), systemImage: "trash")
+		}
 	}
 }

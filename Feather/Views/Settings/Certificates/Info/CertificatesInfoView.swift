@@ -7,6 +7,7 @@
 
 import SwiftUI
 import NimbleViews
+import ZsignSwift
 
 // MARK: - View
 struct CertificatesInfoView: View {
@@ -38,7 +39,6 @@ struct CertificatesInfoView: View {
 						UIApplication.open(Storage.shared.getUuidDirectory(for: cert)!.toSharedDocumentsURL()!)
 					}
 				}
-				
 			}
 			.toolbar {
 				NBToolbarButton(role: .close)
@@ -63,8 +63,11 @@ extension CertificatesInfoView {
 		Section {
 			_info(.localized("Expires"), description: data.ExpirationDate.expirationInfo().formatted)
 				.foregroundStyle(data.ExpirationDate.expirationInfo().color)
+			
+			_info(.localized("Revoked"), description: cert.revoked ? "✓" : "✗")
+			
 			if let ppq = data.PPQCheck {
-				_info("PPQCheck", description: ppq.description)
+				_info("PPQCheck", description: ppq ? "✓" : "✗")
 			}
 		}
 	}
@@ -106,6 +109,7 @@ extension CertificatesInfoView {
 		LabeledContent(title) {
 			Text(description)
 		}
+		.copyableText(description)
 	}
 	
 	@ViewBuilder
@@ -114,6 +118,7 @@ extension CertificatesInfoView {
 			ForEach(keys, id: \.self) { key in
 				Text(key)
 					.foregroundStyle(.secondary)
+					.copyableText(key)
 			}
 		}
 	}

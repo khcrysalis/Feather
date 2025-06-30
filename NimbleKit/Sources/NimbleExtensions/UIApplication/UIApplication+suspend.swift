@@ -16,4 +16,9 @@ extension UIApplication {
 			exit(0)
 		}
 	}
+	/// Exits the application and reopens
+	public func suspendAndReopen() {
+		suspend()
+		UIApplication.openApp(with: Bundle.main.bundleIdentifier!)
+	}
 }

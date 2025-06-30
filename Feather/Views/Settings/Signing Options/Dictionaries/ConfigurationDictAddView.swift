@@ -26,19 +26,20 @@ struct ConfigurationDictAddView: View {
     var body: some View {
 		NBList(.localized("New")) {
 			Section {
-				TextField(.localized("Identifier"), text: $_newKey)
+				TextField(.localized("Value"), text: $_newKey)
 				TextField(.localized("Replacement"), text: $_newValue)
 			}
 			.autocapitalization(.none)
 		}
 		.toolbar {
 			NBToolbarButton(
-				"Save",
+				.localized("Save"),
 				style: .text,
 				placement: .confirmationAction,
 				isDisabled: saveButtonDisabled
 			) {
 				dataDict[_newKey] = _newValue
+				OptionsManager.shared.saveOptions()
 				dismiss()
 			}
 		}

@@ -3,7 +3,7 @@
   "strings" : {
     "%lld Apps" : {
       "comment" : "Repository app count",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "variations" : {
@@ -35,6 +35,24 @@
             }
           }
         },
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld App"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Apps"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -60,6 +78,36 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "%lld Aplikasi"
+                }
+              }
+            }
+          }
+        },
+        "pl" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld aplikacji"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld aplikacji"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld aplikacja"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld aplikacji"
                 }
               }
             }
@@ -142,6 +190,24 @@
             }
           }
         },
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Tag"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Tage"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -167,6 +233,36 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "%lld Hari"
+                }
+              }
+            }
+          }
+        },
+        "pl" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dni"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dni"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dzień"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dni"
                 }
               }
             }
@@ -216,36 +312,49 @@
         }
       }
     },
-    "%lld required system dylibs not shown" : {
+    "%lld required system dylibs not shown." : {
       "comment" : "Number of macho load paths not listed for safety",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "%lld požadované systémové knihovny nejsou zobrazeny"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld benötigte System-Dylibs werden nicht angezeigt."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld required system dylibs not shown"
+            "value" : "%lld required system dylibs not shown."
           }
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "%lld dylib sistem yang diperlukan tidak ditampilkan"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie pokazano %lld wymaganych bibliotek systemowych"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "%lld gerekli sistem dylib kütüphanesi gösterilmiyor."
           }
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "%lld thư viện hệ thống bắt buộc không được hiển thị"
           }
         },
@@ -309,6 +418,36 @@
             "value" : "%lld Sumber"
           }
         },
+        "pl" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld źródeł"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld źródeł"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld źródło"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld źródeł"
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -330,11 +469,18 @@
       }
     },
     "💜 This couldn't of been done without my sponsors!" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "💜Nebylo by to možné bez mých sponzorů!"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "💜 Dies wäre alles nicht möglich ohne meine Sponsoren!"
           }
         },
         "en" : {
@@ -347,6 +493,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "💜 Ini tidak akan bisa dilakukan tanpa sponsor saya!"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "💜 To nie byłoby możliwe bez moich sponsorów!"
           }
         },
         "tr" : {
@@ -370,11 +522,18 @@
       }
     },
     "About" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "O aplikaci"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über"
           }
         },
         "en" : {
@@ -387,6 +546,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tentang"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O aplikacji"
           }
         },
         "tr" : {
@@ -405,6 +570,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "关于"
+          }
+        }
+      }
+    },
+    "About %@" : {
+      "comment" : "About Feather",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About %@"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O %@"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Về %@"
           }
         }
       }
@@ -442,6 +637,12 @@
             "value" : "Tambah"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodaj"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -469,6 +670,7 @@
       }
     },
     "Add Source" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -494,6 +696,12 @@
             "value" : "Tambah Sumber"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodaj źródło"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -514,37 +722,31 @@
         }
       }
     },
-    "Adhoc Signing" : {
+    "Adds the localized description of the app." : {
       "extractionState" : "manual",
       "localizations" : {
-        "cs" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Adhoc podpisy"
+            "value" : "Fügt eine lokalisierte Beschreibung der App hinzu."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Adhoc Signing"
+            "value" : "Adds the localized description of the app."
           }
         },
-        "id" : {
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Penandatanganan Adhoc"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ad-Hoc İmzalama"
+            "value" : "Dodaje przetłumaczony opis aplikacji."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ký Adhoc"
+            "value" : "Thêm mô tả bản địa hóa của ứng dụng."
           }
         },
         "zh" : {
@@ -594,6 +796,12 @@
             "value" : "Lanjutan"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zaawansowane"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -623,6 +831,12 @@
             "value" : "Vše"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -633,6 +847,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Semua"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wszystkie"
           }
         },
         "tr" : {
@@ -655,36 +875,49 @@
         }
       }
     },
-    "All of Feathers files are contained in the documents directory, here are some quick links to these." : {
+    "All of the apps files are contained in the documents directory, here are some quick links to these." : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Všechny soubory Featheru jsou v složce Dokumenty, zde jsou na ně rychlé odkazy."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Dateien der Apps sind enthalten in den Dokumenten-Ordner, hier sind ein paar Abkürzungen zu diesen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "All of Feathers files are contained in the documents directory, here are some quick links to these."
+            "value" : "All of the apps files are contained in the documents directory, here are some quick links to these."
           }
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Semua berkas Feather berada di direktori dokumen, berikut beberapa tautan cepat ke berkas-berkas tersebut."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wszystkie pliki Feather znajdują się w katalogu dokumentów, oto szybkie odnośniki do nich."
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Feather’ın tüm dosyaları “Belgeler” klasöründe yer almaktadır. Yukarıda yer alan bağlantılar ile bunlardan bazılarına erişebilirsiniz."
           }
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tất cả các tệp của Feathers được chứa trong thư mục tài liệu, đây là một số liên kết nhanh đến chúng."
+            "state" : "needs_review",
+            "value" : "Tất cả các tệp của Feathers có thể được tìm thấy trong ứng dụng Tệp, đây là một số liên kết nhanh đến chúng."
           }
         },
         "zh" : {
@@ -697,11 +930,18 @@
     },
     "All Repositories" : {
       "comment" : "All repositories",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Všechny zdroje"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Repositories"
           }
         },
         "en" : {
@@ -714,6 +954,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Semua Repositori"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wszystkie repozytoria"
           }
         },
         "tr" : {
@@ -737,11 +983,18 @@
       }
     },
     "Alternative Icons" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Další ikony"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alternative Icons"
           }
         },
         "en" : {
@@ -754,6 +1007,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ikon Alternatif"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alternatywne ikony"
           }
         },
         "tr" : {
@@ -804,6 +1063,12 @@
             "value" : "Aplikasi yang luar biasa"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inne świetne aplikacje"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -833,6 +1098,12 @@
             "value" : "Funkce aplikace"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App-Funktionen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -843,6 +1114,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fitur Aplikasi"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funkcje aplikacji"
           }
         },
         "tr" : {
@@ -866,6 +1143,7 @@
       }
     },
     "Appearance" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -903,6 +1181,12 @@
             "value" : "Tampilan"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wygląd"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -938,6 +1222,12 @@
             "value" : "Název AppID"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App-ID Name"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -948,6 +1238,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nama AppID"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa AppID"
           }
         },
         "tr" : {
@@ -971,11 +1267,18 @@
       }
     },
     "Archive & Compression" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Archivy a komprimace"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archivierung & Komprimierung"
           }
         },
         "en" : {
@@ -988,6 +1291,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Arsip & Kompresi"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archiwizacja i kompresja"
           }
         },
         "tr" : {
@@ -1012,6 +1321,7 @@
     },
     "Bad Password" : {
       "comment" : "Bad certificate password",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1049,6 +1359,12 @@
             "value" : "Kata Sandi Salah"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niepoprawne hasło"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1071,6 +1387,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "密码错误"
+          }
+        }
+      }
+    },
+    "Best" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beste"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Best"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Najlepszy"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tốt nhất"
           }
         }
       }
@@ -1114,6 +1459,12 @@
             "value" : "Deskripsi Besar"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rozszerzony opis"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1149,6 +1500,12 @@
             "value" : "Bundle"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bündel"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1159,6 +1516,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bundle"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paczka"
           }
         },
         "tr" : {
@@ -1181,7 +1544,37 @@
         }
       }
     },
+    "By default, localized titles for the app won't be changed, however this option overrides it." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standardmäßig, werden lokalisierte Titel für diese App nicht geändert, jedoch kann diese Option dies überschreiben."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "By default, localized titles for the app won't be changed, however this option overrides it."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domyślnie tłumaczone tytuły aplikacji nie będą zmieniane, jednak ta opcja to nadpisuje."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theo mặc định, tiêu đề bản địa hóa cho ứng dụng sẽ không bị thay đổi, tuy nhiên tùy chọn này sẽ ghi đè lên nó."
+          }
+        }
+      }
+    },
     "Cancel" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1219,6 +1612,12 @@
             "value" : "Batal"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anuluj"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1254,6 +1653,12 @@
             "value" : "Certifikát"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zertifikat"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1264,6 +1669,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sertifikat"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certyfikat"
           }
         },
         "tr" : {
@@ -1288,6 +1699,7 @@
     },
     "Certificates" : {
       "comment" : "Certificates tab",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1325,6 +1737,12 @@
             "value" : "Sertifikat"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certyfikaty"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1352,11 +1770,18 @@
       }
     },
     "Change" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Změnit"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ändern"
           }
         },
         "en" : {
@@ -1369,6 +1794,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ubah"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zmień"
           }
         },
         "tr" : {
@@ -1391,13 +1822,49 @@
         }
       }
     },
+    "Check Revokage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widerruf prüfen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check Revokage"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sprawdź unieważnienie"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kiểm tra thu hồi"
+          }
+        }
+      }
+    },
     "Choose from Files" : {
       "comment" : "Select custom app icon from files",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vybrat ze souborý"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle aus Dateien"
           }
         },
         "en" : {
@@ -1410,6 +1877,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pilih dari Berkas"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz z plików"
           }
         },
         "tr" : {
@@ -1434,11 +1907,18 @@
     },
     "Choose from Photos" : {
       "comment" : "Select custom app icon from photos",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vybrat z fotek"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle aus Fotos"
           }
         },
         "en" : {
@@ -1451,6 +1931,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pilih dari Foto"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz ze zdjęć"
           }
         },
         "tr" : {
@@ -1482,6 +1968,12 @@
             "value" : "Zavřít"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schließen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1492,6 +1984,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tutup"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zamknij"
           }
         },
         "tr" : {
@@ -1514,13 +2012,49 @@
         }
       }
     },
+    "Completed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abgeschlossen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completed"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zakończono"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoàn thành"
+          }
+        }
+      }
+    },
     "Compression Level" : {
       "comment" : "Archive compression level",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Stupeň komprimace"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kompressionslevel"
           }
         },
         "en" : {
@@ -1533,6 +2067,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tingkat Kompresi"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poziom kompresji"
           }
         },
         "tr" : {
@@ -1555,7 +2095,37 @@
         }
       }
     },
+    "Configure the apps way of installing, its zip compression levels, and custom modifications to apps." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konfiguriere wie die Apps installiert werden, deren ZIP-Komprimierungslevel, und benutzerdefinierte Modifikationen der Apps."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configure the apps way of installing, its zip compression levels, and custom modifications to apps."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skonfiguruj sposób instalacji aplikacji, poziom kompresji ZIP i niestandardowe modyfikacje aplikacji."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cấu hình cách cài đặt ứng dụng, mức độ nén zip và các sửa đổi tùy chỉnh cho ứng dụng."
+          }
+        }
+      }
+    },
     "Copy" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1593,6 +2163,12 @@
             "value" : "Salin"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopiuj"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1615,6 +2191,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "复制"
+          }
+        }
+      }
+    },
+    "Copy Download URLs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download URLs kopieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy Download URLs"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopiuj URL do pobrania"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sao chép URL tải xuống"
           }
         }
       }
@@ -1658,6 +2263,12 @@
             "value" : "Kredit"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podziękowania"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1673,7 +2284,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bản quyền"
+            "value" : "Ghi công"
           }
         },
         "zh" : {
@@ -1709,6 +2320,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kustomisasi"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dostosowanie"
           }
         },
         "tr" : {
@@ -1756,6 +2373,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tanggal"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data"
           }
         },
         "tr" : {
@@ -1817,6 +2440,12 @@
             "value" : "Tanggal Ditambahkan"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data dodania"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1876,6 +2505,12 @@
             "value" : "Default"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domyślny"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1902,7 +2537,66 @@
         }
       }
     },
+    "Default style for the app, only includes subtitle." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard-Style für die App, beinhaltet nur Untertitel."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default style for the app, only includes subtitle."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domyślny styl aplikacji, zawiera tylko podtytuł."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giao diện mặc định cho ứng dụng, chỉ bao gồm phụ đề."
+          }
+        }
+      }
+    },
+    "Default:\nSigns an application with your specified certificate.\n\nAdhoc (Advanced):\nSigns with no identity, however this unfortunately strips entitlements (iOS won't install this type)." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard:\nSigniert eine App mit deiner spezifizierten Zertifikat.\n\nAdhoc (Erweitert):\nSigniert ohne Identität, dadurch werden leider Entitlements entfernt (iOS würde diese nicht installieren)."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default:\nSigns an application with your specified certificate.\n\nAdhoc (Advanced):\nSigns with no identity, however this unfortunately strips entitlements (iOS won't install this type)."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domyślnie:\nPodpisuje aplikację wskazanym certyfikatem.\n\nAdhoc (Zaawansowane):\nPodpisuje bez tożsamości, jednak usuwa uprawnienia (iOS nie zainstaluje takiego typu)."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mặc định:\nKý một ứng dụng bằng chứng chỉ do bạn chỉ định.\n\nAdhoc (Nâng cao):\nKý mà không cần danh tính, tuy nhiên điều này không may sẽ xóa bỏ các quyền (iOS sẽ không cài đặt loại này)."
+          }
+        }
+      }
+    },
     "Delete" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -1940,6 +2634,12 @@
             "value" : "Hapus"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1966,10 +2666,45 @@
         }
       }
     },
+    "Delete After Signing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Löschen nach Signierung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete After Signing"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń po podpisaniu"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xóa sau khi ký"
+          }
+        }
+      }
+    },
     "Discord" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discord"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Discord"
@@ -2029,6 +2764,12 @@
             "value" : "Abaikan"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zamknij"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2056,6 +2797,7 @@
       }
     },
     "Display Names" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2081,6 +2823,12 @@
             "value" : "Tampilkan Nama"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyświetlane nazwy"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2103,6 +2851,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "显示名称"
+          }
+        }
+      }
+    },
+    "Do you want to export your certificate to an external app? That app will be able to sign apps using your certificate." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you want to export your certificate to an external app? That app will be able to sign apps using your certificate."
           }
         }
       }
@@ -2146,6 +2905,12 @@
             "value" : "Donasi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wesprzyj"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2174,6 +2939,7 @@
     },
     "Donations" : {
       "comment" : "Title for the big donation card",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2211,6 +2977,12 @@
             "value" : "Donasi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Darowizny"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2241,6 +3013,12 @@
       "comment" : "Don't translate StosVPN, this is for linking the download to the required VPN for idevice",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download StosVPN"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2258,15 +3036,34 @@
             "state" : "translated",
             "value" : "下载 StosVPN"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pobierz StosVPN"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tải StosVPN"
+          }
         }
       }
     },
     "Dylibs" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dyliby"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dylibs"
           }
         },
         "en" : {
@@ -2282,6 +3079,12 @@
           }
         },
         "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dylibs"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dylibs"
@@ -2305,9 +3108,40 @@
             "value" : "动态库"
           }
         }
+      },
+      "shouldTranslate" : false
+    },
+    "Enable Liquid Glass" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liquid Glass aktivieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable Liquid Glass"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Włącz Liquid Glass"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bật Liquid Glass"
+          }
+        }
       }
     },
     "Enabling any protection will append a random string to the bundleidentifiers of the apps you sign, this is to ensure your Apple ID does not get flagged by Apple. However, when using a signing service you can ignore this." : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2333,6 +3167,12 @@
             "value" : "Mengaktifkan perlindungan apa pun akan menambahkan string acak ke identitas bundle dari aplikasi yang Anda tanda tangani, ini untuk memastikan Apple ID Anda tidak ditandai oleh Apple. Namun, saat menggunakan layanan penandatanganan, Anda bisa mengabaikan ini."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Włączenie ochrony doda losowy ciąg do identyfikatorów aplikacji, aby uniknąć oznaczenia przez Apple. Przy użyciu usługi podpisującej można to zignorować."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2353,12 +3193,49 @@
         }
       }
     },
+    "Enjoying %@?" : {
+      "comment" : "Enjoying Feather?",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gefällt dir %@?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enjoying %@?"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podoba Ci się %@?"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tận hưởng %@?"
+          }
+        }
+      }
+    },
     "Enter a URL to start validation." : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zadejte URL pro začátek validace."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gebe ein URL zur Validierung an."
           }
         },
         "en" : {
@@ -2371,6 +3248,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Masukkan URL untuk memulai validasi."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wprowadź adres URL, aby rozpocząć weryfikację."
           }
         },
         "tr" : {
@@ -2394,6 +3277,7 @@
       }
     },
     "Enter Password" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2431,6 +3315,12 @@
             "value" : "Masukkan Kata Sandi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wprowadź hasło"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2457,7 +3347,31 @@
         }
       }
     },
+    "Enter Source URL" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gebe eine Quell-URL ein"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter Source URL"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podaj adres"
+          }
+        }
+      }
+    },
     "Enter the password associated with the private key. Leave it blank if theres no password required." : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2495,6 +3409,12 @@
             "value" : "Masukkan kata sandi yang terkait dengan kunci privat. Biarkan kosong jika tidak diperlukan kata sandi."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wprowadź hasło powiązane z kluczem prywatnym. Pozostaw puste, jeśli nie jest wymagane hasło."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2510,7 +3430,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nhập mật khẩu liên kết với khóa riêng tư. Để trống nếu không yêu cầu mật khẩu."
+            "value" : "Nhập mật khẩu của chứng chỉ. Để trống nếu không yêu cầu mật khẩu."
           }
         },
         "zh" : {
@@ -2522,11 +3442,18 @@
       }
     },
     "Entitlements" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Entitlementy"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entitlements"
           }
         },
         "en" : {
@@ -2539,6 +3466,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hak Akses (Entitlements)"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uprawnienia"
           }
         },
         "tr" : {
@@ -2561,6 +3494,35 @@
         }
       }
     },
+    "Error" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fehler"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Błąd"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lỗi"
+          }
+        }
+      }
+    },
     "Executable" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2568,6 +3530,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Spustitelný soubor"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausführbar"
           }
         },
         "en" : {
@@ -2580,6 +3548,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eksekusi"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodatkowe biblioteki"
           }
         },
         "tr" : {
@@ -2603,11 +3577,18 @@
       }
     },
     "Existing Dylibs" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Existující dyliby"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Existierende Dylibs"
           }
         },
         "en" : {
@@ -2620,6 +3601,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dylib yang Ada"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Istniejące dylibs"
           }
         },
         "tr" : {
@@ -2638,6 +3625,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "现有动态库"
+          }
+        }
+      }
+    },
+    "Experiments" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Experimente"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Experiments"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eksperymentalne"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thử nghiệm"
           }
         }
       }
@@ -2675,6 +3691,12 @@
             "value" : "Kedaluwarsa"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wygasł"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2710,6 +3732,12 @@
             "value" : "Vyprší"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Läuft ab"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2720,6 +3748,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tanggal Kedaluwarsa"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wygasa"
           }
         },
         "tr" : {
@@ -2744,6 +3778,7 @@
     },
     "Export" : {
       "comment" : "Export repositories",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2769,6 +3804,12 @@
             "value" : "Ekspor"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eksportuj"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2789,6 +3830,17 @@
         }
       }
     },
+    "Export Certificate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export Certificate"
+          }
+        }
+      }
+    },
     "Failed to download, check your internet connection and try again." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2796,6 +3848,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nelze stáhnout, zkontrolujte svoje připojení k internetu a zkuste znovu."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fehlgeschlagen beim Download, überprüfe deine Internetverbindung und versuche es erneut."
           }
         },
         "en" : {
@@ -2808,6 +3866,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gagal mengunduh, periksa koneksi internet Anda dan coba lagi."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie udało się pobrać. Sprawdź połączenie z internetem i spróbuj ponownie."
           }
         },
         "tr" : {
@@ -2830,6 +3894,29 @@
         }
       }
     },
+    "Featured" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorgestellt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Featured"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Polecane"
+          }
+        }
+      }
+    },
     "Features" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2837,6 +3924,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Funkce"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funktionen"
           }
         },
         "en" : {
@@ -2849,6 +3942,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fitur"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funkcje"
           }
         },
         "tr" : {
@@ -2881,6 +3980,12 @@
             "value" : "Sdílení souborů"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datei Sharing"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2891,6 +3996,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Berbagi File"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Udostępnianie plików"
           }
         },
         "ru" : {
@@ -2928,6 +4039,12 @@
             "value" : "Soubory"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dateien"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2938,6 +4055,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Berkas"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pliki"
           }
         },
         "tr" : {
@@ -2961,6 +4084,7 @@
       }
     },
     "Filter by" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -2986,6 +4110,12 @@
             "value" : "Filter berdasarkan"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtruj według"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2995,7 +4125,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lọc theo"
+            "value" : "Sắp xếp theo"
           }
         },
         "zh" : {
@@ -3033,6 +4163,12 @@
             "value" : "Paksa Lokalisasi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wymuś lokalizację"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3062,6 +4198,12 @@
             "value" : "Frameworky"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frameworks"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3072,6 +4214,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Frameworks"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biblioteki"
           }
         },
         "tr" : {
@@ -3095,11 +4243,18 @@
       }
     },
     "Frameworks & PlugIns" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Frameworky a pluginy"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frameworks & Plug-Ins"
           }
         },
         "en" : {
@@ -3112,6 +4267,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Frameworks & PlugIns"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biblioteki i wtyczki"
           }
         },
         "tr" : {
@@ -3143,6 +4304,12 @@
             "value" : "Zcela lokální"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Völlig Lokal"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3153,6 +4320,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sepenuhnya Lokal"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "W pełni lokalnie"
           }
         },
         "tr" : {
@@ -3171,6 +4344,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "完全本地"
+          }
+        }
+      }
+    },
+    "Game Mode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spielmodus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Game Mode"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tryb Gry"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chế độ trò chơi"
           }
         }
       }
@@ -3208,6 +4410,12 @@
             "value" : "Umum"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ogólne"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3243,6 +4451,12 @@
             "value" : "Získejte po podpoření přístup k našemu skrytému Discordu, kde se mluví o dalších aktualizacích, beta verzích a vylepšeních."
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kriege Zugang zu unserem geheimen Discord durch einer Spende, wo wir über zukünftige Updates, Betas und mögliche Wege um deine Erfahrung besser zu machen sprechen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3253,6 +4467,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dapatkan akses ke Discord rahasia kami dengan berdonasi, di mana kami membahas pembaruan mendatang, versi beta, dan cara-cara potensial untuk meningkatkan pengalaman Anda."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uzyskaj dostęp do naszego prywatnego Discorda poprzez wsparcie, gdzie rozmawiamy o przyszłych aktualizacjach, wersjach beta i możliwościach poprawy doświadczeń."
           }
         },
         "tr" : {
@@ -3277,11 +4497,18 @@
     },
     "Get Info" : {
       "comment" : "Show info about the app",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Získat info"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info kriegen"
           }
         },
         "en" : {
@@ -3294,6 +4521,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dapatkan Info"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokaż informacje"
           }
         },
         "tr" : {
@@ -3316,7 +4549,95 @@
         }
       }
     },
+    "Get started by adding your first repository." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beginne mit deiner ersten Repository."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get started by adding your first repository."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zacznij od dodania pierwszego repozytorium."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bắt đầu bằng cách thêm kho lưu trữ đầu tiên của bạn."
+          }
+        }
+      }
+    },
+    "Get started by importing your first IPA file." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beginne mit dem Hinzufügen deiner ersten IPA."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get started by importing your first IPA file."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zacznij od importu Twojego pierwszego pliku IPA."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bắt đầu bằng cách nhập tệp IPA đầu tiên của bạn."
+          }
+        }
+      }
+    },
+    "Get started signing by importing your first certificate." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beginne mit der Signierung durch Hinzufügen deines ersten Zertifikats."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get started signing by importing your first certificate."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rozpocznij podpisywanie od zaimportowania pierwszego certyfikatu."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bắt đầu ký bằng cách nhập chứng chỉ đầu tiên của bạn."
+          }
+        }
+      }
+    },
     "GitHub Repository" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -3354,6 +4675,12 @@
             "value" : "Repositori GitHub"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repozytorium GitHub"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3380,6 +4707,35 @@
         }
       }
     },
+    "Go to our GitHub and give us a star!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gehe auf unserem GitHub und gib uns einen Stern!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go to our GitHub and give us a star!"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odwiedź nasze GitHub i zostaw gwiazdkę!"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hãy vào GitHub của chúng tôi và cho chúng tôi một ngôi sao!"
+          }
+        }
+      }
+    },
     "Heartbeat" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3387,6 +4743,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Heartbeat"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Herzschlag"
           }
         },
         "en" : {
@@ -3399,6 +4761,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Detak Jantung"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heartbeat"
           }
         },
         "tr" : {
@@ -3430,6 +4798,12 @@
             "value" : "Pomoc"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hilfe"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3440,6 +4814,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bantuan"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pomoc"
           }
         },
         "tr" : {
@@ -3471,6 +4851,12 @@
             "value" : "Skryté"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versteckt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3481,6 +4867,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tersembunyi"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ukryte"
           }
         },
         "tr" : {
@@ -3504,11 +4896,18 @@
       }
     },
     "Identifers" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Identifikátory"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kennungen"
           }
         },
         "en" : {
@@ -3521,6 +4920,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pengidentifikasi"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identyfikatory"
           }
         },
         "tr" : {
@@ -3544,6 +4949,7 @@
       }
     },
     "Identifier" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -3581,6 +4987,12 @@
             "value" : "Pengidentifikasi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identyfikator"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3616,6 +5028,12 @@
             "value" : "Prefix identifikátoru"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kennungspräfix"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3626,6 +5044,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Awalan Pengidentifikasi"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prefiks identyfikatora"
           }
         },
         "tr" : {
@@ -3648,8 +5072,62 @@
         }
       }
     },
+    "idevice" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "idevice"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "idevice"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "idevice"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "If any issues occur within the app please report it via the GitHub repository. When submitting an issue, make sure to submit detailed information." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falls ein Fehler auftritt mit der App, melde dies bitte über das GitHub-Repositorium. Beim einreichen von einem Fehler, stelle sicher detaillierte Informationen anzugeben."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If any issues occur within the app please report it via the GitHub repository. When submitting an issue, make sure to submit detailed information."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeśli wystąpią jakiekolwiek problemy w aplikacji, zgłoś je za pośrednictwem repozytorium GitHub. Podczas zgłaszania problemu upewnij się, że podajesz szczegółowe informacje."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nếu có bất kỳ vấn đề nào xảy ra trong ứng dụng, vui lòng báo lỗi qua kho lưu trữ GitHub. Khi báo lỗi, hãy đảm bảo gửi thông tin chi tiết."
+          }
+        }
+      }
+    },
     "Import" : {
       "comment" : "Import repositories",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -3687,6 +5165,12 @@
             "value" : "Impor"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importuj"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3722,6 +5206,12 @@
             "value" : "Importovat certifikát"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zertifikat-Datei importieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3734,6 +5224,12 @@
             "value" : "Impor Berkas Sertifikat"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importuj plik certyfikatu"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3743,7 +5239,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nhập tệp chứng chỉ"
+            "value" : "Nhập tệp .p12"
           }
         },
         "zh" : {
@@ -3756,6 +5252,7 @@
     },
     "Import from Files" : {
       "comment" : "Select an app from files to import",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -3766,7 +5263,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Von Dateien importieren"
+            "value" : "Aus Dateien importieren"
           }
         },
         "en" : {
@@ -3779,6 +5276,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impor dari Berkas"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importuj z plików"
           }
         },
         "tr" : {
@@ -3803,11 +5306,18 @@
     },
     "Import from URL" : {
       "comment" : "Select an app from a URL to import",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Import z URL"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aus URL importieren"
           }
         },
         "en" : {
@@ -3820,6 +5330,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impor dari URL"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importuj z adresu URL"
           }
         },
         "tr" : {
@@ -3851,6 +5367,12 @@
             "value" : "Importovat párovací soubor"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pairing-Datei importieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3861,6 +5383,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impor Berkas Pairing"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importuj plik parowania"
           }
         },
         "tr" : {
@@ -3892,6 +5420,12 @@
             "value" : "Importovat soubor Provision"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provisioning-Datei importieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3904,6 +5438,12 @@
             "value" : "Impor Berkas Provisioning"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importuj plik provisioning"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3913,7 +5453,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nhập tệp provisioning"
+            "value" : "Nhập tệp mobileprovision"
           }
         },
         "zh" : {
@@ -3933,6 +5473,12 @@
             "value" : "Importováno"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importiert"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3943,6 +5489,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Telah Diimpor"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zaimportowano"
           }
         },
         "tr" : {
@@ -3974,6 +5526,12 @@
             "value" : "Informace"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3984,6 +5542,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Info"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informacje"
           }
         },
         "tr" : {
@@ -4009,6 +5573,12 @@
     "Injection Folder" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Injektions-Ordner"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4024,12 +5594,30 @@
             "state" : "translated",
             "value" : "Folder Injeksi"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Folder iniekcji"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thư mục tiêm"
+          }
         }
       }
     },
     "Injection Path" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Injektions-Pfad"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4045,10 +5633,23 @@
             "state" : "translated",
             "value" : "Direktori Injeksi"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ścieżka iniekcji"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đường dẫn tiêm"
+          }
         }
       }
     },
     "Install" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4086,6 +5687,12 @@
             "value" : "Pasang"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instaluj"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4112,12 +5719,48 @@
         }
       }
     },
+    "Installation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installation"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installation"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instalacja"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cài đặt"
+          }
+        }
+      }
+    },
     "Installation Type" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Typ instalace"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installation-Typ"
           }
         },
         "en" : {
@@ -4130,6 +5773,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Jenis Instalasi"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Typ instalacji"
           }
         },
         "tr" : {
@@ -4152,6 +5801,35 @@
         }
       }
     },
+    "Installing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installing"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instalowanie"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đang cài đặt"
+          }
+        }
+      }
+    },
     "iPad Fullscreen" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4159,6 +5837,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fullscreen na iPadu"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPad Vollbild"
           }
         },
         "en" : {
@@ -4171,6 +5855,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Layar Penuh iPad"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPad pełny ekran"
           }
         },
         "tr" : {
@@ -4221,6 +5911,12 @@
             "value" : "Berbagi Berkas iTunes"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Udostępnianie plików iTunes"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4243,6 +5939,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "iTunes 文件共享"
+          }
+        }
+      }
+    },
+    "Learn more about how to setup a repository…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lerne mehr darüber wie man ein Repositorium einrichtet…"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Learn more about how to setup a repository…"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dowiedz się więcej o tym, jak skonfigurować repozytorium..."
           }
         }
       }
@@ -4287,6 +6006,12 @@
             "value" : "Perpustakaan"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biblioteka"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4308,11 +6033,18 @@
       }
     },
     "Library Cell Appearance" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vzhled buňky knihovny"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bibliothek Zell-Darstellung"
           }
         },
         "en" : {
@@ -4325,6 +6057,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tampilan Sel Perpustakaan"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wygląd komórki biblioteki"
           }
         },
         "tr" : {
@@ -4375,6 +6113,12 @@
             "value" : "Persyaratan Minimum"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minimalne wymagania"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4404,6 +6148,12 @@
             "value" : "Jiné"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonstiges"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4414,6 +6164,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lain-lain"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Różne"
           }
         },
         "tr" : {
@@ -4437,11 +6193,18 @@
       }
     },
     "Modify" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Modifikovat"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifizieren"
           }
         },
         "en" : {
@@ -4454,6 +6217,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ubah"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modyfikuj"
           }
         },
         "tr" : {
@@ -4477,6 +6246,7 @@
       }
     },
     "Name" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4514,6 +6284,12 @@
             "value" : "Nama"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4543,6 +6319,12 @@
             "value" : "Nový"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4553,6 +6335,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Baru"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nowy"
           }
         },
         "tr" : {
@@ -4614,6 +6402,12 @@
             "value" : "Sertifikat Baru"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nowy certyfikat"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4642,11 +6436,18 @@
     },
     "Nickname (Optional)" : {
       "comment" : "Certificate custom nickname",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Přezdívka (nepovinné)"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spitzname (Optional)"
           }
         },
         "en" : {
@@ -4659,6 +6460,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nama Panggilan (Opsional)"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Własna nazwa (opcjonalnie)"
           }
         },
         "tr" : {
@@ -4681,6 +6488,35 @@
         }
       }
     },
+    "No Apps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Apps"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Apps"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak aplikacji"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không có ứng dụng"
+          }
+        }
+      }
+    },
     "No Certificate" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4688,6 +6524,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Žádný certifikát"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kein Zertifikat"
           }
         },
         "en" : {
@@ -4700,6 +6542,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tidak Ada Sertifikat"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak certyfikatu"
           }
         },
         "tr" : {
@@ -4722,9 +6570,44 @@
         }
       }
     },
+    "No Certificates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Zertifikate"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Certificates"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak certyfikatów"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không có chứng chỉ"
+          }
+        }
+      }
+    },
     "No files chosen." : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Dateien ausgewählt."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4740,6 +6623,76 @@
             "state" : "translated",
             "value" : "Belum ada file yang dipilih."
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie wybrano plików."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không có tập tin nào được chọn."
+          }
+        }
+      }
+    },
+    "No Frameworks or PlugIns Found." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Frameworks oder Plug-Ins gefunden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Frameworks or PlugIns Found."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie znaleziono żadnych bibliotek ani wtyczek."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không tìm thấy Framework hoặc Plug-In nào."
+          }
+        }
+      }
+    },
+    "No Icons Found." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Icons gefunden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Icons Found."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie znaleziono żadnych ikon"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không tìm thấy Icon nào."
+          }
         }
       }
     },
@@ -4752,6 +6705,12 @@
             "value" : "Párovací soubor nebyl nalezen, importujte ho prosím."
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Pairing-Datei gefunden, bitte importiere sie."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4762,6 +6721,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tidak ditemukan berkas pairing, silakan impor terlebih dahulu."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie znaleziono pliku parowania, zaimportuj go."
           }
         },
         "tr" : {
@@ -4784,7 +6749,66 @@
         }
       }
     },
+    "No Repositories" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Repositories"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Repositories"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak Repozytoriów"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không có kho lưu trữ"
+          }
+        }
+      }
+    },
+    "None" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nichts"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không"
+          }
+        }
+      }
+    },
     "OK" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -4822,6 +6846,12 @@
             "value" : "OK"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4849,11 +6879,18 @@
       }
     },
     "Only use localhost address" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pouze použít adresu localhost"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutze nur localhost Adresse"
           }
         },
         "en" : {
@@ -4866,6 +6903,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hanya gunakan alamat localhost"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Używaj tylko adresu localhost"
           }
         },
         "tr" : {
@@ -4889,11 +6932,18 @@
       }
     },
     "Open" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Otevřít"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öffnen"
           }
         },
         "en" : {
@@ -4906,6 +6956,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Buka"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otwórz"
           }
         },
         "tr" : {
@@ -4928,12 +6984,42 @@
         }
       }
     },
+    "Open an [issue](https://github.com/khcrysalis/Feather/issues) on GitHub if you want your source to be featured." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öffne ein [Issue](https://github.com/khcrysalis/Feather/issues) auf GitHub wenn du deine Quelle aufgelistet haben möchtest."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open an [issue](https://github.com/khcrysalis/Feather/issues) on GitHub if you want your source to be featured."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otwórz [issue](https://github.com/khcrysalis/Feather/issues) na GitHubie, jeśli chcesz, aby Twoje źródło zostało wyróżnione."
+          }
+        }
+      }
+    },
     "Open Archives" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Otevřít archivy"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öffne Archive"
           }
         },
         "en" : {
@@ -4948,6 +7034,12 @@
             "value" : "Buka Arsip"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otwórz archiwa"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4957,7 +7049,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mở kho lưu trữ"
+            "value" : "Mở thư mục lưu trữ"
           }
         },
         "zh" : {
@@ -4969,11 +7061,18 @@
       }
     },
     "Open Certificates" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Otevřít certifikáty"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öffne Zertifikate"
           }
         },
         "en" : {
@@ -4988,6 +7087,12 @@
             "value" : "Buka Sertifikat"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otwórz certyfikaty"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4997,7 +7102,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mở chứng chỉ"
+            "value" : "Mở thư mục chứng chỉ"
           }
         },
         "zh" : {
@@ -5009,11 +7114,18 @@
       }
     },
     "Open Documents" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Otevřít dokumenty"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öffne Dokumente"
           }
         },
         "en" : {
@@ -5028,6 +7140,12 @@
             "value" : "Buka Dokumen"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otwórz dokumenty"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5037,7 +7155,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mở tài liệu"
+            "value" : "Mở thư mục tài liệu"
           }
         },
         "zh" : {
@@ -5049,6 +7167,7 @@
       }
     },
     "Open in Files" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -5086,6 +7205,12 @@
             "value" : "Buka di Files"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otwórz w Plikach"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5112,6 +7237,35 @@
         }
       }
     },
+    "Packaging" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verpacken"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Packaging"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tworzenie paczki"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đóng gói"
+          }
+        }
+      }
+    },
     "Pairing File Guide" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5119,6 +7273,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Průvodce párovacího souboru"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pairing-Datei Anleitung"
           }
         },
         "en" : {
@@ -5131,6 +7291,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Panduan Berkas Pairing"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przewodnik po pliku parowania"
           }
         },
         "tr" : {
@@ -5192,6 +7358,12 @@
             "value" : "Kata Sandi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hasło"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5218,47 +7390,6 @@
         }
       }
     },
-    "Pill" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pilulka"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pill"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pill"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kapsül"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Viên"
-          }
-        },
-        "zh" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "胶囊样式"
-          }
-        }
-      }
-    },
     "Platform" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5268,6 +7399,12 @@
             "value" : "Platforma"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plattform"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5278,6 +7415,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Platform"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Platforma"
           }
         },
         "tr" : {
@@ -5302,6 +7445,7 @@
     },
     "Please check the password and try again." : {
       "comment" : "Bad certificate password, try again",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -5339,6 +7483,12 @@
             "value" : "Silakan periksa kata sandi dan coba lagi."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sprawdź hasło i spróbuj ponownie."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5374,6 +7524,12 @@
             "value" : "Jděte do nastavení a importujte platný certifikát."
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte gehe in den Einstellungen und importiere ein gültiges Zertifikat"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5384,6 +7540,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Silakan buka pengaturan dan impor sertifikat yang valid"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przejdź do ustawień i zaimportuj poprawny certyfikat"
           }
         },
         "tr" : {
@@ -5406,6 +7568,35 @@
         }
       }
     },
+    "Post Signing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach der Signierung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Post Signing"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Po podpisaniu"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đăng ký"
+          }
+        }
+      }
+    },
     "PPQ Protection" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5413,6 +7604,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "PPQ ochrana"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PPQ-Schutz"
           }
         },
         "en" : {
@@ -5425,6 +7622,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Perlindungan PPQ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ochrona PPQ"
           }
         },
         "ru" : {
@@ -5463,6 +7666,12 @@
             "value" : "Předchozí verze"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frühere Versionen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5473,6 +7682,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Versi Sebelumnya"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poprzednie wersje"
           }
         },
         "tr" : {
@@ -5495,8 +7710,62 @@
         }
       }
     },
+    "Pro Motion" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro Motion"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro Motion"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro Motion"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "Proceed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fortfahren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proceed"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przystąp"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiếp tục"
+          }
+        }
+      }
+    },
     "Properties" : {
       "comment" : "Select custom properties for the app",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -5528,6 +7797,12 @@
             "value" : "Properti"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Właściwości"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5557,6 +7832,12 @@
             "value" : "Ochrana"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schutz"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5567,6 +7848,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Perlindungan"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ochrona"
           }
         },
         "tr" : {
@@ -5598,6 +7885,12 @@
             "value" : "Zapsat všechna zařízení"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Geräte bereitstellen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5608,6 +7901,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Provision untuk Semua Perangkat"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provisionuj wszystkie urządzenia"
           }
         },
         "tr" : {
@@ -5639,6 +7938,12 @@
             "value" : "Zapsaná zařízení"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bereitgestellte Geräte"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5649,6 +7954,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Perangkat yang Telah Diprovision"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provisionowane urządzenia"
           }
         },
         "tr" : {
@@ -5672,11 +7983,18 @@
       }
     },
     "Re-sign" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Podepsat znovu"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neu signieren"
           }
         },
         "en" : {
@@ -5689,6 +8007,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tandatangani Ulang"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podpisz ponownie"
           }
         },
         "tr" : {
@@ -5711,6 +8035,35 @@
         }
       }
     },
+    "Ready" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bereit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ready"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gotowe"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sẵn sàng"
+          }
+        }
+      }
+    },
     "Removal" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5718,6 +8071,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Odebrání"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entfernung"
           }
         },
         "en" : {
@@ -5730,6 +8089,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Penghapusan"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuwanie"
           }
         },
         "tr" : {
@@ -5761,6 +8126,12 @@
             "value" : "Odeberte tyto otravné upozornění po získání beta přístupu!"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entferne nervige Meldungen wie diese nach deinem Beta-Zugang!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5771,6 +8142,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hapus notifikasi mengganggu seperti ini setelah mendapatkan akses beta!"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń irytujące alerty jak ten po uzyskaniu dostępu do bety!"
           }
         },
         "tr" : {
@@ -5820,6 +8197,12 @@
             "value" : "Hapus Provisioning"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń provisioning"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5846,47 +8229,6 @@
         }
       }
     },
-    "Remove Supported Devices" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Odebrat list podporovaných zařízení"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Remove Supported Devices"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hapus Perangkat yang Didukung"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Desteklenen Cihazları Kaldır"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Xóa thiết bị được hỗ trợ"
-          }
-        },
-        "zh" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "移除支持的设备"
-          }
-        }
-      }
-    },
     "Remove this Alert" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5894,6 +8236,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Odebrat toto upozornění"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entferne diese Meldung"
           }
         },
         "en" : {
@@ -5906,6 +8254,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hapus Notifikasi Ini"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń ten alert"
           }
         },
         "tr" : {
@@ -5953,6 +8307,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hapus Skema URL"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń schemat URL"
           }
         },
         "ru" : {
@@ -6008,6 +8368,12 @@
             "value" : "Hapus Placeholder Watch"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń placeholder Watch"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6028,7 +8394,48 @@
         }
       }
     },
+    "Removing the provisioning file will exclude the mobileprovision file from being embedded inside of the application when signing, to help prevent any detection." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Removing the provisioning file will exclude the mobileprovision file from being embedded inside of the application when signing, to help prevent any detection."
+          }
+        }
+      }
+    },
+    "Replace Substrate with ElleKit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ersetze Substrate mit ElleKit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Replace Substrate with ElleKit"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zastąp Substrate przez ElleKit"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thay thế Substrate bằng ElleKit"
+          }
+        }
+      }
+    },
     "Replacement" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6052,6 +8459,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Penggantian"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podmiana"
           }
         },
         "ru" : {
@@ -6107,6 +8520,12 @@
             "value" : "Repositori"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repozytoria"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6123,6 +8542,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "仓库"
+          }
+        }
+      }
+    },
+    "Repository already added." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repositorium bereits hinzugefügt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repository already added."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repozytorium jest obecnie dodane."
           }
         }
       }
@@ -6166,6 +8608,12 @@
             "value" : "Atur Ulang"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetuj"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6192,6 +8640,267 @@
         }
       }
     },
+    "Reset All" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alles zurücksetzen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset All"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetuj wszystko"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt lại tất cả"
+          }
+        }
+      }
+    },
+    "Reset Certificates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zertifikate zurücksetzen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Certificates"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetuj certyfikaty"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt lại chứng chỉ"
+          }
+        }
+      }
+    },
+    "Reset Imported Apps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importierte Apps zurücksetzen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Imported Apps"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetuj zaimportowane aplikacje"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt lại ứng dụng đã nhập"
+          }
+        }
+      }
+    },
+    "Reset Network Cache" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Netzwerk-Cache zurücksetzen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Network Cache"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetuj pamięć podręczną sieci"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt lại bộ nhớ đệm mạng"
+          }
+        }
+      }
+    },
+    "Reset Settings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen zurücksetzen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Settings"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetuj ustawienia"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt lại cài đặt"
+          }
+        }
+      }
+    },
+    "Reset Signed Apps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signierte Apps zurücksetzen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Signed Apps"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetuj podpisane aplikacje"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt lại ứng dụng đã ký"
+          }
+        }
+      }
+    },
+    "Reset Sources" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quellen zurücksetzen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Sources"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetuj źródła"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt lại nguồn"
+          }
+        }
+      }
+    },
+    "Reset the applications sources, certificates, apps, and general contents." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setzt die App-Quellen, Zertifikate, Apps, und andere Inhalte zurück."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset the applications sources, certificates, apps, and general contents."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zresetuj źródła aplikacji, certyfikaty, aplikacje i ogólną zawartość."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt lại nguồn ứng dụng, chứng chỉ, ứng dụng và nội dung chung."
+          }
+        }
+      }
+    },
+    "Reset Work Cache" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arbeits-Cache zurücksetzen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Work Cache"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zresetuj pamięć podręczną"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt lại bộ nhớ đệm công việc"
+          }
+        }
+      }
+    },
     "Restart Heartbeat" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -6199,6 +8908,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Restartovat heartbeat"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Herzschlag neustarten"
           }
         },
         "en" : {
@@ -6211,6 +8926,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mulai Ulang Detak Jantung"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restartuj Heartbeat"
           }
         },
         "tr" : {
@@ -6242,6 +8963,12 @@
             "value" : "Vyžadován restart"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neustart benötigt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6252,6 +8979,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Diperlukan Mulai Ulang"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wymagany restart"
           }
         },
         "tr" : {
@@ -6275,6 +9008,7 @@
       }
     },
     "Save" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6304,6 +9038,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Simpan"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zapisz"
           }
         },
         "ru" : {
@@ -6342,6 +9082,12 @@
             "value" : "Zobrazit všechny aplikace ze všech zdrojů"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sehe alle Apps aus deinen Quellen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6352,6 +9098,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lihat semua aplikasi dari sumber Anda"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobacz wszystkie aplikacje ze swoich źródeł"
           }
         },
         "tr" : {
@@ -6383,6 +9135,12 @@
             "value" : "Vypad\u0001á to, že máte párovací soubor!"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es sieht so aus als hättest du eine Pairing-Datei in die Hände bekommen!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6393,6 +9151,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sepertinya Anda sudah mendapatkan berkas pairing Anda"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wygląda na to, że masz swój plik parowania!"
           }
         },
         "tr" : {
@@ -6417,11 +9181,18 @@
     },
     "Select Alternative Icon" : {
       "comment" : "Select custom alternative app icon",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vybrat jinou ikonu"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle alternatives Icon"
           }
         },
         "en" : {
@@ -6434,6 +9205,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pilih Ikon Alternatif"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz alternatywną ikonę"
           }
         },
         "tr" : {
@@ -6458,11 +9235,18 @@
     },
     "Select entitlements file" : {
       "comment" : "Select custom entitlements for the app",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vybrat soubor s entitlementy"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle Entitlements-Datei"
           }
         },
         "en" : {
@@ -6475,6 +9259,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pilih berkas entitlements"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz plik uprawnień"
           }
         },
         "tr" : {
@@ -6506,6 +9296,12 @@
             "value" : "Polo-lokální"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Semi Lokal"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6516,6 +9312,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Semi Lokal"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Częściowo lokalnie"
           }
         },
         "tr" : {
@@ -6538,12 +9340,135 @@
         }
       }
     },
+    "Sending Manifest" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sende Manifest"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sending Manifest"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wysyłanie manifestu"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gửi Manifest"
+          }
+        }
+      }
+    },
+    "Sending Payload" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sende Payload"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sending Payload"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wysyłanie ładunku"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gửi Payload"
+          }
+        }
+      }
+    },
+    "Server" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serwer"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Máy chủ"
+          }
+        }
+      }
+    },
+    "Server (Recommended):\nUses a locally hosted server and itms-services:// to install applications.\n\nIDevice (advanced):\nUses a VPN and a pairing file. Writes to AFC and manually calls installd, while monitoring install progress by using a callback\nAdvantage: It is very reliable, does not need SSL certificates or a externally hosted server. Rather, works similarly to a computer." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server (Empfohlen):\nBenutzt einen lokalen laufenden Server und itms-services:// um Apps zu installieren.\n\nIDevice (Erweitert):\nBenutzt eine VPN und eine Pairing-Datei. Schreibt zu AFC und ruft manuell installd auf, während der Installations-Fortschritt überwacht in dem ein Callback benutzt wird\nVorteil: Es ist sehr zuverlässig, braucht keine SSL-Zertifikate oder einen externen laufenden Server. Vielmehr funktioniert es wie ein Computer."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server (Recommended):\nUses a locally hosted server and itms-services:// to install applications.\n\nIDevice (advanced):\nUses a VPN and a pairing file. Writes to AFC and manually calls installd, while monitoring install progress by using a callback\nAdvantage: It is very reliable, does not need SSL certificates or a externally hosted server. Rather, works similarly to a computer."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serwer (zalecane):\nUżywa lokalnie hostowanego serwera i itms-services:// do instalowania aplikacji.\n\nIDevice (zaawansowane):\nUżywa VPN i pliku parowania. Zapisuje do AFC i ręcznie wywołuje installd, monitorując postęp instalacji przez callback.\nZaleta: Jest bardzo niezawodny, nie wymaga certyfikatów SSL ani zewnętrznego serwera. Działa podobnie do komputera."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Máy chủ (Khuyến nghị):\nSử dụng máy chủ lưu trữ cục bộ và itms-services:// để cài đặt ứng dụng.\n\nIDevice (nâng cao):\nSử dụng VPN và tệp ghép nối. Ghi vào AFC và gọi installd theo cách thủ công, đồng thời theo dõi tiến trình cài đặt bằng cách sử dụng lệnh gọi lại\nƯu điểm: Rất đáng tin cậy, không cần chứng chỉ SSL hoặc máy chủ lưu trữ bên ngoài. Thay vào đó, hoạt động tương tự như máy tính."
+          }
+        }
+      }
+    },
     "Server & SSL" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Server a SSL"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server & SSL"
           }
         },
         "en" : {
@@ -6556,6 +9481,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Server & SSL"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serwer i SSL"
           }
         },
         "tr" : {
@@ -6574,6 +9505,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "服务器与 SSL"
+          }
+        }
+      }
+    },
+    "Server Type" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server-Typ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server Type"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Typ serwera"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loại máy chủ"
           }
         }
       }
@@ -6618,6 +9578,12 @@
             "value" : "Pengaturan"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustawienia"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6640,11 +9606,18 @@
     },
     "Show Sheet when Exporting" : {
       "comment" : "Archiving opens share sheet",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zobrazit sdílící panel při exportu"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeige Sheet beim Exportieren"
           }
         },
         "en" : {
@@ -6659,6 +9632,12 @@
             "value" : "Tampilkan Lembar saat Mengekspor"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokaż arkusz podczas eksportu"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6668,7 +9647,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hiển thị bảng khi xuất"
+            "value" : "Hiển thị bảng chia sẻ khi xuất"
           }
         },
         "zh" : {
@@ -6688,6 +9667,12 @@
             "value" : "Ukažte svojí podporu!"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeige deine Unterstützung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6698,6 +9683,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tunjukkan Dukungan Anda"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokaż swoje wsparcie"
           }
         },
         "tr" : {
@@ -6729,6 +9720,12 @@
             "value" : "Ukažte svojí podporu díky podpoření! Pokud nemůžete podpořit, alespoň se o aplikaci podělte s ostatními!"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeige deine Unterstützung durch einer Spende! Falls du nicht in der Lage bist zu spenden, funktioniert das verbreiten der Nachricht auch!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6739,6 +9736,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dukung kami dengan berdonasi! Jika Anda tidak bisa berdonasi, menyebarkan informasi juga sangat membantu!"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Okaż wsparcie poprzez darowiznę! Jeśli nie możesz wesprzeć finansowo, podziel się informacją z innymi!"
           }
         },
         "tr" : {
@@ -6770,6 +9773,12 @@
             "value" : "Podepsat"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6780,6 +9789,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tandatangani"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podpisz"
           }
         },
         "tr" : {
@@ -6811,6 +9826,12 @@
             "value" : "Podepsáno"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signiert"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6821,6 +9842,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Telah Ditandatangani"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podpisano"
           }
         },
         "tr" : {
@@ -6876,6 +9903,12 @@
             "value" : "Menandatangani"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podpisywanie"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6897,6 +9930,7 @@
       }
     },
     "Signing Options" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -6920,6 +9954,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Opsi Penandatanganan"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opcje podpisywania"
           }
         },
         "ru" : {
@@ -6948,35 +9988,77 @@
         }
       }
     },
-    "Source Repo URL" : {
+    "Signing Type" : {
+      "extractionState" : "manual",
       "localizations" : {
-        "cs" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "URL zdroje"
+            "value" : "Art der Signatur"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Source Repo URL"
+            "value" : "Signing Type"
           }
         },
-        "id" : {
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "URL Repo Sumber"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kaynak Depo URL’si"
+            "value" : "Typ podpisu"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Loại ký"
+          }
+        }
+      }
+    },
+    "Source URL" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "URL zdroje"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quell-URL"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source URL"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "URL Repo Sumber"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adres URL repozytorium źródłowego"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Kaynak Depo URL’si"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "URL nguồn"
           }
         },
@@ -6990,6 +10072,7 @@
     },
     "Sources" : {
       "comment" : "Sources tab",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -7027,6 +10110,12 @@
             "value" : "Sumber"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Źródła"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7043,6 +10132,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "来源"
+          }
+        }
+      }
+    },
+    "Speed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geschwindigkeit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speed"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prędkość"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tốc độ"
           }
         }
       }
@@ -7086,6 +10204,12 @@
             "value" : "Sponsor"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sponsorzy"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7121,6 +10245,12 @@
             "value" : "SSL certifikáty"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SSL Zertifikate"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7131,6 +10261,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sertifikat SSL"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certyfikaty SSL"
           }
         },
         "tr" : {
@@ -7178,6 +10314,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Standar"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standardowy"
           }
         },
         "tr" : {
@@ -7233,6 +10375,12 @@
             "value" : "Mulai Menandatangani"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rozpocznij podpisywanie"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7254,11 +10402,18 @@
       }
     },
     "Store Cell Appearance" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vzhled buňky zdroje"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zell-Darstellung speichern"
           }
         },
         "en" : {
@@ -7271,6 +10426,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tampilan Sel Penyimpanan"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wygląd komórki sklepu"
           }
         },
         "tr" : {
@@ -7294,8 +10455,15 @@
       }
     },
     "String" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "String"
+          }
+        },
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "String"
@@ -7311,6 +10479,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "String"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ciąg znaków"
           }
         },
         "tr" : {
@@ -7334,6 +10508,7 @@
       }
     },
     "Submit Feedback" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -7371,6 +10546,12 @@
             "value" : "Kirim Masukan"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prześlij opinię"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7397,35 +10578,48 @@
         }
       }
     },
-    "Supports importing from KravaSign/MapleSign and ESign" : {
+    "Supports importing from KravaSign/MapleSign and ESign." : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Podporuje import z KravaSign a ESign"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unterstützt das importieren von KravaSign/MapleSign und ESign."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Supports importing from KravaSign/MapleSign and ESign"
+            "value" : "Supports importing from KravaSign/MapleSign and ESign."
           }
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Mendukung impor dari KravaSign/MapleSign dan ESign"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obsługuje importowanie z KravaSign/MapleSign i ESign"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "KravaSign/MapleSign ve ESign’den içe aktarmayı destekler"
           }
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Hỗ trợ nhập từ KravaSign/MapleSign và ESign"
           }
         },
@@ -7446,6 +10640,12 @@
             "value" : "Identifikátory týmu"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Team-Kennungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7456,6 +10656,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pengidentifikasi Tim"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identyfikatory zespołu"
           }
         },
         "tr" : {
@@ -7487,6 +10693,12 @@
             "value" : "Jméno týmu"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teamname"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7497,6 +10709,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nama Tim"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa zespołu"
           }
         },
         "tr" : {
@@ -7528,6 +10746,12 @@
             "value" : "Heartbeat je aktivován v pozadí, sám se zrestartuje když se aplikace znovu otevře nebo po dotázání. Když status dole pulzuje, znamená to, že je funkční."
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Herzschlag ist aktiv im Hintergrund, und wird neugestartet wenn die App neu geöffnet oder aufgefordert wird. Wenn der Status unten pulsiert, bedeutet es dann es gesund ist."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7538,6 +10762,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Detak jantung diaktifkan di latar belakang, akan\ndimulai ulang saat aplikasi dibuka kembali atau diminta. Jika status di bawah ini berdenyut, berarti dalam kondisi sehat."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monitor pracy aplikacji działa w tle. Zostanie uruchomiony ponownie po ponownym otwarciu lub wymuszeniu. Jeśli poniższy status pulsuje, wszystko działa poprawnie."
           }
         },
         "tr" : {
@@ -7560,6 +10790,58 @@
         }
       }
     },
+    "The only supported repositories are AltStore repositories." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es werden nur AltStore-Repositorien unterstützt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The only supported repositories are AltStore repositories."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jedynymi obsługiwanymi repozytoriami są repozytoria AltStore."
+          }
+        }
+      }
+    },
+    "Theme" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theme"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theme"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Motyw"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chủ đề"
+          }
+        }
+      }
+    },
     "These changes require a restart of the app" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -7567,6 +10849,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tyto změny vyžadují restart aplikace"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Änderungen benötigen einen Neustart der App"
           }
         },
         "en" : {
@@ -7579,6 +10867,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mengaktifkan tampilan lembar akan menampilkan lembar berbagi setelah mengekspor ke berkas Anda."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Te zmiany wymagają ponownego uruchomienia aplikacji"
           }
         },
         "tr" : {
@@ -7601,12 +10895,134 @@
         }
       }
     },
+    "This action cannot be undone. Would you like to proceed?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Aktion kann nicht rückgängig gemacht werden. Möchtest du fortfahren?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This action cannot be undone. Would you like to proceed?"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tej czynności nie można cofnąć. Czy chcesz kontynuować?"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không thể hoàn tác hành động này. Bạn có muốn tiếp tục không?"
+          }
+        }
+      }
+    },
+    "This enables liquid glass for this app, this requires a restart of the app to take effect." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dies aktiviert „Liquid Glass“ für dieser App, dies erfordert einen Neustart der App um wirksam zu werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This enables liquid glass for this app, this requires a restart of the app to take effect."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Włącza liquid glass dla tej aplikacji. Wymaga ponownego uruchomienia, aby zmiany zostały zastosowane."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Điều này cho phép sử dụng liquid glass cho ứng dụng này, điều này yêu cầu khởi động lại ứng dụng để có hiệu lực."
+          }
+        }
+      }
+    },
+    "This option force converts apps to try to use the new liquid glass redesign iOS 26 introduced, this may not work for all applications due to differing frameworks." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Option erzwingt Apps umzuwandeln um das neue „Liquid Glass“-Redesign zu verwenden welches in iOS 26 eingeführt wurde, dies funktioniert möglicherweise nicht für alle Apps auf Grund von Unterschieden der Frameworks."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This option force converts apps to try to use the new liquid glass redesign iOS 26 introduced, this may not work for all applications due to differing frameworks."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ta opcja wymusza konwersję aplikacji na nowy wygląd liquid glass wprowadzony w iOS 26. Może nie działać ze wszystkimi aplikacjami z powodu różnych frameworków."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tùy chọn này buộc phải chuyển đổi ứng dụng để thử sử dụng giao diện Liquid Glass mới được giới thiệu trong iOS 26. Tùy chọn này có thể không hoạt động với tất cả các ứng dụng do có nhiều khuôn khổ khác nhau."
+          }
+        }
+      }
+    },
+    "This will delete your imported application after signing, to save on using unneeded space." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dies wird deine importierte Datei nach der Signierung löschen, um an unnötigen Speicher zu sparen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This will delete your imported application after signing, to save on using unneeded space."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spowoduje to usunięcie zaimportowanej aplikacji po jej podpisaniu, co pozwoli zwolnić miejsce."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thao tác này sẽ xóa ứng dụng đã nhập của bạn sau khi ký, để tiết kiệm dung lượng không cần thiết."
+          }
+        }
+      }
+    },
     "Toggling show sheet will present a share sheet after exporting to your files." : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zapnutí sdílícího panelu ho ukáže po exportu do Souborů."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktivieren von „Zeige Sheet beim Exportieren“ öffnet ein Share Sheet nach dem Exportieren zu deinen Dateien."
           }
         },
         "en" : {
@@ -7621,6 +11037,12 @@
             "value" : "Mengaktifkan tampilan lembar akan menampilkan lembar berbagi setelah mengekspor ke berkas Anda."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Włączenie arkusza spowoduje wyświetlenie arkusza udostępniania po wyeksportowaniu do plików."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7630,7 +11052,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bật hiển thị bảng sẽ hiện một bảng chia sẻ sau khi xuất vào tệp của bạn."
+            "value" : "Bật tính năng này sẽ hiển thị một bảng chia sẻ sau khi xuất IPA vào tệp của bạn."
           }
         },
         "zh" : {
@@ -7650,6 +11072,12 @@
             "value" : "Tunel a párování"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tunnel & Pairing"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7660,6 +11088,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tunnel & Pairing"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tunel i parowanie"
           }
         },
         "tr" : {
@@ -7684,6 +11118,7 @@
     },
     "Tweaks" : {
       "comment" : "Select custom tweaks to install and inject",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -7698,6 +11133,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tweaks"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tweaks"
@@ -7757,6 +11198,12 @@
             "value" : "Tidak Dikenal"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nieznane"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7784,6 +11231,7 @@
       }
     },
     "Update SSL Certificates" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -7809,6 +11257,12 @@
             "value" : "Perbarui Sertifikat SSL"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualizuj certyfikaty SSL"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7830,8 +11284,15 @@
       }
     },
     "URL" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL"
@@ -7852,7 +11313,37 @@
       },
       "shouldTranslate" : false
     },
+    "Value" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Value"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wartość"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giá trị"
+          }
+        }
+      }
+    },
     "Version" : {
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -7890,6 +11381,12 @@
             "value" : "Versi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wersja"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7912,11 +11409,18 @@
     },
     "View Entitlements" : {
       "comment" : "Certificate listed entitlements",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ukázat entitlementy"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeige Entitlements"
           }
         },
         "en" : {
@@ -7929,6 +11433,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lihat Entitlements"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobacz uprawnienia"
           }
         },
         "tr" : {
@@ -7953,11 +11463,18 @@
     },
     "Visit Patreon" : {
       "comment" : "Repository listed patreon",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Navštívit Patreon"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Besuche Patreon"
           }
         },
         "en" : {
@@ -7970,6 +11487,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kunjungi Patreon"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odwiedź Patreon"
           }
         },
         "tr" : {
@@ -7994,11 +11517,18 @@
     },
     "Visit Website": {
       "comment" : "Repository listed website",
+      "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Navštívit stránku"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Besuche Webseite"
           }
         },
         "en" : {
@@ -8011,6 +11541,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kunjungi Situs Web"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odwiedź stronę"
           }
         },
         "tr" : {
@@ -8035,6 +11571,12 @@
     "You cannot update ‘%@‘ with itself, please use an alternative tool to update it." : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du kannst ‘%@‘ nicht mit sich selbst ändern, bitte benutze ein alternatives Tool um es upzudaten."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8045,6 +11587,47 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kamu tidak bisa melakukan update pada ‘%@’ menggunakan dirinya sendiri. Silakan gunakan tool alternatif untuk memperbaruinya."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie można zaktualizować „%@” przy jego użyciu. Użyj innego narzędzia do aktualizacji."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn không thể cập nhật ‘%@‘ bằng chính nó, vui lòng sử dụng công cụ thay thế để cập nhật."
+          }
+        }
+      }
+    },
+    "Your pairing file is invalid and is incompatible with your device, please import a valid pairing file." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine Pairing-Datei ist ungültig und ist inkompatibel mit deinem Gerät, bitte importiere eine gültige."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your pairing file is invalid and is incompatible with your device, please import a valid pairing file."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Twój plik parowania jest nieprawidłowy i niekompatybilny z urządzeniem. Zaimportuj poprawny plik."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tệp ghép nối của bạn không hợp lệ và không tương thích với thiết bị của bạn, vui lòng nhập tệp ghép nối hợp lệ."
           }
         }
       }

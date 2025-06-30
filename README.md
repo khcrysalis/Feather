@@ -81,6 +81,7 @@ Read the [contribution requirements](./CONTRIBUTING.md) for more information.
 - [*.backloop.dev](https://backloop.dev/) - localhost with public CA signed SSL certificate
 - [Vapor](https://github.com/vapor/vapor) - A server-side Swift HTTP web framework.
 - [Zsign](https://github.com/zhlynn/zsign) - Allowing to sign on-device, reimplimented to work on other platforms such as iOS.
+- [LiveContainer](https://github.com/LiveContainer/LiveContainer) - Fixes/some help
 - [Nuke](https://github.com/kean/Nuke) - Image caching.
 - [Asspp](https://github.com/Lakr233/Asspp) - Some code for setting up the http server.
 - [plistserver](https://github.com/nekohaxx/plistserver) - Hosted on https://api.palera.in.
@@ -90,3 +91,7 @@ Read the [contribution requirements](./CONTRIBUTING.md) for more information.
 This project is licensed under the GPL-3.0 license. You can see the full details of the license [here](https://github.com/khcrysalis/Feather/blob/main/LICENSE). It's under this specific license because I wanted to make a project that is transparent to the user thats related to certificate paired sideloading, before this project there weren't any open source projects that filled in this gap.
 
 By contributing to this project, you agree to license your code under the GPL-3.0 license as well (including agreeing to license exceptions), ensuring that your work, like all other contributions, remains freely accessible and open.
+
+## Disclaimer
+
+This project is maintained here, on GitHub. Releases are distributed here, on GitHub. We do not currently have a project website outside of this repository. Please make sure to avoid any sites that host our software as they are often malicious and are there to mislead to user.

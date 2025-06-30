@@ -27,25 +27,50 @@ class TweakHandler {
 		self._options = options
 		self._urls = options.injectionFiles
 	}
-
-	public func getInputFiles() async throws {
-		guard !_urls.isEmpty else {
-			return
-		}
-		
+	
+	private func _checkEllekit() async throws {
 		let frameworksPath = _app.appendingPathComponent("Frameworks").appendingPathComponent("CydiaSubstrate.framework")
-		if !_fileManager.fileExists(atPath: frameworksPath.path) {
+
+		func addEllekit() async throws {
 			if let ellekitURL = Bundle.main.url(forResource: "ellekit", withExtension: "deb") {
 				self._urls.insert(ellekitURL, at: 0)
 			} else {
 				Logger.misc.info("ellekit.deb not found in the app bundle")
+			}
+			
+			try _fileManager.createDirectoryIfNeeded(at: _app.appendingPathComponent("Frameworks"))
+		}
+		// we should check if CydiaSubstrate.framework exists, if it doesn't
+		// just add ellekit
+		// experiment_replaceSubstrateWithEllekit:
+		// 	for this version, we need to replace CydiaSubstrate.framework with
+		//	our own version containing ElleKit
+		// other:
+		// 	just return if it exists, should work fine
+		if _fileManager.fileExists(atPath: frameworksPath.path) {
+			if _options.experiment_replaceSubstrateWithEllekit {
+				Logger.misc.info("Attempting to replace Substrate with ElleKit")
+				try _fileManager.removeFileIfNeeded(at: frameworksPath)
+				try await addEllekit()
+			} else {
 				return
 			}
+		} else {
+			guard !_urls.isEmpty else { return }
+			try await addEllekit()
+		}
+	}
+
+	public func getInputFiles() async throws {
+		Logger.misc.info("Attempting to inject")
+		
+		if !_options.experiment_replaceSubstrateWithEllekit {
+			guard !_urls.isEmpty else { return }
 		}
 
+		try await _checkEllekit()
+
 		let baseTmpDir = _fileManager.temporaryDirectory.appendingPathComponent("FeatherTweak_\(UUID().uuidString)")
-		
-		try _fileManager.createDirectoryIfNeeded(at: _app.appendingPathComponent("Frameworks"))
 		try _fileManager.createDirectoryIfNeeded(at: baseTmpDir)
 		
 		// check for appropriate files, if theres debs

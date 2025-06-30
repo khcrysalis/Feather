@@ -9,6 +9,15 @@ import SwiftUI
 import NimbleViews
 import NimbleJSON
 
+// MARK: - Extension: Model
+extension AboutView {
+	struct CreditsModel: Codable, Hashable {
+		let name: String?
+		let desc: String?
+		let github: String
+	}
+}
+
 // MARK: - View
 struct AboutView: View {
 	typealias CreditsDataHandler = Result<[CreditsModel], Error>
@@ -24,49 +33,44 @@ struct AboutView: View {
 	// MARK: Body
 	var body: some View {
 		NBList(.localized("About")) {
-            Section {
-                VStack {
-                    Image(uiImage: (UIImage(named: Bundle.main.iconFileName ?? ""))! )
-                        .appIconStyle(size: 72)
-                    
-                    Text(Bundle.main.exec)
-                        .font(.largeTitle)
-                        .bold()
-                        .foregroundStyle(.accent)
-                    
-                    HStack(spacing: 4) {
-                        Text("Version")
-                        Text(Bundle.main.version)
-                    }
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-                    
-                }
-            }
-            .frame(maxWidth: .infinity)
-            .listRowBackground(EmptyView())
-			
-			NBSection(.localized("Credits")) {
-				if !_credits.isEmpty {
-					ForEach(_credits, id: \.self) { credit in
+			if !isLoading {
+				Section {
+					VStack {
+						Image(uiImage: AppIconView.altImage(UIApplication.shared.alternateIconName))
+							.appIconStyle(size: 72)
+						
+						Text(Bundle.main.exec)
+							.font(.largeTitle)
+							.bold()
+							.foregroundStyle(Color.accentColor)
+						
+						HStack(spacing: 4) {
+							Text(.localized("Version"))
+							Text(Bundle.main.version)
+						}
+						.font(.footnote)
+						.foregroundStyle(.secondary)
+					}
+				}
+				.frame(maxWidth: .infinity)
+				.listRowBackground(EmptyView())
+				
+				NBSection(.localized("Credits")) {
+					ForEach(_credits, id: \.github) { credit in
 						_credit(name: credit.name, desc: credit.desc, github: credit.github)
 					}
 					.transition(.slide)
 				}
-			}
-			
-			NBSection(.localized("Sponsors")) {
-				if !_donators.isEmpty {
-					Group {
-						Text(try! AttributedString(markdown: _donators.map {
-							"[\($0.name ?? $0.github)](https://github.com/\($0.github))"
-						}.joined(separator: ", ")))
-						
-						Text(.localized("💜 This couldn't of been done without my sponsors!"))
-							.foregroundStyle(.secondary)
-							.padding(.vertical, 2)
-					}
+				
+				NBSection(.localized("Sponsors")) {
+					Text(try! AttributedString(markdown: _donators.map {
+						"[\($0.name ?? $0.github)](https://github.com/\($0.github))"
+					}.joined(separator: ", ")))
 					.transition(.slide)
+					
+					Text(.localized("💜 This couldn't of been done without my sponsors!"))
+						.foregroundStyle(.secondary)
+						.padding(.vertical, 2)
 				}
 			}
 		}
@@ -122,10 +126,21 @@ extension AboutView {
 		desc: String?,
 		github: String
 	) -> some View {
-		FRIconCellView(
-			title: name ?? github,
-			subtitle: desc ?? "",
-			iconUrl: URL(string: "https://github.com/\(github).png")!
-		)
+		Button {
+			UIApplication.open("https://github.com/\(github)")
+		} label: {
+			HStack {
+				FRIconCellView(
+					title: name ?? github,
+					subtitle: desc ?? "",
+					iconUrl: URL(string: "https://github.com/\(github).png")!,
+					size: 45,
+					isCircle: true
+				)
+				
+				Image(systemName: "arrow.up.right")
+					.foregroundColor(.secondary.opacity(0.65))
+			}
+		}
 	}
 }

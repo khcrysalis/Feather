@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import IDeviceSwift
 
 struct InstallProgressView: View {
 	@State private var _isPulsing = false
@@ -17,11 +18,10 @@ struct InstallProgressView: View {
 		VStack(spacing: 12) {
 			_appIcon()
 				.scaleEffect(_isPulsing ? 0.85 : 0.81)
-				.animation(
-					.easeInOut(duration: 1.0).repeatForever(autoreverses: true),
-					value: _isPulsing
-				)
-				.onAppear { _isPulsing = true }
+				.animation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true), value: _isPulsing)
+				.onAppear {
+					_isPulsing = true
+				}
 		}
 	}
 	
@@ -29,7 +29,7 @@ struct InstallProgressView: View {
 	private func _appIcon() -> some View {
 		ZStack {
 			FRAppIconView(app: app)
-				.opacity(_isPulsing ? 0.2 : 0.2)
+				.opacity(0.2)
 				.frame(width: 54, height: 54)
 				.foregroundStyle(Color.black)
 			

@@ -11,7 +11,8 @@ import Foundation
 import Vapor
 import NIOSSL
 import NIOTLS
-import SwiftUICore
+import SwiftUI
+import IDeviceSwift
 
 // MARK: - Class
 class ServerInstaller: Identifiable, ObservableObject {
@@ -88,7 +89,7 @@ class ServerInstaller: Identifiable, ObservableObject {
 		_server?.shutdown()
 	}
 	
-	private func _updateStatus(_ newStatus: InstallerStatus) {
+	private func _updateStatus(_ newStatus: InstallerStatusViewModel.InstallerStatus) {
 		DispatchQueue.main.async {
 			self.viewModel.status = newStatus
 		}
