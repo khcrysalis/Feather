@@ -2863,6 +2863,12 @@
             "state" : "translated",
             "value" : "Do you want to export your certificate to an external app? That app will be able to sign apps using your certificate."
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn có muốn xuất chứng chỉ của mình sang một ứng dụng bên ngoài không? Ứng dụng đó sẽ có thể ký các ứng dụng bằng chứng chỉ của bạn."
+          }
         }
       }
     },
@@ -3367,6 +3373,12 @@
             "state" : "translated",
             "value" : "Podaj adres"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nhập URL nguồn"
+          }
         }
       }
     },
@@ -3838,6 +3850,12 @@
             "state" : "translated",
             "value" : "Export Certificate"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xuất chứng chỉ"
+          }
         }
       }
     },
@@ -3913,6 +3931,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Polecane"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tính năng nổi bật"
           }
         }
       }
@@ -5963,6 +5987,12 @@
             "state" : "translated",
             "value" : "Dowiedz się więcej o tym, jak skonfigurować repozytorium..."
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tìm hiểu thêm về cách thiết lập kho lưu trữ…"
+          }
         }
       }
     },
@@ -7003,6 +7033,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Otwórz [issue](https://github.com/khcrysalis/Feather/issues) na GitHubie, jeśli chcesz, aby Twoje źródło zostało wyróżnione."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mở [issue](https://github.com/khcrysalis/Feather/issues) trên GitHub nếu bạn muốn nguồn của mình được giới thiệu."
           }
         }
       }
@@ -8402,6 +8438,12 @@
             "state" : "translated",
             "value" : "Removing the provisioning file will exclude the mobileprovision file from being embedded inside of the application when signing, to help prevent any detection."
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xóa tệp mobileprovision được nhúng bên trong ứng dụng khi ký, giúp ngăn chặn mọi phát hiện."
+          }
         }
       }
     },
@@ -8565,6 +8607,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Repozytorium jest obecnie dodane."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kho lưu trữ đã được thêm."
           }
         }
       }
@@ -10809,6 +10857,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Jedynymi obsługiwanymi repozytoriami są repozytoria AltStore."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Các kho lưu trữ được hỗ trợ duy nhất là kho lưu trữ AltStore."
           }
         }
       }
