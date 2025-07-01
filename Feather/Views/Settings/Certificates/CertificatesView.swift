@@ -124,11 +124,11 @@ extension CertificatesView {
 		Button(.localized("Get Info"), systemImage: "info.circle") {
 			_isSelectedInfoPresenting = cert
 		}
-		
 		Divider()
-		
+        #if !targetEnvironment(simulator)
 		Button(.localized("Check Revokage"), systemImage: "person.text.rectangle") {
 			Storage.shared.revokagedCertificate(for: cert)
 		}
+        #endif
 	}
 }

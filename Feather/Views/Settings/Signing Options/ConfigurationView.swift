@@ -17,16 +17,20 @@ struct ConfigurationView: View {
 	// MARK: Body
     var body: some View {
 		NBList(.localized("Signing Options")) {
-			NavigationLink(.localized("Display Names"), destination: ConfigurationDictView(
+			NavigationLink(destination: ConfigurationDictView(
 				title: .localized("Display Names"),
 					dataDict: $_optionsManager.options.displayNames
 				)
-			)
-			NavigationLink(.localized("Identifers"), destination: ConfigurationDictView(
+			) {
+				Label(.localized("Display Names"), systemImage: "character.cursor.ibeam")
+			}
+			NavigationLink(destination: ConfigurationDictView(
 					title: .localized("Identifers"),
 					dataDict: $_optionsManager.options.identifiers
 				)
-			)
+			) {
+				Label(.localized("Identifers"), systemImage: "person.text.rectangle")
+			}
 			
 			SigningOptionsView(options: $_optionsManager.options)
 		}
