@@ -28,8 +28,9 @@ extension Storage {
 		new.ppQCheck = ppq
 		new.expiration = expiration
 		new.nickname = nickname
+        #if !targetEnvironment(simulator)
 		Storage.shared.revokagedCertificate(for: new)
-		
+        #endif
 		saveContext()
 		generator.impactOccurred()
 		completion(nil)

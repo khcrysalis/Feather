@@ -26,17 +26,29 @@ struct SettingsView: View {
 				_feedback()
 				
 				Section {
-					NavigationLink(.localized("Appearance"), destination: AppearanceView())
+					NavigationLink(destination: AppearanceView()) {
+						Label(.localized("Appearance"), systemImage: "paintbrush")
+					}
 					if UIDevice.current.doesHaveAppIdCapabilities {
-						NavigationLink(.localized("App Icon"), destination: AppIconView(currentIcon: $_currentIcon))
+						NavigationLink(destination: AppIconView(currentIcon: $_currentIcon)) {
+							Label(.localized("App Icon"), systemImage: "app.badge")
+						}
 					}
 				}
 				
 				NBSection(.localized("Features")) {
-					NavigationLink(.localized("Certificates"), destination: CertificatesView())
-					NavigationLink(.localized("Signing Options"), destination: ConfigurationView())
-					NavigationLink(.localized("Archive & Compression"), destination: ArchiveView())
-					NavigationLink(.localized("Installation"), destination: InstallationView())
+					NavigationLink(destination: CertificatesView()) {
+						Label(.localized("Certificates"), systemImage: "checkmark.seal")
+					}
+					NavigationLink(destination: ConfigurationView()) {
+						Label(.localized("Signing Options"), systemImage: "signature")
+					}
+					NavigationLink(destination: ArchiveView()) {
+						Label(.localized("Archive & Compression"), systemImage: "archivebox")
+					}
+					NavigationLink(destination: InstallationView()) {
+						Label(.localized("Installation"), systemImage: "arrow.down.circle")
+					}
 				} footer: {
 					Text(.localized("Configure the apps way of installing, its zip compression levels, and custom modifications to apps."))
 				}
@@ -44,7 +56,9 @@ struct SettingsView: View {
 				_directories()
 				
 				Section {
-					NavigationLink(.localized("Reset"), destination: ResetView())
+					NavigationLink(destination: ResetView()) {
+						Label(.localized("Reset"), systemImage: "trash")
+					}
 				} footer: {
 					Text(.localized("Reset the applications sources, certificates, apps, and general contents."))
 				}
