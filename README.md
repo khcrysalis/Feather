@@ -4,17 +4,20 @@
 [![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/khcrysalis/feather/total)](https://github.com/khcrysalis/feather/releases)
 [![GitHub License](https://img.shields.io/github/license/khcrysalis/feather?color=%23C96FAD)](https://github.com/khcrysalis/feather/blob/main/LICENSE)
 
-This app allows you to install and manage applications contained in a single app, using certificate pairs and various installation techniques to allow apps to install to your device. 
-
-This is an entirely stock application and uses built-in features to be able to do this!
+This app allows you to install and manage applications contained in a single app, using certificate pairs and various installation techniques to allow apps to install to your device. This is an entirely stock application and uses built-in features to be able to do this!
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Image-dark.png"><source media="(prefers-color-scheme: light)" srcset="Images/Image-light.png"><img alt="Pointercrate-pocket." src="Images/Image-light.png"></picture></p>
 
-### Features
-- Install applications via [`idevice`](https://github.com/jkcoxson/idevice) or using a [`server`](https://github.com/vapor/vapor).
-- Inspect and manage imported apps, certificates, and altstore sources.
-- Globally configurable signing options, and even supports Adhoc signing.
-- Advanced tweak support, using [Ellekit](https://github.com/tealbathingsuit/ellekit) for injection. Supports `.deb` and `.dylib` files.
+## Features
+- User friendly, and clean UI.
+- Sign and install applications.
+- Supports [AltStore](https://faq.altstore.io/distribute-your-apps/make-a-source#apps) repositories.
+- View detailed information about apps and your certificates.
+- Configurable signing options mainly for modifying the app, such as appearance and allowing support for the files app.
+  - This includes patching apps for compatibility and Liquid Glass.
+- Tweak support for advanced users, using [Ellekit](https://github.com/tealbathingsuit/ellekit) for injection. 
+  - Supports injecting `.deb` and `.dylib` files.
+- Actively maintained: always ensuring most apps get installed properly.
 - No tracking or analytics, ensuring user privacy.
 - Of course, open source and free.
 
