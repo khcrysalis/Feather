@@ -2600,6 +2600,12 @@
             "value" : "Do you want to export your certificate to an external app? That app will be able to sign apps using your certificate."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Czy chcesz wyeksportować swój certyfikat do zewnętrznej aplikacji? Ta aplikacja będzie mogła podpisywać aplikacje za pomocą Twojego certyfikatu."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3501,6 +3507,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Export Certificate"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eksportuj certyfikat"
           }
         },
         "vi" : {
@@ -7675,6 +7687,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Removing the provisioning file will exclude the mobileprovision file from being embedded inside of the application when signing, to help prevent any detection."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usunięcie pliku provisioning spowoduje, że plik mobileprovision nie będzie osadzony w aplikacji podczas podpisywania, co zapobiegnie jakiemukolwiek wykryciu."
           }
         },
         "vi" : {
