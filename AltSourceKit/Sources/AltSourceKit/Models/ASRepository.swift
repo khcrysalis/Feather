@@ -61,16 +61,39 @@ public struct ASRepository: Sendable, Decodable, Hashable, Identifiable {
 		self.tintColor =
 			try container.decodeIfPresent(Color.self, forKey: .tintColor)
 
-		self.patreonURL = try container.decodeIfPresent(
-			URL.self,
-			forKey: .patreonURL
-		)
+		let patreonString = try container.decodeIfPresent(String.self, forKey: .patreonURL)
+		
+		// another case of inconsistent altstore stuff
+		if
+			let string = patreonString,
+			!string.isEmpty,
+			let url = URL(string: string)
+		{
+			self.patreonURL = url
+		} else {
+			self.patreonURL = nil
+		}
+
 		self.userInfo = try container.decodeIfPresent(
 			UserInfo.self,
 			forKey: .userInfo
 		)
 
-		self.apps = try container.decodeIfPresent([App].self, forKey: .apps) ?? []
+		let decodedApps = try container.decodeIfPresent([App].self, forKey: .apps)
+		guard
+			let apps = decodedApps,
+			!apps.isEmpty
+		else {
+			throw NSError(
+				domain: "FeatherSources",
+				code: 44521,
+				userInfo: [
+					NSLocalizedDescriptionKey: "This source does not contain any apps."
+				]
+			)
+		}
+		
+		self.apps = apps
 		self.featuredApps =
 			try container.decodeIfPresent([App.ID].self, forKey: .featuredApps) ?? []
 		self.news = try container.decodeIfPresent([News].self, forKey: .news) ?? []
@@ -263,10 +286,15 @@ extension ASRepository {
 			self.screenshotURLs =
 				try container.decodeIfPresent([URL].self, forKey: .screenshotURLs)
 			
-			if let _ = try container.decodeIfPresent(String.self, forKey: .marketplaceID) {
-				throw NSError(domain: "FeatherSources", code: 112789, userInfo: [NSLocalizedDescriptionKey: "AltStore PAL repositories aren't supported: \(id ?? "")"])
+			if
+				let marketplaceID = try container.decodeIfPresent(String.self, forKey: .marketplaceID),
+				!marketplaceID.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+			{
+				throw NSError(
+					domain: "FeatherSources",
+					code: 112789, userInfo: [NSLocalizedDescriptionKey: "AltStore PAL repositories aren't supported: \(id ?? "")"]
+				)
 			}
-
 		}
 
 		//		func encode(to encoder: any Encoder) throws {
