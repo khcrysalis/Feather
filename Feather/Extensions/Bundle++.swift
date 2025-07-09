@@ -5,6 +5,8 @@
 //  Created by samara on 19.06.2025.
 //
 
+#if !APPSTORE
+
 import Foundation.NSBundle
 import UIKit
 
@@ -21,3 +23,5 @@ extension Bundle {
 		return appID
 	}
 }
+
+#endif

@@ -118,6 +118,7 @@ NSString *LCPatchMachOForSDK26(const char *path) {
 	return result;
 }
 
+#if APPSTORE != 1
 NSString *getApplicationIdentifier(void) {
 	CFErrorRef error = NULL;
 	SecTrustRef task = SecTaskCreateFromSelf(NULL);
@@ -138,3 +139,4 @@ NSString *getApplicationIdentifier(void) {
 		return nil;
 	}
 }
+#endif

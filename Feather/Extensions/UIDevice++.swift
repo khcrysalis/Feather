@@ -5,6 +5,7 @@
 //  Created by samara on 19.06.2025.
 //
 
+#if !APPSTORE
 import UIKit.UIDevice
 
 extension UIDevice {
@@ -15,3 +16,4 @@ extension UIDevice {
 		return Bundle.main.bundleIdentifier == appIdentifier
 	}
 }
+#endif
