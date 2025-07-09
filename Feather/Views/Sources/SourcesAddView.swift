@@ -35,6 +35,7 @@ struct SourcesAddView: View {
 	}
 	
 	@State var recommendedSourcesData: [(url: URL, data: ASRepository)] = []
+	#if !APPSTORE
 	let recommendedSources: [URL] = [
 		"https://raw.githubusercontent.com/khcrysalis/Feather/refs/heads/main/app-repo.json",
 		"https://raw.githubusercontent.com/Aidoku/Aidoku/altstore/apps.json",
@@ -48,6 +49,10 @@ struct SourcesAddView: View {
 		"https://community-apps.sidestore.io/sidecommunity.json",
 		"https://alt.getutm.app"
 	].map { URL(string: $0)! }
+	#else
+	let recommendedSources: [URL] = [].map { URL(string: $0)! }
+	#endif
+	
 	
 	@State private var _isImporting = false
 	@State private var _sourceURL = ""
@@ -61,8 +66,10 @@ struct SourcesAddView: View {
 						.keyboardType(.URL)
 						.textInputAutocapitalization(.never)
 				} footer: {
+					#if !APPSTORE
 					Text(.localized("The only supported repositories are AltStore repositories."))
 					Text(verbatim: "[\(String.localized("Learn more about how to setup a repository..."))](https://faq.altstore.io/developers/make-a-source)")
+					#endif
 				}
 				
 				Section {
@@ -81,7 +88,11 @@ struct SourcesAddView: View {
 						dismiss()
 					}
 				} footer: {
+					#if !APPSTORE
 					Text(.localized("Supports importing from KravaSign/MapleSign and ESign."))
+					#else
+					Text(.localized("Supports importing from other various applications."))
+					#endif
 				}
 				
 				if !_filteredRecommendedSourcesData.isEmpty {

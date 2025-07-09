@@ -19,8 +19,10 @@ struct SettingsView: View {
     var body: some View {
 		NBNavigationView(.localized("Settings")) {
 			Form {
+				#if !APPSTORE
 				#if !NIGHTLY && !DEBUG
 				SettingsDonationCellView(site: _donationsUrl)
+				#endif
 				#endif
 				
 				_feedback()
@@ -56,7 +58,9 @@ struct SettingsView: View {
 						Label(.localized("Installation"), systemImage: "arrow.down.circle")
 					}
 				} footer: {
+					#if !APPSTORE
 					Text(.localized("Configure the apps way of installing, its zip compression levels, and custom modifications to apps."))
+					#endif
 				}
 				
 				_directories()

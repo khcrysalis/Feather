@@ -119,7 +119,7 @@ struct LibraryView: View {
 						ContentUnavailableView {
 							Label(.localized("No Apps"), systemImage: "questionmark.app.fill")
 						} description: {
-							Text(.localized("Get started by importing your first IPA file."))
+							Text(.localized("Get started by importing your first app file."))
 						} actions: {
 							Menu {
 								_importActions()

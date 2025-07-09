@@ -130,11 +130,20 @@ extension LibraryCellView {
 				Button {
 					selectedSigningAppPresenting = AnyApp(base: app)
 				} label: {
+					#if !APPSTORE
 					FRExpirationPillView(
 						title: .localized("Sign"),
 						revoked: false,
 						expiration: nil
 					)
+					#else
+					FRExpirationPillView(
+						title: .localized("Manage"),
+						revoked: false,
+						expiration: nil
+					)
+					#endif
+					
 				}
 			}
 		}

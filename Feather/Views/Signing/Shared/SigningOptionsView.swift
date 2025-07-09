@@ -23,7 +23,9 @@ struct SigningOptionsView: View {
 						temporaryValue: temporaryOptions?.ppqProtection
 				)
 			} footer: {
+				#if !APPSTORE
 				Text(.localized("Enabling any protection will append a random string to the bundleidentifiers of the apps you sign, this is to ensure your Apple ID does not get flagged by Apple. However, when using a signing service you can ignore this."))
+				#endif
 			}
 		} else {
 			NBSection(.localized("General")) {
