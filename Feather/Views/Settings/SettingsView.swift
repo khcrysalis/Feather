@@ -34,7 +34,7 @@ private func makeGitHubIssueURL(url: String) -> String {
     let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "?"
     
     let installationMethod = UserDefaults.standard.integer(forKey: "Feather.installationMethod")
-    var configurationSection = "Configuration:\n"
+    var configurationSection = "### App Configuration:\n"
     switch installationMethod {
     case 0: // Server
         let serverMethod = UserDefaults.standard.integer(forKey: "Feather.serverMethod")
