@@ -91,7 +91,7 @@ extension SettingsView {
             }
             
             Button(.localized("Submit Feedback"), systemImage: "safari") {
-                UIApplication.open(makeGitHubIssueURL(url: _githubUrl))
+                UIApplication.open(_makeGitHubIssueURL(url: _githubUrl))
             }
             Button(.localized("GitHub Repository"), systemImage: "safari") {
                 UIApplication.open(_githubUrl)
@@ -118,8 +118,8 @@ extension SettingsView {
         }
     }
     
-    private func makeGitHubIssueURL(url: String) -> String {
-        let deviceModel = MobileGestalt().getValue(for: .physicalHardwareNameString)?.description ?? "Unknown"
+    private func _makeGitHubIssueURL(url: String) -> String {
+        let deviceModel = MobileGestalt().getPhysicalHardwareNameString() ?? "Unknown"
         let deviceVersion = UIDevice.current.systemVersion
         let appVersion = Bundle.main.version
         let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "?"
