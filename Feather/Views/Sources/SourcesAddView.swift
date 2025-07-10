@@ -155,8 +155,8 @@ struct SourcesAddView: View {
 		Task {
 			let fetched = await _concurrentFetchRepositories(from: repoUrls)
 			
-			let dict = Dictionary(uniqueKeysWithValues: fetched.map { ($0.url, $0.data) })
-			
+			let dict = Dictionary(fetched, uniquingKeysWith: { first, _ in first })
+
 			await MainActor.run {
 				Storage.shared.addSources(repos: dict) { _ in
 					competion()
