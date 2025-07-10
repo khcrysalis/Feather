@@ -11,24 +11,8 @@ import UIKit
 import Darwin
 import IDeviceSwift
 
-private func getDeviceIdentifier() -> String {
-    var systemInfo = utsname()
-    uname(&systemInfo)
-    let mirror = Mirror(reflecting: systemInfo.machine)
-    let identifier = mirror.children.reduce("") { identifier, element in
-        guard let value = element.value as? Int8, value != 0 else { return identifier }
-        return identifier + String(UnicodeScalar(UInt8(value)))
-    }
-    return identifier
-}
-
-private func getDeviceModelName() -> String {
-    let identifier = getDeviceIdentifier()
-    return deviceModels[identifier] ?? identifier
-}
-
 private func makeGitHubIssueURL(url: String) -> String {
-    let deviceModel = getDeviceModelName()
+    let deviceModel = MobileGestalt().getValue(for: .physicalHardwareNameString)?.description ?? "Unknown"
     let deviceVersion = UIDevice.current.systemVersion
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
     let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "?"
