@@ -11,57 +11,6 @@ import UIKit
 import Darwin
 import IDeviceSwift
 
-private func makeGitHubIssueURL(url: String) -> String {
-    let deviceModel = MobileGestalt().getValue(for: .physicalHardwareNameString)?.description ?? "Unknown"
-    let deviceVersion = UIDevice.current.systemVersion
-    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
-    let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "?"
-    
-    let installationMethod = UserDefaults.standard.integer(forKey: "Feather.installationMethod")
-    var configurationSection = "### App Configuration:\n"
-    switch installationMethod {
-    case 0: // Server
-        let serverMethod = UserDefaults.standard.integer(forKey: "Feather.serverMethod")
-        let ipFix = UserDefaults.standard.bool(forKey: "Feather.ipFix")
-        let serverType = (serverMethod == 0) ? "Fully Local" : "Semi Local"
-        configurationSection += "- Install method: `Server`\n"
-        configurationSection += "  - Server type: `\(serverType)`\n"
-        configurationSection += "  - IP Fix: `\(ipFix)`\n"
-    case 1: // idevice
-        let pairingPath = HeartbeatManager.pairingFile()
-        let pairingExists = FileManager.default.fileExists(atPath: pairingPath)
-        let pairingStatus = pairingExists ? "`Present`" : "`Not Present`"
-        configurationSection += "- Install method: `idevice`\n"
-        configurationSection += "  - Pairing file: \(pairingStatus)\n"
-    default:
-        configurationSection += "- Install method: `Unknown`\n"
-    }
-    
-    let body = """
-### Device Information
-- Device: `\(deviceModel)`
-- iOS Version: `\(deviceVersion)`
-- App Version: `\(appVersion) (\(buildNumber))`
-
-\(configurationSection)
-
-### Issue Description
-<!-- Describe your issue here -->
-
-### Steps to Reproduce
-1. 
-2. 
-3. 
-
-### Expected Behavior
-
-### Actual Behavior
-"""
-    let encodedTitle = "bug: replace this with a descriptive title ".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-    let encodedBody = body.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-    return "\(url)/issues/new?title=\(encodedTitle)&body=\(encodedBody)"
-}
-
 // MARK: - View
 struct SettingsView: View {
     @State private var _currentIcon: String? = UIApplication.shared.alternateIconName
@@ -167,5 +116,56 @@ extension SettingsView {
         } footer: {
             Text(.localized("All of the apps files are contained in the documents directory, here are some quick links to these."))
         }
+    }
+    
+    private func makeGitHubIssueURL(url: String) -> String {
+        let deviceModel = MobileGestalt().getValue(for: .physicalHardwareNameString)?.description ?? "Unknown"
+        let deviceVersion = UIDevice.current.systemVersion
+        let appVersion = Bundle.main.version
+        let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "?"
+        
+        let installationMethod = UserDefaults.standard.integer(forKey: "Feather.installationMethod")
+        var configurationSection = "### App Configuration:\n"
+        switch installationMethod {
+        case 0: // Server
+            let serverMethod = UserDefaults.standard.integer(forKey: "Feather.serverMethod")
+            let ipFix = UserDefaults.standard.bool(forKey: "Feather.ipFix")
+            let serverType = (serverMethod == 0) ? "Fully Local" : "Semi Local"
+            configurationSection += "- Install method: `Server`\n"
+            configurationSection += "  - Server type: `\(serverType)`\n"
+            configurationSection += "  - IP Fix: `\(ipFix)`\n"
+        case 1: // idevice
+            let pairingPath = HeartbeatManager.pairingFile()
+            let pairingExists = FileManager.default.fileExists(atPath: pairingPath)
+            let pairingStatus = pairingExists ? "`Present`" : "`Not Present`"
+            configurationSection += "- Install method: `idevice`\n"
+            configurationSection += "  - Pairing file: \(pairingStatus)\n"
+        default:
+            configurationSection += "- Install method: `Unknown`\n"
+        }
+        
+        let body = """
+    ### Device Information
+    - Device: `\(deviceModel)`
+    - iOS Version: `\(deviceVersion)`
+    - App Version: `\(appVersion) (\(buildNumber))`
+    
+    \(configurationSection)
+    
+    ### Issue Description
+    <!-- Describe your issue here -->
+    
+    ### Steps to Reproduce
+    1. 
+    2. 
+    3. 
+    
+    ### Expected Behavior
+    
+    ### Actual Behavior
+    """
+        let encodedTitle = "bug: replace this with a descriptive title ".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let encodedBody = body.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        return "\(url)/issues/new?title=\(encodedTitle)&body=\(encodedBody)"
     }
 }
