@@ -22,9 +22,9 @@ struct SettingsView: View {
     var body: some View {
         NBNavigationView(.localized("Settings")) {
             Form {
-#if !NIGHTLY && !DEBUG
+				#if !NIGHTLY && !DEBUG
                 SettingsDonationCellView(site: _donationsUrl)
-#endif
+				#endif
                 
                 _feedback()
                 
@@ -32,17 +32,17 @@ struct SettingsView: View {
                     NavigationLink(destination: AppearanceView()) {
                         Label(.localized("Appearance"), systemImage: "paintbrush")
                     }
-#if !APPSTORE
+					#if !APPSTORE
                     if UIDevice.current.doesHaveAppIdCapabilities {
                         NavigationLink(destination: AppIconView(currentIcon: $_currentIcon)) {
                             Label(.localized("App Icon"), systemImage: "app.badge")
                         }
                     }
-#else
+					#else
                     NavigationLink(destination: AppIconView(currentIcon: $_currentIcon)) {
                         Label(.localized("App Icon"), systemImage: "app.badge")
                     }
-#endif
+					#endif
                 }
                 
                 NBSection(.localized("Features")) {
@@ -91,7 +91,19 @@ extension SettingsView {
             }
             
             Button(.localized("Submit Feedback"), systemImage: "safari") {
-                UIApplication.open(_makeGitHubIssueURL(url: _githubUrl))
+				let bugAction: UIAlertAction = .init(title: .localized("Bug Report"), style: .default) { _ in
+					UIApplication.open(_makeGitHubIssueURL(url: _githubUrl))
+				}
+				
+				let chooseAction: UIAlertAction = .init(title: .localized("Other"), style: .default) { _ in
+					UIApplication.open(URL(string: "\(_githubUrl)/issues/new/choose")!)
+				}
+				
+				UIAlertController.showAlertWithCancel(
+					title: .localized("Submit Feedback"),
+					message: nil,
+					actions: [bugAction, chooseAction]
+				)
             }
             Button(.localized("GitHub Repository"), systemImage: "safari") {
                 UIApplication.open(_githubUrl)
@@ -119,14 +131,9 @@ extension SettingsView {
     }
     
     private func _makeGitHubIssueURL(url: String) -> String {
-        let deviceModel = MobileGestalt().getPhysicalHardwareNameString() ?? "Unknown"
-        let deviceVersion = UIDevice.current.systemVersion
-        let appVersion = Bundle.main.version
-        let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "?"
-        
-        let installationMethod = UserDefaults.standard.integer(forKey: "Feather.installationMethod")
         var configurationSection = "### App Configuration:\n"
-        switch installationMethod {
+		
+        switch UserDefaults.standard.integer(forKey: "Feather.installationMethod") {
         case 0: // Server
             let serverMethod = UserDefaults.standard.integer(forKey: "Feather.serverMethod")
             let ipFix = UserDefaults.standard.bool(forKey: "Feather.ipFix")
@@ -145,27 +152,29 @@ extension SettingsView {
         }
         
         let body = """
-    ### Device Information
-    - Device: `\(deviceModel)`
-    - iOS Version: `\(deviceVersion)`
-    - App Version: `\(appVersion) (\(buildNumber))`
-    
-    \(configurationSection)
-    
-    ### Issue Description
-    <!-- Describe your issue here -->
-    
-    ### Steps to Reproduce
-    1. 
-    2. 
-    3. 
-    
-    ### Expected Behavior
-    
-    ### Actual Behavior
-    """
-        let encodedTitle = "bug: replace this with a descriptive title ".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let encodedBody = body.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        return "\(url)/issues/new?title=\(encodedTitle)&body=\(encodedBody)"
+		### Device Information
+		- Device: `\(MobileGestalt().getStringForName("PhysicalHardwareNameString") ?? "Unknown")`
+		- iOS Version: `\(UIDevice.current.systemVersion)`
+		- App Version: `\(Bundle.main.version)`
+		
+		\(configurationSection)
+		
+		### Issue Description
+		<!-- Describe your issue here -->
+		
+		### Steps to Reproduce
+		1. 
+		2. 
+		3. 
+		
+		### Expected Behavior
+		
+		### Actual Behavior
+		"""
+        let encodedTitle = "[Bug] replace this with a descriptive title "
+			.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let encodedBody = body
+			.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        return "\(url)/issues/new?template=bug.yml&title=\(encodedTitle)&text=\(encodedBody)"
     }
 }
