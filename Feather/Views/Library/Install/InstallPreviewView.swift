@@ -136,7 +136,7 @@ struct InstallPreviewView: View {
 				await MainActor.run {
 					UIAlertController.showAlertWithOk(
 						title: .localized("Install"),
-						message: error.localizedDescription,
+						message: String(describing: error),
 						action: {
 							HeartbeatManager.shared.start(true)
 							dismiss()
