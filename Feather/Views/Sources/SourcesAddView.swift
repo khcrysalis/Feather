@@ -88,11 +88,7 @@ struct SourcesAddView: View {
 						dismiss()
 					}
 				} footer: {
-					#if !APPSTORE
 					Text(.localized("Supports importing from KravaSign/MapleSign and ESign."))
-					#else
-					Text(.localized("Supports importing from other various applications."))
-					#endif
 				}
 				
 				if !_filteredRecommendedSourcesData.isEmpty {

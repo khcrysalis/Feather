@@ -58,9 +58,7 @@ struct SettingsView: View {
 						Label(.localized("Installation"), systemImage: "arrow.down.circle")
 					}
 				} footer: {
-					#if !APPSTORE
 					Text(.localized("Configure the apps way of installing, its zip compression levels, and custom modifications to apps."))
-					#endif
 				}
 				
 				_directories()
