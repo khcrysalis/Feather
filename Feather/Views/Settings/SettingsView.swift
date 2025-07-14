@@ -26,6 +26,7 @@ struct SettingsView: View {
 				#if !NIGHTLY && !DEBUG
                 SettingsDonationCellView(site: _donationsUrl)
 				#endif
+				#endif
                 
                 _feedback()
                 
