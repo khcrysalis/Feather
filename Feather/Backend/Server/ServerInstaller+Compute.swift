@@ -57,15 +57,9 @@ extension ServerInstaller {
 	private func _iTunesLink(with url: String) -> String {
 		// itms-services://?action=download-manifest&url=
 		let itunesUrlBase64 = "aXRtcy1zZXJ2aWNlczovLz9hY3Rpb249ZG93bmxvYWQtbWFuaWZlc3QmdXJsPQ=="
-		
-		guard
-			let itunesUrlData = Data(base64Encoded: itunesUrlBase64),
-			let itunesUrl = String(data: itunesUrlData, encoding: .utf8)
-		else {
-			return ""
-		}
-		
-		return itunesUrl + url
+		let itunesUrlData = Data(base64Encoded: itunesUrlBase64)!
+		let itunesUrl = String(data: itunesUrlData, encoding: .utf8)
+		return itunesUrl! + url
 	}
 
 	var displayImageSmallEndpoint: URL {

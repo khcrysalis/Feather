@@ -8665,31 +8665,13 @@
         }
       }
     },
-    "Server (Recommended):\nUses a locally hosted server and itms-services:// to install applications.\n\nIDevice (advanced):\nUses a VPN and a pairing file. Writes to AFC and manually calls installd, while monitoring install progress by using a callback\nAdvantage: It is very reliable, does not need SSL certificates or a externally hosted server. Rather, works similarly to a computer." : {
+    "Server (Recommended):\\nUses a locally hosted server to install applications.\\n\\nIDevice (advanced):\\nUses a VPN and a pairing file. Writes to AFC and manually calls installd, while monitoring install progress by using a callback\\nAdvantage: It is very reliable, does not need SSL certificates or a externally hosted server. Rather, works similarly to a computer." : {
       "extractionState" : "manual",
       "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Server (Empfohlen):\nBenutzt einen lokalen laufenden Server und itms-services:// um Apps zu installieren.\n\nIDevice (Erweitert):\nBenutzt eine VPN und eine Pairing-Datei. Schreibt zu AFC und ruft manuell installd auf, während der Installations-Fortschritt überwacht in dem ein Callback benutzt wird\nVorteil: Es ist sehr zuverlässig, braucht keine SSL-Zertifikate oder einen externen laufenden Server. Vielmehr funktioniert es wie ein Computer."
-          }
-        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Server (Recommended):\nUses a locally hosted server and itms-services:// to install applications.\n\nIDevice (advanced):\nUses a VPN and a pairing file. Writes to AFC and manually calls installd, while monitoring install progress by using a callback\nAdvantage: It is very reliable, does not need SSL certificates or a externally hosted server. Rather, works similarly to a computer."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Serwer (zalecane):\nUżywa lokalnie hostowanego serwera i itms-services:// do instalowania aplikacji.\n\nIDevice (zaawansowane):\nUżywa VPN i pliku parowania. Zapisuje do AFC i ręcznie wywołuje installd, monitorując postęp instalacji przez callback.\nZaleta: Jest bardzo niezawodny, nie wymaga certyfikatów SSL ani zewnętrznego serwera. Działa podobnie do komputera."
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Máy chủ (Khuyến nghị):\nSử dụng máy chủ lưu trữ cục bộ và itms-services:// để cài đặt ứng dụng.\n\nIDevice (nâng cao):\nSử dụng VPN và tệp ghép nối. Ghi vào AFC và gọi installd theo cách thủ công, đồng thời theo dõi tiến trình cài đặt bằng cách sử dụng lệnh gọi lại\nƯu điểm: Rất đáng tin cậy, không cần chứng chỉ SSL hoặc máy chủ lưu trữ bên ngoài. Thay vào đó, hoạt động tương tự như máy tính."
+            "value" : "Server (Recommended):\\nUses a locally hosted server to install applications.\\n\\nIDevice (advanced):\\nUses a VPN and a pairing file. Writes to AFC and manually calls installd, while monitoring install progress by using a callback\\nAdvantage: It is very reliable, does not need SSL certificates or a externally hosted server. Rather, works similarly to a computer."
           }
         }
       }
