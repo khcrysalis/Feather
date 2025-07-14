@@ -101,11 +101,6 @@ extension SettingsView {
 					UIApplication.open(URL(string: "\(_githubUrl)/issues/new/choose")!)
 				}
 
-				
-				let chooseAction: UIAlertAction = .init(title: .localized("Other"), style: .default) { _ in
-					UIApplication.open(URL(string: "\(_githubUrl)/issues/new/choose")!)
-				}
-
 				UIAlertController.showAlertWithCancel(
 					title: .localized("Submit Feedback"),
 					message: nil,
