@@ -136,6 +136,24 @@
               }
             }
           }
+        },
+        "it" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Applicazione"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Applicazioni"
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -273,6 +291,24 @@
               }
             }
           }
+        },
+        "it" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Giorno"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Giorni"
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -320,6 +356,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "%lld thư viện hệ thống bắt buộc không được hiển thị"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld dylibs di sistema richiesti non mostrati."
           }
         }
       }
@@ -417,6 +459,24 @@
             "state" : "translated",
             "value" : "%lld nguồn"
           }
+        },
+        "it" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Fonti"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Fonte"
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -463,6 +523,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "💜 Điều này không thể thực hiện được nếu không có các nhà tài trợ của tôi!"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "💜 Questo non era stato possibile creare senza i miei sostenitori!"
           }
         }
       }
@@ -511,6 +577,12 @@
             "state" : "translated",
             "value" : "Giới thiệu"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informazioni"
+          }
         }
       }
     },
@@ -540,6 +612,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Về %@"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informazioni su %@"
           }
         }
       }
@@ -600,6 +678,12 @@
             "state" : "translated",
             "value" : "Thêm"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi"
+          }
         }
       }
     },
@@ -647,6 +731,12 @@
             "state" : "translated",
             "value" : "Thêm nguồn"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi Fonte"
+          }
         }
       }
     },
@@ -675,6 +765,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Thêm mô tả bản địa hóa của ứng dụng."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiunge la descrizione tradotta dell'app"
           }
         }
       }
@@ -735,6 +831,12 @@
             "state" : "translated",
             "value" : "Nâng cao"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avanzate"
+          }
         }
       }
     },
@@ -782,6 +884,12 @@
             "state" : "translated",
             "value" : "Tất cả"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutte"
+          }
         }
       }
     },
@@ -828,6 +936,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Tất cả các tệp của Feathers có thể được tìm thấy trong ứng dụng Tệp, đây là một số liên kết nhanh đến chúng."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutti i file dell'app sono contenute nella cartella dei documenti, ecco alcuni link di quelle."
           }
         }
       }
@@ -877,6 +991,12 @@
             "state" : "translated",
             "value" : "Tất cả kho lưu trữ"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutte le fonti"
+          }
         }
       }
     },
@@ -923,6 +1043,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Icon thay thế"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icone alternative"
           }
         }
       }
@@ -972,6 +1098,12 @@
             "state" : "translated",
             "value" : "Một ứng dụng tuyệt vời"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Una fantastica applicazione"
+          }
         }
       }
     },
@@ -1018,6 +1150,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tính năng"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funzioni dell'app"
           }
         }
       }
@@ -1084,6 +1222,12 @@
             "state" : "translated",
             "value" : "Giao diện"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aspetto"
+          }
         }
       }
     },
@@ -1131,6 +1275,12 @@
             "state" : "translated",
             "value" : "Tên AppID"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome AppID"
+          }
         }
       }
     },
@@ -1177,6 +1327,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lưu trữ & Nén"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archiviazione & Compressione"
           }
         }
       }
@@ -1244,6 +1400,12 @@
             "state" : "translated",
             "value" : "Mật khẩu không đúng"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password errata"
+          }
         }
       }
     },
@@ -1272,6 +1434,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tốt nhất"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Migliore"
           }
         }
       }
@@ -1338,6 +1506,12 @@
             "state" : "translated",
             "value" : "Mô tả chi tiết"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grande descrizione"
+          }
         }
       }
     },
@@ -1348,6 +1522,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bug Report"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segnalazione bug"
           }
         }
       }
@@ -1396,6 +1576,12 @@
             "state" : "translated",
             "value" : "Bundle"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pacchetto"
+          }
         }
       }
     },
@@ -1424,6 +1610,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Theo mặc định, tiêu đề bản địa hóa cho ứng dụng sẽ không bị thay đổi, tuy nhiên tùy chọn này sẽ ghi đè lên nó."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Di default, i titoli tradotti delle app non cambieranno, ma questa opzione lo sostituisce."
           }
         }
       }
@@ -1490,6 +1682,12 @@
             "state" : "translated",
             "value" : "Hủy"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancella"
+          }
         }
       }
     },
@@ -1536,6 +1734,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chứng chỉ"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certificato"
           }
         }
       }
@@ -1603,6 +1807,12 @@
             "state" : "translated",
             "value" : "Chứng chỉ"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certificati"
+          }
         }
       }
     },
@@ -1650,6 +1860,12 @@
             "state" : "translated",
             "value" : "Thay đổi"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambia"
+          }
         }
       }
     },
@@ -1678,6 +1894,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kiểm tra thu hồi"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controlla la revocazione"
           }
         }
       }
@@ -1727,6 +1949,12 @@
             "state" : "translated",
             "value" : "Chọn từ Tệp"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scegli da File"
+          }
         }
       }
     },
@@ -1775,6 +2003,12 @@
             "state" : "translated",
             "value" : "Chọn từ Ảnh"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scegli da Foto"
+          }
         }
       }
     },
@@ -1822,6 +2056,12 @@
             "state" : "translated",
             "value" : "Đóng"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiudi"
+          }
         }
       }
     },
@@ -1850,6 +2090,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hoàn thành"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completato"
           }
         }
       }
@@ -1899,6 +2145,12 @@
             "state" : "translated",
             "value" : "Mức độ nén"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Livello di compressione"
+          }
         }
       }
     },
@@ -1927,6 +2179,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cấu hình cách cài đặt ứng dụng, mức độ nén zip và các sửa đổi tùy chỉnh cho ứng dụng."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura il modo dell'installazione delle app, il livello della compressione delle zip, e modifiche personalizzate delle app."
           }
         }
       }
@@ -1993,6 +2251,12 @@
             "state" : "translated",
             "value" : "Sao chép"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copia"
+          }
         }
       }
     },
@@ -2021,6 +2285,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sao chép URL tải xuống"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copia URL di download"
           }
         }
       }
@@ -2087,6 +2357,12 @@
             "state" : "translated",
             "value" : "Ghi công"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crediti"
+          }
         }
       }
     },
@@ -2134,6 +2410,12 @@
             "state" : "translated",
             "value" : "Tùy chỉnh"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personalizzazione"
+          }
         }
       }
     },
@@ -2180,6 +2462,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ngày"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data"
           }
         }
       }
@@ -2239,6 +2527,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ngày thêm"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data di aggiunta"
           }
         }
       }
@@ -2305,6 +2599,12 @@
             "state" : "translated",
             "value" : "Mặc định"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Predefinito"
+          }
         }
       }
     },
@@ -2334,6 +2634,12 @@
             "state" : "translated",
             "value" : "Giao diện mặc định cho ứng dụng, chỉ bao gồm phụ đề."
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aspetto predefinito dell'app, include solamente i sottotitoli."
+          }
         }
       }
     },
@@ -2362,6 +2668,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mặc định:\nKý một ứng dụng bằng chứng chỉ do bạn chỉ định.\n\nAdhoc (Nâng cao):\nKý mà không cần danh tính, tuy nhiên điều này không may sẽ xóa bỏ các quyền (iOS sẽ không cài đặt loại này)."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default:Firma un'app con il tuo certificato specificato.Adhoc (Avanzato):Firma senza identità, tuttavia, questo purtroppo rimuove i diritti (iOS non installerà questo tipo)."
           }
         }
       }
@@ -2428,6 +2740,12 @@
             "state" : "translated",
             "value" : "Xóa"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elimina"
+          }
         }
       }
     },
@@ -2457,6 +2775,12 @@
             "state" : "translated",
             "value" : "Xóa sau khi ký"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elimina dopo la firma"
+          }
         }
       }
     },
@@ -2476,6 +2800,12 @@
           }
         },
         "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discord"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Discord"
@@ -2546,6 +2876,12 @@
             "state" : "translated",
             "value" : "Bỏ qua"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignora"
+          }
         }
       }
     },
@@ -2599,6 +2935,12 @@
             "state" : "translated",
             "value" : "Tên hiển thị"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome visualizzato"
+          }
         }
       }
     },
@@ -2621,6 +2963,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bạn có muốn xuất chứng chỉ của mình sang một ứng dụng bên ngoài không? Ứng dụng đó sẽ có thể ký các ứng dụng bằng chứng chỉ của bạn."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vuoi esportare il tuo certificato in un'app esterna? Quell'app potrà firmare app usando il tuo certificato."
           }
         }
       }
@@ -2686,6 +3034,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ủng hộ"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dona"
           }
         }
       }
@@ -2753,6 +3107,12 @@
             "state" : "translated",
             "value" : "Ủng hộ"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Donazioni"
+          }
         }
       }
     },
@@ -2788,6 +3148,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tải StosVPN"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scarica StosVPN"
           }
         }
       }
@@ -2842,6 +3208,12 @@
             "state" : "translated",
             "value" : "Dylibs"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dylibs"
+          }
         }
       },
       "shouldTranslate" : false
@@ -2871,6 +3243,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bật Liquid Glass"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abilita Liquid Glass"
           }
         }
       }
@@ -2919,6 +3297,12 @@
             "state" : "translated",
             "value" : "Bật bất kỳ biện pháp bảo vệ nào sẽ thêm một chuỗi ngẫu nhiên vào bundleidentifiers của các ứng dụng bạn ký, điều này để đảm bảo Apple ID của bạn không bị Apple gắn cờ. Tuy nhiên, khi sử dụng dịch vụ ký, bạn có thể bỏ qua điều này."
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abilitando una qualsiasi protezione aggiunge del testo casuale nell'identificativo del pacchetto dell'app che vuoi firmare, questo per fare in modo che il tuo ID Apple non viene segnalato da Apple. Tuttavia, quando usi un servizio di signing puoi ignorare questo."
+          }
         }
       }
     },
@@ -2948,6 +3332,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tận hưởng %@?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ti sta piacendo %@?"
           }
         }
       }
@@ -2995,6 +3385,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nhập URL để bắt đầu xác thực."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inserisci un URL per iniziare la verifica."
           }
         }
       }
@@ -3061,6 +3457,12 @@
             "state" : "translated",
             "value" : "Nhập mật khẩu"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inserisci password"
+          }
         }
       }
     },
@@ -3089,6 +3491,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nhập URL nguồn"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inserisci URL della Fonte"
           }
         }
       }
@@ -3155,6 +3563,12 @@
             "state" : "translated",
             "value" : "Nhập mật khẩu của chứng chỉ. Để trống nếu không yêu cầu mật khẩu."
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inserisci la password associata alla chiave privata. Lascia vuoto se la password non è richiesta."
+          }
         }
       }
     },
@@ -3202,6 +3616,12 @@
             "state" : "translated",
             "value" : "Quyền hạn"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diritti"
+          }
         }
       }
     },
@@ -3230,6 +3650,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lỗi"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Errore"
           }
         }
       }
@@ -3278,6 +3704,12 @@
             "state" : "translated",
             "value" : "Tệp thực thi"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eseguibile"
+          }
         }
       }
     },
@@ -3325,6 +3757,12 @@
             "state" : "translated",
             "value" : "Dylib hiện có"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dylibs esistenti"
+          }
         }
       }
     },
@@ -3353,6 +3791,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Thử nghiệm"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esperimenti"
           }
         }
       }
@@ -3413,6 +3857,12 @@
             "state" : "translated",
             "value" : "Hết hạn"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scaduto"
+          }
         }
       }
     },
@@ -3459,6 +3909,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hết hạn vào"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scade"
           }
         }
       }
@@ -3508,6 +3964,12 @@
             "state" : "translated",
             "value" : "Xuất"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esporta"
+          }
         }
       }
     },
@@ -3530,6 +3992,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Xuất chứng chỉ"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esporta certificato"
           }
         }
       }
@@ -3578,6 +4046,12 @@
             "state" : "translated",
             "value" : "Tải xuống thất bại, hãy kiểm tra kết nối internet của bạn và thử lại."
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download fallito, controlla la tua connessione e riprova."
+          }
         }
       }
     },
@@ -3606,6 +4080,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tính năng nổi bật"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consigliato"
           }
         }
       }
@@ -3653,6 +4133,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tính năng"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funzioni"
           }
         }
       }
@@ -3708,6 +4194,12 @@
             "state" : "translated",
             "value" : "Chia sẻ tệp"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Condivisione file"
+          }
         }
       }
     },
@@ -3754,6 +4246,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tệp"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Files"
           }
         }
       }
@@ -3802,6 +4300,12 @@
             "state" : "translated",
             "value" : "Sắp xếp theo"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtra come"
+          }
         }
       }
     },
@@ -3849,6 +4353,12 @@
             "state" : "translated",
             "value" : "Bắt buộc Bản địa hóa"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forza la traduzione"
+          }
         }
       }
     },
@@ -3892,6 +4402,12 @@
           }
         },
         "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frameworks"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Frameworks"
@@ -3943,6 +4459,12 @@
             "state" : "translated",
             "value" : "Frameworks & PlugIns"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frameworks & Plugins"
+          }
         }
       }
     },
@@ -3990,6 +4512,12 @@
             "state" : "translated",
             "value" : "Cục bộ hoàn toàn"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutto in locale"
+          }
         }
       }
     },
@@ -4018,6 +4546,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chế độ trò chơi"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modalità gioco"
           }
         }
       }
@@ -4078,6 +4612,12 @@
             "state" : "translated",
             "value" : "Chung"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Generale"
+          }
         }
       }
     },
@@ -4124,6 +4664,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nhận quyền truy cập vào Discord riêng của chúng tôi bằng cách quyên góp, nơi chúng tôi thảo luận về các bản cập nhật tương lai, phiên bản beta và các cách tiềm năng để cải thiện trải nghiệm của bạn."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ottieni l'accesso al nostro server Discord segreto donando, dove parliamo di nuove funzionalità, beta e nuovi modi per rendere la tua esperienza migliore."
           }
         }
       }
@@ -4173,6 +4719,12 @@
             "state" : "translated",
             "value" : "Xem thông tin"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ottieni informazioni"
+          }
         }
       }
     },
@@ -4201,6 +4753,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bắt đầu bằng cách thêm kho lưu trữ đầu tiên của bạn."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inizia aggiungendo la tua prima fonte."
           }
         }
       }
@@ -4231,6 +4789,12 @@
             "state" : "translated",
             "value" : "Bắt đầu bằng cách nhập tệp IPA đầu tiên của bạn."
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inizia importando il tuo primo file IPA."
+          }
         }
       }
     },
@@ -4259,6 +4823,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bắt đầu ký bằng cách nhập chứng chỉ đầu tiên của bạn."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importa il tuo primo certificato per iniziare a firmare."
           }
         }
       }
@@ -4325,6 +4895,12 @@
             "state" : "translated",
             "value" : "Kho lưu trữ GitHub"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repository GitHub"
+          }
         }
       }
     },
@@ -4353,6 +4929,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hãy vào GitHub của chúng tôi và cho chúng tôi một ngôi sao!"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vai nel nostro GitHub e dacci una stella!"
           }
         }
       }
@@ -4401,6 +4983,12 @@
             "state" : "translated",
             "value" : "Heartbeat"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Battito"
+          }
         }
       }
     },
@@ -4447,6 +5035,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trợ giúp"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aiuto"
           }
         }
       }
@@ -4495,6 +5089,12 @@
             "state" : "translated",
             "value" : "Ẩn"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nascosto"
+          }
         }
       }
     },
@@ -4541,6 +5141,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Định danh"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identificativi"
           }
         }
       }
@@ -4607,6 +5213,12 @@
             "state" : "translated",
             "value" : "Định danh"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identificativo"
+          }
         }
       }
     },
@@ -4654,6 +5266,12 @@
             "state" : "translated",
             "value" : "Tiền tố định danh"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prefisso dell'identificativo"
+          }
         }
       }
     },
@@ -4673,6 +5291,12 @@
           }
         },
         "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "idevice"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "idevice"
@@ -4706,6 +5330,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nếu có bất kỳ vấn đề nào xảy ra trong ứng dụng, vui lòng báo lỗi qua kho lưu trữ GitHub. Khi báo lỗi, hãy đảm bảo gửi thông tin chi tiết."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se riscontri qualche problema con l'app per favore segnalalo sulla repository di GitHub. Quando invii il problema, assicurati di inviare informazioni dettagliate."
           }
         }
       }
@@ -4773,6 +5403,12 @@
             "state" : "translated",
             "value" : "Nhập"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importa"
+          }
         }
       }
     },
@@ -4819,6 +5455,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nhập tệp .p12"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importa file certificato"
           }
         }
       }
@@ -4868,6 +5510,12 @@
             "state" : "translated",
             "value" : "Nhập từ Tệp"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importa da File"
+          }
         }
       }
     },
@@ -4916,6 +5564,12 @@
             "state" : "translated",
             "value" : "Nhập từ URL"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importa da URL"
+          }
         }
       }
     },
@@ -4962,6 +5616,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nhập tệp ghép nối"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importa file di abbinamento"
           }
         }
       }
@@ -5010,6 +5670,12 @@
             "state" : "translated",
             "value" : "Nhập tệp mobileprovision"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importa file mobileprovision"
+          }
         }
       }
     },
@@ -5056,6 +5722,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Đã nhập"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importato"
           }
         }
       }
@@ -5104,6 +5776,12 @@
             "state" : "translated",
             "value" : "Thông tin"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informazioni"
+          }
         }
       }
     },
@@ -5139,6 +5817,12 @@
             "state" : "translated",
             "value" : "Thư mục tiêm"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cartella di iniezione"
+          }
         }
       }
     },
@@ -5173,6 +5857,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Đường dẫn tiêm"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Percorso di iniezione"
           }
         }
       }
@@ -5239,6 +5929,12 @@
             "state" : "translated",
             "value" : "Cài đặt"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installa"
+          }
         }
       }
     },
@@ -5267,6 +5963,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cài đặt"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installazione"
           }
         }
       }
@@ -5315,6 +6017,12 @@
             "state" : "translated",
             "value" : "Kiểu cài đặt"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo di installazione"
+          }
         }
       }
     },
@@ -5343,6 +6051,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Đang cài đặt"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installazione"
           }
         }
       }
@@ -5390,6 +6104,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Toàn màn hình iPad"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schermo intero iPad"
           }
         }
       }
@@ -5445,6 +6165,12 @@
             "state" : "translated",
             "value" : "Chia sẻ tệp qua iTunes"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Condivisione file su iTunes"
+          }
         }
       }
     },
@@ -5473,6 +6199,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tìm hiểu thêm về cách thiết lập kho lưu trữ…"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ottieni informazioni su come configurare una fonte..."
           }
         }
       }
@@ -5534,6 +6266,12 @@
             "state" : "translated",
             "value" : "Thư viện"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Libreria"
+          }
         }
       }
     },
@@ -5580,6 +6318,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Giao diện thư viện"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aspetto delle celle della libreria"
           }
         }
       }
@@ -5629,6 +6373,12 @@
             "state" : "translated",
             "value" : "Yêu cầu tối thiểu"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Requisiti minimi"
+          }
         }
       }
     },
@@ -5676,6 +6426,12 @@
             "state" : "translated",
             "value" : "Khác"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Altro"
+          }
         }
       }
     },
@@ -5722,6 +6478,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chỉnh sửa"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifica"
           }
         }
       }
@@ -5782,6 +6544,12 @@
             "state" : "translated",
             "value" : "Tên"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome"
+          }
         }
       }
     },
@@ -5828,6 +6596,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mới"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuovo"
           }
         }
       }
@@ -5894,6 +6668,12 @@
             "state" : "translated",
             "value" : "Chứng chỉ mới"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuovo certificato"
+          }
         }
       }
     },
@@ -5942,6 +6722,12 @@
             "state" : "translated",
             "value" : "Biệt danh (Tùy chọn)"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nickname (opzionale)"
+          }
         }
       }
     },
@@ -5970,6 +6756,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Không có ứng dụng"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun'app"
           }
         }
       }
@@ -6018,6 +6810,12 @@
             "state" : "translated",
             "value" : "Không có chứng chỉ"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun certificato"
+          }
         }
       }
     },
@@ -6046,6 +6844,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Không có chứng chỉ"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun certificato"
           }
         }
       }
@@ -6082,6 +6886,12 @@
             "state" : "translated",
             "value" : "Không có tập tin nào được chọn."
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun file scelto."
+          }
         }
       }
     },
@@ -6111,6 +6921,12 @@
             "state" : "translated",
             "value" : "Không tìm thấy Framework hoặc Plug-In nào."
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun Framework o PlugIn trovato."
+          }
         }
       }
     },
@@ -6139,6 +6955,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Không tìm thấy Icon nào."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun'icona trovata."
           }
         }
       }
@@ -6187,6 +7009,12 @@
             "state" : "translated",
             "value" : "Không tìm thấy tệp ghép nối, vui lòng nhập tệp."
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File di abbinamento non trovato, per favore importalo."
+          }
         }
       }
     },
@@ -6216,6 +7044,12 @@
             "state" : "translated",
             "value" : "Không có kho lưu trữ"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessuna fonte"
+          }
         }
       }
     },
@@ -6244,6 +7078,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Không"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessuno"
           }
         }
       }
@@ -6310,6 +7150,12 @@
             "state" : "translated",
             "value" : "OK"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
         }
       }
     },
@@ -6356,6 +7202,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chỉ sử dụng địa chỉ localhost"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa solo l'indirizzo localhost"
           }
         }
       }
@@ -6404,6 +7256,12 @@
             "state" : "translated",
             "value" : "Mở"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apri"
+          }
         }
       }
     },
@@ -6432,6 +7290,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mở [issue](https://github.com/khcrysalis/Feather/issues) trên GitHub nếu bạn muốn nguồn của mình được giới thiệu."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apri un [problema](https://github.com/khcrysalis/Feather/issues) su GitHub se vuoi che la tua fonte sia consigliata."
           }
         }
       }
@@ -6480,6 +7344,12 @@
             "state" : "translated",
             "value" : "Mở thư mục lưu trữ"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apri archivio"
+          }
         }
       }
     },
@@ -6527,6 +7397,12 @@
             "state" : "translated",
             "value" : "Mở thư mục chứng chỉ"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apri certificati"
+          }
         }
       }
     },
@@ -6573,6 +7449,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mở thư mục tài liệu"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apri documenti"
           }
         }
       }
@@ -6639,6 +7521,12 @@
             "state" : "translated",
             "value" : "Mở trong Tệp"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apri in File"
+          }
         }
       }
     },
@@ -6649,6 +7537,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Other"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Altro"
           }
         }
       }
@@ -6678,6 +7572,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Đóng gói"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impacchettamento"
           }
         }
       }
@@ -6725,6 +7625,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hướng dẫn về tệp ghép nối"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guida file di abbinamento"
           }
         }
       }
@@ -6791,6 +7697,12 @@
             "state" : "translated",
             "value" : "Mật khẩu"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password"
+          }
         }
       }
     },
@@ -6837,6 +7749,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nền tảng"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Piattaforma"
           }
         }
       }
@@ -6904,6 +7822,12 @@
             "state" : "translated",
             "value" : "Vui lòng kiểm tra mật khẩu và thử lại."
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per favore controlla la password e riprova."
+          }
         }
       }
     },
@@ -6951,6 +7875,12 @@
             "state" : "translated",
             "value" : "Vui lòng vào cài đặt và nhập chứng chỉ hợp lệ"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per favore vai in impostazioni e importa un certificato prima"
+          }
         }
       }
     },
@@ -6979,6 +7909,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Đăng ký"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Post-Firma"
           }
         }
       }
@@ -7033,6 +7969,12 @@
             "state" : "translated",
             "value" : "Bảo vệ PPQ"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Protezione PPQ"
+          }
         }
       }
     },
@@ -7081,6 +8023,12 @@
             "state" : "translated",
             "value" : "Phiên bản trước"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versioni precedenti"
+          }
         }
       }
     },
@@ -7100,6 +8048,12 @@
           }
         },
         "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro Motion"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pro Motion"
@@ -7133,6 +8087,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tiếp tục"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Procedi"
           }
         }
       }
@@ -7188,6 +8148,12 @@
             "state" : "translated",
             "value" : "Thuộc tính"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proprietà"
+          }
         }
       }
     },
@@ -7234,6 +8200,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bảo vệ"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Protezione"
           }
         }
       }
@@ -7282,6 +8254,12 @@
             "state" : "translated",
             "value" : "Cấp phép tất cả thiết bị"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provisioning effettuato su tutti i dispositivi"
+          }
         }
       }
     },
@@ -7328,6 +8306,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Thiết bị đã cấp phép"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dispositivi di cui è stato effettuato il provisioning"
           }
         }
       }
@@ -7376,6 +8360,12 @@
             "state" : "translated",
             "value" : "Ký lại"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ri-firma"
+          }
         }
       }
     },
@@ -7404,6 +8394,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sẵn sàng"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pronto"
           }
         }
       }
@@ -7452,6 +8448,12 @@
             "state" : "translated",
             "value" : "Loại bỏ"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rimozione"
+          }
         }
       }
     },
@@ -7498,6 +8500,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Loại bỏ những cảnh báo phiền phức như thế này sau khi có quyền truy cập beta!"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rimuovi avvisi fastidiose come questa dopo aver ottenuto l'accesso alla beta!"
           }
         }
       }
@@ -7552,6 +8560,12 @@
             "state" : "translated",
             "value" : "Xóa tệp Provisioning"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rimuovi Provisioning"
+          }
         }
       }
     },
@@ -7598,6 +8612,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Xóa cảnh báo này"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rimuovi questo avviso"
           }
         }
       }
@@ -7652,6 +8672,12 @@
             "state" : "translated",
             "value" : "Xóa URL Scheme"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rimuovi schema URL"
+          }
         }
       }
     },
@@ -7699,6 +8725,12 @@
             "state" : "translated",
             "value" : "Xóa ứng dụng Watch"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rimuovi segnaposto dell'orologio"
+          }
         }
       }
     },
@@ -7721,6 +8753,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Xóa tệp mobileprovision được nhúng bên trong ứng dụng khi ký, giúp ngăn chặn mọi phát hiện."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rimuovere il file di provisioning escluderà il file .mobileprovision dall’essere incorporato nell’app durante la firma, aiutando così a evitare qualsiasi rilevamento."
           }
         }
       }
@@ -7750,6 +8788,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Thay thế Substrate bằng ElleKit"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sostituisci Substrate con ElleKit"
           }
         }
       }
@@ -7804,6 +8848,12 @@
             "state" : "translated",
             "value" : "Thay thế"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sostituzione"
+          }
         }
       }
     },
@@ -7851,6 +8901,12 @@
             "state" : "translated",
             "value" : "Kho lưu trữ"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fonti"
+          }
         }
       }
     },
@@ -7879,6 +8935,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kho lưu trữ đã được thêm."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fonte già aggiunto."
           }
         }
       }
@@ -7945,6 +9007,12 @@
             "state" : "translated",
             "value" : "Đặt lại"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ripristina"
+          }
         }
       }
     },
@@ -7973,6 +9041,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Đặt lại tất cả"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ripristina Tutto"
           }
         }
       }
@@ -8003,6 +9077,12 @@
             "state" : "translated",
             "value" : "Đặt lại chứng chỉ"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ripristina Certificati"
+          }
         }
       }
     },
@@ -8031,6 +9111,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Đặt lại ứng dụng đã nhập"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ripristina App Importate"
           }
         }
       }
@@ -8061,6 +9147,12 @@
             "state" : "translated",
             "value" : "Đặt lại bộ nhớ đệm mạng"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reimposta Cache di rete"
+          }
         }
       }
     },
@@ -8089,6 +9181,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Đặt lại cài đặt"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ripristina Impostazioni"
           }
         }
       }
@@ -8119,6 +9217,12 @@
             "state" : "translated",
             "value" : "Đặt lại ứng dụng đã ký"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reimposta App firmate"
+          }
         }
       }
     },
@@ -8147,6 +9251,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Đặt lại nguồn"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ripristina Fonti"
           }
         }
       }
@@ -8177,6 +9287,12 @@
             "state" : "translated",
             "value" : "Đặt lại nguồn ứng dụng, chứng chỉ, ứng dụng và nội dung chung."
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ripristina le fonti dell'applicazione, certificati, applicazioni e contenuti generali."
+          }
         }
       }
     },
@@ -8205,6 +9321,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Đặt lại bộ nhớ đệm công việc"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ripristina Cache di lavoro"
           }
         }
       }
@@ -8253,6 +9375,12 @@
             "state" : "translated",
             "value" : "Khởi động lại Heartbeat"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riavvia battito"
+          }
         }
       }
     },
@@ -8299,6 +9427,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yêu cầu Khởi động lại"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riavvio richiesto"
           }
         }
       }
@@ -8359,6 +9493,12 @@
             "state" : "translated",
             "value" : "Lưu"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salva"
+          }
         }
       }
     },
@@ -8407,6 +9547,12 @@
             "state" : "translated",
             "value" : "Xem tất cả ứng dụng từ các nguồn của bạn"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra tutte le app dalle tue fonti"
+          }
         }
       }
     },
@@ -8453,6 +9599,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Có vẻ như bạn đã có tệp ghép nối của mình!"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sembra che tu abbia messo le mani sul tuo file di abbinamento!"
           }
         }
       }
@@ -8502,6 +9654,12 @@
             "state" : "translated",
             "value" : "Chọn icon thay thế"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleziona icona alternativa"
+          }
         }
       }
     },
@@ -8550,6 +9708,12 @@
             "state" : "translated",
             "value" : "Chọn tệp entitlements"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleziona file dei diritti"
+          }
         }
       }
     },
@@ -8597,6 +9761,12 @@
             "state" : "translated",
             "value" : "Bán cục bộ"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Semi Locale"
+          }
         }
       }
     },
@@ -8625,6 +9795,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gửi Manifest"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invio del manifest"
           }
         }
       }
@@ -8655,6 +9831,12 @@
             "state" : "translated",
             "value" : "Gửi Payload"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invio del payload"
+          }
         }
       }
     },
@@ -8684,6 +9866,12 @@
             "state" : "translated",
             "value" : "Máy chủ"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server"
+          }
         }
       }
     },
@@ -8712,6 +9900,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Máy chủ (Khuyến nghị):\nSử dụng máy chủ lưu trữ cục bộ và itms-services:// để cài đặt ứng dụng.\n\nIDevice (nâng cao):\nSử dụng VPN và tệp ghép nối. Ghi vào AFC và gọi installd theo cách thủ công, đồng thời theo dõi tiến trình cài đặt bằng cách sử dụng lệnh gọi lại\nƯu điểm: Rất đáng tin cậy, không cần chứng chỉ SSL hoặc máy chủ lưu trữ bên ngoài. Thay vào đó, hoạt động tương tự như máy tính."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server (Consigliato):Utilizza un server ospitato localmente e itms-services:// per installare le applicazioni.iDevice (Avanzato):Utilizza una VPN e un file di abbinamento. Scrive tramite AFC e richiama manualmente installd, monitorando l’avanzamento dell’installazione tramite una callback.Vantaggi:È molto affidabile, non richiede certificati SSL né un server ospitato esternamente. Funziona in modo simile a un computer."
           }
         }
       }
@@ -8760,6 +9954,12 @@
             "state" : "translated",
             "value" : "Máy chủ & SSL"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server & SSL"
+          }
         }
       }
     },
@@ -8788,6 +9988,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Loại máy chủ"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo server"
           }
         }
       }
@@ -8849,6 +10055,12 @@
             "state" : "translated",
             "value" : "Cài đặt"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impostazioni"
+          }
         }
       }
     },
@@ -8897,6 +10109,12 @@
             "state" : "translated",
             "value" : "Hiển thị bảng chia sẻ khi xuất"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra foglio di condivisione quando Esporti"
+          }
         }
       }
     },
@@ -8943,6 +10161,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Thể hiện sự ủng hộ của bạn"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra il tuo supporto"
           }
         }
       }
@@ -8991,6 +10215,12 @@
             "state" : "translated",
             "value" : "Thể hiện sự ủng hộ của bạn bằng cách quyên góp! Nếu bạn không thể quyên góp, việc chia sẻ cho người khác biết cũng có tác dụng!"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra il tuo supporto donando! Se non puoi donare, può funzionare anche condividerlo con il mondo!"
+          }
         }
       }
     },
@@ -9038,6 +10268,12 @@
             "state" : "translated",
             "value" : "Ký"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Firma"
+          }
         }
       }
     },
@@ -9084,6 +10320,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Đã ký"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Firmato"
           }
         }
       }
@@ -9138,6 +10380,12 @@
             "state" : "translated",
             "value" : "Ký"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Firmando"
+          }
         }
       }
     },
@@ -9191,6 +10439,12 @@
             "state" : "translated",
             "value" : "Tùy chọn ký"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opzioni della firma"
+          }
         }
       }
     },
@@ -9219,6 +10473,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Loại ký"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo di firma"
           }
         }
       }
@@ -9266,6 +10526,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "URL nguồn"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL Fonte"
           }
         }
       }
@@ -9327,6 +10593,12 @@
             "state" : "translated",
             "value" : "Nguồn"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fonti"
+          }
         }
       }
     },
@@ -9355,6 +10627,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tốc độ"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Velocità"
           }
         }
       }
@@ -9421,6 +10699,12 @@
             "state" : "translated",
             "value" : "Nhà tài trợ"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sostenitori"
+          }
         }
       }
     },
@@ -9468,6 +10752,12 @@
             "state" : "translated",
             "value" : "Chứng chỉ SSL"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certificati SSL"
+          }
         }
       }
     },
@@ -9514,6 +10804,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tiêu chuẩn"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard"
           }
         }
       }
@@ -9568,6 +10864,12 @@
             "state" : "translated",
             "value" : "Bắt đầu ký"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inizia a firmare"
+          }
         }
       }
     },
@@ -9615,6 +10917,12 @@
             "state" : "translated",
             "value" : "Giao diện cửa hàng"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aspetto della cella di memorizzazione"
+          }
         }
       }
     },
@@ -9661,6 +10969,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chuỗi"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stringa"
           }
         }
       }
@@ -9727,6 +11041,12 @@
             "state" : "translated",
             "value" : "Gửi phản hồi"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invia feedback"
+          }
         }
       }
     },
@@ -9773,6 +11093,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Hỗ trợ nhập từ KravaSign/MapleSign và ESign"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suporta l'importazione da KravaSign/MapleSign e ESign."
           }
         }
       }
@@ -9821,6 +11147,12 @@
             "state" : "translated",
             "value" : "Định danh nhóm"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identificatori Team"
+          }
         }
       }
     },
@@ -9867,6 +11199,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tên nhóm"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome Team"
           }
         }
       }
@@ -9915,6 +11253,12 @@
             "state" : "translated",
             "value" : "Heartbeat được kích hoạt trong nền, nó sẽ khởi động lại khi ứng dụng được mở lại hoặc được nhắc nhở. Nếu trạng thái bên dưới đang nhịp đập, điều đó có nghĩa là nó hoạt động bình thường."
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il battito è attivo in background; verrà riavviato quando l'app viene riaperta o forzata. Se lo stato qui sotto pulsa, significa che è funzionante."
+          }
         }
       }
     },
@@ -9944,6 +11288,12 @@
             "state" : "translated",
             "value" : "Các kho lưu trữ được hỗ trợ duy nhất là kho lưu trữ AltStore."
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'unica fonte supportata sono fonti di AltStore."
+          }
         }
       }
     },
@@ -9972,6 +11322,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chủ đề"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tema"
           }
         }
       }
@@ -10020,6 +11376,12 @@
             "state" : "translated",
             "value" : "Những thay đổi này yêu cầu khởi động lại ứng dụng"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questi cambiamenti richiedono un riavvio dell'app"
+          }
         }
       }
     },
@@ -10047,6 +11409,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Không thể hoàn tác hành động này. Bạn có muốn tiếp tục không?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa operazione non può essere annullata. Vuoi procedere?"
           }
         }
       }
@@ -10077,6 +11445,12 @@
             "state" : "translated",
             "value" : "Điều này cho phép sử dụng liquid glass cho ứng dụng này, điều này yêu cầu khởi động lại ứng dụng để có hiệu lực."
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questo abilita il liquid glass per l'app, questo richiede un riavvio dell'app per dare effetto."
+          }
         }
       }
     },
@@ -10106,6 +11480,12 @@
             "state" : "translated",
             "value" : "Tùy chọn này buộc phải chuyển đổi ứng dụng để thử sử dụng giao diện Liquid Glass mới được giới thiệu trong iOS 26. Tùy chọn này có thể không hoạt động với tất cả các ứng dụng do có nhiều khuôn khổ khác nhau."
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa opzione forza la conversione delle app per provare a usare il nuovo redesign liquid glass introdotto con iOS 26, però non funziona su tutte le app per via dei framework diversi."
+          }
         }
       }
     },
@@ -10134,6 +11514,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Thao tác này sẽ xóa ứng dụng đã nhập của bạn sau khi ký, để tiết kiệm dung lượng không cần thiết."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questo elimina l'applicazione importata dopo la firma, per salvare spazio usato inutilmente."
           }
         }
       }
@@ -10182,6 +11568,12 @@
             "state" : "translated",
             "value" : "Bật tính năng này sẽ hiển thị một bảng chia sẻ sau khi xuất IPA vào tệp của bạn."
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abilitando questa opzione mosta una schermata di condivisione dopo aver esportato i file."
+          }
         }
       }
     },
@@ -10229,6 +11621,12 @@
             "state" : "translated",
             "value" : "Tunnel & Ghép nối"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tunnel & Abbinamento"
+          }
         }
       }
     },
@@ -10264,6 +11662,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tweaks"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifiche"
           }
         }
       },
@@ -10331,6 +11735,12 @@
             "state" : "translated",
             "value" : "Không xác định"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sconosciuto"
+          }
         }
       }
     },
@@ -10378,6 +11788,12 @@
             "state" : "translated",
             "value" : "Cập nhật chứng chỉ SSL"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiorna i certificati SSL"
+          }
         }
       }
     },
@@ -10397,6 +11813,12 @@
           }
         },
         "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL"
@@ -10430,6 +11852,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Giá trị"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valore"
           }
         }
       }
@@ -10490,6 +11918,12 @@
             "state" : "translated",
             "value" : "Phiên bản"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versione"
+          }
         }
       }
     },
@@ -10537,6 +11971,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Xem Entitlements"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra diritti"
           }
         }
       }
@@ -10586,6 +12026,12 @@
             "state" : "translated",
             "value" : "Truy cập Patreon"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visita il Patreon"
+          }
         }
       }
     },
@@ -10634,6 +12080,12 @@
             "state" : "translated",
             "value" : "Truy cập trang web"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visita il sito web"
+          }
         }
       }
     },
@@ -10669,6 +12121,12 @@
             "state" : "translated",
             "value" : "Bạn không thể cập nhật ‘%@‘ bằng chính nó, vui lòng sử dụng công cụ thay thế để cập nhật."
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non puoi aggiornare ‘%@‘ con se stesso, usa un altro tool per fare l’aggiornamento."
+          }
         }
       }
     },
@@ -10697,6 +12155,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tệp ghép nối của bạn không hợp lệ và không tương thích với thiết bị của bạn, vui lòng nhập tệp ghép nối hợp lệ."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il tuo file di abbinamento non è valido e non è compatibile con il tuo dispositivo, per favore importa un file di abbinamento valido."
           }
         }
       }
