@@ -20,8 +20,13 @@ struct LibraryView: View {
 	@State private var _isDownloadingPresenting = false
 	@State private var _alertDownloadString: String = "" // for _isDownloadingPresenting
 	
+	// MARK: Selection State
+	@State private var _selectedAppUUIDs: Set<String> = []
+	@State private var _editMode: EditMode = .inactive
+	
 	@State private var _searchText = ""
 	@State private var _selectedScope: Scope = .all
+
 	
 	@Namespace private var _namespace
 	
@@ -75,7 +80,8 @@ struct LibraryView: View {
 									app: app,
 									selectedInfoAppPresenting: $_selectedInfoAppPresenting,
 									selectedSigningAppPresenting: $_selectedSigningAppPresenting,
-									selectedInstallAppPresenting: $_selectedInstallAppPresenting
+									selectedInstallAppPresenting: $_selectedInstallAppPresenting,
+									selectedAppUUIDs: $_selectedAppUUIDs // send to cell view
 								)
 								.compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
 							}
@@ -95,7 +101,8 @@ struct LibraryView: View {
 									app: app,
 									selectedInfoAppPresenting: $_selectedInfoAppPresenting,
 									selectedSigningAppPresenting: $_selectedSigningAppPresenting,
-									selectedInstallAppPresenting: $_selectedInstallAppPresenting
+									selectedInstallAppPresenting: $_selectedInstallAppPresenting,
+									selectedAppUUIDs: $_selectedAppUUIDs
 								)
 								.compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
 							}
@@ -131,14 +138,25 @@ struct LibraryView: View {
 				}
 			}
 			.toolbar {
-				NBToolbarMenu(
-					systemImage: "plus",
-					style: .icon,
-					placement: .topBarTrailing
-				) {
-					_importActions()
+                ToolbarItem(placement: .topBarLeading) {
+                    EditButton()
+                }
+				
+				if _editMode.isEditing {
+                    NBToolbarButton(.localized("Delete"), systemImage: "trash", isDisabled: _selectedAppUUIDs.isEmpty) {
+						_bulkDeleteSelectedApps()
+					}
+				} else {
+					NBToolbarMenu(
+						systemImage: "plus",
+						style: .icon,
+						placement: .topBarTrailing
+					) {
+						_importActions()
+					}
 				}
 			}
+			.environment(\.editMode, $_editMode)
 			.sheet(item: $_selectedInfoAppPresenting) { app in
 				LibraryInfoView(app: app.base)
 			}
@@ -180,6 +198,11 @@ struct LibraryView: View {
 					}
 				}
 			}
+			.onChange(of: _editMode) { mode in
+				if mode == .inactive {
+					_selectedAppUUIDs.removeAll()
+				}
+			}
         }
     }
 }
@@ -194,6 +217,38 @@ extension LibraryView {
 		Button(.localized("Import from URL"), systemImage: "globe") {
 			_isDownloadingPresenting = true
 		}
+	}
+}
+
+// MARK: - Extension: Bulk Delete
+extension LibraryView {
+	private func _bulkDeleteSelectedApps() {
+		let selectedApps = _getAllApps().filter { app in
+			guard let uuid = app.uuid else { return false }
+			return _selectedAppUUIDs.contains(uuid)
+		}
+		
+		for app in selectedApps {
+			Storage.shared.deleteApp(for: app)
+		}
+		
+		_selectedAppUUIDs.removeAll()
+		
+		// _editMode = .inactive
+	}
+	
+	private func _getAllApps() -> [AppInfoPresentable] {
+		var allApps: [AppInfoPresentable] = []
+		
+		if _selectedScope == .all || _selectedScope == .signed {
+			allApps.append(contentsOf: _filteredSignedApps)
+		}
+		
+		if _selectedScope == .all || _selectedScope == .imported {
+			allApps.append(contentsOf: _filteredImportedApps)
+		}
+		
+		return allApps
 	}
 }
 
