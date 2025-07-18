@@ -143,7 +143,7 @@ struct LibraryView: View {
                 }
 				
 				if _editMode.isEditing {
-					NBToolbarButton(.localized("Delete"), systemImage: "trash") {
+                    NBToolbarButton(.localized("Delete"), systemImage: "trash", isDisabled: _selectedAppUUIDs.isEmpty) {
 						_bulkDeleteSelectedApps()
 					}
 				} else {
