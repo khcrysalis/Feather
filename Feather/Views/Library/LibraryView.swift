@@ -140,7 +140,6 @@ struct LibraryView: View {
 			.toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     EditButton()
-						.environment(\.editMode, $_editMode)
                 }
 				
 				if _editMode.isEditing {
