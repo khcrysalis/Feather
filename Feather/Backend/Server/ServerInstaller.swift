@@ -72,9 +72,9 @@ class ServerInstaller: Identifiable, ObservableObject {
 					self._updateStatus(.completed(result))
 				}
 			case "/install":
-				var headers = HTTPHeaders()
-				headers.add(name: .contentType, value: "text/html")
-				return Response(status: .ok, headers: headers, body: .init(string: self.html))
+				return Response(status: .ok, headers: [
+					"Content-Type": "text/html",
+				], body: .init(string: self.html))
 			default:
 				return Response(status: .notFound)
 			}

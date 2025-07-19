@@ -56,7 +56,10 @@ struct InstallPreviewView: View {
 					}
 				}
 				
-				if case .sendingPayload = newStatus, _serverMethod == 1 {
+				if
+					case .sendingPayload = newStatus,
+					_serverMethod == 1
+				{
 					_isWebviewPresenting = false
 				}
 			}
