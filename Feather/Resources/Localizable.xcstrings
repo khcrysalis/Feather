@@ -764,7 +764,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dodaje przetłumaczony opis aplikacji."
+            "value" : "Dodaje duże pole opisu aplikacji."
           }
         },
         "vi" : {
@@ -1916,7 +1916,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sprawdź unieważnienie"
+            "value" : "Sprawdź czy odwołany"
           }
         },
         "vi" : {
@@ -2655,7 +2655,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Domyślny styl aplikacji, zawiera tylko podtytuł."
+            "value" : "Domyślny styl aplikacji, zawiera tylko fragment opisu."
           }
         },
         "vi" : {
@@ -5738,7 +5738,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zaimportowano"
+            "value" : "Zaimportowane"
           }
         },
         "tr" : {
@@ -8007,6 +8007,23 @@
         }
       }
     },
+    "PPQCheck" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PPQCheck"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weryfikacja PPQ"
+          }
+        }
+      }
+    },
     "Previous Versions" : {
       "comment" : "Repository app previous versions",
       "extractionState" : "manual",
@@ -8863,7 +8880,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Podmiana"
+            "value" : "Docelowa wartość"
           }
         },
         "ru" : {
@@ -9462,6 +9479,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yêu cầu Khởi động lại"
+          }
+        }
+      }
+    },
+    "Revoked" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revoked"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odwołany"
           }
         }
       }
@@ -10342,7 +10376,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Podpisano"
+            "value" : "Podpisane"
           }
         },
         "tr" : {
@@ -11448,6 +11482,23 @@
         }
       }
     },
+    "This allows you to set rules for automatically replacing the Bundle ID/Display Name when signing an app." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This allows you to set rules for automatically replacing the Bundle ID/Display Name when signing an app."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Umożliwia ustawienie reguł automatycznej zamiany identyfikatora pakietu/wyświetlanej nazwy podczas podpisywania aplikacji."
+          }
+        }
+      }
+    },
     "This enables liquid glass for this app, this requires a restart of the app to take effect." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -11880,7 +11931,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wartość"
+            "value" : "Źródłowa wartość"
           }
         },
         "vi" : {
