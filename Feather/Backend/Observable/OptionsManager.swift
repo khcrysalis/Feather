@@ -84,24 +84,23 @@ struct Options: Codable, Equatable {
 	var gameMode: Bool
 	/// If app should use fullscreen (iPad mainly)
 	var ipadFullscreen: Bool
-	/// `Deprecated` If app shouldn't have device restrictions
-	var removeSupportedDevices: Bool
 	/// If app shouldn't have URL Schemes
 	var removeURLScheme: Bool
 	/// If app should not include a `embedded.mobileprovision` (useful for JB detection)
 	var removeProvisioning: Bool
-	/// `Deprecated` If app shouldn't include a "Watch Placeholder" (i.e. `Youtube Music` may include a useless app)
-	var removeWatchPlaceholder: Bool
 	/// Forcefully rename string files for App name
 	var changeLanguageFilesForCustomDisplayName: Bool
-	/// `Deprecated` If app should be Adhoc signed instead of normally signed
-	var doAdhocSigning: Bool
 	/// Signing options
 	var signingOption: String
+	
+	// MARK: Experiments
+	
 	/// Modifies app to support liquid glass
 	var experiment_supportLiquidGlass: Bool
 	/// Modifies application to use ElleKit instead of CydiaSubstrate
 	var experiment_replaceSubstrateWithEllekit: Bool
+	
+	// MARK: Post Modifications
 	
 	var post_installAppAfterSigned: Bool
 	/// This will delete your imported application after signing, to save on using unneeded space.
@@ -127,17 +126,18 @@ struct Options: Codable, Equatable {
 		proMotion: false,
 		gameMode: false,
 		ipadFullscreen: false,
-		removeSupportedDevices: false, // Deprecated
 		removeURLScheme: false,
 		removeProvisioning: false,
-		removeWatchPlaceholder: false, // Deprecated
 		changeLanguageFilesForCustomDisplayName: false,
-		doAdhocSigning: false, // Deprecated
 		signingOption: signingOptionValues[0],
-		// pre-sign experiments
+		
+		// MARK: Experiments
+		
 		experiment_supportLiquidGlass: false,
 		experiment_replaceSubstrateWithEllekit: false,
-		// post sign
+		
+		// MARK: Post Modifications
+		
 		post_installAppAfterSigned: false,
 		post_deleteAppAfterSigned: false
 	)
@@ -155,7 +155,6 @@ struct Options: Codable, Equatable {
 	static let injectFolderValues = ["/", "/Frameworks/"]
 	/// Default random value for `ppqString`
 	static func randomString() -> String {
-		let letters = UUID().uuidString
-		return String((0..<6).compactMap { _ in letters.randomElement() })
+		String((0..<6).compactMap { _ in UUID().uuidString.randomElement() })
 	}
 }
