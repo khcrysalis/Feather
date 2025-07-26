@@ -39,14 +39,10 @@ public struct NBToolbarMenu<Content>: ToolbarContent where Content: View {
 			Menu {
 				_content
 			} label: {
-				if #available(iOS 19, *), _ignoreSolariumLinkedOnCheck {
-					if _style == .icon {
-						Image(systemName: _icon)
-					} else {
-						Label(_title, systemImage: _icon).labelStyle(.titleOnly)
-					}
+				if _style == .icon {
+					Image(systemName: _icon)
 				} else {
-					NBButton(_title, systemImage: _icon, style: _style)
+					Label(_title, systemImage: _icon).labelStyle(.titleOnly)
 				}
 			}
 			.alignment(for: _inlined)

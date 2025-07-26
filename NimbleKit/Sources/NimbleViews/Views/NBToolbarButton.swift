@@ -56,27 +56,15 @@ public struct NBToolbarButton: ToolbarContent {
 		case .cancel:
 			self._title = .localized("Cancel")
 			self._icon = "xmark"
-			if #available(iOS 19, *) {
-				self._style = .text
-			} else {
-				self._style = .icon
-			}
+			self._style = .icon
 		case .dismiss:
 			self._title = .localized("Dismiss")
 			self._icon = "chevron.left"
-			if #available(iOS 19, *) {
-				self._style = .text
-			} else {
-				self._style = .icon
-			}
+			self._style = .icon
 		case .close:
 			self._title = .localized("Close")
 			self._icon = "xmark"
-			if #available(iOS 19, *) {
-				self._style = .text
-			} else {
-				self._style = .icon
-			}
+			self._style = .icon
 			self._placement = .topBarTrailing
 		}
 	}
@@ -91,14 +79,10 @@ public struct NBToolbarButton: ToolbarContent {
 					_action()
 				}
 			} label: {
-				if #available(iOS 19, *), _ignoreSolariumLinkedOnCheck {
-					if _style == .icon {
-						Image(systemName: _icon)
-					} else {
-						Label(_title, systemImage: _icon).labelStyle(.titleOnly)
-					}
+				if _style == .icon {
+					Image(systemName: _icon)
 				} else {
-					NBButton(_title, systemImage: _icon, style: _style)
+					Label(_title, systemImage: _icon).labelStyle(.titleOnly)
 				}
 			}
 			.disabled(_isDisabled)

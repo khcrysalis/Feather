@@ -27,8 +27,7 @@ struct SourceAppsDetailView: View {
     var body: some View {
 		ScrollView {
 			if #available(iOS 18, *) {
-				_header()
-					.flexibleHeaderContent()
+				_header().flexibleHeaderContent()
 			}
 			
 			VStack(alignment: .leading, spacing: 10) {
@@ -146,7 +145,13 @@ struct SourceAppsDetailView: View {
                 }
 			}
 			.padding(.horizontal)
-			.padding(.top, 8)
+			.padding(.top, {
+				if #available(iOS 18, *) {
+					8
+				} else {
+					0
+				}
+			}())
 		}
 		.flexibleHeaderScrollView()
     }
