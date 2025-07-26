@@ -102,16 +102,17 @@ final class SigningHandler: NSObject {
 		try await handler.disinject()
 		
 		if
-			_options.signingOption == Options.signingOptionValues[0],
+			_options.signingOption == .default,
 			appCertificate != nil
 		{
 			try await handler.sign()
-		} else if _options.signingOption == Options.signingOptionValues[1] {
-			try await handler.adhocSign()
+//		} else if _options.signingOption == .adhoc {
+//			try await handler.adhocSign()
+		} else if _options.signingOption == .onlyModify {
+			//
 		} else {
 			throw SigningFileHandlerError.missingCertifcate
 		}
-		
 	}
 	
 	func move() async throws {
@@ -142,7 +143,7 @@ final class SigningHandler: NSObject {
 		
 		Storage.shared.addSigned(
 			uuid: _uuid,
-			certificate: _options.signingOption != Options.signingOptionValues[0] ? nil : appCertificate,
+			certificate: _options.signingOption != .default ? nil : appCertificate,
 			appName: bundle?.name,
 			appIdentifier: bundle?.bundleIdentifier,
 			appVersion: bundle?.version,
@@ -171,17 +172,30 @@ extension SigningHandler {
 		if options.ipadFullscreen { infoDictionary.setObject(true, forKey: "UIRequiresFullScreen" as NSCopying) }
 		if options.removeURLScheme { infoDictionary.removeObject(forKey: "CFBundleURLTypes") }
 		
-		// these are for picker arrays, we check if the default option is named "Default" before applying
-		if options.appAppearance != Options.defaultOptions.appAppearance {
-			infoDictionary.setObject(options.appAppearance, forKey: "UIUserInterfaceStyle" as NSCopying)
+		if options.appAppearance != .default {
+			infoDictionary.setObject(options.appAppearance.rawValue, forKey: "UIUserInterfaceStyle" as NSCopying)
 		}
-		if options.minimumAppRequirement != Options.defaultOptions.minimumAppRequirement {
-			infoDictionary.setObject(options.minimumAppRequirement, forKey: "MinimumOSVersion" as NSCopying)
+		if options.minimumAppRequirement != .default {
+			infoDictionary.setObject(options.minimumAppRequirement.rawValue, forKey: "MinimumOSVersion" as NSCopying)
 		}
 		
 		// useless crap
 		if infoDictionary["UISupportedDevices"] != nil {
 			infoDictionary.removeObject(forKey: "UISupportedDevices")
+		}
+		
+		// MARK: Prominant values
+		
+		if let customIdentifier = options.appIdentifier {
+			infoDictionary.setObject(customIdentifier, forKey: "CFBundleIdentifier" as NSCopying)
+		}
+		if let customName = options.appName {
+			infoDictionary.setObject(customName, forKey: "CFBundleDisplayName" as NSCopying)
+			infoDictionary.setObject(customName, forKey: "CFBundleName" as NSCopying)
+		}
+		if let customVersion = options.appVersion {
+			infoDictionary.setObject(customVersion, forKey: "CFBundleShortVersionString" as NSCopying)
+			infoDictionary.setObject(customVersion, forKey: "CFBundleVersion" as NSCopying)
 		}
 		
 		try infoDictionary.write(to: app.appendingPathComponent("Info.plist"))

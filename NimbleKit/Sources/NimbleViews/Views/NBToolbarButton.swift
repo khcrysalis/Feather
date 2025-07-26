@@ -57,11 +57,11 @@ public struct NBToolbarButton: ToolbarContent {
 		case .dismiss:
 			self._title = .localized("Dismiss")
 			self._icon = "chevron.left"
-			self._style = .icon
+			self._style = .text
 		case .close:
 			self._title = .localized("Close")
 			self._icon = "xmark"
-			self._style = .icon
+			self._style = .text
 			self._placement = .topBarTrailing
 		}
 	}
@@ -76,7 +76,11 @@ public struct NBToolbarButton: ToolbarContent {
 					_action()
 				}
 			} label: {
-				NBButton(_title, systemImage: _icon, style: _style)
+				if _style == .icon {
+					Image(systemName: _icon)
+				} else {
+					Label(_title, systemImage: _icon).labelStyle(.titleOnly)
+				}
 			}
 			.disabled(_isDisabled)
 			.alignment(for: _inlined)

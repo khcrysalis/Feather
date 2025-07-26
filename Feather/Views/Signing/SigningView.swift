@@ -220,7 +220,7 @@ extension SigningView {
 					)
 				}
 				#if NIGHTLY || DEBUG
-				NavigationLink(.localized("Entitlements")) {
+				NavigationLink(.localized("Entitlements") + " (BETA)") {
 					SigningEntitlementsView(
 						bindingValue: $_temporaryOptions.appEntitlementsFile
 					)
@@ -259,8 +259,7 @@ extension SigningView {
 extension SigningView {
 	private func _start() {
 		guard
-			_selectedCert() != nil ||
-			_temporaryOptions.signingOption != Options.signingOptionValues[0]
+			_selectedCert() != nil || _temporaryOptions.signingOption != .default
 		else {
 			UIAlertController.showAlertWithOk(
 				title: .localized("No Certificate"),

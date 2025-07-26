@@ -2442,7 +2442,7 @@
         }
       }
     },
-    "Dark style" : {
+    "Dark" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -2648,23 +2648,6 @@
         }
       }
     },
-    "Default style" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "System"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "System"
-          }
-        }
-      }
-    },
     "Default style for the app, only includes subtitle." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2696,41 +2679,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Giao diện mặc định cho ứng dụng, chỉ bao gồm phụ đề."
-          }
-        }
-      }
-    },
-    "Default:\nSigns an application with your specified certificate.\n\nAdhoc (Advanced):\nSigns with no identity, however this unfortunately strips entitlements (iOS won't install this type)." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Standard:\nSigniert eine App mit deiner spezifizierten Zertifikat.\n\nAdhoc (Erweitert):\nSigniert ohne Identität, dadurch werden leider Entitlements entfernt (iOS würde diese nicht installieren)."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Default:\nSigns an application with your specified certificate.\n\nAdhoc (Advanced):\nSigns with no identity, however this unfortunately strips entitlements (iOS won't install this type)."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Default:Firma un'app con il tuo certificato specificato.Adhoc (Avanzato):Firma senza identità, tuttavia, questo purtroppo rimuove i diritti (iOS non installerà questo tipo)."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Domyślnie:\nPodpisuje aplikację wskazanym certyfikatem.\n\nAdhoc (Zaawansowane):\nPodpisuje bez tożsamości, jednak usuwa uprawnienia (iOS nie zainstaluje takiego typu)."
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mặc định:\nKý một ứng dụng bằng chứng chỉ do bạn chỉ định.\n\nAdhoc (Nâng cao):\nKý mà không cần danh tính, tuy nhiên điều này không may sẽ xóa bỏ các quyền (iOS sẽ không cài đặt loại này)."
           }
         }
       }
@@ -6385,7 +6333,7 @@
         }
       }
     },
-    "Light style" : {
+    "Light" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {

@@ -36,7 +36,11 @@ public struct NBToolbarMenu<Content>: ToolbarContent where Content: View {
 			Menu {
 				_content
 			} label: {
-				NBButton(_title, systemImage: _icon, style: _style)
+				if _style == .icon {
+					Image(systemName: _icon)
+				} else {
+					Label(_title, systemImage: _icon)
+				}
 			}
 			.alignment(for: _inlined)
 			

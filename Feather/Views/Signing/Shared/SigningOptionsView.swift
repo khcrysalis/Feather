@@ -17,122 +17,132 @@ struct SigningOptionsView: View {
 	var body: some View {
 		if (temporaryOptions == nil) {
 			NBSection(.localized("Protection")) {
-				_toggle(.localized("PPQ Protection"),
-						systemImage: "shield",
-						isOn: $options.ppqProtection,
-						temporaryValue: temporaryOptions?.ppqProtection
+				_toggle(
+					.localized("PPQ Protection"),
+					systemImage: "shield",
+					isOn: $options.ppqProtection,
+					temporaryValue: temporaryOptions?.ppqProtection
 				)
 			} footer: {
 				Text(.localized("Enabling any protection will append a random string to the bundleidentifiers of the apps you sign, this is to ensure your Apple ID does not get flagged by Apple. However, when using a signing service you can ignore this."))
 			}
-		} else {
-			NBSection(.localized("General")) {
-				Self.picker(.localized("Appearance"),
-							systemImage: "paintpalette",
-							selection: $options.appAppearance,
-							values: Options.appAppearanceValues,
-							id: \.description
-				)
-				
-				Self.picker(.localized("Minimum Requirement"),
-							systemImage: "ruler",
-							selection: $options.minimumAppRequirement,
-							values: Options.appMinimumAppRequirementValues,
-							id: \.description
-				)
-			}
+		}
+		
+		NBSection(.localized("General")) {
+			Self.picker(
+				.localized("Appearance"),
+				systemImage: "paintpalette",
+				selection: $options.appAppearance,
+				values: Options.AppAppearance.allCases
+			)
 			
-			Section {
-				Self.picker(.localized("Signing Type"),
-							systemImage: "signature",
-							selection: $options.signingOption,
-							values: Options.signingOptionValues,
-							id: \.description
-				)
-			} footer: {
-				Text(.localized("Default:\nSigns an application with your specified certificate.\n\nAdhoc (Advanced):\nSigns with no identity, however this unfortunately strips entitlements (iOS won't install this type)."))
-			}
+			Self.picker(
+				.localized("Minimum Requirement"),
+				systemImage: "ruler",
+				selection: $options.minimumAppRequirement,
+				values: Options.MinimumAppRequirement.allCases
+			)
+		}
+		
+		Section {
+			Self.picker(
+				.localized("Signing Type"),
+				systemImage: "signature",
+				selection: $options.signingOption,
+				values: Options.SigningOption.allCases
+			)
 		}
 		
 		NBSection(.localized("App Features")) {
-			_toggle(.localized("File Sharing"),
-					systemImage: "folder.badge.person.crop",
-					isOn: $options.fileSharing,
-					temporaryValue: temporaryOptions?.fileSharing
+			_toggle(
+				.localized("File Sharing"),
+				systemImage: "folder.badge.person.crop",
+				isOn: $options.fileSharing,
+				temporaryValue: temporaryOptions?.fileSharing
 			)
 			
-			_toggle(.localized("iTunes File Sharing"),
-					systemImage: "music.note.list",
-					isOn: $options.itunesFileSharing,
-					temporaryValue: temporaryOptions?.itunesFileSharing
+			_toggle(
+				.localized("iTunes File Sharing"),
+				systemImage: "music.note.list",
+				isOn: $options.itunesFileSharing,
+				temporaryValue: temporaryOptions?.itunesFileSharing
 			)
 			
-			_toggle(.localized("Pro Motion"),
-					systemImage: "speedometer",
-					isOn: $options.proMotion,
-					temporaryValue: temporaryOptions?.proMotion
+			_toggle(
+				.localized("Pro Motion"),
+				systemImage: "speedometer",
+				isOn: $options.proMotion,
+				temporaryValue: temporaryOptions?.proMotion
 			)
 			
-			_toggle(.localized("Game Mode"),
-					systemImage: "gamecontroller",
-					isOn: $options.gameMode,
-					temporaryValue: temporaryOptions?.gameMode
+			_toggle(
+				.localized("Game Mode"),
+				systemImage: "gamecontroller",
+				isOn: $options.gameMode,
+				temporaryValue: temporaryOptions?.gameMode
 			)
 			
-			_toggle(.localized("iPad Fullscreen"),
-					systemImage: "ipad.landscape",
-					isOn: $options.ipadFullscreen,
-					temporaryValue: temporaryOptions?.ipadFullscreen
+			_toggle(
+				.localized("iPad Fullscreen"),
+				systemImage: "ipad.landscape",
+				isOn: $options.ipadFullscreen,
+				temporaryValue: temporaryOptions?.ipadFullscreen
 			)
 		}
 		
 		NBSection(.localized("Removal")) {
-			_toggle(.localized("Remove URL Scheme"),
-					systemImage: "ellipsis.curlybraces",
-					isOn: $options.removeURLScheme,
-					temporaryValue: temporaryOptions?.removeURLScheme
+			_toggle(
+				.localized("Remove URL Scheme"),
+				systemImage: "ellipsis.curlybraces",
+				isOn: $options.removeURLScheme,
+				temporaryValue: temporaryOptions?.removeURLScheme
 			)
 			
-			_toggle(.localized("Remove Provisioning"),
-					systemImage: "doc.badge.gearshape",
-					isOn: $options.removeProvisioning,
-					temporaryValue: temporaryOptions?.removeProvisioning
+			_toggle(
+				.localized("Remove Provisioning"),
+				systemImage: "doc.badge.gearshape",
+				isOn: $options.removeProvisioning,
+				temporaryValue: temporaryOptions?.removeProvisioning
 			)
 		} footer: {
 			Text(.localized("Removing the provisioning file will exclude the mobileprovision file from being embedded inside of the application when signing, to help prevent any detection."))
 		}
 		
 		Section {
-			_toggle(.localized("Force Localize"),
-					systemImage: "character.bubble",
-					isOn: $options.changeLanguageFilesForCustomDisplayName,
-					temporaryValue: temporaryOptions?.changeLanguageFilesForCustomDisplayName
+			_toggle(
+				.localized("Force Localize"),
+				systemImage: "character.bubble",
+				isOn: $options.changeLanguageFilesForCustomDisplayName,
+				temporaryValue: temporaryOptions?.changeLanguageFilesForCustomDisplayName
 			)
 		} footer: {
 			Text(.localized("By default, localized titles for the app won't be changed, however this option overrides it."))
 		}
 		
 		NBSection(.localized("Post Signing")) {
-			_toggle(.localized("Delete After Signing"),
-					systemImage: "trash",
-					isOn: $options.post_deleteAppAfterSigned,
-					temporaryValue: temporaryOptions?.post_deleteAppAfterSigned
+			_toggle(
+				.localized("Delete After Signing"),
+				systemImage: "trash",
+				isOn: $options.post_deleteAppAfterSigned,
+				temporaryValue: temporaryOptions?.post_deleteAppAfterSigned
 			)
 		} footer: {
 			Text(.localized("This will delete your imported application after signing, to save on using unneeded space."))
 		}
 		
 		NBSection(.localized("Experiments")) {
-			_toggle(.localized("Replace Substrate with ElleKit"),
-					systemImage: "pencil",
-					isOn: $options.experiment_replaceSubstrateWithEllekit,
-					temporaryValue: temporaryOptions?.experiment_replaceSubstrateWithEllekit
+			_toggle(
+				.localized("Replace Substrate with ElleKit"),
+				systemImage: "pencil",
+				isOn: $options.experiment_replaceSubstrateWithEllekit,
+				temporaryValue: temporaryOptions?.experiment_replaceSubstrateWithEllekit
 			)
 			
-			_toggle(.localized("Enable Liquid Glass"),
-					systemImage: "26.circle",
-					isOn: $options.experiment_supportLiquidGlass,
-					temporaryValue: temporaryOptions?.experiment_supportLiquidGlass
+			_toggle(
+				.localized("Enable Liquid Glass"),
+				systemImage: "26.circle",
+				isOn: $options.experiment_supportLiquidGlass,
+				temporaryValue: temporaryOptions?.experiment_supportLiquidGlass
 			)
 		} footer: {
 			Text(.localized("This option force converts apps to try to use the new liquid glass redesign iOS 26 introduced, this may not work for all applications due to differing frameworks."))
@@ -140,16 +150,15 @@ struct SigningOptionsView: View {
 	}
 	
 	@ViewBuilder
-	static func picker<SelectionValue, T>(
+	static func picker<SelectionValue: Hashable, T: Hashable & LocalizedDescribable>(
 		_ title: String,
 		systemImage: String,
 		selection: Binding<SelectionValue>,
-		values: [T],
-		id: KeyPath<T, SelectionValue>
-	) -> some View where SelectionValue: Hashable {
+		values: [T]
+	) -> some View {
 		Picker(selection: selection) {
-			ForEach(values, id: id) { value in
-				Text(String(describing: value))
+			ForEach(values, id: \.self) { value in
+				Text(value.localizedDescription)
 			}
 		} label: {
 			Label(title, systemImage: systemImage)
