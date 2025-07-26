@@ -121,7 +121,7 @@ class TweakHandler {
 		var injectFolder = _options.injectFolder
 		
 		// check for "/Frameworks/", then append the destinationUrl
-		if _options.injectFolder.contains(Options.injectFolderValues[1]) {
+		if _options.injectFolder == .frameworks {
 			destinationURL = destinationURL.appendingPathComponent("Frameworks")
 		}
 		
@@ -129,10 +129,9 @@ class TweakHandler {
 		// the inject folder to be root "/" instead, as the @rpath is already in
 		// frameworks
 		if
-			_options.injectPath.contains(Options.injectPathValues[1]) &&
-			_options.injectFolder.contains(Options.injectFolderValues[1])
+			_options.injectPath == .rpath && _options.injectFolder == .frameworks
 		{
-			injectFolder = Options.injectFolderValues[0]
+			injectFolder = .root
 		}
 		
 		destinationURL = destinationURL.appendingPathComponent(url.lastPathComponent)

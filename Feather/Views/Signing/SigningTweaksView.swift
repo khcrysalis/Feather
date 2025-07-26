@@ -22,15 +22,13 @@ struct SigningTweaksView: View {
 					.localized("Injection Path"),
 					systemImage: "doc.badge.gearshape",
 					selection: $options.injectPath,
-					values: Options.injectPathValues,
-					id: \.description
+					values: Options.InjectPath.allCases
 				)
 				SigningOptionsView.picker(
 					.localized("Injection Folder"),
 					systemImage: "folder.badge.gearshape",
 					selection: $options.injectFolder,
-					values: Options.injectFolderValues,
-					id: \.description
+					values: Options.InjectFolder.allCases
 				)
 			}
 			

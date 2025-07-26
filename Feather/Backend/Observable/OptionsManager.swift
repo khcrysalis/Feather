@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-// MARK: - Class
+// MARK: - OptionsManager
 class OptionsManager: ObservableObject {
 	static let shared = OptionsManager()
 	
@@ -16,8 +16,10 @@ class OptionsManager: ObservableObject {
 	private let _key = "signing_options"
 	
 	init() {
-		if let data = UserDefaults.standard.data(forKey: _key),
-		   let savedOptions = try? JSONDecoder().decode(Options.self, from: data) {
+		if
+			let data = UserDefaults.standard.data(forKey: _key),
+			let savedOptions = try? JSONDecoder().decode(Options.self, from: data)
+		{
 			self.options = savedOptions
 		} else {
 			self.options = Options.defaultOptions
@@ -40,8 +42,11 @@ class OptionsManager: ObservableObject {
 	}
 }
 
-// MARK: - Class Options
+// MARK: - Options
 struct Options: Codable, Equatable {
+	
+	// MARK: Pre Modifications
+	
 	/// App name
 	var appName: String?
 	/// App version
@@ -51,13 +56,18 @@ struct Options: Codable, Equatable {
 	/// App entitlements
 	var appEntitlementsFile: URL?
 	/// App apparence (i.e. Light/Dark/Default)
-	var appAppearance: String
+	var appAppearance: AppAppearance
 	/// App minimum iOS requirement (i.e. iOS 11.0)
-	var minimumAppRequirement: String
+	var minimumAppRequirement: MinimumAppRequirement
+	/// Signing options
+	var signingOption: SigningOption
+	
+	// MARK: Options
+	
 	/// Inject path (i.e. `@rpath`)
-	var injectPath: String
+	var injectPath: InjectPath
 	/// Inject folder (i.e. `Frameworks/`)
-	var injectFolder: String
+	var injectFolder: InjectFolder
 	/// Random string appended to the app identifier
 	var ppqString: String
 	/// Basic protection against PPQ
@@ -90,8 +100,6 @@ struct Options: Codable, Equatable {
 	var removeProvisioning: Bool
 	/// Forcefully rename string files for App name
 	var changeLanguageFilesForCustomDisplayName: Bool
-	/// Signing options
-	var signingOption: String
 	
 	// MARK: Experiments
 	
@@ -106,13 +114,19 @@ struct Options: Codable, Equatable {
 	/// This will delete your imported application after signing, to save on using unneeded space.
 	var post_deleteAppAfterSigned: Bool
 	
-	// default
+	// MARK: - Defaults
 	static let defaultOptions = Options(
-		// pre-sign modifications
-		appAppearance: appAppearanceValues[0],
-		minimumAppRequirement: appMinimumAppRequirementValues[0],
-		injectPath: injectPathValues[0],
-		injectFolder: injectFolderValues[1],
+		
+		// MARK: Pre Modifications
+		
+		appAppearance: .default,
+		minimumAppRequirement: .default,
+		signingOption: .default,
+		
+		// MARK: Options
+		
+		injectPath: .executable_path,
+		injectFolder: .frameworks,
 		ppqString: randomString(),
 		ppqProtection: false,
 		dynamicProtection: false,
@@ -129,7 +143,6 @@ struct Options: Codable, Equatable {
 		removeURLScheme: false,
 		removeProvisioning: false,
 		changeLanguageFilesForCustomDisplayName: false,
-		signingOption: signingOptionValues[0],
 		
 		// MARK: Experiments
 		
@@ -143,18 +156,78 @@ struct Options: Codable, Equatable {
 	)
 	
 	// MARK: duplicate values are not recommended!
+
+	enum AppAppearance: String, Codable, CaseIterable, LocalizedDescribable {
+		case `default`
+		case light = "Light"
+		case dark = "Dark"
+
+		var localizedDescription: String {
+			switch self {
+			case .default: .localized("Default")
+			case .light: .localized("Light")
+			case .dark: .localized("Dark")
+			}
+		}
+	}
+
+	enum MinimumAppRequirement: String, Codable, CaseIterable, LocalizedDescribable {
+		case `default`
+		case v16 = "16.0"
+		case v15 = "15.0"
+		case v14 = "14.0"
+		case v13 = "13.0"
+		case v12 = "12.0"
+
+		var localizedDescription: String {
+			switch self {
+			case .default: .localized("Default")
+			case .v16: "16.0"
+			case .v15: "15.0"
+			case .v14: "14.0"
+			case .v13: "13.0"
+			case .v12: "12.0"
+			}
+		}
+	}
 	
-	static let signingOptionValues = ["Default", "Adhoc"]
-	/// Default values for `appAppearance`
-	static let appAppearanceValues = ["Default", "Light", "Dark"]
-	/// Default values for `minimumAppRequirement`
-	static let appMinimumAppRequirementValues = ["Default", "16.0", "15.0", "14.0", "13.0", "12.0"]
-	/// Default values for `injectPath`
-	static let injectPathValues = ["@executable_path", "@rpath"]
-	/// Default values for `injectFolder`
-	static let injectFolderValues = ["/", "/Frameworks/"]
+	enum SigningOption: String, Codable, CaseIterable, LocalizedDescribable {
+		case `default`
+		case onlyModify
+		case adhoc
+
+		var localizedDescription: String {
+			switch self {
+			case .default: .localized("Default")
+			case .onlyModify: .localized("Modify")
+			case .adhoc: .localized("Ad-hoc")
+			}
+		}
+	}
+	
+	enum InjectPath: String, Codable, CaseIterable, LocalizedDescribable {
+		case executable_path = "@executable_path"
+		case rpath = "@rpath"
+	}
+	
+	enum InjectFolder: String, Codable, CaseIterable, LocalizedDescribable {
+		case root = "/"
+		case frameworks = "/Frameworks/"
+	}
+	
 	/// Default random value for `ppqString`
 	static func randomString() -> String {
 		String((0..<6).compactMap { _ in UUID().uuidString.randomElement() })
+	}
+}
+
+protocol LocalizedDescribable {
+	var localizedDescription: String { get }
+}
+
+extension LocalizedDescribable where Self: RawRepresentable, RawValue == String {
+	var localizedDescription: String {
+		let localized = NSLocalizedString(self.rawValue, comment: "")
+		return localized == self.rawValue ? self.rawValue : localized
 	}
 }
