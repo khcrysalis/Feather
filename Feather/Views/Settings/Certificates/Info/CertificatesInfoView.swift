@@ -67,7 +67,7 @@ extension CertificatesInfoView {
 			_info(.localized("Revoked"), description: cert.revoked ? "✓" : "✗")
 			
 			if let ppq = data.PPQCheck {
-				_info("PPQCheck", description: ppq ? "✓" : "✗")
+				_info(.localized("PPQCheck"), description: ppq ? "✓" : "✗")
 			}
 		}
 	}

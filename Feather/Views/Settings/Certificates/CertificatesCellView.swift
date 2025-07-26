@@ -68,11 +68,11 @@ extension CertificatesCellView {
 		var pills: [NBPillItem] = []
 		
 		if cert.ppQCheck == true {
-			pills.append(NBPillItem(title: "PPQCheck", icon: "checkmark.shield", color: .red))
+			pills.append(NBPillItem(title: .localized("PPQCheck"), icon: "checkmark.shield", color: .red))
 		}
 		
 		if cert.revoked == true {
-			pills.append(NBPillItem(title: "Revoked", icon: "xmark.octagon", color: .red))
+			pills.append(NBPillItem(title: .localized("Revoked"), icon: "xmark.octagon", color: .red))
 		}
 		
 		if let info = cert.expiration?.expirationInfo() {
