@@ -195,7 +195,7 @@ extension SourceAppsDetailView {
 				.overlay(
 					LinearGradient(
 						gradient: Gradient(colors: [
-							Color.black.opacity(1),
+							Color.black.opacity(0.8),
 							Color.black.opacity(0)
 						]),
 						startPoint: .top,
