@@ -19,7 +19,6 @@ public struct NBToolbarButton: ToolbarContent {
 	private var _style: NBToolbarMenuStyle
 	private var _placement: ToolbarItemPlacement
 	private var _isDisabled: Bool
-	private var _inlined: NBToolbarAlignment
 	private var _action: () -> Void
 	private var _role: NBToolbarButtonRole?
 	
@@ -29,7 +28,6 @@ public struct NBToolbarButton: ToolbarContent {
 		style: NBToolbarMenuStyle = .icon,
 		placement: ToolbarItemPlacement = .automatic,
 		isDisabled: Bool = false,
-		alignment: NBToolbarAlignment = .none,
 		action: @escaping () -> Void
 	) {
 		self._title = title
@@ -37,18 +35,15 @@ public struct NBToolbarButton: ToolbarContent {
 		self._style = style
 		self._placement = placement
 		self._isDisabled = isDisabled
-		self._inlined = alignment
 		self._action = action
 	}
 	
 	public init(
 		role: NBToolbarButtonRole,
-		placement: ToolbarItemPlacement = .cancellationAction,
-		alignment: NBToolbarAlignment = .none
+		placement: ToolbarItemPlacement = .cancellationAction
 	) {
 		self._role = role
 		self._placement = placement
-		self._inlined = alignment
 		self._isDisabled = false
 		self._action = {}
 		
@@ -86,7 +81,6 @@ public struct NBToolbarButton: ToolbarContent {
 				}
 			}
 			.disabled(_isDisabled)
-			.alignment(for: _inlined)
 		}
 	}
 }

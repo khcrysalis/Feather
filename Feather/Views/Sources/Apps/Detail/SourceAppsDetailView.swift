@@ -154,6 +154,7 @@ struct SourceAppsDetailView: View {
 			}())
 		}
 		.flexibleHeaderScrollView()
+		.shouldSetInset()
     }
 	
 	var standardIcon: some View {
@@ -238,15 +239,7 @@ extension SourceAppsDetailView {
 	
 	@ViewBuilder
 	private func _infoRow(title: String, value: String) -> some View {
-		HStack {
-			Text(title)
-				.foregroundColor(.secondary)
-			Spacer()
-			Text(value)
-				.foregroundColor(.primary)
-				.multilineTextAlignment(.trailing)
-		}
-		.font(.subheadline)
+		LabeledContent(title, value: value)
 		Divider()
 	}
 }

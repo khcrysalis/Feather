@@ -65,9 +65,16 @@ extension View {
 	@ViewBuilder
 	func flexibleHeaderContent() -> some View {
 		if #available(iOS 18, *) {
+			modifier(FlexibleHeaderContentModifier())
+		} else {
 			self
-				.modifier(FlexibleHeaderContentModifier())
-				.ignoresSafeArea(edges: .top)
+		}
+	}
+	
+	@ViewBuilder
+	func shouldSetInset() -> some View {
+		if #available(iOS 18, *) {
+			self.ignoresSafeArea(edges: .top)
 		} else {
 			self
 		}

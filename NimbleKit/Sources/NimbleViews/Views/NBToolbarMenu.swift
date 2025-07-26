@@ -15,7 +15,6 @@ public struct NBToolbarMenu<Content>: ToolbarContent where Content: View {
 	private var _icon: String
 	private var _style: NBToolbarMenuStyle
 	private var _placement: ToolbarItemPlacement
-	private var _inlined: NBToolbarAlignment
 	private var _content: Content
 	
 	public init(
@@ -23,14 +22,12 @@ public struct NBToolbarMenu<Content>: ToolbarContent where Content: View {
 		systemImage: String = "",
 		style: NBToolbarMenuStyle = .icon,
 		placement: ToolbarItemPlacement = .automatic,
-		alignment: NBToolbarAlignment = .none,
 		@ViewBuilder content: () -> Content
 	) {
 		self._title = title
 		self._icon = systemImage
 		self._style = style
 		self._placement = placement
-		self._inlined = alignment
 		self._content = content()
 	}
 	
@@ -45,8 +42,6 @@ public struct NBToolbarMenu<Content>: ToolbarContent where Content: View {
 					Label(_title, systemImage: _icon).labelStyle(.titleOnly)
 				}
 			}
-			.alignment(for: _inlined)
-			
 		}
 	}
 }
