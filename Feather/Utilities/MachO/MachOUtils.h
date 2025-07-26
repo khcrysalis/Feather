@@ -11,9 +11,3 @@
 
 NSString *LCPatchMachOFixupARM64eSlice(const char *path);
 NSString *LCPatchMachOForSDK26(const char *path);
-NSString *getApplicationIdentifier(void);
-
-#if APPSTORE != 1
-void* (SecTaskCopyValueForEntitlement)(void* task, CFStringRef entitlement, CFErrorRef *error);
-void* (SecTaskCreateFromSelf)(CFAllocatorRef allocator);
-#endif
