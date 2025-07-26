@@ -8,6 +8,9 @@
 import SwiftUI
 
 public struct NBToolbarMenu<Content>: ToolbarContent where Content: View {
+	@AppStorage("com.apple.SwiftUI.IgnoreSolariumLinkedOnCheck")
+	private var _ignoreSolariumLinkedOnCheck: Bool = false
+	
 	private var _title: String
 	private var _icon: String
 	private var _style: NBToolbarMenuStyle
@@ -36,10 +39,14 @@ public struct NBToolbarMenu<Content>: ToolbarContent where Content: View {
 			Menu {
 				_content
 			} label: {
-				if _style == .icon {
-					Image(systemName: _icon)
+				if #available(iOS 19, *), _ignoreSolariumLinkedOnCheck {
+					if _style == .icon {
+						Image(systemName: _icon)
+					} else {
+						Label(_title, systemImage: _icon).labelStyle(.titleOnly)
+					}
 				} else {
-					Label(_title, systemImage: _icon)
+					NBButton(_title, systemImage: _icon, style: _style)
 				}
 			}
 			.alignment(for: _inlined)

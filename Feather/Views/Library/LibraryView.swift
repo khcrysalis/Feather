@@ -138,15 +138,35 @@ struct LibraryView: View {
 				}
 			}
 			.toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    EditButton()
-                }
-				
 				if _editMode.isEditing {
-                    NBToolbarButton(.localized("Delete"), systemImage: "trash", isDisabled: _selectedAppUUIDs.isEmpty) {
+					NBToolbarButton(
+						.localized("Done"),
+						systemImage: "checkmark",
+						placement: .topBarLeading
+					) {
+						withAnimation {
+							_editMode = .inactive
+						}
+					}
+					
+                    NBToolbarButton(
+						.localized("Delete"),
+						systemImage: "trash",
+						isDisabled: _selectedAppUUIDs.isEmpty
+					) {
 						_bulkDeleteSelectedApps()
 					}
 				} else {
+					NBToolbarButton(
+						.localized("Edit"),
+						systemImage: "pencil",
+						placement: .topBarLeading
+					) {
+						withAnimation {
+							_editMode = .active
+						}
+					}
+					
 					NBToolbarMenu(
 						systemImage: "plus",
 						style: .icon,

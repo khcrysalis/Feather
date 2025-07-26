@@ -375,6 +375,10 @@ extension ASRepository {
 			currentAppVersion?.date ?? versionDate
 		}
 		
+		public var currentDescription: String? {
+			subtitle ?? localizedDescription
+		}
+		
 		// "UNIQUE" hahaha
 		public var currentUniqueId: String {
 			"\(id ?? uuid.uuidString).\(downloadURL?.absoluteString ?? uuid.uuidString)"

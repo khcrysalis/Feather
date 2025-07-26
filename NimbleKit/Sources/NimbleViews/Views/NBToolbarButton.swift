@@ -11,6 +11,9 @@ import NimbleExtensions
 public struct NBToolbarButton: ToolbarContent {
 	@Environment(\.dismiss) private var dismiss
 	
+	@AppStorage("com.apple.SwiftUI.IgnoreSolariumLinkedOnCheck")
+	private var _ignoreSolariumLinkedOnCheck: Bool = false
+	
 	private var _title: String
 	private var _icon: String
 	private var _style: NBToolbarMenuStyle
@@ -53,15 +56,27 @@ public struct NBToolbarButton: ToolbarContent {
 		case .cancel:
 			self._title = .localized("Cancel")
 			self._icon = "xmark"
-			self._style = .text
+			if #available(iOS 19, *) {
+				self._style = .text
+			} else {
+				self._style = .icon
+			}
 		case .dismiss:
 			self._title = .localized("Dismiss")
 			self._icon = "chevron.left"
-			self._style = .text
+			if #available(iOS 19, *) {
+				self._style = .text
+			} else {
+				self._style = .icon
+			}
 		case .close:
 			self._title = .localized("Close")
 			self._icon = "xmark"
-			self._style = .text
+			if #available(iOS 19, *) {
+				self._style = .text
+			} else {
+				self._style = .icon
+			}
 			self._placement = .topBarTrailing
 		}
 	}
@@ -76,10 +91,14 @@ public struct NBToolbarButton: ToolbarContent {
 					_action()
 				}
 			} label: {
-				if _style == .icon {
-					Image(systemName: _icon)
+				if #available(iOS 19, *), _ignoreSolariumLinkedOnCheck {
+					if _style == .icon {
+						Image(systemName: _icon)
+					} else {
+						Label(_title, systemImage: _icon).labelStyle(.titleOnly)
+					}
 				} else {
-					Label(_title, systemImage: _icon).labelStyle(.titleOnly)
+					NBButton(_title, systemImage: _icon, style: _style)
 				}
 			}
 			.disabled(_isDisabled)

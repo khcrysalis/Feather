@@ -31,7 +31,7 @@ struct FRExpirationPillView: View {
 			.font(.headline.bold())
 			.foregroundStyle(textForeground)
 			.padding(.horizontal, 12)
-			.padding(.vertical, 6)
+			.padding(.vertical, 8)
 			.background(textBackground)
 			.clipShape(Capsule())
 	}

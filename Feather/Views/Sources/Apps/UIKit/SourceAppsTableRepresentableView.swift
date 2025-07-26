@@ -14,6 +14,7 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 	@Binding var searchText: String
 	@Binding var sortOption: SourceAppsView.SortOption
 	@Binding var sortAscending: Bool
+	var onSelect: (SourceAppsView.SourceAppRoute) -> Void
 	
 	func makeUIView(context: Context) -> UITableView {
 		let tableView = UITableView(frame: .zero, style: .plain)
@@ -21,7 +22,12 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 		tableView.dataSource = context.coordinator
 		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "AppCell")
 		tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "SectionHeader")
-		tableView.allowsSelection = false
+		
+		if #available(iOS 17, *) {
+			tableView.allowsSelection = true
+		} else {
+			tableView.allowsSelection = false
+		}
 		
 		if
 			let firstSource = sources.first,
@@ -73,7 +79,8 @@ struct SourceAppsTableRepresentableView: UIViewRepresentable {
 			sources: sources,
 			searchText: searchText,
 			sortOption: sortOption,
-			sortAscending: sortAscending
+			sortAscending: sortAscending,
+			onSelect: onSelect
 		)
 	}
 }
@@ -84,6 +91,7 @@ extension SourceAppsTableRepresentableView { class Coordinator: NSObject, UITabl
 	var searchText: String
 	var sortOption: SourceAppsView.SortOption
 	var sortAscending: Bool
+	let onSelect: (SourceAppsView.SourceAppRoute) -> Void
 	
 	private var _groupedAppsByNameFirstLetter: [String: [(source: ASRepository, app: ASRepository.App)]] = [:]
 	private var _groupedAppsByDate: [String: [(source: ASRepository, app: ASRepository.App)]] = [:]
@@ -104,11 +112,18 @@ extension SourceAppsTableRepresentableView { class Coordinator: NSObject, UITabl
 		return _cachedSortedApps
 	}
 	
-	init(sources: [ASRepository], searchText: String, sortOption: SourceAppsView.SortOption, sortAscending: Bool) {
+	init(
+		sources: [ASRepository],
+		searchText: String,
+		sortOption: SourceAppsView.SortOption,
+		sortAscending: Bool,
+		onSelect: @escaping (SourceAppsView.SourceAppRoute) -> Void
+	) {
 		self.sources = sources
 		self.searchText = searchText
 		self.sortOption = sortOption
 		self.sortAscending = sortAscending
+		self.onSelect = onSelect
 		super.init()
 		
 		if sortOption != .default {
@@ -208,10 +223,26 @@ extension SourceAppsTableRepresentableView { class Coordinator: NSObject, UITabl
 		case .name: entry = _groupedAppsByNameFirstLetter[_sortedSectionTitles[indexPath.section]]?[indexPath.row] ?? _sortedApps[indexPath.row]
 		case .date: entry = _groupedAppsByDate[_sortedSectionTitles[indexPath.section]]?[indexPath.row] ?? _sortedApps[indexPath.row]
 		}
+
 		cell.contentConfiguration = UIHostingConfiguration {
 			SourceAppsCellView(source: entry.source, app: entry.app)
 		}
 		return cell
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		if #available(iOS 17, *) {
+			tableView.deselectRow(at: indexPath, animated: true)
+			
+			let entry: (source: ASRepository, app: ASRepository.App)
+			switch sortOption {
+			case .default: entry = _sortedApps[indexPath.row]
+			case .name: entry = _groupedAppsByNameFirstLetter[_sortedSectionTitles[indexPath.section]]?[indexPath.row] ?? _sortedApps[indexPath.row]
+			case .date: entry = _groupedAppsByDate[_sortedSectionTitles[indexPath.section]]?[indexPath.row] ?? _sortedApps[indexPath.row]
+			}
+			
+			onSelect(SourceAppsView.SourceAppRoute(source: entry.source, app: entry.app))
+		}
 	}
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
