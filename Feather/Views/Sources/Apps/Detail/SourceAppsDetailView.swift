@@ -78,10 +78,19 @@ struct SourceAppsDetailView: View {
 				{
 					NBSection(.localized("What's New")) {
 						VStack(alignment: .leading, spacing: 2) {
-							Text(verbatim: "Version \(currentVer)")
-								.font(.subheadline)
-								.foregroundStyle(.secondary)
-								.padding(.vertical, 4)
+                            HStack {
+                                Text(verbatim: "Version \(currentVer)")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                                    
+                                Spacer()
+                                if let date = app.currentDate?.date {
+                                    Text(date.formatted(.relative(presentation: .named)))
+                                        .font(.subheadline)
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
+                            .padding(.vertical, 4)
 							ExpandableText(text: whatsNewDesc, lineLimit: 3)
 
 						}
@@ -101,6 +110,38 @@ struct SourceAppsDetailView: View {
 					
 					Divider()
 				}
+                
+                NBSection(.localized("Information")) {
+                    VStack(spacing: 12) {
+                        if let sourceName = source.name {
+                            _infoRow(title: .localized("Source"), value: sourceName)
+                        }
+                        
+						if let developer = app.developer {
+							_infoRow(title: .localized("Developer"), value: developer)
+						}
+						
+						if let size = app.size {
+							_infoRow(title: .localized("Size"), value: _readableSize(size))
+						}
+						
+						if let category = app.category {
+                            _infoRow(title: .localized("Category"), value: category.capitalized)
+						}
+						
+						if let version = app.currentVersion {
+							_infoRow(title: .localized("Version"), value: version)
+						}
+						
+						if let date = app.currentDate?.date {
+							_infoRow(title: .localized("Updated"), value: DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none))
+						}
+						
+						if let bundleId = app.id {
+							_infoRow(title: .localized("Bundle ID"), value: bundleId)
+						}
+					}
+                }
 			}
 			.padding(.horizontal)
 			.padding(.top, 8)
@@ -173,6 +214,20 @@ extension SourceAppsDetailView {
 			}
 		}
 	}
+    
+    @ViewBuilder
+    private func _infoRow(title: String, value: String) -> some View {
+        HStack {
+            Text(title)
+                .foregroundColor(.secondary)
+            Spacer()
+            Text(value)
+                .foregroundColor(.primary)
+                .multilineTextAlignment(.trailing)
+        }
+        .font(.subheadline)
+        Divider()
+    }
 	
 	private func _buildPills(from app: ASRepository.App) -> [NBPillItem] {
 		var pills: [NBPillItem] = []

@@ -49,7 +49,7 @@ struct DownloadButtonView: View {
 						.font(.headline.bold())
 						.foregroundStyle(Color.accentColor)
 						.padding(.horizontal, 24)
-						.padding(.vertical, 8)
+						.padding(.vertical, 6)
 						.background(Color(uiColor: .quaternarySystemFill))
 						.clipShape(Capsule())
 				}
