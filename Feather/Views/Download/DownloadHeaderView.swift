@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import NimbleExtensions
 
 struct DownloadHeaderView: View {
 	@ObservedObject var downloadManager: DownloadManager
@@ -60,7 +61,7 @@ struct DownloadItemView: View {
 					.contentTransition(.numericText())
 				Spacer()
 				if totalBytes > 0 {
-					Text(verbatim: "\(formatByteCount(bytesDownloaded)) / \(formatByteCount(totalBytes))")
+					Text(verbatim: "\($bytesDownloaded.wrappedValue.formattedByteCount) / \(totalBytes.formattedByteCount)")
 						.contentTransition(.numericText())
 				}
 			}
@@ -78,12 +79,5 @@ struct DownloadItemView: View {
 		download.onlyArchiving
 		? unpackageProgress
 		: (0.3 * unpackageProgress) + (0.7 * progress)
-	}
-	
-	private func formatByteCount(_ bytes: Int64) -> String {
-		let formatter = ByteCountFormatter()
-		formatter.allowedUnits = [.useAll]
-		formatter.countStyle = .file
-		return formatter.string(fromByteCount: bytes)
 	}
 }

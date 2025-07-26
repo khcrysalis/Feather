@@ -26,8 +26,10 @@ struct SourceAppsDetailView: View {
 	
     var body: some View {
 		ScrollView {
-			_header()
-				.flexibleHeaderContent()
+			if #available(iOS 18, *) {
+				_header()
+					.flexibleHeaderContent()
+			}
 			
 			VStack(alignment: .leading, spacing: 10) {
 				HStack(spacing: 10) {
@@ -122,7 +124,7 @@ struct SourceAppsDetailView: View {
 						}
 						
 						if let size = app.size {
-							_infoRow(title: .localized("Size"), value: _readableSize(size))
+							_infoRow(title: .localized("Size"), value: size.formattedByteCount)
 						}
 						
 						if let category = app.category {
@@ -147,7 +149,6 @@ struct SourceAppsDetailView: View {
 			.padding(.top, 8)
 		}
 		.flexibleHeaderScrollView()
-		.shouldSetInset()
     }
 	
 	var standardIcon: some View {
@@ -165,6 +166,7 @@ struct SourceAppsDetailView: View {
 
 // MARK: - SourceAppsDetailView (Extension): Builders
 extension SourceAppsDetailView {
+	@available(iOS 18.0, *)
 	@ViewBuilder
 	private func _header() -> some View {
 		ZStack {
@@ -214,20 +216,6 @@ extension SourceAppsDetailView {
 			}
 		}
 	}
-    
-    @ViewBuilder
-    private func _infoRow(title: String, value: String) -> some View {
-        HStack {
-            Text(title)
-                .foregroundColor(.secondary)
-            Spacer()
-            Text(value)
-                .foregroundColor(.primary)
-                .multilineTextAlignment(.trailing)
-        }
-        .font(.subheadline)
-        Divider()
-    }
 	
 	private func _buildPills(from app: ASRepository.App) -> [NBPillItem] {
 		var pills: [NBPillItem] = []
@@ -237,24 +225,23 @@ extension SourceAppsDetailView {
 		}
 		
 		if let size = app.size {
-			pills.append(NBPillItem(title: _readableSize(size), icon: "archivebox", color: .secondary))
+			pills.append(NBPillItem(title: size.formattedByteCount, icon: "archivebox", color: .secondary))
 		}
 		
 		return pills
 	}
 	
-	private func _readableSize(_ size: UInt) -> String {
-		let bytes = Double(size)
-		let units = ["B", "KB", "MB", "GB", "TB"]
-		var index = 0
-		var readableSize = bytes
-
-		while readableSize >= 1024 && index < units.count - 1 {
-			readableSize /= 1024
-			index += 1
+	@ViewBuilder
+	private func _infoRow(title: String, value: String) -> some View {
+		HStack {
+			Text(title)
+				.foregroundColor(.secondary)
+			Spacer()
+			Text(value)
+				.foregroundColor(.primary)
+				.multilineTextAlignment(.trailing)
 		}
-
-		return String(format: "%.1f %@", readableSize, units[index])
+		.font(.subheadline)
+		Divider()
 	}
-
 }

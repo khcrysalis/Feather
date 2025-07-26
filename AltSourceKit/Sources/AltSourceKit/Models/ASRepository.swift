@@ -167,7 +167,7 @@ extension ASRepository {
 
 		public var tintColor: Color?
 
-		public var size: UInt?
+		public var size: Int64?
 
 		public var category: String?
 
@@ -257,9 +257,9 @@ extension ASRepository {
 				try container.decodeIfPresent(Color.self, forKey: .tintColor)
 
 			self.size =
-				(try? container.decodeIfPresent(UInt.self, forKey: .size))
+				(try? container.decodeIfPresent(Int64.self, forKey: .size))
 				?? (try? container.decodeIfPresent(String.self, forKey: .size))
-				.flatMap { UInt($0) }
+				.flatMap { Int64($0) }
 
 			self.category = try container.decodeIfPresent(
 				String.self,
