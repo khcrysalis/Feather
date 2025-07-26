@@ -106,8 +106,8 @@ final class SigningHandler: NSObject {
 			appCertificate != nil
 		{
 			try await handler.sign()
-		} else if _options.signingOption == .adhoc {
-			try await handler.adhocSign()
+//		} else if _options.signingOption == .adhoc {
+//			try await handler.adhocSign()
 		} else if _options.signingOption == .onlyModify {
 			//
 		} else {

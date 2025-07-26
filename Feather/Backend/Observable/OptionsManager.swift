@@ -194,13 +194,13 @@ struct Options: Codable, Equatable {
 	enum SigningOption: String, Codable, CaseIterable, LocalizedDescribable {
 		case `default`
 		case onlyModify
-		case adhoc
+//		case adhoc
 
 		var localizedDescription: String {
 			switch self {
 			case .default: .localized("Default")
 			case .onlyModify: .localized("Modify")
-			case .adhoc: .localized("Ad-hoc")
+//			case .adhoc: .localized("Ad-hoc")
 			}
 		}
 	}
@@ -220,6 +220,8 @@ struct Options: Codable, Equatable {
 		String((0..<6).compactMap { _ in UUID().uuidString.randomElement() })
 	}
 }
+
+// MARK: - LocalizedDescribable
 
 protocol LocalizedDescribable {
 	var localizedDescription: String { get }

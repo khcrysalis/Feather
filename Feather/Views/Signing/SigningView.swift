@@ -220,7 +220,7 @@ extension SigningView {
 					)
 				}
 				#if NIGHTLY || DEBUG
-				NavigationLink(.localized("Entitlements")) {
+				NavigationLink(.localized("Entitlements") + " (BETA)") {
 					SigningEntitlementsView(
 						bindingValue: $_temporaryOptions.appEntitlementsFile
 					)

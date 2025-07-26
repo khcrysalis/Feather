@@ -51,8 +51,6 @@ struct SigningOptionsView: View {
 				selection: $options.signingOption,
 				values: Options.SigningOption.allCases
 			)
-		} footer: {
-			Text(.localized("Default:\nSigns an application with your specified certificate.\n\nAdhoc (Advanced):\nSigns with no identity, however this unfortunately strips entitlements (iOS won't install this type)."))
 		}
 		
 		NBSection(.localized("App Features")) {
