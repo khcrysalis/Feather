@@ -184,6 +184,20 @@ extension SigningHandler {
 			infoDictionary.removeObject(forKey: "UISupportedDevices")
 		}
 		
+		// MARK: Prominant values
+		
+		if let customIdentifier = options.appIdentifier {
+			infoDictionary.setObject(customIdentifier, forKey: "CFBundleIdentifier" as NSCopying)
+		}
+		if let customName = options.appName {
+			infoDictionary.setObject(customName, forKey: "CFBundleDisplayName" as NSCopying)
+			infoDictionary.setObject(customName, forKey: "CFBundleName" as NSCopying)
+		}
+		if let customVersion = options.appVersion {
+			infoDictionary.setObject(customVersion, forKey: "CFBundleShortVersionString" as NSCopying)
+			infoDictionary.setObject(customVersion, forKey: "CFBundleVersion" as NSCopying)
+		}
+		
 		try infoDictionary.write(to: app.appendingPathComponent("Info.plist"))
 	}
 	
