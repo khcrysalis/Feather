@@ -12,7 +12,6 @@ import NimbleViews
 
 // MARK: - View
 struct SourcesView: View {
-	@Environment(\.horizontalSizeClass) private var horizontalSizeClass
 	#if !NIGHTLY && !DEBUG
 	@AppStorage("Feather.shouldStar") private var _shouldStar: Int = 0
 	#endif
@@ -34,13 +33,12 @@ struct SourcesView: View {
 	// MARK: Body
 	var body: some View {
 		NBNavigationView(.localized("Sources")) {
-			NBListAdaptable {
+			List {
 				if !_filteredSources.isEmpty {
 					Section {
 						NavigationLink {
 							SourceAppsView(object: Array(_sources), viewModel: viewModel)
 						} label: {
-							let isRegular = horizontalSizeClass != .compact
 							HStack(spacing: 18) {
 								Image("Repositories").appIconStyle()
 								NBTitleWithSubtitleView(
@@ -48,13 +46,6 @@ struct SourcesView: View {
 									subtitle: .localized("See all apps from your sources")
 								)
 							}
-							.padding(isRegular ? 12 : 0)
-							.background(
-								isRegular
-								? RoundedRectangle(cornerRadius: 18, style: .continuous)
-									.fill(Color(.quaternarySystemFill))
-								: nil
-							)
 						}
 						.buttonStyle(.plain)
 					}
@@ -74,6 +65,7 @@ struct SourcesView: View {
 					}
 				}
 			}
+			.listStyle(.plain)
 			.searchable(text: $_searchText, placement: .platform())
 			.overlay {
 				if _filteredSources.isEmpty {

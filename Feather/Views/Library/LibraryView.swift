@@ -21,12 +21,10 @@ struct LibraryView: View {
 	@State private var _alertDownloadString: String = "" // for _isDownloadingPresenting
 	
 	// MARK: Selection State
-	@State private var _selectedAppUUIDs: Set<String> = []
 	@State private var _editMode: EditMode = .inactive
-	
+	@State private var _selectedAppUUIDs = Set<String>()
 	@State private var _searchText = ""
 	@State private var _selectedScope: Scope = .all
-
 	
 	@Namespace private var _namespace
 	
@@ -62,54 +60,51 @@ struct LibraryView: View {
 	// MARK: Body
     var body: some View {
 		NBNavigationView(.localized("Library")) {
-			NBListAdaptable {
+			List(selection: $_selectedAppUUIDs) {
 				if
-					!_filteredSignedApps.isEmpty ||
-					!_filteredImportedApps.isEmpty
+					!_filteredSignedApps.isEmpty,
+					_selectedScope == .all || _selectedScope == .signed
 				{
-					if
-						_selectedScope == .all ||
-						_selectedScope == .signed
-					{
-						NBSection(
-							.localized("Signed"),
-							secondary: _filteredSignedApps.count.description
-						) {
-							ForEach(_filteredSignedApps, id: \.uuid) { app in
-								LibraryCellView(
-									app: app,
-									selectedInfoAppPresenting: $_selectedInfoAppPresenting,
-									selectedSigningAppPresenting: $_selectedSigningAppPresenting,
-									selectedInstallAppPresenting: $_selectedInstallAppPresenting,
-									selectedAppUUIDs: $_selectedAppUUIDs // send to cell view
-								)
-								.compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
-							}
-						}
-					}
-					
-					if
-						_selectedScope == .all ||
-							_selectedScope == .imported
-					{
-						NBSection(
-							.localized("Imported"),
-							secondary: _filteredImportedApps.count.description
-						) {
-							ForEach(_filteredImportedApps, id: \.uuid) { app in
-								LibraryCellView(
-									app: app,
-									selectedInfoAppPresenting: $_selectedInfoAppPresenting,
-									selectedSigningAppPresenting: $_selectedSigningAppPresenting,
-									selectedInstallAppPresenting: $_selectedInstallAppPresenting,
-									selectedAppUUIDs: $_selectedAppUUIDs
-								)
-								.compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
-							}
+					NBSection(
+						.localized("Signed"),
+						secondary: _filteredSignedApps.count.description
+					) {
+						ForEach(_filteredSignedApps, id: \.uuid) { app in
+							LibraryCellView(
+								app: app,
+								selectedInfoAppPresenting: $_selectedInfoAppPresenting,
+								selectedSigningAppPresenting: $_selectedSigningAppPresenting,
+								selectedInstallAppPresenting: $_selectedInstallAppPresenting
+							)
+							.compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
+							.tag(app.uuid ?? "")
 						}
 					}
 				}
+				
+				if
+					!_filteredImportedApps.isEmpty,
+				   _selectedScope == .all || _selectedScope == .imported
+				{
+					NBSection(
+						.localized("Imported"),
+						secondary: _filteredImportedApps.count.description
+					) {
+						ForEach(_filteredImportedApps, id: \.uuid) { app in
+							LibraryCellView(
+								app: app,
+								selectedInfoAppPresenting: $_selectedInfoAppPresenting,
+								selectedSigningAppPresenting: $_selectedSigningAppPresenting,
+								selectedInstallAppPresenting: $_selectedInstallAppPresenting
+							)
+							.compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
+							.tag(app.uuid ?? "")
+						}
+					}
+				}
+				
 			}
+			.listStyle(.plain)
 			.searchable(text: $_searchText, placement: .platform())
 			.compatSearchScopes($_selectedScope) {
 				ForEach(Scope.allCases, id: \.displayName) { scope in
@@ -143,9 +138,9 @@ struct LibraryView: View {
 				}
 				
 				if _editMode.isEditing {
-                    NBToolbarButton(
-						.localized("Delete"),
+					NBToolbarButton(
 						systemImage: "trash",
+						style: .icon,
 						isDisabled: _selectedAppUUIDs.isEmpty
 					) {
 						_bulkDeleteSelectedApps()
@@ -202,11 +197,6 @@ struct LibraryView: View {
 					}
 				}
 			}
-			.onChange(of: _editMode) { mode in
-				if mode == .inactive {
-					_selectedAppUUIDs.removeAll()
-				}
-			}
         }
     }
 }
@@ -228,17 +218,14 @@ extension LibraryView {
 extension LibraryView {
 	private func _bulkDeleteSelectedApps() {
 		let selectedApps = _getAllApps().filter { app in
-			guard let uuid = app.uuid else { return false }
-			return _selectedAppUUIDs.contains(uuid)
+			_selectedAppUUIDs.contains(app.uuid!)
 		}
 		
 		for app in selectedApps {
 			Storage.shared.deleteApp(for: app)
 		}
 		
-		_selectedAppUUIDs.removeAll()
-		
-		// _editMode = .inactive
+		_editMode = .inactive
 	}
 	
 	private func _getAllApps() -> [AppInfoPresentable] {
