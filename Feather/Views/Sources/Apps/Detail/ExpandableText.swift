@@ -32,6 +32,13 @@ struct ExpandableText: View {
 						})
 						.hidden()
 				)
+                .onTapGesture {pGesture in
+                    if !expanded {
+                        withAnimation {
+                            expanded.toggle()
+                        }
+                    }
+                }
 
 			if truncated {
 				Button(action: {

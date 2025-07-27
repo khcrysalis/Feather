@@ -78,24 +78,11 @@ struct SourceAppsDetailView: View {
 					let whatsNewDesc = app.currentAppVersion?.localizedDescription
 				{
 					NBSection(.localized("What's New")) {
-						VStack(alignment: .leading, spacing: 2) {
-                            HStack {
-                                Text(verbatim: "Version \(currentVer)")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-                                    
-                                Spacer()
-                                if let date = app.currentDate?.date {
-                                    Text(date.formatted(.relative(presentation: .named)))
-                                        .font(.subheadline)
-                                        .foregroundStyle(.secondary)
-                                }
-                            }
-                            .padding(.vertical, 4)
-							ExpandableText(text: whatsNewDesc, lineLimit: 3)
-
-						}
-						.frame(maxWidth: .infinity, alignment: .leading)
+						AppVersionInfo(
+							version: currentVer,
+							date: app.currentDate?.date,
+							description: whatsNewDesc
+						)
 					}
 					
 					Divider()
