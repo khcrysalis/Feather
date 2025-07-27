@@ -72,6 +72,10 @@ struct SourceAppsDetailView: View {
 				Divider()
 				_infoPills(app: app)
 				Divider()
+                
+                if let screenshots = app.screenshots {
+                    
+                }
 				
 				if
 					let currentVer = app.currentVersion,
@@ -83,6 +87,15 @@ struct SourceAppsDetailView: View {
 							date: app.currentDate?.date,
 							description: whatsNewDesc
 						)
+                        if let versions = app.versions {
+                            NavigationLink(
+                                destination: VersionHistoryView(versions: versions)
+                                    .navigationTitle(.localized("Version History"))
+                                    .navigationBarTitleDisplayMode(.large)
+                            ) {
+                                Text(.localized("Version History"))
+                            }
+                        }
 					}
 					
 					Divider()
