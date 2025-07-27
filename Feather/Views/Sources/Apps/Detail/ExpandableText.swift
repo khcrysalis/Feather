@@ -33,10 +33,8 @@ struct ExpandableText: View {
 						.hidden()
 				)
                 .onTapGesture {pGesture in
-                    if !expanded {
-                        withAnimation {
-                            expanded.toggle()
-                        }
+                    withAnimation {
+                        expanded.toggle()
                     }
                 }
 
