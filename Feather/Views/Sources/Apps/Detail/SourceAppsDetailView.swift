@@ -89,7 +89,7 @@ struct SourceAppsDetailView: View {
 						)
                         if let versions = app.versions {
                             NavigationLink(
-                                destination: VersionHistoryView(versions: versions)
+                                destination: VersionHistoryView(app: app, versions: versions)
                                     .navigationTitle(.localized("Version History"))
                                     .navigationBarTitleDisplayMode(.large)
                             ) {
