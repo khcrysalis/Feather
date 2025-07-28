@@ -69,17 +69,3 @@ final class ZsignHandler {
 		)
 	}
 }
-
-extension UIAlertController {
-	static func showAsyncAlert(title: String, message: String) async {
-		await withCheckedContinuation { continuation in
-			DispatchQueue.main.async {
-				UIAlertController.showAlertWithOk(
-					title: title,
-					message: message
-				)
-				continuation.resume()
-			}
-		}
-	}
-}
