@@ -55,15 +55,7 @@ struct SourceAppsDetailView: View {
 						
 						Spacer()
 						
-						HStack(spacing: 2) {
-							DownloadButtonView(app: app)
-							Spacer()
-							Button {
-								UIActivityViewController.show(activityItems: ["hei"])
-							} label: {
-                                Image(systemName: "square.and.arrow.up")
-							}
-						}
+						DownloadButtonView(app: app)
 					}
 					.lineLimit(2)
 					.frame(maxWidth: .infinity, alignment: .leading)
@@ -159,6 +151,20 @@ struct SourceAppsDetailView: View {
 		}
 		.flexibleHeaderScrollView()
 		.shouldSetInset()
+		.toolbar {
+			NBToolbarButton(
+				systemImage: "square.and.arrow.up",
+				placement: .topBarTrailing
+			) {
+				let sharedString = """
+				\(app.currentName) - \(app.currentVersion ?? "0")
+				\(app.currentDescription ?? .localized("An awesome application"))
+				---
+				\(source.website?.absoluteString ?? source.name ?? "")
+				"""
+				UIActivityViewController.show(activityItems: [sharedString])
+			}
+		}
     }
 	
 	var standardIcon: some View {
@@ -253,23 +259,26 @@ extension SourceAppsDetailView {
 			HStack(spacing: 12) {
 				ForEach(screenshotURLs.indices, id: \.self) { index in
 					let url = screenshotURLs[index]
-					
 					LazyImage(url: url) { state in
-                        if let image = state.image {
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(height: 400)
-                                .clipShape(RoundedRectangle(cornerRadius: 16))
-                        }
-                        else {
-                            
-                        }
+						if let image = state.image {
+							image
+								.resizable()
+								.aspectRatio(contentMode: .fit)
+								.frame(
+									maxWidth: UIScreen.main.bounds.width - 32,
+									maxHeight: 400
+								)
+								.clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+								.overlay {
+									RoundedRectangle(cornerRadius: 16, style: .continuous)
+										.strokeBorder(.gray.opacity(0.3), lineWidth: 1)
+								}
+						}
 					}
 				}
 			}
 			.padding(.horizontal)
 		}
-        .padding(.horizontal, -16)
+		.padding(.horizontal, -16)
 	}
 }

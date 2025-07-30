@@ -10,6 +10,8 @@ import AltSourceKit
 
 // MARK: - VersionHistoryView
 struct VersionHistoryView: View {
+	@Environment(\.dismiss) var dismiss
+	
     let app: ASRepository.App
     let versions: [ASRepository.App.Version]
     
@@ -31,8 +33,9 @@ struct VersionHistoryView: View {
                                     from: downloadURL,
                                     id: app.currentUniqueId
                                 )
+								dismiss()
                             } label: {
-                                Label(.localized("Download Version \(version.version)" ), systemImage: "arrow.down.circle")
+                                Label(version.version, systemImage: "arrow.down")
                             }
                             
                             Button {
@@ -46,7 +49,6 @@ struct VersionHistoryView: View {
                     Divider().padding(.horizontal)
                 }
             }
-//            .padding(.horizontal)
             .padding(.top, 8)
         }
     }
