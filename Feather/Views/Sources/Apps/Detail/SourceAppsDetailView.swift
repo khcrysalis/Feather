@@ -61,7 +61,7 @@ struct SourceAppsDetailView: View {
 							Button {
 								UIActivityViewController.show(activityItems: ["hei"])
 							} label: {
-								NBButton(systemImage: "square.and.arrow.up", style: .icon)
+                                Image(systemName: "square.and.arrow.up")
 							}
 						}
 					}
@@ -73,8 +73,12 @@ struct SourceAppsDetailView: View {
 				_infoPills(app: app)
 				Divider()
                 
-                if let screenshots = app.screenshots {
+                if let screenshotURLs = app.screenshotURLs {
+                    NBSection(.localized("Screenshots")) {
+                        _screenshots(screenshotURLs: screenshotURLs)
+                    }
                     
+                    Divider()
                 }
 				
 				if
@@ -241,5 +245,31 @@ extension SourceAppsDetailView {
 	private func _infoRow(title: String, value: String) -> some View {
 		LabeledContent(title, value: value)
 		Divider()
+	}
+	
+	@ViewBuilder
+	private func _screenshots(screenshotURLs: [URL]) -> some View {
+		ScrollView(.horizontal, showsIndicators: false) {
+			HStack(spacing: 12) {
+				ForEach(screenshotURLs.indices, id: \.self) { index in
+					let url = screenshotURLs[index]
+					
+					LazyImage(url: url) { state in
+                        if let image = state.image {
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: 400)
+                                .clipShape(RoundedRectangle(cornerRadius: 16))
+                        }
+                        else {
+                            
+                        }
+					}
+				}
+			}
+			.padding(.horizontal)
+		}
+        .padding(.horizontal, -16)
 	}
 }
