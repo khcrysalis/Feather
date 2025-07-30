@@ -1174,6 +1174,12 @@
             "state" : "translated",
             "value" : "Ikona aplikacji"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icon ứng dụng"
+          }
         }
       }
     },
@@ -1551,6 +1557,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zgłoś błąd"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Báo cáo lỗi"
           }
         }
       }
@@ -2466,6 +2478,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ciemny"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tối"
           }
         }
       }
@@ -6391,6 +6409,12 @@
             "state" : "translated",
             "value" : "Jasny"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sáng"
+          }
         }
       }
     },
@@ -7649,6 +7673,12 @@
             "state" : "translated",
             "value" : "Inne"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Khác"
+          }
         }
       }
     },
@@ -8107,6 +8137,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Weryfikacja PPQ"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kiểm tra PPQ"
           }
         }
       }
@@ -9583,6 +9619,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Odwołany"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đã thu hồi"
           }
         }
       }
@@ -11615,6 +11657,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Umożliwia ustawienie reguł automatycznej zamiany identyfikatora pakietu/wyświetlanej nazwy podczas podpisywania aplikacji."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Điều này cho phép bạn thiết lập các quy tắc để tự động thay thế Bundle ID/Tên hiển thị khi ký ứng dụng."
           }
         }
       }

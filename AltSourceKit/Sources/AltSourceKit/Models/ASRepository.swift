@@ -167,7 +167,7 @@ extension ASRepository {
 
 		public var tintColor: Color?
 
-		public var size: UInt?
+		public var size: Int64?
 
 		public var category: String?
 
@@ -257,9 +257,9 @@ extension ASRepository {
 				try container.decodeIfPresent(Color.self, forKey: .tintColor)
 
 			self.size =
-				(try? container.decodeIfPresent(UInt.self, forKey: .size))
+				(try? container.decodeIfPresent(Int64.self, forKey: .size))
 				?? (try? container.decodeIfPresent(String.self, forKey: .size))
-				.flatMap { UInt($0) }
+				.flatMap { Int64($0) }
 
 			self.category = try container.decodeIfPresent(
 				String.self,
@@ -373,6 +373,10 @@ extension ASRepository {
 		
 		public var currentDate: DateParsed? {
 			currentAppVersion?.date ?? versionDate
+		}
+		
+		public var currentDescription: String? {
+			subtitle ?? localizedDescription
 		}
 		
 		// "UNIQUE" hahaha
@@ -494,8 +498,8 @@ extension ASRepository {
 		}
 
 		public struct Privacy: Decodable, Hashable, Sendable {
-			var name: String
-			var usageDescription: String
+			public var name: String
+			public var usageDescription: String
 		}
 
 		public init(from decoder: any Decoder) throws {

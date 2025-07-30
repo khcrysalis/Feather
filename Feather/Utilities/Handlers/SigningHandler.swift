@@ -113,6 +113,13 @@ final class SigningHandler: NSObject {
 		} else {
 			throw SigningFileHandlerError.missingCertifcate
 		}
+		
+		try await self.move()
+		try await self.addToDatabase()
+		
+		if let error = handler.hadError {
+			throw error
+		}
 	}
 	
 	func move() async throws {
@@ -139,17 +146,20 @@ final class SigningHandler: NSObject {
 			return
 		}
 		
-		let bundle = Bundle(url: appUrl)
-		
-		Storage.shared.addSigned(
-			uuid: _uuid,
-			certificate: _options.signingOption != .default ? nil : appCertificate,
-			appName: bundle?.name,
-			appIdentifier: bundle?.bundleIdentifier,
-			appVersion: bundle?.version,
-			appIcon: bundle?.iconFileName
-		) { _ in
-			Logger.signing.info("[\(self._uuid)] Added to database")
+		await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
+			let bundle = Bundle(url: appUrl)
+			
+			Storage.shared.addSigned(
+				uuid: _uuid,
+				certificate: _options.signingOption != .default ? nil : appCertificate,
+				appName: bundle?.name,
+				appIdentifier: bundle?.bundleIdentifier,
+				appVersion: bundle?.version,
+				appIcon: bundle?.iconFileName
+			) { _ in
+				Logger.signing.info("[\(self._uuid)] Added to database")
+				continuation.resume()
+			}
 		}
 	}
 	
