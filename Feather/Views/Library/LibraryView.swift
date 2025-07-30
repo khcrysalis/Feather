@@ -138,12 +138,16 @@ struct LibraryView: View {
 				}
 			}
 			.toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    EditButton()
-                }
+				ToolbarItem(placement: .topBarLeading) {
+					EditButton()
+				}
 				
 				if _editMode.isEditing {
-                    NBToolbarButton(.localized("Delete"), systemImage: "trash", isDisabled: _selectedAppUUIDs.isEmpty) {
+                    NBToolbarButton(
+						.localized("Delete"),
+						systemImage: "trash",
+						isDisabled: _selectedAppUUIDs.isEmpty
+					) {
 						_bulkDeleteSelectedApps()
 					}
 				} else {

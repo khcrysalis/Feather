@@ -31,7 +31,9 @@ extension SourceAppsView {
 struct SourceAppsView: View {
 	@AppStorage("Feather.sortOptionRawValue") private var _sortOptionRawValue: String = SortOption.default.rawValue
 	@AppStorage("Feather.sortAscending") private var _sortAscending: Bool = true
+	
 	@State private var _sortOption: SortOption = .default
+	@State private var _selectedRoute: SourceAppRoute?
 	
 	@State var isLoading = true
 	@State var hasLoadedOnce = false
@@ -60,7 +62,8 @@ struct SourceAppsView: View {
 					sources: _sources,
 					searchText: $_searchText,
 					sortOption: $_sortOption,
-					sortAscending: $_sortAscending
+					sortAscending: $_sortAscending,
+					onSelect: {self._selectedRoute = $0}
 				)
 				.ignoresSafeArea()
 			} else {
@@ -118,6 +121,9 @@ struct SourceAppsView: View {
 		.onChange(of: _sortOption) { newValue in
 			_sortOptionRawValue = newValue.rawValue
 		}
+		.navigationDestinationIfAvailable(item: $_selectedRoute) { route in
+			SourceAppsDetailView(source: route.source, app: route.app)
+		}
 	}
 	
 	private func _load() {
@@ -130,6 +136,12 @@ struct SourceAppsView: View {
 				isLoading = false
 			}
 		}
+	}
+	
+	struct SourceAppRoute: Identifiable, Hashable {
+		let source: ASRepository
+		let app: ASRepository.App
+		let id: String = UUID().uuidString
 	}
 }
 
@@ -160,6 +172,22 @@ extension SourceAppsView {
 					Image(systemName: _sortAscending ? "chevron.up" : "chevron.down")
 				}
 			}
+		}
+	}
+}
+
+import SwiftUI
+
+extension View {
+	@ViewBuilder
+	func navigationDestinationIfAvailable<Item: Identifiable & Hashable, Destination: View>(
+		item: Binding<Item?>,
+		@ViewBuilder destination: @escaping (Item) -> Destination
+	) -> some View {
+		if #available(iOS 17, *) {
+			self.navigationDestination(item: item, destination: destination)
+		} else {
+			self
 		}
 	}
 }

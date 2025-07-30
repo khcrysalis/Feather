@@ -117,26 +117,3 @@ NSString *LCPatchMachOForSDK26(const char *path) {
 	close(fd);
 	return result;
 }
-
-#if APPSTORE != 1
-NSString *getApplicationIdentifier(void) {
-	CFErrorRef error = NULL;
-	SecTrustRef task = SecTaskCreateFromSelf(NULL);
-	if (!task) return nil;
-	
-	CFTypeRef value = SecTaskCopyValueForEntitlement(task, CFSTR("application-identifier"), &error);
-	CFRelease(task);
-	
-	if (value) {
-		if (CFGetTypeID(value) == CFStringGetTypeID()) {
-			NSString *appID = (__bridge NSString *)value;
-			return appID;
-		} else {
-			NSLog(@"Unexpected entitlement type: %@", value);
-			return nil;
-		}
-	} else {
-		return nil;
-	}
-}
-#endif

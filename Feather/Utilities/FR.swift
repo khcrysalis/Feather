@@ -26,12 +26,12 @@ enum FR {
 				try await handler.extract()
 				try await handler.move()
 				try await handler.addToDatabase()
-				
+				try? await handler.clean()
 				await MainActor.run {
 					completion(nil)
 				}
 			} catch {
-				try await handler.clean()
+				try? await handler.clean()
 				await MainActor.run {
 					completion(error)
 				}
@@ -54,9 +54,7 @@ enum FR {
 			do {
 				try await handler.copy()
 				try await handler.modify()
-				try await handler.move()
-				try await handler.addToDatabase()
-				
+				try? await handler.clean()
 				await MainActor.run {
 					completion(nil)
 				}
