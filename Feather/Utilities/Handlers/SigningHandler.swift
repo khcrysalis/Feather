@@ -64,6 +64,13 @@ final class SigningHandler: NSObject {
 			throw SigningFileHandlerError.infoPlistNotFound
 		}
 		
+		if
+			let identifier = _options.appIdentifier,
+			let oldIdentifier = infoDictionary["CFBundleIdentifier"] as? String
+		{
+			try await _modifyPluginIdentifiers(old: oldIdentifier, new: identifier, for: movedAppPath)
+		}
+		
 		try await _modifyDict(using: infoDictionary, with: _options, to: movedAppPath)
 		
 		if let icon = appIcon {
@@ -262,6 +269,61 @@ extension SigningHandler {
 			
 			dictionary["CFBundleDisplayName"] = name
 			dictionary.write(toFile: plistURL.path, atomically: true)
+		}
+	}
+	
+	private func _modifyPluginIdentifiers(
+		old oldIdentifier: String,
+		new newIdentifier: String,
+		for app: URL
+	) async throws {
+		let pluginBundles = _enumerateFiles(at: app) {
+			$0.hasSuffix(".app") || $0.hasSuffix(".appex")
+		}
+		
+		for bundleURL in pluginBundles {
+			let infoPlistURL = bundleURL.appendingPathComponent("Info.plist")
+			
+			guard let infoDict = NSDictionary(contentsOf: infoPlistURL)?.mutableCopy() as? NSMutableDictionary else {
+				continue
+			}
+			
+			var didChange = false
+			
+			// CFBundleIdentifier
+			if let oldValue = infoDict["CFBundleIdentifier"] as? String {
+				let newValue = oldValue.replacingOccurrences(of: oldIdentifier, with: newIdentifier)
+				if oldValue != newValue {
+					infoDict["CFBundleIdentifier"] = newValue
+					didChange = true
+				}
+			}
+			
+			// WKCompanionAppBundleIdentifier
+			if let oldValue = infoDict["WKCompanionAppBundleIdentifier"] as? String {
+				let newValue = oldValue.replacingOccurrences(of: oldIdentifier, with: newIdentifier)
+				if oldValue != newValue {
+					infoDict["WKCompanionAppBundleIdentifier"] = newValue
+					didChange = true
+				}
+			}
+			
+			// NSExtension → NSExtensionAttributes → WKAppBundleIdentifier
+			if
+				let extensionDict = infoDict["NSExtension"] as? NSMutableDictionary,
+				let attributes = extensionDict["NSExtensionAttributes"] as? NSMutableDictionary,
+				let oldValue = attributes["WKAppBundleIdentifier"] as? String
+			{
+				let newValue = oldValue.replacingOccurrences(of: oldIdentifier, with: newIdentifier)
+				if oldValue != newValue {
+					attributes["WKAppBundleIdentifier"] = newValue
+					didChange = true
+				}
+			}
+			
+			if didChange {
+				infoDict.write(to: infoPlistURL, atomically: true)
+			}
 		}
 	}
 	
