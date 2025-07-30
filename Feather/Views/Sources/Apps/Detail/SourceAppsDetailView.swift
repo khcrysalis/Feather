@@ -135,12 +135,46 @@ struct SourceAppsDetailView: View {
 						}
 						
 						if let bundleId = app.id {
-							_infoRow(title: .localized("Bundle ID"), value: bundleId)
+							_infoRow(title: .localized("Identifier"), value: bundleId)
 						}
 					}
                 }
+				
+				if let appPermissions = app.appPermissions {
+					NBSection(.localized("Permissions")) {
+						Group {
+							if let entitlements = appPermissions.entitlements {
+								NBTitleWithSubtitleView(
+									title: .localized("Entitlements"),
+									subtitle: entitlements.map(\.name).joined(separator: "\n")
+								)
+							} else {
+								Text(.localized("No Entitlements listed."))
+									.font(.subheadline)
+									.foregroundStyle(.secondary)
+							}
+							if let privacyItems = appPermissions.privacy {
+								ForEach(privacyItems, id: \.self) { item in
+									NBTitleWithSubtitleView(
+										title: item.name,
+										subtitle: item.usageDescription
+									)
+								}
+							} else {
+								Text(.localized("No Privacy Permissions listed."))
+									.font(.subheadline)
+									.foregroundStyle(.secondary)
+							}
+						}
+						.padding()
+						.background(
+							RoundedRectangle(cornerRadius: 18, style: .continuous)
+								.fill(Color(.quaternarySystemFill))
+						)
+					}
+				}
 			}
-			.padding(.horizontal)
+			.padding([.horizontal, .bottom])
 			.padding(.top, {
 				if #available(iOS 18, *) {
 					8
@@ -278,7 +312,9 @@ extension SourceAppsDetailView {
 				}
 			}
 			.padding(.horizontal)
+			.compatScrollTargetLayout()
 		}
+		.compatScrollTargetBehavior()
 		.padding(.horizontal, -16)
 	}
 }

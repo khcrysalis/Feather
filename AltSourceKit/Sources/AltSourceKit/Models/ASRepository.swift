@@ -498,8 +498,8 @@ extension ASRepository {
 		}
 
 		public struct Privacy: Decodable, Hashable, Sendable {
-			var name: String
-			var usageDescription: String
+			public var name: String
+			public var usageDescription: String
 		}
 
 		public init(from decoder: any Decoder) throws {
