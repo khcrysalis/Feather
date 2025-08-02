@@ -43,7 +43,7 @@ extension ScreenshotPreviewView {
             
             Spacer()
             
-            Text(verbatim: .localized("%lld of %lld", arguments: currentIndex + 1, screenshotURLs.count))
+            Text("\(currentIndex + 1) / \(screenshotURLs.count)")
                 .font(.subheadline)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 6)
