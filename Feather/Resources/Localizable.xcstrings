@@ -4690,6 +4690,23 @@
         }
       }
     },
+    "Get" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pobierz"
+          }
+        }
+      }
+    },
     "Get access to our secret Discord by donating, where we talk about future updates, betas, and potential ways to make your experience better." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5854,6 +5871,23 @@
         }
       }
     },
+    "Information" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informacje"
+          }
+        }
+      }
+    },
     "Injection Folder" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -6980,13 +7014,13 @@
         }
       }
     },
-    "No entitlements listed." : {
+    "No Entitlements listed." : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No entitlements listed."
+            "value" : "No Entitlements listed."
           }
         },
         "pl" : {
@@ -7161,19 +7195,36 @@
         }
       }
     },
-    "No permissions listed." : {
+    "No Permissions listed." : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No permissions listed."
+            "value" : "No Permissions listed."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Brak pozwoleń do wyświetlenia."
+          }
+        }
+      }
+    },
+    "No Privacy Permissions listed." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Privacy Permissions listed."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak pozwoleń prywatności do wyświetlenia."
           }
         }
       }
