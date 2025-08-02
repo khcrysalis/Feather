@@ -16,6 +16,8 @@ struct SourceAppsDetailView: View {
 	@ObservedObject var downloadManager = DownloadManager.shared
 	@State private var _downloadProgress: Double = 0
 	@State var cancellable: AnyCancellable? // Combine
+	@State private var _isScreenshotPreviewPresented: Bool = false
+	@State private var _selectedScreenshotIndex: Int = 0
 	
 	var currentDownload: Download? {
 		downloadManager.getDownload(by: app.currentUniqueId)
@@ -199,6 +201,14 @@ struct SourceAppsDetailView: View {
 				UIActivityViewController.show(activityItems: [sharedString])
 			}
 		}
+		.fullScreenCover(isPresented: $_isScreenshotPreviewPresented) {
+			if let screenshotURLs = app.screenshotURLs {
+				ScreenshotPreviewView(
+					screenshotURLs: screenshotURLs,
+					initialIndex: _selectedScreenshotIndex
+				)
+			}
+		}
     }
 	
 	var standardIcon: some View {
@@ -306,6 +316,10 @@ extension SourceAppsDetailView {
 								.overlay {
 									RoundedRectangle(cornerRadius: 16, style: .continuous)
 										.strokeBorder(.gray.opacity(0.3), lineWidth: 1)
+								}
+								.onTapGesture {
+									_selectedScreenshotIndex = index
+									_isScreenshotPreviewPresented = true
 								}
 						}
 					}
