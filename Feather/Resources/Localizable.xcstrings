@@ -2849,9 +2849,14 @@
             "state" : "translated",
             "value" : "Developer"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Developer"
+          }
         }
-      },
-      "shouldTranslate" : false
+      }
     },
     "Discord" : {
       "extractionState" : "manual",
