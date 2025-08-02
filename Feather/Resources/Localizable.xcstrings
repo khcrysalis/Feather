@@ -312,6 +312,18 @@
         }
       }
     },
+    "%lld of %lld" : {
+      "comment" : "Current screenshot index out of total screenshots",
+      "extractionState" : "manual",
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld trên %lld"
+          }
+        }
+      }
+    },
     "%lld required system dylibs not shown." : {
       "comment" : "Number of macho load paths not listed for safety",
       "extractionState" : "manual",
