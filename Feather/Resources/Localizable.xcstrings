@@ -1734,6 +1734,12 @@
             "state" : "translated",
             "value" : "Category"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kategoria"
+          }
         }
       }
     },
@@ -2826,6 +2832,12 @@
             "state" : "translated",
             "value" : "Description"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opis"
+          }
         }
       }
     },
@@ -2838,7 +2850,8 @@
             "value" : "Developer"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Discord" : {
       "extractionState" : "manual",
@@ -6273,6 +6286,12 @@
             "state" : "translated",
             "value" : "Less"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mniej"
+          }
         }
       }
     },
@@ -6585,6 +6604,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "More"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Więcej"
           }
         }
       }
@@ -6963,6 +6988,12 @@
             "state" : "translated",
             "value" : "No entitlements listed."
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak uprawnień do wyświetlenia."
+          }
         }
       }
     },
@@ -7137,6 +7168,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No permissions listed."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak pozwoleń do wyświetlenia."
           }
         }
       }
@@ -7848,6 +7885,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Permissions"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pozwolenia"
           }
         }
       }
@@ -9702,6 +9745,12 @@
             "state" : "translated",
             "value" : "Screenshots"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zrzuty ekranu"
+          }
         }
       }
     },
@@ -10694,6 +10743,12 @@
             "state" : "translated",
             "value" : "Size"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rozmiar"
+          }
         }
       }
     },
@@ -10704,6 +10759,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Source"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Źródło"
           }
         }
       }
@@ -12053,6 +12114,12 @@
             "state" : "translated",
             "value" : "Updated"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zaktualizowano"
+          }
         }
       }
     },
@@ -12195,6 +12262,12 @@
             "state" : "translated",
             "value" : "Version %@"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wersja %@"
+          }
         }
       }
     },
@@ -12205,6 +12278,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version History"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historia wersji"
           }
         }
       }
@@ -12378,6 +12457,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "What's New"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Co nowego"
           }
         }
       }
