@@ -40,7 +40,7 @@ extension ScreenshotPreviewView {
     @ViewBuilder
     private func _headerView() -> some View {
         HStack {
-            Button(.localized("Done"), role: .cancel) { dismiss() }
+            Button(.localized("Close"), role: .cancel) { dismiss() }
             
             Spacer()
             
