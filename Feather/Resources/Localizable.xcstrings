@@ -2862,6 +2862,12 @@
             "value" : "Developer"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Developer"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4710,6 +4716,12 @@
     "Get" : {
       "extractionState" : "manual",
       "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pobierz"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5885,6 +5897,12 @@
     "Information" : {
       "extractionState" : "manual",
       "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informacje"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7221,27 +7239,16 @@
     "No Privacy Permissions listed." : {
       "extractionState" : "manual",
       "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak wymienionych uprawnień prywatności."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Không có quyền riêng tư nào được liệt kê."
-          }
-        }
-      }
-    },
-    "No Privacy Permissions listed." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No Privacy Permissions listed."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Brak pozwoleń prywatności do wyświetlenia."
           }
         }
       }
