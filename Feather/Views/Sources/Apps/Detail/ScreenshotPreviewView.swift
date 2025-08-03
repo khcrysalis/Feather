@@ -44,7 +44,7 @@ extension ScreenshotPreviewView {
             
             Spacer()
             
-            Text("\(currentIndex + 1) / \(screenshotURLs.count)")
+            Text(verbatim: "\(currentIndex + 1) / \(screenshotURLs.count)")
                 .font(.subheadline)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 6)
