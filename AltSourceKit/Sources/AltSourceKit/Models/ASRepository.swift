@@ -502,6 +502,19 @@ extension ASRepository {
 			public var usageDescription: String
 		}
 
+		public struct PrivacyDictionary: Decodable, Hashable, Sendable {
+			private var _permissions: [String: String]
+			
+			public var privacyArray: [Privacy] {
+				_permissions.map { Privacy(name: $0.key, usageDescription: $0.value) }
+			}
+			
+			public init(from decoder: any Decoder) throws {
+				let container = try decoder.singleValueContainer()
+				self._permissions = try container.decode([String: String].self)
+			}
+		}
+
 		public init(from decoder: any Decoder) throws {
 			let container = try decoder.container(keyedBy: CodingKeys.self)
 			self.entitlements = try? container.decodeIfPresent(
@@ -513,6 +526,15 @@ extension ASRepository {
 				[Privacy].self,
 				forKey: .privacy
 			)
+			// lets not ignore the silly people
+			if self.privacy == nil {
+				if let privacyDict = try? container.decodeIfPresent(
+					PrivacyDictionary.self,
+					forKey: .privacy
+				) {
+					self.privacy = privacyDict.privacyArray
+				}
+			}
 		}
 
 		public enum CodingKeys: String, CodingKey {

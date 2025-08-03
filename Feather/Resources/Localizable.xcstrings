@@ -303,7 +303,7 @@
               },
               "other" : {
                 "stringUnit" : {
-                  "state" : "new",
+                  "state" : "translated",
                   "value" : "%lld ngày"
                 }
               }
@@ -360,7 +360,7 @@
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "%lld thư viện hệ thống bắt buộc không được hiển thị"
           }
         }
@@ -940,8 +940,8 @@
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Tất cả các tệp của Feathers có thể được tìm thấy trong ứng dụng Tệp, đây là một số liên kết nhanh đến chúng."
+            "state" : "translated",
+            "value" : "Tất cả các file của Feather có thể được tìm thấy trong ứng dụng Tệp, đây là một số liên kết nhanh đến chúng."
           }
         }
       }
@@ -1739,6 +1739,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kategoria"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Danh mục"
           }
         }
       }
@@ -2838,6 +2844,12 @@
             "state" : "translated",
             "value" : "Opis"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mô tả"
+          }
         }
       }
     },
@@ -2849,9 +2861,14 @@
             "state" : "translated",
             "value" : "Developer"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nhà phát triển"
+          }
         }
-      },
-      "shouldTranslate" : false
+      }
     },
     "Discord" : {
       "extractionState" : "manual",
@@ -4690,6 +4707,17 @@
         }
       }
     },
+    "Get" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nhận"
+          }
+        }
+      }
+    },
     "Get access to our secret Discord by donating, where we talk about future updates, betas, and potential ways to make your experience better." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5854,6 +5882,17 @@
         }
       }
     },
+    "Information" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thông tin chi tiết"
+          }
+        }
+      }
+    },
     "Injection Folder" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -6292,6 +6331,12 @@
             "state" : "translated",
             "value" : "Mniej"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ẩn"
+          }
         }
       }
     },
@@ -6610,6 +6655,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Więcej"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thêm"
           }
         }
       }
@@ -6980,7 +7031,7 @@
         }
       }
     },
-    "No entitlements listed." : {
+    "No Entitlements listed." : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -6993,6 +7044,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Brak uprawnień do wyświetlenia."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không có quyền hạn nào được liệt kê."
           }
         }
       }
@@ -7161,19 +7218,13 @@
         }
       }
     },
-    "No permissions listed." : {
+    "No Privacy Permissions listed." : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
+        "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No permissions listed."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Brak pozwoleń do wyświetlenia."
+            "value" : "Không có quyền riêng tư nào được liệt kê."
           }
         }
       }
@@ -7891,6 +7942,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pozwolenia"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quyền Hạn"
           }
         }
       }
@@ -9751,6 +9808,12 @@
             "state" : "translated",
             "value" : "Zrzuty ekranu"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ảnh chụp màn hình"
+          }
         }
       }
     },
@@ -10749,6 +10812,12 @@
             "state" : "translated",
             "value" : "Rozmiar"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kích cỡ"
+          }
         }
       }
     },
@@ -10765,6 +10834,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Źródło"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nguồn"
           }
         }
       }
@@ -10816,7 +10891,7 @@
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "URL nguồn"
           }
         }
@@ -11383,7 +11458,7 @@
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Hỗ trợ nhập từ KravaSign/MapleSign và ESign"
           }
         }
@@ -12120,6 +12195,12 @@
             "state" : "translated",
             "value" : "Zaktualizowano"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cập nhật lần cuối"
+          }
         }
       }
     },
@@ -12268,6 +12349,12 @@
             "state" : "translated",
             "value" : "Wersja %@"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phiên bản %@"
+          }
         }
       }
     },
@@ -12284,6 +12371,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Historia wersji"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lịch Sử Phiên Bản"
           }
         }
       }
@@ -12463,6 +12556,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Co nowego"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Có gì mới"
           }
         }
       }
