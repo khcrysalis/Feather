@@ -155,7 +155,7 @@ class TweakHandler {
 		// inject if there's a valid app main executable
 		_ = Zsign.injectDyLib(
 			appExecutable: appexe.path,
-			with: "\(_options.injectPath)\(injectFolder)\(destinationURL.lastPathComponent)"
+			with: "\(_options.injectPath.rawValue)\(injectFolder.rawValue)\(destinationURL.lastPathComponent)"
 		)
 	}
 	
