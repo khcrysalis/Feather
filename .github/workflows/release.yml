@@ -2,6 +2,10 @@ name: Create New Release
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to release"
+        required: true
 
 jobs:
   build:
@@ -11,7 +15,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: 'true'
-      
+
       - name: Use Xcode 16.2
         run: |
           sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
@@ -19,21 +23,16 @@ jobs:
       - name: Compile Feather
         run: | 
           agvtool new-version -all $(git rev-parse HEAD)
+          sed -i '' -E "s/(\t*MARKETING_VERSION *= *)[^ ;]+(;)/\1${{ github.event.inputs.version }}\2/" ./Feather.xcodeproj/project.pbxproj
           make
           mkdir upload
           mv packages/* upload/
 
-      - name: Get Version
-        id: get_version
-        run: |
-          VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" Payload/*.app/Info.plist)
-          echo "VERSION=${VERSION}" >> $GITHUB_ENV
-
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          name: Feather v${{ env.VERSION }}
-          tag_name: v${{ env.VERSION }}
+          name: Feather v${{ github.event.inputs.version }}
+          tag_name: v${{ github.event.inputs.version }}
           files: |
             upload/*ipa
           generate_release_notes: true
