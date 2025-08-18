@@ -12,9 +12,9 @@ jobs:
         with:
           submodules: 'true'
       
-      - name: Use Xcode 16.2
+      - name: Use Xcode 16.4
         run: |
-          sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
+          sudo xcode-select -s /Applications/Xcode_16.4.app/Contents/Developer
 
       - name: Compile Feather
         run: | 
