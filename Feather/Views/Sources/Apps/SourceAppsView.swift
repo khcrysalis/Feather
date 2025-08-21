@@ -63,16 +63,25 @@ struct SourceAppsView: View {
 					searchText: $_searchText,
 					sortOption: $_sortOption,
 					sortAscending: $_sortAscending,
-					onSelect: {self._selectedRoute = $0}
+					onSelect: {self._selectedRoute = $0},
+					onRefresh: {
+						await viewModel.fetchSources(object, refresh: true)
+						_load()
+					}
 				)
 				.ignoresSafeArea()
 			} else {
 				ProgressView()
 			}
-		}
-		.navigationTitle(_navigationTitle)
-		.searchable(text: $_searchText, placement: .platform())
-		.toolbarTitleMenu {
+	}
+	.navigationTitle(_navigationTitle)
+	.searchable(text: $_searchText, placement: .platform())
+	.refreshable {
+		// Refresh only the current source
+		await viewModel.fetchSources(object, refresh: true)
+		_load()
+	}
+	.toolbarTitleMenu {
 			if
 				let _sources,
 				_sources.count == 1

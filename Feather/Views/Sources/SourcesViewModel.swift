@@ -37,6 +37,22 @@ final class SourcesViewModel: ObservableObject {
 		}
 		
 		let sourcesArray = Array(sources)
+		await _fetchSourcesInternal(sourcesArray, batchSize: batchSize)
+	}
+	
+	func fetchSources(_ sources: [AltSource], refresh: Bool = false, batchSize: Int = 4) async {
+		guard isFinished else { return }
+		
+		// check if sources to be fetched are the same as before
+		if !refresh, sources.allSatisfy({ self.sources[$0] != nil }) { return }
+		
+		isFinished = false
+		defer { isFinished = true }
+				
+		await _fetchSourcesInternal(sources, batchSize: batchSize)
+	}
+	
+	private func _fetchSourcesInternal(_ sourcesArray: [AltSource], batchSize: Int) async {
 		
 		for startIndex in stride(from: 0, to: sourcesArray.count, by: batchSize) {
 			let endIndex = min(startIndex + batchSize, sourcesArray.count)
