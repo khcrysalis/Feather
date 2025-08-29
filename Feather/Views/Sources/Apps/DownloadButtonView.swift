@@ -13,9 +13,15 @@ import NimbleViews
 struct DownloadButtonView: View {
 	let app: ASRepository.App
 	@ObservedObject private var downloadManager = DownloadManager.shared
+	@ObservedObject private var storage = Storage.shared
 
 	@State private var downloadProgress: Double = 0
 	@State private var cancellable: AnyCancellable?
+	
+	private var appExists: Bool {
+		guard let bundleId = app.id else { return false }
+		return storage.appExists(withIdentifier: bundleId)
+	}
 
 	var body: some View {
 		ZStack {
@@ -38,6 +44,15 @@ struct DownloadButtonView: View {
 					}
 				}
 				.compatTransition()
+			} else if appExists {
+				Text(.localized("Downloaded"))
+					.lineLimit(0)
+					.font(.headline.bold())
+					.foregroundStyle(Color.secondary)
+					.padding(.horizontal, 24)
+					.padding(.vertical, 6)
+					.background(Color(uiColor: .quaternarySystemFill))
+					.clipShape(Capsule())
 			} else {
 				Button {
 					if let url = app.currentDownloadUrl {

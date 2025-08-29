@@ -39,6 +39,24 @@ extension Storage {
 		}
 		return nil
 	}
+	
+	func appExists(withIdentifier identifier: String) -> Bool {
+		let signedRequest: NSFetchRequest<Signed> = Signed.fetchRequest()
+		signedRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+		signedRequest.fetchLimit = 1
+		
+		let importedRequest: NSFetchRequest<Imported> = Imported.fetchRequest()
+		importedRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+		importedRequest.fetchLimit = 1
+		
+		do {
+			let signedCount = try context.count(for: signedRequest)
+			let importedCount = try context.count(for: importedRequest)
+			return signedCount > 0 || importedCount > 0
+		} catch {
+			return false
+		}
+	}
 }
 
 // MARK: - Helpers
