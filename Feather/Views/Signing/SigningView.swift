@@ -296,9 +296,11 @@ extension SigningView {
 				{
 					Storage.shared.deleteApp(for: app)
 				}
-                
+				
 				if _temporaryOptions.post_installAppAfterSigned {
-					NotificationCenter.default.post(name: Notification.Name("Feather.installApp"), object: nil)
+					DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+						NotificationCenter.default.post(name: Notification.Name("Feather.installApp"), object: nil)
+					}
 				}
 				dismiss()
 			}
