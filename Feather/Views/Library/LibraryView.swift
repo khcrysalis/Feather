@@ -29,7 +29,6 @@ struct LibraryView: View {
 
 	
 	@Namespace private var _namespace
-	@State private var _signedCount: Int = 0
 	
 	// horror
 	private func filteredAndSortedApps<T>(from apps: FetchedResults<T>) -> [T] where T: NSManagedObject {
@@ -203,15 +202,10 @@ struct LibraryView: View {
 					}
 				}
 			}
-			.onAppear { _signedCount = _signedApps.count }
-			.onChange(of: _signedApps.count) { newCount in
-				guard OptionsManager.shared.options.post_installAppAfterSigned else { return }
-				if newCount > _signedCount {
-                    if let latest = _signedApps.sorted(by: { ($0.date ?? .distantPast) > ($1.date ?? .distantPast) }).first {
-                        _selectedInstallAppPresenting = AnyApp(base: latest)
-                    }
-				}
-				_signedCount = newCount
+			.onReceive(NotificationCenter.default.publisher(for: Notification.Name("Feather.installApp"))) { _ in
+                if let latest = _signedApps.first {
+                    _selectedInstallAppPresenting = AnyApp(base: latest)
+                }
 			}
 			.onChange(of: _editMode) { mode in
 				if mode == .inactive {
