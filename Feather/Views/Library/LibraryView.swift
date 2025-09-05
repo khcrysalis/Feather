@@ -202,6 +202,11 @@ struct LibraryView: View {
 					}
 				}
 			}
+			.onReceive(NotificationCenter.default.publisher(for: Notification.Name("Feather.installApp"))) { _ in
+                if let latest = _signedApps.first {
+                    _selectedInstallAppPresenting = AnyApp(base: latest)
+                }
+			}
 			.onChange(of: _editMode) { mode in
 				if mode == .inactive {
 					_selectedAppUUIDs.removeAll()
