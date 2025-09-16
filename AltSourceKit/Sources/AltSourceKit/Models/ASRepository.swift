@@ -156,6 +156,8 @@ extension ASRepository {
 		public var version: String?
 
 		public var versionDate: DateParsed?
+		
+		public var date: DateParsed?
 
 		public var versionDescription: String?
 
@@ -236,6 +238,11 @@ extension ASRepository {
 			self.versionDate = try container.decodeIfPresent(
 				DateParsed.self,
 				forKey: .versionDate
+			)
+			
+			self.date = try container.decodeIfPresent(
+				DateParsed.self,
+				forKey: .date
 			)
 
 			self.versionDescription = try container.decodeIfPresent(
@@ -340,7 +347,7 @@ extension ASRepository {
 			case id = "bundleIdentifier"
 			case name, subtitle, description
 			case developer = "developerName"
-			case versions, version, versionDate, versionDescription, downloadURL,
+			case versions, version, versionDate, date, versionDescription, downloadURL,
 				localizedDescription, iconURL, tintColor, size, category, beta
 			case permissions, appPermissions
 			case screenshots, screenshotURLs
@@ -372,7 +379,7 @@ extension ASRepository {
 		}
 		
 		public var currentDate: DateParsed? {
-			currentAppVersion?.date ?? versionDate
+			currentAppVersion?.date ?? versionDate ?? date
 		}
 		
 		public var currentDescription: String? {
