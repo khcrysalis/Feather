@@ -12179,7 +12179,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "导出时显示Sheet"
+            "value" : "导出时显示共享菜单"
           }
         }
       }
@@ -13965,7 +13965,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "启用显示Sheet会在导出到文件后显示一个Share Sheet。"
+            "value" : "启用该选项会在导出文件时显示共享菜单。"
           }
         }
       }
