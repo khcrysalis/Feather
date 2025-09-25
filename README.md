@@ -5,11 +5,11 @@
 [![GitHub License](https://img.shields.io/github/license/khcrysalis/feather?color=%23C96FAD)](https://github.com/khcrysalis/feather/blob/main/LICENSE)
 [![Sponsor Me](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/khcrysalis)
 
-This app allows you to install and manage applications contained in a single app, using certificate pairs and various installation techniques to allow apps to install to your device. This is an entirely stock application and uses built-in features to be able to do this!
-
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Image-dark.png"><source media="(prefers-color-scheme: light)" srcset="Images/Image-light.png"><img alt="Pointercrate-pocket." src="Images/Image-light.png"></picture></p>
 
-## Features
+This app allows you to install and manage applications contained in a single app, using certificate pairs and various installation techniques to allow apps to install to your device. This is an entirely stock application and uses built-in features to be able to do this!
+
+### Features
 
 - User friendly, and clean UI.
 - Sign and install applications.
@@ -22,6 +22,10 @@ This app allows you to install and manage applications contained in a single app
 - Actively maintained: always ensuring most apps get installed properly.
 - No tracking or analytics, ensuring user privacy.
 - Of course, open source and free.
+
+## Download
+
+Visit [releases](https://github.com/khcrysalis/Feather/releases) and get the latest `.ipa`.
 
 ## How does it work?
 
@@ -54,14 +58,6 @@ Since itms-services initiates the install automatically, we don't need to do any
 - Then, using our connection to `AFC` we can command it to install that IPA directly. Similar to `ideviceinstaller`, but fully on your phone.
 
 Due to how it works right now we need both a VPN and a lockdownd pairing file, this means you will need a computer for its initial setup. Though, if you don't want to do these you can just use the server way of installing instead (but at a cost of less reliability). 
-
-## Download
-
-Visit [releases](https://github.com/khcrysalis/Feather/releases) and get the latest `.ipa`.
-
-## Contributing
-
-Read the [contribution requirements](./CONTRIBUTING.md) for more information.
 
 ## Sponsors
 
