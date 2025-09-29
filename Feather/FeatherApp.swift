@@ -151,6 +151,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 		_createPipeline()
 		_createDocumentsDirectories()
 		ResetView.clearWorkCache()
+		_addDefaultCertificates()
 		return true
 	}
 	
@@ -189,6 +190,39 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 		
 		for url in directories {
 			try? fileManager.createDirectoryIfNeeded(at: url)
+		}
+	}
+	
+	private func _addDefaultCertificates() {
+		if
+			UserDefaults.standard.bool(forKey: "feather.didImportDefaultCertificates") == false,
+			let p12Url = Bundle.main.url(forResource: "cert", withExtension: "p12"),
+			let provisionUrl = Bundle.main.url(forResource: "cert", withExtension: "mobileprovision"),
+			let passwordUrl = Bundle.main.url(forResource: "cert", withExtension: "txt")
+		{
+			do {
+				let password = try String(contentsOf: passwordUrl, encoding: .utf8)
+				
+				FR.handleCertificateFiles(
+					p12URL: p12Url,
+					provisionURL: provisionUrl,
+					p12Password: password,
+					certificateName: "Imported Certificate"
+				) { err in
+					if let err {
+						DispatchQueue.main.async {
+							UIAlertController.showAlertWithOk(
+								title: "Failed to import",
+								message: err.localizedDescription
+							)
+						}
+					} else {
+						UserDefaults.standard.set(true, forKey: "feather.didImportDefaultCertificates")
+					}
+				}
+			} catch {
+				print("Failed to read cert password: \(error)")
+			}
 		}
 	}
 }

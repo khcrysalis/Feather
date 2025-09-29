@@ -38,7 +38,7 @@ final class CertificateFileHandler: NSObject {
 	func copy() async throws {
 		guard
 			(_certPair != nil)
-		else  {
+		else {
 			throw CertificateFileHandlerError.certNotValid
 		}
 		
