@@ -207,7 +207,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 					p12URL: p12Url,
 					provisionURL: provisionUrl,
 					p12Password: password,
-					certificateName: "Imported Certificate"
+					certificateName: "Imported Certificate",
+					isDefault: true
 				) { err in
 					if let err {
 						DispatchQueue.main.async {

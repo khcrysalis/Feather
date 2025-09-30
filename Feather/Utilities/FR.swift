@@ -72,6 +72,7 @@ enum FR {
 		provisionURL: URL,
 		p12Password: String,
 		certificateName: String = "",
+		isDefault: Bool = false,
 		completion: @escaping (Error?) -> Void
 	) {
 		Task.detached {
@@ -79,7 +80,8 @@ enum FR {
 				key: p12URL,
 				provision: provisionURL,
 				password: p12Password,
-				nickname: certificateName.isEmpty ? nil : certificateName
+				nickname: certificateName.isEmpty ? nil : certificateName,
+				isDefault: isDefault
 			)
 			
 			do {
