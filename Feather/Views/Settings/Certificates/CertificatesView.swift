@@ -102,7 +102,7 @@ extension CertificatesView {
 			)
 			.contextMenu {
 				_contextActions(for: cert)
-				if cert.default != true {
+				if cert.isDefault != true {
 					Divider()
 					_actions(for: cert)
 				}

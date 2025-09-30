@@ -9,8 +9,8 @@
     </entity>
     <entity name="CertificatePair" representedClassName="CertificatePair" syncable="YES" codeGenerationType="class">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="default" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="expiration" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isDefault" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="nickname" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
         <attribute name="ppQCheck" attributeType="Boolean" usesScalarValueType="YES"/>

@@ -29,7 +29,7 @@ extension Storage {
 		new.ppQCheck = ppq
 		new.expiration = expiration
 		new.nickname = nickname
-		new.default = isDefault
+		new.isDefault = isDefault
 		Storage.shared.revokagedCertificate(for: new)
 		saveContext()
 		generator.impactOccurred()
