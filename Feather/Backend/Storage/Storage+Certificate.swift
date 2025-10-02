@@ -17,6 +17,7 @@ extension Storage {
 		nickname: String? = nil,
 		ppq: Bool = false,
 		expiration: Date,
+		isDefault: Bool = false,
 		completion: @escaping (Error?) -> Void
 	) {
 		let generator = UIImpactFeedbackGenerator(style: .light)
@@ -28,6 +29,7 @@ extension Storage {
 		new.ppQCheck = ppq
 		new.expiration = expiration
 		new.nickname = nickname
+		new.isDefault = isDefault
 		Storage.shared.revokagedCertificate(for: new)
 		saveContext()
 		generator.impactOccurred()

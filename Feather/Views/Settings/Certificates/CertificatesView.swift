@@ -102,8 +102,10 @@ extension CertificatesView {
 			)
 			.contextMenu {
 				_contextActions(for: cert)
-				Divider()
-				_actions(for: cert)
+				if cert.isDefault != true {
+					Divider()
+					_actions(for: cert)
+				}
 			}
 			.transaction {
 				$0.animation = nil

@@ -16,6 +16,7 @@ final class CertificateFileHandler: NSObject {
 	private let _provision: URL
 	private let _keyPassword: String?
 	private let _certNickname: String?
+	private let _isDefault: Bool
 	
 	private var _certPair: Certificate?
 	
@@ -23,12 +24,14 @@ final class CertificateFileHandler: NSObject {
 		key: URL,
 		provision: URL,
 		password: String? = nil,
-		nickname: String? = nil
+		nickname: String? = nil,
+		isDefault: Bool = false
 	) {
 		self._key = key
 		self._provision = provision
 		self._keyPassword = password
 		self._certNickname = nickname
+		self._isDefault = isDefault
 		
 		_certPair = CertificateReader(provision).decoded
 		
@@ -38,7 +41,7 @@ final class CertificateFileHandler: NSObject {
 	func copy() async throws {
 		guard
 			(_certPair != nil)
-		else  {
+		else {
 			throw CertificateFileHandlerError.certNotValid
 		}
 		
@@ -56,7 +59,8 @@ final class CertificateFileHandler: NSObject {
 			password: _keyPassword,
 			nickname: _certNickname,
 			ppq: _certPair?.PPQCheck ?? false,
-			expiration: _certPair?.ExpirationDate ?? Date()
+			expiration: _certPair?.ExpirationDate ?? Date(),
+			isDefault: _isDefault
 		) { _ in
 			Logger.misc.info("[\(self._uuid)] Added to database")
 		}
