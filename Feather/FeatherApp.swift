@@ -222,7 +222,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 					FileManager.default.fileExists(atPath: provisionUrl.path),
 					FileManager.default.fileExists(atPath: passwordUrl.path)
 				else {
-					print("Skipping \(certName): missing required files")
+					Logger.misc.warning("Skipping \(certName): missing required files")
 					continue
 				}
 				
