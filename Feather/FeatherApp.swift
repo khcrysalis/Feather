@@ -8,6 +8,7 @@
 import SwiftUI
 import Nuke
 import IDeviceSwift
+import OSLog
 
 @main
 struct FeatherApp: App {
@@ -105,7 +106,6 @@ struct FeatherApp: App {
 			/// 	decoded: livecontainer://certificate?cert=$(BASE64_CERT)&password=$(PASSWORD)
 			/// $(BASE64_CERT) and $(PASSWORD) must be presenting in the callback template so we can replace them with the proper content
 			if url.host == "export-certificate" {
-				print(url)
 				guard
 					let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
 				else {
@@ -194,36 +194,54 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 	}
 	
 	private func _addDefaultCertificates() {
-		if
+		guard
 			UserDefaults.standard.bool(forKey: "feather.didImportDefaultCertificates") == false,
-			let p12Url = Bundle.main.url(forResource: "cert", withExtension: "p12"),
-			let provisionUrl = Bundle.main.url(forResource: "cert", withExtension: "mobileprovision"),
-			let passwordUrl = Bundle.main.url(forResource: "cert", withExtension: "txt")
-		{
-			do {
+			let signingAssetsURL = Bundle.main.url(forResource: "signing-assets", withExtension: nil)
+		else {
+			return
+		}
+		
+		do {
+			let folderContents = try FileManager.default.contentsOfDirectory(
+				at: signingAssetsURL,
+				includingPropertiesForKeys: nil,
+				options: .skipsHiddenFiles
+			)
+			
+			for folderURL in folderContents {
+				guard folderURL.hasDirectoryPath else { continue }
+				
+				let certName = folderURL.lastPathComponent
+				
+				let p12Url = folderURL.appendingPathComponent("cert.p12")
+				let provisionUrl = folderURL.appendingPathComponent("cert.mobileprovision")
+				let passwordUrl = folderURL.appendingPathComponent("cert.txt")
+				
+				guard
+					FileManager.default.fileExists(atPath: p12Url.path),
+					FileManager.default.fileExists(atPath: provisionUrl.path),
+					FileManager.default.fileExists(atPath: passwordUrl.path)
+				else {
+					print("Skipping \(certName): missing required files")
+					continue
+				}
+				
 				let password = try String(contentsOf: passwordUrl, encoding: .utf8)
 				
 				FR.handleCertificateFiles(
 					p12URL: p12Url,
 					provisionURL: provisionUrl,
 					p12Password: password,
-					certificateName: "Imported Certificate",
+					certificateName: certName,
 					isDefault: true
-				) { err in
-					if let err {
-						DispatchQueue.main.async {
-							UIAlertController.showAlertWithOk(
-								title: "Failed to import",
-								message: err.localizedDescription
-							)
-						}
-					} else {
-						UserDefaults.standard.set(true, forKey: "feather.didImportDefaultCertificates")
-					}
+				) { _ in
+					
 				}
-			} catch {
-				print("Failed to read cert password: \(error)")
 			}
+			UserDefaults.standard.set(true, forKey: "feather.didImportDefaultCertificates")
+		} catch {
+			Logger.misc.error("Failed to list signing-assets: \(error)")
 		}
 	}
+
 }
