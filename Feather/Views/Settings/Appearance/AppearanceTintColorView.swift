@@ -23,13 +23,17 @@ struct AppearanceTintColorView: View {
 		("Very Peculiar", 	"#5394F7"),
 		("Emily",			"#e18aab")
 	]
-	
+
+	@AppStorage("com.apple.SwiftUI.IgnoreSolariumLinkedOnCheck")
+	private var _ignoreSolariumLinkedOnCheck: Bool = false
+
 	// MARK: Body
 	var body: some View {
 		ScrollView(.horizontal, showsIndicators: false) {
 			LazyHGrid(rows: [GridItem(.fixed(100))], spacing: 12) {
 				ForEach(tintOptions, id: \.hex) { option in
 					let color = Color(hex: option.hex)
+					let cornerRadius = _ignoreSolariumLinkedOnCheck ? 28.0 : 10.5
 					VStack(spacing: 8) {
 						Circle()
 							.fill(color)
@@ -38,16 +42,16 @@ struct AppearanceTintColorView: View {
 								Circle()
 									.strokeBorder(Color.black.opacity(0.3), lineWidth: 2)
 							)
-						
+
 						Text(option.name)
 							.font(.subheadline)
 							.foregroundColor(.secondary)
 					}
 					.frame(width: 120, height: 100)
 					.background(Color(uiColor: .secondarySystemGroupedBackground))
-					.clipShape(RoundedRectangle(cornerRadius: 10.5, style: .continuous))
+					.clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
 					.overlay(
-						RoundedRectangle(cornerRadius: 10.5, style: .continuous)
+						RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
 							.strokeBorder(selectedColorHex == option.hex ? color : .clear, lineWidth: 2)
 					)
 					.onTapGesture {
