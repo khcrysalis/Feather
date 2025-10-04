@@ -74,7 +74,7 @@ struct SettingsDonationCellView: View {
 			NBTitleWithSubtitleView(
 				title: title,
 				subtitle: desc
-			)
+			).fixedSize(horizontal: false, vertical: true)
 		}
 	}
 	
