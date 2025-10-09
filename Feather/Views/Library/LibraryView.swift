@@ -63,53 +63,50 @@ struct LibraryView: View {
     var body: some View {
 		NBNavigationView(.localized("Library")) {
 			NBListAdaptable {
-				if
-					!_filteredSignedApps.isEmpty ||
-					!_filteredImportedApps.isEmpty
-				{
-					if
-						_selectedScope == .all ||
-						_selectedScope == .signed
-					{
-						NBSection(
-							.localized("Signed"),
-							secondary: _filteredSignedApps.count.description
-						) {
-							ForEach(_filteredSignedApps, id: \.uuid) { app in
-								LibraryCellView(
-									app: app,
-									selectedInfoAppPresenting: $_selectedInfoAppPresenting,
-									selectedSigningAppPresenting: $_selectedSigningAppPresenting,
-									selectedInstallAppPresenting: $_selectedInstallAppPresenting,
-									selectedAppUUIDs: $_selectedAppUUIDs // send to cell view
-								)
-								.compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
-							}
-						}
-					}
-					
-					if
-						_selectedScope == .all ||
-							_selectedScope == .imported
-					{
-						NBSection(
-							.localized("Imported"),
-							secondary: _filteredImportedApps.count.description
-						) {
-							ForEach(_filteredImportedApps, id: \.uuid) { app in
-								LibraryCellView(
-									app: app,
-									selectedInfoAppPresenting: $_selectedInfoAppPresenting,
-									selectedSigningAppPresenting: $_selectedSigningAppPresenting,
-									selectedInstallAppPresenting: $_selectedInstallAppPresenting,
-									selectedAppUUIDs: $_selectedAppUUIDs
-								)
-								.compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
-							}
-						}
-					}
-				}
-			}
+                if
+                    !_filteredSignedApps.isEmpty,
+                    _selectedScope == .all ||
+                    _selectedScope == .signed
+                {
+                    NBSection(
+                        .localized("Signed"),
+                        secondary: _filteredSignedApps.count.description
+                    ) {
+                        ForEach(_filteredSignedApps, id: \.uuid) { app in
+                            LibraryCellView(
+                                app: app,
+                                selectedInfoAppPresenting: $_selectedInfoAppPresenting,
+                                selectedSigningAppPresenting: $_selectedSigningAppPresenting,
+                                selectedInstallAppPresenting: $_selectedInstallAppPresenting,
+                                selectedAppUUIDs: $_selectedAppUUIDs // send to cell view
+                            )
+                            .compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
+                        }
+                    }
+                }
+                
+                if
+                    !_filteredImportedApps.isEmpty,
+                    _selectedScope == .all ||
+                    _selectedScope == .imported
+                {
+                    NBSection(
+                        .localized("Imported"),
+                        secondary: _filteredImportedApps.count.description
+                    ) {
+                        ForEach(_filteredImportedApps, id: \.uuid) { app in
+                            LibraryCellView(
+                                app: app,
+                                selectedInfoAppPresenting: $_selectedInfoAppPresenting,
+                                selectedSigningAppPresenting: $_selectedSigningAppPresenting,
+                                selectedInstallAppPresenting: $_selectedInstallAppPresenting,
+                                selectedAppUUIDs: $_selectedAppUUIDs
+                            )
+                            .compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
+                        }
+                    }
+                }
+            }
 			.searchable(text: $_searchText, placement: .platform())
 			.compatSearchScopes($_selectedScope) {
 				ForEach(Scope.allCases, id: \.displayName) { scope in
