@@ -13,6 +13,7 @@ import NimbleViews
 struct LibraryCellView: View {
 	@Environment(\.horizontalSizeClass) private var horizontalSizeClass
 	@Environment(\.editMode) private var editMode
+	@State private var showFileName: Bool = false
 
 	var certInfo: Date.ExpirationInfo? {
 		Storage.shared.getCertificate(from: app)?.expiration?.expirationInfo()
@@ -62,11 +63,24 @@ struct LibraryCellView: View {
 			
 			FRAppIconView(app: app, size: 57)
 			
-			NBTitleWithSubtitleView(
-				title: app.name ?? .localized("Unknown"),
-				subtitle: _desc,
-				linelimit: 0
-			)
+			VStack(alignment: .leading, spacing: 4) {
+				Text(app.name ?? .localized("Unknown"))
+					.font(.headline)
+					.foregroundColor(.primary)
+				
+				Text(_desc)
+					.font(.subheadline)
+					.foregroundColor(.secondary)
+					.lineLimit(0)
+					.onTapGesture {
+						if app.fileName != nil && !isEditing {
+							withAnimation(.spring(response: 0.3)) {
+								showFileName.toggle()
+							}
+						}
+					}
+			}
+			.frame(maxWidth: .infinity, alignment: .leading)
 			
 			if !isEditing {
 				_buttonActions(for: app)
@@ -102,7 +116,10 @@ struct LibraryCellView: View {
 	}
 	
 	private var _desc: String {
-		if let version = app.version, let id = app.identifier {
+		// If showFileName is true and fileName exists, show only fileName
+		if showFileName, let fileName = app.fileName {
+			return fileName
+		} else if let version = app.version, let id = app.identifier {
 			return "\(version) • \(id)"
 		} else {
 			return .localized("Unknown")

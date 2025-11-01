@@ -10,6 +10,15 @@ import UIKit.UIImpactFeedbackGenerator
 
 // MARK: - Class extension: Imported Apps
 extension Storage {
+	/// Check if an imported app with the same hash already exists
+	func findDuplicateImported(hash: String) -> Imported? {
+		let request = Imported.fetchRequest()
+		request.predicate = NSPredicate(format: "fileHash == %@", hash)
+		request.fetchLimit = 1
+		
+		return try? context.fetch(request).first
+	}
+	
 	func addImported(
 		uuid: String,
 		source: URL? = nil,
@@ -18,6 +27,8 @@ extension Storage {
 		appIdentifier: String? = nil,
 		appVersion: String? = nil,
 		appIcon: String? = nil,
+		fileHash: String? = nil,
+		fileName: String? = nil,
 		
 		completion: @escaping (Error?) -> Void
 	) {
@@ -33,6 +44,8 @@ extension Storage {
 		new.name = appName
 		new.icon = appIcon
 		new.version = appVersion
+		new.fileHash = fileHash
+		new.fileName = fileName
 		
 		saveContext()
 		generator.impactOccurred()

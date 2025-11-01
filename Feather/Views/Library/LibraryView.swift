@@ -202,6 +202,25 @@ struct LibraryView: View {
 					_selectedInstallAppPresenting = AnyApp(base: latest)
 				}
 			}
+			.onReceive(NotificationCenter.default.publisher(for: Notification.Name("Feather.openSigningView"))) { notification in
+				// Get UUID from notification
+				guard let uuid = notification.userInfo?["uuid"] as? String else {
+					// Fallback to latest imported app
+					if let latest = _importedApps.first {
+						_selectedSigningAppPresenting = AnyApp(base: latest)
+					}
+					return
+				}
+				
+				// Find the app with the specific UUID
+				if let app = _importedApps.first(where: { $0.uuid == uuid }) {
+					_selectedSigningAppPresenting = AnyApp(base: app)
+				}
+			}
+			.onReceive(NotificationCenter.default.publisher(for: Notification.Name("Feather.dismissSigningView"))) { _ in
+				// Dismiss signing view when new import starts
+				_selectedSigningAppPresenting = nil
+			}
 			.onChange(of: _editMode) { mode in
 				if mode == .inactive {
 					_selectedAppUUIDs.removeAll()

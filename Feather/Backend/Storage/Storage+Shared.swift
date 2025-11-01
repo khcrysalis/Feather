@@ -58,11 +58,13 @@ protocol AppInfoPresentable {
 	var date: Date? { get }
 	var icon: String? { get }
 	var uuid: String? { get }
+	var fileName: String? { get }
 	var isSigned: Bool { get }
 	
 }
 
 extension Signed: AppInfoPresentable {
+	var fileName: String? { nil }
 	var isSigned: Bool { true }
 }
 

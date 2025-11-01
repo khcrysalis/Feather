@@ -14,6 +14,7 @@ class Download: Identifiable, @unchecked Sendable {
 	@Published var bytesDownloaded: Int64 = 0
 	@Published var totalBytes: Int64 = 0
 	@Published var unpackageProgress: Double = 0.0
+	@Published var isPreparing: Bool = false  // Show spinner during file preparation (hash calculation, etc)
 	
 	var overallProgress: Double {
 		onlyArchiving

@@ -20,6 +20,8 @@
     </entity>
     <entity name="Imported" representedClassName="Imported" syncable="YES" codeGenerationType="class">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="fileHash" optional="YES" attributeType="String"/>
+        <attribute name="fileName" optional="YES" attributeType="String"/>
         <attribute name="icon" optional="YES" attributeType="String"/>
         <attribute name="identifier" attributeType="String"/>
         <attribute name="name" attributeType="String"/>

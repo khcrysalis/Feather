@@ -46,6 +46,7 @@ struct DownloadItemView: View {
 	@State private var bytesDownloaded: Int64 = 0
 	@State private var totalBytes: Int64 = 0
 	@State private var unpackageProgress: Double = 0
+	@State private var isPreparing: Bool = false
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 4) {
@@ -53,26 +54,40 @@ struct DownloadItemView: View {
 				.font(.subheadline)
 				.lineLimit(1)
 			
-			ProgressView(value: overallProgress)
-				.progressViewStyle(.linear)
-			
-			HStack {
-				Text(verbatim: "\(Int(overallProgress * 100))%")
-					.contentTransition(.numericText())
-				Spacer()
-				if totalBytes > 0 {
-					Text(verbatim: "\($bytesDownloaded.wrappedValue.formattedByteCount) / \(totalBytes.formattedByteCount)")
-						.contentTransition(.numericText())
+			if isPreparing {
+				// Show spinner during preparation (hash calculation, etc)
+				HStack {
+					ProgressView()
+						.progressViewStyle(.circular)
+					Text(.localized("Preparing..."))
+						.font(.caption)
+						.foregroundColor(.secondary)
+					Spacer()
 				}
+			} else {
+				// Show normal progress bar
+				ProgressView(value: overallProgress)
+					.progressViewStyle(.linear)
+				
+				HStack {
+					Text(verbatim: "\(Int(overallProgress * 100))%")
+						.contentTransition(.numericText())
+					Spacer()
+					if totalBytes > 0 {
+						Text(verbatim: "\($bytesDownloaded.wrappedValue.formattedByteCount) / \(totalBytes.formattedByteCount)")
+							.contentTransition(.numericText())
+					}
+				}
+				.font(.caption)
+				.foregroundColor(.secondary)
 			}
-			.font(.caption)
-			.foregroundColor(.secondary)
 		}
 		.padding(.vertical, 4)
 		.onReceive(download.$progress) { self.progress = $0 }
 		.onReceive(download.$bytesDownloaded) { self.bytesDownloaded = $0 }
 		.onReceive(download.$totalBytes) { self.totalBytes = $0 }
 		.onReceive(download.$unpackageProgress) { self.unpackageProgress = $0 }
+		.onReceive(download.$isPreparing) { self.isPreparing = $0 }
 	}
 	
 	private var overallProgress: Double {

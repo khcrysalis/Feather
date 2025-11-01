@@ -130,13 +130,8 @@ struct FeatherApp: App {
 			}
 		} else {
 			if url.pathExtension == "ipa" || url.pathExtension == "tipa" {
-				if FileManager.default.isFileFromFileProvider(at: url) {
-					guard url.startAccessingSecurityScopedResource() else { return }
-					FR.handlePackageFile(url) { _ in }
-				} else {
-					FR.handlePackageFile(url) { _ in }
-				}
-				
+				// Use the unified handler that properly manages security-scoped resources
+				FR.handleIncomingFile(url)
 				return
 			}
 		}
@@ -153,6 +148,20 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 		ResetView.clearWorkCache()
 		_addDefaultCertificates()
 		return true
+	}
+	
+	// MARK: - Handle file imports from share sheet
+	func application(
+		_ app: UIApplication,
+		open url: URL,
+		options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+	) -> Bool {
+		// Handle IPA/TIPA files from share sheet
+		if url.pathExtension == "ipa" || url.pathExtension == "tipa" {
+			FR.handleIncomingFile(url)
+			return true
+		}
+		return false
 	}
 	
 	private func _createPipeline() {

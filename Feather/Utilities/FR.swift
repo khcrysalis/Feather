@@ -11,15 +11,205 @@ import Zsign
 import NimbleJSON
 import AltSourceKit
 import IDeviceSwift
+import OSLog
 
 enum FR {
+	/// Handle incoming file from share sheet or file provider
+	/// This method immediately copies the file while security-scoped access is valid
+	static func handleIncomingFile(_ url: URL) {
+		// Dismiss any open signing view to show import progress
+		DispatchQueue.main.async {
+			NotificationCenter.default.post(
+				name: Notification.Name("Feather.dismissSigningView"),
+				object: nil
+			)
+		}
+		
+		Logger.misc.info("[ShareSheet] 🎯 Attempting to import file from: \(url.path)")
+		Logger.misc.info("[ShareSheet] 📁 File exists: \(FileManager.default.fileExists(atPath: url.path))")
+		Logger.misc.info("[ShareSheet] 🔑 Checking security-scoped access...")
+		
+		// Request access for security-scoped resources (required for share sheet files)
+		let didStartAccessing = url.startAccessingSecurityScopedResource()
+		Logger.misc.info("[ShareSheet] ✅ Security-scoped access granted: \(didStartAccessing)")
+		
+		// IMPORTANT: Copy file immediately while we have security-scoped access
+		// The file might be in a temporary location that gets cleaned up quickly
+		let fileManager = FileManager.default
+		let tempDir = fileManager.temporaryDirectory.appendingPathComponent("FeatherIncoming_\(UUID().uuidString)", isDirectory: true)
+		
+		do {
+			try fileManager.createDirectory(at: tempDir, withIntermediateDirectories: true)
+			let tempFileURL = tempDir.appendingPathComponent(url.lastPathComponent)
+			let originalFileName = url.lastPathComponent
+			
+			Logger.misc.info("[ShareSheet] 📋 Copying file to temp location: \(tempFileURL.path)")
+			try fileManager.copyItem(at: url, to: tempFileURL)
+			Logger.misc.info("[ShareSheet] ✅ File copied successfully to temp location")
+			
+			// Release security-scoped resource now that we've copied the file
+			if didStartAccessing {
+				Logger.misc.info("[ShareSheet] 🔓 Releasing security-scoped resource")
+				url.stopAccessingSecurityScopedResource()
+			}
+			
+			// Create Download object to show progress UI (like manual import)
+			let downloadManager = DownloadManager.shared
+			let downloadId = "FeatherManualDownload_\(UUID().uuidString)"
+			let download = downloadManager.startArchive(from: tempFileURL, id: downloadId)
+			Logger.misc.info("[ShareSheet] 📊 Created download object for progress tracking")
+			
+			// Set preparing state to show spinner during hash calculation
+			DispatchQueue.main.async {
+				download.isPreparing = true
+			}
+			
+			// Calculate hash in background
+			DispatchQueue.global(qos: .userInitiated).async {
+				Logger.misc.info("[ShareSheet] 🔐 Calculating file hash...")
+				let fileHash = tempFileURL.sha256Hash()
+				
+				if let hash = fileHash {
+					Logger.misc.info("[ShareSheet] ✅ File hash: \(hash.prefix(16))...")
+					
+					// Check for duplicates on main thread
+					DispatchQueue.main.async {
+						if let duplicate = Storage.shared.findDuplicateImported(hash: hash) {
+							Logger.misc.warning("[ShareSheet] ⚠️ Found duplicate: \(duplicate.name ?? "Unknown")")
+							
+							// Show duplicate alert
+							showDuplicateAlert(
+								appName: duplicate.name ?? duplicate.fileName,
+								onContinue: {
+									Logger.misc.info("[ShareSheet] 📦 User chose to continue import despite duplicate")
+									download.isPreparing = false
+									continueImport(tempFileURL: tempFileURL, tempDir: tempDir, download: download, fileManager: fileManager, fileHash: hash, fileName: originalFileName)
+								},
+								onCancel: {
+									Logger.misc.info("[ShareSheet] 🚫 User cancelled duplicate import")
+									// Clean up
+									try? fileManager.removeItem(at: tempDir)
+									DispatchQueue.main.async {
+										if let index = downloadManager.getDownloadIndex(by: download.id) {
+											downloadManager.downloads.remove(at: index)
+										}
+									}
+								}
+							)
+						} else {
+							Logger.misc.info("[ShareSheet] ✨ No duplicate found, continuing...")
+							download.isPreparing = false
+							continueImport(tempFileURL: tempFileURL, tempDir: tempDir, download: download, fileManager: fileManager, fileHash: hash, fileName: originalFileName)
+						}
+					}
+				} else {
+					Logger.misc.error("[ShareSheet] ❌ Failed to calculate file hash, continuing without duplicate check")
+					DispatchQueue.main.async {
+						download.isPreparing = false
+						continueImport(tempFileURL: tempFileURL, tempDir: tempDir, download: download, fileManager: fileManager, fileHash: nil, fileName: originalFileName)
+					}
+				}
+			}
+		} catch {
+			// Release security-scoped resource on error
+			if didStartAccessing {
+				url.stopAccessingSecurityScopedResource()
+			}
+			
+			Logger.misc.error("[ShareSheet] ❌ Failed to copy file: \(error.localizedDescription)")
+			DispatchQueue.main.async {
+				UIAlertController.showAlertWithOk(
+					title: .localized("Error"),
+					message: error.localizedDescription
+				)
+			}
+			
+			// Clean up on error
+			try? fileManager.removeItem(at: tempDir)
+		}
+	}
+	
+	/// Continue with the import process
+	private static func continueImport(
+		tempFileURL: URL,
+		tempDir: URL,
+		download: Download,
+		fileManager: FileManager,
+		fileHash: String?,
+		fileName: String
+	) {
+		Logger.misc.info("[ShareSheet] 📦 Calling FR.handlePackageFile...")
+		FR.handlePackageFile(tempFileURL, download: download, fileHash: fileHash, fileName: fileName) { error in
+			// Clean up temp directory
+			try? fileManager.removeItem(at: tempDir)
+			
+			// Remove download from list (completion handler)
+			DispatchQueue.main.async {
+				let downloadManager = DownloadManager.shared
+				if let index = downloadManager.getDownloadIndex(by: download.id) {
+					downloadManager.downloads.remove(at: index)
+					Logger.misc.info("[ShareSheet] 🧹 Removed download from tracking list")
+				}
+			}
+			
+			if let error = error {
+				Logger.misc.error("[ShareSheet] ❌ Import failed with error: \(error.localizedDescription)")
+				DispatchQueue.main.async {
+					UIAlertController.showAlertWithOk(
+						title: .localized("Error"),
+						message: error.localizedDescription
+					)
+				}
+			} else {
+				Logger.misc.info("[ShareSheet] ✨ Import completed successfully!")
+				// Note: Notification to open signing view is sent from AppFileHandler.addToDatabase
+			}
+		}
+	}
+	
+	/// Show duplicate app alert
+	private static func showDuplicateAlert(
+		appName: String?,
+		onContinue: @escaping () -> Void,
+		onCancel: @escaping () -> Void
+	) {
+		let alert = UIAlertController(
+			title: .localized("Duplicate App Detected"),
+			message: String(format: .localized("An app with the same content (\"%@\") has already been imported. Do you want to import it again?"), appName ?? .localized("Unknown")),
+			preferredStyle: .alert
+		)
+		
+		alert.addAction(UIAlertAction(
+			title: .localized("Cancel"),
+			style: .cancel
+		) { _ in
+			onCancel()
+		})
+		
+		alert.addAction(UIAlertAction(
+			title: .localized("Continue Import"),
+			style: .default
+		) { _ in
+			onContinue()
+		})
+		
+		UIApplication.topViewController()?.present(alert, animated: true)
+	}
+	
 	static func handlePackageFile(
 		_ ipa: URL,
 		download: Download? = nil,
+		fileHash: String? = nil,
+		fileName: String? = nil,
 		completion: @escaping (Error?) -> Void
 	) {
 		Task.detached {
-			let handler = AppFileHandler(file: ipa, download: download)
+			let handler = AppFileHandler(
+				file: ipa,
+				download: download,
+				fileHash: fileHash,
+				fileName: fileName
+			)
 			
 			do {
 				try await handler.copy()
