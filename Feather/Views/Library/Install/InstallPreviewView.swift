@@ -59,6 +59,10 @@ struct InstallPreviewView: View {
 				if case .sendingPayload = newStatus, _serverMethod == 1 {
 					_isWebviewPresenting = false
 				}
+                
+                if case .completed = newStatus {
+                    BackgroundAudioManager.shared.stop()
+                }
 			}
 		}
 		.onAppear(perform: _install)
