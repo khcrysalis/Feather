@@ -5975,7 +5975,7 @@
         }
       }
     },
-    "Identifers" : {
+    "Identifiers" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
@@ -5993,7 +5993,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Identifers"
+            "value" : "Identifiers"
           }
         },
         "id" : {
