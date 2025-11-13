@@ -594,6 +594,7 @@ public struct DateParsed: Codable, Equatable, Hashable, Comparable, Sendable {
 			"yyyy-MM-dd'T'HH:mm:ss.SSSZ",
 			"yyyy-MM-dd'T'HH:mm:ssZ",
 			"yyyy-MM-dd'T'HH:mm:ss",
+            "yyyy-MM-dd'T'HH:mm",            // AltStudio
 			"yyyy-MM-dd",
 			"EEE, dd MMM yyyy HH:mm:ss zzz", // RFC1123
 			"EEE MMM dd HH:mm:ss Z yyyy",    // Twitter
