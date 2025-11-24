@@ -96,7 +96,12 @@ struct SourceAppsView: View {
 				UIPasteboard.general.string = object.map {
 					$0.sourceURL!.absoluteString
 				}.joined(separator: "\n")
-				UINotificationFeedbackGenerator().notificationOccurred(.success)
+				DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+					UIAlertController.showAlertWithOk(
+						title: .localized("Success"),
+						message: .localized("Sources copied to clipboard")
+					)
+				}
 			}
 		}
 		.toolbar {

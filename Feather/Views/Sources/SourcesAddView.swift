@@ -73,13 +73,17 @@ struct SourcesAddView: View {
 						}
 					}
 					
-					Button(.localized("Export"), systemImage: "doc.on.doc") {
-						UIPasteboard.general.string = Storage.shared.getSources().map {
-							$0.sourceURL!.absoluteString
-						}.joined(separator: "\n")
-						UINotificationFeedbackGenerator().notificationOccurred(.success)
+				Button(.localized("Export"), systemImage: "doc.on.doc") {
+					UIPasteboard.general.string = Storage.shared.getSources().map {
+						$0.sourceURL!.absoluteString
+					}.joined(separator: "\n")
+					UIAlertController.showAlertWithOk(
+						title: .localized("Success"),
+						message: .localized("Sources copied to clipboard")
+					) {
 						dismiss()
 					}
+				}
 				} footer: {
 					Text(.localized("Supports importing from KravaSign/MapleSign and ESign."))
 				}
