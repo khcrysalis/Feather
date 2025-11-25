@@ -94,19 +94,23 @@ struct SourceAppsView: View {
 			
 			Button(.localized("Copy"), systemImage: "doc.on.doc") {
 				guard !object.isEmpty else {
-					UIAlertController.showAlertWithOk(
-						title: .localized("Error"),
-						message: .localized("No sources to copy")
-					)
+					DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+						UIAlertController.showAlertWithOk(
+							title: .localized("Error"),
+							message: .localized("No sources to copy")
+						)
+					}
 					return
 				}
 				UIPasteboard.general.string = object.map {
 					$0.sourceURL!.absoluteString
 				}.joined(separator: "\n")
-				UIAlertController.showAlertWithOk(
-					title: .localized("Success"),
-					message: .localized("Sources copied to clipboard")
-				)
+				DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+					UIAlertController.showAlertWithOk(
+						title: .localized("Success"),
+						message: .localized("Sources copied to clipboard")
+					)
+				}
 			}
 		}
 		.toolbar {
