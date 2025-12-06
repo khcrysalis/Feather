@@ -50,7 +50,7 @@ Since itms-services initiates the install automatically, we don't need to do any
 
 #### Install (Pairing)
 - Establish a heartbeat with a TCP provider (the app will need this for later).
-  - For it to be successful, we need a [pairing file](https://github.com/jkcoxson/idevice_pair) and a [VPN](https://apps.apple.com/us/app/stosvpn/id6744003051).
+  - For it to be successful, we need a [pairing file](https://github.com/nab138/iloader) and a [VPN](https://apps.apple.com/us/app/localdevvpn/id6755608044).
 - Once we have these and the connection was successfully established, we can move on to the installation part.
   - Before installing, we need to check for the connection to the socket that has been created, routed to `10.7.0.1`, if this succeeds we're ready.
 - When preparing for installation, we need to establish another connection but for `AFC` using the TCP provider.
