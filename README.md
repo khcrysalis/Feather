@@ -5,9 +5,11 @@
 [![GitHub License](https://img.shields.io/github/license/khcrysalis/feather?color=%23C96FAD)](https://github.com/khcrysalis/feather/blob/main/LICENSE)
 [![Sponsor Me](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/khcrysalis)
 
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Image-dark.png"><source media="(prefers-color-scheme: light)" srcset="Images/Image-light.png"><img alt="Pointercrate-pocket." src="Images/Image-light.png"></picture></p>
-
 This app allows you to install and manage applications contained in a single app, using certificate pairs and various installation techniques to allow apps to install to your device. This is an entirely stock application and uses built-in features to be able to do this!
+
+| <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Image-dark.png"><source media="(prefers-color-scheme: light)" srcset="Images/Image-light.png"><img alt="Pointercrate-pocket." src="Images/Image-light.png"></picture></p> |
+|:-:|
+| Screenshot of Feather on iOS / iPadOS |
 
 ### Features
 
@@ -26,6 +28,13 @@ This app allows you to install and manage applications contained in a single app
 ## Download
 
 Visit [releases](https://github.com/khcrysalis/Feather/releases) and get the latest `.ipa`.
+
+<a href="https://celloserenity.github.io/altdirect/?url=https://raw.githubusercontent.com/khcrysalis/Feather/refs/heads/main/app-repo.json" target="_blank">
+   <img src="https://github.com/CelloSerenity/altdirect/blob/main/assets/png/AltSource_Blue.png?raw=true" alt="Add AltSource" width="200">
+</a>
+<a href="https://github.com/khcrysalis/Feather/releases/latest/download/Feather.ipa" target="_blank">
+   <img src="https://github.com/CelloSerenity/altdirect/blob/main/assets/png/Download_Blue.png?raw=true" alt="Download .ipa" width="200">
+</a>
 
 ## How does it work?
 
