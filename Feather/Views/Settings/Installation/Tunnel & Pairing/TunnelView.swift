@@ -14,6 +14,7 @@ struct TunnelView: View {
 	@State private var _isImportingPairingPresenting = false
 	
 	@State var doesHavePairingFile = false
+	@State private var isLocalDevVpnAvailable = false
 	
 	// MARK: Body
     var body: some View {
@@ -53,8 +54,15 @@ struct TunnelView: View {
 				Button(.localized("Pairing File Guide"), systemImage: "questionmark.circle") {
 					UIApplication.open("https://github.com/StephenDev0/StikDebug-Guide/blob/main/pairing_file.md")
 				}
-				Button(.localized("Download LocalDevVPN"), systemImage: "arrow.down.app") {
-					UIApplication.open("https://apps.apple.com/us/app/localdevvpn/id6755608044")
+				
+				if isLocalDevVpnAvailable {
+					Button(.localized("Connect to LocalDevVPN"), systemImage: "link") {
+						UIApplication.open("localdevvpn://enable?scheme=feather")
+					}
+				} else {
+					Button(.localized("Download LocalDevVPN"), systemImage: "arrow.down.app") {
+						UIApplication.open("https://apps.apple.com/us/app/localdevvpn/id6755608044")
+					}
 				}
 			}
 		}
@@ -73,6 +81,12 @@ struct TunnelView: View {
 			doesHavePairingFile = FileManager.default.fileExists(atPath: HeartbeatManager.pairingFile())
 			? true
 			: false
+			
+			if let url = URL(string: "localdevvpn://") {
+				isLocalDevVpnAvailable = UIApplication.shared.canOpenURL(url)
+			} else {
+				isLocalDevVpnAvailable = false
+			}
 		}
     }
 	
