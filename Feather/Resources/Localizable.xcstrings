@@ -5662,13 +5662,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "GitHub Repository"
+            "value" : "GitHub-Repository"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "GitHub-Repository"
+            "value" : "GitHub Repository"
           }
         },
         "es" : {
@@ -14693,7 +14693,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Du kannst „%@“ nicht mit sich selbst aktualisieren. Bitte verwende ein alternatives Tool, um es zu aktualisieren."
+            "value" : "Du kannst ‘%@‘ nicht mit sich selbst aktualisieren. Bitte verwende ein alternatives Tool, um es zu aktualisieren."
           }
         },
         "en" : {
