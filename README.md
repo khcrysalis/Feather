@@ -4,6 +4,7 @@
 [![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/khcrysalis/feather/total)](https://github.com/khcrysalis/feather/releases)
 [![GitHub License](https://img.shields.io/github/license/khcrysalis/feather?color=%23C96FAD)](https://github.com/khcrysalis/feather/blob/main/LICENSE)
 [![Sponsor Me](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/khcrysalis)
+[![Discord](https://img.shields.io/discord/1265361879992242196?style=flat&label=discord)](https://discord.gg/TYnUDJkG66)
 
 This app allows you to install and manage applications contained in a single app, using certificate pairs and various installation techniques to allow apps to install to your device. This is an entirely stock application and uses built-in features to be able to do this!
 
