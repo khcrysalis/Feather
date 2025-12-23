@@ -6993,7 +6993,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cài đặt"
+            "value" : "Trình cài đặt"
           }
         },
         "zh-Hans" : {
@@ -7242,6 +7242,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Join Us on Discord"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hãy tham gia cùng chúng tôi trên Discord!"
           }
         }
       }
@@ -8422,6 +8428,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No sources to copy"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Không có nguồn để sao chép"
           }
         }
       }
@@ -12786,6 +12798,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sources copied to clipboard"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nguồn đã được sao chép vào bộ nhớ tạm"
           }
         }
       }
