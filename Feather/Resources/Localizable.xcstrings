@@ -989,7 +989,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alle Dateien der Apps sind enthalten in den Dokumenten-Ordner, hier sind ein paar Abkürzungen zu diesen."
+            "value" : "Alle Dateien der App befinden sich im Dokumente-Verzeichnis, hier sind einige Schnellzugriffe darauf."
           }
         },
         "en" : {
@@ -1812,7 +1812,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Standardmäßig, werden lokalisierte Titel für diese App nicht geändert, jedoch kann diese Option dies überschreiben."
+            "value" : "Standardmäßig werden lokalisierte Titel der App nicht geändert, diese Option überschreibt dies jedoch."
           }
         },
         "en" : {
@@ -2221,7 +2221,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wähle aus Dateien"
+            "value" : "Aus Dateien auswählen"
           }
         },
         "en" : {
@@ -2281,7 +2281,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wähle aus Fotos"
+            "value" : "Aus Fotos auswählen"
           }
         },
         "en" : {
@@ -2677,7 +2677,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Credits"
+            "value" : "Danksagung"
           }
         },
         "en" : {
@@ -3173,7 +3173,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Löschen nach Signierung"
+            "value" : "Nach dem Signieren löschen"
           }
         },
         "en" : {
@@ -3795,7 +3795,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Der dynamische Schutz wendet den PPQ-Schutz nur an, wenn die Bundle-ID im App Store vorhanden ist. Dies erfordert eine Internetverbindung während der Signierung."
+            "value" : "Wenn irgendein Schutz aktiviert wird, wird eine zufällige Zeichenkette an die Bundle-Identifier der von dir signierten Apps angehängt. Dies dient dazu, sicherzustellen, dass deine Apple-ID von Apple nicht markiert wird. Bei der Nutzung eines Signierungsdienstes kannst du dies jedoch ignorieren."
           }
         },
         "en" : {
@@ -3902,7 +3902,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gebe ein URL zur Validierung an."
+            "value" : "Gib eine URL ein, um die Validierung zu starten."
           }
         },
         "en" : {
@@ -4085,7 +4085,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gib das Passwort ein, das mit dem privaten Schlüssel verknüpft ist. Lasse es leer, wenn kein Passwort erforderlich ist."
+            "value" : "Gib das mit dem privaten Schlüssel verknüpfte Passwort ein. Lass das Feld leer, wenn kein Passwort erforderlich ist."
           }
         },
         "en" : {
@@ -4664,7 +4664,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fehlgeschlagen beim Download, überprüfe deine Internetverbindung und versuche es erneut."
+            "value" : "Herunterladen fehlgeschlagen. Überprüfe deine Internetverbindung und versuche es erneut."
           }
         },
         "en" : {
@@ -4830,7 +4830,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Datei Sharing"
+            "value" : "Dateifreigabe"
           }
         },
         "en" : {
@@ -5013,7 +5013,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erzwinge Versuch Zu Lokalisieren"
+            "value" : "Lokalisierung erzwingen"
           }
         },
         "en" : {
@@ -5190,7 +5190,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Völlig Lokal"
+            "value" : "Komplett lokal"
           }
         },
         "en" : {
@@ -5402,7 +5402,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kriege Zugang zu unserem geheimen Discord durch einer Spende, wo wir über zukünftige Updates, Betas und mögliche Wege um deine Erfahrung besser zu machen sprechen."
+            "value" : "Erhalte durch eine Spende Zugang zu unserem geheimen Discord, in dem wir über zukünftige Updates, Betas und mögliche Verbesserungen deines Nutzererlebnisses sprechen."
           }
         },
         "en" : {
@@ -5462,7 +5462,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Info kriegen"
+            "value" : "Infos abrufen"
           }
         },
         "en" : {
@@ -5515,7 +5515,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Beginne mit deiner ersten Repository."
+            "value" : "Starte, indem du dein erstes Repository hinzufügst."
           }
         },
         "en" : {
@@ -5562,7 +5562,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Beginne mit dem Hinzufügen deiner ersten IPA."
+            "value" : "Starte, indem du deine erste IPA-Datei importierst."
           }
         },
         "en" : {
@@ -5609,7 +5609,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Beginne mit der Signierung durch Hinzufügen deines ersten Zertifikats."
+            "value" : "Starte mit dem Signieren, indem du dein erstes Zertifikat importierst."
           }
         },
         "en" : {
@@ -5662,13 +5662,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "GitHub-Repository"
+            "value" : "GitHub Repository"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "GitHub Repository"
+            "value" : "GitHub-Repository"
           }
         },
         "es" : {
@@ -5733,7 +5733,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gehe auf unserem GitHub und gib uns einen Stern!"
+            "value" : "Besuche unser GitHub und gib uns einen Stern!"
           }
         },
         "en" : {
@@ -6182,7 +6182,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Falls ein Fehler auftritt mit der App, melde dies bitte über das GitHub-Repositorium. Beim einreichen von einem Fehler, stelle sicher detaillierte Informationen anzugeben."
+            "value" : "Wenn innerhalb der App Probleme auftreten, melde diese bitte über das GitHub-Repository. Achte beim Erstellen eines Issues darauf, möglichst detaillierte Informationen anzugeben."
           }
         },
         "en" : {
@@ -7182,7 +7182,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iTunes Sharing"
+            "value" : "iTunes-Dateifreigabe"
           }
         },
         "en" : {
@@ -7258,7 +7258,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lerne mehr darüber wie man ein Repositorium einrichtet…"
+            "value" : "Erfahre mehr darüber, wie du ein Repository einrichtest…"
           }
         },
         "en" : {
@@ -7478,7 +7478,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mindest-App-Version"
+            "value" : "Mindestanforderung"
           }
         },
         "en" : {
@@ -7820,7 +7820,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zertifikate hinzufügen"
+            "value" : "Neues Zertifikat"
           }
         },
         "en" : {
@@ -8444,7 +8444,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nichts"
+            "value" : "Keine"
           }
         },
         "en" : {
@@ -8497,7 +8497,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Okay"
+            "value" : "OK"
           }
         },
         "en" : {
@@ -8574,7 +8574,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nutze nur localhost Adresse"
+            "value" : "Nur die Localhost-Adresse verwenden"
           }
         },
         "en" : {
@@ -8739,7 +8739,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öffne Archive"
+            "value" : "Archive öffnen"
           }
         },
         "en" : {
@@ -8798,7 +8798,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öffne Zertifikate"
+            "value" : "Zertifikate öffnen"
           }
         },
         "en" : {
@@ -8857,7 +8857,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öffne Dokumente"
+            "value" : "Dokumente öffnen"
           }
         },
         "en" : {
@@ -9028,7 +9028,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Verpacken"
+            "value" : "Paketierung"
           }
         },
         "en" : {
@@ -9389,7 +9389,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bitte gehe in den Einstellungen und importiere ein gültiges Zertifikat"
+            "value" : "Bitte gehe zu den Einstellungen und importiere ein gültiges Zertifikat"
           }
         },
         "en" : {
@@ -9857,7 +9857,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alle Geräte bereitstellen"
+            "value" : "Alle Geräte provisionieren"
           }
         },
         "en" : {
@@ -10140,7 +10140,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Entferne nervige Meldungen wie diese nach deinem Beta-Zugang!"
+            "value" : "Entferne nervige Meldungen wie diese, nachdem du Beta-Zugang erhalten hast!"
           }
         },
         "en" : {
@@ -10199,7 +10199,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Entferne Provisioning Datei"
+            "value" : "Provisioning entfernen"
           }
         },
         "en" : {
@@ -10323,7 +10323,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Entferne URLScheme"
+            "value" : "URL-Scheme entfernen"
           }
         },
         "en" : {
@@ -10388,7 +10388,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Entferne Platzhalter Watch App"
+            "value" : "Watch-Platzhalter entfernen"
           }
         },
         "en" : {
@@ -10535,7 +10535,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ersatz"
+            "value" : "Ersetzung"
           }
         },
         "en" : {
@@ -10600,7 +10600,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quellen"
+            "value" : "Repositorys"
           }
         },
         "en" : {
@@ -10653,7 +10653,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Repositorium bereits hinzugefügt."
+            "value" : "Repository wurde bereits hinzugefügt."
           }
         },
         "en" : {
@@ -11466,7 +11466,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sehe alle Apps aus deinen Quellen"
+            "value" : "Alle Apps aus deinen Quellen anzeigen"
           }
         },
         "en" : {
@@ -11525,7 +11525,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Es sieht so aus als hättest du eine Pairing-Datei in die Hände bekommen!"
+            "value" : "Es sieht so aus, als hättest du deine Pairing-Datei erhalten!"
           }
         },
         "en" : {
@@ -11585,7 +11585,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wähle alternatives Icon"
+            "value" : "Alternatives Icon auswählen"
           }
         },
         "en" : {
@@ -11645,7 +11645,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wähle Entitlements-Datei"
+            "value" : "Entitlements-Datei auswählen"
           }
         },
         "en" : {
@@ -11898,7 +11898,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Server (Empfohlen):\nBenutzt einen lokalen laufenden Server und itms-services:// um Apps zu installieren.\n\nIDevice (Erweitert):\nBenutzt eine VPN und eine Pairing-Datei. Schreibt zu AFC und ruft manuell installd auf, während der Installations-Fortschritt überwacht in dem ein Callback benutzt wird\nVorteil: Es ist sehr zuverlässig, braucht keine SSL-Zertifikate oder einen externen laufenden Server. Vielmehr funktioniert es wie ein Computer."
+            "value" : "Server (Empfohlen):\nVerwendet einen lokal gehosteten Server und itms-services://, um Apps zu installieren.\n\nIDevice (fortgeschritten):\nVerwendet ein VPN und eine Pairing-Datei. Schreibt auf AFC und ruft installd manuell auf, während der Installationsfortschritt über einen Callback überwacht wird.\nVorteil: Es ist sehr zuverlässig, benötigt keine SSL-Zertifikate oder einen extern gehosteten Server und funktioniert ähnlich wie ein Computer."
           }
         },
         "en" : {
@@ -12130,7 +12130,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zeige Sheet beim Exportieren"
+            "value" : "Teilen-Dialog beim Export anzeigen"
           }
         },
         "en" : {
@@ -12248,7 +12248,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zeige deine Unterstützung durch einer Spende! Falls du nicht in der Lage bist zu spenden, funktioniert das verbreiten der Nachricht auch!"
+            "value" : "Zeige deine Unterstützung durch eine Spende! Wenn du nicht spenden kannst, hilft es auch, die Nachricht weiterzuverbreiten!"
           }
         },
         "en" : {
@@ -12867,7 +12867,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sponsors"
+            "value" : "Sponsoren"
           }
         },
         "en" : {
@@ -13499,7 +13499,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Der Herzschlag ist aktiv im Hintergrund, und wird neugestartet wenn die App neu geöffnet oder aufgefordert wird. Wenn der Status unten pulsiert, bedeutet es dann es gesund ist."
+            "value" : "Der Herzschlag wird im Hintergrund aktiviert und startet neu, wenn die App erneut geöffnet oder dazu aufgefordert wird. Wenn der unten stehende Status pulsiert, bedeutet das, dass alles ordnungsgemäß funktioniert."
           }
         },
         "en" : {
@@ -13552,7 +13552,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Es werden nur AltStore-Repositorien unterstützt."
+            "value" : "Die einzigen unterstützten Repositories sind AltStore-Repositories."
           }
         },
         "en" : {
@@ -13599,7 +13599,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Theme"
+            "value" : "Design"
           }
         },
         "en" : {
@@ -13786,7 +13786,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dies aktiviert „Liquid Glass“ für dieser App, dies erfordert einen Neustart der App um wirksam zu werden."
+            "value" : "Dies aktiviert Liquid Glass für diese App. Damit die Änderung wirksam wird, muss die App neu gestartet werden."
           }
         },
         "en" : {
@@ -13833,7 +13833,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diese Option erzwingt Apps umzuwandeln um das neue „Liquid Glass“-Redesign zu verwenden welches in iOS 26 eingeführt wurde, dies funktioniert möglicherweise nicht für alle Apps auf Grund von Unterschieden der Frameworks."
+            "value" : "Diese Option erzwingt die Umstellung von Apps auf das neue Liquid-Glass-Redesign, das mit iOS 26 eingeführt wurde. Aufgrund unterschiedlicher Frameworks funktioniert dies möglicherweise nicht bei allen Anwendungen."
           }
         },
         "en" : {
@@ -13880,7 +13880,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dies wird deine importierte Datei nach der Signierung löschen, um an unnötigen Speicher zu sparen."
+            "value" : "Dies wird deine importierte Datei nach der Signierung löschen, um an unnötigen Speicherplatz zu sparen."
           }
         },
         "en" : {
@@ -13933,7 +13933,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aktivieren von „Zeige Sheet beim Exportieren“ öffnet ein Share Sheet nach dem Exportieren zu deinen Dateien."
+            "value" : "Wenn aktiviert, erscheint nach dem Export in deine Dateien ein Teilen-Dialog."
           }
         },
         "en" : {
@@ -14485,7 +14485,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zeige Entitlements"
+            "value" : "Entitlements anzeigen"
           }
         },
         "en" : {
@@ -14545,7 +14545,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Besuche Patreon"
+            "value" : "Patreon besuchen"
           }
         },
         "en" : {
@@ -14605,7 +14605,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Besuche Webseite"
+            "value" : "Webseite besuchen"
           }
         },
         "en" : {
@@ -14693,7 +14693,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Du kannst ‘%@‘ nicht mit sich selbst ändern, bitte benutze ein alternatives Tool um es upzudaten."
+            "value" : "Du kannst „%@“ nicht mit sich selbst aktualisieren. Bitte verwende ein alternatives Tool, um es zu aktualisieren."
           }
         },
         "en" : {
@@ -14746,7 +14746,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deine Pairing-Datei ist ungültig und ist inkompatibel mit deinem Gerät, bitte importiere eine gültige."
+            "value" : "Deine Pairing-Datei ist ungültig und nicht mit deinem Gerät kompatibel. Bitte importiere eine gültige Pairing-Datei."
           }
         },
         "en" : {
