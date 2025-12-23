@@ -17,6 +17,7 @@ struct SettingsView: View {
     
     private let _donationsUrl = "https://github.com/sponsors/khcrysalis"
     private let _githubUrl = "https://github.com/khcrysalis/Feather"
+	private let _discordServer = "https://discord.gg/TYnUDJkG66"
     
     // MARK: Body
     var body: some View {
@@ -100,6 +101,9 @@ extension SettingsView {
             Button(.localized("GitHub Repository"), systemImage: "safari") {
                 UIApplication.open(_githubUrl)
             }
+			Button(.localized("Join Us on Discord"), systemImage: "safari") {
+				UIApplication.open(_discordServer)
+			}
         } footer: {
             Text(.localized("If any issues occur within the app please report it via the GitHub repository. When submitting an issue, make sure to submit detailed information."))
         }

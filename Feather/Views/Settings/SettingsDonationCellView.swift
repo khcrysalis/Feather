@@ -16,12 +16,6 @@ struct SettingsDonationCellView: View {
 		Section {
 			VStack(spacing: 14) {
 				_title()
-				
-				_benefit(
-					.localized("Discord"),
-					.localized("Get access to our secret Discord by donating, where we talk about future updates, betas, and potential ways to make your experience better."),
-					systemName: "lock.fill"
-				)
 				_benefit(
 					.localized("Remove this Alert"),
 					.localized("Remove annoying alerts like these after getting beta access!"),

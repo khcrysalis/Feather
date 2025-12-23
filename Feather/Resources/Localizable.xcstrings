@@ -3284,36 +3284,6 @@
         }
       }
     },
-    "Discord" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Discord"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Discord"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Discord"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Discord"
-          }
-        }
-      },
-      "shouldTranslate" : false
-    },
     "Dismiss" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -7265,6 +7235,17 @@
         }
       }
     },
+    "Join Us on Discord" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Join Us on Discord"
+          }
+        }
+      }
+    },
     "Learn more about how to setup a repository…" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -7308,41 +7289,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "学习如何设置仓库"
-          }
-        }
-      }
-    },
-    "Less" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Less"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mniej"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Daha Az"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ẩn"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "更少"
           }
         }
       }
