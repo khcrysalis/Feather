@@ -1398,7 +1398,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App-ID Name"
+            "value" : "AppID Name"
           }
         },
         "en" : {
@@ -2677,7 +2677,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Danksagung"
+            "value" : "Mitwirkende"
           }
         },
         "en" : {
@@ -3629,7 +3629,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Download StosVPN"
+            "value" : "StosVPN downloaden"
           }
         },
         "en" : {
@@ -3795,7 +3795,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wenn irgendein Schutz aktiviert wird, wird eine zufällige Zeichenkette an die Bundle-Identifier der von dir signierten Apps angehängt. Dies dient dazu, sicherzustellen, dass deine Apple-ID von Apple nicht markiert wird. Bei der Nutzung eines Signierungsdienstes kannst du dies jedoch ignorieren."
+            "value" : "Wenn eine Schutzfunktion aktiviert wird, wird eine zufällige Zeichenkette an die Bundle ID der von dir signierten Apps angehängt. Dies dient dazu, sicherzustellen, dass deine Apple ID von Apple nicht gesperrt wird. Bei der Nutzung eines Signierungsdienstes kannst du dies jedoch ignorieren."
           }
         },
         "en" : {
@@ -5131,7 +5131,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Frameworks & Plug-Ins"
+            "value" : "Frameworks & Plug-ins"
           }
         },
         "en" : {
@@ -5662,7 +5662,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "GitHub-Repository"
+            "value" : "GitHub Repository"
           }
         },
         "en" : {
@@ -6182,7 +6182,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wenn innerhalb der App Probleme auftreten, melde diese bitte über das GitHub-Repository. Achte beim Erstellen eines Issues darauf, möglichst detaillierte Informationen anzugeben."
+            "value" : "Wenn innerhalb der App Probleme auftreten, melde diese bitte über das GitHub Repository. Achte beim Erstellen eines Beitrags darauf, möglichst detaillierte Informationen anzugeben."
           }
         },
         "en" : {
@@ -7016,7 +7016,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Installation-Typ"
+            "value" : "Installationstyp"
           }
         },
         "en" : {
@@ -7182,7 +7182,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iTunes-Dateifreigabe"
+            "value" : "iTunes Dateifreigabe"
           }
         },
         "en" : {
@@ -7312,7 +7312,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mediathek"
+            "value" : "Bibliothek"
           }
         },
         "en" : {
@@ -7383,7 +7383,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bibliothek Zell-Darstellung"
+            "value" : "Bibliothek Zelldarstellung"
           }
         },
         "en" : {
@@ -8192,7 +8192,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Keine Frameworks oder Plug-Ins gefunden."
+            "value" : "Keine Frameworks oder Plug-ins gefunden."
           }
         },
         "en" : {
@@ -8292,7 +8292,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Keine Pairing-Datei gefunden, bitte importiere sie."
+            "value" : "Pairing-Datei fehlt, Datei-Import erforderlich."
           }
         },
         "en" : {
@@ -8686,7 +8686,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öffne ein [Issue](https://github.com/khcrysalis/Feather/issues) auf GitHub wenn du deine Quelle aufgelistet haben möchtest."
+            "value" : "Erstelle ein [Issue](https://github.com/khcrysalis/Feather/issues) auf GitHub wenn du deine Quelle aufgelistet haben möchtest."
           }
         },
         "en" : {
@@ -10482,7 +10482,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ersetze Substrate mit ElleKit"
+            "value" : "Ersetze Substrate durch ElleKit"
           }
         },
         "en" : {
@@ -11704,7 +11704,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Semi Lokal"
+            "value" : "Semi-Lokal"
           }
         },
         "en" : {
@@ -11757,7 +11757,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sende Manifest"
+            "value" : "Manifest wird gesendet"
           }
         },
         "en" : {
@@ -11804,7 +11804,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sende Payload"
+            "value" : "Payload wird gesendet"
           }
         },
         "en" : {
@@ -11898,7 +11898,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Server (Empfohlen):\nVerwendet einen lokal gehosteten Server und itms-services://, um Apps zu installieren.\n\nIDevice (fortgeschritten):\nVerwendet ein VPN und eine Pairing-Datei. Schreibt auf AFC und ruft installd manuell auf, während der Installationsfortschritt über einen Callback überwacht wird.\nVorteil: Es ist sehr zuverlässig, benötigt keine SSL-Zertifikate oder einen extern gehosteten Server und funktioniert ähnlich wie ein Computer."
+            "value" : "Server (Empfohlen):\nVerwendet einen lokal gehosteten Server und itms-services://, um Apps zu installieren.\n\nIDevice (fortgeschritten):\nVerwendet ein VPN und eine Pairing-Datei. Verwendet AFC und ruft installd manuell auf, während der Installationsfortschritt über einen Callback überwacht wird.\nVorteil: Es ist sehr zuverlässig, benötigt keine SSL-Zertifikate oder extern gehostete Server."
           }
         },
         "en" : {
@@ -12004,7 +12004,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Server-Typ"
+            "value" : "Servertyp"
           }
         },
         "en" : {
@@ -13127,7 +13127,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zell-Darstellung speichern"
+            "value" : "Zelldarstellung speichern"
           }
         },
         "en" : {
@@ -13322,7 +13322,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unterstützt das importieren von KravaSign/MapleSign und ESign."
+            "value" : "Unterstützt das importieren via KravaSign/MapleSign und ESign."
           }
         },
         "en" : {
@@ -13880,7 +13880,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dies wird deine importierte Datei nach der Signierung löschen, um an unnötigen Speicherplatz zu sparen."
+            "value" : "Dies wird deine importierte Datei nach der Signierung löschen, um Speicherplatz zu sparen."
           }
         },
         "en" : {
@@ -14171,7 +14171,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lokales Zertifikat aktualisieren"
+            "value" : "Lokale SSL-Zertifikate aktualisieren"
           }
         },
         "en" : {
@@ -14693,7 +14693,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Du kannst ‘%@‘ nicht mit sich selbst aktualisieren. Bitte verwende ein alternatives Tool, um es zu aktualisieren."
+            "value" : "Du kannst ‘%@‘ nicht mit sich selbst aktualisieren. Bitte verwende dafür ein alternatives Tool."
           }
         },
         "en" : {
