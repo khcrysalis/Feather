@@ -68,7 +68,7 @@ struct AboutView: View {
 					}.joined(separator: ", ")))
 					.transition(.slide)
 					
-					Text(.localized("💜 This couldn't of been done without my sponsors!"))
+					Text(.localized("💜 This couldn't have been done without my sponsors!"))
 						.foregroundStyle(.secondary)
 						.padding(.vertical, 2)
 				}
