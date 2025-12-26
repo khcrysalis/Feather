@@ -307,18 +307,31 @@ extension SigningHandler {
 					didChange = true
 				}
 			}
-			
-			// NSExtension → NSExtensionAttributes → WKAppBundleIdentifier
-			if
-				let extensionDict = infoDict["NSExtension"] as? NSMutableDictionary,
-				let attributes = extensionDict["NSExtensionAttributes"] as? NSMutableDictionary,
-				let oldValue = attributes["WKAppBundleIdentifier"] as? String
-			{
-				let newValue = oldValue.replacingOccurrences(of: oldIdentifier, with: newIdentifier)
-				if oldValue != newValue {
-					attributes["WKAppBundleIdentifier"] = newValue
-					didChange = true
+			if let extensionDict = (infoDict["NSExtension"] as? NSDictionary)?.mutableCopy() as? NSMutableDictionary {
+				// NSExtension → NSExtensionAttributes → WKAppBundleIdentifier
+				if
+					let attributes = extensionDict["NSExtensionAttributes"] as? NSMutableDictionary,
+					let oldValue = attributes["WKAppBundleIdentifier"] as? String
+				{
+					let newValue = oldValue.replacingOccurrences(of: oldIdentifier, with: newIdentifier)
+					if oldValue != newValue {
+						attributes["WKAppBundleIdentifier"] = newValue
+						didChange = true
+					}
 				}
+                
+				// NSExtension → NSExtensionFileProviderDocumentGroup
+				if
+					let oldValue = extensionDict["NSExtensionFileProviderDocumentGroup"] as? String
+				{
+					let newValue = oldValue.replacingOccurrences(of: oldIdentifier, with: newIdentifier)
+					if oldValue != newValue {
+						extensionDict["NSExtensionFileProviderDocumentGroup"] = newValue
+						didChange = true
+					}
+				}
+                
+                infoDict["NSExtension"] = extensionDict
 			}
 			
 			if didChange {
