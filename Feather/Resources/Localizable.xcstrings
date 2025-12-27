@@ -2541,6 +2541,23 @@
         }
       }
     },
+    "Connect to LocalDevVPN" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connect to LocalDevVPN"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Połącz do LocalDevVPN"
+          }
+        }
+      }
+    },
     "Copy" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3618,6 +3635,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "捐赠"
+          }
+        }
+      }
+    },
+    "Download LocalDevVPN" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download LocalDevVPN"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pobierz LocalDevVPN"
           }
         }
       }
@@ -6943,6 +6977,12 @@
             "value" : "Install After Signing"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zainstaluj po podpisaniu"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7244,10 +7284,16 @@
             "value" : "Join Us on Discord"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hãy tham gia cùng chúng tôi trên Discord!"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dołącz do nas na Discordzie"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hãy tham gia cùng chúng tôi trên Discord!"
           }
         }
       }
@@ -8430,10 +8476,16 @@
             "value" : "No sources to copy"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Không có nguồn để sao chép"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak źródeł do skopiowania"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không có nguồn để sao chép"
           }
         }
       }
@@ -12800,10 +12852,16 @@
             "value" : "Sources copied to clipboard"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nguồn đã được sao chép vào bộ nhớ tạm"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Źródła skopiowane do schowka"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nguồn đã được sao chép vào bộ nhớ tạm"
           }
         }
       }
