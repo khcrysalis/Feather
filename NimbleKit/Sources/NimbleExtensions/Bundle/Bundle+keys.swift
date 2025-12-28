@@ -10,10 +10,16 @@ import Foundation.NSBundle
 extension Bundle {
 	/// Get the name of the app
 	public var name: String {
-		if let displayName = object(forInfoDictionaryKey: "CFBundleDisplayName") as? String {
+		if
+            let displayName = object(forInfoDictionaryKey: "CFBundleDisplayName") as? String,
+            !displayName.isEmpty
+		{
 			return displayName
 		}
-		if let name = object(forInfoDictionaryKey: "CFBundleName") as? String {
+		if
+            let name = object(forInfoDictionaryKey: "CFBundleName") as? String,
+            !name.isEmpty
+		{
 			return name
 		}
 		return object(forInfoDictionaryKey: "CFBundleExecutable") as? String ?? ""
