@@ -122,7 +122,7 @@ struct SigningOptionsView: View {
 		NBSection(.localized("Post Signing")) {
             _toggle(
                 .localized("Install After Signing"),
-                systemImage: "arrow.down.circle",
+                systemImage: "plus.app",
                 isOn: $options.post_installAppAfterSigned,
                 temporaryValue: temporaryOptions?.post_installAppAfterSigned
             )

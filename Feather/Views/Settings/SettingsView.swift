@@ -46,10 +46,10 @@ struct SettingsView: View {
                         Label(.localized("Signing Options"), systemImage: "signature")
                     }
                     NavigationLink(destination: ArchiveView()) {
-                        Label(.localized("Archive & Compression"), systemImage: "archivebox")
+                        Label(.localized("Archive & Compression"), systemImage: "doc.zipper")
                     }
                     NavigationLink(destination: InstallationView()) {
-                        Label(.localized("Installation"), systemImage: "arrow.down.circle")
+                        Label(.localized("Installation"), systemImage: "plus.app")
                     }
                 } footer: {
                     Text(.localized("Configure the apps way of installing, its zip compression levels, and custom modifications to apps."))
@@ -83,7 +83,7 @@ extension SettingsView {
                 }
             }
             
-            Button(.localized("Submit Feedback"), systemImage: "safari") {
+            Button(.localized("Submit Feedback"), systemImage: "square.text.square") {
 				let bugAction: UIAlertAction = .init(title: .localized("Bug Report"), style: .default) { _ in
 					UIApplication.open(_makeGitHubIssueURL(url: _githubUrl))
 				}
