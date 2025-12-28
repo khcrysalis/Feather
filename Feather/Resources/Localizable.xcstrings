@@ -1504,6 +1504,23 @@
         }
       }
     },
+    "Auto-select Matching Certificate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto-select Matching Certificate"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatyczny wybór pasującego certyfikatu"
+          }
+        }
+      }
+    },
     "Bad Password" : {
       "comment" : "Bad certificate password",
       "extractionState" : "manual",
@@ -14741,6 +14758,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "更新内容"
+          }
+        }
+      }
+    },
+    "When enabled, Feather will automatically select the certificate whose application-identifier exactly matches the target bundle identifier." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When enabled, Feather will automatically select the certificate whose application-identifier exactly matches the target bundle identifier."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gdy włączone, Feather automatycznie wybierze certyfikat, którego application-identifier dokładnie odpowiada docelowemu identyfikatorowi pakietu (bundle identifier)."
           }
         }
       }

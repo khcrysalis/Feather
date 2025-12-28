@@ -117,11 +117,22 @@ struct SigningView: View {
 			// ppq protection
 			if
 				_optionsManager.options.ppqProtection,
-				let identifier = app.identifier,
 				let cert = _selectedCert(),
 				cert.ppQCheck
 			{
-				_temporaryOptions.appIdentifier = "\(identifier).\(_optionsManager.options.ppqString)"
+				// Use the current identifier candidate: prefer temporary override if already set
+				let baseIdentifier = _temporaryOptions.appIdentifier ?? app.identifier
+				if let baseIdentifier,
+				   !_optionsManager.options.ppqString.isEmpty
+				{
+					// Check only the last segment after the final dot
+					let lastSegment = baseIdentifier.split(separator: ".").last.map(String.init)
+					if lastSegment != _optionsManager.options.ppqString {
+					    _temporaryOptions.appIdentifier = baseIdentifier + ".\(_optionsManager.options.ppqString)"
+					} else {
+					    _temporaryOptions.appIdentifier = baseIdentifier
+					}
+				}
 			}
 			
 			if
@@ -139,17 +150,19 @@ struct SigningView: View {
 			}
             
             // Auto-select certificate whose application-identifier exactly matches the target bundle id
-            if let targetIdentifier = _temporaryOptions.appIdentifier ?? app.identifier {
-                if let exactIndex = certificates.firstIndex(where: { cert in
-                    guard let ai = Storage.shared.getProvisionFileDecoded(for: cert)?.Entitlements?["application-identifier"]?.value as? String else { return false }
-                    if ai == targetIdentifier { return true }
-                    if let dotIndex = ai.firstIndex(of: ".") {
-                        let remainder = String(ai[ai.index(after: dotIndex)...])
-                        return remainder == targetIdentifier
+            if _optionsManager.options.autoSelectMatchingCertificate {
+                if let targetIdentifier = _temporaryOptions.appIdentifier ?? app.identifier {
+                    if let exactIndex = certificates.firstIndex(where: { cert in
+                        guard let ai = Storage.shared.getProvisionFileDecoded(for: cert)?.Entitlements?["application-identifier"]?.value as? String else { return false }
+                        if ai == targetIdentifier { return true }
+                        if let dotIndex = ai.firstIndex(of: ".") {
+                            let remainder = String(ai[ai.index(after: dotIndex)...])
+                            return remainder == targetIdentifier
+                        }
+                        return false
+                    }) {
+                        _temporaryCertificate = exactIndex
                     }
-                    return false
-                }) {
-                    _temporaryCertificate = exactIndex
                 }
             }
 		}

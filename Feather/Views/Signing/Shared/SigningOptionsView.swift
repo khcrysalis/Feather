@@ -26,6 +26,17 @@ struct SigningOptionsView: View {
 			} footer: {
 				Text(.localized("Enabling any protection will append a random string to the bundleidentifiers of the apps you sign, this is to ensure your Apple ID does not get flagged by Apple. However, when using a signing service you can ignore this."))
 			}
+			
+			NBSection(.localized("Certificate")) {
+				_toggle(
+					.localized("Auto-select Matching Certificate"),
+					systemImage: "checkmark.shield",
+					isOn: $options.autoSelectMatchingCertificate,
+					temporaryValue: temporaryOptions?.autoSelectMatchingCertificate
+				)
+			} footer: {
+				Text(.localized("When enabled, Feather will automatically select the certificate whose application-identifier exactly matches the target bundle identifier."))
+			}
 		}
 		
 		NBSection(.localized("General")) {
