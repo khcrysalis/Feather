@@ -15,6 +15,11 @@ manual:
     name: idevice
     body: |-
       MIT
+
+  - source: https://github.com/jeremieb/social-symbols
+    name: social-symbols
+    file: "Zsign/LICENSE_LC"
+    
   - name: "Zsign"
     file: "Zsign/LICENSE"
     

@@ -98,11 +98,23 @@ extension SettingsView {
 					actions: [bugAction, chooseAction]
 				)
             }
-            Button(.localized("GitHub Repository"), systemImage: "safari") {
+            Button {
                 UIApplication.open(_githubUrl)
+            } label: {
+                Label {
+                    Text(.localized("GitHub Repository"))
+                } icon: {
+                    Image("github")
+                }
             }
-			Button(.localized("Join Us on Discord"), systemImage: "safari") {
+			Button {
 				UIApplication.open(_discordServer)
+			} label: {
+				Label {
+					Text(.localized("Join Us on Discord"))
+				} icon: {
+					Image("discord")
+				}
 			}
         } footer: {
             Text(.localized("If any issues occur within the app please report it via the GitHub repository. When submitting an issue, make sure to submit detailed information."))
