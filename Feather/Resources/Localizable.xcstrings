@@ -2810,6 +2810,12 @@
             "value" : "Dark"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dunkel"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6943,6 +6949,12 @@
             "value" : "Install After Signing"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach dem Signieren installieren"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7249,6 +7261,12 @@
             "state": "translated",
             "value": "Hãy tham gia cùng chúng tôi trên Discord!"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trete unserem Discord bei"
+          }
         }
       }
     },
@@ -7437,6 +7455,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Light"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hell"
           }
         },
         "pl" : {
