@@ -101,7 +101,7 @@ final class SigningHandler: NSObject {
 		}
 		
 		// iOS "26" (19) needs special treatment
-		if #available(iOS 19, *) {
+		if #available(iOS 26, *) {
 			try await _locateMachosAndFixupArm64eSlice(for: movedAppPath)
 		}
 		
@@ -396,7 +396,7 @@ extension SigningHandler {
 		_enumerateFiles(at: app) { $0.hasSuffix("_CodeSignature") }
 	}
 	
-	@available(iOS 19, *)
+	@available(iOS 26, *)
 	private func _locateMachosAndFixupArm64eSlice(for app: URL) async throws {
 		let machoFiles = _enumerateFiles(at: app) {
 			$0.hasSuffix(".dylib") || $0.hasSuffix(".framework")
