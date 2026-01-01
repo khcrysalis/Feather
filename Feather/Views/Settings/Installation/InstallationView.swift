@@ -11,7 +11,8 @@ import NimbleViews
 // MARK: - View
 struct InstallationView: View {
 	@AppStorage("Feather.installationMethod") private var _installationMethod: Int = 0
-	
+	@State private var _showMethodChangedAlert = false
+
 	private let _installationMethods: [String] = [
 		.localized("Server"),
 		.localized("idevice")
@@ -38,6 +39,22 @@ struct InstallationView: View {
 				TunnelView()
 			}
 		}
+		.onChange(of: _installationMethod) { newValue in
+			guard newValue == 1 else { return }
+			_showMethodChangedAlert = true
+		}
+		.alert(.localized("Advanced Installation Method"), isPresented: $_showMethodChangedAlert) {
+			Button(.localized("Switch Back"), role: .destructive) {
+				_installationMethod = 0
+			}
+			Button(.localized("OK"), role: .cancel) {}
+		} message: {
+			Text(.localized(
+				"This installation method is intended for advanced users only!\n\nIt requires a VPN and a pairing file from a PC.\n\nIts recommended you go back to the server installation method."
+			))
+		}
+
+
 		.animation(.default, value: _installationMethod)
     }
 }
