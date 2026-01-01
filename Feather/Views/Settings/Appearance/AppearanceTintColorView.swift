@@ -23,17 +23,19 @@ struct AppearanceTintColorView: View {
 		("Very Peculiar", 	"#5394F7"),
 		("Emily",			"#e18aab")
 	]
-
-	@AppStorage("com.apple.SwiftUI.IgnoreSolariumLinkedOnCheck")
-	private var _ignoreSolariumLinkedOnCheck: Bool = false
-
 	// MARK: Body
 	var body: some View {
 		ScrollView(.horizontal, showsIndicators: false) {
 			LazyHGrid(rows: [GridItem(.fixed(100))], spacing: 12) {
 				ForEach(tintOptions, id: \.hex) { option in
 					let color = Color(hex: option.hex)
-					let cornerRadius = _ignoreSolariumLinkedOnCheck ? 28.0 : 10.5
+					let cornerRadius = {
+						if #available(iOS 26.0, *) {
+							28.0
+						} else {
+							10.5
+						}
+					}()
 					VStack(spacing: 8) {
 						Circle()
 							.fill(color)
