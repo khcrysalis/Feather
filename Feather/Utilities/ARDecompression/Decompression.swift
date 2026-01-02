@@ -39,7 +39,7 @@ func extractFile(at fileURL: inout URL) throws {
 		for entry in tarContainer {
 			let entryPath = extractionDirectory.appendingPathComponent(entry.info.name).standardizedFileURL
 			guard entryPath.path.hasPrefix(extractionBase.path + "/") else {
-				throw TweakHandlerError.unsupportedFileExtension("tar")
+				throw TweakHandlerError.unsupportedFileExtension("tar (path traversal attempt detected)")
 			}
 			
 			if entry.info.type == .directory {
