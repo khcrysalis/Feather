@@ -918,6 +918,17 @@
         }
       }
     },
+    "Advanced Installation Method" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Advanced Installation Method"
+          }
+        }
+      }
+    },
     "All" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -7244,10 +7255,10 @@
             "value" : "Join Us on Discord"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hãy tham gia cùng chúng tôi trên Discord!"
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hãy tham gia cùng chúng tôi trên Discord!"
           }
         }
       }
@@ -8430,10 +8441,10 @@
             "value" : "No sources to copy"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Không có nguồn để sao chép"
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không có nguồn để sao chép"
           }
         }
       }
@@ -12800,10 +12811,10 @@
             "value" : "Sources copied to clipboard"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nguồn đã được sao chép vào bộ nhớ tạm"
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nguồn đã được sao chép vào bộ nhớ tạm"
           }
         }
       }
@@ -13369,6 +13380,17 @@
         }
       }
     },
+    "Switch Back" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Switch Back"
+          }
+        }
+      }
+    },
     "Team Identifiers" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -13823,6 +13845,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "为此应用启用Liquid Glass。需要重启应用。"
+          }
+        }
+      }
+    },
+    "This installation method is intended for advanced users only!\\n\\nIt requires a VPN and a pairing file from a PC.\\n\\nIts recommended you go back to the server installation method." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This installation method is intended for advanced users only!\\n\\nIt requires a VPN and a pairing file from a PC.\\n\\nIts recommended you go back to the server installation method."
           }
         }
       }

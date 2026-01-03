@@ -69,7 +69,13 @@ class ServerInstaller: Identifiable, ObservableObject {
 				return req.fileio.streamFile(
 					at: packageUrl.path
 				) { result in
-					self._updateStatus(.completed(result))
+					switch result {
+					case .success:
+						self._updateStatus(.installing)
+					case .failure(let error):
+						self._updateStatus(.broken(error))
+					}
+
 				}
 			case "/install":
 				var headers = HTTPHeaders()

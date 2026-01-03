@@ -82,6 +82,14 @@ struct CertificatesView: View {
 extension CertificatesView {
 	@ViewBuilder
 	private func _cellButton(for cert: CertificatePair, at index: Int) -> some View {
+		let cornerRadius = {
+			if #available(iOS 26.0, *) {
+				28.0
+			} else {
+				10.5
+			}
+		}()
+		
 		Button {
 			_selectedCertBinding.wrappedValue = index
 		} label: {
@@ -90,11 +98,11 @@ extension CertificatesView {
 			)
 			.padding()
 			.background(
-				RoundedRectangle(cornerRadius: 10.5)
+				RoundedRectangle(cornerRadius: cornerRadius)
 					.fill(Color(uiColor: .quaternarySystemFill))
 			)
 			.overlay(
-				RoundedRectangle(cornerRadius: 10.5)
+				RoundedRectangle(cornerRadius: cornerRadius)
 					.strokeBorder(
 						_selectedCertBinding.wrappedValue == index ? Color.accentColor : Color.clear,
 						lineWidth: 2

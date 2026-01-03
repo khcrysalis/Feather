@@ -163,7 +163,6 @@ struct LibraryView: View {
 				InstallPreviewView(app: app.base, isSharing: app.archive)
 					.presentationDetents([.height(200)])
 					.presentationDragIndicator(.visible)
-					.compatPresentationRadius(21)
 			}
 			.fullScreenCover(item: $_selectedSigningAppPresenting) { app in
 				SigningView(app: app.base)

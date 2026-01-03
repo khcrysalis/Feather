@@ -23,39 +23,39 @@ struct ScreenshotPreviewView: View {
     }
     
     var body: some View {
-        ZStack {
-            VStack {
-                _headerView()
-                
-                Spacer()
-                
-                _imageScrollView()
-            }
+        NavigationStack {
+            _imageScrollView()
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        if #available(iOS 26.0, *) {
+                            Button(role: .close) { dismiss() }
+                        } else {
+                            Button(.localized("Close"), role: .cancel) { dismiss() }
+                        }
+                    }
+                    ToolbarItem(placement: .topBarTrailing) {
+                        if #available(iOS 26.0, *) {
+                            Text(verbatim: "\(currentIndex + 1) / \(screenshotURLs.count)")
+                                .font(.subheadline)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 6)
+                        } else {
+                            Text(verbatim: "\(currentIndex + 1) / \(screenshotURLs.count)")
+                                .font(.subheadline)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 6)
+                                .background(
+                                    Capsule()
+                                        .fill(.ultraThinMaterial)
+                                )
+                        }
+                    }
+                }
         }
-        .background(Color(uiColor: .systemBackground))
     }
 }
 
 extension ScreenshotPreviewView {
-    @ViewBuilder
-    private func _headerView() -> some View {
-        HStack {
-            Button(.localized("Close"), role: .cancel) { dismiss() }
-            
-            Spacer()
-            
-            Text(verbatim: "\(currentIndex + 1) / \(screenshotURLs.count)")
-                .font(.subheadline)
-                .padding(.horizontal, 12)
-                .padding(.vertical, 6)
-                .background(
-                    Capsule()
-                        .fill(.ultraThinMaterial)
-                )
-        }
-        .padding(.horizontal, 20)
-    }
-    
     @ViewBuilder
     private func _imageScrollView() -> some View {
         TabView(selection: $currentIndex) {

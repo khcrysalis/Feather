@@ -22,9 +22,6 @@ struct AppearanceView: View {
 		(.localized("Big Description"), .localized("Adds the localized description of the app."))
 	]
 	
-	@AppStorage("com.apple.SwiftUI.IgnoreSolariumLinkedOnCheck")
-	private var _ignoreSolariumLinkedOnCheck: Bool = false
-	
 	// MARK: Body
     var body: some View {
 		NBList(.localized("Appearance")) {
@@ -58,22 +55,11 @@ struct AppearanceView: View {
 				.labelsHidden()
 				.pickerStyle(.inline)
 			}
-			
-			if #available(iOS 19.0, *) {
-				NBSection(.localized("Experiments")) {
-					Toggle(.localized("Enable Liquid Glass"), isOn: $_ignoreSolariumLinkedOnCheck)
-				} footer: {
-					Text(.localized("This enables liquid glass for this app, this requires a restart of the app to take effect."))
-				}
-			}
 		}
 		.onChange(of: _userIntefacerStyle) { value in
 			if let style = UIUserInterfaceStyle(rawValue: value) {
 				UIApplication.topViewController()?.view.window?.overrideUserInterfaceStyle = style
 			}
-		}
-		.onChange(of: _ignoreSolariumLinkedOnCheck) { _ in
-			UIApplication.shared.suspendAndReopen()
 		}
     }
 }
