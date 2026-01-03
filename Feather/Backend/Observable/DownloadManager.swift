@@ -165,7 +165,11 @@ extension DownloadManager: URLSessionDownloadDelegate {
 			
 			// Use the server-suggested filename if available, otherwise fallback
 			let suggestedFileName = downloadTask.response?.suggestedFilename ?? download.fileName
-			let destinationURL = customTempDir.appendingPathComponent(suggestedFileName)
+			let finalFileName = NSString.safePathComponent(
+				suggestedFileName,
+				fallback: download.fileName
+			)
+			let destinationURL = customTempDir.appendingPathComponent(finalFileName)
 			
 			try FileManager.default.removeFileIfNeeded(at: destinationURL)
 			try FileManager.default.moveItem(at: location, to: destinationURL)

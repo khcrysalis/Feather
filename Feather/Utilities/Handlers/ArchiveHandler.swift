@@ -70,7 +70,9 @@ final class ArchiveHandler: NSObject {
 	}
 	
 	func moveToArchive(_ package: URL, shouldOpen: Bool = false) async throws -> URL? {
-		let appendingString = "\(_app.name!)_\(_app.version!)_\(Int(Date().timeIntervalSince1970)).ipa"
+		let safeName = NSString.safePathComponent(_app.name ?? "App", fallback: "App")
+		let safeVersion = NSString.safePathComponent(_app.version ?? "0", fallback: "0")
+		let appendingString = "\(safeName)_\(safeVersion)_\(Int(Date().timeIntervalSince1970)).ipa"
 		let dest = _fileManager.archives.appendingPathComponent(appendingString)
 		
 		try? _fileManager.moveItem(
