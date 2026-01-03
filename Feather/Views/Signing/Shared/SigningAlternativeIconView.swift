@@ -70,11 +70,6 @@ extension SigningAlternativeIconView {
 		guard let app = Storage.shared.getAppDirectory(for: app) else {
 			return nil
 		}
-		let base = app.standardizedFileURL
-		let candidate = app.appendingPathComponent(path).standardizedFileURL
-		guard candidate.path.hasPrefix(base.path + "/") else {
-			return nil
-		}
 		return UIImage(contentsOfFile: candidate.relativePath)?.resizeToSquare()
 	}
 	
