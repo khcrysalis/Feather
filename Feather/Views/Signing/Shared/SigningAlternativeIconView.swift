@@ -70,7 +70,7 @@ extension SigningAlternativeIconView {
 		guard let app = Storage.shared.getAppDirectory(for: app) else {
 			return nil
 		}
-		return UIImage(contentsOfFile: candidate.relativePath)?.resizeToSquare()
+		return UIImage(contentsOfFile: app.appendingPathComponent(path).relativePath)?.resizeToSquare()
 	}
 	
 	private func _loadAlternateIcons() {
