@@ -97,6 +97,7 @@ Due to how it works right now we need both a VPN and a lockdownd pairing file, t
 - [Nuke](https://github.com/kean/Nuke) - Image caching.
 - [Asspp](https://github.com/Lakr233/Asspp) - Some code for setting up the http server.
 - [plistserver](https://github.com/nekohaxx/plistserver) - Hosted on https://api.palera.in.
+- [social-symbols](https://github.com/jeremieb/social-symbols/) - Additional logos.
 
 ## License 
 
