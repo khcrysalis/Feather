@@ -70,8 +70,8 @@ final class ArchiveHandler: NSObject {
 	}
 	
 	func moveToArchive(_ package: URL, shouldOpen: Bool = false) async throws -> URL? {
-		let safeName = _safeArchiveComponent(_app.name ?? "App")
-		let safeVersion = _safeArchiveComponent(_app.version ?? "0")
+		let safeName = PathSanitizer.safePathComponent(_app.name ?? "App", fallback: "App")
+		let safeVersion = PathSanitizer.safePathComponent(_app.version ?? "0", fallback: "0")
 		let appendingString = "\(safeName)_\(safeVersion)_\(Int(Date().timeIntervalSince1970)).ipa"
 		let dest = _fileManager.archives.appendingPathComponent(appendingString)
 		
@@ -87,13 +87,6 @@ final class ArchiveHandler: NSObject {
 		}
 		
 		return dest
-	}
-	
-	private func _safeArchiveComponent(_ input: String) -> String {
-		return input
-			.replacingOccurrences(of: "..", with: "_")
-			.replacingOccurrences(of: "/", with: "_")
-			.replacingOccurrences(of: "\\", with: "_")
 	}
 	
 	static func getCompressionLevel() -> Int {

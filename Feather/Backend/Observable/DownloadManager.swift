@@ -165,11 +165,10 @@ extension DownloadManager: URLSessionDownloadDelegate {
 			
 			// Use the server-suggested filename if available, otherwise fallback
 			let suggestedFileName = downloadTask.response?.suggestedFilename ?? download.fileName
-			let safeFileName = suggestedFileName
-				.replacingOccurrences(of: "..", with: "_")
-				.replacingOccurrences(of: "/", with: "_")
-				.replacingOccurrences(of: "\\", with: "_")
-			let finalFileName = safeFileName.isEmpty ? download.fileName : safeFileName
+			let finalFileName = PathSanitizer.safePathComponent(
+				suggestedFileName,
+				fallback: download.fileName
+			)
 			let destinationURL = customTempDir.appendingPathComponent(finalFileName)
 			
 			try FileManager.default.removeFileIfNeeded(at: destinationURL)

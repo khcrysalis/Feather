@@ -198,7 +198,8 @@ class TweakHandler {
 		let arFiles = try await handler.extract()
 		
 		for arFile in arFiles {
-			let outputPath = uniqueSubDir.appendingPathComponent(arFile.name).standardizedFileURL
+			let safeName = PathSanitizer.safePathComponent(arFile.name, fallback: "file")
+			let outputPath = uniqueSubDir.appendingPathComponent(safeName).standardizedFileURL
 			guard outputPath.path.hasPrefix(extractionBase.path + "/") else {
 				throw TweakHandlerError.decompressionFailed("Path traversal detected")
 			}
