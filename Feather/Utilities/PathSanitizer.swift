@@ -2,12 +2,12 @@
 //  PathSanitizer.swift
 //  Feather
 //
-//  Created by Jacob Prezant on 1/2/25
+//  Created by Jacob Prezant on 1/2/26
 //
 
 import Foundation
 
-enum PathSanitizer {
+extension NSString {
 	static func safePathComponent(_ input: String, fallback: String) -> String {
 		let sanitized = input
 			.replacingOccurrences(of: "..", with: "_")

@@ -165,7 +165,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
 			
 			// Use the server-suggested filename if available, otherwise fallback
 			let suggestedFileName = downloadTask.response?.suggestedFilename ?? download.fileName
-			let finalFileName = PathSanitizer.safePathComponent(
+			let finalFileName = NSString.safePathComponent(
 				suggestedFileName,
 				fallback: download.fileName
 			)
