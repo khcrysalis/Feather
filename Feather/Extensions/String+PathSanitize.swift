@@ -1,5 +1,5 @@
 //
-//  PathSanitizer.swift
+//  String+PathSanitize.swift
 //  Feather
 //
 //  Created by Jacob Prezant on 1/2/26
