@@ -196,7 +196,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
             download.bytesDownloaded = totalBytesWritten
             download.totalBytes = totalBytesExpectedToWrite
             if #available(iOS 26.0, *) {
-                BackgroundTaskManager.shared.updateProgress(for: download.id, progress: download.progress)
+                BackgroundTaskManager.shared.updateProgress(for: download.id, progress: download.overallProgress)
             }
         }
     }
