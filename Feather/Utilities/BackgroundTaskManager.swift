@@ -7,6 +7,7 @@
 
 import Foundation
 import BackgroundTasks
+import CryptoKit
 
 @available(iOS 26.0, *)
 class BackgroundTaskManager: ObservableObject {
@@ -18,11 +19,7 @@ class BackgroundTaskManager: ObservableObject {
     private var registeredTasks: Set<String> = []
     
     func startTask(for downloadId: String, filename: String) {
-        let taskIdentifier = "\(baseId)." + "\(downloadId)".replacingOccurrences(
-            of: "[^a-zA-Z0-9]",
-            with: "",
-            options: .regularExpression
-        )
+        let taskIdentifier = "\(baseId).\(downloadId.md5)"
         
         if !registeredTasks.contains(taskIdentifier) {
             BGTaskScheduler.shared.register(forTaskWithIdentifier: taskIdentifier, using: nil) { task in
@@ -49,11 +46,7 @@ class BackgroundTaskManager: ObservableObject {
     }
     
     func updateProgress(for downloadId: String, progress: Double) {
-        let taskIdentifier = "\(baseId)." + "\(downloadId)".replacingOccurrences(
-            of: "[^a-zA-Z0-9]",
-            with: "",
-            options: .regularExpression
-        )
+        let taskIdentifier = "\(baseId).\(downloadId.md5)"
         
         guard let task = activeTasks[taskIdentifier] else { return }
         task.progress.totalUnitCount = 100
@@ -67,14 +60,16 @@ class BackgroundTaskManager: ObservableObject {
     }
     
     func stopTask(for downloadId: String, success: Bool) {
-        let taskIdentifier = "\(baseId)." + "\(downloadId)".replacingOccurrences(
-            of: "[^a-zA-Z0-9]",
-            with: "",
-            options: .regularExpression
-        )
+        let taskIdentifier = "\(baseId).\(downloadId.md5)"
         guard let task = activeTasks[taskIdentifier] else { return }
         
         task.setTaskCompleted(success: success)
         activeTasks.removeValue(forKey: taskIdentifier)
+    }
+}
+
+extension String {
+    var md5: String {
+        Insecure.MD5.hash(data: Data(self.utf8)).map { String(format: "%02hhx", $0) }.joined()
     }
 }
