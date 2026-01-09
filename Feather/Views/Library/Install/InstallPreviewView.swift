@@ -202,18 +202,26 @@ struct InstallPreviewView: View {
 	) -> Task<Void, Never> {
 
 		Task.detached(priority: .background) {
+			var hasStarted = false
+
 			while !Task.isCancelled {
 				let rawProgress = await UIApplication.installProgress(for: bundleID) ?? 0.0
-				let progress = normalizeInstallProgress(rawProgress)
 
-				Logger.misc.info("Install for id: \(bundleID)")
-				Logger.misc.info("Install progress: \(progress)")
+				if rawProgress > 0 {
+					hasStarted = true
+				}
+
+				let progress = await hasStarted
+					? _normalizeInstallProgress(rawProgress)
+					: 0.0
+
+				Logger.misc.info("Install progress for \(bundleID): \(progress)")
 
 				await MainActor.run {
 					viewModel.installProgress = progress
 				}
 
-				if rawProgress >= 0.9 {
+				if hasStarted && rawProgress == 0 {
 					await MainActor.run {
 						viewModel.installProgress = 1.0
 						viewModel.status = .completed(.success(()))
@@ -226,8 +234,7 @@ struct InstallPreviewView: View {
 		}
 	}
 
-	private func normalizeInstallProgress(_ rawProgress: Double) -> Double {
-		let normalized = (rawProgress - 0.6) / 0.3
-		return min(1.0, max(0.0, normalized))
+	private func _normalizeInstallProgress(_ rawProgress: Double) -> Double {
+		min(1.0, max(0.0, (rawProgress - 0.6) / 0.3))
 	}
 }
