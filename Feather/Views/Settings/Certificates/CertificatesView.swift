@@ -54,7 +54,7 @@ struct CertificatesView: View {
 		NBGrid {
             ForEach(_filteredCertificates, id: \.uuid) { cert in
                 if let originalIndex = _originalIndex(for: cert) {
-                    _cellButton(for: cert, originalIndex: originalIndex)
+                    _cellButton(for: cert, at: originalIndex)
                 }
             }
 		}
@@ -102,7 +102,15 @@ struct CertificatesView: View {
 // MARK: - View extension
 extension CertificatesView {
 	@ViewBuilder
-	private func _cellButton(for cert: CertificatePair, originalIndex index: Int) -> some View {
+	private func _cellButton(for cert: CertificatePair, at index: Int) -> some View {
+		let cornerRadius = {
+			if #available(iOS 26.0, *) {
+				28.0
+			} else {
+				10.5
+			}
+		}()
+		
 		Button {
 			_selectedCertBinding.wrappedValue = index
 		} label: {
@@ -111,11 +119,11 @@ extension CertificatesView {
 			)
 			.padding()
 			.background(
-				RoundedRectangle(cornerRadius: 10.5)
+				RoundedRectangle(cornerRadius: cornerRadius)
 					.fill(Color(uiColor: .quaternarySystemFill))
 			)
 			.overlay(
-				RoundedRectangle(cornerRadius: 10.5)
+				RoundedRectangle(cornerRadius: cornerRadius)
 					.strokeBorder(
 						_selectedCertBinding.wrappedValue == index ? Color.accentColor : Color.clear,
 						lineWidth: 2

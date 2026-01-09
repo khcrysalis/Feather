@@ -516,7 +516,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "💜 Dies wäre alles nicht möglich ohne meine Sponsoren!"
+            "value" : "💜 Ohne meine Sponsoren wäre das alles nicht möglich!"
           }
         },
         "en" : {
@@ -918,6 +918,17 @@
         }
       }
     },
+    "Advanced Installation Method" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Advanced Installation Method"
+          }
+        }
+      }
+    },
     "All" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -989,7 +1000,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alle Dateien der App befinden sich im Dokumente-Verzeichnis, hier sind einige Schnellzugriffe darauf."
+            "value" : "Alle App-Dateien liegen im Dokumente-Verzeichnis. Hier sind einige Schnellzugriffe."
           }
         },
         "en" : {
@@ -2842,6 +2853,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dark"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dunkel"
           }
         },
         "pl" : {
@@ -7000,6 +7017,12 @@
             "value" : "Zainstaluj po podpisaniu"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach dem Signieren installieren"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7312,6 +7335,12 @@
             "state" : "translated",
             "value" : "Hãy tham gia cùng chúng tôi trên Discord!"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trete unserem Discord bei"
+          }
         }
       }
     },
@@ -7500,6 +7529,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Light"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hell"
           }
         },
         "pl" : {
@@ -13444,6 +13479,17 @@
         }
       }
     },
+    "Switch Back" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Switch Back"
+          }
+        }
+      }
+    },
     "Team Identifiers" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -13898,6 +13944,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "为此应用启用Liquid Glass。需要重启应用。"
+          }
+        }
+      }
+    },
+    "This installation method is intended for advanced users only!\\n\\nIt requires a VPN and a pairing file from a PC.\\n\\nIts recommended you go back to the server installation method." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This installation method is intended for advanced users only!\\n\\nIt requires a VPN and a pairing file from a PC.\\n\\nIts recommended you go back to the server installation method."
           }
         }
       }

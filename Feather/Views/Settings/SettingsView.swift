@@ -13,7 +13,26 @@ import IDeviceSwift
 
 // MARK: - View
 struct SettingsView: View {
+	@AppStorage("feather.selectedCert") private var _storedSelectedCert: Int = 0
     @State private var _currentIcon: String? = UIApplication.shared.alternateIconName
+	
+	// MARK: Fetch
+	@FetchRequest(
+		entity: CertificatePair.entity(),
+		sortDescriptors: [NSSortDescriptor(keyPath: \CertificatePair.date, ascending: false)],
+		animation: .snappy
+	) private var _certificates: FetchedResults<CertificatePair>
+	
+	private var selectedCertificate: CertificatePair? {
+		guard
+			_storedSelectedCert >= 0,
+			_storedSelectedCert < _certificates.count
+		else {
+			return nil
+		}
+		return _certificates[_storedSelectedCert]
+	}
+
     
     private let _donationsUrl = "https://github.com/sponsors/khcrysalis"
     private let _githubUrl = "https://github.com/khcrysalis/Feather"
@@ -39,6 +58,13 @@ struct SettingsView: View {
                 }
                 
                 NBSection(.localized("Features")) {
+					if let cert = selectedCertificate {
+						CertificatesCellView(cert: cert)
+					} else {
+						Text(.localized("No Certificate"))
+							.font(.footnote)
+							.foregroundColor(.disabled())
+					}
                     NavigationLink(destination: CertificatesView()) {
                         Label(.localized("Certificates"), systemImage: "checkmark.seal")
                     }

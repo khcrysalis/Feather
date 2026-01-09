@@ -8,9 +8,6 @@
 import SwiftUI
 
 public struct NBToolbarMenu<Content>: ToolbarContent where Content: View {
-	@AppStorage("com.apple.SwiftUI.IgnoreSolariumLinkedOnCheck")
-	private var _ignoreSolariumLinkedOnCheck: Bool = false
-	
 	private var _title: String
 	private var _icon: String
 	private var _style: NBToolbarMenuStyle
