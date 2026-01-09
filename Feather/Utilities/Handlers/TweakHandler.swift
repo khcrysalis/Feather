@@ -188,7 +188,6 @@ class TweakHandler {
 	private func _handleDeb(at url: URL, baseTmpDir: URL) async throws {
 		let uniqueSubDir = baseTmpDir.appendingPathComponent(UUID().uuidString)
 		try _fileManager.createDirectoryIfNeeded(at: uniqueSubDir)
-		let extractionBase = uniqueSubDir.standardizedFileURL
 		
 		// I don't particularly like this code
 		// but it somehow works well enough,
@@ -198,11 +197,7 @@ class TweakHandler {
 		let arFiles = try await handler.extract()
 		
 		for arFile in arFiles {
-			let safeName = NSString.safePathComponent(arFile.name, fallback: "file")
-			let outputPath = uniqueSubDir.appendingPathComponent(safeName).standardizedFileURL
-			guard outputPath.path.hasPrefix(extractionBase.path + "/") else {
-				throw TweakHandlerError.decompressionFailed("Path traversal detected")
-			}
+			let outputPath = uniqueSubDir.appendingPathComponent(arFile.name)
 			try arFile.content.write(to: outputPath)
 			
 			if ["data.tar.lzma", "data.tar.gz", "data.tar.xz", "data.tar.bz2"].contains(arFile.name) {

@@ -34,13 +34,9 @@ func extractFile(at fileURL: inout URL) throws {
 		
 		let extractionDirectory = fileURL.deletingLastPathComponent().appendingPathComponent(UUID().uuidString)
 		try fileManager.createDirectory(at: extractionDirectory, withIntermediateDirectories: true)
-		let extractionBase = extractionDirectory.standardizedFileURL
 		
 		for entry in tarContainer {
-			let entryPath = extractionDirectory.appendingPathComponent(entry.info.name).standardizedFileURL
-			guard entryPath.path.hasPrefix(extractionBase.path + "/") else {
-				throw TweakHandlerError.unsupportedFileExtension("tar (path traversal attempt detected)")
-			}
+			let entryPath = extractionDirectory.appendingPathComponent(entry.info.name)
 			
 			if entry.info.type == .directory {
 				try fileManager.createDirectory(at: entryPath, withIntermediateDirectories: true)
