@@ -61,14 +61,26 @@ where 	Content: View,
                     Spacer()
                     
 					if let _headerTextSecondary {
-						Text(_headerTextSecondary)
-							.font(.caption)
-							.foregroundStyle(.secondary)
-							.contentTransition(.numericText())
-                            .padding(.horizontal, 8)
-							.padding(.vertical, 4.4)
-							.background(Color(uiColor: .quaternarySystemFill))
-							.clipShape(Capsule())
+                        if #available(iOS 26.0, *) {
+                            Text(_headerTextSecondary)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                                .contentTransition(.numericText())
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4.4)
+                                .background(Color(uiColor: .quaternarySystemFill))
+                                .clipShape(Capsule())
+                                .glassEffect()
+                        } else {
+                            Text(_headerTextSecondary)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                                .contentTransition(.numericText())
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4.4)
+                                .background(Color(uiColor: .quaternarySystemFill))
+                                .clipShape(Capsule())
+                        }
 					}
 				}
 				.offset(y: 2)

@@ -68,16 +68,21 @@ public struct NBPillView: View {
 		}
 		
 		public var cornerRadii: (topLeading: CGFloat, bottomLeading: CGFloat, bottomTrailing: CGFloat, topTrailing: CGFloat) {
-			switch self {
-			case .single:
-				return (10, 10, 10, 10)
-			case .first:
-				return (10, 10, 5, 5)
-			case .middle:
-				return (5, 5, 5, 5)
-			case .last:
-				return (5, 5, 10, 10)
-			}
+            if #available(iOS 26.0, *) {
+                return (16, 16, 16, 16)
+            }
+            else {
+                switch self {
+                case .single:
+                    return (10, 10, 10, 10)
+                case .first:
+                    return (10, 10, 5, 5)
+                case .middle:
+                    return (5, 5, 5, 5)
+                case .last:
+                    return (5, 5, 10, 10)
+                }
+            }
 		}
 	}
 }

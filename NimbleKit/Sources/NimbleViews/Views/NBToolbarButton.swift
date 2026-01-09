@@ -11,9 +11,6 @@ import NimbleExtensions
 public struct NBToolbarButton: ToolbarContent {
 	@Environment(\.dismiss) private var dismiss
 	
-	@AppStorage("com.apple.SwiftUI.IgnoreSolariumLinkedOnCheck")
-	private var _ignoreSolariumLinkedOnCheck: Bool = false
-	
 	private var _title: String
 	private var _icon: String
 	private var _style: NBToolbarMenuStyle

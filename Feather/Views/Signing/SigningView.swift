@@ -45,7 +45,7 @@ struct SigningView: View {
 		
 	// MARK: Body
     var body: some View {
-		NBNavigationView(app.name ?? .localized("Unknown"), displayMode: .inline) {
+		NBNavigationView("", displayMode: .inline) {
 			Form {
 				_customizationOptions(for: app)
 				_cert()
@@ -79,6 +79,12 @@ struct SigningView: View {
 
 			.toolbar {
 				NBToolbarButton(role: .dismiss)
+				ToolbarItem(placement: .principal) {
+					Image("Glyph")
+						.resizable()
+						.scaledToFit()
+						.frame(height: 38)
+				}
 				NBToolbarButton(
 					.localized("Reset"),
 					style: .text,
