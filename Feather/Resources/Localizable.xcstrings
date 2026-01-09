@@ -225,7 +225,7 @@
               },
               "other" : {
                 "stringUnit" : {
-                  "state" : "new",
+                  "state" : "translated",
                   "value" : "%lld Days"
                 }
               }
@@ -925,6 +925,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Advanced Installation Method"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zaawansowana metoda instalacji"
           }
         }
       }
@@ -2815,16 +2821,16 @@
     "Dark" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dark"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dunkel"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark"
           }
         },
         "pl" : {
@@ -3750,8 +3756,7 @@
             "value" : "Dylibs"
           }
         }
-      },
-      "shouldTranslate" : false
+      }
     },
     "Enable Liquid Glass" : {
       "extractionState" : "manual",
@@ -6190,8 +6195,24 @@
             "value" : "idevice"
           }
         }
-      },
-      "shouldTranslate" : false
+      }
+    },
+    "idevice warning" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This installation method is intended for advanced users only!\n\nIt requires a VPN and a pairing file from a PC.\n\nIts recommended you go back to the server installation method."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ta metoda instalacji jest przeznaczona tylko dla zaawansowanych użytkowników!\n\nWymaga ona VPN i pliku parowania z komputera.\n\nZaleca się powrót do metody instalacji przez serwer."
+          }
+        }
+      }
     },
     "If any issues occur within the app please report it via the GitHub repository. When submitting an issue, make sure to submit detailed information." : {
       "extractionState" : "manual",
@@ -6954,16 +6975,22 @@
     "Install After Signing" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach dem Signieren installieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Install After Signing"
           }
         },
-        "de" : {
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nach dem Signieren installieren"
+            "value" : "Zainstaluj po podpisaniu"
           }
         },
         "vi" : {
@@ -7261,10 +7288,22 @@
     "Join Us on Discord" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trete unserem Discord bei"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Join Us on Discord"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dołącz do nas na Discordzie"
           }
         },
         "vi" : {
@@ -7272,11 +7311,16 @@
             "state" : "translated",
             "value" : "Hãy tham gia cùng chúng tôi trên Discord!"
           }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Trete unserem Discord bei"
+        }
+      }
+    },
+    "Key" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klucz"
           }
         }
       }
@@ -7462,16 +7506,16 @@
     "Light" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Light"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hell"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
           }
         },
         "pl" : {
@@ -8463,6 +8507,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No sources to copy"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak źródeł do skopiowania"
           }
         },
         "vi" : {
@@ -9705,8 +9755,7 @@
             "value" : "Pro Motion"
           }
         }
-      },
-      "shouldTranslate" : false
+      }
     },
     "Proceed" : {
       "extractionState" : "manual",
@@ -12835,6 +12884,12 @@
             "value" : "Sources copied to clipboard"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Źródła skopiowane do schowka"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13412,6 +13467,12 @@
             "state" : "translated",
             "value" : "Switch Back"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wróć"
+          }
         }
       }
     },
@@ -13873,17 +13934,6 @@
         }
       }
     },
-    "This installation method is intended for advanced users only!\\n\\nIt requires a VPN and a pairing file from a PC.\\n\\nIts recommended you go back to the server installation method." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This installation method is intended for advanced users only!\\n\\nIt requires a VPN and a pairing file from a PC.\\n\\nIts recommended you go back to the server installation method."
-          }
-        }
-      }
-    },
     "This option force converts apps to try to use the new liquid glass redesign iOS 26 introduced, this may not work for all applications due to differing frameworks." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -14136,8 +14186,7 @@
             "value" : "Tweaks"
           }
         }
-      },
-      "shouldTranslate" : false
+      }
     },
     "Unknown" : {
       "extractionState" : "manual",
@@ -14337,8 +14386,7 @@
             "value" : "URL"
           }
         }
-      },
-      "shouldTranslate" : false
+      }
     },
     "Value" : {
       "extractionState" : "manual",
