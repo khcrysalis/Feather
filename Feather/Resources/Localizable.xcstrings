@@ -516,7 +516,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "💜 Dies wäre alles nicht möglich ohne meine Sponsoren!"
+            "value" : "💜 Ohne meine Sponsoren wäre das alles nicht möglich!"
           }
         },
         "en" : {
@@ -989,7 +989,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alle Dateien der App befinden sich im Dokumente-Verzeichnis, hier sind einige Schnellzugriffe darauf."
+            "value" : "Alle App-Dateien liegen im Dokumente-Verzeichnis. Hier sind einige Schnellzugriffe."
           }
         },
         "en" : {
