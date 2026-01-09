@@ -516,7 +516,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "💜 Dies wäre alles nicht möglich ohne meine Sponsoren!"
+            "value" : "💜 Ohne meine Sponsoren wäre das alles nicht möglich!"
           }
         },
         "en" : {
@@ -1000,7 +1000,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alle Dateien der App befinden sich im Dokumente-Verzeichnis, hier sind einige Schnellzugriffe darauf."
+            "value" : "Alle App-Dateien liegen im Dokumente-Verzeichnis. Hier sind einige Schnellzugriffe."
           }
         },
         "en" : {
@@ -2819,6 +2819,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dark"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dunkel"
           }
         },
         "pl" : {
@@ -6954,6 +6960,12 @@
             "value" : "Install After Signing"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach dem Signieren installieren"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7260,6 +7272,12 @@
             "state" : "translated",
             "value" : "Hãy tham gia cùng chúng tôi trên Discord!"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trete unserem Discord bei"
+          }
         }
       }
     },
@@ -7448,6 +7466,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Light"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hell"
           }
         },
         "pl" : {
