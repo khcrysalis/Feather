@@ -37,7 +37,7 @@ struct InstallationView: View {
 				TunnelView()
 			}
 		}
-		.onChange(of: _installationMethod) { newValue in
+		.onChange(of: _installationMethod) { _, newValue in
 			guard newValue == 1 else { return }
 			_showMethodChangedAlert = true
 		}
@@ -47,12 +47,11 @@ struct InstallationView: View {
 			}
 			Button(.localized("OK"), role: .cancel) {}
 		} message: {
-			Text(.localized(
-				"This installation method is intended for advanced users only!\n\nIt requires a VPN and a pairing file from a PC.\n\nIts recommended you go back to the server installation method."
-			))
+            Text(.localized("idevice warning"))
 		}
 
 
 		.animation(.default, value: _installationMethod)
     }
 }
+
