@@ -741,6 +741,23 @@
         }
       }
     },
+    "Add and manage certificates used for signing applications." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add and manage certificates used for signing applications."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodawaj i zarządzaj certyfikatami używanymi do podpisywania aplikacji."
+          }
+        }
+      }
+    },
     "Add Source" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -7310,17 +7327,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hãy tham gia cùng chúng tôi trên Discord!"
-          }
-        }
-      }
-    },
-    "Key" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Klucz"
           }
         }
       }

@@ -57,17 +57,24 @@ struct SettingsView: View {
 					}
                 }
                 
-                NBSection(.localized("Features")) {
-					if let cert = selectedCertificate {
-						CertificatesCellView(cert: cert)
-					} else {
-						Text(.localized("No Certificate"))
-							.font(.footnote)
-							.foregroundColor(.disabled())
-					}
+                NBSection(.localized("Certificates")) {
+                    
+                    if let cert = selectedCertificate {
+                        CertificatesCellView(cert: cert)
+                    } else {
+                        Text(.localized("No Certificate"))
+                            .font(.footnote)
+                            .foregroundColor(.disabled())
+                    }
                     NavigationLink(destination: CertificatesView()) {
                         Label(.localized("Certificates"), systemImage: "checkmark.seal")
                     }
+                 
+                } footer: {
+                    Text(.localized("Add and manage certificates used for signing applications."))
+                }
+                
+                NBSection(.localized("Features")) {
                     NavigationLink(destination: ConfigurationView()) {
                         Label(.localized("Signing Options"), systemImage: "signature")
                     }
