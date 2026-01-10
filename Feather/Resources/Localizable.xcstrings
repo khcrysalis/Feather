@@ -741,6 +741,23 @@
         }
       }
     },
+    "Add and manage certificates used for signing applications." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add and manage certificates used for signing applications."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodawaj i zarządzaj certyfikatami używanymi do podpisywania aplikacji."
+          }
+        }
+      }
+    },
     "Add Source" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2815,16 +2832,16 @@
     "Dark" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dark"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dunkel"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark"
           }
         },
         "pl" : {
@@ -6954,16 +6971,16 @@
     "Install After Signing" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Install After Signing"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nach dem Signieren installieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install After Signing"
           }
         },
         "vi" : {
@@ -7261,6 +7278,12 @@
     "Join Us on Discord" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trete unserem Discord bei"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7271,12 +7294,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hãy tham gia cùng chúng tôi trên Discord!"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Trete unserem Discord bei"
           }
         }
       }
@@ -7462,16 +7479,16 @@
     "Light" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Light"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hell"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
           }
         },
         "pl" : {
