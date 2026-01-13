@@ -158,6 +158,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
 			DispatchQueue.main.async {
 				if let index = DownloadManager.shared.getDownloadIndex(by: dl.id) {
 					DownloadManager.shared.downloads.remove(at: index)
+                    BackgroundTaskManager.shared.updateProgress(for: dl.id, progress: 1.0)
                     self._updateBackgroundAudioState()
 				}
 			}
