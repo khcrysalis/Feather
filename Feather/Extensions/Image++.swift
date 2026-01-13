@@ -8,31 +8,25 @@
 import SwiftUI
 
 extension Image {
-	/// Applies a standard icon style with firmware-aware corner radius
+	/// Applies a certain style to an image
 	func appIconStyle(
 		size: CGFloat = 56,
 		lineWidth: CGFloat = 1,
 		isCircle: Bool = false,
 		background: Color = .clear
 	) -> some View {
-		var multiplier: CGFloat = 0.2337
-		if #available(iOS 26.0, *) {
-			multiplier = 0.2437
-		}
-		
-		let radius = isCircle ? (size / 2) : (size * multiplier)
-		
-		return self.resizable()
+		self.resizable()
 			.scaledToFit()
 			.frame(width: size, height: size)
 			.background(
-				RoundedRectangle(cornerRadius: radius, style: .continuous)
+				RoundedRectangle(cornerRadius: isCircle ? (size * 2) : (size * 0.2337), style: .continuous)
 					.fill(background)
 			)
 			.overlay {
-				RoundedRectangle(cornerRadius: radius, style: .continuous)
-					.strokeBorder(Color.primary.opacity(0.15), lineWidth: lineWidth)
+				RoundedRectangle(cornerRadius: isCircle ? (size * 2) : (size * 0.2337), style: .continuous)
+					.strokeBorder(.gray.opacity(0.3), lineWidth: lineWidth)
 			}
-			.clipShape(RoundedRectangle(cornerRadius: radius, style: .continuous))
+			.clipShape(RoundedRectangle(cornerRadius: isCircle ? (size * 2) : (size * 0.2337), style: .continuous))
 	}
 }
+

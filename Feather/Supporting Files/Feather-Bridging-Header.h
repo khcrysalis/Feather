@@ -3,4 +3,3 @@
 //
 
 #include "MachOUtils.h"
-#include "AppIcon.h"
