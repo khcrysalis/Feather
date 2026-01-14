@@ -2136,6 +2136,17 @@
         }
       }
     },
+    "Certificates updated successfully." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certificates updated successfully."
+          }
+        }
+      }
+    },
     "Change" : {
       "extractionState" : "manual",
       "localizations" : {

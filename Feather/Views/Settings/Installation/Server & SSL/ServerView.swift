@@ -71,7 +71,14 @@ struct ServerView: View {
 			Section {
 				Button(.localized("Update SSL Certificates"), systemImage: "arrow.down.doc") {
 					FR.downloadSSLCertificates(from: _serverPackUrl) { success in
-						if !success {
+						if success {
+							DispatchQueue.main.async {
+								UIAlertController.showAlertWithOk(
+									title: .localized("SSL Certificates"),
+									message: .localized("Certificates updated successfully.")
+								)
+							}
+						} else {
 							DispatchQueue.main.async {
 								UIAlertController.showAlertWithOk(
 									title: .localized("SSL Certificates"),
