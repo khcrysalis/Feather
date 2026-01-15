@@ -22,20 +22,9 @@
 		33CF13392DB5ACFB0021D4C5 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 33CF13382DB5ACFB0021D4C5 /* SWCompression */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		AABA5D1D2DB3C87800BFCD2C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3379C1B12DA869A1004372DA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3379C1B82DA869A1004372DA;
-			remoteInfo = Feather;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		336D43972DB7454A00206400 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS18.2.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		3379C1B92DA869A1004372DA /* Feather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Feather.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AABA5D192DB3C87800BFCD2C /* FeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -69,11 +58,6 @@
 			path = Feather;
 			sourceTree = "<group>";
 		};
-		AABA5D1A2DB3C87800BFCD2C /* FeatherTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FeatherTests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,13 +81,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AABA5D162DB3C87800BFCD2C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -119,7 +96,6 @@
 			isa = PBXGroup;
 			children = (
 				3379C1BB2DA869A1004372DA /* Feather */,
-				AABA5D1A2DB3C87800BFCD2C /* FeatherTests */,
 				3371F7302DA9ECDD00281AC6 /* Frameworks */,
 				3379C1BA2DA869A1004372DA /* Products */,
 			);
@@ -129,7 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				3379C1B92DA869A1004372DA /* Feather.app */,
-				AABA5D192DB3C87800BFCD2C /* FeatherTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -173,29 +148,6 @@
 			productReference = 3379C1B92DA869A1004372DA /* Feather.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AABA5D182DB3C87800BFCD2C /* FeatherTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AABA5D1F2DB3C87800BFCD2C /* Build configuration list for PBXNativeTarget "FeatherTests" */;
-			buildPhases = (
-				AABA5D152DB3C87800BFCD2C /* Sources */,
-				AABA5D162DB3C87800BFCD2C /* Frameworks */,
-				AABA5D172DB3C87800BFCD2C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AABA5D1E2DB3C87800BFCD2C /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				AABA5D1A2DB3C87800BFCD2C /* FeatherTests */,
-			);
-			name = FeatherTests;
-			packageProductDependencies = (
-			);
-			productName = FeatherTests;
-			productReference = AABA5D192DB3C87800BFCD2C /* FeatherTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -209,10 +161,6 @@
 					3379C1B82DA869A1004372DA = {
 						CreatedOnToolsVersion = 16.2;
 						LastSwiftMigration = 1620;
-					};
-					AABA5D182DB3C87800BFCD2C = {
-						CreatedOnToolsVersion = 16.3;
-						TestTargetID = 3379C1B82DA869A1004372DA;
 					};
 				};
 			};
@@ -252,20 +200,12 @@
 			projectRoot = "";
 			targets = (
 				3379C1B82DA869A1004372DA /* Feather */,
-				AABA5D182DB3C87800BFCD2C /* FeatherTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3379C1B72DA869A1004372DA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AABA5D172DB3C87800BFCD2C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -299,24 +239,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AABA5D152DB3C87800BFCD2C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		339776072DC9D0F800642FFB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 339776062DC9D0F800642FFB /* LicensePlistBuildTool */;
-		};
-		AABA5D1E2DB3C87800BFCD2C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3379C1B82DA869A1004372DA /* Feather */;
-			targetProxy = AABA5D1D2DB3C87800BFCD2C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -567,57 +495,6 @@
 			};
 			name = Release;
 		};
-		AABA5D202DB3C87800BFCD2C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_ENTITLEMENTS = "Feather/Supporting Files/Feather.entitlements";
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
-				COMPRESS_PNG_FILES = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = thewonderofyou.FeatherTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = iphoneos;
-				STRIP_PNG_TEXT = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Feather.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Feather";
-			};
-			name = Debug;
-		};
-		AABA5D212DB3C87800BFCD2C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_ENTITLEMENTS = "Feather/Supporting Files/Feather.entitlements";
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
-				COMPRESS_PNG_FILES = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = thewonderofyou.FeatherTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = iphoneos;
-				STRIP_PNG_TEXT = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Feather.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Feather";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -635,15 +512,6 @@
 			buildConfigurations = (
 				3379C1CE2DA869A3004372DA /* Debug */,
 				3379C1CF2DA869A3004372DA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AABA5D1F2DB3C87800BFCD2C /* Build configuration list for PBXNativeTarget "FeatherTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AABA5D202DB3C87800BFCD2C /* Debug */,
-				AABA5D212DB3C87800BFCD2C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
