@@ -14045,6 +14045,9 @@
         }
       }
     },
+    "Tint App Icons" : {
+
+    },
     "Toggling show sheet will present a share sheet after exporting to your files." : {
       "extractionState" : "manual",
       "localizations" : {

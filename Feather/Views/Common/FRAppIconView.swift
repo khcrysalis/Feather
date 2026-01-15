@@ -7,25 +7,110 @@
 
 import SwiftUI
 
+enum FRIconAppearance: Int {
+	case light = 0
+	case dark = 1
+}
+
+final class FRIconCache {
+	static let shared = FRIconCache()
+	private init() {}
+
+	private let cache = NSCache<NSString, UIImage>()
+
+	private func key(url: URL, appearance: FRIconAppearance, tint: String, isTinted: Bool) -> NSString {
+		"\(url.path)#\(appearance.rawValue)#\(tint)#\(isTinted)" as NSString
+	}
+
+	func image(for url: URL, appearance: FRIconAppearance, tint: String, isTinted: Bool) -> UIImage? {
+		cache.object(forKey: key(url: url, appearance: appearance, tint: tint, isTinted: isTinted))
+	}
+
+	func insert(_ image: UIImage, for url: URL, appearance: FRIconAppearance, tint: String, isTinted: Bool) {
+		cache.setObject(image, forKey: key(url: url, appearance: appearance, tint: tint, isTinted: isTinted))
+	}
+
+	func invalidateAll() {
+		cache.removeAllObjects()
+	}
+}
+
+@MainActor
+final class FRAppIconLoader: ObservableObject {
+	@Published var image: UIImage?
+	private var task: Task<Void, Never>?
+
+	func load(bundleURL: URL, appearance: FRIconAppearance, tint: String, isTinted: Bool) {
+		if let cached = FRIconCache.shared.image(for: bundleURL, appearance: appearance, tint: tint, isTinted: isTinted) {
+			self.image = cached
+			return
+		}
+
+		task?.cancel()
+		task = Task {
+			let generated = await Task.detached(priority: .userInitiated) {
+				return iconTest(bundleURL)
+			}.value
+
+			guard !Task.isCancelled else { return }
+
+			if let generated {
+				FRIconCache.shared.insert(generated, for: bundleURL, appearance: appearance, tint: tint, isTinted: isTinted)
+				self.image = generated
+			}
+		}
+	}
+
+	func cancel() {
+		task?.cancel()
+	}
+}
+
 struct FRAppIconView: View {
-	private var _app: AppInfoPresentable
-	private var _size: CGFloat
+	private let app: AppInfoPresentable
+	private let size: CGFloat
+
+	@Environment(\.colorScheme) private var colorScheme
+	@StateObject private var loader = FRAppIconLoader()
 	
+	@AppStorage("Feather.userTintColor") private var selectedColorHex: String = "#848ef9"
+	@AppStorage("Feather.shouldTintIcons") private var shouldTintIcons: Bool = false
+
 	init(app: AppInfoPresentable, size: CGFloat = 87) {
-		self._app = app
-		self._size = size
+		self.app = app
+		self.size = size
+	}
+
+	private var appearance: FRIconAppearance {
+		colorScheme == .dark ? .dark : .light
+	}
+
+	var body: some View {
+		Group {
+			if let image = loader.image {
+				Image(uiImage: image)
+					.appIconStyle(size: size)
+			} else {
+				Image("App_Unknown")
+					.appIconStyle(size: size)
+			}
+		}
+		.task(id: "\(appearance.rawValue)\(selectedColorHex)\(shouldTintIcons)") {
+			_load()
+		}
+		.onDisappear {
+			loader.cancel()
+		}
 	}
 	
-	var body: some View {
-		if
-			let iconFilePath = Storage.shared.getAppDirectory(for: _app)?.appendingPathComponent(_app.icon ?? ""),
-			let uiImage = UIImage(contentsOfFile: iconFilePath.path)
-		{
-			Image(uiImage: uiImage)
-				.appIconStyle(size: _size)
-		} else {
-			Image("App_Unknown")
-				.appIconStyle(size: _size)
-		}
+	private func _load() {
+		guard let bundleURL = Storage.shared.getAppDirectory(for: app) else { return }
+		
+		loader.load(
+			bundleURL: bundleURL,
+			appearance: appearance,
+			tint: selectedColorHex,
+			isTinted: shouldTintIcons
+		)
 	}
 }
