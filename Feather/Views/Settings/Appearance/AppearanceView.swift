@@ -15,6 +15,9 @@ struct AppearanceView: View {
 	@AppStorage("Feather.userInterfaceStyle")
 	private var _userIntefacerStyle: Int = UIUserInterfaceStyle.unspecified.rawValue
 	
+	@AppStorage("Feather.shouldTintIcons")
+	private var _shouldTintIcons: Bool = false
+	
 	@AppStorage("Feather.storeCellAppearance")
 	private var _storeCellAppearance: Int = 0
 	private let _storeCellAppearanceMethods: [(name: String, desc: String)] = [
@@ -38,6 +41,11 @@ struct AppearanceView: View {
 				AppearanceTintColorView()
 					.listRowInsets(EdgeInsets())
 					.listRowBackground(EmptyView())
+			}
+			if #available(iOS 18.0, *) {
+				Section {
+					Toggle("Tint App Icons", isOn: $_shouldTintIcons)
+				}
 			}
 			
 			NBSection(.localized("Sources")) {
