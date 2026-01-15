@@ -101,6 +101,7 @@
 -(id)suggestedRecipe;
 -(void)setSuggestedRecipe:(id)suggestedRecipe;
 -(void)setResourceType:(NSUInteger)type;
+-(void)setIconShape:(NSUInteger)type;
 @end
 
 @interface ISiOSAppRecipe : NSObject
@@ -165,8 +166,12 @@
     ISRecordResourceProvider* provider = [[PrivClass(ISRecordResourceProvider) alloc] initWithRecord:record options:0];
     
     // set suggestedRecipe so -[ISRecipeFactory _recipe] skips all checks and directly use ISiOSAppRecipe
-    [provider setSuggestedRecipe:[[PrivClass(ISiOSAppRecipe) alloc] init]];
-    [provider setResourceType:1];
+	if (@available(iOS 17.0, *)) {
+		[provider setSuggestedRecipe:[[PrivClass(ISiOSAppRecipe) alloc] init]];
+		[provider setResourceType:1];
+	} else {
+		[provider setIconShape:7];
+	}
     return provider;
 }
 
