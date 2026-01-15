@@ -37,7 +37,7 @@ struct InstallationView: View {
 				TunnelView()
 			}
 		}
-		.onChange(of: _installationMethod) { _, newValue in
+		.onChange(of: _installationMethod) { newValue in
 			guard newValue == 1 else { return }
 			_showMethodChangedAlert = true
 		}
