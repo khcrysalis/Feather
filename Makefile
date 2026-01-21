@@ -17,12 +17,8 @@ clean:
 deps:
 	rm -rf deps || true
 	mkdir -p deps
-	curl -L -o deps/server.crt https://backloop.dev/backloop.dev-cert.crt || true
-	curl -L -o deps/server.key1 https://backloop.dev/backloop.dev-key.part1.pem || true
-	curl -L -o deps/server.key2 https://backloop.dev/backloop.dev-key.part2.pem || true
-	cat deps/server.key1 deps/server.key2 > deps/server.pem 2>/dev/null || true
-	rm -f deps/server.key1 deps/server.key2
-	echo "*.backloop.dev" > deps/commonName.txt
+	# SSL certificates are now generated at runtime for each user
+	# No need to bundle pre-generated certificates
 
 $(SCHEMES): deps
 	xcodebuild \
@@ -44,8 +40,6 @@ $(SCHEMES): deps
 
 	chmod -R 0755 "$(STAGE)/Payload/$@.app"
 	codesign --force --sign - --timestamp=none "$(STAGE)/Payload/$@.app"
-
-	cp deps/* "$(STAGE)/Payload/$@.app/" || true
 
 	rm -rf "$(STAGE)/Payload/$@.app/_CodeSignature"
 	ln -sf "$(STAGE)/Payload" Payload

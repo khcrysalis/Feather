@@ -12,6 +12,7 @@ import NIOSSL
 import NIOTLS
 import Vapor
 import SystemConfiguration.CaptiveNetwork
+import OSLog
 
 // MARK: - Class extension: TLS/Setup
 extension ServerInstaller {
@@ -26,13 +27,12 @@ extension ServerInstaller {
 		let app = Application(Self.env)
 		app.threadPool = .init(numberOfThreads: 1)
 		
-		if getServerMethod() != 1 {
-			if let tls = try tls() {
-				app.http.server.configuration.tlsConfiguration = tls
-			}
+		// Always use HTTPS with localhost certificate
+		if let tls = try tls() {
+			app.http.server.configuration.tlsConfiguration = tls
 		}
 		
-		app.http.server.configuration.hostname = sni()
+		app.http.server.configuration.hostname = "localhost"
 		app.http.server.configuration.tcpNoDelay = true
 		app.http.server.configuration.address = .hostname("0.0.0.0", port: port)
 		app.http.server.configuration.port = port
@@ -44,22 +44,23 @@ extension ServerInstaller {
 	
 	// MARK: Files/IP
 	func sni() -> String {
-		let localhost = "127.0.0.1"
-		
-		if getServerMethod() == 1 {
-			return !self.getIPFix()
-			? (Self.getLocalAddress() ?? localhost)
-			: localhost
-		} else {
-			return readCommonName() ?? localhost
-		}
+		return "localhost"
 	}
 	
 	func tls() throws -> TLSConfiguration? {
+		// Ensure localhost SSL certificate exists (generate at runtime if needed)
+		do {
+			try SSLCertificateGenerator.ensureLocalhostCertificate()
+		} catch {
+			Logger.misc.error("Failed to ensure SSL certificate: \(error.localizedDescription)")
+			return nil
+		}
+		
 		guard
 			let crt = Self.getUrl("server", ext: "crt"),
 			let pem = Self.getUrl("server", ext: "pem")
 		else {
+			Logger.misc.error("SSL certificate files not found after ensuring they exist")
 			return nil
 		}
 		
@@ -74,12 +75,7 @@ extension ServerInstaller {
 	}
 	
 	func readCommonName() -> String? {
-		guard let url = Self.getUrl("commonName", ext: "txt") else {
-			return nil
-		}
-		
-		return try? String(contentsOf: url, encoding: .utf8)
-			.trimmingCharacters(in: .whitespacesAndNewlines)
+		return "localhost"
 	}
 }
 
