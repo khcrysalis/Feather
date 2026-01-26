@@ -135,6 +135,9 @@
 - (NSUInteger) _IS_platformToIFPlatform {
     return 4;
 }
+- (int)developerType {
+	return 0;
+}
 - (id)appClipMetadata {
     return nil;
 }
