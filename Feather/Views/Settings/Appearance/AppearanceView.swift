@@ -42,7 +42,7 @@ struct AppearanceView: View {
 					.listRowInsets(EdgeInsets())
 					.listRowBackground(EmptyView())
 			}
-			if #available(iOS 18.0, *) {
+			if #available(iOS 18.2, *) {
 				Section {
 					Toggle("Tint App Icons", isOn: $_shouldTintIcons)
 				}
