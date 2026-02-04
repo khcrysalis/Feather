@@ -2787,6 +2787,17 @@
         }
       }
     },
+    "Custom Theme Color" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom Theme Color"
+          }
+        }
+      }
+    },
     "Customization" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -14056,7 +14067,8 @@
         }
       }
     },
-    "Tint App Icons" : {
+    "Tinted Icons" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

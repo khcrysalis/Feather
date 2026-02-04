@@ -9,8 +9,8 @@ import SwiftUI
 
 // MARK: - View
 struct AppearanceTintColorView: View {
-	@AppStorage("Feather.userTintColor") private var selectedColorHex: String = "#848ef9"
-	private let tintOptions: [(name: String, hex: String)] = [
+	@AppStorage("Feather.userTintColor") private var _selectedColorHex: String = "#848ef9"
+	private let _tintOptions: [(name: String, hex: String)] = [
 		("Default", 		"#848ef9"),
 		("V2", 				"#B496DC"),
 		("Berry",   		"#ff7a83"),
@@ -27,7 +27,7 @@ struct AppearanceTintColorView: View {
 	var body: some View {
 		ScrollView(.horizontal, showsIndicators: false) {
 			LazyHGrid(rows: [GridItem(.fixed(100))], spacing: 12) {
-				ForEach(tintOptions, id: \.hex) { option in
+				ForEach(_tintOptions, id: \.hex) { option in
 					let color = Color(hex: option.hex)
 					let cornerRadius = {
 						if #available(iOS 26.0, *) {
@@ -54,16 +54,16 @@ struct AppearanceTintColorView: View {
 					.clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
 					.overlay(
 						RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-							.strokeBorder(selectedColorHex == option.hex ? color : .clear, lineWidth: 2)
+							.strokeBorder(_selectedColorHex == option.hex ? color : .clear, lineWidth: 2)
 					)
 					.onTapGesture {
-						selectedColorHex = option.hex
+						_selectedColorHex = option.hex
 					}
 					.accessibilityLabel(Text(option.name))
 				}
 			}
 		}
-		.onChange(of: selectedColorHex) { value in
+		.onChange(of: _selectedColorHex) { value in
 			UIApplication.topViewController()?.view.window?.tintColor = UIColor(Color(hex: value))
 		}
 	}
