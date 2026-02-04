@@ -22,6 +22,11 @@ struct SettingsDonationCellView: View {
 					systemName: "heart.text.square.fill"
 				)
 				_benefit(
+					.localized("Exclusive Features"),
+					.localized("After gaining beta access, you're able to use exclusive features that may not be present on releases!"),
+					systemName: "timer"
+				)
+				_benefit(
 					.localized("Show Your Support"),
 					.localized("Show your support by donating! If you're unable to donate, spreading the word works too!"),
 					systemName: "heart.fill"
