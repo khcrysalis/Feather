@@ -3786,6 +3786,17 @@
         }
       }
     },
+    "Dynamic Icons" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Icons"
+          }
+        }
+      }
+    },
     "Enable Liquid Glass" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -14046,7 +14057,14 @@
       }
     },
     "Tint App Icons" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tinted Icons"
+          }
+        }
+      }
     },
     "Toggling show sheet will present a share sheet after exporting to your files." : {
       "extractionState" : "manual",

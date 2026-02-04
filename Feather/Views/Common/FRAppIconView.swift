@@ -18,16 +18,16 @@ final class FRIconCache {
 
 	private let cache = NSCache<NSString, UIImage>()
 
-	private func key(url: URL, appearance: FRIconAppearance, tint: String, isTinted: Bool) -> NSString {
-		"\(url.path)#\(appearance.rawValue)#\(tint)#\(isTinted)" as NSString
+	private func key(url: URL, appearance: FRIconAppearance, tint: String, isTinted: Bool, dynamic: Bool) -> NSString {
+		"\(url.path)#\(appearance.rawValue)#\(tint)#\(isTinted)#\(dynamic)" as NSString
 	}
 
-	func image(for url: URL, appearance: FRIconAppearance, tint: String, isTinted: Bool) -> UIImage? {
-		cache.object(forKey: key(url: url, appearance: appearance, tint: tint, isTinted: isTinted))
+	func image(for url: URL, appearance: FRIconAppearance, tint: String, isTinted: Bool, dynamic: Bool) -> UIImage? {
+		cache.object(forKey: key(url: url, appearance: appearance, tint: tint, isTinted: isTinted, dynamic: dynamic))
 	}
 
-	func insert(_ image: UIImage, for url: URL, appearance: FRIconAppearance, tint: String, isTinted: Bool) {
-		cache.setObject(image, forKey: key(url: url, appearance: appearance, tint: tint, isTinted: isTinted))
+	func insert(_ image: UIImage, for url: URL, appearance: FRIconAppearance, tint: String, isTinted: Bool, dynamic: Bool) {
+		cache.setObject(image, forKey: key(url: url, appearance: appearance, tint: tint, isTinted: isTinted, dynamic: dynamic))
 	}
 
 	func invalidateAll() {
@@ -40,8 +40,8 @@ final class FRAppIconLoader: ObservableObject {
 	@Published var image: UIImage?
 	private var task: Task<Void, Never>?
 
-	func load(bundleURL: URL, appearance: FRIconAppearance, tint: String, isTinted: Bool) {
-		if let cached = FRIconCache.shared.image(for: bundleURL, appearance: appearance, tint: tint, isTinted: isTinted) {
+	func load(bundleURL: URL, appearance: FRIconAppearance, tint: String, isTinted: Bool, dynamic: Bool) {
+		if let cached = FRIconCache.shared.image(for: bundleURL, appearance: appearance, tint: tint, isTinted: isTinted, dynamic: dynamic) {
 			self.image = cached
 			return
 		}
@@ -55,7 +55,7 @@ final class FRAppIconLoader: ObservableObject {
 			guard !Task.isCancelled else { return }
 
 			if let generated {
-				FRIconCache.shared.insert(generated, for: bundleURL, appearance: appearance, tint: tint, isTinted: isTinted)
+				FRIconCache.shared.insert(generated, for: bundleURL, appearance: appearance, tint: tint, isTinted: isTinted, dynamic: dynamic)
 				self.image = generated
 			}
 		}
@@ -75,7 +75,8 @@ struct FRAppIconView: View {
 	
 	@AppStorage("Feather.userTintColor") private var selectedColorHex: String = "#848ef9"
 	@AppStorage("Feather.shouldTintIcons") private var shouldTintIcons: Bool = false
-
+	@AppStorage("Feather.shouldChangeIconsBasedOffStyle") private var shouldChangeIconsBasedOffStyle: Bool = false
+	
 	init(app: AppInfoPresentable, size: CGFloat = 87) {
 		self.app = app
 		self.size = size
@@ -95,7 +96,7 @@ struct FRAppIconView: View {
 					.appIconStyle(size: size)
 			}
 		}
-		.task(id: "\(appearance.rawValue)\(selectedColorHex)\(shouldTintIcons)") {
+		.task(id: "\(appearance.rawValue)\(selectedColorHex)\(shouldTintIcons)\(shouldChangeIconsBasedOffStyle)") {
 			_load()
 		}
 		.onDisappear {
@@ -110,7 +111,8 @@ struct FRAppIconView: View {
 			bundleURL: bundleURL,
 			appearance: appearance,
 			tint: selectedColorHex,
-			isTinted: shouldTintIcons
+			isTinted: shouldTintIcons,
+			dynamic: shouldChangeIconsBasedOffStyle,
 		)
 	}
 }

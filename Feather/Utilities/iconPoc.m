@@ -220,6 +220,8 @@ UIImage* iconTest(NSURL *bundleURL) {
 		[NSUserDefaults.standardUserDefaults integerForKey:@"Feather.userInterfaceStyle"];
 	NSInteger variant =
 		[NSUserDefaults.standardUserDefaults integerForKey:@"Feather.shouldTintIcons"];
+	NSInteger lightDark =
+		[NSUserDefaults.standardUserDefaults integerForKey:@"Feather.shouldChangeIconsBasedOffStyle"];
 
 	// Resolve "system / unspecified" dynamically
 	if (style == UIUserInterfaceStyleUnspecified) {
@@ -227,8 +229,11 @@ UIImage* iconTest(NSURL *bundleURL) {
 	}
 
 	// IconServices: 0 = light, 1 = dark
-	descriptor.appearance =
+	descriptor.appearance = 0;
+	if (lightDark == 1) {
+		descriptor.appearance =
 		(style == UIUserInterfaceStyleDark) ? 1 : 0;
+	}
 
     if (@available(iOS 18.0, *)) {
         // 0 = normal, 2 = tinted mode, 3 = liquid glass (gray scale)

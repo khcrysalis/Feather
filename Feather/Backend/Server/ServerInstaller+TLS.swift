@@ -88,11 +88,17 @@ extension ServerInstaller {
 		let fileManager = FileManager.default
 		
 		let documentsURL = URL.documentsDirectory.appendingPathComponent("\(name).\(ext)")
+		let bundlesURL = Bundle.main.url(forResource: name, withExtension: ext)
+		
 		if fileManager.fileExists(atPath: documentsURL.path) {
 			return documentsURL
 		}
 		
-		return Bundle.main.url(forResource: name, withExtension: ext)
+		if let bundlesURL, fileManager.fileExists(atPath: bundlesURL.path) {
+			return bundlesURL
+		}
+		
+		return nil
 	}
 	
 	static func getLocalAddress() -> String? {

@@ -18,6 +18,9 @@ struct AppearanceView: View {
 	@AppStorage("Feather.shouldTintIcons")
 	private var _shouldTintIcons: Bool = false
 	
+	@AppStorage("Feather.shouldChangeIconsBasedOffStyle")
+	private var _shouldChangeIconsBasedOffStyle: Bool = false
+	
 	@AppStorage("Feather.storeCellAppearance")
 	private var _storeCellAppearance: Int = 0
 	private let _storeCellAppearanceMethods: [(name: String, desc: String)] = [
@@ -42,9 +45,13 @@ struct AppearanceView: View {
 					.listRowInsets(EdgeInsets())
 					.listRowBackground(EmptyView())
 			}
-			if #available(iOS 18.2, *) {
-				Section {
-					Toggle("Tint App Icons", isOn: $_shouldTintIcons)
+			
+			if #available(iOS 18.0, *) {
+				NBSection(.localized("Library")) {
+					Toggle(.localized("Dynamic Icons"), isOn: $_shouldChangeIconsBasedOffStyle)
+					if #available(iOS 18.2, *) {
+						Toggle(.localized("Tinted Icons"), isOn: $_shouldTintIcons)
+					}
 				}
 			}
 			
