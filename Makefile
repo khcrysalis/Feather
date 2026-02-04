@@ -4,8 +4,9 @@ SCHEMES := Feather
 TMP := $(TMPDIR)/$(NAME)
 STAGE := $(TMP)/stage
 APP := $(TMP)/Build/Products/Release-$(PLATFORM)
+CERT_JSON_URL := https://backloop.dev/pack.json
 
-.PHONY: all clean $(SCHEMES)
+.PHONY: all deps clean $(SCHEMES)
 
 all: $(SCHEMES)
 
@@ -17,12 +18,12 @@ clean:
 deps:
 	rm -rf deps || true
 	mkdir -p deps
-	curl -L -o deps/server.crt https://backloop.dev/backloop.dev-cert.crt || true
-	curl -L -o deps/server.key1 https://backloop.dev/backloop.dev-key.part1.pem || true
-	curl -L -o deps/server.key2 https://backloop.dev/backloop.dev-key.part2.pem || true
-	cat deps/server.key1 deps/server.key2 > deps/server.pem 2>/dev/null || true
-	rm -f deps/server.key1 deps/server.key2
-	echo "*.backloop.dev" > deps/commonName.txt
+
+	curl -fsSL "$(CERT_JSON_URL)" -o cert.json
+
+	jq -r '.cert' cert.json > deps/server.crt
+	jq -r '.key1, .key2' cert.json > deps/server.pem
+	jq -r '.info.domains.commonName' cert.json > deps/commonName.txt
 
 $(SCHEMES): deps
 	xcodebuild \
