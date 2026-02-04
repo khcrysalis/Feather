@@ -67,7 +67,7 @@ final class FRAppIconLoader: ObservableObject {
 }
 
 struct FRAppIconView: View {
-	private let app: AppInfoPresentable
+	private let app: AppInfoPresentable?
 	private let size: CGFloat
 
 	@Environment(\.colorScheme) private var colorScheme
@@ -77,7 +77,7 @@ struct FRAppIconView: View {
 	@AppStorage("Feather.shouldTintIcons") private var shouldTintIcons: Bool = false
 	@AppStorage("Feather.shouldChangeIconsBasedOffStyle") private var shouldChangeIconsBasedOffStyle: Bool = false
 	
-	init(app: AppInfoPresentable, size: CGFloat = 87) {
+	init(app: AppInfoPresentable? = nil, size: CGFloat = 87) {
 		self.app = app
 		self.size = size
 	}
@@ -105,14 +105,22 @@ struct FRAppIconView: View {
 	}
 	
 	private func _load() {
-		guard let bundleURL = Storage.shared.getAppDirectory(for: app) else { return }
-		
+		let bundleURL: URL
+
+		if let app {
+			guard let url = Storage.shared.getAppDirectory(for: app) else { return }
+			bundleURL = url
+		} else {
+			bundleURL = Bundle.main.bundleURL
+		}
+
 		loader.load(
 			bundleURL: bundleURL,
 			appearance: appearance,
 			tint: selectedColorHex,
 			isTinted: shouldTintIcons,
-			dynamic: shouldChangeIconsBasedOffStyle,
+			dynamic: shouldChangeIconsBasedOffStyle
 		)
 	}
+
 }

@@ -36,8 +36,7 @@ struct AboutView: View {
 			if !isLoading {
 				Section {
 					VStack {
-						Image(uiImage: AppIconView.altImage(UIApplication.shared.alternateIconName))
-							.appIconStyle(size: 72)
+						FRAppIconView(size: 72)
 						
 						Text(Bundle.main.exec)
 							.font(.largeTitle)

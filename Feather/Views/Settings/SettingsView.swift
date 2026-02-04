@@ -110,8 +110,7 @@ extension SettingsView {
                 Label {
                     Text(verbatim: .localized("About %@", arguments: Bundle.main.name))
                 } icon: {
-                    Image(uiImage: AppIconView.altImage(_currentIcon))
-                        .appIconStyle(size: 23)
+					FRAppIconView(size: 23)
                 }
             }
             
