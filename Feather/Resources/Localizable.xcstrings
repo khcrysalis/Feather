@@ -755,6 +755,12 @@
             "state" : "translated",
             "value" : "Dodawaj i zarządzaj certyfikatami używanymi do podpisywania aplikacji."
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thêm và quản lý chứng chỉ được sử dụng để ký ứng dụng."
+          }
         }
       }
     },
@@ -948,6 +954,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zaawansowana metoda instalacji"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phương pháp cài đặt nâng cao"
           }
         }
       }
@@ -2144,6 +2156,12 @@
             "state" : "translated",
             "value" : "Certificates updated successfully."
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chứng chỉ được cập nhật thành công."
+          }
         }
       }
     },
@@ -2794,6 +2812,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Custom Theme Color"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Màu chủ đề tùy chỉnh"
           }
         }
       }
@@ -3804,6 +3828,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dynamic Icons"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biểu tượng động"
           }
         }
       }
@@ -6260,6 +6290,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ta metoda instalacji jest przeznaczona tylko dla zaawansowanych użytkowników!\n\nWymaga ona VPN i pliku parowania z komputera.\n\nZaleca się powrót do metody instalacji przez serwer."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phương pháp cài đặt này chỉ dành cho người dùng nâng cao!\n\nNó yêu cầu VPN và tệp ghép nối từ máy tính.\n\nChúng tôi khuyên bạn nên quay lại phương pháp cài đặt trên máy chủ."
           }
         }
       }
@@ -13512,6 +13548,12 @@
             "state" : "translated",
             "value" : "Wróć"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chuyển lại"
+          }
         }
       }
     },
@@ -14074,6 +14116,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tinted Icons"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biểu tượng màu"
           }
         }
       }
