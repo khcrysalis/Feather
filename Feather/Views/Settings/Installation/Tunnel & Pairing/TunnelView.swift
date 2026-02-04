@@ -52,7 +52,7 @@ struct TunnelView: View {
 			
 			NBSection(.localized("Help")) {
 				Button(.localized("Pairing File Guide"), systemImage: "questionmark.circle") {
-					UIApplication.open("https://github.com/StephenDev0/StikDebug-Guide/blob/main/pairing_file.md")
+					UIApplication.open("https://github.com/khcrysalis/Impactor#pairing-file")
 				}
 				
 				if isLocalDevVpnAvailable {
