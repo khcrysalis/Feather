@@ -46,7 +46,8 @@ struct SourcesAddView: View {
 		"https://pokemmo.com/altstore/",
 		"https://provenance-emu.com/apps.json",
 		"https://community-apps.sidestore.io/sidecommunity.json",
-		"https://alt.getutm.app"
+		"https://alt.getutm.app",
+		"https://raw.githubusercontent.com/paigely/Navic/refs/heads/master/app-repo.json"
 	].map { URL(string: $0)! }
 	
 	@State private var _isImporting = false
