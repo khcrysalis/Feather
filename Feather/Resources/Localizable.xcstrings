@@ -409,7 +409,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld gerekli sistem dylib kütüphanesi gösterilmiyor."
+            "value" : "%lld gerekli sistem dylib kütüphanesi gizlendi."
           }
         },
         "vi" : {
@@ -846,6 +846,12 @@
             "value" : "Dodawaj i zarządzaj certyfikatami używanymi do podpisywania aplikacji."
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uygulamaları imzalamak için kullanılan sertifikaları ekleyin ve yönetin."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1074,6 +1080,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zaawansowana metoda instalacji"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gelişmiş Kurulum Yöntemi"
           }
         },
         "vi" : {
@@ -1400,7 +1412,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Harika bir uygulama."
+            "value" : "Harika bir uygulama"
           }
         },
         "vi" : {
@@ -2415,6 +2427,12 @@
             "value" : "Certyfikaty zaktualizowano pomyślnie."
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sertifikalar başarıyla güncellendi."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2509,6 +2527,12 @@
             "value" : "Zmień nazwę"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Takma Adı Değiştir"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2553,7 +2577,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "İptal Kontrolü"
+            "value" : "Sertifika İptal Kontrolü"
           }
         },
         "vi" : {
@@ -2619,7 +2643,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dosyalar’dan Seç"
+            "value" : "Dosyalardan Seç"
           }
         },
         "vi" : {
@@ -2685,7 +2709,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fotoğraflar’dan Seç"
+            "value" : "Fotoğraflardan Seç"
           }
         },
         "vi" : {
@@ -3058,7 +3082,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "İndirme URL’sini Kopyala"
+            "value" : "İndirme URL’lerini Kopyala"
           }
         },
         "vi" : {
@@ -3177,6 +3201,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Niestandardowy Kolor Motywu"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Özel Tema Rengi"
           }
         },
         "vi" : {
@@ -3938,7 +3968,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Görünen Ad"
+            "value" : "Görünen Adlar"
           }
         },
         "vi" : {
@@ -4319,6 +4349,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dynamiczne Ikony"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dinamik Simgeler"
           }
         },
         "vi" : {
@@ -5283,7 +5319,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dışarı Aktar"
+            "value" : "Dışa Aktar"
           }
         },
         "vi" : {
@@ -5395,7 +5431,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "İndirme sırasında hata oluştu, internet bağlantınızı kontrol edip tekrar deneyin."
+            "value" : "İndirme başarısız oldu. İnternet bağlantınızı kontrol edip tekrar deneyin."
           }
         },
         "vi" : {
@@ -7024,6 +7060,12 @@
             "value" : "idevice"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "idevice"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7057,6 +7099,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ta metoda instalacji jest przeznaczona tylko dla zaawansowanych użytkowników!\n\nWymaga ona VPN i pliku parowania z komputera.\n\nZaleca się powrót do metody instalacji przez serwer."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu kurulum yöntemi yalnızca ileri düzey kullanıcılar içindir!\n\nBilgisayarınız üzerinden alınmış bir eşleştirme dosyası ve VPN gerektirir.\n\nSunucu kurulum yöntemine geri dönmeniz önerilir."
           }
         },
         "vi" : {
@@ -7729,6 +7777,12 @@
             "value" : "Załaduj do rozszerzeń"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uzantılara Dahil Et"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7779,7 +7833,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enjeksiyon Klasörü"
+            "value" : "Ekleme Konumu"
           }
         },
         "vi" : {
@@ -7838,7 +7892,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enjeksiyon Yolu"
+            "value" : "Ekleme Yolu"
           }
         },
         "vi" : {
@@ -7965,6 +8019,12 @@
             "value" : "Zainstaluj po podpisaniu"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İmzaladıktan Sonra Yükle"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8080,7 +8140,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Yükleme Türü"
+            "value" : "Kurulum Türü"
           }
         },
         "vi" : {
@@ -8314,6 +8374,12 @@
             "value" : "Dołącz do nas na Discordzie"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discord’da Bize Katılın"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8377,6 +8443,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "学习如何设置仓库"
+          }
+        }
+      }
+    },
+    "Less" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Less"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daha Az"
           }
         }
       }
@@ -9353,7 +9436,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hiçbir Dosya seçilmedi."
+            "value" : "Hiçbir dosya seçilmedi."
           }
         },
         "vi" : {
@@ -9524,7 +9607,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eşleştirme dosyası bulunamadı, lütfen içe aktarın."
+            "value" : "Eşleştirme dosyası bulunamadı. Lütfen içe aktarın."
           }
         },
         "vi" : {
@@ -9618,7 +9701,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Depor Yok"
+            "value" : "Depo Yok"
           }
         },
         "vi" : {
@@ -9654,6 +9737,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Brak źródeł do skopiowania"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopyalanacak kaynak yok"
           }
         },
         "vi" : {
@@ -11023,6 +11112,12 @@
           }
         },
         "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro Motion"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pro Motion"
@@ -12779,7 +12874,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Heartbeat’ı Sıfırla"
+            "value" : "Heartbeat’i Yeniden Başlat"
           }
         },
         "vi" : {
@@ -14523,6 +14618,12 @@
             "value" : "Źródła skopiowane do schowka"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaynaklar panoya kopyalandı"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15171,6 +15272,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wróć"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri Dön"
           }
         },
         "vi" : {
@@ -15826,6 +15933,12 @@
             "value" : "Barwione Ikony"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renklendirilmiş Simgeler"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16008,6 +16121,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tweaks"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yamalar"
           }
         },
         "vi" : {
@@ -16235,6 +16354,12 @@
           }
         },
         "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL"
@@ -16689,7 +16814,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Neler Yeni"
+            "value" : "Yenilikler"
           }
         },
         "vi" : {
@@ -16801,7 +16926,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eşleştirme dosyanız geçersiz ve cihazınızla uyumlu değil, lütfen geçerli bir eşleştirme dosyası içe aktarın."
+            "value" : "Eşleştirme dosyanız geçersiz ve cihazınızla uyumlu değil. Lütfen geçerli bir eşleştirme dosyası içe aktarın."
           }
         },
         "vi" : {
