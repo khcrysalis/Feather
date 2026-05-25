@@ -5,8 +5,7 @@
 //  Created by İsmail Carlık on 25.05.2026.
 //
 
-
-import SwiftUI
+import Foundation
 
 struct AppStoreHelper {
 
@@ -20,12 +19,25 @@ struct AppStoreHelper {
 
 	static func getURL(for bundleID: String) async -> URL? {
 
-		let urlString = "https://itunes.apple.com/lookup?bundleId=\(bundleID)"
+		var components = URLComponents(
+			string: "https://itunes.apple.com/lookup"
+		)
+		
+		components?.queryItems = [
+			URLQueryItem(name: "bundleId", value: bundleID)
+		]
 
-		guard let url = URL(string: urlString) else { return nil }
+		guard let url = components?.url else { return nil }
 
 		do {
-			let (data, _) = try await URLSession.shared.data(from: url)
+			let (data, response) = try await URLSession.shared.data(from: url)
+			
+			guard let httpResponse = response as? HTTPURLResponse,
+				  httpResponse.statusCode == 200 else {
+				print("AppStoreHelper Error: Invalid response")
+				return nil
+			}
+			
 			let decoded = try JSONDecoder().decode(
 				LookupResponse.self,
 				from: data
