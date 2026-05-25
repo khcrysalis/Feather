@@ -13851,6 +13851,17 @@
         }
       }
     },
+    "Show in App Store" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store’da Görüntüle"
+          }
+        }
+      }
+    },
     "Show Sheet when Exporting" : {
       "comment" : "Archiving opens share sheet",
       "extractionState" : "manual",

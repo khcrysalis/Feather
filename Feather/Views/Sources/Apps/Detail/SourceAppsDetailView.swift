@@ -18,6 +18,7 @@ struct SourceAppsDetailView: View {
 	@State var cancellable: AnyCancellable? // Combine
 	@State private var _isScreenshotPreviewPresented: Bool = false
 	@State private var _selectedScreenshotIndex: Int = 0
+	@State private var _appStoreURL: URL?
 	
 	var currentDownload: Download? {
 		downloadManager.getDownload(by: app.currentUniqueId)
@@ -139,6 +140,10 @@ struct SourceAppsDetailView: View {
 						if let bundleId = app.id {
 							_infoRow(title: .localized("Identifier"), value: bundleId)
 						}
+						
+						if let _appStoreURL {
+							Link("Show in App Store", destination: _appStoreURL)
+						}
 					}
 				}
 				
@@ -187,6 +192,11 @@ struct SourceAppsDetailView: View {
 		}
 		.flexibleHeaderScrollView()
 		.shouldSetInset()
+		.task {
+			if let bundleId = app.id {
+				_appStoreURL = await AppStoreHelper.getURL(for: bundleId)
+			}
+		}
 		.toolbar {
 			NBToolbarButton(
 				systemImage: "square.and.arrow.up",
