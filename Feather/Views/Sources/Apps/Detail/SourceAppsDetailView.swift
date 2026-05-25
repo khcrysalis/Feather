@@ -192,10 +192,14 @@ struct SourceAppsDetailView: View {
 		}
 		.flexibleHeaderScrollView()
 		.shouldSetInset()
-		.task {
-			if let bundleId = app.id {
-				_appStoreURL = await AppStoreHelper.getURL(for: bundleId)
+		.task(id: app.id) {
+			guard let bundleId = app.id else {
+				_appStoreURL = nil
+				return
 			}
+			
+			_appStoreURL = nil
+			_appStoreURL = await AppStoreHelper.getURL(for: bundleId)
 		}
 		.toolbar {
 			NBToolbarButton(
