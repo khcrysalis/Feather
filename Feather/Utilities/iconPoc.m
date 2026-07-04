@@ -253,36 +253,18 @@ UIImage* iconTest(NSURL *bundleURL) {
 }
 
 static CGColorRef FRCreateCGColorFromHex(void) {
-	NSString *hex =
-		[NSUserDefaults.standardUserDefaults
-			stringForKey:@"Feather.userTintColor"];
-
-	if (hex.length == 0) {
+	NSData *data = [NSUserDefaults.standardUserDefaults dataForKey:@"Feather.userTintColor"];
+	
+	if (data == nil) {
 		return UIColor.systemGreenColor.CGColor;
 	}
-
-	NSString *sanitized =
-		[[hex stringByTrimmingCharactersInSet:
-			NSCharacterSet.whitespaceAndNewlineCharacterSet]
-			stringByReplacingOccurrencesOfString:@"#" withString:@""];
-
-	unsigned long long rgb = 0;
-	[[NSScanner scannerWithString:sanitized] scanHexLongLong:&rgb];
-
-	CGFloat r = 0, g = 0, b = 0, a = 1;
-
-	if (sanitized.length == 6) {
-		r = ((rgb & 0xFF0000) >> 16) / 255.0;
-		g = ((rgb & 0x00FF00) >> 8)  / 255.0;
-		b = (rgb & 0x0000FF) / 255.0;
-	} else if (sanitized.length == 8) {
-		r = ((rgb & 0xFF000000) >> 24) / 255.0;
-		g = ((rgb & 0x00FF0000) >> 16) / 255.0;
-		b = ((rgb & 0x0000FF00) >> 8)  / 255.0;
-		a = (rgb & 0x000000FF) / 255.0;
-	} else {
+	
+	NSError *error = nil;
+	UIColor *color = [NSKeyedUnarchiver unarchivedObjectOfClass:UIColor.class fromData:data error:&error];
+	
+	if (error != nil || color == nil) {
 		return UIColor.systemGreenColor.CGColor;
 	}
-
-	return [UIColor colorWithRed:r green:g blue:b alpha:a].CGColor;
+	
+	return color.CGColor;
 }
