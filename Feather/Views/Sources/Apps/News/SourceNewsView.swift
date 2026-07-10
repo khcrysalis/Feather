@@ -20,16 +20,31 @@ struct SourceNewsView: View {
 	
 	var news: [ASRepository.News]?
 	
+	private var _sortedNews: [ASRepository.News] {
+		guard let news else { return [] }
+		return news.sorted {
+			switch ($0.date, $1.date) {
+			case let (lhs?, rhs?):
+				return lhs > rhs
+			case (.some, .none):
+				return true
+			case (.none, .some):
+				return false
+			case (.none, .none):
+				return false
+			}
+		}
+	}
+	
 	// MARK: Body
 	var body: some View {
 		VStack {
 			if
-				let news,
-				!news.isEmpty
+				!_sortedNews.isEmpty
 			{
 				ScrollView(.horizontal, showsIndicators: false) {
 					LazyHStack(spacing: 10) {
-						ForEach(news.reversed(), id: \.id) { new in
+						ForEach(_sortedNews, id: \.id) { new in
 							Button {
 								_selectedNewsPresenting = new
 							} label: {
