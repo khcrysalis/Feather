@@ -107,6 +107,8 @@ struct Options: Codable, Equatable {
 	
 	/// Modifies app to support liquid glass
 	var experiment_supportLiquidGlass: Bool
+	/// Modifies app to disable liquid glass
+	var experiment_disableLiquidGlass: Bool
 	/// Modifies application to use ElleKit instead of CydiaSubstrate
 	var experiment_replaceSubstrateWithEllekit: Bool
 	
@@ -150,6 +152,7 @@ struct Options: Codable, Equatable {
 		// MARK: Experiments
 		
 		experiment_supportLiquidGlass: false,
+		experiment_disableLiquidGlass: false,
 		experiment_replaceSubstrateWithEllekit: false,
 		
 		// MARK: Post Modifications

@@ -170,11 +170,18 @@ struct SigningOptionsView: View {
 			)
 			
 			_toggle(
+				.localized("Disable Liquid Glass"),
+				systemImage: "18.circle",
+				isOn: $options.experiment_disableLiquidGlass,
+				temporaryValue: temporaryOptions?.experiment_disableLiquidGlass
+			).disabled(options.experiment_supportLiquidGlass)
+			
+			_toggle(
 				.localized("Enable Liquid Glass"),
 				systemImage: "26.circle",
 				isOn: $options.experiment_supportLiquidGlass,
 				temporaryValue: temporaryOptions?.experiment_supportLiquidGlass
-			)
+			).disabled(options.experiment_disableLiquidGlass)
 		} footer: {
 			Text(.localized("This option force converts apps to try to use the new liquid glass redesign iOS 26 introduced, this may not work for all applications due to differing frameworks."))
 		}
