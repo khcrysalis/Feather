@@ -4196,6 +4196,17 @@
         }
       }
     },
+    "Disable Liquid Glass" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disable Liquid Glass"
+          }
+        }
+      }
+    },
     "Dismiss" : {
       "extractionState" : "manual",
       "localizations" : {
