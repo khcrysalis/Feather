@@ -2769,6 +2769,17 @@
         }
       }
     },
+    "Check for Updates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check for Updates"
+          }
+        }
+      }
+    },
     "Check Revokage" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4645,6 +4656,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "下载StosVPN"
+          }
+        }
+      }
+    },
+    "Download Update" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download Update"
           }
         }
       }
@@ -8791,6 +8813,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "签名后安装"
+          }
+        }
+      }
+    },
+    "Install Current Version" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install Current Version"
           }
         }
       }
@@ -17794,6 +17827,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "未知"
+          }
+        }
+      }
+    },
+    "Update" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update"
+          }
+        }
+      }
+    },
+    "Update Available" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update Available"
           }
         }
       }
