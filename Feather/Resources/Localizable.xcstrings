@@ -4049,6 +4049,17 @@
         }
       }
     },
+    "Delete After Installing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete After Installing"
+          }
+        }
+      }
+    },
     "Delete After Signing" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4104,6 +4115,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "签名后删除"
+          }
+        }
+      }
+    },
+    "Delete After Signing removes the imported application once it's signed. Delete After Installing removes the signed application once it's installed. Both help free up unused storage space." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete After Signing removes the imported application once it's signed. Delete After Installing removes the signed application once it's installed. Both help free up unused storage space."
           }
         }
       }
@@ -17465,65 +17487,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "此选项强制为应用启用iOS 26的Liquid Glass。由于使用的框架不同，此选项不一定有效果。"
-          }
-        }
-      }
-    },
-    "This will delete your imported application after signing, to save on using unneeded space." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "سيؤدي هذا إلى حذف التطبيق المستورد بعد التوقيع لتوفير المساحة غير الضرورية."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dies wird deine importierte Datei nach der Signierung löschen, um Speicherplatz zu sparen."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This will delete your imported application after signing, to save on using unneeded space."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Questo elimina l'applicazione importata dopo la firma, per salvare spazio usato inutilmente."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "서명 절차가 완료되면 불필요한 저장 공간을 절약하기 위해 가져온 애플리케이션을 삭제합니다."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Spowoduje to usunięcie zaimportowanej aplikacji po jej podpisaniu, co pozwoli zwolnić miejsce."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu, imzaladıktan sonra içe aktarılan uygulamayı silerek gereksiz alanı geri kazanmanıza yardımcı olur."
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Thao tác này sẽ xóa ứng dụng đã nhập của bạn sau khi ký, để tiết kiệm dung lượng không cần thiết."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在签名后删除导入的应用来节省空间。"
           }
         }
       }

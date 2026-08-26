@@ -157,8 +157,14 @@ struct SigningOptionsView: View {
 				isOn: $options.post_deleteAppAfterSigned,
 				temporaryValue: temporaryOptions?.post_deleteAppAfterSigned
 			)
+			_toggle(
+				.localized("Delete After Installing"),
+				systemImage: "trash.fill",
+				isOn: $options.post_deleteAppAfterInstalled,
+				temporaryValue: temporaryOptions?.post_deleteAppAfterInstalled
+			)
 		} footer: {
-			Text(.localized("This will delete your imported application after signing, to save on using unneeded space."))
+			Text(.localized("Delete After Signing removes the imported application once it's signed. Delete After Installing removes the signed application once it's installed. Both help free up unused storage space."))
 		}
 		
 		NBSection(.localized("Experiments")) {

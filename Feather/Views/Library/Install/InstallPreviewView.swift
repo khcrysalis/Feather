@@ -26,9 +26,12 @@ struct InstallPreviewView: View {
 	
 	@State var isSharing: Bool
 	
+	private let _installingBundleIdentifier: String?
+
 	init(app: AppInfoPresentable, isSharing: Bool = false) {
 		self.app = app
 		self.isSharing = isSharing
+		self._installingBundleIdentifier = app.identifier
 		let viewModel = InstallerStatusViewModel(isIdevice: UserDefaults.standard.integer(forKey: "Feather.installationMethod") == 1)
 		self._viewModel = StateObject(wrappedValue: viewModel)
 		self._installer = StateObject(wrappedValue: try! ServerInstaller(app: app, viewModel: viewModel))
@@ -57,6 +60,10 @@ struct InstallPreviewView: View {
 			SafariRepresentableView(url: installer.pageEndpoint).ignoresSafeArea()
 		}
 		.onReceive(viewModel.$status) { newStatus in
+			if case .completed(.success()) = newStatus, _shouldDeleteSignedAppAfterInstall {
+				Storage.shared.deleteApp(for: app)
+			}
+
 			if _installationMethod == 0 {
 				if case .ready = newStatus {
 					if _serverMethod == 0 {
@@ -123,7 +130,7 @@ struct InstallPreviewView: View {
 		ZStack {
 			if viewModel.isCompleted {
 				Button {
-					UIApplication.openApp(with: app.identifier ?? "")
+					UIApplication.openApp(with: _installingBundleIdentifier ?? "")
 				} label: {
 					NBButton("Open", systemImage: "", style: .text)
 				}
@@ -245,5 +252,9 @@ struct InstallPreviewView: View {
 
 	private func _normalizeInstallProgress(_ rawProgress: Double) -> Double {
 		min(1.0, max(0.0, (rawProgress - 0.6) / 0.3))
+	}
+
+	private var _shouldDeleteSignedAppAfterInstall: Bool {
+		!isSharing && app.isSigned && OptionsManager.shared.options.post_deleteAppAfterInstalled
 	}
 }
