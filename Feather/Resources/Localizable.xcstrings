@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    " • " : {
+
+    },
     "%lld Apps" : {
       "comment" : "Repository app count",
       "extractionState" : "manual",
@@ -3808,6 +3811,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "添加日期"
+          }
+        }
+      }
+    },
+    "Date Installed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date Installed"
           }
         }
       }
@@ -8989,6 +9003,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "安装类型"
+          }
+        }
+      }
+    },
+    "Installed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installed"
           }
         }
       }

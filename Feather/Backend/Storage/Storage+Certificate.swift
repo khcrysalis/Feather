@@ -32,6 +32,7 @@ extension Storage {
 		new.isDefault = isDefault
 		Storage.shared.revokagedCertificate(for: new)
 		saveContext()
+		relinkInstalledApps(toNewlyAddedCertificate: new)
 		generator.impactOccurred()
 		completion(nil)
 	}

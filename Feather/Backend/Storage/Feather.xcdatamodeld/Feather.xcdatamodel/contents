@@ -31,6 +31,7 @@
         <attribute name="ppQCheck" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="revoked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="uuid" attributeType="String"/>
+        <relationship name="installedApps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="InstalledApp" inverseName="certificate" inverseEntity="InstalledApp"/>
         <relationship name="signedApps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Signed" inverseName="certificate" inverseEntity="Signed"/>
     </entity>
     <entity name="Imported" representedClassName="Imported" syncable="YES" codeGenerationType="class">
@@ -41,6 +42,23 @@
         <attribute name="source" optional="YES" attributeType="URI"/>
         <attribute name="uuid" attributeType="String"/>
         <attribute name="version" attributeType="String"/>
+    </entity>
+    <entity name="InstalledApp" representedClassName="InstalledApp" syncable="YES" codeGenerationType="class">
+        <attribute name="certificateAppIDName" optional="YES" attributeType="String"/>
+        <attribute name="certificateExpiration" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="certificateName" optional="YES" attributeType="String"/>
+        <attribute name="certificateNickname" optional="YES" attributeType="String"/>
+        <attribute name="certificateRevoked" attributeType="Boolean" usesScalarValueType="YES" defaultValueString="NO"/>
+        <attribute name="certificateTeamIdentifier" optional="YES" attributeType="String"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="iconData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="identifier" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="sourceRepositoryName" optional="YES" attributeType="String"/>
+        <attribute name="uuid" attributeType="String"/>
+        <attribute name="version" attributeType="String"/>
+        <attribute name="wasSigned" attributeType="Boolean" usesScalarValueType="YES" defaultValueString="NO"/>
+        <relationship name="certificate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CertificatePair" inverseName="installedApps" inverseEntity="CertificatePair"/>
     </entity>
     <entity name="Signed" representedClassName="Signed" syncable="YES" codeGenerationType="class">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>

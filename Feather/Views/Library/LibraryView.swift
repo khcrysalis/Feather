@@ -48,19 +48,29 @@ struct LibraryView: View {
 	private var _filteredImportedApps: [Imported] {
 		filteredAndSortedApps(from: _importedApps)
 	}
-	
+
+	private var _filteredInstalledApps: [InstalledApp] {
+		filteredAndSortedApps(from: _installedApps)
+	}
+
 	// MARK: Fetch
 	@FetchRequest(
 		entity: Signed.entity(),
 		sortDescriptors: [NSSortDescriptor(keyPath: \Signed.date, ascending: false)],
 		animation: .snappy
 	) private var _signedApps: FetchedResults<Signed>
-	
+
 	@FetchRequest(
 		entity: Imported.entity(),
 		sortDescriptors: [NSSortDescriptor(keyPath: \Imported.date, ascending: false)],
 		animation: .snappy
 	) private var _importedApps: FetchedResults<Imported>
+
+	@FetchRequest(
+		entity: InstalledApp.entity(),
+		sortDescriptors: [NSSortDescriptor(keyPath: \InstalledApp.date, ascending: false)],
+		animation: .snappy
+	) private var _installedApps: FetchedResults<InstalledApp>
 	
 	@FetchRequest(
 		entity: AltSource.entity(),
@@ -72,6 +82,20 @@ struct LibraryView: View {
 	var body: some View {
 		NBNavigationView(.localized("Library")) {
 			NBListAdaptable {
+				if
+					!_filteredInstalledApps.isEmpty,
+					_selectedScope == .all
+				{
+					NBSection(
+						.localized("Installed"),
+						secondary: _filteredInstalledApps.count.description
+					) {
+						ForEach(_filteredInstalledApps, id: \.uuid) { app in
+							InstalledAppCellView(app: app)
+						}
+					}
+				}
+
 				if
 					!_filteredSignedApps.isEmpty,
 					_selectedScope == .all || _selectedScope == .signed
