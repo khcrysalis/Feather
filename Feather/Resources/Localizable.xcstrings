@@ -6003,6 +6003,26 @@
         }
       }
     },
+    "Feather app was signed using this certificate." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feather app was signed using this certificate."
+          }
+        }
+      }
+    },
+    "Feather must be updated with a new certificate once this one expires." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feather must be updated with a new certificate once this one expires."
+          }
+        }
+      }
+    },
     "Featured" : {
       "extractionState" : "manual",
       "localizations" : {

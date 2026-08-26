@@ -27,7 +27,19 @@ struct CertificatesInfoView: View {
 						.frame(width: 107, height: 107)
 						.frame(maxWidth: .infinity, alignment: .center)
 				}
-				
+
+				if data?.signedFeather == true {
+					Section {
+						Label {
+							Text(.localized("Feather app was signed using this certificate."))
+						} icon: {
+							FRAppIconView(size: 24)
+						}
+					} footer: {
+						Text(.localized("Feather must be updated with a new certificate once this one expires."))
+					}
+				}
+
 				if let data {
 					_infoSection(data: data)
 					_entitlementsSection(data: data)

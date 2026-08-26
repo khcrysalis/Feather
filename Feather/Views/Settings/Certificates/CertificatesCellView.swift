@@ -37,6 +37,11 @@ struct CertificatesCellView: View {
 		.frame(height: 80)
 		.contentTransition(.opacity)
 		.frame(maxWidth: .infinity, alignment: .leading)
+		.overlay(alignment: .topTrailing) {
+			if data?.signedFeather == true {
+				FRAppIconView(size: 20)
+			}
+		}
 		.onAppear {
 			withAnimation {
 				data = Storage.shared.getProvisionFileDecoded(for: cert)
