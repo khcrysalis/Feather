@@ -16,6 +16,16 @@ extension AboutView {
 		let desc: String?
 		let github: String
 	}
+
+	struct GithubRelease: Decodable {
+		let tagName: String
+		let htmlUrl: URL
+
+		private enum CodingKeys: String, CodingKey {
+			case tagName = "tag_name"
+			case htmlUrl = "html_url"
+		}
+	}
 }
 
 // MARK: - View
@@ -28,6 +38,11 @@ struct AboutView: View {
 	
 	let pngURL = URL(string: "https://sponsors.claration.dev/sponsors.png")!
 	
+	private let _dataService = NBFetchService()
+	private let _releasesApiUrl = "https://api.github.com/repos/claration/Feather/releases/latest"
+
+	@State private var _latestFeatherRelease: GithubRelease?
+
 	// MARK: Body
 	var body: some View {
 		NBList(.localized("About")) {
@@ -46,6 +61,19 @@ struct AboutView: View {
 					}
 					.font(.footnote)
 					.foregroundStyle(.secondary)
+
+					if let release = _latestFeatherRelease {
+						Button {
+							UIApplication.open(release.htmlUrl)
+						} label: {
+							HStack(spacing: 4) {
+								Image(systemName: "arrow.down.circle.fill")
+								Text(verbatim: .localized("Update Available: %@", arguments: release.tagName))
+							}
+							.font(.footnote)
+						}
+						.padding(.top, 2)
+					}
 				}
 			}
 			.frame(maxWidth: .infinity)
@@ -88,6 +116,7 @@ struct AboutView: View {
 				}
 			}
 		}
+		.onAppear(perform: _checkForUpdates)
 	}
 }
 
@@ -115,5 +144,28 @@ extension AboutView {
 					.foregroundColor(.secondary.opacity(0.65))
 			}
 		}
+	}
+}
+
+// MARK: - Extension: update check
+extension AboutView {
+	private func _checkForUpdates() {
+		_dataService.fetch(from: _releasesApiUrl) { (result: Result<GithubRelease, Error>) in
+			guard
+				case .success(let release) = result,
+				_isVersion(release.tagName, newerThan: Bundle.main.version)
+			else {
+				return
+			}
+
+			DispatchQueue.main.async {
+				_latestFeatherRelease = release
+			}
+		}
+	}
+
+	private func _isVersion(_ remote: String, newerThan local: String) -> Bool {
+		let remoteVersion = remote.hasPrefix("v") ? String(remote.dropFirst()) : remote
+		return remoteVersion.compare(local, options: .numeric) == .orderedDescending
 	}
 }
