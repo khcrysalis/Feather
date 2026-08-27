@@ -77,7 +77,9 @@ extension AppIconView {
 	) -> some View {
 		Button {
 			UIApplication.shared.setAlternateIconName(icon.key) { _ in
-				currentIcon = UIApplication.shared.alternateIconName
+				DispatchQueue.main.async {
+					currentIcon = UIApplication.shared.alternateIconName
+				}
 			}
 		} label: {
 			HStack(spacing: 18) {
