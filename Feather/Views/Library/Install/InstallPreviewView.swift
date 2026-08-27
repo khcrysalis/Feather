@@ -139,11 +139,23 @@ struct InstallPreviewView: View {
 		guard isSharing || app.identifier != Bundle.main.bundleIdentifier! || _installationMethod == 1 else {
 			UIAlertController.showAlertWithOk(
 				title: .localized("Install"),
-				message: .localized("You cannot update ‘%@‘ with itself, please use an alternative tool to update it.", arguments: Bundle.main.name)
+				message: .localized("You cannot update ‘%@‘ with itself, please use an alternative tool to update it.", arguments: Bundle.main.name),
+				action: { dismiss() }
 			)
 			return
 		}
-				
+
+		let isSelfInstall = !isSharing && app.identifier == Bundle.main.bundleIdentifier!
+
+		guard !isSelfInstall || _installationMethod != 1 || _hasMatchingApplicationIdentifier() else {
+			UIAlertController.showAlertWithOk(
+				title: .localized("Install"),
+				message: .localized("You cannot update ‘%@‘ with a different certificate from the one that was originally installed with.", arguments: Bundle.main.name),
+				action: { dismiss() }
+			)
+			return
+		}
+
 		Task.detached {
 			do {
 				let handler = await ArchiveHandler(app: app, viewModel: viewModel)
@@ -205,6 +217,20 @@ struct InstallPreviewView: View {
 		}
 	}
 	
+	private func _hasMatchingApplicationIdentifier() -> Bool {
+		// Compare application-identifier as the updates are allowed if they match.
+		// `application-identifier` compares as "TeamID.BundleID"
+		guard
+			let signed = app as? Signed,
+			let pair = signed.certificate,
+			let decoded = Storage.shared.getProvisionFileDecoded(for: pair),
+			let newIdentifier = decoded.Entitlements?["application-identifier"]?.value as? String,
+			let embeddedIdentifier = Certificate.feather?.Entitlements?["application-identifier"]?.value as? String
+		else { return false }
+
+		return newIdentifier == embeddedIdentifier
+	}
+
 	private func startInstallProgressPolling(
 		bundleID: String,
 		viewModel: InstallerStatusViewModel

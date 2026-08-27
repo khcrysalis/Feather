@@ -18577,6 +18577,17 @@
         }
       }
     },
+    "You cannot update ‘%@‘ with a different certificate from the one that was originally installed with." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You cannot update ‘%@‘ with a different certificate from the one that was originally installed with."
+          }
+        }
+      }
+    },
     "You cannot update ‘%@‘ with itself, please use an alternative tool to update it." : {
       "extractionState" : "manual",
       "localizations" : {

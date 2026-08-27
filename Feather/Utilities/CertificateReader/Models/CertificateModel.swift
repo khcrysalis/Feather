@@ -48,3 +48,12 @@ struct Certificate: Codable {
 		case derEncodedProfile = "DER-Encoded-Profile"
 	}
 }
+
+// MARK: - Extension: Feather signing certificate
+extension Certificate {
+	/// Feather's own embedded provisioning profile decoded once and cached for the app's lifetime.
+	static let feather: Certificate? = {
+		let url = Bundle.main.url(forResource: "embedded", withExtension: "mobileprovision")
+		return CertificateReader(url).decoded
+	}()
+}
