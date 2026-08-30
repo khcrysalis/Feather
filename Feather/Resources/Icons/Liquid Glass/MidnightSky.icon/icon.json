@@ -1,0 +1,147 @@
+{
+  "fill" : {
+    "linear-gradient" : [
+      "display-p3:0.04323,0.06761,0.15260,1.00000",
+      "display-p3:0.07743,0.12218,0.27662,1.00000"
+    ]
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "fill-specializations" : [
+            {
+              "value" : {
+                "linear-gradient" : [
+                  "display-p3:0.54802,0.57977,0.95219,1.00000",
+                  "extended-gray:1.00000,1.00000"
+                ]
+              }
+            },
+            {
+              "appearance" : "dark",
+              "value" : {
+                "linear-gradient" : [
+                  "extended-gray:0.75000,1.00000",
+                  "extended-gray:1.00000,1.00000"
+                ],
+                "orientation" : {
+                  "start" : {
+                    "x" : 0.5,
+                    "y" : 1
+                  },
+                  "stop" : {
+                    "x" : 0.5,
+                    "y" : 0
+                  }
+                }
+              }
+            }
+          ],
+          "image-name" : "feather.svg",
+          "name" : "feather",
+          "opacity-specializations" : [
+            {
+              "appearance" : "tinted",
+              "value" : 1
+            }
+          ],
+          "position" : {
+            "scale" : 0.97,
+            "translation-in-points" : [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "fill-specializations" : [
+            {
+              "value" : {
+                "linear-gradient" : [
+                  "extended-srgb:0.79608,0.18824,0.87843,1.00000",
+                  "display-p3:0.20145,0.18020,0.50823,1.00000"
+                ],
+                "orientation" : {
+                  "start" : {
+                    "x" : 0.5535327194588832,
+                    "y" : -1.8302539537712845
+                  },
+                  "stop" : {
+                    "x" : 0.5490922055184739,
+                    "y" : 1
+                  }
+                }
+              }
+            },
+            {
+              "appearance" : "dark",
+              "value" : {
+                "solid" : "display-p3:0.28596,0.28596,0.28596,1.00000"
+              }
+            }
+          ],
+          "glass" : false,
+          "image-name" : "swoosh.svg",
+          "name" : "swoosh",
+          "opacity-specializations" : [
+            {
+              "appearance" : "tinted",
+              "value" : 1
+            }
+          ],
+          "position" : {
+            "scale" : 4.11,
+            "translation-in-points" : [
+              3,
+              318
+            ]
+          }
+        }
+      ],
+      "refractivity" : {
+        "depth" : 0,
+        "enabled" : false,
+        "strength" : -0.959140625
+      },
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.1
+      }
+    },
+    {
+      "layers" : [
+        {
+          "glass" : false,
+          "image-name" : "stars.svg",
+          "name" : "stars",
+          "position" : {
+            "scale" : 4.29,
+            "translation-in-points" : [
+              33.01212499999997,
+              44.83050000000003
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.6
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.2
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}

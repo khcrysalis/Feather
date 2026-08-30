@@ -4,8 +4,9 @@ PLATFORMS := iphoneos maccatalyst
 
 TMP := $(TMPDIR)/$(NAME)
 CERT_JSON_URL := https://backloop.dev/pack.json
+LIQUID_GLASS_ASSETS ?= liquid-glass/prebuilt/Assets.car
 
-.PHONY: all clean deps $(PLATFORMS)
+.PHONY: all clean deps liquid-glass-assets $(PLATFORMS)
 
 all: $(PLATFORMS)
 
@@ -22,6 +23,9 @@ deps:
 	jq -r '.cert' cert.json > deps/server.crt
 	jq -r '.key1, .key2' cert.json > deps/server.pem
 	jq -r '.info.domains.commonName' cert.json > deps/commonName.txt
+
+liquid-glass-assets:
+	python3 liquid-glass/scripts/rebuild_assets.py
 
 
 $(PLATFORMS): deps
@@ -45,8 +49,13 @@ $(PLATFORMS): deps
 	mkdir -p _build/Payload
 	cp -R _build/Applications/*.app _build/Payload/Feather.app
 	chmod -R 0755 _build/Payload/Feather.app
-	codesign --force --sign - --timestamp=none _build/Payload/Feather.app
 	cp deps/* _build/Payload/Feather.app/ || true
+	@if [ "$@" = "iphoneos" ]; then \
+		python3 liquid-glass/scripts/rebuild_assets.py --verify --catalog "$(LIQUID_GLASS_ASSETS)"; \
+		test -r "$(LIQUID_GLASS_ASSETS)" || { echo "Missing optimized asset catalog: $(LIQUID_GLASS_ASSETS)" >&2; exit 1; }; \
+		cp "$(LIQUID_GLASS_ASSETS)" _build/Payload/Feather.app/Assets.car; \
+	fi
+	codesign --force --sign - --timestamp=none _build/Payload/Feather.app
 
 	mkdir -p packages
 

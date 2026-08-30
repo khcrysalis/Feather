@@ -47,13 +47,26 @@ struct AppIconView: View {
 		],
 		"Wingio": [
 			AltIcon(displayName: "Feather", author: "Wingio", key: "Wing"),
+		],
+		"Liquid Glass": [
+			AltIcon(displayName: "Glass Feather v1", author: "CSantos", key: "GlassFeatherV1"),
+			AltIcon(displayName: "Glass Feather v2", author: "CSantos", key: "GlassFeatherV2"),
+			AltIcon(displayName: "Glass Feather v3", author: "CSantos", key: "GlassFeatherV3"),
+			AltIcon(displayName: "Midnight Sky", author: "CSantos", key: "MidnightSky")
 		]
 	]
+	var sectionOrder: [String] {
+		var order = ["Main", "Wingio"]
+		if #available(iOS 26.0, *) {
+			order.append("Liquid Glass")
+		}
+		return order
+	}
 	
 	// MARK: Body
 	var body: some View {
 		NBList(.localized("App Icon")) {
-			ForEach(sections.keys.sorted(), id: \.self) { section in
+			ForEach(sectionOrder, id: \.self) { section in
 				if let icons = sections[section] {
 					NBSection(section) {
 						ForEach(icons) { icon in

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280">
+  <g fill="#FFFFFF">
+    <!-- larger stars -->
+    <circle cx="24" cy="24" r="1.7"/>
+    <circle cx="57" cy="40" r="1.2"/>
+    <circle cx="68" cy="47" r="1.6"/>
+    <circle cx="99" cy="30" r="0.9"/>
+    <circle cx="125" cy="47" r="0.8"/>
+    <circle cx="149" cy="29" r="0.8"/>
+    <circle cx="166" cy="45" r="1.1"/>
+    <circle cx="208" cy="43" r="0.9"/>
+    <circle cx="239" cy="67" r="0.8"/>
+    <circle cx="250" cy="108" r="0.9"/>
+    <circle cx="243" cy="149" r="0.8"/>
+    <circle cx="246" cy="203" r="1.5"/>
+    <circle cx="216" cy="182" r="0.9"/>
+    <circle cx="202" cy="155" r="0.7"/>
+    <circle cx="221" cy="124" r="0.6"/>
+    <circle cx="189" cy="95" r="0.7"/>
+    <circle cx="179" cy="73" r="0.8"/>
+    <circle cx="154" cy="69" r="0.7"/>
+    <circle cx="133" cy="91" r="0.8"/>
+    <circle cx="116" cy="66" r="0.6"/>
+    <circle cx="90" cy="77" r="0.7"/>
+    <circle cx="77" cy="61" r="0.6"/>
+    <circle cx="51" cy="82" r="0.7"/>
+    <circle cx="24" cy="107" r="1.0"/>
+    <circle cx="35" cy="145" r="0.7"/>
+    <circle cx="19" cy="165" r="0.9"/>
+    <circle cx="44" cy="197" r="0.6"/>
+    <circle cx="61" cy="215" r="0.8"/>
+    <circle cx="86" cy="204" r="0.7"/>
+    <circle cx="112" cy="193" r="0.7"/>
+    <circle cx="149" cy="183" r="0.7"/>
+    <circle cx="174" cy="196" r="0.8"/>
+    <circle cx="194" cy="215" r="0.7"/>
+    <circle cx="228" cy="223" r="0.7"/>
+    <circle cx="251" cy="236" r="0.8"/>
+
+    <!-- tiny scattered points -->
+    <circle cx="39" cy="50" r="0.45"/>
+    <circle cx="48" cy="35" r="0.45"/>
+    <circle cx="82" cy="27" r="0.4"/>
+    <circle cx="107" cy="41" r="0.4"/>
+    <circle cx="136" cy="37" r="0.45"/>
+    <circle cx="172" cy="31" r="0.45"/>
+    <circle cx="194" cy="55" r="0.45"/>
+    <circle cx="229" cy="42" r="0.4"/>
+    <circle cx="238" cy="88" r="0.45"/>
+    <circle cx="229" cy="104" r="0.4"/>
+    <circle cx="255" cy="126" r="0.4"/>
+    <circle cx="234" cy="166" r="0.45"/>
+    <circle cx="251" cy="180" r="0.4"/>
+    <circle cx="207" cy="203" r="0.45"/>
+    <circle cx="185" cy="224" r="0.4"/>
+    <circle cx="151" cy="214" r="0.45"/>
+    <circle cx="127" cy="219" r="0.4"/>
+    <circle cx="100" cy="225" r="0.45"/>
+    <circle cx="72" cy="231" r="0.4"/>
+    <circle cx="49" cy="223" r="0.45"/>
+    <circle cx="32" cy="211" r="0.4"/>
+    <circle cx="24" cy="185" r="0.45"/>
+    <circle cx="31" cy="127" r="0.4"/>
+    <circle cx="44" cy="101" r="0.45"/>
+    <circle cx="61" cy="95" r="0.4"/>
+    <circle cx="72" cy="112" r="0.45"/>
+    <circle cx="93" cy="105" r="0.4"/>
+    <circle cx="111" cy="118" r="0.45"/>
+    <circle cx="139" cy="111" r="0.4"/>
+    <circle cx="159" cy="122" r="0.45"/>
+    <circle cx="183" cy="117" r="0.4"/>
+    <circle cx="204" cy="132" r="0.45"/>
+  </g>
+</svg>

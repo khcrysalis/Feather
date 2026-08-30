@@ -1,0 +1,30 @@
+{
+  "catalog": {
+    "idioms": [
+      "pad",
+      "phone",
+      "universal"
+    ],
+    "sha256": "04de12125cee5e694a13ce0859573d131c1a8e9954c4cd686108cb4911980636",
+    "size": 1679448
+  },
+  "legacy_icon_fallbacks": false,
+  "profile": "iphone-and-ipad-native-icon-stacks",
+  "sources": {
+    "Feather/Resources/Assets.xcassets": "c1e4c0d2f243bbf4da08a1fa6b538021ed63e3929100a89920a90f32a80336db",
+    "Feather/Resources/Icons/Liquid Glass/GlassFeatherV1.icon": "a84583c782c448b067b78b77a02951044b5a88bbbd1d17f6dc34160f6119b80c",
+    "Feather/Resources/Icons/Liquid Glass/GlassFeatherV1@2x.png": "9b3feaf9a74bf73b3c650b7c55d7899faef6cc1921587446a78b8b22e1906d3a",
+    "Feather/Resources/Icons/Liquid Glass/GlassFeatherV1@3x.png": "d355b9ca43d890c850bf005f1702fbfd99afe4f8be112c0c063c0dd98f9186f6",
+    "Feather/Resources/Icons/Liquid Glass/GlassFeatherV2.icon": "5ede0e1370b6e57a13c822bf68daaafdeb6aa9d4ea02bf8536bc52e86827daf5",
+    "Feather/Resources/Icons/Liquid Glass/GlassFeatherV2@2x.png": "75203efafb7ecc662d10c73fc436e16a3d7bb1bddc6b118743f570bcc413b295",
+    "Feather/Resources/Icons/Liquid Glass/GlassFeatherV2@3x.png": "74732081ba7a7816c975575535b505ea4dea1427616a6eec881c80c024b69b11",
+    "Feather/Resources/Icons/Liquid Glass/GlassFeatherV3.icon": "d092f0b79de5c068d6bba5b876a14b2fef1f88b56956ac50523a4de49f3225d7",
+    "Feather/Resources/Icons/Liquid Glass/GlassFeatherV3@2x.png": "5a3b74501a5b3108ed34acbf3da62b2f64bfb6d1e5c47265ba7bddaceb4db1e6",
+    "Feather/Resources/Icons/Liquid Glass/GlassFeatherV3@3x.png": "2d05a54c6818293c7e3196c240077721e95f76ad6401b0e0e15dca177b4ba9bf",
+    "Feather/Resources/Icons/Liquid Glass/MidnightSky.icon": "b8e6723eb19b122a1ec1e6d4ea7b5897f0fdb69c9dd5f8d78238e5c6c6c24d3d",
+    "Feather/Resources/Icons/Liquid Glass/MidnightSky@2x.png": "70fc4f3408bc65a9701ac9122e27832d1842edb91277aad22eefd1b3774ae6f1",
+    "Feather/Resources/Icons/Liquid Glass/MidnightSky@3x.png": "4cb11230638e92274a4b485e6e67209a9f96414f173ebbd932e290b0f0857a2b"
+  },
+  "version": 1,
+  "xcode": "26.0.1"
+}
