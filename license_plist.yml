@@ -17,9 +17,6 @@ manual:
       MIT
   - name: "Zsign"
     file: "Zsign/LICENSE"
-    
-  - name: "ElleKit"
-    file: "LICENSE_EllEKIT"
 
   - name: "LiveContainer"
     file: "Zsign/LICENSE_LC"
