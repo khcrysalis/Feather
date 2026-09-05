@@ -102,6 +102,8 @@ struct Options: Codable, Equatable {
 	var changeLanguageFilesForCustomDisplayName: Bool
 	/// If tweaks should be injected into all app extensions (PlugIns and Extensions)
 	var injectIntoExtensions: Bool
+	/// If app should use unique keychain groups derived from its bundle identifier
+	var keychainIsolation: Bool
 
 	// MARK: Experiments
 	
@@ -148,6 +150,7 @@ struct Options: Codable, Equatable {
 		removeProvisioning: false,
 		changeLanguageFilesForCustomDisplayName: false,
 		injectIntoExtensions: false,
+		keychainIsolation: false,
 		
 		// MARK: Experiments
 		

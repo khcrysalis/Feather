@@ -102,7 +102,9 @@ final class SigningHandler: NSObject {
 		
 		// iOS "26" (19) needs special treatment
 		try await _locateMachosAndFixupArm64eSlice(for: movedAppPath)
-		
+
+		try await _modifyEntitlementsForKeychainIsolation(for: movedAppPath)
+
 		let handler = ZsignHandler(appUrl: movedAppPath, options: _options, cert: appCertificate)
 		try await handler.disinject()
 		
@@ -186,6 +188,71 @@ final class SigningHandler: NSObject {
 }
 
 extension SigningHandler {
+	/// Replaces wildcard keychain-access-groups in entitlements with the app's
+	/// bundle identifier so each signed app gets its own keychain namespace.
+	private func _modifyEntitlementsForKeychainIsolation(for app: URL) async throws {
+		guard _options.keychainIsolation, let cert = appCertificate else {
+			return
+		}
+
+		// Determine the bundle identifier the signed app will use
+		let bundleId: String
+		if let customId = _options.appIdentifier {
+			bundleId = customId
+		} else {
+			guard
+				let infoPlist = NSDictionary(contentsOf: app.appendingPathComponent("Info.plist")),
+				let id = infoPlist["CFBundleIdentifier"] as? String
+			else {
+				return
+			}
+			bundleId = id
+		}
+
+		guard !bundleId.isEmpty else { return }
+
+		// Read entitlements: prefer user-supplied file, fall back to provisioning profile
+		let entitlementsDict: NSMutableDictionary
+
+		if let customFile = _options.appEntitlementsFile {
+			guard let dict = NSMutableDictionary(contentsOf: customFile) else { return }
+			entitlementsDict = dict
+		} else {
+			guard
+				let decoded = Storage.shared.getProvisionFileDecoded(for: cert),
+				let entitlements = decoded.Entitlements
+			else {
+				return
+			}
+			entitlementsDict = NSMutableDictionary(dictionary: entitlements.mapValues { $0.value })
+		}
+
+		// Replace wildcards in keychain-access-groups (e.g. "TEAMID.*" → "TEAMID.com.example.app")
+		// and filter out entries without a valid team ID prefix (e.g. com.apple.token)
+		guard var groups = entitlementsDict["keychain-access-groups"] as? [String] else { return }
+
+		let teamIdPattern = try NSRegularExpression(pattern: "^[A-Z0-9]{10}\\.")
+		groups = groups.compactMap { group in
+			let replaced = group.replacingOccurrences(of: "*", with: bundleId)
+			let range = NSRange(replaced.startIndex..., in: replaced)
+			guard teamIdPattern.firstMatch(in: replaced, range: range) != nil else { return nil }
+			return replaced
+		}
+
+		entitlementsDict["keychain-access-groups"] = groups
+
+		// Write modified entitlements to a temp file for zsign to use
+		let entitlementsURL = _uniqueWorkDir.appendingPathComponent("entitlements.plist")
+		let plistData = try PropertyListSerialization.data(
+			fromPropertyList: entitlementsDict,
+			format: .xml,
+			options: 0
+		)
+		try plistData.write(to: entitlementsURL)
+
+		_options.appEntitlementsFile = entitlementsURL
+	}
+
 	private func _modifyDict(using infoDictionary: NSMutableDictionary, with options: Options, to app: URL) async throws {
 		if options.fileSharing { infoDictionary.setObject(true, forKey: "UISupportsDocumentBrowser" as NSCopying) }
 		if options.itunesFileSharing { infoDictionary.setObject(true, forKey: "UIFileSharingEnabled" as NSCopying) }

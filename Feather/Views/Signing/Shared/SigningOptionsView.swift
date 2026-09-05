@@ -27,6 +27,17 @@ struct SigningOptionsView: View {
 				Text(.localized("Enabling any protection will append a random string to the bundleidentifiers of the apps you sign, this is to ensure your Apple ID does not get flagged by Apple. However, when using a signing service you can ignore this."))
 			}
 		}
+
+		NBSection(.localized("Security")) {
+			_toggle(
+				.localized("Keychain Isolation"),
+				systemImage: "key",
+				isOn: $options.keychainIsolation,
+				temporaryValue: temporaryOptions?.keychainIsolation
+			)
+		} footer: {
+			Text(.localized("Replaces wildcard keychain groups with the app's bundle identifier, preventing sideloaded apps from accessing each other's keychain entries."))
+		}
 		
 		NBSection(.localized("General")) {
 			Self.picker(
