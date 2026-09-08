@@ -114,21 +114,6 @@ extension SettingsView {
 				}
 			}
             
-			Button(.localized("Submit Feedback"), systemImage: "safari") {
-				let bugAction: UIAlertAction = .init(title: .localized("Bug Report"), style: .default) { _ in
-					UIApplication.open(_makeGitHubIssueURL(url: _githubUrl))
-				}
-				
-				let chooseAction: UIAlertAction = .init(title: .localized("Other"), style: .default) { _ in
-					UIApplication.open(URL(string: "\(_githubUrl)/issues/new/choose")!)
-				}
-				
-				UIAlertController.showAlertWithCancel(
-					title: .localized("Submit Feedback"),
-					message: nil,
-					actions: [bugAction, chooseAction]
-				)
-			}
 			Button(.localized("GitHub Repository"), systemImage: "safari") {
 				UIApplication.open(_githubUrl)
 			}
